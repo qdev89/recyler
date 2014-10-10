@@ -1,0 +1,48 @@
+        <div data-role="view" id="find-item-tabstrip"  >
+            <div id="LoadingDiv" style="display: none; text-align: center">
+            </div>
+            <div id="Load" style="display: none">
+                <div style="font-weight: bold">
+                    <label for="wait" data-localize="wait">
+                        Please wait...
+                    </label>
+                </div>
+                <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
+                     padding-top: 5px" />
+            </div>
+            <div id="head" data-role="header" >
+                <div style="text-align: center">
+                    <table width="100%" border="0">
+                        <tr>
+                            <td width="40">
+                                <a id="Grid" href="#">
+                                    <img src="images/view1.png" alt="" height="31px" />
+                                </a>
+                            </td>
+                            <td>
+                                <a id="List" href="#">
+                                    <img src="images/view2.png" alt="" height="31px" />
+                                </a>
+                            </td>
+                            <td>
+                                <h4>
+                                    <!-- titel -->
+                                    <span name="spn" data-localize="titletext_find">Find stuff</span>
+                                </h4>
+                            </td>
+                            <td>
+                                <a onclick="appNavigate('filter.html');" id="GoToFilters">
+                                    <img src="images/filter_button.png" alt="" style="margin-top: 5px" height="31px" />
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+              
+            </div>
+            <div data-role="content" style="clear: both">
+                <ul id="ulProducts" data-role="listview"  width="30">
+                                
+                </ul>
+            </div>         
+        </div>  

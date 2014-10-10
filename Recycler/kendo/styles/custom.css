@@ -1,0 +1,22 @@
+.textarea{    
+    width: 100% !important;
+    height: 50px;
+}
+
+.logcomment{
+    border-bottom-width: 1px;
+	margin-bottom: 10px;
+}
+
+.clearBoth{    
+    clear:both;
+}
+
+.selectLog{
+    
+    padding:0.3em !important;
+}
+
+.hide{
+    display: none !important;
+}

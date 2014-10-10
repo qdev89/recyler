@@ -1,0 +1,84 @@
+<!--<!DOCTYPE HTML>
+       
+        <script type="text/javascript">
+
+
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+            function onDeviceReady() {
+                PhoneGap.addConstructor(function () {
+                    PhoneGap.addPlugin("Sms", new SmsPlugin());
+                });
+            
+                FB.init({
+                            appId: "313796158728708",
+                            nativeInterface: CDV.FB,
+                            useCachedDialogs: false
+                        });    
+            }
+       -->
+        <div data-role="view" id="friendzone-tabstrip" data-init="friendzoneInit"  style="background-color: #f3f3f3;">
+            <div id="head" data-role="header">
+                   <h2>
+                        <!-- titel -->
+                        <span name="spn">
+                            <label for="friendzone" data-localize="friendzone">
+                                Friend Zone
+                            </label>
+                        </span>
+                    </h2>
+                
+            </div>
+            <div data-role="content">
+                <div id="LoadingDiv" style="display: none; text-align: center">
+                </div>
+                <div id="Load" style="display: none">
+                    <div style="font-weight: bold">
+                        Please wait....
+                    </div>
+                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
+                         padding-top: 5px" />
+                </div>
+                <ul data-role="listview" data-inset="true" data-theme="b">
+                    <li>
+                        <div>
+                            <img src="images/FRIEND.png" width="100%" alt="friend">
+                        </div>
+                        <div>
+                            <label for="friendtext" data-localize="friendtext">
+                                Put your friends into your friendzone group. Then you have a private group and you
+                                can give away, swap books, food etc. - the only special thing is that they have
+                                to react within 8 hours or the stuff goes public to others.
+                            </label>
+                        </div>
+                        <div>
+                            <input type="text" style="display: none; width: 94%" placeholder="Your message" id="TxtMessage">
+                        </div>
+                        <div data-role="controlgroup" data-type="horizontal" style="width: 100%">
+                            <a id="getAllActiveFriends" href="#" data-role="button">
+                                <label for="friends" data-localize="friends">
+                                    Friends
+                                </label>
+                            </a>
+                            <a id="getAllPhoneContacts" href="#" data-role="button">
+                                <label for="phonefriends" data-localize="phonefriends">
+                                    Phone
+                                </label>
+                            </a>
+                            <a id="ActiveFriends" href="#" data-role="button">
+                                <label for="fbfriends" data-localize="fbfriends">
+                                    Facebook
+                                </label>
+                            </a>
+                        </div>
+                        <div>
+                            <input id="Searchusers" type="text" style="width: 70%;" placeholder="Search">
+                            <a id="SearchNow" href="#" data-role="button">Search</a>
+                        </div>
+                        <div id="dvAllUsers">
+                          
+                        </div>
+                    </li>
+                </ul>
+            </div>        
+        </div>

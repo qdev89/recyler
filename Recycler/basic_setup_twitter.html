@@ -1,0 +1,101 @@
+        <div data-role="view" id="setup-twitter-tabstrip" data-title="Social media" style="background-color: #f3f3f3;">
+           
+            <div data-role="content">
+                <div id="LoadingDiv" style="display: none; text-align: center">
+                </div>
+                <div id="Load" style="display: none">
+                    <div style="font-weight: bold">
+                        <label for="wait" data-localize="wait">
+                            Please wait....
+                        </label>
+                    </div>
+                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
+                         padding-top: 5px" />
+                </div>
+                <ul data-role="listview" data-inset="true" data-theme="b">
+                    <li>
+                        <div width="100%">
+                            <h4>
+                                <label for="rules" data-localize="rules">
+                                    Posting rules Facebook
+                                </label>
+                            </h4>
+                        </div>
+                    </li>
+                    <li>
+                        <div width="100%">
+                            <div style="float: left; width:50%">
+                                <h4>
+                                    <label for="postfbgroup" data-localize="fbgroup">
+                                        Post in FB group:
+                                    </label>
+                                </h4>
+                            </div>
+                            <div style="float: left; width:50%">
+                                <h4>
+                                    <label id="GroupName">
+                                    </label>
+                                </h4>
+                            </div>
+                        </div>
+                        <div id="trchangegroup" style="clear: both; width:100%">
+                            <a data-role="button" id="changeGroup">
+                                <!--  gem -->
+                                <label for="getgroups" data-localize="getgroups">
+                                    Click here to get all groups
+                                </label>
+                            </a>
+                        </div>
+                        <div id="trFaceBookGroups" style="display: none;clear: both; width:100%">
+                            <select id="ddlGroups" name="groups" value="Groups">
+                                <option selected="selected" value="0" data-localize="select" data-localize="selectgroup">
+                                    Select a group
+                                </option>
+                            </select>
+                        </div>
+                        <div style="width: 100%; clear: both">
+                            <div style="float: left; width:60%">
+                                <h4>
+                                    <label for="postfb">
+                                        Always on my page
+                                    </label>
+                                </h4>
+                            </div>
+                            <div style="float: left">
+                                <select name="flip-1" id="OnPage" data-role="slider">
+                                    <option value="off">Off</option>
+                                    <option value="on">On</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="width: 100%; clear: both">
+                            <div style="float: left; width: 60%">
+                                <h4>
+                                    <!--  alwaysgroup -->
+                                    <label for="alwaysgroup" data-localize="always">
+                                        Always in group
+                                    </label>
+                                </h4>
+                            </div>
+                            <div style="float: left">
+                                <select name="flip-1" id="InGroup" data-role="slider">
+                                    <option value="off">Off</option>
+                                    <option value="on">On</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="width: 100%; clear: both; height:10px;">
+                        
+                        </div>
+                        <div style="width: 100%; clear: both; height:40px; margin-top:10px">
+                            <a data-role="button" id="SaveSettings">
+                                <!--  gem -->
+                                <label for="update" data-localize="update">
+                                    Save/Update
+                                </label>
+                            </a>
+                        </div>
+                    </li>
+                </ul><br><br>
+            </div>
+        </div>    

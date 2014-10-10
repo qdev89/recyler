@@ -1,0 +1,108 @@
+        <div data-role="view" data-show="signupLogin" id="signup-login-org-tabstrip" style="background-color: #ffffff;">
+            <div  data-role="header" >                
+                    <h2>                        
+                        <span name="spn" data-localize="titeltext_sign">Login</span>
+                    </h2>              
+               
+            </div>
+            <div data-role="content">
+    
+                <table width="100%">
+                    <tr>
+                        <td align="left">
+                            <img src="images/flags.png" alt="flag">
+                        </td>
+                        <td align="left">
+                            <div id="country-select">
+                                <select id="ddlCountry" name="Language" tabindex="">
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <img border="0" src="images/recycleworld_logo2.png" width="100%">
+                </div>
+
+                <span name="spn" data-localize="welcome" >Welcome to "recycleworld"</span><br>
+                <br>
+                <p>
+                    <span name="spn" data-localize="choose" >Please choose how to login or sign up<br> </span><span name="spn" data-localize="remember">(Remember also to setup basic settings)</span><br>
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td width="20">
+                                <input type="radio" id="FacebookLogin" name="V1" style="left: 0; margin-top: -15px;">
+                            </td>
+                            <td width="39">
+                                <img border="0" src="images/facebook.png" width="32" height="32">
+                            </td>
+                            <td width="80">
+                                <span name="spn" data-localize="facebook">Facebook</span>
+                            </td>
+                            <td width="20">
+                                <input type="radio" id="RecycleLogin" checked name="V1" style="left: 0; margin-top: -15px;">
+                            </td>
+                            <td>
+                                <span name="spn" data-localize="recycleworld">Recycleworld</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <input type="text" id="email" name="email" maxlength="50" size="30" placeholder="E-mail"><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <input name="password" type="password" id="Password" onKeyPress="return StopSpecialchrOnly(event);" placeholder="Password" size="30" maxlength="30">
+                            </td>
+                        </tr>
+                        <tr >
+                            <td width="39" height="50">
+                                <input type="checkbox">
+                            </td>
+                            <td colspan="4">
+                                <a href="terms.html">
+                                    I accept Terms & conditions
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </p>
+                <div>
+                    <a data-role="button" data-transition="fade" id="Login" >
+                        <!-- login -->
+                        <span name="spn">Login / Sign Up</span>
+                    </a>
+                </div>
+                <br>
+                <div>
+                    <a data-role="button" data-transition="fade" id="TakeTour" data-theme="b">
+                        <!-- login -->
+                        <span name="spn" data-localize="tour">Take a look inside</span>
+                    </a>
+                </div>
+                <div id="dvForgotPassword">
+                    <a data-role="button" data-transition="fade" id="ForgetPassword" data-theme="c">
+                        <!-- login -->
+                        <span name="spn" data-localize="forgot">Forgot password</span>
+                    </a>
+                </div>
+                        
+            </div>
+          
+            <ul id="Languages" style="display: none">
+            </ul>
+            <div id="dvBackground">
+            </div>
+            <div id="LoadingDiv" style="display: none; text-align: center">
+            </div>
+            <div id="Load" style="display: none">
+                <div style="font-weight: bold">
+                    Please wait....
+                </div>
+                <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
+                     padding-top: 5px" />
+            </div>
+        </div>
+
+            

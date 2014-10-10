@@ -1,0 +1,323 @@
+.ui-listview 
+{
+    -webkit-touch-callout: none; 
+    /* prevent callout to copy image, etc when tap to hold */
+}        
+		
+.km-view .km-header td, 
+.km-footer .km-tabstrip a.km-button
+{
+    background: #2489CE;
+}
+
+.km-flat .km-view .km-content
+{ 
+    padding: 15px;
+    background: url("../images/background_big.jpg") no-repeat !important;
+    background-size: 100%; 
+    background-attachment: fixed;
+    background-position: center bottom;
+    background-size: cover;
+    background-color: #FFF;
+    -webkit-touch-callout: none; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.text_smaller
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li
+{ 
+    padding: .7em 20px; display: block
+}
+  
+.ui-shadow
+{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+            
+.wordwrap
+{
+    white-space: pre-wrap; /* CSS3 */
+    word-wrap: break-word; /* IE */
+}
+.check-box-element
+{
+    width: 48%; 
+    height: 30px; 
+    border: 0px #333 solid;
+}
+.check-box-element>span
+{
+    position: relative;
+    top: -18px;
+    left: 55px;
+}
+input[type=checkbox]
+{
+    position: relative;
+    top: 3px; ;
+    left: 25px;
+    width: 23px;
+    height: 15px;
+    margin: 0 0 0 0;
+    outline: 0!important;
+}
+            
+textarea
+{
+    resize: none;
+}
+
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li
+{
+    padding: .7em 10px; display: block
+}
+
+.basictext
+{
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    line-height: 18px;
+}
+          
+#filter-tabstrip .check-box-element
+{
+    width: 20px; 
+    height: 30px; 
+    border: 0px #333 solid;
+}
+#filter-tabstrip .check-box-element>span
+{
+    position: relative;
+    top: -18px;
+    left: 35px;
+}
+#filter-tabstrip input[type=checkbox]
+{
+    position: relative;
+    top: 3px; ;
+    left: 0px;
+    width: 23px;
+    height: 15px;
+    margin: 0 0 0 10px;
+    outline: 0!important;
+}
+            
+#filter-tabstrip .search-field
+{
+    margin: 13px !important;
+    width: 90% !important;
+}
+
+#findonmap ::-webkit-scrollbar, #map-tabstrip ::-webkit-scrollbar
+{
+    width: 12px;
+}
+    
+#findonmap  ::-webkit-scrollbar-track, #map-tabstrip  ::-webkit-scrollbar-track
+{
+    border-radius: 6px;
+}
+    
+#findonmap  ::-webkit-scrollbar-thumb, #map-tabstrip  ::-webkit-scrollbar-thumb
+{
+    border-radius: 6px;
+    background-color: #115C8B;
+} 
+#findonmap  .ui-page, map-tabstrip
+{
+    -webkit-touch-callout: none;
+}
+    
+#map_canvas
+{
+    width: 100%;
+    height: auto;
+    padding: 0;
+}
+    
+#findonmap .infowindow, #map-tabstrip .infowindow
+{
+    text-shadow: 0 -1px 0 #000;
+    color: #fff;
+    font-family: Helvetica Neue, Helvetica, arial;
+    font-size: small;
+    padding: 4px 45px 4px 15px;
+}
+    
+#findonmap .infowindow a, a:visited, #map-tabstrip .infowindow a, a:visited
+{
+    text-decoration: underline;
+    color: #fff;
+}
+    
+#findonmap .phoney, #map-tabstrip .phoney
+{
+    background-color: #046daf;
+}
+#findonmap .mainhours, #map-tabstrip .mainhours
+{
+    font-family: Arial Unicode MS;
+    font-size: 12pt;
+    margin-bottom: 4px;
+}
+#findonmap .hours, #map-tabstrip .hours
+{
+    font-family: Arial Unicode MS;
+    font-size: 9pt;
+}
+
+.text_smaller
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+#list-address-tabstrip   .km-content
+{
+    /*background: #96c9de;*/
+    background: url("images/background.jpg") no-repeat;
+    background-size: 100%;
+    background-position: top;
+    background-attachment: fixed;
+    background-position: center top;
+    -webkit-touch-callout: none;
+}
+
+.wordwrap
+{
+    white-space: pre-wrap; /* CSS3 */
+    word-wrap: break-word; /* IE */
+}
+
+#settings-tabstrip   .ui-li > .ui-btn-inner
+{
+    display: block;
+    margin-top: 0px;
+    padding: 0 10px;
+    position: relative;
+}
+
+.km-flat .km-header .km-navbar
+{
+    background: #2489CE;
+    color: white;
+}
+
+.align-center
+{
+    text-align: center;
+}
+
+#terms-tabstrip .km-list>li
+{
+    background: transparent;
+}
+
+.km-flat .km-view .km-content .km-list li
+{
+    background: transparent;
+}
+
+#gallery
+{
+    width: 100px;
+    overflow: hidden;
+}
+#gallery a
+{
+    display: block;
+    float: left;
+    color: #fff;
+    width: 75px;
+    height: 75px;
+    margin: 0 0px 0px 0;
+}
+.right #demo-content
+{
+    display: all;
+}
+
+.km-ios #my-drawer .km-content, .km-android #my-drawer .km-content, .km-blackberry #my-drawer .km-content,
+.km-ios #my-drawer .km-list > li, .km-android #my-drawer .km-list > li, .km-blackberry #my-drawer .km-list > li,
+.km-ios #my-drawer .km-listview-link > .km-icon, .km-android #my-drawer .km-listview-link > .km-icon, .km-blackberry #my-drawer .km-listview-link > .km-icon,
+.km-ios #my-drawer .km-list li > .km-icon, .km-android #my-drawer .km-list li > .km-icon, .km-blackberry #my-drawer .km-list li > .km-icon
+{
+    background-color: #4e4e4e;
+    color: #fff;
+}
+
+.km-ios #my-drawer .km-group-title,
+.km-blackberry #my-drawer .km-group-title
+{
+    background-color: #6e6e6e;
+    color: #fff;
+}
+
+.km-drawer-button:before, .km-drawer-button:after { content: "\E077" !important; ; }
+.km-inbox:before, .km-inbox:after { content: "\E0B0"; }
+.km-sent:before, .km-sent:after { content: "\E0C6"; }
+.km-trash:before, .km-trash:after { content: "\E0C3"; }
+.km-spam:before, .km-spam:after { content: "\E0C5"; }
+.km-star:before, .km-star:after { content: "\E0D7"; }
+.km-settings:before, .km-settings:after { content: "\E0DA"; }
+.km-off:before, .km-off:after { content: "\E0B9" }
+
+.inboxList
+{
+    font-size: .8em;
+}
+
+.inboxList p,
+.inboxList h2,
+.inboxList h3
+{
+    margin: 5px 2px;
+}
+
+.inboxList p,
+.inboxList h3
+{
+    color: #777;
+}
+
+.inboxList h3.time
+{
+    color: #369;
+    float: left;
+    margin-right: 10px;
+}
+
+#drawer-spam .spam
+{
+    color: darkred;
+    background: currentcolor;
+    display: block;
+    margin: 2em;
+    font-size: 1.4em;
+}
+
+#drawer-spam .spam .km-text
+{
+    color: white;
+}
+
+#my-drawer
+{
+    z-index: 10;
+}
+
+#my-drawer .km-group-title
+{
+    display: none;
+}
+
+select#country{width:150px;}

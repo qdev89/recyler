@@ -1,0 +1,937 @@
+var Roles =
+        {
+            "English":[ 
+			{
+                            "id": "0",
+                            "Value": "Select a user profile"
+                        },
+			{
+                            "id": "1",
+                            "Value": "Free user"
+                        },
+                        {
+                            "id": "2",
+                            "Value": "Supporter"
+                        }
+            ],
+            "Danish": [	{
+                            "id": "0",
+                            "Value": "V�lg bruger profil"
+                        },
+			{
+                            "id": "1",
+                            "Value": "Gratis profil"
+                        },
+                        {
+                            "id": "2",
+                            "Value": "Supporter"
+                        }
+            ],
+            "German": [	{
+                            "id": "0",
+                            "Value": "W�hlen Sie ein Benutzerprofil"
+                        },
+			{
+                            "id": "1",
+                            "Value": "Free User"
+                        },
+                        {
+                            "id": "2",
+                            "Value": "Supporter"
+                        }
+            ],
+            "Spanish": [	{
+                            "id": "0",
+                            "Value": "Seleccione perfil de usuario"
+                        },
+			{
+                            "id": "1",
+                            "Value": "Usuario gratis"
+                        },
+                        {
+                            "id": "2",
+                            "Value": "Partidario"
+                        }
+            ]
+        }
+
+
+var Languages =
+        {
+            "Danish": [
+			{   
+			    "id": "0",
+                            "Value": "V�lg sprog"
+			
+			},
+			{
+                            "id": "1",
+                            "Value": "Dansk"
+                        },
+                        {
+                            "id": "2",
+                            "Value": "Deutsch"
+                        },
+                        {
+                            "id": "3",
+                            "Value": "English"
+                        },
+                        {
+                            "id": "4",
+                            "Value": "Espa�ol"
+                        }
+            ],
+
+	    "English":[ 
+			{   
+			    "id": "0",
+                            "Value": "Select Language"
+			},
+			{
+                            "id": "1",
+                            "Value": "Danish"
+                        },
+                        {
+                            "id": "2",
+                            "Value": "Deutsch"
+                        },
+                        {
+                            "id": "3",
+                            "Value": "English"
+                        },
+                        {
+                            "id": "4",
+                            "Value": "Espa�ol"
+                        }
+            ],
+            "German": [
+			{   
+			    "id": "0",
+                            "Value": "Wahlen Sie sprache"
+			
+			},{
+                            "id": "1",
+                            "Value": "D�nish"
+                        },
+                        {
+                            "id": "2",
+                            "Value": "Deutsch"
+                        },
+                        {
+                            "id": "3",
+                            "Value": "English"
+                        },
+                        {
+                            "id": "4",
+                            "Value": "Espa�ol"
+                        }
+            ]
+,
+            "Spanish": [
+			{   
+			    "id": "0",
+                            "Value": "Seleccione el idioma"
+			
+			},
+			{
+                            "id": "1",
+                            "Value": "Dan�s" 
+                        },
+                        {
+                            "id": "2",
+                            "Value": "Alem�n" 
+                        },
+                        {
+                            "id": "3",
+                            "Value": "Ingl�s"
+                        },
+                        {
+                            "id": "4",
+                            "Value": "Espa�ol"
+                        }
+            ]
+
+
+        }
+
+
+
+	var date =
+        {
+            "English":[ {
+                            "id": "01",
+                            "Value": "Jan"
+                        },
+                        {
+                            "id": "02",
+                            "Value": "Feb"
+                        },
+                        {
+                            "id": "03",
+                            "Value": "Mar"
+                        },
+                        {
+                            "id": "04",
+                            "Value": "Apr"
+                        },
+                        {
+                            "id": "05",
+                            "Value": "May"
+                        },
+                        {
+                            "id": "06",
+                            "Value": "Jun"
+                        },
+                        {
+                            "id": "07",
+                            "Value": "Jul"
+                        },
+
+                        {
+                            "id": "08",
+                            "Value": "Aug"
+                        },
+
+                        {
+                            "id": "09",
+                            "Value": "Sep"
+                        },
+
+                        {
+                            "id": "10",
+                            "Value": "Oct"
+                        },
+                        {
+                            "id": "11",
+                            "Value": "Nov"
+                        },
+                        {
+                            "id": "12",
+                            "Value": "Dec"
+                        }
+            ],
+            "Danish": [{
+                            "id": "01",
+                            "Value": "Jan"
+                        },
+                        {
+                            "id": "02",
+                            "Value": "Feb"
+                        },
+                        {
+                            "id": "03",
+                            "Value": "Mar"
+                        },
+                        {
+                            "id": "04",
+                            "Value": "Apr"
+                        },
+                        {
+                            "id": "05",
+                            "Value": "Maj"
+                        },
+                        {
+                            "id": "06",
+                            "Value": "Jun"
+                        },
+                        {
+                            "id": "07",
+                            "Value": "Jul"
+                        },
+                        {
+                            "id": "08",
+                            "Value": "Aug"
+                        },
+                        {
+                            "id": "09",
+                            "Value": "Sep"
+                        },
+
+                        {
+                            "id": "10",
+                            "Value": "Okt"
+                        },
+                        {
+                            "id": "11",
+                            "Value": "Nov"
+                        },
+                        {
+                            "id": "12",
+                            "Value": "Dec"
+                        }
+            ],
+            "German": [{
+                            "id": "01",
+                            "Value": "jan"
+                        },
+
+                        {
+                            "id": "02",
+                            "Value": "Feb"
+                        },
+                        {
+                            "id": "03",
+                            "Value": "M�r"
+                        },
+                        {
+                            "id": "04",
+                            "Value": "Apr"
+                        },
+                        {
+                            "id": "05",
+                            "Value": "Mai"
+                        },
+                        {
+                            "id": "06",
+                            "Value": "Jun"
+                        },
+                        {
+                            "id": "07",
+                            "Value": "Jul"
+                        },
+                        {
+                            "id": "08",
+                            "Value": "Aug"
+                        },
+                        {
+                            "id": "09",
+                            "Value": "Sep"
+                        },
+
+                        {
+                            "id": "10",
+                            "Value": "Okt"
+                        },
+                        {
+                            "id": "11",
+                            "Value": "Nov"
+                        },
+                        {
+                            "id": "12",
+                            "Value": "Dez"
+                        }
+            ],
+            "Spanish": [{
+                            "id": "01",
+                            "Value": "Ene"
+                        },
+                        {
+                            "id": "02",
+                            "Value": "Feb"
+                        },
+                        {
+                            "id": "03",
+                            "Value": "Marz"
+                        },
+                        {
+                            "id": "04",
+                            "Value": "Abr"
+                        },
+                        {
+                            "id": "05",
+                            "Value": "May"
+                        },
+                        {
+                            "id": "06",
+                            "Value": "Jun"
+                        },
+                        {
+                            "id": "07",
+                            "Value": "Jul"
+                        },
+                        {
+                            "id": "08",
+                            "Value": "Ago"
+                        }
+						,
+                        {
+                            "id": "09",
+                            "Value": "Sep"
+                        }
+						,
+                        {
+                            "id": "10",
+                            "Value": "Oct"
+                        },
+                        {
+                            "id": "11",
+                            "Value": "Nov"
+                        },
+                        {
+                            "id": "12",
+                            "Value": "Dic"
+                        }
+            ]
+        }
+
+	 var SpotType =
+        {
+            "English":[ {
+                            "id": "0",
+                            "Value": "Select"
+                        },
+                        {
+                            "id": "Garage sale/Market/Event",
+                            "Value": "Garage sale/Market etc."
+                        },
+                        {
+                            "id": "Eco/Green shop",
+                            "Value": "Eco shop"
+                        },
+                        {
+                            "id": "Recycling spot",
+                            "Value": "Second hand sale"
+                        },
+                        {
+                            "id": "Recycling company",
+                            "Value": "Recycling spot/company"
+                        },
+                        {
+                            "id": "Food donation",
+                            "Value": "Food donation"
+                        },						
+					    {
+                            "id": "FREE Food",
+                            "Value": "FREE food or fruits"
+                        },
+						{
+                            "id": "Help",
+                            "Value": "HELP us to collect"
+                        }
+            ],
+            "Danish": [{
+                            "id": "0",
+                            "Value": "V�lg type"
+                        },
+                        {
+                            "id": "Garage sale/Market/Event",
+                            "Value": "Garagesalg, marked el. lign"
+                        },
+                        {
+                            "id": "Eco/Green shop",
+                            "Value": "�ko butik"
+                        },
+                        {
+                            "id": "Recycling spot",
+                            "Value": "Genbrugs salg"
+                        },
+                        {
+                            "id": "Recycling company",
+                            "Value": "Genbrugs firma/sted"
+                        },
+                        {
+                            "id": "Food donation",
+                            "Value": "F�devare donation"
+                        },
+					    {
+                            "id": "FREE Food",
+                            "Value": "GRATIS f�devarer eller frugt"
+                        },
+						{
+                            "id": "Help",
+                            "Value": "HJ�LP os med at indsamle"
+                        }
+            ],
+            "German": [{
+                            "id": "0",
+                            "Value": "Typ W�hlen"
+                        },
+                        {
+                            "id": "Garage sale/Market/Event",
+                            "Value": "Garagenverkauf/Floh Market",
+                        },
+                        {
+                            "id": "Eco/Green shop",
+                            "Value": "Eco shop"
+                        },
+                        {
+                            "id": "Recycling spot",
+                            "Value": "Second hand"
+                        },
+                        {
+                            "id": "Recycling company",
+                            "Value": "Recycled Firma/Platz"
+                        },
+                        {
+                            "id": "Food donation",
+                            "Value": "Lebensmittel donation"
+                        },
+												                        {
+                            "id": "FREE Food",
+                            "Value": "GRATIS Lebensmittel oder Frucht"
+                        },
+						{
+                            "id": "Help",
+                            "Value": "HELFEN Sie uns, zu sammeln"
+                        }
+					
+            ],
+            "Spanish": [{
+                            "id": "0",
+                            "Value": "Seleccione el tipo"
+                        },
+                        {
+                            "id": "Garage sale/Market/Event",
+                            "Value": "Venta de Garaje/ mercado"
+                        },
+                        {
+                            "id": "Eco/Green shop",
+                            "Value": "Tienda de ecol�gico"
+                        },
+                        {
+                            "id": "Recycling spot",
+                            "Value": "Ventas reciclados/tienda"
+						},
+                        {
+                            "id": "Recycling company",
+                            "Value": "Reciclaje compa��a/Esacio"
+                        },
+                        {
+                            "id": "Food donation",
+                            "Value": "Alimentos donaci�n"
+                        },
+						{
+                            "id": "FREE Food",
+                            "Value": "GRATIS Los alimentos o frutas "
+                        },
+						{
+                            "id": "Help",
+                            "Value": "AY�DANOS a recopilar"
+                        }
+            ]
+        }
+
+
+		var Tags =
+        {
+ "English":[ 
+{
+"id": "Friend Zone",
+"Value": "Friend Zone"
+},
+{
+"id": "Men ",
+"Value": "Mens stuff"
+},
+{
+"id": "Women",
+"Value": "Womens stuff"
+},
+{
+"id": "Children",
+"Value": "Childrens stuff"
+},
+{
+"id": "Animal",
+"Value": "Animal"
+},
+{
+"id": "Indoor",
+"Value": "Indoor"
+},
+{
+"id": "Outdoor",
+"Value": "Outdoor"
+},
+{
+"id": "Garden",
+"Value": "Garden"
+},
+{
+"id": "Kitchen", 
+"Value": "Kitchen"
+},
+{
+"id": "Bathroom",
+"Value": "Bathroom" 
+}, 
+{
+"id": "Furniture",
+"Value": "Furniture"
+}, 
+{
+"id": "Books",
+"Value": "Books"
+}, 
+{
+"id": "Electronics",
+"Value": "Electronics"
+},
+{
+"id": "Phone", 
+"Value": "Phones" 
+},
+{
+"id": "Computer",
+"Value": "Computer"
+},
+{
+"id": "Tools", 
+"Value": "Tools" 
+}, 
+{
+"id": "Clothing",
+"Value": "Clothing"
+},
+{
+"id": "Toys",
+"Value": "Toys"
+},
+{
+"id": "Sport",
+"Value": "Sport"
+}, 
+{
+"id": "Mechanics",
+"Value": "Mechanics"
+},
+{
+"id": "Transportation",
+"Value": "Transportation"
+},
+{
+"id": "Food",
+"Value": "Food"
+},
+{
+"id": "Private",
+"Value": "Entertainment"
+}, ,
+{
+"id": "Materials",
+"Value": "Materials"
+},
+{
+"id": "Industrial",
+"Value": "Industri"
+},
+{
+"id": "Others",
+"Value": "Others"
+}
+],
+
+ "Danish": [
+{
+"id": "Friend Zone",
+"Value": "Venne gruppe"
+},
+{
+"id": "Men",
+"Value": "Herre ting"
+},
+{
+"id": "Women",
+"Value": "Kvinde ting"
+},
+{
+"id": "Children",
+"Value": "B�rne ting"
+},
+{
+"id": "Animal",
+"Value": "Dyr"
+},
+{
+"id": "Indoor",
+"Value": "Indend�rs"
+},
+{
+"id": "Outdoor",
+"Value": "Udend�rs"
+}, 
+{
+"id": "Garden",
+"Value": "Have"
+},
+{
+"id": "Kitchen",
+"Value": "K�kken"
+},
+{
+"id": "Bathroom",
+"Value": "Badev�relse"
+}, 
+{
+"id": "Furniture",
+"Value": "M�bler"
+},
+{
+"id": "Books",
+"Value": "B�ger"
+},
+{
+"id": "Electronics",
+"Value": "Elektronik"
+},
+{
+"id": "Phone",
+"Value": "Telefoner"
+}, 
+{
+"id": "Computer",
+"Value": "Computer"
+}, 
+{
+"id": "Tools",
+"Value": "V�rkt�jer"
+},
+{
+"id": "Clothing",
+"Value": "T�j"
+},
+{
+"id": "Toys",
+"Value": "Leget�j"
+},
+{
+"id": "Sport",
+"Value": "Sport"
+},
+{
+"id": "Mechanics",
+"Value": "Mekanik"
+},
+{
+"id": "Transportation",
+"Value": "Transportmidler"
+},
+{
+"id": "Food",
+"Value": "F�devarer"
+},
+{
+"id": "Private",
+"Value": "Underholdning"
+},
+{
+"id": "Materials",
+"Value": "Materialer"
+},
+{
+"id": "Industri",
+"Value": "Industri"
+},
+{
+"id": "Others",
+"Value": "Andet"
+}
+],
+
+
+"German": [
+{
+"id": "Friend Zone",
+"Value": "Freundes group"
+},
+{
+"id": "Men",
+"Value": "M�nner Zeug"
+},
+{
+"id": "Women",
+"Value": "Frauen zeug"
+},
+{
+"id": "Children",
+"Value": "kinder zeug"
+},
+{
+"id": "Animal",
+"Value": "Tiere"
+},
+{
+"id": "Indoor",
+"Value": "Innen"
+},
+{
+"id": "Outdoor",
+"Value": "Im Freien"
+},
+{
+"id": "Garden",
+"Value": "Garten"
+},
+{
+"Id": "Kitchen", 
+"Value": "K�che" 
+}, 
+{
+"Id": "Bathroom", 
+"Value": "Badezimmer" 
+},
+{
+"id": "Furniture",
+"Value": "M�bel"
+},
+{
+"id": "Books",
+"Value": "B�cher"
+},
+{
+"id": "Electronics",
+"Value": "Electronik"
+},
+{
+"Id": "Phone", 
+"Value": "Phones" 
+},
+{
+"id": "Computer",
+"Value": "Computer"
+},
+{
+"id": "Sport",
+"Value": "Sport"
+},
+{
+"Id": "Tools", 
+"Value": "Extras" 
+}, 
+{
+"id": "Clothing",
+"Value": "Kleidung"
+},
+{
+"id": "Toys",
+"Value": "Spielzeug"
+},
+{
+"id": "Transportation",
+"Value": "Transport"
+},
+{
+"id": "Mechanics",
+"Value": "Mechanik"
+},
+{
+"id": "Food",
+"Value": "Lebensmittel"
+},
+{
+"id": "Private",
+"Value": "Unterhaltung"
+},
+{
+"id": "Materials",
+"Value": "Materialien"
+},
+{
+"id": "Industri",
+"Value": "Industrie"
+},
+{
+"id": "Others",
+"Value": "Andere"
+}
+],
+
+
+"Spanish": [
+{
+"id": "Friend Zone",
+"Value": "grupo de amistades"
+},
+{
+"id": "Men",
+"Value": "Hombre cosas"
+},
+{
+"id": "Women",
+"Value": "Mujer cosas"
+},
+{
+"id": "Children",
+"Value": "Ni�os cosas"
+},
+{
+"id": "Animal",
+"Value": "Animales"
+},
+{
+"id": "Indoor",
+"Value": "Interior"
+},
+{
+"id": "Outdoor",
+"Value": "Exterior"
+},
+{
+"id": "Garden",
+"Value": "Jard�n"
+},
+{
+"Id": "Kitchen", 
+"Value": "Cocina" 
+},
+{
+"Id": "Bathroom", 
+"Value": "Cuarto de ba�o" 
+}, 
+{
+"id": "Furniture",
+"Value": "Mueblas"
+},
+{
+"id": "Books",
+"Value": "Libros"
+},
+{
+"id": "Electronics",
+"Value": "Art�culos electr�nicos"
+},
+{
+"Id": "Phone", 
+"Value": "Tel�fonos" 
+},
+{
+"id": "Computer",
+"Value": "Equipo"
+},
+{
+"id": "Tools", 
+"Value": "Herramientas" 
+}, 
+{
+"id": "Clothing",
+"Value": "Ropa"
+},
+{
+"id": "Toys",
+"Value": "Juguetes"
+},
+{
+"id": "Sport",
+"Value": "Deportes"
+},
+{
+"id": "Mechanics",
+"Value": "Jard�n"
+},
+{
+"id": "Transportation",
+"Value": "Transporte"
+},
+{
+"id": "Food",
+"Value": "Alimentos"
+},
+{
+"id": "Private",
+"Value": "Entretenimiento"
+},
+{
+"id": "Materials",
+"Value": "Materiales"
+},
+{
+"id": "Industri",
+"Value": "Industri"
+},
+{
+"id": "Others",
+"Value": "Otros"
+}
+]
+         
+        }

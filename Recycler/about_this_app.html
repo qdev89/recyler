@@ -1,0 +1,106 @@
+        <div data-role="view" id="about-app-tabstrip" data-title="Contact Us" data-init="aboutThisAppInit"  style="background-color: #f3f3f3;">
+            
+            <div data-role="content">
+                <div id="LoadingDiv" style="display: none; text-align: center">
+                </div>
+                <div id="Load" style="display: none">
+                    <div style="font-weight: bold">
+                        Please wait....
+                    </div>
+                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left:40px;padding-top:5px" />
+                </div>
+
+                <ul data-role="listview" data-inset="true" data-theme="b">
+                    <!--  indhold -->
+                    <li>
+                        <div align="center">
+                            <img src="images/recycleworld_logo.png" width="90%" alt="logo">
+                        </div>
+                        <!-- ------------EMAIL FORM ------------ -->
+                        <div>
+
+                            <table width="100%">
+                                <tr>
+                                    <td>
+                                        <table border="0" width="100%" cellpadding="4" cellspacing="0">
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                        <label data-localize="indhold_app">
+                                                            <h3>
+                                                                If you wish to contact us - try send a message here.
+                                                            </h3>
+                                                            Supporters will be answered first - we hope within 24-48 hours. Thank you for your
+                                                            understanding.
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Name:
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" name="Name" id="Name"  size="20" style="width: 96%">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left">
+                                                    Subject:
+                                                </td>
+                                            <tr>
+                                                <td>
+                                                    <select name="Subject" size="1" style="width: 100%" id="Subject">
+                                                        <option value="0" select>Select A Subject</option>
+                                                        <option value="Comment">1. Comment</option>
+                                                        <option value="Question">2. Question</option>
+                                                        <option value="Suggestion">3. Suggestion</option>
+                                                        <option value="none">5. None of the above</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <label data-localize="write">
+                                                        Write message
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="select_outer">
+                                                        <textarea id="Comments" name="Comments, Suggestions" cols="50" rows="6" style="width: 100%">
+                                                        </textarea>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                                
+                                        </table>
+                                                
+                                                </td>
+                                                
+                                            </tr>
+                                                
+                                <tr>
+                                    <td align="center">
+                                        <input type="submit" id="SendMail" value="Send" style="width: 90%">
+
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="right_100">
+                            <img src="images/fb_pic.png" width="100%">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                    </li>
+                </ul>
+                <br>
+                <br>
+            </div>            
+        </div>

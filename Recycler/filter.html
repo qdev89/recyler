@@ -1,0 +1,68 @@
+<div data-role="view" data-show="initFilters" id="filter-tabstrip" style="background-color: #f3f3f3;">
+    <div id="pageheader3" data-role="header">
+        <div data-role="navbar">
+            <span name="spn" data-localize="titletext_filter">Search</span> - tags
+        </div>
+    </div>
+    <div >
+        <div id="item_info_div" style="float: left; width: 100%; text-align: left;padding: 15px;">
+            <div>
+                <div style="float: left; width: 100%">
+                    <input type="text" id="Search" data-localize="Searchforstuff" placeholder="Search for stuff..."
+                           maxlength="255" />
+                </div>
+            </div>
+            <table width="100%" border="0">
+                <tr>
+                    <td>
+                        <span name="spn"><span for="distance" data-localize="distance">Distance</span></span>
+                        in km.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="range" name="slider-mini" id="Distance" value="0" min="0" max="250"
+                               data-highlight="true" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span name="spn"> <span for="exchange" data-localize="exchange">Exchange value</span> </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="range" name="slider-mini1" id="Price" value="0" min="0" max="1000" data-highlight="true"
+                               size="20" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="ui-field-contain">
+                            <label for="select-custom-24" data-localize="Searchfilter">
+                                Search filter:
+                            </label>
+                            <select name="select-custom-24" id="select-custom-24" data-native-menu="false" multiple="multiple"
+                                    data-iconpos="left">
+
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div id="image_div" align="center" style="width: 100%; text-align: center;">
+                <a data-role="button" data-transition="fade" onclick="getFilters()" >
+                    <label data-localize="ok">
+                        Ok
+                    </label>
+                </a>
+            </div>
+
+            <br>
+            <br>
+        </div>
+
+    </div>
+</div>
+ 

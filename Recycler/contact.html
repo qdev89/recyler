@@ -1,0 +1,95 @@
+        <div data-role="view" id="contact-tabstrip" data-init="contactInit" style="background-color: #f3f3f3;">
+            <div id="pageheader3" data-role="header" >
+                    <h2>
+                        <!-- titel -->
+                        <label for="titletext_userprofile" data-localize="titletext_userprofile">
+                            User Profile
+                        </label>
+                    </h2>
+                
+            </div>
+            <div data-role="content">
+                <div id="LoadingDiv" style="display: none; text-align: center">
+                </div>
+                <div id="Load" style="display: none">
+                    <div style="font-weight: bold">
+                        <label for="wait" data-localize="wait">
+                            Please wait...
+                        </label>
+                    </div>
+                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
+                         padding-top: 5px" />
+                </div>
+                <div align="center">
+                    <ul data-role="listview" data-inset="true" data-theme="b">
+                        <li>
+                            <div data-role="fieldcontain" style="margin-bottom: 10px; clear: both">
+                                <table width="100%">
+                                    <tr>
+                                        <td colspan="2">
+                                            <table width="100%">
+                                                <tr>
+                                                    <td>
+                                                        <img id="image" alt="image" width="120px" height="120px" src="images/imageplaceholder.png" />
+                                                    </td>
+                                                    <td>
+                                                        <img id="RecycleStar" alt="recycleworld supporter" align="right" width="120px" height="120px">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="2">
+                                            <label for="brugernavntitel" data-localize="brugernavntitel">
+                                                USERNAME:
+                                            </label>
+                                            <span name="spn" id="OwnerName"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="homecity" data-localize="homecity">
+                                                CITY:
+                                            </label>
+                                            <span name="spn" id="OwnerCity"></span>
+                                        </td>
+                                        <td>
+                                            <!-- username_give -->
+                                            RANKING: <span name="spn" id="Position"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <label for="write" data-localize="write">
+                                                Write message
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <textarea name="textarea" style="width:100%;height:140px;" maxlength="200" id="textinput"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a data-role="button" data-transition="fade" id="SendMessage">
+                                                <!-- send -->
+                                                <span name="spn"> <img src="images/sms.png" alt="sms"></span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a data-role="button" data-transition="fade" id="call">
+                                                <!-- send -->
+                                                <span name="spn"> <img src="images/phoneicon.png" alt="phicon"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- writemessage -->
+                        </li>
+                    </ul>
+                </div>
+            </div>  
+        </div>           

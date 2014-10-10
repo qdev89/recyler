@@ -1,42 +1,548 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+<!DOCTYPE HTML>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World!</title>
+        <title>
+            <label for="titeltext_index"  data-localize="titeltext_index">Welcome</label>
+        </title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <link type="text/css" rel="stylesheet" href="css/recycleworld_theme.min.css" />
+        <link type="text/css" rel="stylesheet" href="css/allPages.css" />
+        <link type="text/css" rel="stylesheet" href="kendo/styles/custom.css" />
+        <link type="text/css" rel="stylesheet" href="kendo/styles/kendo.mobile.all.min.css" />
+
+        <script type="text/javascript" src="kendo/js/jquery.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="kendo/js/kendo.mobile.min.js"></script>
+        <script type="text/javascript" src="Cordova/phonegap-1.4.1.js" charset="utf-8"></script>
+        <script src="Scripts/json2.min.js" type="text/javascript"></script>
+
+        <script src="Scripts/jsEarthHeartCalculation.js" type="text/javascript"></script>
+        <script src="Scripts/LocalizationFiles/jquery.localize.js" type="text/javascript"></script>
+        <script type="text/javascript" src="Scripts/User/User.js"></script>
+        
+        <script type="text/javascript" src="Scripts/lib/everlive.all.min.js"></script> 
+        <script type="text/javascript" src="Scripts/lib/settings.js"></script> 
+        <script type="text/javascript" src="Scripts/app.js"></script>
+
+        <script src="Scripts/cdv-plugin-fb-connect.js" type="text/javascript"></script>
+        <script src="Scripts/facebook-js-sdk.js" type="text/javascript"></script>
+        <script type="text/javascript" charset="utf-8" src="Scripts/inappbilling.js"></script>
+        <script src="Scripts/Spot/EditSpot.js" type="text/javascript"></script>
+        <script src="Scripts/jsProduct.js" type="text/javascript"></script>
+        <script src="Scripts/jsMap.js" type="text/javascript"></script>
+        <script src="Scripts/infobubble-compiled.js" type="text/javascript"></script>
+        <script type="text/javascript" src="Scripts/settings.js"></script>
+        <script type="text/javascript" src="Scripts/jsGiveAway.js"></script>
+        <script src="Scripts/jsInviteFriends.js" type="text/javascript"></script>
+        <script src="Scripts/RecycleWorldDataService.js" type="text/javascript"></script>
+        <script src="Scripts/jsCO2.js" type="text/javascript"></script>
+        <script src="Scripts/jsFriendZone.js" type="text/javascript"></script>
+        <script src="Scripts/Spot/CreateSpot.js" type="text/javascript"></script>
+        <script src="Scripts/Resources/Messages.json" type="text/javascript"></script>
+        <script src="Scripts/Resources/DropDownData.json" type="text/javascript"></script>
+
+        <script src="Scripts/jsLogin.js" type="text/javascript"></script>
+        <script src="Scripts/SmsPlugin.js" type="text/javascript"></script>
+        <script src="Scripts/jsListing.js" type="text/javascript"></script>
+        <script src="Scripts/Spot/GetSpot.js" type="text/javascript"></script>
+        <script src="Scripts/jsMyStuff.js" type="text/javascript"></script>
+        <script src="Scripts/jsNearestFood.js" type="text/javascript"></script>
+        <script src="Scripts/jsProductStatus.js" type="text/javascript"></script>
+
+        <script>
+            $(document).ready(function(){
+                
+                
+                    $("body").on("click",'#friend' ,function () {     
+                        
+                    $("#my-drawer").data("kendoMobileDrawer").hide();                        
+                  if(!isLogged()) return;                    
+                    if (User.RoleID == "3") {
+                        var message = '';
+                        switch (localStorage.Language) {
+                            case "1":
+                                message = Language.Danish.Register;
+                                break;
+                            case "2":
+                                message = Language.German.Register;
+                                break;
+                            case "3":
+                                message = Language.English.Register;
+                                break;
+                            case "4":
+                                message = Language.Spanish.Register;
+                                break;
+                        }                        
+                        if (confirm(message)) {
+                            localStorage.User = null;
+                            app.application.navigate("signup_login.html");
+                            return false;
+                        } else {
+                            return false;
+                        }
+                    }                    
+                    if (User.RoleID == "1") {
+                        var message = '';
+                        switch (localStorage.Language) {
+                            case "1":
+                                message = Language.Danish.PUpdate;
+                                break;
+                            case "2":
+                                message = Language.German.PUpdate;
+                                break;
+                            case "3":
+                                message = Language.English.PUpdate;
+                                break;
+                            case "4":
+                                message = Language.Spanish.PUpdate;
+                                break;
+                        }
+                        
+                        if (confirm(message)) {
+                            app.application.navigate("basic_setup.html");
+                            return false;
+                        } else {
+                            return false;
+                        }
+                    }
+                    app.application.navigate("friendzone.html");
+                });              
+                
+                
+               // return ;
+                                        
+                
+                
+             $("body").on("click",'#logout',function () {
+                    $(this).attr('disabled', 'disabled');
+                    logout();
+                });   
+                
+                $("body").on("click",'#Mystuff',function () {
+                    if(!isLogged()) return;
+                    if (User.RoleID == "3") {
+                        var message = '';
+                        switch (localStorage.Language) {
+                            case "1":
+                                message = Language.Danish.Register;
+                                break;
+                            case "2":
+                                message = Language.German.Register;
+                                break;
+                            case "3":
+                                message = Language.English.Register;
+                                break;
+                            case "4":
+                                message = Language.Spanish.Register;
+                                break;
+                        }
+                        
+                        if (confirm(message)) {
+                            localStorage.User = null;
+                            app.application.navigate("signup_login.html");
+                            return;
+                        } else {
+                            return;
+                        }
+                    }                  
+                    app.application.navigate("mystuff.html");
+                });
+                
+                $("body").on("click",'#MySpots',function () {
+                    if(!isLogged()) return;
+                    if (User.RoleID == "3") {
+                        var message = '';
+                        switch (localStorage.Language) {
+                            case "1":
+                                message = Language.Danish.Register;
+                                break;
+                            case "2":
+                                message = Language.German.Register;
+                                break;
+                            case "3":
+                                message = Language.English.Register;
+                                break;
+                            case "4":
+                                message = Language.Spanish.Register;
+                                break;
+                        }                        
+                        if (confirm(message)) {
+                            localStorage.User = null;
+                            app.application.navigate("signup_login.html");
+                            return;
+                        } else {
+                            return;
+                        }
+                    }
+                    
+                    if (User.RoleID == "1") {
+                        var message = '';
+                        switch (localStorage.Language) {
+                            case "1":
+                                message = Language.Danish.PUpdate;
+                                break;
+                            case "2":
+                                message = Language.German.PUpdate;
+                                break;
+                            case "3":
+                                message = Language.English.PUpdate;
+                                break;
+                            case "4":
+                                message = Language.Spanish.PUpdate;
+                                break;
+                        }                        
+                        if (confirm(message)) {
+                           app.application.navigate("basic_setup.html");
+                        } else {
+                            return;
+                        }
+                    }
+                   app.application.navigate("myspots.html");
+                });
+               
+               $("body").on("click",'#invite',function () {
+                    //alert('Coming soon');
+                    //return;
+                    if(!isLogged()) return;
+                    if (User.RoleID == "3") {
+                        var message = '';
+                        switch (localStorage.Language) {
+                            case "1":
+                                message = Language.Danish.Register;
+                                break;
+                            case "2":
+                                message = Language.German.Register;
+                                break;
+                            case "3":
+                                message = Language.English.Register;
+                                break;
+                            case "4":
+                                message = Language.Spanish.Register;
+                                break;
+                        }                        
+                        if (confirm(message)) {
+                            localStorage.User = null;
+                          app.application.navigate("signup_login.html");
+                            return;
+                        } else {
+                            return;
+                        }
+                    }
+                    if (User.FirstName == "" && User.PhoneNumber == "" && User.EmailID == "") {
+                        switch (localStorage.Language) {
+                            case "1":
+                                alert(Language.Danish.PleaseUpdate);
+                                break;
+                            case "2":
+                                alert(Language.German.PleaseUpdate);
+                                break;
+                            case "3":
+                                alert(Language.English.PleaseUpdate);
+                                break;
+                            case "4":
+                                alert(Language.Spanish.PleaseUpdate);
+                                break;
+                        }
+                        return;
+                    }
+                  app.application.navigate("invite.html");
+                });
+              
+               $("body").on("click",'#BasicSettings',function () {
+                    if(!isLogged()) return;
+                    if (User.RoleID == "3") {
+                        var message = '';
+                        switch (localStorage.Language) {
+                            case "1":
+                                message = Language.Danish.Register;
+                                break;
+                            case "2":
+                                message = Language.German.Register;
+                                break;
+                            case "3":
+                                message = Language.English.Register;
+                                break;
+                            case "4":
+                                message = Language.Spanish.Register;
+                                break;
+                        }                        
+                        if (confirm(message)) {
+                            localStorage.User = null;
+                          app.application.navigate("signup_login.html");
+                            return false;
+                        } else {
+                            return false;
+                        }
+                    }
+                   app.application.navigate("basic_setup.html");
+                });
+                
+                $("body").on("click",'#FacebookSettings',function () {
+                    if(!isLogged()) return;
+                    if (User.RoleID == "3") {
+                        var message = '';
+                        switch (localStorage.Language) {
+                            case "1":
+                                message = Language.Danish.Register;
+                                break;
+                            case "2":
+                                message = Language.German.Register;
+                                break;
+                            case "3":
+                                message = Language.English.Register;
+                                break;
+                            case "4":
+                                message = Language.Spanish.Register;
+                                break;
+                        }                        
+                        if (confirm(message)) {
+                            localStorage.User = null;
+                          app.application.navigate("signup_login.html");
+                            return false;
+                        } else {
+                            return false;
+                        }
+                    }
+                    if (User.FirstName == "" && User.PhoneNumber == "" && User.EmailID == "") {
+                        switch (localStorage.Language) {
+                            case "1":
+                                alert(Language.Danish.PleaseUpdate);
+                                break;
+                            case "2":
+                                alert(Language.German.PleaseUpdate);
+                                break;
+                            case "3":
+                                alert(Language.English.PleaseUpdate);
+                                break;
+                            case "4":
+                                alert(Language.Spanish.PleaseUpdate);
+                                break;
+                        }                      
+                        return false;
+                    }
+                  app.application.navigate("basic_setup_twitter.html");
+                });
+               
+             
+              
+            });
+        </script>
+
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div data-role="view" data-title="Welcome"  id="index-view">
+            <div>
+                <br>
+                <br>
+                <div style="width:300px; height:300px; position:fixed; top:20%; left:50%; margin-left:-150px;">
+                    <div align="center">
+                        <img border="0" src="images/recycleworld_logo2.png" width="90%">
+                    </div>
+                    <br>
+                    <div style="width:277px; height:131px; clear:both; margin:auto;">
+                        <div  style="float:left;">
+                            <div align="center">
+                                <a  style="color: #FFFFFF; text-decoration: none; font-size: 12pt" class="button_give" id="GiveAway">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <span name="spn" data-localize="giveaway">Give away</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div style="float:right;">
+                            <div align="center">
+                                <a style="color: #FFFFFF; text-decoration: none; font-size: 12pt" id="finditem" class="button_find">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <span name="spn" data-localize="findstuff">Find stuff</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="width:277px; height:61px; clear:both; margin:auto; margin-bottom:20px;">
+                        <div align="center" style="text-align: left;">
+                            <a style="color: #FFFFFF; text-decoration: none; font-size: 12pt" id="createspot"
+                               class="spot_button">
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span name="spn"   data-localize="createspot">Create a spot</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+
+        <div data-role="drawer" id="my-drawer" data-position="left" style="width: 270px"
+             data-views="['basic_setup_twitter.html','invite.html','mystuff.html','index.html', 'signup_login.html','howworks.html','niras.html','donate.html','food.html','createspot.html','about_this_app.html','about_recycleworld.html','terracycle.html','qa.html','findonmap.html','basic_setup.html']">
+
+            <ul data-role="listview" data-type="group">
+                <li>
+                    <ul>
+                        <li>
+                            <div>
+                                <img src="images/recycleworld_logo1.png" width="100%">
+                            </div>
+                        </li>
+                        <li>
+                            <a href="howworks.html"  >                               
+                                <label for="titeltext_how" data-localize="titletext_how">
+                                    How this system works
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="friend">                                
+                                <label for="friendzone" data-localize="friendzone">
+                                    Friendzone
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="Mystuff" >                               
+                                <label for="mystuff" data-localize="mystuff">
+                                    My stuff
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="MySpots">                               
+                                <label for="myspots" data-localize="myspots">
+                                    My spots
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="createspot.html">                               
+                                <label for="create" data-localize="create">
+                                    Create spot or event
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="food.html" >                                
+                                <label for="fooddonation" data-localize="fooddonation">
+                                    About Food Donations
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="qa.html" >                               
+                                <label for="qa" data-localize="qa">
+                                    Crowdfund for environment
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="invite" >                               
+                                <label for="invite" data-localize="invite">
+                                    Get people to join us
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="donate.html" >                               
+                                <label for="donate" data-localize="donate">
+                                    Donate & support us
+                                </label>
+                                <br>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="BasicSettings" >                              
+                                <label for="basic" data-localize="basic">
+                                    Basic settings
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="FacebookSettings" >                            
+                                <label for="fb" data-localize="fb">
+                                    Facebook settings
+                                </label>
+                                <img src="images/facebook_small.png" alt="Facebook" class="ui-li-icon">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about_recycleworld.html" >                             
+                                <label for="about" data-localize="about">
+                                    About recycleworld
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="terracycle.html" >                              
+                                <label for="terracycle" data-localize="terracycle">
+                                    Powered by Terracycle
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="niras.html" >                               
+                                <label for="niras" data-localize="niras">
+                                    About Niras
+                                </label>
+                            </a>
+                        </li>                      
+                        <li>
+                            <a href="about_this_app.html" >                               
+                                <label for="contact" data-localize="contact">
+                                    Contact us
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="logout">                               
+                                <label for="logout" data-localize="logout">
+                                    Logout
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <div>
+                                <img src="images/badge8.png" width="100%" alt="2gether">
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div data-role="layout" data-id="tabstrip-layout">
+            
+            <div data-role="header" >
+                <div data-role="navbar">                   
+                    <a class="drawer-button" data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="left"></a>
+                    <span data-role="view-title" class="view-title"></span>
+                </div>
+            </div>
+            
+            <div data-role="footer">
+                <div data-role="tabstrip">
+                    <a id="me"  onclick="showMe()" >
+                        <img src="images/tabicons/user.png" /> Me
+                    </a>
+                    <a id="give"  href="giveaway.html">
+                        <img src="images/tabicons/giveaway.png" /> Give
+                    </a>
+                    <a id="find"  href="finditem.html" >
+                        <img src="images/tabicons/find.png" /> Find
+                    </a>
+                    <a id="spots" onclick="appNavigate('findonmap.html')" >
+                        <img src="images/tabicons/spots.png" /> Spots
+                    </a>                   
+                </div>
+            </div>
+            
+        </div>
+        
     </body>
 </html>
+                        

@@ -1,0 +1,71 @@
+        <div data-role="view" data-init="nearestFoodInit" id="nearest-food-tabstrip" style="background-color: #f3f3f3;">
+            <div id="head" data-role="header">
+                   <h2>
+                        
+                        <span name="spn">
+                            <label for="titeltext_nearfood"   data-localize="titeltext_nearfood">Nearest food</label>
+                        </span>
+                    </h2>
+                
+            </div>
+            <div data-role="content">
+                <div id="LoadingDiv" style="display: none; text-align: center">
+                </div>
+                <div id="Load" style="display: none">
+                    <div style="font-weight: bold">
+                        Please wait....
+                    </div>
+                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left:40px;padding-top:5px" />
+                </div>
+                <div>
+                    <ul data-role="listview" data-inset="true" data-theme="b">
+                        <li>
+                            <div align="center">
+                                <img src="images/earth.png" width="100%" alt="earth">
+                            </div>
+                            <br>
+                            <span name="spn">
+                                <label for="fooddisc"   data-localize="fooddisc">Since you have chosen to donate food. You hereby confirm that the food its for humans, and that it is food that is not past its sell-by date. You confirm that it is handled according to all rules from the health department, and you is responsible. Recycleworld can not be taken as responsible in any ways.</label>
+                            </span>
+                            <br>
+                            <br>
+                        
+                            <div style="text-align:center">
+                                <h2>
+                                    <label  data-localize="NearestPoints">3 donation spots closest to you</label>
+                                </h2>
+                            </div>
+                            <div id="NearestPlaces" style="text-align:center">
+                            
+                            </div>
+                            <!--  <select size="1" name="D1" id="NearestSpots">
+                            <option value="0">3 donation spots closest to you</option>
+                            </select>-->
+                            <br>
+                            <div data-role="fieldcontain">
+                                <span name="spn">
+                                    <label for="write"   data-localize="write">Write Message</label>
+                                </span><br>
+                                <textarea name="textarea"  class="basictext" id="textinput" style="text-align:left"></textarea>
+                                <div>
+                                    <a data-role="button" data-transition="fade" id="SendMessage">
+                                        <!-- next -->
+                                        <span name="spn">
+                                            <label for="sendsmsfood"   data-localize="sendsmsfood">Send SMS - online 1 hour later </label>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a data-role="button" data-transition="fade" id="PostNow">
+                                        <!-- next -->
+                                        <span name="spn">
+                                            <label for="putonline"   data-localize="putonline">Put online now</label>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul><br><br><br>
+                </div>
+            </div>        
+        </div>      

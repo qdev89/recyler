@@ -1,0 +1,68 @@
+        <div data-role="view" id="product-status-tabstrip" data-init="productStatusInit"  style="background-color: #f3f3f3;">
+            <div id="pageheader3" data-role="header" >
+               
+                    <h2>
+                        <label for="newowner"   data-localize="titeltext_productstatus">Product</label>
+                    </h2>
+                
+            </div>
+            <div data-role="content">
+                <div id="LoadingDiv" style="display: none; text-align: center">
+                </div>
+                <div id="Load" style="display: none">
+                    <div style="font-weight:bold">
+                        <label for="wait"   data-localize="wait">Please wait....</label>
+                    </div>
+                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left:40px;padding-top:5px" />
+                </div>
+                <div align="center">
+                    <ul data-role="listview" data-inset="true" data-theme="b">
+                        <li text align="center">
+                            <div id="image_div" align="center" width="100%" text-align="center">
+                                <img id="image" alt="image" style="width: 80%;" src="images/imageplaceholder.png" />
+                                <br>
+                            </div>
+                        </li>
+                        <li>
+                            <span>
+                                <label for="newowner"   data-localize="newowner">Phone number of new owner</label>
+                            </span>
+                            <input type="number" name="newowner" id="newowner" value="" placeholder="" /><br>
+                            <table id="tblGreenSlip" style="display:inline">
+                                <tr>
+                                    <td width="80%">
+                                        <span name="spn">
+                                            <label for="receipt"   data-localize="receipt">Do you want a receipt in mail: </label>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <select name="flip-1" id="flip-1" data-role="slider">
+                                            <option value="yes"  data-localize="yes">yes</option>
+                                            <option value="no"  data-localize="no">no</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <li>
+                            <div style="position: relative">
+                                <div>
+                                    <a data-role="button" data-transition="fade" id="CollectMyCO2">
+                                        <span name="spn">
+                                            <label for="collectco2"   data-localize="collectco2">Collect my Co2</label>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a data-role="button" data-transition="fade" id="DeleteProduct">
+                                        <span name="spn">
+                                            <label for="delete"   data-localize="delete">Delete product</label>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>              
+        </div>          

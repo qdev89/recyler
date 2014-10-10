@@ -1,0 +1,97 @@
+        <div data-role="view" id="userpage" data-init="GetEarthHeartData" >
+            <div id="head" data-role="header" >
+              <div data-role="navbar">  
+                    <label for="heartstatus"  data-localize="heartstatus">My Earth heart</label>
+               </div>
+            </div>
+          
+            <div  id="KarmaUser" style="display: none">
+                <ul data-role="listview" data-inset="true" data-theme="b">
+                    <li>
+                        <div style="text-align: center;">
+                            <span name="spn">
+                                <label for="influence"  data-localize="influence">
+                                    Your heart status is influenced <br>
+                                    by using us
+                                </label>
+                            </span>
+                        </div>
+                        <div style="width: 100%; height: 100%; position: relative; text-align:center;" id="imgHeart">
+                            <img src="images/EarthImages/heart_blue.png" width="75%" height="30%" />
+                        </div>
+                        <h4>
+                            <span name="spn">
+                                <label for="statusnow"  data-localize="statusnow">Your heart status is</label>
+                            </span> &nbsp;<span id="HeartStatus"></span>%
+                        </h4>
+                    </li>
+                    <li class='clsSettings'>
+                        <label for="users"  data-localize="position">Total numbers of users: </label><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                    </li>
+                    <li class='clsSettings'>
+                        <label for="supportes"  data-localize="position">Number of supporters: </label><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                    </li>
+
+                    <li class='clsSettings'>
+                        <img src="images/supporter-pic.png" width="100%" alt=""/>
+                    </li>
+                    <li>
+                        <span name="spn">
+                            <label for="position"  data-localize="position">Ranking:</label>
+                        </span>&nbsp;<span id="Position"></span>
+                    </li>
+                    <li>
+                        <span name="spn">
+                            <label for="transactions"  data-localize="transacions">Number of transactions:</label>
+                        </span>&nbsp; <span id="transactions"></span>
+                    </li>
+                    <li>
+                        <span name="spn">
+                            <label for="co2saved"  data-localize="co2saved">Saved Co2:</label>
+                        </span>&nbsp; <span id="Co2Saved"></span><span name="spn"> <span name="spn">kg</span></span>
+                    </li>
+                </ul>
+
+            </div>
+            <div id="NoKarmaFreeUser" style="display: none">
+                <ul data-role="listview" data-inset="true" data-theme="b">
+                    <li>
+                        <div style="text-align: center;">
+                            <img src="images/karmaheart_free.png" alt="heart"  id="img1">
+                        </div>
+                    </li>
+                    <li class='clsSettings'>
+                        <label for="users"  data-localize="position">Total numbers of users: </label><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                    </li>
+                    <li class='clsSettings'>
+                        <label for="supportes"  data-localize="position">Number of supporters: </label><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                    </li>
+
+                    <li class='clsSettings'>
+                        <img src="images/supporter-pic.png" width="100%" alt=""/>
+                    </li>
+                    <li class='clsSettings'>
+                        <label for="position"  data-localize="position">Ranking: </label><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                    </li>
+                    <li class='clsSettings'>
+                        <label for="transactions"  data-localize="transacions">Number of transactions: </label><span style="color: #046daf; font-weight: bold;text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                    </li>
+                    <li class='clsSettings'>
+                        <label for="co2saved"  data-localize="co2saved">Saved Co2: </label><span style="color: #046daf; font-weight: bold;text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                    </li>
+                </ul>
+            </div>
+            <div id="LoadingDiv" style="display: none; text-align: center">
+            </div>
+            <div id="Load" style="display: none">
+                <div style="font-weight: bold">
+                    <label for="wait"  data-localize="wait"> Please wait....</label>
+                </div>
+                <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
+                     padding-top: 5px" />
+            </div>
+           
+          
+        </div>
+     
+       

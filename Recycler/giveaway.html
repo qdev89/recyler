@@ -1,0 +1,162 @@
+        <div data-role="view" data-init="initGiveAway" id="give_page"  style="background-color: #f3f3f3;">
+            <div id="giveheader" data-role="header" >
+               <div data-role="navbar">  
+                        Give away
+                 </div>
+                <div style="position: absolute; top: 3px; right: 5px;">
+                    <a onclick="appNavigate('howworks.html');" id="explain" style="text-align: right">
+                        <img src="images/info_but.png" width="45" height="38" align="right" alt="info">
+                    </a>
+                </div>
+            </div>
+            
+            <div data-role="content">
+                <div id="LoadingDiv" style="display: none; text-align: center">
+                </div>
+                <div id="Load" style="display: none">
+                    <div style="font-weight: bold">
+                        Please wait....
+                    </div>
+                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
+                         padding-top: 5px" />
+                </div>
+                <div id="item_info_div" style="width: 100%; text-align: left;">
+                  
+                            <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="100%" align="center" style="height: 150px">
+                                        <div id="itemimage" style="width: 100%;">
+                                            <img id="image" class="imageshadow" alt="image" style="width: 80%;" src="images/imageplaceholder.png"
+                                                 onclick="takePicture();" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table border="0" width="90%" cellspacing="5" cellpadding="3">
+                                            <tr>
+                                                <td width="20%" style="background-color: #690; color: #FFF; text-shadow: none;">
+                                                    <span style="margin-left: 5px; margin-top: 3px;">
+                                                        <label for="desciption" data-localize="GRAT">
+                                                            Free
+                                                        </label>
+                                                    </span>
+                                                </td>
+                                                <td width="75%">
+                                                </td>
+                                                <td height="35" align="right">
+                                                    <div>
+                                                        <input type="radio" checked name="abc" id="chkFree" align="right">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="20%" style="background-color: #000; color: #FFF; text-shadow: none;">
+                                                    <span style="margin-left: 5px; margin-top: 3px;">
+                                                        <label for="desciption" data-localize="SWAP">
+                                                            Swap
+                                                        </label>
+                                                    </span>
+                                                </td>
+                                                <td width="75%">
+                                                </td>
+                                                <td style="height: 35px">
+                                                    <input type="radio" name="abc" id="chkSwap">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="20%" style="background-color: #F00; color: #FFF; text-shadow: none;">
+                                                    <span style="margin-left: 5px; margin-top: 3px;">
+                                                        <label for="desciption" data-localize="PRIC">
+                                                            Price
+                                                        </label>
+                                                    </span>
+                                                </td>
+                                                <td width="75%">
+                                                </td>
+                                                <td height="35">
+                                                    <input id="PriceTag" name="abc" type="radio">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr id="trvalue" style="display: none">
+                                    <td colspan="3" align="left">
+                                        <input type="text" id="SwapValue" style="width: 100%" maxlength="5" onKeyPress="return SetNumariaclOnly(event);"
+                                               data-localize="value" placeholder="Value" />
+                                    </td>
+                                </tr>
+                                        
+                                <tr>
+                                    <td colspan="3">
+                                        <label for="desciption" data-localize="givedescription">
+                                            Title / headline
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <textarea name="description" style="width:100%;" maxlength="100" id="description"></textarea>
+                                        <!-- <input type="text" name="description" style="width: 100%" onKeyPress="return StopSpecialchrOnly(event);" id="description" />-->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <label for="long_description_title" data-localize="long_description_title">
+                                            Further information
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <textarea name="long_description" style="width:100%;height:140px;" maxlength="200"  id="long_description"></textarea>
+                                        <!-- <input type="text" name="description" style="width: 100%" onKeyPress="return StopSpecialchrOnly(event);" id="description" />-->
+                                    </td>
+                                </tr>
+                                <tr id="trMightLikelabel">
+                                    <td colspan="3">
+                                        <label for="like" data-localize="like">
+                                            I might like instead
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr id="trMightLike">
+                                    <td colspan="3">
+                                        <textarea name="MightLike" style="width:100%;height:140px;" maxlength="200"  id="MightLike" ></textarea>
+                                        <!--  <input type="text" name="description" style="width: 100%;" onKeyPress="return StopSpecialchrOnly(event);"
+                                        id="MightLike" />-->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div style="position: relative">
+                                            <div id="maskDiv">
+                                            </div>
+                                            <div class="ui-field-contain" id="chooseCategory" style="position: relative">
+                                                
+                                                <select name="select-custom-24" multiple="multiple" data-native-menu="false" id="select-custom-24" data-iconpos="left">
+                                        
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <a id="Save" data-role="button" onClick="saveItem();"  name="anchors"
+                                           style="width: 100%;">
+                                            <span name="spn">Next</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                    
+                            </table>
+                        
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+         
+        </div>              

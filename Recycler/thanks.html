@@ -1,0 +1,60 @@
+        <div data-role="view" id="thanks-tabstrip" data-init="thanksInit"  style="background-color: #f3f3f3;">
+            <div id="pageheader3" data-role="header">
+              
+                    <h2>
+                        
+                        <span name="spn" data-localize="titeltext_thankyou">Thank you</span>
+                    </h2>
+                
+            </div>
+            <div data-role="content">
+                <div align="center">
+                    <ul data-role="listview" data-inset="true" data-theme="b">
+                        <li text align="center">
+                            <div>
+                                <img src="images/earth.png" width="100%" alt="earth">
+                            </div>
+                            <!-- co2text -->
+                            <span name="spn" data-localize="thankstext">Thank you for thinking about the enviroment!
+                                Calculate how much Co2 you have saved,<br>
+                                when your stuff gets a new life.</span>
+                        </li>
+                        <li>
+                            <a id="CO2_kg" data-transition="slide" rel="external">
+                                <!-- materials -->
+                                <span name="spn" data-localize="materialsbut">Materials </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="CO2_food" data-transition="slide" rel="external">
+                                <!-- foodkg -->
+                                <span name="spn" data-localize="foodbut">Food</span>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- verified -->
+                            <table>
+                                <tr>
+                                    <td>
+                                        <span name="spn" data-localize="verified">Co2 calculations verified </span>
+                                    </td>
+                                    <td>
+                                        <a href="niras.html">
+                                            <img src="images/niras.png" align="right" width="131" height="50">
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <li>
+                            <div>
+                                <a data-role="button" style="width: 98%;" data-transition="fade" id="ProceedAhead">
+                                    <!-- nothanks -->
+                                    <span name="spn" data-localize="nowayco">No thanks, don't calc CO2</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>        
+        </div> 
