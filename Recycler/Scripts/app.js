@@ -1,37 +1,47 @@
+var userData =null;
+
 (function (global) {
     var app = global.app = global.app || {};
     document.addEventListener('deviceready', function () {
         navigator.splashscreen.hide();       
         $(document.body).height(window.innerHeight);      
        
-        var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
+        localStorage.removeItem("User");
+        if (localStorage.Language == undefined) { 
+            localStorage.Language = 3;
+            localStorage.LanguageType = "en";
+        }
+        var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" }; 
         $("[data-localize]").localize("Recycle", opts);
     }, false);
 
-    app.application = new kendo.mobile.Application(document.body, {layout: "tabstrip-layout", skin:"flat", initial: "index.html", hashBang:true, loading:false }); 
+    app.application = new kendo.mobile.Application(document.body, { skin:"flat", layout:"tabstrip-layout", initial:"signup_login.html", hashBang:true, loading:false }); 
 })(window);
 
-$(document).ready(function () {
-    $('#GiveAway').click(function () {                   
-        app.application.navigate("giveaway.html");
-    });
+$(document).ready(function () {  
+    
     $('#createspot').click(function () {                   
         app.application.navigate("createspot.html");
-    });
-    $('#finditem').click(function () {                 
-        app.application.navigate("finditem.html");
-    });
+    }); 
+        
 });
 
- var el = new Everlive({
-                              apiKey: appSettings.everlive.apiKey,
-                              scheme: appSettings.everlive.scheme
-                          });
 
 document.addEventListener("backbutton", BackButton, true);
+
+
+function navigateFromDrawer(view){
+    
+    if(localStorage.User==undefined) return false;
+    
+    app.application.navigate(view);
+    
+    
+}
+
             
 function BackButton() {
-    if (app.application.view().id=="index.html")//check if index
+    if (app.application.view().id == "index.html")//check if index
     {
         if ((localStorage.accessToken != null && localStorage.accessToken != 'null' && localStorage.accessToken != '' && localStorage.accessToken != undefined)) {
             var fb = FBConnect.install();
@@ -52,7 +62,7 @@ function BackButton() {
         window.localStorage.removeItem('SubscriptionInstallPaid');
         window.localStorage.removeItem('RecipientEmailID');
         app.application.navigate("signup_login.html");      
-    } else if (app.application.view().id=="signup_login.html" || app.application.view().id=="signup_login_org.html") {
+    } else if (app.application.view().id == "signup_login.html" || app.application.view().id == "signup_login_org.html") {
         setTimeout(function () {
             if (confirm("Do you want to exit?")) {
                 navigator.app.exitApp()
@@ -270,7 +280,8 @@ function takePicture() {
             
 function onPhotoDataSuccess(imageData) {
     // localStorage.SpotImage = imageData;
-    user.image = imageData;
+    
+    user.image = imageData;  
                 
     var damagephoto = document.getElementById('image');
     damagephoto.src = "data:image/jpeg;base64," + imageData;
@@ -442,7 +453,6 @@ function RecordTransaction(ID) {
                    $('#LoadingDiv,#Load').hide();
                    if (Result != null && Result != 'null') {
                        var data = JSON.stringify(Result);
-                       
                      
                        data = $.parseJSON(data);
                        if (data.RecordTransacted == 1) {
@@ -661,10 +671,10 @@ function signupLogin() {
     //513813615309399   
     FB.init({ appId: "313796158728708", nativeInterface: CDV.FB, useCachedDialogs: false });
 
-   // PhoneGap.exec(null, null, "App", "clearCache", []);
+    // PhoneGap.exec(null, null, "App", "clearCache", []);
             
-  /*  PhoneGap.addConstructor(function () {
-        PhoneGap.addPlugin("Sms", new SmsPlugin());
+    /*  PhoneGap.addConstructor(function () {
+    PhoneGap.addPlugin("Sms", new SmsPlugin());
     });*/
             
     var networkState = "unknown";
@@ -681,7 +691,6 @@ function signupLogin() {
     states[Connection.NONE] = 'No network connection';
     // alert(networkState);
     if (networkState == null) {
-       
         switch (localStorage.Language) {
             case "1":
                 navigator.notification.alert(Language.Danish.noNetwork, '', 'Recycle World', 'OK');
@@ -704,7 +713,6 @@ function signupLogin() {
     }
             
     if (localStorage.User != null && localStorage.User != "null" && localStorage.User != undefined && localStorage.User != "") {
-       
         var User = $.parseJSON(localStorage.User);
             
         if (User.RoleID == "3") {
@@ -1001,7 +1009,7 @@ function initFilters() {
                 }
             });
             
-           // $("#select-custom-24").selectmenu('refresh');
+            // $("#select-custom-24").selectmenu('refresh');
             
             break;
         case "2":
@@ -1019,7 +1027,7 @@ function initFilters() {
                     $("#select-custom-24").append(menuItem);
                 }
             });
-          //  $("#select-custom-24").selectmenu('refresh');
+            //  $("#select-custom-24").selectmenu('refresh');
             
             break;
         case "3":
@@ -1037,7 +1045,7 @@ function initFilters() {
                     $("#select-custom-24").append(menuItem);
                 }
             });
-          //  $("#select-custom-24").selectmenu('refresh');
+            //  $("#select-custom-24").selectmenu('refresh');
             
             break;
         case "4":
@@ -1055,685 +1063,650 @@ function initFilters() {
                     $("#select-custom-24").append(menuItem);
                 }
             });
-          //  $("#select-custom-24").selectmenu('refresh');
+            //  $("#select-custom-24").selectmenu('refresh');
             
             break;
     }
 }
 
-function aboutThisAppInit(){
-       $('#SendMail').click(function () {
-                    var Flag = true;
-                    var ErrorMessage = "";
-                    var MailTo = "feedback@recycleworld.dk";
-                    //var MailTo = "rbhardwaj@seasiainfotech.com";
+function aboutThisAppInit() {
+    $('#SendMail').click(function () {
+        var Flag = true;
+        var ErrorMessage = "";
+        var MailTo = "feedback@recycleworld.dk";
+        //var MailTo = "rbhardwaj@seasiainfotech.com";
                     
-                    if ($('#Name').val() == "") {
-                        Flag = false;
-                        if (Error == '') {
-                            ErrorMessage = 'Please provide name.\n';
-                        } else {
-                            ErrorMessage = ErrorMessage + 'Please provide name.\n';
-                        }
-                    }
+        if ($('#Name').val() == "") {
+            Flag = false;
+            if (Error == '') {
+                ErrorMessage = 'Please provide name.\n';
+            } else {
+                ErrorMessage = ErrorMessage + 'Please provide name.\n';
+            }
+        }
                     
-                    if ($('#Subject').val() == "0") {
-                        Flag = false;
-                        if (Error == '') {
-                            ErrorMessage = 'Please provide Subject\n.';
-                        } else {
-                            ErrorMessage = ErrorMessage + 'Please provide Subject.\n';
-                        }
-                    }
+        if ($('#Subject').val() == "0") {
+            Flag = false;
+            if (Error == '') {
+                ErrorMessage = 'Please provide Subject\n.';
+            } else {
+                ErrorMessage = ErrorMessage + 'Please provide Subject.\n';
+            }
+        }
                     
-                    if ($('#Comments').val() == "") {
-                        Flag = false;
-                        if (Error == '') {
-                            ErrorMessage = 'Please provide some text.\n';
-                        } else {
-                            ErrorMessage = ErrorMessage + 'Please provide some text.\n';
-                        }
-                    }
+        if ($('#Comments').val() == "") {
+            Flag = false;
+            if (Error == '') {
+                ErrorMessage = 'Please provide some text.\n';
+            } else {
+                ErrorMessage = ErrorMessage + 'Please provide some text.\n';
+            }
+        }
                     
-                    if (Flag) {
-                        SendMail($('#Name').val(), $('#Subject').val(), $('#Comments').val(), MailTo);
-                    } else {
-                        alert(ErrorMessage);
-                    }
-                });
+        if (Flag) {
+            SendMail($('#Name').val(), $('#Subject').val(), $('#Comments').val(), MailTo);
+        } else {
+            alert(ErrorMessage);
+        }
+    }); 
 }
 
-  function GoToBasicSettings() {
-               app.application.navigate("basic_setup.html");
-            }
 
-function setupInit(){
-    
-        if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        $.getJSON('http://ws.geonames.org/countryCode', {
-                                      lat: position.coords.latitude,
-                                      lng: position.coords.longitude,
-                                      type: 'JSON',
-                                      async: false
-                                  }, function (result) {
-                                      //                alert(result.countryCode);
-                                      //                alert(CountryCode["IN"]);
-                                      user.CountryCode = result.countryCode;
-                                  });
-                    });
-            }
-}
-
-function co2thanksInit(){
-       var CO2 = localStorage.CalculatedCO2;
-                window.localStorage.removeItem("CalculatedCO2");
-                $('#CO2Val').html(CO2);
+function co2thanksInit() {
+    var CO2 = localStorage.CalculatedCO2;
+    window.localStorage.removeItem("CalculatedCO2");
+    $('#CO2Val').html(CO2);
             
-                $('#ProceedToDonate').click(function () {
-                   app.application.navigate("mystuff.html");
-                });
-    
+    $('#ProceedToDonate').click(function () {
+        app.application.navigate("mystuff.html");
+    });
 }
 
-function contactInit(){
-    
-      if (localStorage.User == null || localStorage.User == undefined) {
-                    app.application.navigate('signup_login.html');
-                } else {
-                    User = $.parseJSON(localStorage.User);
-                }
-
+function contactInit() {
+    if (localStorage.User == null || localStorage.User == undefined) {
+        app.application.navigate('signup_login.html');
+    } else {
+        User = $.parseJSON(localStorage.User);
+    }
                 
-                var ID = localStorage.SelectedProduct;
-                GetProductOwner(ID);
+    var ID = localStorage.SelectedProduct;
+    GetProductOwner(ID);
 
-                $('#SendMessage').click(function () {
-                    if (User.FirstName == "" || User.PhoneNumber == "" || User.EmailID == "") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.PleaseUpdate;
-                                break;
-                            case "2":
-                                message = Language.German.PleaseUpdate;
-                                break;
-                            case "3":
-                                message = Language.English.PleaseUpdate;
-                                break;
-                            case "4":
-                                message = Language.Spanish.PleaseUpdate;
-                                break;
-                        }
+    $('#SendMessage').click(function () {
+        if (User.FirstName == "" || User.PhoneNumber == "" || User.EmailID == "") {
+            var message = '';
+            switch (localStorage.Language) {
+                case "1":
+                    message = Language.Danish.PleaseUpdate;
+                    break;
+                case "2":
+                    message = Language.German.PleaseUpdate;
+                    break;
+                case "3":
+                    message = Language.English.PleaseUpdate;
+                    break;
+                case "4":
+                    message = Language.Spanish.PleaseUpdate;
+                    break;
+            }
             
-                        if (confirm(message)) {
-                           app.application.navigate("basic_setup.html");
-                            return false;
-                        } else {
-                            return false;
-                        }
-                    }
+            if (confirm(message)) {
+                app.application.navigate("basic_setup.html");
+                return false;
+            } else {
+                return false;
+            }
+        }
             
-                    if ($('#textinput').val() == '') {
-                        switch (localStorage.Language) {
-                            case "1":
-                                alert(Language.Danish.TypeText);
-                                break;
-                            case "2":
-                                alert(Language.German.TypeText);
-                                break;
-                            case "3":
-                                alert(Language.English.TypeText);
-                                break;
-                            case "4":
-                                alert(Language.Spanish.TypeText);
-                                break;
-                        }
-                        return;
-                    }
+        if ($('#textinput').val() == '') {
+            switch (localStorage.Language) {
+                case "1":
+                    alert(Language.Danish.TypeText);
+                    break;
+                case "2":
+                    alert(Language.German.TypeText);
+                    break;
+                case "3":
+                    alert(Language.English.TypeText);
+                    break;
+                case "4":
+                    alert(Language.Spanish.TypeText);
+                    break;
+            }
+            return;
+        }
             
-                    if (localStorage.OwnerPhoneNumber == '' || localStorage.OwnerPhoneNumber == undefined) {
-                        switch (localStorage.Language) {
-                            case "1":
-                                alert(Language.Danish.Request);
-                                break;
-                            case "2":
-                                alert(Language.German.Request);
-                                break;
-                            case "3":
-                                alert(Language.English.Request);
-                                break;
-                            case "4":
-                                alert(Language.Spanish.Request);
-                                break;
-                        }
-                        return;
-                    }
+        if (localStorage.OwnerPhoneNumber == '' || localStorage.OwnerPhoneNumber == undefined) {
+            switch (localStorage.Language) {
+                case "1":
+                    alert(Language.Danish.Request);
+                    break;
+                case "2":
+                    alert(Language.German.Request);
+                    break;
+                case "3":
+                    alert(Language.English.Request);
+                    break;
+                case "4":
+                    alert(Language.Spanish.Request);
+                    break;
+            }
+            return;
+        }
             
-                    var Message = $('#textinput').val() + " ,  Please contact (" + User.PhoneNumber + ") ";
+        var Message = $('#textinput').val() + " ,  Please contact (" + User.PhoneNumber + ") ";
             
-                    // alert("Transaction recorded successfully");
-                    window.plugins.Sms.sendSMS(function () {
-                        switch (localStorage.Language) {
-                            case "1":
-                                alert(Language.Danish.Rsent);
-                                break;
-                            case "2":
-                                alert(Language.German.Rsent);
-                                break;
-                            case "3":
-                                alert(Language.English.Rsent);
-                                break;
-                            case "4":
-                                alert(Language.Spanish.Rsent);
-                                break;
-                        }
+        // alert("Transaction recorded successfully");
+        window.plugins.Sms.sendSMS(function () {
+            switch (localStorage.Language) {
+                case "1":
+                    alert(Language.Danish.Rsent);
+                    break;
+                case "2":
+                    alert(Language.German.Rsent);
+                    break;
+                case "3":
+                    alert(Language.English.Rsent);
+                    break;
+                case "4":
+                    alert(Language.Spanish.Rsent);
+                    break;
+            }
             
-                        RecordTransaction(ID);
-                    },
-                                               function (e) {
-                                                   alert('Message Failed:' + e);
-                                               },
-                                               localStorage.OwnerPhoneNumber,
-                                               Message);
-                });
+            RecordTransaction(ID);
+        },
+                                   function (e) {
+                                       alert('Message Failed:' + e);
+                                   },
+                                   localStorage.OwnerPhoneNumber,
+                                   Message);
+    });
             
-                $('#call').click(function () {
-                    window.location = "tel:" + localStorage.OwnerPhoneNumber;
-                });
-    
+    $('#call').click(function () {
+        window.location = "tel:" + localStorage.OwnerPhoneNumber;
+    });
 }
 
-  function takePictureSpot() {
-                // navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError);
-                var destinationType = navigator.camera.DestinationType;
-                if ($('#image').attr('src') == "images/imageplaceholder.png") {
-                            navigator.camera.getPicture(  function (imageData) {
-                                // localStorage.SpotImage = imageData;
-                                spot.Image = imageData;
+function takePictureSpot() {
+    // navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError);
+    var destinationType = navigator.camera.DestinationType;
+    if ($('#image').attr('src') == "images/imageplaceholder.png") {
+        navigator.camera.getPicture(function (imageData) {
+            // localStorage.SpotImage = imageData;
+            spot.Image = imageData;
                                 
-                                var damagephoto = document.getElementById('image');
-                                damagephoto.src = "data:image/jpeg;base64," + imageData;
-                            }
-            			, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
-                    } else {
-                        //ask user if he wants to replace photo
-                        navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.', onTakePictureConfirm, 'New photo', 'No,Yes');
-                    }
-            }
-
-  var AmountToDenote;
-
-function donateInit(){
-    
-     $('#Donate1').click(function () {
-                    AmountToDenote = 1;
-                    ProductID = '';
-                    Payment(ProductID);
-                });
-                
-                $('#Donate2').click(function () {
-                    AmountToDenote = 2;
-                    ProductID = '';
-                    Payment(ProductID);
-                });
-                
-                $('#RedirectToMyStuff').click(function () {
-                    if (localStorage.IsNavigated == undefined || localStorage.IsNavigated == null) {
-                        app.application.navigate("settings.html");
-                    } else {
-                        window.localStorage.removeItem("IsNavigated");
-                        app.application.navigate("mystuff.html");
-                    }
-                });
+            var damagephoto = document.getElementById('image');
+            damagephoto.src = "data:image/jpeg;base64," + imageData;
+        }
+                                    , onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+    } else {
+        //ask user if he wants to replace photo
+        navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.', onTakePictureConfirm, 'New photo', 'No,Yes');
+    }
 }
 
-     function Payment(ProductID) {
-                // alert('Initializing Payment..');
-                inappbilling.init(OnInitSuccess, OnInitFailure);
-            }
-            
-            function OnInitSuccess(result) {
-                // alert("Payment Init Success: \r\n" + result);
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Mpayment);
-                        break;
-                    case "2":
-                        alert(Language.German.Mpayment);
-                        break;
-                    case "3":
-                        alert(Language.English.Mpayment);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Mpayment);
-                        break;
-                }
-                inappbilling.purchase(OnPaymentSuccess, OnPaymentFailure, "android.test.purchased");
-            }
-            
-            function OnInitFailure(result) {
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Ptry);
-                        break;
-                    case "2":
-                        alert(Language.German.Ptry);
-                        break;
-                    case "3":
-                        alert(Language.English.Ptry);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Ptry);
-                        break;
-                }
-            }
-            
-            function OnPaymentSuccess(result) {
-                switch (result) {
-                    case "android.test.purchased":
-                        switch (localStorage.Language) {
-                            case "1":
-                                alert(Language.Danish.Donating);
-                                break;
-                            case "2":
-                                alert(Language.German.Donating);
-                                break;
-                            case "3":
-                                alert(Language.English.Donating);
-                                break;
-                            case "4":
-                                alert(Language.Spanish.Donating);
-                                break;
-                        }
-                        UpdateEarthHeartData();
-                        break;
-                    case "CANCELLED" || "cancelled":
-                        switch (localStorage.Language) {
-                            case "1":
-                                alert(Language.Danish.Pcancel);
-                                break;
-                            case "2":
-                                alert(Language.German.Pcancel);
-                                break;
-                            case "3":
-                                alert(Language.English.Pcancel);
-                                break;
-                            case "4":
-                                alert(Language.Spanish.Pcancel);
-                                break;
-                        }
-                        break;
-                    case "REFUNDED" || "refunded":
-                        switch (localStorage.Language) {
-                            case "1":
-                                alert(Language.Danish.Prefund);
-                                break;
-                            case "2":
-                                alert(Language.German.Prefund);
-                                break;
-                            case "3":
-                                alert(Language.English.Prefund);
-                                break;
-                            case "4":
-                                alert(Language.Spanish.Prefund);
-                                break;
-                        }
-                        break;
-                    case "EXPIRED" || "expired":
-                        switch (localStorage.Language) {
-                            case "1":
-                                alert(Language.Danish.Pexpire);
-                                break;
-                            case "2":
-                                alert(Language.German.Pexpire);
-                                break;
-                            case "3":
-                                alert(Language.English.Pexpire);
-                                break;
-                            case "4":
-                                alert(Language.Spanish.Pexpire);
-                                break;
-                        }
-                        break;
-                }
-            }
-            
-            function OnPaymentFailure(result) {
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Ptry);
-                        break;
-                    case "2":
-                        alert(Language.German.Ptry);
-                        break;
-                    case "3":
-                        alert(Language.English.Ptry);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Ptry);
-                        break;
-                }
-            }
-            
-            function UpdateEarthHeartData() {
-                var Type = 'Donation';
-                var DonationAmount = AmountToDenote;
-                var Transactions = 0;
-                var FriendRecommendation = 0;
-                var CO2Saved = 0;
+var AmountToDenote;
+
+function donateInit() {
+    $('#Donate1').click(function () {
+        AmountToDenote = 1;
+        ProductID = '';
+        Payment(ProductID);
+    });
                 
-                if (localStorage.User == null || localStorage.User == undefined) {
-                   app.application.navigate('signup_login.html');
-                } else {
-                    User = $.parseJSON(localStorage.User);
-                }
+    $('#Donate2').click(function () {
+        AmountToDenote = 2;
+        ProductID = '';
+        Payment(ProductID);
+    });
                 
-                var Parameters = User.UserID + '/'
-                                 + Type + '/'
-                                 + DonationAmount + '/'
-                                 + Transactions + '/'
-                                 + FriendRecommendation + '/'
-                                 + CO2Saved;
-                var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._EarthHeartData + '/' + Parameters;
+    $('#RedirectToMyStuff').click(function () {
+        if (localStorage.IsNavigated == undefined || localStorage.IsNavigated == null) {
+            app.application.navigate("settings.html");
+        } else {
+            window.localStorage.removeItem("IsNavigated");
+            app.application.navigate("mystuff.html");
+        }
+    });
+}
+
+function Payment(ProductID) {
+    // alert('Initializing Payment..');
+    inappbilling.init(OnInitSuccess, OnInitFailure);
+}
+            
+function OnInitSuccess(result) {
+    // alert("Payment Init Success: \r\n" + result);
+    switch (localStorage.Language) {
+        case "1":
+            alert(Language.Danish.Mpayment);
+            break;
+        case "2":
+            alert(Language.German.Mpayment);
+            break;
+        case "3":
+            alert(Language.English.Mpayment);
+            break;
+        case "4":
+            alert(Language.Spanish.Mpayment);
+            break;
+    }
+    inappbilling.purchase(OnPaymentSuccess, OnPaymentFailure, "android.test.purchased");
+}
+            
+function OnInitFailure(result) {
+    switch (localStorage.Language) {
+        case "1":
+            alert(Language.Danish.Ptry);
+            break;
+        case "2":
+            alert(Language.German.Ptry);
+            break;
+        case "3":
+            alert(Language.English.Ptry);
+            break;
+        case "4":
+            alert(Language.Spanish.Ptry);
+            break;
+    }
+}
+            
+function OnPaymentSuccess(result) {
+    switch (result) {
+        case "android.test.purchased":
+            switch (localStorage.Language) {
+                case "1":
+                    alert(Language.Danish.Donating);
+                    break;
+                case "2":
+                    alert(Language.German.Donating);
+                    break;
+                case "3":
+                    alert(Language.English.Donating);
+                    break;
+                case "4":
+                    alert(Language.Spanish.Donating);
+                    break;
+            }
+            UpdateEarthHeartData();
+            break;
+        case "CANCELLED" || "cancelled":
+            switch (localStorage.Language) {
+                case "1":
+                    alert(Language.Danish.Pcancel);
+                    break;
+                case "2":
+                    alert(Language.German.Pcancel);
+                    break;
+                case "3":
+                    alert(Language.English.Pcancel);
+                    break;
+                case "4":
+                    alert(Language.Spanish.Pcancel);
+                    break;
+            }
+            break;
+        case "REFUNDED" || "refunded":
+            switch (localStorage.Language) {
+                case "1":
+                    alert(Language.Danish.Prefund);
+                    break;
+                case "2":
+                    alert(Language.German.Prefund);
+                    break;
+                case "3":
+                    alert(Language.English.Prefund);
+                    break;
+                case "4":
+                    alert(Language.Spanish.Prefund);
+                    break;
+            }
+            break;
+        case "EXPIRED" || "expired":
+            switch (localStorage.Language) {
+                case "1":
+                    alert(Language.Danish.Pexpire);
+                    break;
+                case "2":
+                    alert(Language.German.Pexpire);
+                    break;
+                case "3":
+                    alert(Language.English.Pexpire);
+                    break;
+                case "4":
+                    alert(Language.Spanish.Pexpire);
+                    break;
+            }
+            break;
+    }
+}
+            
+function OnPaymentFailure(result) {
+    switch (localStorage.Language) {
+        case "1":
+            alert(Language.Danish.Ptry);
+            break;
+        case "2":
+            alert(Language.German.Ptry);
+            break;
+        case "3":
+            alert(Language.English.Ptry);
+            break;
+        case "4":
+            alert(Language.Spanish.Ptry);
+            break;
+    }
+}
+            
+function UpdateEarthHeartData() {
+    var Type = 'Donation';
+    var DonationAmount = AmountToDenote;
+    var Transactions = 0;
+    var FriendRecommendation = 0;
+    var CO2Saved = 0;
                 
-                jQuery.support.cors = true;
-                $.ajax({
-                           type: "GET",
-                           url: URLFormed,
-                           dataType: 'json',
-                           data: '{}',
-                           cache: false,
-                           success: function (Result) {
-                               if (Result != null && Result != 'null') {
-                                   var data = JSON.stringify(Result);
-                                   data = $.parseJSON(data);
-                                 //  if (data.IsDonated == true || data.IsDonated == 'true') {
-                                       if (localStorage.IsNavigated == undefined || localStorage.IsNavigated == null) {
-                                           app.application.navigate("settings.html");
-                                       } else {
-                                           window.localStorage.removeItem("IsNavigated");
-                                          app.application.navigate("mystuff.html");
-                                       }
-                                 /*  } else {
-                                       if (localStorage.IsNavigated == undefined || localStorage.IsNavigated == null) {
-                                          app.application.navigate("settings.html");
-                                       } else {
-                                           window.localStorage.removeItem("IsNavigated");
-                                           app.application.navigate("mystuff.html");
-                                       }
-                                   }*/
-                               }
-                           },
-                           error: function (xhr) {
-                               console.log(xhr);
-                               alert('Please try again.');
-                           }
-                       });
-            }
+    if (localStorage.User == null || localStorage.User == undefined) {
+        app.application.navigate('signup_login.html');
+    } else {
+        User = $.parseJSON(localStorage.User);
+    }
+                
+    var Parameters = User.UserID + '/'
+                     + Type + '/'
+                     + DonationAmount + '/'
+                     + Transactions + '/'
+                     + FriendRecommendation + '/'
+                     + CO2Saved;
+    var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._EarthHeartData + '/' + Parameters;
+                
+    jQuery.support.cors = true;
+    $.ajax({
+               type: "GET",
+               url: URLFormed,
+               dataType: 'json',
+               data: '{}',
+               cache: false,
+               success: function (Result) {
+                   if (Result != null && Result != 'null') {
+                       var data = JSON.stringify(Result);
+                       data = $.parseJSON(data);
+                       //  if (data.IsDonated == true || data.IsDonated == 'true') {
+                       if (localStorage.IsNavigated == undefined || localStorage.IsNavigated == null) {
+                           app.application.navigate("settings.html");
+                       } else {
+                           window.localStorage.removeItem("IsNavigated");
+                           app.application.navigate("mystuff.html");
+                       }
+                       /*  } else {
+                       if (localStorage.IsNavigated == undefined || localStorage.IsNavigated == null) {
+                       app.application.navigate("settings.html");
+                       } else {
+                       window.localStorage.removeItem("IsNavigated");
+                       app.application.navigate("mystuff.html");
+                       }
+                       }*/
+                   }
+               },
+               error: function (xhr) {
+                   console.log(xhr);
+                   alert('Please try again.');
+               }
+           });
+}
 
-   function takePictureSpot() {
-                // navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError);
-                var destinationType = navigator.camera.DestinationType;
-                if ($('#image').attr('src') == "images/imageplaceholder.png") {
-                    navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
-                } else if ($('#image').attr('src') != "images/imageplaceholder.png") {
-                    navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
-                } else {
-                    //ask user if he wants to replace photo
-                    navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.', onTakePictureConfirm, 'New photo', 'No,Yes');
-                }
-            }
-            function onPhotoDataSuccessSpot(imageData) {
-                //localStorage.EditSpotImage = imageData;
-                spot.Image = imageData;
-                var damagephoto = document.getElementById('image');
-                damagephoto.src = "data:image/jpeg;base64," + imageData;
-            }
+function takePictureSpot() {
+    // navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError);
+    var destinationType = navigator.camera.DestinationType;
+    if ($('#image').attr('src') == "images/imageplaceholder.png") {
+        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
+    } else if ($('#image').attr('src') != "images/imageplaceholder.png") {
+        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
+    } else {
+        //ask user if he wants to replace photo
+        navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.', onTakePictureConfirm, 'New photo', 'No,Yes');
+    }
+}
+function onPhotoDataSuccessSpot(imageData) {
+    //localStorage.EditSpotImage = imageData;
+    spot.Image = imageData;
+    var damagephoto = document.getElementById('image');
+    damagephoto.src = "data:image/jpeg;base64," + imageData;
+}
 
-function findItemInit(){
-    
-      $("#LoadingDiv").css({
-                                         "position": "absolute",
-                                         "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
-                                         'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
-                                         'background-color': 'white'
-                                     });
-                $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
-                $('#LoadingDiv,#Load').ajaxStart(function () {
-                    $('#LoadingDiv,#Load').show();
-                });
-                $('#LoadingDiv,#Load').ajaxComplete(function () {
-                    $('#LoadingDiv,#Load').hide();
-                });
+function findItemInit() {
+    $("#LoadingDiv").css({
+                             "position": "absolute",
+                             "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
+                             'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
+                             'background-color': 'white'
+                         });
+    $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
+    $('#LoadingDiv,#Load').ajaxStart(function () {
+        $('#LoadingDiv,#Load').show();
+    });
+    $('#LoadingDiv,#Load').ajaxComplete(function () {
+        $('#LoadingDiv,#Load').hide();
+    });
 
-                if (localStorage.isFilterEnabled == undefined && localStorage.isFilterEnabled == null) {
-                    window.localStorage.removeItem('Filters');
-                    window.localStorage.removeItem('isFilterEnabled');
-                } else {
-                    window.localStorage.removeItem('isFilterEnabled');
-                }
+    if (localStorage.isFilterEnabled == undefined && localStorage.isFilterEnabled == null) {
+        window.localStorage.removeItem('Filters');
+        window.localStorage.removeItem('isFilterEnabled');
+    } else {
+        window.localStorage.removeItem('isFilterEnabled');
+    }
             
-                if (localStorage.Filters != undefined && localStorage.Filters != null) {
-                    var SearchFilter = localStorage.Filters.split('&');
-                    Product.Display.Page = 1;
-                    Product.Display.PageSize = 10;
-                    Product.SearchFilters.Text = SearchFilter[0];
-                    Product.SearchFilters.Distance = SearchFilter[1];
-                    Product.SearchFilters.Price = SearchFilter[2];
-                    Product.SearchFilters.Categories = SearchFilter[3];
-                }
+    if (localStorage.Filters != undefined && localStorage.Filters != null) {
+        var SearchFilter = localStorage.Filters.split('&');
+        Product.Display.Page = 1;
+        Product.Display.PageSize = 10;
+        Product.SearchFilters.Text = SearchFilter[0];
+        Product.SearchFilters.Distance = SearchFilter[1];
+        Product.SearchFilters.Price = SearchFilter[2];
+        Product.SearchFilters.Categories = SearchFilter[3];
+    }
             
-                $('#List').click(function () {
-                    $('#ulProducts').html('');
-                    Product.Display.Page = 1;
-                    Product.Display.PageSize = 10;
-                    Product.Display.Style = "List";
-                    GetAllProducts(Product.Display, Product.SearchFilters);
-                });
+    $('#List').click(function () {
+        $('#ulProducts').html('');
+        Product.Display.Page = 1;
+        Product.Display.PageSize = 10;
+        Product.Display.Style = "List";
+        GetAllProducts(Product.Display, Product.SearchFilters);
+    });
             
-                $('#Grid').click(function () {
-                    $('#ulProducts').html('');
-                    Product.Display.Page = 1;
-                    Product.Display.PageSize = 20;
-                    Product.Display.Style = "Grid";
-                    GetAllProducts(Product.Display, Product.SearchFilters);
-                });
+    $('#Grid').click(function () {
+        $('#ulProducts').html('');
+        Product.Display.Page = 1;
+        Product.Display.PageSize = 20;
+        Product.Display.Style = "Grid";
+        GetAllProducts(Product.Display, Product.SearchFilters);
+    });
             
-                $('.clsProduct').click( function () {
-                    //$.mobile.loadingMessageTextVisible = true;
+    $('.clsProduct').click(function () {
+        //$.mobile.loadingMessageTextVisible = true;
+        //$.mobile.showPageLoadingMsg("b", "please wait...");
+        localStorage.SelectedProduct = $(this).attr('id');
+        app.application.navigate("product.html");
+    });
             
-                    //$.mobile.showPageLoadingMsg("b", "please wait...");
+    $('#GetMore').click(function () {
+        $('#ulProducts').find('#GetMore').remove();
+        Product.Display.Page += 1;
+        GetAllProducts(Product.Display, Product.SearchFilters);
+    });
+            
+    $('#imgSearch').click(function () {
+        $('#ulProducts').html('');
+        Product.Display.Page = 1;
+        Product.Display.PageSize = 10;
+        Product.Display.Style = "List";
+        Product.SearchFilters.Text = $('#Search').val();
+        GetAllProducts(Product.Display, Product.SearchFilters);
+    });
 
-                    localStorage.SelectedProduct = $(this).attr('id');
-                   app.application.navigate("product.html");
-                });
-            
-              
-            
-                $('#GetMore').click( function () {
-                    $('#ulProducts').find('#GetMore').remove();
-                    Product.Display.Page += 1;
-                    GetAllProducts(Product.Display, Product.SearchFilters);
-                });
-            
-                $('#imgSearch').click(function () {
-                    $('#ulProducts').html('');
-                    Product.Display.Page = 1;
-                    Product.Display.PageSize = 10;
-                    Product.Display.Style = "List";
-                    Product.SearchFilters.Text = $('#Search').val();
-                    GetAllProducts(Product.Display, Product.SearchFilters);
-                });
-
-               gpsEnabledSuccessCallback(true);
+    gpsEnabledSuccessCallback(true);
 }
     
-            function locationEnabledSuccessCallback(result) {
-                if (result)
-                    window.plugins.diagnostic.isGpsEnabled(gpsEnabledSuccessCallback, gpsEnabledErrorCallback);
-                else {
-                    switch (localStorage.Language) {
-                        case "1":
-                            alert(Language.Danish.Location);
-                            break;
-                        case "2":
-                            alert(Language.German.Location);
-                            break;
-                        case "3":
-                            alert(Language.English.Location);
-                            break;
-                        case "4":
-                            alert(Language.Spanish.Location);
-                            break;
-                    }
-                    window.plugins.diagnostic.switchToLocationSettings();
-                }
-            }
+function locationEnabledSuccessCallback(result) {
+    if (result)
+        window.plugins.diagnostic.isGpsEnabled(gpsEnabledSuccessCallback, gpsEnabledErrorCallback);
+    else {
+        switch (localStorage.Language) {
+            case "1":
+                alert(Language.Danish.Location);
+                break;
+            case "2":
+                alert(Language.German.Location);
+                break;
+            case "3":
+                alert(Language.English.Location);
+                break;
+            case "4":
+                alert(Language.Spanish.Location);
+                break;
+        }
+        window.plugins.diagnostic.switchToLocationSettings();
+    }
+}
             
-            function locationEnabledErrorCallback(error) {
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.FailLoc);
-                        break;
-                    case "2":
-                        alert(Language.German.FailLoc);
-                        break;
-                    case "3":
-                        alert(Language.English.FailLoc);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.FailLoc);
-                        break;
-                }
-            }
+function locationEnabledErrorCallback(error) {
+    switch (localStorage.Language) {
+        case "1":
+            alert(Language.Danish.FailLoc);
+            break;
+        case "2":
+            alert(Language.German.FailLoc);
+            break;
+        case "3":
+            alert(Language.English.FailLoc);
+            break;
+        case "4":
+            alert(Language.Spanish.FailLoc);
+            break;
+    }
+}
             
-            function gpsEnabledSuccessCallback(result) {
-                if (result) {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function (position) {
-                            Product.SearchFilters.Latitude = position.coords.latitude;
-                            Product.SearchFilters.Longitude = position.coords.longitude;
+function gpsEnabledSuccessCallback(result) {
+    if (result) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                Product.SearchFilters.Latitude = position.coords.latitude;
+                Product.SearchFilters.Longitude = position.coords.longitude;
             
-                            GetAllProducts(Product.Display, Product.SearchFilters);
-                            //                        if (localStorage.Filters != undefined && localStorage.Filters != null) {
-                            //                            window.localStorage.removeItem('Filters');
-                            //                        }
-                        }, onGPSError, { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true });
-                    } else {
-                        //alert('W3C Geolocation API is not available');
-                        Product.SearchFilters.Latitude = 0;
-                        Product.SearchFilters.Longitude = 0;
-                        GetAllProducts(Product.Display, Product.SearchFilters);
-                        //                    if (localStorage.Filters != undefined && localStorage.Filters != null) {
-                        //                        window.localStorage.removeItem('Filters');
-                        //                    }
-                        //return;
-                    }
-                } else {
-                    switch (localStorage.Language) {
-                        case "1":
-                            alert(Language.Danish.Location);
-                            break;
-                        case "2":
-                            alert(Language.German.Location);
-                            break;
-                        case "3":
-                            alert(Language.English.Location);
-                            break;
-                        case "4":
-                            alert(Language.Spanish.Location);
-                            break;
-                    }
-                    window.plugins.diagnostic.switchToLocationSettings();
-                }
-            }
-            
-            function gpsEnabledErrorCallback(error) {
-                //alert('W3C Geolocation API is not available');
-                Product.SearchFilters.Latitude = 0;
-                Product.SearchFilters.Longitude = 0;
                 GetAllProducts(Product.Display, Product.SearchFilters);
-                //                    if (localStorage.Filters != undefined && localStorage.Filters != null) {
-                //                        window.localStorage.removeItem('Filters');
-                //                    }
-                //return;
-                //       switch (localStorage.Language) {
-                //           case "1":
-                //                alert(Language.Danish.FailLoc);
-                //                break;
-                //            case "2":
-                //                alert(Language.German.FailLoc);
-                //                break;
-                //            case "3":
-                //                alert(Language.English.FailLoc);
-                //                break;
-                //            case "4":
-                //                alert(Language.Spanish.FailLoc);
-                //                break;
-                //        }
-            }
+                //                        if (localStorage.Filters != undefined && localStorage.Filters != null) {
+                //                            window.localStorage.removeItem('Filters');
+                //                        }
+            }, onGPSError, { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true });
+        } else {
+            //alert('W3C Geolocation API is not available');
+            Product.SearchFilters.Latitude = 0;
+            Product.SearchFilters.Longitude = 0;
+            GetAllProducts(Product.Display, Product.SearchFilters);
+            //                    if (localStorage.Filters != undefined && localStorage.Filters != null) {
+            //                        window.localStorage.removeItem('Filters');
+            //                    }
+            //return;
+        }
+    } else {
+        switch (localStorage.Language) {
+            case "1":
+                alert(Language.Danish.Location);
+                break;
+            case "2":
+                alert(Language.German.Location);
+                break;
+            case "3":
+                alert(Language.English.Location);
+                break;
+            case "4":
+                alert(Language.Spanish.Location);
+                break;
+        }
+        window.plugins.diagnostic.switchToLocationSettings();
+    }
+}
             
-            function onGPSError(error) {
-                //alert('W3C Geolocation API is not available');
-                Product.SearchFilters.Latitude = 0;
-                Product.SearchFilters.Longitude = 0;
-                GetAllProducts(Product.Display, Product.SearchFilters);
-              
-            }
+function gpsEnabledErrorCallback(error) {
+    //alert('W3C Geolocation API is not available');
+    Product.SearchFilters.Latitude = 0;
+    Product.SearchFilters.Longitude = 0;
+    GetAllProducts(Product.Display, Product.SearchFilters);
+    //                    if (localStorage.Filters != undefined && localStorage.Filters != null) {
+    //                        window.localStorage.removeItem('Filters');
+    //                    }
+    //return;
+    //       switch (localStorage.Language) {
+    //           case "1":
+    //                alert(Language.Danish.FailLoc);
+    //                break;
+    //            case "2":
+    //                alert(Language.German.FailLoc);
+    //                break;
+    //            case "3":
+    //                alert(Language.English.FailLoc);
+    //                break;
+    //            case "4":
+    //                alert(Language.Spanish.FailLoc);
+    //                break;
+    //        }
+}
             
-function spotDifferenceInit(){
-    
-     $("#spot-difference-tabstrip #me").click(function () {
-                    window.localStorage.removeItem('CacheItem');
-                   app.application.navigate("me.html");
-                });
+function onGPSError(error) {
+    //alert('W3C Geolocation API is not available');
+    Product.SearchFilters.Latitude = 0;
+    Product.SearchFilters.Longitude = 0;
+    GetAllProducts(Product.Display, Product.SearchFilters);
+}
+            
+function spotDifferenceInit() {
+    $("#spot-difference-tabstrip #me").click(function () {
+        window.localStorage.removeItem('CacheItem');
+        app.application.navigate("me.html");
+    });
                     
-                $("#spot-difference-tabstrip #give").click(function () {
-                    window.localStorage.removeItem('CacheItem');
-                    app.application.navigate("giveaway.html");
-                });
-                $("#spot-difference-tabstrip #find").click(function () {
-                    window.localStorage.removeItem('CacheItem');
-                   app.application.navigate("finditem.html");
-                });
-                $("#spot-difference-tabstrip #spots").click(function () {
-                    window.localStorage.removeItem('CacheItem');
-                    app.application.navigate("findonmap.html");
-                });
-                $("#spot-difference-tabstrip #more").click(function () {
-                    window.localStorage.removeItem('CacheItem');
-                   app.application.navigate("settings.html");
-                });
-                $("#spot-difference-tabstrip #back").click(function () {
-                   
-                    var Result = $.parseJSON(localStorage.CacheItem);
-                    if (Result.NavigateURL == 'editspot.html')
-                      app.application.navigate("editspot.html");
-                    else
-                       app.application.navigate("createspot.html");
-                });
+    $("#spot-difference-tabstrip #give").click(function () {
+        window.localStorage.removeItem('CacheItem');
+        app.application.navigate("giveaway.html");
+    });
+    $("#spot-difference-tabstrip #find").click(function () {
+        window.localStorage.removeItem('CacheItem');
+        app.application.navigate("finditem.html");
+    });
+    $("#spot-difference-tabstrip #spots").click(function () {
+        window.localStorage.removeItem('CacheItem');
+        app.application.navigate("findonmap.html");
+    });
+    $("#spot-difference-tabstrip #more").click(function () {
+        window.localStorage.removeItem('CacheItem');
+        app.application.navigate("settings.html");
+    });
+    $("#spot-difference-tabstrip #back").click(function () {
+        var Result = $.parseJSON(localStorage.CacheItem);
+        if (Result.NavigateURL == 'editspot.html')
+            app.application.navigate("editspot.html");
+        else
+            app.application.navigate("createspot.html");
+    });
 }
 
-function terraShow(){
-    
-      setTimeout(function () {
-                    localStorage.IsNavigated = true;
-                   app.application.navigate("donate.html");
-                }, 2500);
+function terraShow() {
+    setTimeout(function () {
+        localStorage.IsNavigated = true;
+        app.application.navigate("donate.html");
+    }, 2500);
 }
 
-function thanksInit(){
-      $('#CO2_kg').click(function () {
-                   app.application.navigate("co2_kg_products.html");
-                });
+function thanksInit() {
+    $('#CO2_kg').click(function () {
+        app.application.navigate("co2_kg_products.html");
+    });
                 
-                $('#CO2_food').click(function () {
-                   app.application.navigate("co2_food_products.html");
-                });
-                $('#ProceedAhead').click(function () {
-                   app.application.navigate("mystuff.html");
-                });    
+    $('#CO2_food').click(function () {
+        app.application.navigate("co2_food_products.html");
+    });
+    $('#ProceedAhead').click(function () {
+        app.application.navigate("mystuff.html");
+    });    
 }
 
 function isLogged() {
@@ -1745,3 +1718,161 @@ function isLogged() {
        
     return true;
 }
+
+
+function saveUserData() {   
+    
+    var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
+    if (!filter.test($("#email").val())) {
+        navigator.notification.alert("You should fill a valid email!", null, "");
+        return;
+    }    
+     
+    
+    if ($("#email").val() == "" || $("#name").val() == "" || $("#phoneno").val() == "") {
+        navigator.notification.alert("All mandatory fields are required!", null, "");
+        return;
+    }
+    
+    var base64 = $("#image").attr("src");
+    var ImageData= userData.ImageData;
+    
+    if (base64!="images/imageplaceholder.png") {       
+        
+        var file = {
+        "Filename": "userPicture.jpeg",
+        "ContentType": "image/jpeg",
+        "CustomField": "customValue",
+        "base64": base64.replace("data:image/jpeg;base64,","") 
+            };
+
+        app.everlive.Files.create(file,
+                                  function (data) {
+                                      console.log(data);
+                        
+                                      ImageData = data.result.Uri;
+                        
+                                      var users = app.everlive.data('Users');
+                                      users.update({
+                                                      'ImageData':ImageData
+                                                  }, // data
+                                                  { 'Id': userData.Id}, // filter
+                                                  function(data) {
+                                                    //  console.log(data);
+                                                      navigator.notification.alert("Info saved successfully!", null, "Success");
+                                                  },
+                                                  function(error) { 
+                                                      alert(JSON.stringify(error)); 
+                                                  });    
+                                  },
+                                  function (error) {
+                                      alert(JSON.stringify(error)); 
+                                  });
+       
+    }
+    
+     var data = app.everlive.data('Users');
+    data.update({
+                    'UserRole': $("#role").val(),                  
+                    'Email':  $("#email").val(),           
+                    'DisplayName': $("#name").val(),
+                    'PhoneNumber':  $("#phoneno").val(),  
+                    'CompanyName':      $("#companyname").val(),            
+                    'Zip': $("#zip").val(),            
+                    'AddressLine1':  $("#homeadress").val(),               
+                    'City':   $("#homecity").val(),            
+                    'Country':      $("#country").val(),            
+                    'State':    $("#txtState").val(),     
+                    'LanguageID':  $("#Languages").val()        			
+                }, // data
+                { 'Id': userData.Id}, // filter
+                function(data) {
+                    console.log(data);
+                    navigator.notification.alert("Info saved successfully!", null, "Success");
+                },
+                function(error) { 
+                    alert(JSON.stringify(error)); 
+                });    
+}  
+ 
+function fillUserData(user) { 
+   userData = user;
+   
+    if(user.ImageData!="" && user.ImageData!=undefined)
+    $("#image").attr("src",user.ImageData);
+    
+    if (user.Email != undefined)
+        $("#email").val(user.Email);                
+               
+    if (user.UserRole != undefined)
+        $("#role").val(user.UserRole);
+            
+    if (user.DisplayName != undefined)
+        $("#name").val(user.DisplayName);
+            
+    if (user.PhoneNumber != undefined)
+        $("#phoneno").val(user.PhoneNumber);
+            
+    if (user.CompanyName != undefined)
+        $("#companyname").val(user.CompanyName);
+            
+    if (user.Zip != undefined)
+        $("#zip").val(user.Zip);
+            
+    if (user.AddressLine1 != undefined)
+        $("#homeadress").val(user.AddressLine1);
+            
+    if (user.City != undefined)
+        $("#homecity").val(user.City);
+            
+    if (user.Country != undefined)
+        $("#country").val(user.Country);
+            
+    if (user.State != undefined)
+        $("#txtState").val(user.State); 
+            
+    if (user.LanguageID != undefined)
+        $("#Languages").val(user.LanguageID);
+} 
+   
+function setupInit() { 
+    user.GetRoles(); 
+      
+    if (localStorage.User == undefined) { 
+        app.everlive.Users.currentUser( 
+            function(data) { 
+                console.log(data.result);    
+               
+               localStorage.User = JSON.stringify(data.result);
+                fillUserData(data.result);
+            });
+    }else
+        fillUserData(JSON.parse(localStorage.User));
+     
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            $.getJSON('http://ws.geonames.org/countryCode', {
+                          lat: position.coords.latitude,
+                          lng: position.coords.longitude,
+                          type: 'JSON',
+                          async: false
+                      }, function (result) {
+                          //                alert(result.countryCode);
+                          //                alert(CountryCode["IN"]);
+                          user.CountryCode = result.countryCode;
+                      });
+        });
+    }
+} 
+
+
+function logoutUser(){
+    
+    if(localStorage.User==undefined) return false;    
+    app.everlive.Users.logout(function(d){console.log(d)});
+      localStorage.removeItem("User");
+    app.application.navigate("signup_login.html");
+    
+}
+
+

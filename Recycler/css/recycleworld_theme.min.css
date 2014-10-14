@@ -20,7 +20,7 @@ footer ul li a.recmap {
         width:131px;  
         height:131px; /* Notice that the height is not the height of the whole sprite, but the height of one single button */  
         display:block;  
-        background-image:url(../images/find_button.png); /*path to the sprite*/  
+        background-image:url(/images/find_button.png); /*path to the sprite*/  
         background-position: bottom; /* the background position (in combination with the height!) makes it possible that only the top of the whole sprite will be visible */  
         border:0px solid #ffffff ;
 		color:#ffffff ;
@@ -30,7 +30,7 @@ footer ul li a.recmap {
         width:131px;  
         height:131px; /* Notice that the height is not the height of the whole sprite, but the height of one single button */  
         display:block;  
-        background-image:url(../images/giveaway_button.png); /*path to the sprite*/  
+        background-image:url(/images/giveaway_button.png); /*path to the sprite*/  
         background-position: bottom; /* the background position (in combination with the height!) makes it possible that only the top of the whole sprite will be visible */ 
         border:0px solid #ffffff ;
 		color:#ffffff ;
@@ -40,7 +40,7 @@ footer ul li a.recmap {
         width:281px;  
         height:64px; /* Notice that the height is not the height of the whole sprite, but the height of one single button */  
         display:block;  
-        background-image:url(../images/spot_button.png); /*path to the sprite*/  
+        background-image:url(/images/spot_button.png); /*path to the sprite*/  
         background-position: bottom; /* the background position (in combination with the height!) makes it possible that only the top of the whole sprite will be visible */ 
 		        border:0px solid #ffffff ;
 		color:#ffffff ;
@@ -61,9 +61,6 @@ body {
 	-webkit-text-size-adjust: 100%;
 	float:left;
 	overflow-x:hidden;
-	background:url(../images/background_big.jpg) center bottom no-repeat fixed;
-	background-size:cover;
-	background-image: url(.../images/background_big.jpg);
 }
 
 /*

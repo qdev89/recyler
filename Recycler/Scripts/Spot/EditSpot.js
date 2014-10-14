@@ -650,7 +650,7 @@ $(document).ready(function () {
     var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
     $("[data-localize]").localize("Recycle", opts);
 	if(localStorage.User==undefined){ 
-        app.application.navigate("signup_login.html");
+      //  app.application.navigate("signup_login.html");
         return false;
         }
     var User = $.parseJSON(localStorage.User);

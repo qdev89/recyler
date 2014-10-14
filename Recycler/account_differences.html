@@ -1,13 +1,5 @@
-        <div data-role="view" id="account-differences-tabstrip" style="background-color:#f3f3f3;">
-            <div id="head" data-role="header">
-                   <h2>
-                        <label for="titletext" data-localize="titletext_account">
-                            Acount settings
-                        </label>
-                    </h2>
-                <
-            </div>
-                
+        <div data-role="view" data-title="Account settings" id="account-differences-tabstrip" style="background-color:#f3f3f3;">
+                         
             <div data-role="content">
                 <ul data-role="listview" data-inset="true" data-theme="b">
                     <li>
@@ -81,7 +73,7 @@
                         <table width="90%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td>
-                                    <a data-role="button"  onclick="GoToBasicSettings();">
+                                    <a data-role="button"  onclick="appNavigate('basic_setup.html');">
                                         <!--  gem -->
                                         <label for="gem" data-localize="gem">
                                             Back to basic settings

@@ -1,101 +1,41 @@
-        <div data-role="view" data-show="signupLogin" id="signup-login-tabstrip"   data-title="Login" style="background-color: #ffffff;">
-           
-            <div>      
-                        <table width="100%">
-                            <tr>
-                                <td align="left">
-                                    <img src="images/flags.png" alt="flag">
-                                </td>
-                                <td align="left">
-                                    <div id="country-select">
-                                        <select id="ddlCountry" name="Language" tabindex="">
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                        <div>
-                            <img border="0" src="images/recycleworld_logo2.png" width="100%">
-                        </div>
+        <div data-role="view" data-title="Welcome" class="welcome-scrn form-view" id="welcome"style="background-color: #ffffff;" data-layout="tabstrip-layout" data-model="app.Login" data-init="app.Login.init" data-show="app.Login.show">
+            <!--data-show="signupLogin" id="signup-login-tabstrip"   data-title="Login"--> 
+            <div align="center"><br><img src="images/recycleworld_logo1.png" width="90%"><br><img src="images/flags.png" ></div>
 
-                        <span name="spn" data-localize="welcome">Welcome to "recycleworld"</span><br>
-                        <br>
-                        <p>
-                            <span name="spn" data-localize="choose">Please choose how to login or sign up<br> </span><span name="spn" data-localize="remember">(Remember also to setup basic settings)</span><br>
-                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                                <tr>
-                                    <td width="20">
-                                        <input type="radio" id="FacebookLogin" name="V1" style="left: 0; margin-top: -15px;">
-                                    </td>
-                                    <td width="39">
-                                        <img border="0" src="images/facebook.png" width="32" height="32">
-                                    </td>
-                                    <td width="80">
-                                        <span name="spn" data-localize="facebook">Facebook</span>
-                                    </td>
-                                    <td width="20">
-                                        <input type="radio" id="RecycleLogin" checked name="V1" style="left: 0; margin-top: -15px;">
-                                    </td>
-                                    <td>
-                                        <span name="spn" data-localize="recycleworld">Recycleworld</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5">
-                                        <input type="text" id="email" name="email" maxlength="50" size="30" placeholder="E-mail"><br>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5">
-                                        <input name="password" type="password" id="Password" onKeyPress="return StopSpecialchrOnly(event);" placeholder="Password" size="30" maxlength="30">
-                                    </td>
-                                </tr>
-                                <tr >
-                                    <td width="39" height="50">
-                                        <input type="checkbox">
-                                    </td>
-                                    <td colspan="4">
-                                        <a  style="margin-left:10px;text-decoration: underline;" onclick="appNavigate('terms.html')">
-                                            I accept Terms & conditions
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </p>
-                        <div class="align-center">
-                            <a data-role="button" data-transition="fade" id="Login" >
-                                <!-- login -->
-                                <span name="spn">Login / Sign Up</span>
-                            </a>
-                        </div>
-                        <br>
-                        <div class="align-center">
-                            <a data-role="button" data-transition="fade" id="TakeTour" data-theme="b">
-                                <!-- login -->
-                                <span name="spn" data-localize="tour">Take a look inside</span>
-                            </a>
-                        </div>
-                        <div class="align-center" id="dvForgotPassword">
-                            <a data-role="button" data-transition="fade" id="ForgetPassword" data-theme="c">
-                                <!-- login -->
-                                <span name="spn" data-localize="forgot">Forgot password</span>
-                            </a>
-                        </div><br>
-                 
-            </div>           
-            <ul id="Languages" style="display: none">
-            </ul>
-            <div id="dvBackground">
-            </div>
-            <div id="LoadingDiv" style="display: none; text-align: center">
-            </div>
-            <div id="Load" style="display: none">
-                <div style="font-weight: bold">
-                    Please wait....
-                </div>
-                <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
-                     padding-top: 5px" />
-            </div>
+            <form id="login-form"> 
+                <ul data-role="listview" data-style="inset">
+                    <li class="username"><input type="text" id="loginUsername" placeholder="Username" required validationMessage="Username is required!" /></li>
+                    <li class="password"><input type="password" id="loginPassword" placeholder="Password" required validationMessage="Password is required!" /></li>
+                </ul>
+            </form>
+            <ol class="group-wrp">
+                <li>
+                    <span id="login" data-role="touch" data-bind="events: { tap: login }">
+                        <a data-role="button" class="btn btn-login" style="color:white;">Login</a>
+                    </span>
+                </li>
+                <li class="oauth cf">
+                    <span id="loginWithFacebook" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithFacebook }">
+                        <a data-role="button" class="btn btn-login-fb">Login with Facebook</a>
+                    </span>
+                    <span id="loginWithGoogle" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithGoogle }">
+                        <a data-role="button" class="btn btn-login-google">Login with Google</a>
+                    </span>
+                    <span id="loginWithLiveID" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithLiveID }">
+                        <a data-role="button" class="btn btn-login-liveid">Login with Live ID</a>
+                    </span>
+                    <span id="loginWithADSF" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithADSF }">
+                        <a data-role="button" class="btn btn-login-adsf">Login with ADSF</a>
+                    </span>
+                 </li><li><br><br></li>
+             <li></li>
+                <li class="signup">
+                    <a data-role="button" href="views/signupView.html" style="color:white;" class="btn-signup">Don't have an account?</a>
+                </li>
+            </ol>
+
+            <div><p>&copy; <span data-bind="text: getYear"></span> Recycleworld apsc.</p></div>            
+        
         </div>
     
             

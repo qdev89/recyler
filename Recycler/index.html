@@ -10,13 +10,14 @@
 
         <link type="text/css" rel="stylesheet" href="css/recycleworld_theme.min.css" />
         <link type="text/css" rel="stylesheet" href="css/allPages.css" />
+             
         <link type="text/css" rel="stylesheet" href="kendo/styles/custom.css" />
         <link type="text/css" rel="stylesheet" href="kendo/styles/kendo.mobile.all.min.css" />
 
         <script type="text/javascript" src="kendo/js/jquery.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="kendo/js/kendo.mobile.min.js"></script>
-        <script type="text/javascript" src="Cordova/phonegap-1.4.1.js" charset="utf-8"></script>
+       <!-- <script type="text/javascript" src="Cordova/phonegap-1.4.1.js" charset="utf-8"></script>-->
         <script src="Scripts/json2.min.js" type="text/javascript"></script>
 
         <script src="Scripts/jsEarthHeartCalculation.js" type="text/javascript"></script>
@@ -51,8 +52,13 @@
         <script src="Scripts/jsMyStuff.js" type="text/javascript"></script>
         <script src="Scripts/jsNearestFood.js" type="text/javascript"></script>
         <script src="Scripts/jsProductStatus.js" type="text/javascript"></script>
+        <script src="Scripts/AdMob.js" type="text/javascript"></script>
+        <script src="Scripts/lib/analytics-monitor.js" type="text/javascript"></script>
+         <script src="Scripts/lib/identity-provider.js" type="text/javascript"></script>
+         <script src="Scripts/lib/app.js" type="text/javascript"></script>
+         <script src="Scripts/lib/login.js" type="text/javascript"></script>
 
-        <script>
+      <!--  <script>
             $(document).ready(function(){
                 
                 
@@ -196,7 +202,7 @@
                         }                        
                         if (confirm(message)) {
                            app.application.navigate("basic_setup.html");
-                        } else {
+                        } else { 
                             return;
                         }
                     }
@@ -314,7 +320,7 @@
                             case "2":
                                 alert(Language.German.PleaseUpdate);
                                 break;
-                            case "3":
+                            case "3": 
                                 alert(Language.English.PleaseUpdate);
                                 break;
                             case "4":
@@ -324,145 +330,250 @@
                         return false;
                     }
                   app.application.navigate("basic_setup_twitter.html");
-                });
-               
+                });              
              
               
             });
-        </script>
+        </script>-->
 
     </head>
-    <body>
-        <div data-role="view" data-title="Welcome"  id="index-view">
-            <div>
-                <br>
-                <br>
-                <div style="width:300px; height:300px; position:fixed; top:20%; left:50%; margin-left:-150px;">
-                    <div align="center">
-                        <img border="0" src="images/recycleworld_logo2.png" width="90%">
-                    </div>
-                    <br>
-                    <div style="width:277px; height:131px; clear:both; margin:auto;">
-                        <div  style="float:left;">
-                            <div align="center">
-                                <a  style="color: #FFFFFF; text-decoration: none; font-size: 12pt" class="button_give" id="GiveAway">
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <span name="spn" data-localize="giveaway">Give away</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div style="float:right;">
-                            <div align="center">
-                                <a style="color: #FFFFFF; text-decoration: none; font-size: 12pt" id="finditem" class="button_find">
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <span name="spn" data-localize="findstuff">Find stuff</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div style="width:277px; height:61px; clear:both; margin:auto; margin-bottom:20px;">
-                        <div align="center" style="text-align: left;">
-                            <a style="color: #FFFFFF; text-decoration: none; font-size: 12pt" id="createspot"
-                               class="spot_button">
-                                <br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span name="spn"   data-localize="createspot">Create a spot</span>
-                            </a>
-                        </div>
-                    </div>
+    <body id="friendsApp" style="background:url('images/background_big.jpg') no-repeat;background-size: 100%;background-align: top;background-attachment:fixed;background-position: center bottom;background-size:cover;background-color:#FFF;">
+     
+        
+        <div data-role="view"  data-layout="tabstrip-layout" data-title="Welcome" class="welcome-scrn form-view" id="welcome" >                     
+            
+			<!--<div align="center"><br><img src="images/recycleworld_logo1.png" width="90%"><br><img src="images/flags.png" ></div>
 
-                </div>
-            </div>
+            <form id="login-form">
+                <ul data-role="listview" data-style="inset">
+                    <li class="username"><input type="text" id="loginUsername" placeholder="Username" required validationMessage="Username is required!" /></li>
+                    <li class="password"><input type="password" id="loginPassword" placeholder="Password" required validationMessage="Password is required!" /></li>
+                </ul>
+            </form>
+            <ol class="group-wrp">
+                <li>
+                    <span id="login" data-role="touch" data-bind="events: { tap: login }">
+                        <a data-role="button" class="btn btn-login" style="color:white;">Login</a>
+                    </span>
+                </li>
+                <li class="oauth cf">
+                    <span id="loginWithFacebook" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithFacebook }">
+                        <a data-role="button" class="btn btn-login-fb">Login with Facebook</a>
+                    </span>
+                    <span id="loginWithGoogle" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithGoogle }">
+                        <a data-role="button" class="btn btn-login-google">Login with Google</a>
+                    </span>
+                    <span id="loginWithLiveID" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithLiveID }">
+                        <a data-role="button" class="btn btn-login-liveid">Login with Live ID</a>
+                    </span>
+                    <span id="loginWithADSF" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithADSF }">
+                        <a data-role="button" class="btn btn-login-adsf">Login with ADSF</a>
+                    </span>
+                 </li><li><br><br></li>
+             <li></li>
+                <li class="signup">
+                    <a data-role="button" href="views/signupView.html" style="color:white;" class="btn-signup">Don't have an account?</a>
+                </li>
+            </ol>
+
+            <div><p>&copy; <span data-bind="text: getYear"></span> Recycleworld apsc.</p></div>-->
         </div>
 
-        <div data-role="drawer" id="my-drawer" data-position="left" style="width: 270px"
-             data-views="['basic_setup_twitter.html','invite.html','mystuff.html','index.html', 'signup_login.html','howworks.html','niras.html','donate.html','food.html','createspot.html','about_this_app.html','about_recycleworld.html','terracycle.html','qa.html','findonmap.html','basic_setup.html']">
+        <div data-role="drawer" id="my-drawer" class="my-drawer" data-position="left" style="width: 270px"
+             data-views="['myspots.html','spot_difference.html','#welcome','index.html','me.html','giveaway.html','account_differences.html','basic_setup_twitter.html','invite.html','mystuff.html', 'signup_login.html','howworks.html','niras.html','donate.html','food.html','createspot.html','about_this_app.html','about_recycleworld.html','terracycle.html','qa.html','findonmap.html','basic_setup.html']">
 
             <ul data-role="listview" data-type="group">
                 <li>
                     <ul>
-                        <li>
+                     <li>
                             <div>
                                 <img src="images/recycleworld_logo1.png" width="100%">
                             </div>
-                        </li>
+                     </li>
+                    </ul>
+                    <div>
+                        <a class="boldText">
+                            Menu
+                        </a>
+                    </div>
+                    <ul>
                         <li>
-                            <a href="howworks.html"  >                               
-                                <label for="titeltext_how" data-localize="titletext_how">
-                                    How this system works
+                            <a>
+                                <label >
+                                    Latest stuff
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a id="friend">                                
-                                <label for="friendzone" data-localize="friendzone">
-                                    Friendzone
+                            <a >
+                                <label >
+                                    Look at map
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a id="Mystuff" >                               
-                                <label for="mystuff" data-localize="mystuff">
+                            <a onclick="navigateFromDrawer('finditem.html')">
+                                <label >
+                                    Search
+                                </label>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    
+                    <div>
+                        <a class="boldText">
+                            Go create
+                        </a>
+                    </div>
+                    <ul>
+                          <li>
+                            <a onclick="navigateFromDrawer('giveaway.html')">                               
+                                <label>
+                                    Give away
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="navigateFromDrawer('createspot.html')">                               
+                                <label >
+                                    Create spot
+                                </label>
+                            </a>
+                        </li>
+                         <li>
+                            <a onclick="navigateFromDrawer('spot_difference.html')">                               
+                                <label >
+                                    Spot differences
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="navigateFromDrawer('food.html')" >                                
+                                <label >
+                                    About Food Donations
+                                </label>
+                            </a>
+                        </li>
+                    </ul>                                       
+                    
+                     <div>
+                        <a class="boldText">
+                            My account
+                        </a>
+                    </div>
+                    <ul>
+                        
+                        <li>
+                            <a onclick="navigateFromDrawer('me.html')" >                              
+                                <label >
+                                    My stats
+                                </label>
+                            </a>
+                        </li>
+                         <li>
+                            <a onclick="navigateFromDrawer('basic_setup.html')" >                              
+                                <label >
+                                    My account settings
+                                </label>
+                            </a>
+                        </li>
+                         <li>
+                            <a onclick="navigateFromDrawer('mystuff.html')"  id="Mystuff" >                               
+                                <label>
                                     My stuff
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a id="MySpots">                               
-                                <label for="myspots" data-localize="myspots">
+                            <a onclick="navigateFromDrawer('myspots.html')" id="MySpots">                               
+                                <label >
                                     My spots
                                 </label>
                             </a>
                         </li>
-                        <li>
-                            <a href="createspot.html">                               
-                                <label for="create" data-localize="create">
-                                    Create spot or event
+                         <li>
+                            <a id="friend">                                
+                                <label >
+                                   My friendzone
                                 </label>
                             </a>
                         </li>
-                        <li>
-                            <a href="food.html" >                                
-                                <label for="fooddonation" data-localize="fooddonation">
-                                    About Food Donations
+                         <li>
+                            <a id="">                                
+                                <label >
+                                   Facebook posting rules
                                 </label>
                             </a>
                         </li>
+                        
+                    </ul>
+                    
+                    
+                     <div>
+                        <a class="boldText">
+                            About Recycleworld
+                        </a>
+                    </div>
+                    <ul>
+                       
                         <li>
-                            <a href="qa.html" >                               
-                                <label for="qa" data-localize="qa">
-                                    Crowdfund for environment
+                            <a onclick="navigateFromDrawer('howworks.html')"  >                               
+                                <label >
+                                    How it works
                                 </label>
                             </a>
                         </li>
+                       
+                       
+                        
                         <li>
+                            <a onclick="navigateFromDrawer('qa.html')" >                               
+                                <label >
+                                    Crowdfund with us
+                                </label>
+                            </a>
+                        </li>
+                        
+                         <li>
+                            <a onclick="navigateFromDrawer('donate.html')" >                               
+                                <label> 
+                                   Support us 
+                                </label>
+                                <br>
+                            </a>
+                        </li>
+                        
+                          <li>
+                            <a onclick="navigateFromDrawer('about_recycleworld.html')" >                             
+                                <label >
+                                    About Recycleworld
+                                </label>
+                            </a>
+                        </li>
+                         <li>
+                            <a onclick="navigateFromDrawer('terracycle.html')" >                              
+                                <label >
+                                   Terracycle partner
+                                </label>
+                            </a>
+                        </li>
+                          <li>
+                            <a onclick="navigateFromDrawer('niras.html')" >                               
+                                <label >
+                                    Verified by Niras
+                                </label>
+                            </a>
+                        </li>     
+                       <!-- <li>
                             <a id="invite" >                               
                                 <label for="invite" data-localize="invite">
                                     Get people to join us
                                 </label>
                             </a>
-                        </li>
-                        <li>
-                            <a href="donate.html" >                               
-                                <label for="donate" data-localize="donate">
-                                    Donate & support us
-                                </label>
-                                <br>
-                            </a>
-                        </li>
-                        <li>
-                            <a id="BasicSettings" >                              
-                                <label for="basic" data-localize="basic">
-                                    Basic settings
-                                </label>
-                            </a>
-                        </li>
+                        </li> 
+                       
+                       
                         <li>
                             <a id="FacebookSettings" >                            
                                 <label for="fb" data-localize="fb">
@@ -470,38 +581,19 @@
                                 </label>
                                 <img src="images/facebook_small.png" alt="Facebook" class="ui-li-icon">
                             </a>
-                        </li>
+                        </li>-->                      
+                        
+                                       
                         <li>
-                            <a href="about_recycleworld.html" >                             
-                                <label for="about" data-localize="about">
-                                    About recycleworld
-                                </label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="terracycle.html" >                              
-                                <label for="terracycle" data-localize="terracycle">
-                                    Powered by Terracycle
-                                </label>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="niras.html" >                               
-                                <label for="niras" data-localize="niras">
-                                    About Niras
-                                </label>
-                            </a>
-                        </li>                      
-                        <li>
-                            <a href="about_this_app.html" >                               
-                                <label for="contact" data-localize="contact">
+                            <a onclick="navigateFromDrawer('about_this_app.html')" >                               
+                                <label >
                                     Contact us
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a id="logout">                               
-                                <label for="logout" data-localize="logout">
+                            <a id="logout" onclick="logoutUser()">                               
+                                <label >
                                     Logout
                                 </label>
                             </a>
@@ -522,27 +614,9 @@
                     <a class="drawer-button" data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="left"></a>
                     <span data-role="view-title" class="view-title"></span>
                 </div>
-            </div>
-            
-            <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a id="me"  onclick="showMe()" >
-                        <img src="images/tabicons/user.png" /> Me
-                    </a>
-                    <a id="give"  href="giveaway.html">
-                        <img src="images/tabicons/giveaway.png" /> Give
-                    </a>
-                    <a id="find"  href="finditem.html" >
-                        <img src="images/tabicons/find.png" /> Find
-                    </a>
-                    <a id="spots" onclick="appNavigate('findonmap.html')" >
-                        <img src="images/tabicons/spots.png" /> Spots
-                    </a>                   
-                </div>
-            </div>
-            
-        </div>
-        
+            </div>            
+         
+        </div>        
     </body>
 </html>
                         

@@ -454,7 +454,7 @@ var user = {
 
     },
     GetRoles: function () {       
-if(Roles==undefined) return;
+		if(Roles==undefined) return;
         switch (localStorage.Language) {
             case "1":
                 $.each(Roles.Danish, function (i) {
@@ -1404,7 +1404,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#actDiff').click(function () {
+   /* $('#actDiff').click(function () {
       app.application.navigate("account_differences.html");
-    });
+    });*/
 });  

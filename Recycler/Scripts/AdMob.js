@@ -1,4 +1,4 @@
-﻿/*
+/*
 *
 * Licensed to the Apache Software Foundation (ASF) under one
 * or more contributor license agreements.  See the NOTICE file
@@ -19,8 +19,8 @@
 *
 */
 
-var argscheck = require('cordova/argscheck'),
-    exec = require('cordova/exec');
+var argscheck = cordova.require('cordova/argscheck'),
+    exec = cordova.require('cordova/exec');
 
 var admobExport = {};
 
@@ -174,4 +174,11 @@ function (show, successCallback, failureCallback) {
         );
 };
 
-module.exports = admobExport;
+//module.exports = admobExport;
+
+
+
+cordova.define("cordova/plugin/admobExport", function(require, exports, module) {
+  //  var exec = require('cordova/exec');   
+    module.exports = admobExport;
+});
