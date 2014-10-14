@@ -74,6 +74,13 @@ app.Login = (function () {
             .then(function () {
 					
                  app.application.navigate('basic_setup.html');
+                 app.everlive.Users.currentUser( 
+                                                            function(data) { 
+                                                                console.log(data.result);    
+                                                               
+                                                               localStorage.User = JSON.stringify(data.result);
+                                                                fillUserData(data.result);
+                                                            });
             })
             .then(null,
                   function (err) {
@@ -84,8 +91,7 @@ app.Login = (function () {
 
                      app.everlive.Users.get(filter)
                         .then(function(data){
-                            
-                            
+                         
                             if(data.result.length>0){ app.showError(err.message);}
                             else{
                                 if(password.length>0 && username.length>0)
@@ -97,6 +103,13 @@ app.Login = (function () {
                                                      app.everlive.Users.login(username, password,function(){
                                                          
                                                           app.application.navigate('basic_setup.html');
+                                                          app.everlive.Users.currentUser( 
+                                                            function(data) { 
+                                                                console.log(data.result);    
+                                                               
+                                                               localStorage.User = JSON.stringify(data.result);
+                                                                fillUserData(data.result);
+                                                            });
                                                      },function(err){
                                                           app.showError(err.message);
                                                          

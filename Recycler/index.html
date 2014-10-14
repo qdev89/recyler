@@ -10,22 +10,22 @@
 
         <link type="text/css" rel="stylesheet" href="css/recycleworld_theme.min.css" />
         <link type="text/css" rel="stylesheet" href="css/allPages.css" />
-             
+
         <link type="text/css" rel="stylesheet" href="kendo/styles/custom.css" />
         <link type="text/css" rel="stylesheet" href="kendo/styles/kendo.mobile.all.min.css" />
 
         <script type="text/javascript" src="kendo/js/jquery.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="kendo/js/kendo.mobile.min.js"></script>
-       <!-- <script type="text/javascript" src="Cordova/phonegap-1.4.1.js" charset="utf-8"></script>-->
+        <!-- <script type="text/javascript" src="Cordova/phonegap-1.4.1.js" charset="utf-8"></script>-->
         <script src="Scripts/json2.min.js" type="text/javascript"></script>
 
         <script src="Scripts/jsEarthHeartCalculation.js" type="text/javascript"></script>
         <script src="Scripts/LocalizationFiles/jquery.localize.js" type="text/javascript"></script>
         <script type="text/javascript" src="Scripts/User/User.js"></script>
-        
-        <script type="text/javascript" src="Scripts/lib/everlive.all.min.js"></script> 
-        <script type="text/javascript" src="Scripts/lib/settings.js"></script> 
+
+        <script type="text/javascript" src="Scripts/lib/everlive.all.min.js"></script>
+        <script type="text/javascript" src="Scripts/lib/settings.js"></script>
         <script type="text/javascript" src="Scripts/app.js"></script>
 
         <script src="Scripts/cdv-plugin-fb-connect.js" type="text/javascript"></script>
@@ -54,326 +54,325 @@
         <script src="Scripts/jsProductStatus.js" type="text/javascript"></script>
         <script src="Scripts/AdMob.js" type="text/javascript"></script>
         <script src="Scripts/lib/analytics-monitor.js" type="text/javascript"></script>
-         <script src="Scripts/lib/identity-provider.js" type="text/javascript"></script>
-         <script src="Scripts/lib/app.js" type="text/javascript"></script>
-         <script src="Scripts/lib/login.js" type="text/javascript"></script>
+        <script src="Scripts/lib/identity-provider.js" type="text/javascript"></script>
+        <script src="Scripts/lib/app.js" type="text/javascript"></script>
+        <script src="Scripts/lib/login.js" type="text/javascript"></script>
 
-      <!--  <script>
-            $(document).ready(function(){
+        <!--  <script>
+        $(document).ready(function(){
                 
                 
-                    $("body").on("click",'#friend' ,function () {     
+        $("body").on("click",'#friend' ,function () {     
                         
-                    $("#my-drawer").data("kendoMobileDrawer").hide();                        
-                  if(!isLogged()) return;                    
-                    if (User.RoleID == "3") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.Register;
-                                break;
-                            case "2":
-                                message = Language.German.Register;
-                                break;
-                            case "3":
-                                message = Language.English.Register;
-                                break;
-                            case "4":
-                                message = Language.Spanish.Register;
-                                break;
-                        }                        
-                        if (confirm(message)) {
-                            localStorage.User = null;
-                            app.application.navigate("signup_login.html");
-                            return false;
-                        } else {
-                            return false;
-                        }
-                    }                    
-                    if (User.RoleID == "1") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.PUpdate;
-                                break;
-                            case "2":
-                                message = Language.German.PUpdate;
-                                break;
-                            case "3":
-                                message = Language.English.PUpdate;
-                                break;
-                            case "4":
-                                message = Language.Spanish.PUpdate;
-                                break;
-                        }
+        $("#my-drawer").data("kendoMobileDrawer").hide();                        
+        if(!isLogged()) return;                    
+        if (User.RoleID == "3") {
+        var message = '';
+        switch (localStorage.Language) {
+        case "1":
+        message = Language.Danish.Register;
+        break;
+        case "2":
+        message = Language.German.Register;
+        break;
+        case "3":
+        message = Language.English.Register;
+        break;
+        case "4":
+        message = Language.Spanish.Register;
+        break;
+        }                        
+        if (confirm(message)) {
+        localStorage.User = null;
+        app.application.navigate("signup_login.html");
+        return false;
+        } else {
+        return false;
+        }
+        }                    
+        if (User.RoleID == "1") {
+        var message = '';
+        switch (localStorage.Language) {
+        case "1":
+        message = Language.Danish.PUpdate;
+        break;
+        case "2":
+        message = Language.German.PUpdate;
+        break;
+        case "3":
+        message = Language.English.PUpdate;
+        break;
+        case "4":
+        message = Language.Spanish.PUpdate;
+        break;
+        }
                         
-                        if (confirm(message)) {
-                            app.application.navigate("basic_setup.html");
-                            return false;
-                        } else {
-                            return false;
-                        }
-                    }
-                    app.application.navigate("friendzone.html");
-                });              
+        if (confirm(message)) {
+        app.application.navigate("basic_setup.html");
+        return false;
+        } else {
+        return false;
+        }
+        }
+        app.application.navigate("friendzone.html");
+        });              
                 
                 
-               // return ;
+        // return ;
                                         
                 
                 
-             $("body").on("click",'#logout',function () {
-                    $(this).attr('disabled', 'disabled');
-                    logout();
-                });   
+        $("body").on("click",'#logout',function () {
+        $(this).attr('disabled', 'disabled');
+        logout();
+        });   
                 
-                $("body").on("click",'#Mystuff',function () {
-                    if(!isLogged()) return;
-                    if (User.RoleID == "3") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.Register;
-                                break;
-                            case "2":
-                                message = Language.German.Register;
-                                break;
-                            case "3":
-                                message = Language.English.Register;
-                                break;
-                            case "4":
-                                message = Language.Spanish.Register;
-                                break;
-                        }
+        $("body").on("click",'#Mystuff',function () {
+        if(!isLogged()) return;
+        if (User.RoleID == "3") {
+        var message = '';
+        switch (localStorage.Language) {
+        case "1":
+        message = Language.Danish.Register;
+        break;
+        case "2":
+        message = Language.German.Register;
+        break;
+        case "3":
+        message = Language.English.Register;
+        break;
+        case "4":
+        message = Language.Spanish.Register;
+        break;
+        }
                         
-                        if (confirm(message)) {
-                            localStorage.User = null;
-                            app.application.navigate("signup_login.html");
-                            return;
-                        } else {
-                            return;
-                        }
-                    }                  
-                    app.application.navigate("mystuff.html");
-                });
+        if (confirm(message)) {
+        localStorage.User = null;
+        app.application.navigate("signup_login.html");
+        return;
+        } else {
+        return;
+        }
+        }                  
+        app.application.navigate("mystuff.html");
+        });
                 
-                $("body").on("click",'#MySpots',function () {
-                    if(!isLogged()) return;
-                    if (User.RoleID == "3") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.Register;
-                                break;
-                            case "2":
-                                message = Language.German.Register;
-                                break;
-                            case "3":
-                                message = Language.English.Register;
-                                break;
-                            case "4":
-                                message = Language.Spanish.Register;
-                                break;
-                        }                        
-                        if (confirm(message)) {
-                            localStorage.User = null;
-                            app.application.navigate("signup_login.html");
-                            return;
-                        } else {
-                            return;
-                        }
-                    }
+        $("body").on("click",'#MySpots',function () {
+        if(!isLogged()) return;
+        if (User.RoleID == "3") {
+        var message = '';
+        switch (localStorage.Language) {
+        case "1":
+        message = Language.Danish.Register;
+        break;
+        case "2":
+        message = Language.German.Register;
+        break;
+        case "3":
+        message = Language.English.Register;
+        break;
+        case "4":
+        message = Language.Spanish.Register;
+        break;
+        }                        
+        if (confirm(message)) {
+        localStorage.User = null;
+        app.application.navigate("signup_login.html");
+        return;
+        } else {
+        return;
+        }
+        }
                     
-                    if (User.RoleID == "1") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.PUpdate;
-                                break;
-                            case "2":
-                                message = Language.German.PUpdate;
-                                break;
-                            case "3":
-                                message = Language.English.PUpdate;
-                                break;
-                            case "4":
-                                message = Language.Spanish.PUpdate;
-                                break;
-                        }                        
-                        if (confirm(message)) {
-                           app.application.navigate("basic_setup.html");
-                        } else { 
-                            return;
-                        }
-                    }
-                   app.application.navigate("myspots.html");
-                });
+        if (User.RoleID == "1") {
+        var message = '';
+        switch (localStorage.Language) {
+        case "1":
+        message = Language.Danish.PUpdate;
+        break;
+        case "2":
+        message = Language.German.PUpdate;
+        break;
+        case "3":
+        message = Language.English.PUpdate;
+        break;
+        case "4":
+        message = Language.Spanish.PUpdate;
+        break;
+        }                        
+        if (confirm(message)) {
+        app.application.navigate("basic_setup.html");
+        } else { 
+        return;
+        }
+        }
+        app.application.navigate("myspots.html");
+        });
                
-               $("body").on("click",'#invite',function () {
-                    //alert('Coming soon');
-                    //return;
-                    if(!isLogged()) return;
-                    if (User.RoleID == "3") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.Register;
-                                break;
-                            case "2":
-                                message = Language.German.Register;
-                                break;
-                            case "3":
-                                message = Language.English.Register;
-                                break;
-                            case "4":
-                                message = Language.Spanish.Register;
-                                break;
-                        }                        
-                        if (confirm(message)) {
-                            localStorage.User = null;
-                          app.application.navigate("signup_login.html");
-                            return;
-                        } else {
-                            return;
-                        }
-                    }
-                    if (User.FirstName == "" && User.PhoneNumber == "" && User.EmailID == "") {
-                        switch (localStorage.Language) {
-                            case "1":
-                                alert(Language.Danish.PleaseUpdate);
-                                break;
-                            case "2":
-                                alert(Language.German.PleaseUpdate);
-                                break;
-                            case "3":
-                                alert(Language.English.PleaseUpdate);
-                                break;
-                            case "4":
-                                alert(Language.Spanish.PleaseUpdate);
-                                break;
-                        }
-                        return;
-                    }
-                  app.application.navigate("invite.html");
-                });
+        $("body").on("click",'#invite',function () {
+        //alert('Coming soon');
+        //return;
+        if(!isLogged()) return;
+        if (User.RoleID == "3") {
+        var message = '';
+        switch (localStorage.Language) {
+        case "1":
+        message = Language.Danish.Register;
+        break;
+        case "2":
+        message = Language.German.Register;
+        break;
+        case "3":
+        message = Language.English.Register;
+        break;
+        case "4":
+        message = Language.Spanish.Register;
+        break;
+        }                        
+        if (confirm(message)) {
+        localStorage.User = null;
+        app.application.navigate("signup_login.html");
+        return;
+        } else {
+        return;
+        }
+        }
+        if (User.FirstName == "" && User.PhoneNumber == "" && User.EmailID == "") {
+        switch (localStorage.Language) {
+        case "1":
+        alert(Language.Danish.PleaseUpdate);
+        break;
+        case "2":
+        alert(Language.German.PleaseUpdate);
+        break;
+        case "3":
+        alert(Language.English.PleaseUpdate);
+        break;
+        case "4":
+        alert(Language.Spanish.PleaseUpdate);
+        break;
+        }
+        return;
+        }
+        app.application.navigate("invite.html");
+        });
               
-               $("body").on("click",'#BasicSettings',function () {
-                    if(!isLogged()) return;
-                    if (User.RoleID == "3") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.Register;
-                                break;
-                            case "2":
-                                message = Language.German.Register;
-                                break;
-                            case "3":
-                                message = Language.English.Register;
-                                break;
-                            case "4":
-                                message = Language.Spanish.Register;
-                                break;
-                        }                        
-                        if (confirm(message)) {
-                            localStorage.User = null;
-                          app.application.navigate("signup_login.html");
-                            return false;
-                        } else {
-                            return false;
-                        }
-                    }
-                   app.application.navigate("basic_setup.html");
-                });
+        $("body").on("click",'#BasicSettings',function () {
+        if(!isLogged()) return;
+        if (User.RoleID == "3") {
+        var message = '';
+        switch (localStorage.Language) {
+        case "1":
+        message = Language.Danish.Register;
+        break;
+        case "2":
+        message = Language.German.Register;
+        break;
+        case "3":
+        message = Language.English.Register;
+        break;
+        case "4":
+        message = Language.Spanish.Register;
+        break;
+        }                        
+        if (confirm(message)) {
+        localStorage.User = null;
+        app.application.navigate("signup_login.html");
+        return false;
+        } else {
+        return false;
+        }
+        }
+        app.application.navigate("basic_setup.html");
+        });
                 
-                $("body").on("click",'#FacebookSettings',function () {
-                    if(!isLogged()) return;
-                    if (User.RoleID == "3") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.Register;
-                                break;
-                            case "2":
-                                message = Language.German.Register;
-                                break;
-                            case "3":
-                                message = Language.English.Register;
-                                break;
-                            case "4":
-                                message = Language.Spanish.Register;
-                                break;
-                        }                        
-                        if (confirm(message)) {
-                            localStorage.User = null;
-                          app.application.navigate("signup_login.html");
-                            return false;
-                        } else {
-                            return false;
-                        }
-                    }
-                    if (User.FirstName == "" && User.PhoneNumber == "" && User.EmailID == "") {
-                        switch (localStorage.Language) {
-                            case "1":
-                                alert(Language.Danish.PleaseUpdate);
-                                break;
-                            case "2":
-                                alert(Language.German.PleaseUpdate);
-                                break;
-                            case "3": 
-                                alert(Language.English.PleaseUpdate);
-                                break;
-                            case "4":
-                                alert(Language.Spanish.PleaseUpdate);
-                                break;
-                        }                      
-                        return false;
-                    }
-                  app.application.navigate("basic_setup_twitter.html");
-                });              
+        $("body").on("click",'#FacebookSettings',function () {
+        if(!isLogged()) return;
+        if (User.RoleID == "3") {
+        var message = '';
+        switch (localStorage.Language) {
+        case "1":
+        message = Language.Danish.Register;
+        break;
+        case "2":
+        message = Language.German.Register;
+        break;
+        case "3":
+        message = Language.English.Register;
+        break;
+        case "4":
+        message = Language.Spanish.Register;
+        break;
+        }                        
+        if (confirm(message)) {
+        localStorage.User = null;
+        app.application.navigate("signup_login.html");
+        return false;
+        } else {
+        return false;
+        }
+        }
+        if (User.FirstName == "" && User.PhoneNumber == "" && User.EmailID == "") {
+        switch (localStorage.Language) {
+        case "1":
+        alert(Language.Danish.PleaseUpdate);
+        break;
+        case "2":
+        alert(Language.German.PleaseUpdate);
+        break;
+        case "3": 
+        alert(Language.English.PleaseUpdate);
+        break;
+        case "4":
+        alert(Language.Spanish.PleaseUpdate);
+        break;
+        }                      
+        return false;
+        }
+        app.application.navigate("basic_setup_twitter.html");
+        });              
              
               
-            });
+        });
         </script>-->
 
     </head>
     <body id="friendsApp" style="background:url('images/background_big.jpg') no-repeat;background-size: 100%;background-align: top;background-attachment:fixed;background-position: center bottom;background-size:cover;background-color:#FFF;">
-     
-        
-        <div data-role="view"  data-layout="tabstrip-layout" data-title="Welcome" class="welcome-scrn form-view" id="welcome" >                     
-            
-			<!--<div align="center"><br><img src="images/recycleworld_logo1.png" width="90%"><br><img src="images/flags.png" ></div>
+
+        <div data-role="view"  data-layout="tabstrip-layout" data-title="Welcome" class="welcome-scrn form-view" id="welcome" >
+
+            <!--<div align="center"><br><img src="images/recycleworld_logo1.png" width="90%"><br><img src="images/flags.png" ></div>
 
             <form id="login-form">
-                <ul data-role="listview" data-style="inset">
-                    <li class="username"><input type="text" id="loginUsername" placeholder="Username" required validationMessage="Username is required!" /></li>
-                    <li class="password"><input type="password" id="loginPassword" placeholder="Password" required validationMessage="Password is required!" /></li>
-                </ul>
+            <ul data-role="listview" data-style="inset">
+            <li class="username"><input type="text" id="loginUsername" placeholder="Username" required validationMessage="Username is required!" /></li>
+            <li class="password"><input type="password" id="loginPassword" placeholder="Password" required validationMessage="Password is required!" /></li>
+            </ul>
             </form>
             <ol class="group-wrp">
-                <li>
-                    <span id="login" data-role="touch" data-bind="events: { tap: login }">
-                        <a data-role="button" class="btn btn-login" style="color:white;">Login</a>
-                    </span>
-                </li>
-                <li class="oauth cf">
-                    <span id="loginWithFacebook" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithFacebook }">
-                        <a data-role="button" class="btn btn-login-fb">Login with Facebook</a>
-                    </span>
-                    <span id="loginWithGoogle" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithGoogle }">
-                        <a data-role="button" class="btn btn-login-google">Login with Google</a>
-                    </span>
-                    <span id="loginWithLiveID" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithLiveID }">
-                        <a data-role="button" class="btn btn-login-liveid">Login with Live ID</a>
-                    </span>
-                    <span id="loginWithADSF" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithADSF }">
-                        <a data-role="button" class="btn btn-login-adsf">Login with ADSF</a>
-                    </span>
-                 </li><li><br><br></li>
-             <li></li>
-                <li class="signup">
-                    <a data-role="button" href="views/signupView.html" style="color:white;" class="btn-signup">Don't have an account?</a>
-                </li>
+            <li>
+            <span id="login" data-role="touch" data-bind="events: { tap: login }">
+            <a data-role="button" class="btn btn-login" style="color:white;">Login</a>
+            </span>
+            </li>
+            <li class="oauth cf">
+            <span id="loginWithFacebook" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithFacebook }">
+            <a data-role="button" class="btn btn-login-fb">Login with Facebook</a>
+            </span>
+            <span id="loginWithGoogle" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithGoogle }">
+            <a data-role="button" class="btn btn-login-google">Login with Google</a>
+            </span>
+            <span id="loginWithLiveID" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithLiveID }">
+            <a data-role="button" class="btn btn-login-liveid">Login with Live ID</a>
+            </span>
+            <span id="loginWithADSF" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithADSF }">
+            <a data-role="button" class="btn btn-login-adsf">Login with ADSF</a>
+            </span>
+            </li><li><br><br></li>
+            <li></li>
+            <li class="signup">
+            <a data-role="button" href="views/signupView.html" style="color:white;" class="btn-signup">Don't have an account?</a>
+            </li>
             </ol>
 
             <div><p>&copy; <span data-bind="text: getYear"></span> Recycleworld apsc.</p></div>-->
@@ -385,11 +384,11 @@
             <ul data-role="listview" data-type="group">
                 <li>
                     <ul>
-                     <li>
+                        <li>
                             <div>
                                 <img src="images/recycleworld_logo1.png" width="100%">
                             </div>
-                     </li>
+                        </li>
                     </ul>
                     <div>
                         <a class="boldText">
@@ -419,182 +418,172 @@
                             </a>
                         </li>
                     </ul>
-                    
-                    
+
                     <div>
                         <a class="boldText">
                             Go create
                         </a>
                     </div>
                     <ul>
-                          <li>
-                            <a onclick="navigateFromDrawer('giveaway.html')">                               
+                        <li>
+                            <a onclick="navigateFromDrawer('giveaway.html')">
                                 <label>
                                     Give away
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a onclick="navigateFromDrawer('createspot.html')">                               
+                            <a onclick="navigateFromDrawer('createspot.html')">
                                 <label >
                                     Create spot
                                 </label>
                             </a>
                         </li>
-                         <li>
-                            <a onclick="navigateFromDrawer('spot_difference.html')">                               
+                        <li>
+                            <a onclick="navigateFromDrawer('spot_difference.html')">
                                 <label >
                                     Spot differences
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a onclick="navigateFromDrawer('food.html')" >                                
+                            <a onclick="navigateFromDrawer('food.html')" >
                                 <label >
                                     About Food Donations
                                 </label>
                             </a>
                         </li>
-                    </ul>                                       
-                    
-                     <div>
+                    </ul>
+
+                    <div>
                         <a class="boldText">
                             My account
                         </a>
                     </div>
                     <ul>
-                        
+
                         <li>
-                            <a onclick="navigateFromDrawer('me.html')" >                              
+                            <a onclick="navigateFromDrawer('me.html')" >
                                 <label >
                                     My stats
                                 </label>
                             </a>
                         </li>
-                         <li>
-                            <a onclick="navigateFromDrawer('basic_setup.html')" >                              
+                        <li>
+                            <a onclick="navigateFromDrawer('basic_setup.html')" >
                                 <label >
                                     My account settings
                                 </label>
                             </a>
                         </li>
-                         <li>
-                            <a onclick="navigateFromDrawer('mystuff.html')"  id="Mystuff" >                               
+                        <li>
+                            <a onclick="navigateFromDrawer('mystuff.html')"  id="Mystuff" >
                                 <label>
                                     My stuff
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a onclick="navigateFromDrawer('myspots.html')" id="MySpots">                               
+                            <a onclick="navigateFromDrawer('myspots.html')" id="MySpots">
                                 <label >
                                     My spots
                                 </label>
                             </a>
                         </li>
-                         <li>
-                            <a id="friend">                                
+                        <li>
+                            <a id="friend">
                                 <label >
-                                   My friendzone
+                                    My friendzone
                                 </label>
                             </a>
                         </li>
-                         <li>
-                            <a id="">                                
+                        <li>
+                            <a id="">
                                 <label >
-                                   Facebook posting rules
+                                    Facebook posting rules
                                 </label>
                             </a>
                         </li>
-                        
                     </ul>
-                    
-                    
-                     <div>
+
+                    <div>
                         <a class="boldText">
                             About Recycleworld
                         </a>
                     </div>
                     <ul>
-                       
                         <li>
-                            <a onclick="navigateFromDrawer('howworks.html')"  >                               
+                            <a onclick="navigateFromDrawer('howworks.html')"  >
                                 <label >
                                     How it works
                                 </label>
                             </a>
                         </li>
-                       
-                       
-                        
                         <li>
-                            <a onclick="navigateFromDrawer('qa.html')" >                               
+                            <a onclick="navigateFromDrawer('qa.html')" >
                                 <label >
                                     Crowdfund with us
                                 </label>
                             </a>
                         </li>
-                        
-                         <li>
-                            <a onclick="navigateFromDrawer('donate.html')" >                               
-                                <label> 
-                                   Support us 
+                        <li>
+                            <a onclick="navigateFromDrawer('donate.html')" >
+                                <label>
+                                    Support us
                                 </label>
                                 <br>
                             </a>
                         </li>
-                        
-                          <li>
-                            <a onclick="navigateFromDrawer('about_recycleworld.html')" >                             
+                        <li>
+                            <a onclick="navigateFromDrawer('about_recycleworld.html')" >
                                 <label >
                                     About Recycleworld
                                 </label>
                             </a>
                         </li>
-                         <li>
-                            <a onclick="navigateFromDrawer('terracycle.html')" >                              
+                        <li>
+                            <a onclick="navigateFromDrawer('terracycle.html')" >
                                 <label >
-                                   Terracycle partner
+                                    Terracycle partner
                                 </label>
                             </a>
                         </li>
-                          <li>
-                            <a onclick="navigateFromDrawer('niras.html')" >                               
+                        <li>
+                            <a onclick="navigateFromDrawer('niras.html')" >
                                 <label >
                                     Verified by Niras
                                 </label>
                             </a>
-                        </li>     
-                       <!-- <li>
-                            <a id="invite" >                               
-                                <label for="invite" data-localize="invite">
-                                    Get people to join us
-                                </label>
-                            </a>
+                        </li>
+                        <!-- <li>
+                        <a id="invite" >                               
+                        <label for="invite" data-localize="invite">
+                        Get people to join us
+                        </label>
+                        </a>
                         </li> 
                        
                        
                         <li>
-                            <a id="FacebookSettings" >                            
-                                <label for="fb" data-localize="fb">
-                                    Facebook settings
-                                </label>
-                                <img src="images/facebook_small.png" alt="Facebook" class="ui-li-icon">
-                            </a>
-                        </li>-->                      
-                        
-                                       
+                        <a id="FacebookSettings" >                            
+                        <label for="fb" data-localize="fb">
+                        Facebook settings
+                        </label>
+                        <img src="images/facebook_small.png" alt="Facebook" class="ui-li-icon">
+                        </a>
+                        </li>-->
+
                         <li>
-                            <a onclick="navigateFromDrawer('about_this_app.html')" >                               
+                            <a onclick="navigateFromDrawer('about_this_app.html')" >
                                 <label >
                                     Contact us
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a id="logout" onclick="logoutUser()">                               
-                                <label >
-                                    Logout
+                            <a id="logout" onclick="logoutUser()">
+                                <label style="font-weight:bold;" >
+                                    Log Out
                                 </label>
                             </a>
                         </li>
@@ -608,15 +597,15 @@
             </ul>
         </div>
         <div data-role="layout" data-id="tabstrip-layout">
-            
+
             <div data-role="header" >
-                <div data-role="navbar">                   
+                <div data-role="navbar">
                     <a class="drawer-button" data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="left"></a>
                     <span data-role="view-title" class="view-title"></span>
                 </div>
-            </div>            
-         
-        </div>        
+            </div>
+
+        </div>
     </body>
 </html>
                         

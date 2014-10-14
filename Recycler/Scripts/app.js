@@ -26,9 +26,7 @@ $(document).ready(function () {
         
 });
 
-
 document.addEventListener("backbutton", BackButton, true);
-
 
 function navigateFromDrawer(view){
     
@@ -38,7 +36,6 @@ function navigateFromDrawer(view){
     
     
 }
-
             
 function BackButton() {
     if (app.application.view().id == "index.html")//check if index
@@ -1111,7 +1108,6 @@ function aboutThisAppInit() {
     }); 
 }
 
-
 function co2thanksInit() {
     var CO2 = localStorage.CalculatedCO2;
     window.localStorage.removeItem("CalculatedCO2");
@@ -1719,7 +1715,6 @@ function isLogged() {
     return true;
 }
 
-
 function saveUserData() {   
     
     var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
@@ -1737,7 +1732,7 @@ function saveUserData() {
     var base64 = $("#image").attr("src");
     var ImageData= userData.ImageData;
     
-    if (base64!="images/imageplaceholder.png") {       
+    if (base64!="images/imageplaceholder.png" && base64.indexOf("data:image/jpeg;base64,")!=-1) {       
         
         var file = {
         "Filename": "userPicture.jpeg",
@@ -1772,6 +1767,16 @@ function saveUserData() {
     }
     
      var data = app.everlive.data('Users');
+    
+    
+    app.everlive.Users.updateSingle({ 'Id': userData.Id, 'Email': $("#email").val() },
+    function(data){
+        //alert(JSON.stringify(data));
+    },
+    function(error){
+        alert(JSON.stringify(error));
+    });
+    
     data.update({
                     'UserRole': $("#role").val(),                  
                     'Email':  $("#email").val(),           
@@ -1865,7 +1870,6 @@ function setupInit() {
     }
 } 
 
-
 function logoutUser(){
     
     if(localStorage.User==undefined) return false;    
@@ -1875,4 +1879,21 @@ function logoutUser(){
     
 }
 
-
+function deleteUser() {   
+    navigator.notification.confirm("Are you sure you want to delete your profile?", 
+           function(button) {
+               if (button == 1) {
+                   app.everlive.Users.destroySingle({ Id: userData.Id },
+                                                    function() {
+                                                        alert('User successfully deleted.');
+                                                        localStorage.removeItem("User");
+                                                        app.application.navigate("signup_login.html");
+                                                    },
+                                                    function(error) {
+                                                        alert(JSON.stringify(error));
+                                                    });
+               }
+           }, 
+           'Delete account', 
+           ['Delete','Cancel']);   
+}
