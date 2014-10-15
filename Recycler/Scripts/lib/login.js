@@ -325,6 +325,15 @@ app.Login = (function () {
         var showMistAlert = function () {
             alert(appSettings.messages.mistSimulatorAlert);
         };
+        
+       var checkEnter = function (e) {
+            var that = this;
+            if (e.keyCode === 13) {
+                $(e.target).blur();
+                app.Login.login();
+            }
+        }
+        
 
         return {
             init: init,
@@ -334,7 +343,8 @@ app.Login = (function () {
             loginWithFacebook: loginWithFacebook,
             loginWithGoogle: loginWithGoogle,
             loginWithLiveID: loginWithLiveID,
-            loginWithADSF: loginWithADSF
+            loginWithADSF: loginWithADSF,
+            checkEnter: checkEnter
         };
 
     }());
@@ -342,3 +352,4 @@ app.Login = (function () {
     return loginViewModel;
 
 }());
+

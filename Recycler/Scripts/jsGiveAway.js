@@ -277,382 +277,7 @@ function OnPaymentFailure(result) {
             var User = null;
             var Data;
             
-          function initGiveAway() {
-                try {
-                    $('#trMightLike,#trMightLikelabel').css({ 'display': 'none' });
-                
-                    if (localStorage.User == null || localStorage.User == undefined) {
-                       app.application.navigate('signup_login.html');
-                    } else {
-                        User = $.parseJSON(localStorage.User);
-                    }
                         
-                    switch (localStorage.Language) {
-                        case "1":
-                            localStorage.LanguageType = "dk";
-                        
-                            var menuItem = $("<option id=''></option>");
-                            menuItem.html("Tags/kategorier");
-                            $("#select-custom-24").append(menuItem);
-                            
-                            $.each(Tags.Danish, function (i) {
-                                var menuItem = $("<option id=''></option>");
-                                menuItem.html(Tags.Danish[i].Value);
-                                menuItem.attr('id', Tags.Danish[i].id);
-                                $("#select-custom-24").append(menuItem);
-                            });
-                        
-                         //   $("#select-custom-24").selectmenu('refresh');
-            
-                            break;
-                        case "2":
-                        
-                            localStorage.LanguageType = "de";
-                            var menuItem = $("<option id=''></option>");
-                            menuItem.html("Tags/Categories");
-                            $("#select-custom-24").append(menuItem);
-                            
-                            $.each(Tags.German, function (i) {
-                                var menuItem = $("<option id=''></option>");
-                                menuItem.html(Tags.German[i].Value);
-                                menuItem.attr('id', Tags.German[i].id);
-                                $("#select-custom-24").append(menuItem);
-                            });
-                         //   $("#select-custom-24").selectmenu('refresh');
-            
-                            break;
-                        case "3":
-                        
-                            localStorage.LanguageType = "en";
-                            var menuItem = $("<option id=''></option>");
-                            menuItem.html("Tags/Categories");
-                            $("#select-custom-24").append(menuItem);
-                            
-                            $.each(Tags.English, function (i) {
-                                var menuItem = $("<option id=''></option>");
-                                if (Tags.English[i] != undefined) {
-                                    menuItem.html(Tags.English[i].Value);
-                                    menuItem.attr('id', Tags.English[i].id);
-                                    $("#select-custom-24").append(menuItem);
-                                }
-                            });
-                         //   $("#select-custom-24").selectmenu('refresh');
-
-                            break;
-                        case "4":
-                        
-                            localStorage.LanguageType = "es";
-                            var menuItem = $("<option id=''></option>");
-                            menuItem.html("Tags/Categories");
-                            $("#select-custom-24").append(menuItem);
-                            
-                            $.each(Tags.Spanish, function (i) {
-                                var menuItem = $("<option id=''></option>");
-                                menuItem.html(Tags.Spanish[i].Value);
-                                menuItem.attr('id', Tags.Spanish[i].id);
-                                $("#select-custom-24").append(menuItem);
-                            });
-                         //   $("#select-custom-24").selectmenu('refresh');
-            
-                            break;
-                    }
-
-                  
-                    if (localStorage.CacheItem != undefined && localStorage.CacheItem != '') {
-                        LoadStorageData();
-                    }
-                
-                    window.localStorage.removeItem('CacheItem');
-                
-                    $('.ui-select').parent().css({ 'z-index': '1' });
-                                      
-                    $('#maskDiv').css({
-                                          'top': '0px',
-                                          'left': '0px',
-                                          'width': '100%',
-                                          'height': '100%',
-                                          'z-index': '2',
-                                          'display': 'block',
-                                          'position': 'absolute'
-                                      });
-                    
-                    $('#maskDiv').click(function () {
-                        var flag = true;
-                        var Error = '';
-                        if (PictureTaken == false) {
-                            flag = false;
-                            if (Error == '') {
-                                switch (localStorage.Language) {
-                                    case "1":
-                                        Error = Language.Danish.PicItem;
-                                        break;
-                                    case "2":
-                                        Error = Language.German.PicItem;
-                                        break;
-                                    case "3":
-                                        Error = Language.English.PicItem;
-                                        break;
-                                    case "4":
-                                        Error = Language.Spanish.PicItem;
-                                        break;
-                                }
-                            } else {
-                                switch (localStorage.Language) {
-                                    case "1":
-                                        Error = Error + Language.Danish.PicItem;
-                                        break;
-                                    case "2":
-                                        Error = Error + Language.German.PicItem;
-                                        break;
-                                    case "3":
-                                        Error = Error + Language.English.PicItem;
-                                        break;
-                                    case "4":
-                                        Error = Error + Language.Spanish.PicItem;
-                                        break;
-                                }
-                            }
-                        }
-                        
-                        if ($('#description').val() == '') {
-                            flag = false;
-                            if (Error == '') {
-                                switch (localStorage.Language) {
-                                    case "1":
-                                        Error = Language.Danish.NameItem;
-                                        break;
-                                    case "2":
-                                        Error = Language.German.NameItem;
-                                        break;
-                                    case "3":
-                                        Error = Language.English.NameItem;
-                                        break;
-                                    case "4":
-                                        Error = Language.Spanish.NameItem;
-                                        break;
-                                }
-                            } else {
-                                switch (localStorage.Language) {
-                                    case "1":
-                                        Error = Error + Language.Danish.NameItem;
-                                        break;
-                                    case "2":
-                                        Error = Error + Language.German.NameItem;
-                                        break;
-                                    case "3":
-                                        Error = Error + Language.English.NameItem;
-                                        break;
-                                    case "4":
-                                        Error = Error + Language.Spanish.NameItem;
-                                        break;
-                                }
-                            }
-                        }
-                        
-                        var filter = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
-                        if ($('#PriceTag').is(':checked')) {
-                            if ($('#SwapValue').val() == 'Value' || $('#SwapValue').val() == '' || $('#SwapValue').val() == '0') {
-                                flag = false;
-                                if (Error == '') {
-                                    switch (localStorage.Language) {
-                                        case "1":
-                                            Error = Language.Danish.PriceItem;
-                                            break;
-                                        case "2":
-                                            Error = Language.German.PriceItem;
-                                            break;
-                                        case "3":
-                                            Error = Language.English.PriceItem;
-                                            break;
-                                        case "4":
-                                            Error = Language.Spanish.PriceItem;
-                                            break;
-                                    }
-                                } else {
-                                    switch (localStorage.Language) {
-                                        case "1":
-                                            Error = Error + Language.Danish.PriceItem;
-                                            break;
-                                        case "2":
-                                            Error = Error + Language.German.PriceItem;
-                                            break;
-                                        case "3":
-                                            Error = Error + Language.English.PriceItem;
-                                            break;
-                                        case "4":
-                                            Error = Error + Language.Spanish.PriceItem;
-                                            break;
-                                    }
-                                }
-                            } else if (!filter.test($('#SwapValue').val())) {
-                                flag = false;
-                                if (Error == '') {
-                                    switch (localStorage.Language) {
-                                        case "1":
-                                            Error = Language.Danish.ValidSwap;
-                                            break;
-                                        case "2":
-                                            Error = Language.German.ValidSwap;
-                                            break;
-                                        case "3":
-                                            Error = Language.English.ValidSwap;
-                                            break;
-                                        case "4":
-                                            Error = Language.Spanish.ValidSwap;
-                                            break;
-                                    }
-                                } else {
-                                    switch (localStorage.Language) {
-                                        case "1":
-                                            Error = Error + Language.Danish.ValidSwap;
-                                            break;
-                                        case "2":
-                                            Error = Error + Language.German.ValidSwap;
-                                            break;
-                                        case "3":
-                                            Error = Error + Language.English.ValidSwap;
-                                            break;
-                                        case "4":
-                                            Error = Error + Language.Spanish.ValidSwap;
-                                            break;
-                                    }
-                                }
-                            }
-                        }
-                            
-                        if ($('#chkSwap').is(':checked')) {
-                            if ($('#SwapValue').val() == 'Value' || $('#SwapValue').val() == '' || $('#SwapValue').val() == '0') {
-                                flag = false;
-                                if (Error == '') {
-                                    switch (localStorage.Language) {
-                                        case "1":
-                                            Error = Language.Danish.ValidPice;
-                                            break;
-                                        case "2":
-                                            Error = Language.German.ValidPice;
-                                            break;
-                                        case "3":
-                                            Error = Language.English.ValidPice;
-                                            break;
-                                        case "4":
-                                            Error = Language.Spanish.ValidPice;
-                                            break;
-                                    }
-                                } else {
-                                    switch (localStorage.Language) {
-                                        case "1":
-                                            Error = Error + Language.Danish.ValidPice;
-                                            break;
-                                        case "2":
-                                            Error = Error + Language.German.ValidPice;
-                                            break;
-                                        case "3":
-                                            Error = Error + Language.English.ValidPice;
-                                            break;
-                                        case "4":
-                                            Error = Error + Language.Spanish.ValidPice;
-                                            break;
-                                    }
-                                }
-                            } else if (!filter.test($('#SwapValue').val())) {
-                                flag = false;
-                                if (Error == '') {
-                                    switch (localStorage.Language) {
-                                        case "1":
-                                            Error = Language.Danish.ValidPice;
-                                            break;
-                                        case "2":
-                                            Error = Language.German.ValidPice;
-                                            break;
-                                        case "3":
-                                            Error = Language.English.ValidPice;
-                                            break;
-                                        case "4":
-                                            Error = Language.Spanish.ValidPice;
-                                            break;
-                                    }
-                                } else {
-                                    switch (localStorage.Language) {
-                                        case "1":
-                                            Error = Error + Language.Danish.ValidPice;
-                                            break;
-                                        case "2":
-                                            Error = Error + Language.German.ValidPice;
-                                            break;
-                                        case "3":
-                                            Error = Error + Language.English.ValidPice;
-                                            break;
-                                        case "4":
-                                            Error = Error + Language.Spanish.ValidPice;
-                                            break;
-                                    }
-                                }
-                            }
-                        }
-                        
-                        if (flag) {
-                            $('#maskDiv').css({ 'display': 'none' });
-                          //  $('select').selectmenu('open');
-                        } else {
-                            alert(Error);
-                            //  e.stopPropagation();
-                            return false;
-                        }
-                    });
-                    
-                    $('#PriceTag').click(function () {
-                        $('#trMightLike ,#trMightLikelabel').removeAttr('style');
-                        $('#trvalue').css({ 'display': 'block' });
-                        $('#chkFree').removeAttr('checked');
-                        $('#chkSwap').removeAttr('checked');
-                        if ($(this).is(':checked')) {
-                            var message = '';
-                            switch (localStorage.Language) {
-                                case "1":
-                                    message = Language.Danish.pricetag;
-                                    break;
-                                case "2":
-                                    message = Language.German.pricetag;
-                                    break;
-                                case "3":
-                                    message = Language.English.pricetag;
-                                    break;
-                                case "4":
-                                    message = Language.Spanish.pricetag;
-                                    break;
-                            }
-                        
-                            if (confirm(message)) {
-                                return;
-                            } else {
-                                $('#trMightLike,#trMightLikelabel').css({ 'display': 'none' });
-                                $('#trvalue').css({ 'display': 'none' });
-                                $(this).removeAttr('checked');
-                                $('#chkFree').attr('checked');
-                            }
-                        }
-                    });
-                                   
-                    
-                    $('#chkFree').click(function () {
-                        $('#trMightLike,#trMightLikelabel').css({ 'display': 'none' });
-                        $('#trvalue').css({ 'display': 'none' });
-                        $('#chkSwap').removeAttr('checked');
-                        $('#PriceTag').removeAttr('checked');
-                    });
-                    
-                    $('#chkSwap').click(function () {
-                        $('#trMightLike ,#trMightLikelabel').removeAttr('style');
-                        $('#trvalue').css({ 'display': 'block' });
-                        $('#chkFree').removeAttr('checked');
-                        $('#PriceTag').removeAttr('checked');
-                    });
-                }catch (err) {
-                    alert(err);
-                    alert(JSON.stringify(err));
-                }
-            }
-                
                 
             function LoadStorageData() {
                 // var Item = JSON.stringify(localStorage.CacheItem);
@@ -777,7 +402,10 @@ function OnPaymentFailure(result) {
                     if ($('#image').attr('src') == "images/imageplaceholder.png") {
                         navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
                     } else {
-                        navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.', onTakePictureConfirm, 'New photo', 'No,Yes');
+                        navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.',
+                        function(){
+                            navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+               			}, 'New photo', 'No,Yes');
                     }
                 } else {
                     switch (localStorage.Language) {
@@ -1191,8 +819,410 @@ function OnPaymentFailure(result) {
             }
            
        
-            
+            function showGiveAway(){
+                
+                $(".after-radio").hide();
+                $('input:radio[name=abc]:checked').prop("checked",false);
+                
+            }
 
 
+ 	function initGiveAway() {
+                try {
+                    
+                     $('input:radio[name=abc]').click(function(){
+                		    $(".after-radio").show();                    
+                            var opt =  $('input:radio[name=abc]:checked').val();
+                       	 if(opt=='2' ||opt=='5' ||opt=='6'){                            
+                            	 $(".mightLike").show();
+                      	  }else{
+                          	  $(".mightLike").hide();
+                            }
+                	});
+                    
+                    
+                    
+                    
+                    $('#trMightLike,#trMightLikelabel').css({ 'display': 'none' });
+                
+                    if (localStorage.User == null || localStorage.User == undefined) {
+                       app.application.navigate('signup_login.html');
+                    } else {
+                        User = $.parseJSON(localStorage.User);
+                    }
+                        
+                    switch (localStorage.Language) {
+                        case "1":
+                            localStorage.LanguageType = "dk";
+                        
+                            var menuItem = $("<option id=''></option>");
+                            menuItem.html("Tags/kategorier");
+                            $("#select-custom-24").append(menuItem);
+                            
+                            $.each(Tags.Danish, function (i) {
+                                var menuItem = $("<option id=''></option>");
+                                menuItem.html(Tags.Danish[i].Value);
+                                menuItem.attr('id', Tags.Danish[i].id);
+                                $("#select-custom-24").append(menuItem);
+                            });
+                        
+                       
+                            break;
+                        case "2":
+                        
+                            localStorage.LanguageType = "de";
+                            var menuItem = $("<option id=''></option>");
+                            menuItem.html("Tags/Categories");
+                            $("#select-custom-24").append(menuItem);
+                            
+                            $.each(Tags.German, function (i) {
+                                var menuItem = $("<option id=''></option>");
+                                menuItem.html(Tags.German[i].Value);
+                                menuItem.attr('id', Tags.German[i].id);
+                                $("#select-custom-24").append(menuItem);
+                            });
+                        
+                            break;
+                        case "3":
+                        
+                            localStorage.LanguageType = "en";
+                            var menuItem = $("<option id=''></option>");
+                            menuItem.html("Tags/Categories");
+                            $("#select-custom-24").append(menuItem);
+                            
+                            $.each(Tags.English, function (i) {
+                                var menuItem = $("<option id=''></option>");
+                                if (Tags.English[i] != undefined) {
+                                    menuItem.html(Tags.English[i].Value);
+                                    menuItem.attr('id', Tags.English[i].id);
+                                    $("#select-custom-24").append(menuItem);
+                                }
+                            });
+                       
+                            break;
+                        case "4":
+                        
+                            localStorage.LanguageType = "es";
+                            var menuItem = $("<option id=''></option>");
+                            menuItem.html("Tags/Categories");
+                            $("#select-custom-24").append(menuItem);
+                            
+                            $.each(Tags.Spanish, function (i) {
+                                var menuItem = $("<option id=''></option>");
+                                menuItem.html(Tags.Spanish[i].Value);
+                                menuItem.attr('id', Tags.Spanish[i].id);
+                                $("#select-custom-24").append(menuItem);
+                            });
+                       
+                            break;
+                    }
 
+                  
+                    if (localStorage.CacheItem != undefined && localStorage.CacheItem != '') {
+                        LoadStorageData();
+                    }
+                
+                    window.localStorage.removeItem('CacheItem');
+                
+                    $('.ui-select').parent().css({ 'z-index': '1' });
+                                      
+                    $('#maskDiv').css({
+                                          'top': '0px',
+                                          'left': '0px',
+                                          'width': '100%',
+                                          'height': '100%',
+                                          'z-index': '2',
+                                          'display': 'block',
+                                          'position': 'absolute'
+                                      });
+                    
+                    $('#maskDiv').click(function () {
+                        var flag = true;
+                        var Error = '';
+                        if (PictureTaken == false) {
+                            flag = false;
+                            if (Error == '') {
+                                switch (localStorage.Language) {
+                                    case "1":
+                                        Error = Language.Danish.PicItem;
+                                        break;
+                                    case "2":
+                                        Error = Language.German.PicItem;
+                                        break;
+                                    case "3":
+                                        Error = Language.English.PicItem;
+                                        break;
+                                    case "4":
+                                        Error = Language.Spanish.PicItem;
+                                        break;
+                                }
+                            } else {
+                                switch (localStorage.Language) {
+                                    case "1":
+                                        Error = Error + Language.Danish.PicItem;
+                                        break;
+                                    case "2":
+                                        Error = Error + Language.German.PicItem;
+                                        break;
+                                    case "3":
+                                        Error = Error + Language.English.PicItem;
+                                        break;
+                                    case "4":
+                                        Error = Error + Language.Spanish.PicItem;
+                                        break;
+                                }
+                            }
+                        }
+                        
+                        if ($('#description').val() == '') {
+                            flag = false;
+                            if (Error == '') {
+                                switch (localStorage.Language) {
+                                    case "1":
+                                        Error = Language.Danish.NameItem;
+                                        break;
+                                    case "2":
+                                        Error = Language.German.NameItem;
+                                        break;
+                                    case "3":
+                                        Error = Language.English.NameItem;
+                                        break;
+                                    case "4":
+                                        Error = Language.Spanish.NameItem;
+                                        break;
+                                }
+                            } else {
+                                switch (localStorage.Language) {
+                                    case "1":
+                                        Error = Error + Language.Danish.NameItem;
+                                        break;
+                                    case "2":
+                                        Error = Error + Language.German.NameItem;
+                                        break;
+                                    case "3":
+                                        Error = Error + Language.English.NameItem;
+                                        break;
+                                    case "4":
+                                        Error = Error + Language.Spanish.NameItem;
+                                        break;
+                                }
+                            }
+                        }
+                        
+                        var filter = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
+                        if ($('#PriceTag').is(':checked')) {
+                            if ($('#SwapValue').val() == 'Value' || $('#SwapValue').val() == '' || $('#SwapValue').val() == '0') {
+                                flag = false;
+                                if (Error == '') {
+                                    switch (localStorage.Language) {
+                                        case "1":
+                                            Error = Language.Danish.PriceItem;
+                                            break;
+                                        case "2":
+                                            Error = Language.German.PriceItem;
+                                            break;
+                                        case "3":
+                                            Error = Language.English.PriceItem;
+                                            break;
+                                        case "4":
+                                            Error = Language.Spanish.PriceItem;
+                                            break;
+                                    }
+                                } else {
+                                    switch (localStorage.Language) {
+                                        case "1":
+                                            Error = Error + Language.Danish.PriceItem;
+                                            break;
+                                        case "2":
+                                            Error = Error + Language.German.PriceItem;
+                                            break;
+                                        case "3":
+                                            Error = Error + Language.English.PriceItem;
+                                            break;
+                                        case "4":
+                                            Error = Error + Language.Spanish.PriceItem;
+                                            break;
+                                    }
+                                }
+                            } else if (!filter.test($('#SwapValue').val())) {
+                                flag = false;
+                                if (Error == '') {
+                                    switch (localStorage.Language) {
+                                        case "1":
+                                            Error = Language.Danish.ValidSwap;
+                                            break;
+                                        case "2":
+                                            Error = Language.German.ValidSwap;
+                                            break;
+                                        case "3":
+                                            Error = Language.English.ValidSwap;
+                                            break;
+                                        case "4":
+                                            Error = Language.Spanish.ValidSwap;
+                                            break;
+                                    }
+                                } else {
+                                    switch (localStorage.Language) {
+                                        case "1":
+                                            Error = Error + Language.Danish.ValidSwap;
+                                            break;
+                                        case "2":
+                                            Error = Error + Language.German.ValidSwap;
+                                            break;
+                                        case "3":
+                                            Error = Error + Language.English.ValidSwap;
+                                            break;
+                                        case "4":
+                                            Error = Error + Language.Spanish.ValidSwap;
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+                            
+                        if ($('#chkSwap').is(':checked')) {
+                            if ($('#SwapValue').val() == 'Value' || $('#SwapValue').val() == '' || $('#SwapValue').val() == '0') {
+                                flag = false;
+                                if (Error == '') {
+                                    switch (localStorage.Language) {
+                                        case "1":
+                                            Error = Language.Danish.ValidPice;
+                                            break;
+                                        case "2":
+                                            Error = Language.German.ValidPice;
+                                            break;
+                                        case "3":
+                                            Error = Language.English.ValidPice;
+                                            break;
+                                        case "4":
+                                            Error = Language.Spanish.ValidPice;
+                                            break;
+                                    }
+                                } else {
+                                    switch (localStorage.Language) {
+                                        case "1":
+                                            Error = Error + Language.Danish.ValidPice;
+                                            break;
+                                        case "2":
+                                            Error = Error + Language.German.ValidPice;
+                                            break;
+                                        case "3":
+                                            Error = Error + Language.English.ValidPice;
+                                            break;
+                                        case "4":
+                                            Error = Error + Language.Spanish.ValidPice;
+                                            break;
+                                    }
+                                }
+                            } else if (!filter.test($('#SwapValue').val())) {
+                                flag = false;
+                                if (Error == '') {
+                                    switch (localStorage.Language) {
+                                        case "1":
+                                            Error = Language.Danish.ValidPice;
+                                            break;
+                                        case "2":
+                                            Error = Language.German.ValidPice;
+                                            break;
+                                        case "3":
+                                            Error = Language.English.ValidPice;
+                                            break;
+                                        case "4":
+                                            Error = Language.Spanish.ValidPice;
+                                            break;
+                                    }
+                                } else {
+                                    switch (localStorage.Language) {
+                                        case "1":
+                                            Error = Error + Language.Danish.ValidPice;
+                                            break;
+                                        case "2":
+                                            Error = Error + Language.German.ValidPice;
+                                            break;
+                                        case "3":
+                                            Error = Error + Language.English.ValidPice;
+                                            break;
+                                        case "4":
+                                            Error = Error + Language.Spanish.ValidPice;
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        if (flag) {
+                            $('#maskDiv').css({ 'display': 'none' });
+                          //  $('select').selectmenu('open');
+                        } else {
+                            alert(Error);
+                            //  e.stopPropagation();
+                            return false;
+                        }
+                    });
+                    
+                    $('#PriceTag').click(function () {
+                        $('#trMightLike ,#trMightLikelabel').removeAttr('style');
+                        $('#trvalue').css({ 'display': 'block' });
+                        $('#chkFree').removeAttr('checked');
+                        $('#chkSwap').removeAttr('checked');
+                        if ($(this).is(':checked')) {
+                            var message = '';
+                            switch (localStorage.Language) {
+                                case "1":
+                                    message = Language.Danish.pricetag;
+                                    break;
+                                case "2":
+                                    message = Language.German.pricetag;
+                                    break;
+                                case "3":
+                                    message = Language.English.pricetag;
+                                    break;
+                                case "4":
+                                    message = Language.Spanish.pricetag;
+                                    break;
+                            }
+                        
+                            if (confirm(message)) {
+                                return;
+                            } else {
+                                $('#trMightLike,#trMightLikelabel').css({ 'display': 'none' });
+                                $('#trvalue').css({ 'display': 'none' });
+                                $(this).removeAttr('checked');
+                                $('#chkFree').attr('checked');
+                            }
+                        }
+                    });
+                                   
+                    
+                    $('#chkFree').click(function () {
+                        $('#trMightLike,#trMightLikelabel').css({ 'display': 'none' });
+                        $('#trvalue').css({ 'display': 'none' });
+                        $('#chkSwap').removeAttr('checked');
+                        $('#PriceTag').removeAttr('checked');
+                    });
+                    
+                    $('#chkSwap').click(function () {
+                        $('#trMightLike ,#trMightLikelabel').removeAttr('style');
+                        $('#trvalue').css({ 'display': 'block' });
+                        $('#chkFree').removeAttr('checked');
+                        $('#PriceTag').removeAttr('checked');
+                    });
+                }catch (err) {
+                    alert(err);
+                    alert(JSON.stringify(err));
+                }
+            }
 
+var imgNumber="";
+function takePictureGiveAway(e) {
+   imgNumber =e;
+    var destinationType = navigator.camera.DestinationType;              
+    navigator.camera.getPicture(onPhotoDataSuccessGA, onFail, { quality: 70, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+}
+
+function onPhotoDataSuccessGA(imageData) {
+    // localStorage.SpotImage = imageData;      
+                 PictureTaken = true;
+    var photo = document.getElementById('image' +imgNumber);
+    photo.src = "data:image/jpeg;base64," + imageData;
+}

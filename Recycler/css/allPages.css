@@ -14,10 +14,10 @@
 { 
     padding: 15px;
     background: url("../images/background_big.jpg") no-repeat !important;
-    background-size: 100%; 
-    background-attachment: fixed;
-    background-position: center bottom;
-    background-size: cover;
+    /*background-size: 100% 100% !important; */
+   /* background-attachment: fixed;*/
+    background-position: center center !important;
+   /* background-size: cover;*/
     background-color: #FFF;
     -webkit-touch-callout: none; 
     -webkit-background-size: cover;
@@ -1360,13 +1360,19 @@ padding:4;
 }
 
 
+.radio-options{
+    border:1px solid white; 
+    border-radius:3px;
+}
 
+.radio-options input[name="abc"]{    
+    float:right;
+}
 
-
-
-
-
-
+input,textarea,select{    
+    border-radius:3px;
+    padding:3px;
+}
 
 
 

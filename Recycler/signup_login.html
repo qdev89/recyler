@@ -2,7 +2,7 @@
             <!--data-show="signupLogin" id="signup-login-tabstrip"   data-title="Login"--> 
             <div align="center"><br><img src="images/recycleworld_logo1.png" width="90%"><br><img src="images/flags.png" ></div>
 
-            <form id="login-form"> 
+            <form  data-bind="events: { keyup: checkEnter }" id="login-form"> 
                 <ul data-role="listview" data-style="inset">
                     <li class="username"><input type="text" id="loginUsername" placeholder="Username" required validationMessage="Username is required!" /></li>
                     <li class="password"><input type="password" id="loginPassword" placeholder="Password" required validationMessage="Password is required!" /></li>
@@ -27,11 +27,11 @@
                     <span id="loginWithADSF" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithADSF }">
                         <a data-role="button" class="btn btn-login-adsf">Login with ADSF</a>
                     </span>
-                 </li><li><br><br></li>
+                 </li><!--<li><br><br></li>
              <li></li>
                 <li class="signup">
                     <a data-role="button" href="views/signupView.html" style="color:white;" class="btn-signup">Don't have an account?</a>
-                </li>
+                </li>-->
             </ol>
 
             <div><p>&copy; <span data-bind="text: getYear"></span> Recycleworld apsc.</p></div>            

@@ -12,7 +12,7 @@
         showAlert(message, 'Error occured');
     };
 
-    win.addEventListener('error', function (e) {
+    /*win.addEventListener('error', function (e) {
         e.preventDefault();
 
         var message = e.message + "' from " + e.filename + ":" + e.lineno;
@@ -20,7 +20,7 @@
         showAlert(message, 'Error occured');
 
         return true;
-    });
+    });*/
 
     // Global confirm dialog
     var showConfirm = function(message, title, callback) {
@@ -145,8 +145,9 @@
     
     var getYear = (function () {
         return new Date().getFullYear();
-    }());   
+    }());    
      
+        
         app.showAlert=showAlert;
          app.showError= showError;
          app.showConfirm= showConfirm;
@@ -155,5 +156,12 @@
          app.helper= AppHelper;
          app.everlive= el;
          app.getYear= getYear;
+     
+    
+   /*  admobExport.createBannerView({
+        'publisherId': 4353543543,
+        'adSize':admobExport.AD_SIZE.SMART_BANNER,
+        'bannerAtTop': false
+    },function(){console.log("sss")},function(e){console.log(e)});*/
   
 }(window));
