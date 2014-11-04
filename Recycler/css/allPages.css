@@ -11,8 +11,7 @@
 }
 
 .km-flat .km-view .km-content
-{ 
-    padding: 15px;
+{     
     background: url("../images/background_big.jpg") no-repeat !important;
     background-size: 100% 100% !important; 
  
@@ -23,6 +22,10 @@
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+}
+
+.km-flat .km-view:not(#terracycle-tabstrip):not(#niras-tabstrip) .km-content{
+padding: 15px;
 }
 
 .text_smaller
