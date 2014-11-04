@@ -13,7 +13,7 @@ $(document).ready(function () {
     }*/
 
     var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-    $("[data-localize]").localize("Recycle", opts);
+    //$("[data-localize]").localize("Recycle", opts);
 
 
 

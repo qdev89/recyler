@@ -12,7 +12,7 @@ var userData =null;
             localStorage.LanguageType = "en";
         }
         var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" }; 
-        $("[data-localize]").localize("Recycle", opts);
+        //$("[data-localize]").localize("Recycle", opts);
     }, false);
 
     app.application = new kendo.mobile.Application(document.body, { skin:"flat", layout:"tabstrip-layout", initial:"signup_login.html", hashBang:true, loading:false }); 
@@ -597,21 +597,6 @@ function GetProductOwner(ID) {
            });
 }
 
-function SetNumariaclOnly(evt) {
-    var charCode = (evt.which) ? evt.which : event.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-        return false;
-    else
-        return true;
-}
-
-function StopSpecialchrOnly(evt) {
-    var charCode = (evt.which) ? evt.which : event.keyCode
-    if (charCode == 60 || charCode == 62 || charCode == 63 || charCode == 58 || charCode == 59 || charCode == 92 || charCode == 46 || charCode == 44 || charCode == 39 || charCode == 34 || charCode == 47 || charCode == 124)
-        return false;
-    else
-        return true;
-}
 
 function logout() {
     FB.logout(function (response) {
@@ -780,7 +765,7 @@ function signupLogin() {
         }
 
         var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-        $("[data-localize]").localize("Recycle", opts);
+        //$("[data-localize]").localize("Recycle", opts);
     }
 
     $('#ddlCountry').change(function () {
@@ -830,7 +815,7 @@ function signupLogin() {
             });
 
             var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-            $("[data-localize]").localize("Recycle", opts);
+            //$("[data-localize]").localize("Recycle", opts);
         } else {
             switch (localStorage.Language) {
                 case "1":

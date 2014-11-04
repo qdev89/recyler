@@ -743,7 +743,7 @@ function recoverPassword() {
         }
 
         var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-        $("[data-localize]").localize("Recycle", opts);
+        //$("[data-localize]").localize("Recycle", opts);
 
     }
 
@@ -803,7 +803,7 @@ function recoverPassword() {
 
 
             var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-            $("[data-localize]").localize("Recycle", opts);
+            //$("[data-localize]").localize("Recycle", opts);
         }
         else {
 

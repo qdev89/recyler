@@ -105,10 +105,7 @@ function Ins_Upd_EarthHeartData(_Data, _ReturnUrl) {
 
 //================================================= GetEarthHeartData ======================================================
 
-function GetEarthHeartData(e) {
-
-       
-            
+function GetEarthHeartData(e) {    
 
     if (localStorage.User == null || localStorage.User == undefined) {
         e.preventDefault();
@@ -160,12 +157,8 @@ function GetEarthHeartData(e) {
                         $('#Position').html(data.Position);
                         $('#transactions').html(data.transactions);
                         $('#Co2Saved').html(data.Co2Saved);
-                     //   if (User.RoleID == "2") {
-                     //       $('#Donationsli').css({ 'display': 'none' });
-                     //   }
-                    //    else {
-                            $('#Donationsli').css({ 'display': 'block' });
-                            $('#Donations').html(data.Donations + '/' + data.DonationAmount);
+                        $('#Donationsli').css({ 'display': 'block' });
+                        $('#Donations').html(data.Donations + '/' + data.DonationAmount);
                     //    }
                         $('#HeartStatus').html(data.HeartStatus);
                         switch (data.HeartStatus) {
@@ -185,7 +178,6 @@ function GetEarthHeartData(e) {
                                 $('#imgHeart').html('<img src="images/EarthImages/heart_red.png" width="75%" height="30%" />');
                                 break;
                         }
-
                     }
                     else {
 
@@ -220,6 +212,8 @@ function GetEarthHeartData(e) {
 
             },
             error: function (xhr) {
+                console.log(xhr);
+                return;
                 switch (localStorage.Language) {
                     case "1":
                         alert(Language.Danish.Ptry);
@@ -234,11 +228,8 @@ function GetEarthHeartData(e) {
                         alert(Language.Spanish.Ptry);
                         break;
                 }
-
             }
-        });      
-        
-        
+        });  
     }
     
         $('#SendMyCO2').click(function () {
@@ -335,7 +326,6 @@ function SendCO2ToMail() {
        app.application.navigate('signup_login.html');
     }
     else {
-
         User = $.parseJSON(localStorage.User);
     }
     var Position = $('#Position').html();

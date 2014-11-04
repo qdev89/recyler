@@ -87,7 +87,7 @@ $(document).ready(function () {
     changeLanguage(localStorage.LanguageType);
 
     var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-    $("[data-localize]").localize("Recycle", opts);
+    //$("[data-localize]").localize("Recycle", opts);
 
     if (localStorage.CacheItem != undefined && localStorage.CacheItem != '') {
         LoadStorageData();

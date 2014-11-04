@@ -14,8 +14,8 @@
 { 
     padding: 15px;
     background: url("../images/background_big.jpg") no-repeat !important;
-    /*background-size: 100% 100% !important; */
-   /* background-attachment: fixed;*/
+    background-size: 100% 100% !important; 
+ 
     background-position: center center !important;
    /* background-size: cover;*/
     background-color: #FFF;
@@ -1353,30 +1353,37 @@ padding:4;
       {
         color: white;
       }
-.boldText{
-    font-weight:bold;
-	
-    padding:.5em .7em;
+
+    .boldText{
+        font-weight:bold;
+    	
+        padding:.5em .7em;
+    }
+
+
+    .radio-options{
+        border:1px solid white; 
+        border-radius:3px;
+    }
+
+    .radio-options>div{margin:5px;}
+
+    .radio-options input[name="abc"]{    
+      position: absolute;
+    	right: 25px;
+    }
+
+    input,textarea,select{    
+        border-radius:3px;
+        padding:3px;
+    }
+
+
+
+#my-drawer .km-content{
+    background:#3598db !important;
+
 }
-
-
-.radio-options{
-    border:1px solid white; 
-    border-radius:3px;
-}
-
-.radio-options input[name="abc"]{    
-    float:right;
-}
-
-input,textarea,select{    
-    border-radius:3px;
-    padding:3px;
-}
-
-
-
-
 
 
 

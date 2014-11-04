@@ -73,14 +73,19 @@ app.Login = (function () {
             })
             .then(function () {
 					
-                 app.application.navigate('basic_setup.html');
+                
                  app.everlive.Users.currentUser( 
-                                                            function(data) { 
-                                                                console.log(data.result);    
-                                                               
-                                                               localStorage.User = JSON.stringify(data.result);
-                                                                fillUserData(data.result);
-                                                            });
+                                            function(data) { 
+                                                console.log(data.result);    
+                                               
+                                               localStorage.User = JSON.stringify(data.result);
+                                                fillUserData(data.result);
+                                                
+                                                if(data.result.Email == undefined || data.result.Email == "")
+                                                 app.application.navigate('basic_setup.html');
+                                                else
+                                                 app.application.navigate('me.html');
+                                            });
             })
             .then(null,
                   function (err) {
