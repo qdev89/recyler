@@ -1,38 +1,35 @@
-        <div data-role="page" data-init="productInit" id="product-tabstrip"  style="background-color: #f3f3f3;">
-            <div id="pageheader3" data-role="header" >               
-                   
-                    <h2>
-                        <label for="titeltext_product" data-localize="titeltext_product">
-                            Product
-                        </label>
-                    </h2>
-               
-            </div>
+        <div data-role="view" data-init="productInit" id="product-tabstrip"  style="background-color:white">
+          
             <div data-role="content">
-                <div id="LoadingDiv" style="display: none; text-align: center">
-                </div>
-                <div id="Load" style="display: none">
-                    <div style="font-weight: bold">
-                        <label for="wait" data-localize="wait">
-                            Please wait...
-                        </label>
+              
+                
+                
+                 <div id="scrollview-container">
+                    <div data-role="scrollview" data-page="2">
+                        <div class="photo photo1" data-role="page">                            
+                        </div>
+                        <div class="photo photo2" data-role="page">                            
+                        </div>
+                        <div class="photo photo3" data-role="page">                            
+                        </div>
+                      
                     </div>
-                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
-                         padding-top: 5px" />
                 </div>
-                <ul data-role="listview" data-inset="true" data-theme="b">
-                    <li text align="center">
-                        <div data-role="fieldcontain" style="margin-bottom: 10px; text-align: center">
+                
+               
+               <!-- <ul data-role="listview" >
+                    <li text align="center">-->
+                        <!--<div data-role="fieldcontain" style="margin-bottom: 10px; text-align: center">
                             <div style="width: 100%">
                                 <div style="float: left; width: 80%; text-align: left">
                                     <h1>
-                                        <!-- productnametext -->
+                                       
                                         <label for="productnametext" id="ProductName" class="wordwrap" style="font-weight: bold;
                                                font-size: large">
                                         </label>
                                     </h1>
                                 </div>
-                                <div style="float: left; text-align: right; width: 20%">
+                              <div style="float: left; text-align: right; width: 20%">
                                     <img onclick="getLoginStatus2();" src="images/facebook_button.png" alt="fb">
                                 </div>
                                 <div style="clear: both">
@@ -51,7 +48,7 @@
                                     </h2>
                                 </div>
                             </div>
-                            <div style="clear: both;">
+                           <div style="clear: both;">
                                 <div style="float: left; display: none; margin-left: 15%" id="swap">
                                     <img src="images/swap_1.png" width="65" height="17" alt="swap">
                                 </div>
@@ -71,8 +68,8 @@
                             <div style="clear: both;">
                                 <img align="middle" id="image" alt="image" style="width: 95%; height: 180px" src="images/background_big.jpg" />
                             </div>
-                        </div>
-                        <table width="100%">
+                        </div>-->
+                   <!--     <table width="100%">
                             <tr>
                                 <td style=" font-weight:bold">
                                     <label for="Tags" data-localize="tags">
@@ -86,7 +83,7 @@
                             </tr>
                             <tr>
                                 <td style=" font-weight:bold">
-                                    <!-- whatisit -->
+                                  
                                     <label for="givedescription" data-localize="givedescription">
                                         Titel / headline
                                     </label>
@@ -99,7 +96,7 @@
                             </tr>
                             <tr>
                                 <td style=" font-weight:bold">
-                                    <!-- whatisit -->
+                                   
                                     <label for="long_description_title" data-localize="long_description_title">
                                         Further information:
                                     </label>
@@ -125,7 +122,7 @@
                             <tr>
                                 <td width="50%">
                                     <a data-role="button" data-transition="fade" id="WantIt">
-                                        <!-- iwant -->
+                                       
                                         <span name="spn">
                                             <label for="iwantit" data-localize="iwantit">
                                                 I want it
@@ -135,7 +132,7 @@
                                 </td>
                                 <td width="50%">
                                     <a data-role="button" data-transition="fade" id="NoInterest">
-                                        <!-- nointerest -->
+                                       
                                         <span name="spn">
                                             <label for="nointerest" data-localize="nointerest">
                                                 No interest
@@ -152,8 +149,38 @@
                             </div>
                         </div>
                     </li>
-                </ul>
-                                    
+                </ul>-->
+                <div class="fields">
+                    
+                    
+                    <div>Type:</div>
+                    <div>Title:</div> 
+                    <div>Status:</div>
+                    <div>Date:</div>
+                     <div>Price:</div>
+                     <div>Title/headline:</div>
+                    <div>Further information:</div>
+                    <div>I might like instead:</div>
+                    </div>
+                <div>
+                 					<a data-role="button" data-transition="fade" id="WantIt">
+                                       
+                                        <span name="spn">
+                                            <label for="iwantit" data-localize="iwantit">
+                                                I want it
+                                            </label>
+                                        </span>
+                                    </a>
+                               
+                                    <a data-role="button" data-transition="fade" id="NoInterest">
+                                       
+                                        <span name="spn">
+                                            <label for="nointerest" data-localize="nointerest">
+                                                No interest
+                                            </label>
+                                        </span>
+                                    </a>
+                </div>
                 <div id="dvFullScreen"></div>
             </div>
             <input type="hidden" id="ProductImageUrl" value="" />       

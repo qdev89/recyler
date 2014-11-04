@@ -375,8 +375,8 @@ function drawMaps(latlng, name, Description) {
 function productInit(){
     
     
-FB.init({ appId: "313796158728708", nativeInterface: CDV.FB, useCachedDialogs: false });
-              
+/*FB.init({ appId: "313796158728708", nativeInterface: CDV.FB, useCachedDialogs: false });*/
+          
                 if (localStorage.CacheItem != undefined && localStorage.CacheItem != '') {
                     Item = $.parseJSON(localStorage.CacheItem);
                     if (Item.SelectedProduct != undefined && Item.SelectedProduct != '') {
@@ -454,10 +454,10 @@ FB.init({ appId: "313796158728708", nativeInterface: CDV.FB, useCachedDialogs: f
 }
 
 
-            FB.Event.subscribe('auth.login', function (response) {
+          /*  FB.Event.subscribe('auth.login', function (response) {
             });
             
-            FB.Event.subscribe('auth.statusChange', handleStatusChange);
+            FB.Event.subscribe('auth.statusChange', handleStatusChange);*/
             
             function handleStatusChange(session) {
                 if (session.authResponse) {
