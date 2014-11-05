@@ -79,7 +79,7 @@ var spot = {
     }
 };
 
-$(document).ready(function () {
+function InitCreateSpot() {
 
 
     Filldata();
@@ -405,7 +405,7 @@ $(document).ready(function () {
 
     });
 
-});
+}
 
 
 

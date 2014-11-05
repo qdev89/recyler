@@ -1,94 +1,60 @@
-        <div id="createSpot" data-title="Create spot" data-role="view" style="background-color: #f3f3f3;">
+        <div id="createSpot" data-title="Create spot" data-role="view" data-init="InitCreateSpot" style="background-color: #f3f3f3;">
                      
             <div data-role="content">
                 <div>  
-                        <table >
-                            <tr>
-                                <td align="center" text-align="center">
+                     <div>
                                     <a id="whatDifference" data-role="button" >
                                         <!-- whatdifference -->
                                         <label for="whatdifference"  data-localize="whatdifference">What is the difference?</label>
                                     </a>
-                                </td>
-                            </tr>
-                        </table>
+                             </div>
                   
-                        <table >
-                            <tr>
-                                <td >
+                        <div>
                                     <!-- spottype -->
                                     <label for="spottype"  data-localize="spottype">Spot type:&nbsp;</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
+                               
                                     <select id="spotype" name="swpotype" value="GO"></select>
-                                </td>
-                            </tr>
-                        </table>
+                        </div><br>
                 
                         <div id="image_div" align="center" width="100" text-align="center">
                             <img id="image" alt="image" width="60%" src="images/imageplaceholder.png" onClick="takePictureSpot();"/><br>
                             <label for="picture"  data-localize="picture">Picture of your place,shop,logo</label>
-                        </div>
+                        </div><br>
                   
-                        <table >
-                            <tr>
-                                <td colspan="3" align="right">
+                       <div>
                                     <i>
                                         <label for="mandatory"  data-localize="mandatory">Fields marked * are mandatory</label>
                                     </i>
-                                
-                                </td>
-                            </tr>
-                        </table>
-                  
+                       </div>    
+                            <br>
                    
-                        <table >
-                            
-                            <tr id="lblGarageSale" style="display:none">
-                                <td  colspan="3" >
+                  
                                     <!-- marketspot -->
                                     <label style="color:#999999" for="marketspot"  data-localize="marketspot" >
                                         Create your add for event:
                                         <BR>market, garage sale etc.
                                     </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td >
+                              
                                     <!-- spotname -->
-                                    <label id="SpotName" for="spotname"  data-localize="spotname" >Name: *</label>
+                                   <!-- <label id="SpotName" for="spotname"  data-localize="spotname" >Name: *</label>
                                     <label style="display:none" id="GarageName" for="spotname" data-localize="PosterTitle">Poster Title: *</label>
-                                </td>
-                                <td  colspan="2">
-                                    <input type="text" name="spotname" id="spotname" value="" onKeyPress="return StopSpecialchrOnly(event);" maxlength="30"  placeholder="name" size="30"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td >
-                                    <!-- spotdescription -->
+                               
+                                 
                                     <label id="SpotDescription" for="spotdescription"  data-localize="spotdescription">Description:</label>
-                                    <label style="display:none" id="EventDescription" for="spotdescription" data-localize="EventDescription">Event Description:</label>
-                                </td>
-                            
-                            </tr>
-                            <tr >
-                                <td  colspan="5">
-                                    <div s>                                        
-                                        <textarea name="spotdesciption" cols="50" rows="10" maxlength="200"  id="spotdesc"  ></textarea>
+                                    <label style="display:none" id="EventDescription" for="spotdescription" data-localize="EventDescription">Event Description:</label>-->
+                               
+                                    <div class="container-div">                                        
+                                        <textarea name="spotdesciption" rows="10" maxlength="200"  id="spotdesc"  ></textarea>
                                     </div>
                                 
-                                </td>
-                            </tr>
-                            <tr id="EventDate" style="display:none">
-                                <td  colspan="3" >
+                               
+                            <div id="EventDate" style="display:none">
+                               
                                     <!-- posterdate -->
                                     <label for="posterdate"  data-localize="posterdate">Event date: *</label>
-                                </td>
-                            </tr>
-                            <tr id="EventDateFields" style="display:none">
-                                <td  colspan="3" >
+                               
+                            </div>
+                          
                                     <!-- postermonth -->
                                     <fieldset data-role="controlgroup" data-type="horizontal">
                                         <label for="select-choice-month"  data-localize="month">Month</label>
@@ -144,41 +110,25 @@
                                             <option value="2020">2022</option>
                                         </select>
                                     </fieldset>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
+                              
                                     <!-- spotadress -->
                                     <label for="spotadress" data-localize="spotadress">Address: *</label>
-                                </td>
-                                <td   colspan="2">
+                               
                                     <input type="text" name="spotadress" id="spotadress" value="" placeholder="Address"  onkeypress="return StopSpecialchrOnly(event);" maxlength="30" size="30"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
+                                
                                     <!-- spotcity -->
                                     <label for="spotcity" data-localize="spotcity">City: *</label>
-                                </td>
-                                <td  colspan="2">
+                                
                                     <input type="text" name="spotcity" id="spotcity" value="" placeholder="city" onKeyPress="return StopSpecialchrOnly(event);" maxlength="30" size="30"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td >
+                                
                                     <!-- spotzip -->
                                     <label for="spotzip" data-localize="spotzip">Zip: *</label>
-                                </td>
-                                <td   colspan="2">
+                              
                                     <input type="text" name="spotzip" id="spotzip" value="" placeholder="zip" onKeyPress="return StopSpecialchrOnly(event)";   maxlength="6" size="10"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td >
+                                
                                     <!-- spotcountry -->
                                     <label for="spotcountry"  data-localize="spotcountry">Country: *</label>
-                                </td>
-                                <td   colspan="2">
+                             
                                     <select id="spotcountry" name="countries0">
                                         <option value="0">Country</option>
                                         <option value="DK">Denmark</option>
@@ -428,14 +378,10 @@
                                         <option value="ZM">Zambia</option>
                                         <option value="ZW">Zimbabwe</option>
                                     </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
+                               
                                     <!-- spotstate -->
                                     <label for="spotstate"  data-localize="spotstate">State: </label>
-                                </td>
-                                <td   colspan="2">
+                              
                                     <input type="text" name="State" onKeyPress="return StopSpecialchrOnly(event);" tabindex="10" id="txtState" value="" placeholder="State"
                                            maxlength="25" />
                                     <div id="dvState" data-role="fieldcontain" style="display: none">
@@ -496,52 +442,34 @@
                                             </select>
                                         </div>
                                     </div>
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td >
+                              
                                     <!-- spotphone -->
                                     <label for="spotphone"  data-localize="spotphone">Phone: *</label>
-                                </td>
-                                <td  colspan="2">
+                               
                                     <input type="number" name="spotphone" id="spotphone" onKeyPress="return SetNumariaclOnly(event)";  maxlength="10" value="" placeholder="phone" size="10"/>
-                                </td>
-                            </tr>
+                               
                             
-                            <tr id="SpotWeb">
-                                <td >
+                          
                                     <!-- spotweb -->
                                     <label for="spotweb"  data-localize="spotweb">Web:</label>
-                                </td>
-                                <td  colspan="2">
+                               
                                     <input type="url" name="www" id="spotweb" maxlength="100" value="" placeholder="www" size="10"/>
-                                </td>
-                            </tr>
-                            <tr id="SpotCVR">
-                                <td >
+                              
+                            <div id="SpotCVR">
+                               
                                     <!-- spotcvr -->
                                     <label for="cvr"  data-localize="cvr">VAT:</label>
-                                </td>
-                                <td  colspan="2">
+                               
                                     <input type="text" name="Cvr" id="Cvr" value="" placeholder="VAT" size="10" onKeyPress="return StopSpecialchrOnly(event);"  maxlength="30"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
+                               
+                            </div>
+                          
                                     <!-- spotopening -->
                                     <label for="spotopening"  data-localize="spotopening">Opening hours:</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
+                               
                                     <!-- spotmonfri -->
                                     <label for="spotmonfri"  data-localize="spotmonfri">Mon - friday: *</label>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td >
+                               
                                     <!-- spotopen -->
                                     <select size="1" id="spotmonfrifrom" name="spotopen" style="width: 20; height: 22">
                                         
@@ -571,18 +499,16 @@
                                         <option>23</option>
                                         <option>24</option>
                                     </select>
-                                </td>
-                                <td  id="tdOpenWeek" style="display:none" >
+                             
+                                <div  id="tdOpenWeek" style="display:none" >
                                     <!-- spotclose -->
                                     <select size="1" id="OpenTimeMonFri" name="AMMON" style="width: 20; height: 22">
                                         <option  value="-">-</option>
                                         <option value="AM">AM</option>
                                         <option value="PM">PM</option>
                                     </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
+                                </div>
+                         
                                     <select size="1" id="spotmonfrito" name="spotclose" style="width: 20; height: 22">
                                         <option  value="00">00</option>
                                         <option>01</option>
@@ -610,24 +536,19 @@
                                         <option>23</option>
                                         <option>24</option>
                                     </select>
-                                </td>
-                                <td id="tdCloseWeek" style="display:none">
+                              
+                                <div id="tdCloseWeek" style="display:none">
                                     <!-- spotclose -->
                                     <select size="1" id="CloseTimeMonFri" name="AMMON" style="width: 20; height: 22">
                                         <option  value="-">-</option>
                                         <option value="AM">AM</option>
                                         <option value="PM">PM</option>
                                     </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
+                                </div>
+                           
                                     <!-- spotsat -->
                                     <label for="saturday"  data-localize="saturday">Saturday:</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td >
+                               
                                     <!-- spotopensat -->
                                     <select size="1" id="spotopensatfrom" name="D20" style="width: 20; height: 22">
                                         
@@ -657,18 +578,16 @@
                                         <option>23</option>
                                         <option>24</option>
                                     </select>
-                                </td>
-                                <td id="tdOpenSat" style="display:none">
+                              
+                                <div id="tdOpenSat" style="display:none">
                                     <!-- spotclosesat -->
                                     <select size="1" id="OpenTimeSat" name="AMMON2" style="width: 20; height: 22">
                                         <option  value="-">-</option>
                                         <option value="AM">AM</option>
                                         <option value="PM">PM</option>
                                     </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
+                                </div>
+                          
                                     <select size="1" id="spotopensatto" name="D21" style="width: 20; height: 22">
                                         <option value="00">00</option>
                                         <option>01</option>
@@ -696,24 +615,19 @@
                                         <option>23</option>
                                         <option>24</option>
                                     </select>
-                                </td>
-                                <td id="tdCloseSat" style="display:none">
+                               
+                                <div id="tdCloseSat" style="display:none">
                                     <!-- spotclosesat -->
                                     <select size="1" id="CloseTimeSat" name="AMMON2" style="width: 20; height: 22">
                                         <option  value="-">-</option>
                                         <option value="AM">AM</option>
                                         <option value="PM">PM</option>
                                     </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
+                                </div>
+                            
                                     <!-- spotsun -->
                                     <label for="sunday"  data-localize="sunday">Sunday:</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
+                                
                                     <!-- spotsunopen -->
                                     <select size="1" id="spotopensunfrom" name="D22" style="width: 20; height: 22">
                                         
@@ -743,18 +657,16 @@
                                         <option>23</option>
                                         <option>24</option>
                                     </select>
-                                </td>
-                                <td  id="tdOpenSun" style="display:none">
+                               
+                                <div  id="tdOpenSun" style="display:none">
                                     <!-- spotsunclose -->
                                     <select size="1" id="OpenTimeSun" name="AMMON3" style="width: 20; height: 22">
                                         <option  value="-">-</option>
                                         <option value="AM">AM</option>
                                         <option value="PM">PM</option>
                                     </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td  align="center">
+                                </div>
+                          
                                     <select size="1" id="spotopensunto" name="D23" style="width: 20; height: 22">
                                         <option value="00">00</option>
                                         <option>01</option>
@@ -782,27 +694,20 @@
                                         <option>23</option>
                                         <option>24</option>
                                     </select>
-                                </td>
-                                <td  id="tdCloseSun" style="display:none">
+                               
+                                <div  id="tdCloseSun" style="display:none">
                                     <!-- spotsunclose -->
                                     <select size="1" id="CloseTimeSun" name="AMMON3" style="width: 20; height: 22">
                                         <option  value="-">-</option>
                                         <option value="AM">AM</option>
                                         <option value="PM">PM</option>
                                     </select>
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td colspan="3" >
+                                </div>
+                          
                                     <a data-role="button" id="btnspot" data-transition="fade">
                                         <label for="createspot" data-localize="createspot">Create spot</label>
                                     </a>
-                                </td>
-                                <td>
-                                </td>
-                            </tr>
-                        </table>
+                               
                     
                    <br><br>
                 </div>

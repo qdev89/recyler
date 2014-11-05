@@ -10,25 +10,9 @@
     background: #2489CE;
 }
 
-
-.km-flat .km-view#product-tabstrip .km-content{background:white;}
-
-.km-flat .km-view:not(#product-tabstrip) .km-content
-{     
-    background: url("../images/background_big.jpg") no-repeat !important;
-    background-size: 100% 100% !important; 
- 
-    background-position: center center !important;
-   /* background-size: cover;*/
-    background-color: #FFF;
-    -webkit-touch-callout: none; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-}
-
-.km-flat .km-view:not(#terracycle-tabstrip):not(#niras-tabstrip):not(#product-tabstrip) .km-content{
-padding: 15px;
+.km-flat .km-view:not(#terracycle-tabstrip):not(#niras-tabstrip):not(#product-tabstrip) .km-content
+{
+    padding: 15px;
 }
 
 .text_smaller
@@ -326,217 +310,234 @@ textarea
     display: none;
 }
 
-select#country{width:150px;}
+select#country { width: 150px; }
 
+.km-drawer-button:before, .km-drawer-button:after { content: "\E077"; }
 
-.km-drawer-button:before, .km-drawer-button:after  { content: "\E077"; }
-
-
-.codesOn .i-name {
-  display: none;
+.codesOn .i-name
+{
+    display: none;
 }
-.codesOn .i-code {
-  display: inline;
+.codesOn .i-code
+{
+    display: inline;
 }
-.i-code {
-  display: none;
+.i-code
+{
+    display: none;
 }
 
-#friendsApp body {
-	width: 100%;
-	height: 100%;
-	min-height: 100%;
-	margin: 0 auto;
-	padding:3 3 60px 0;
-	font-family: 'PT Sans', sans-serif;
-	-webkit-text-size-adjust: 100%;
-	float:left;
-	overflow-x:hidden;
-     font-size: 10px;
-      background:url(../images/background_big.jpg) center bottom no-repeat fixed;
-	background-size:cover;
-	background-image: url(../images/background_big.jpg); 
-      background-align: top;
-            background-attachment: fixed;
-            background-position: center bottom;
-            background-size: cover;
-            -webkit-touch-callout: none;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-background-color: #00ff00;    
+#friendsApp body
+{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 3 3 60px 0;
+    font-family: 'PT Sans', sans-serif;
+    -webkit-text-size-adjust: 100%;
+    float: left;
+    overflow-x: hidden;
+    font-size: 10px;
+    background: url(../images/background_big.jpg) center bottom no-repeat fixed;
+    background-size: cover;
+    background-image: url(../images/background_big.jpg); 
      
-     
+    background-attachment: fixed;
+    background-position: center bottom;
+    background-size: cover;
+    -webkit-touch-callout: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-color: #00ff00; 
 }
 
-#friendsApp body .intro {
-	width: 100%;
-	height: 100%;
-	min-height: 100%;
-	margin: 0 auto;
-	padding:3 3 60px 0;
-	font-family: 'PT Sans', sans-serif;
-	-webkit-text-size-adjust: 100%;
-	float:left;
-	overflow-x:hidden;
-     	font-size: 10px;
-    	background:url(images/background_big.jpg) center bottom no-repeat fixed;
-	background-size:cover;
-	background-image: url(images/background_big.jpg); 
-      background-align: top;
-            background-attachment: fixed;
-            background-position: center bottom;
-            background-size: cover;
-            -webkit-touch-callout: none;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-    color: #fffff;
+#friendsApp body .intro
+{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 3 3 60px 0;
+    font-family: 'PT Sans', sans-serif;
+    -webkit-text-size-adjust: 100%;
+    float: left;
+    overflow-x: hidden;
+    font-size: 10px;
+    background: url(images/background_big.jpg) center bottom no-repeat fixed;
+    background-size: cover;
+    background-image: url(images/background_big.jpg); 
+    
+    background-attachment: fixed;
+    background-position: center bottom;
+    background-size: cover;
+    -webkit-touch-callout: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: #ffffff;
 }
 
-
-#map {
+#map
+{
     display: block;
     width: 100%;
     height: 100%;
 }
 
-#map {
+#map
+{
     background: #58B;
 }
 
-#friendsApp .s2 {
-	border: 1 !important;  
-	-webkit-appearance: none;  
-	-moz-appearance: none; 
-	background: #ffffff url(img/demo/select-arrow.png) no-repeat 90% center;
-	width: 100px; 
-	text-indent: 0.01px; 
-	text-overflow: ""; 
-	color: #000000;
-	border-radius: 1px;
-	padding: 5px;
+#friendsApp .s2
+{
+    border: 1 !important; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    background: #ffffff url(img/demo/select-arrow.png) no-repeat 90% center;
+    width: 100px; 
+    text-indent: 0.01px; 
+    text-overflow: ""; 
+    color: #000000;
+    border-radius: 1px;
+    padding: 5px;
 }
 
-#friendsApp.header1 {
-  background: #ffffff;    
-  bgcolor:#006699;   
+#friendsApp.header1
+{
+    background: #ffffff; 
 }
 
-.dropcontainer {
-	position:relative;
-	font-size: 16px;
-	color: #777;
-	} 
+.dropcontainer
+{
+    position: relative;
+    font-size: 16px;
+    color: #777;
+} 
 
-.trigger {
-	color: #777;
-	padding: 10px;
-	font-size: 16px;
-	width: 100%;
-	background: #fff url(../images/select-arrow-open.png) 98% center no-repeat;
-	display: block;
-	border: 1px solid #ccc;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease; 
-	transition: all 0.5s ease;
-      text-decoration: none;
-	}
-
-.trigger:hover {
-	color: #777;
-	background: #f5f5f5 url(../images/select-arrow-open.png) 98% center no-repeat;
-      text-decoration: none;
-	}
-
-.activetrigger {
-	color: #777;
-	padding: 10px;
-	font-size: 16px;
-	width: 100%;
-	background: #ffffff url(../images/select-arrow-close.png) 98% center no-repeat;
-	display: block;
-	border: 1px solid #ccc;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-      text-decoration: none;
-	}
-
-.activetrigger:hover {
-	background: #fffff url(../images/select-arrow-close.png) 98% center no-repeat;
-	color: #777;
-      text-decoration: none;
-	}
-
-.activetrigger:active {
-	background: #ffffff url(../images/select-arrow-close.png) 98% center no-repeat;
-	color: #777;
-     text-decoration: none;
-	}
-
-.dropcontainer ul {
-	font-size: 16px;
-	border: 1px solid #ccc;
-	border-top: none;
-	background: #fff;
-	list-style-type: none;
-	padding: 10px;
-	margin: 0;
-	width: 100%;
-	z-index: 100;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-      text-decoration: none;
-	}
-
-.dropcontainer ul li {
-	padding: 5px;
-	-webkit-transition: all 0.5s ease; 
-	-moz-transition: all 0.5s ease; 
-	-o-transition: all 0.5s ease; 
-	transition: all 0.5s ease;
-      text-decoration: none;
-	}
-
-.dropcontainer ul li:hover {
-	background: #f5f5f5;
-	outline: none;
-      text-decoration: none;
-	}
-
-.dropcontainer ul li:first-child {
-	display: none;
-      text-decoration: none;
-	}
-
-.dropcontainer ul li:last-child {
-	border-bottom: none;
-      text-decoration: none;
-	}
-
-.dropdownhidden {
-	display: none;
-     text-decoration: none;
-	}
-
-.dropdownvisible {
-	height: auto;
-      text-decoration: none;
+.trigger
+{
+    color: #777;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    background: #fff url(../images/select-arrow-open.png) 98% center no-repeat;
+    display: block;
+    border: 1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease; 
+    transition: all 0.5s ease;
+    text-decoration: none;
 }
 
-.turnintodropdown {
-     width:100%;
-      text-decoration: none;
+.trigger:hover
+{
+    color: #777;
+    background: #f5f5f5 url(../images/select-arrow-open.png) 98% center no-repeat;
+    text-decoration: none;
 }
 
+.activetrigger
+{
+    color: #777;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    background: #ffffff url(../images/select-arrow-close.png) 98% center no-repeat;
+    display: block;
+    border: 1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-decoration: none;
+}
 
-.btn {
+.activetrigger:hover
+{
+    background: #fffff url(../images/select-arrow-close.png) 98% center no-repeat;
+    color: #777;
+    text-decoration: none;
+}
+
+.activetrigger:active
+{
+    background: #ffffff url(../images/select-arrow-close.png) 98% center no-repeat;
+    color: #777;
+    text-decoration: none;
+}
+
+.dropcontainer ul
+{
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background: #fff;
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+    z-index: 100;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.dropcontainer ul li
+{
+    padding: 5px;
+    -webkit-transition: all 0.5s ease; 
+    -moz-transition: all 0.5s ease; 
+    -o-transition: all 0.5s ease; 
+    transition: all 0.5s ease;
+    text-decoration: none;
+}
+
+.dropcontainer ul li:hover
+{
+    background: #f5f5f5;
+    outline: none;
+    text-decoration: none;
+}
+
+.dropcontainer ul li:first-child
+{
+    display: none;
+    text-decoration: none;
+}
+
+.dropcontainer ul li:last-child
+{
+    border-bottom: none;
+    text-decoration: none;
+}
+
+.dropdownhidden
+{
+    display: none;
+    text-decoration: none;
+}
+
+.dropdownvisible
+{
+    height: auto;
+    text-decoration: none;
+}
+
+.turnintodropdown
+{
+    width: 100%;
+    text-decoration: none;
+}
+
+.btn
+{
     position: relative;
     margin: 0 -1px;
     padding: .8em 0;
@@ -547,7 +548,8 @@ background-color: #00ff00;
     color: white;
 }
 
-#friendsApp .btn-blue {
+#friendsApp .btn-blue
+{
     position: relative;
     margin: 0 -1px;
     padding: 1.2em 0;
@@ -559,88 +561,93 @@ background-color: #00ff00;
     text-align: center;
 }
 
-.tb1 {
-border: 1px solid #ababab;
-width: 100%;
-background: transparent url('.../images/bg.jpg') no-repeat;
-height:32px;
-padding:4px 8px;
-margin-bottom:0px;
-border-radius: 2px; 
--moz-border-radius: 2px; 
--webkit-border-radius: 2px; 
-text-color: #2387CC;
-background-color: white;
+.tb1
+{
+    border: 1px solid #ababab;
+    width: 100%;
+    background: transparent url('.../images/bg.jpg') no-repeat;
+    height: 32px;
+    padding: 4px 8px;
+    margin-bottom: 0px;
+    border-radius: 2px; 
+    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px; 
+    color: #2387CC;
+    background-color: white;
 } 
 
-.tb1-price {
-border: 1px solid #ababab;
-width: 100%;
-background: transparent url('.../images/bg.jpg') no-repeat;
-height:32px;
-padding:4px 8px;
-margin-bottom:0px;
-border-radius: 2px; 
--moz-border-radius: 2px; 
--webkit-border-radius: 2px; 
-text-color: #2387CC;
-background-color: white;
+.tb1-price
+{
+    border: 1px solid #ababab;
+    width: 100%;
+    background: transparent url('.../images/bg.jpg') no-repeat;
+    height: 32px;
+    padding: 4px 8px;
+    margin-bottom: 0px;
+    border-radius: 2px; 
+    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px; 
+    color: #2387CC;
+    background-color: white;
 } 
 
-.tb1-phone {
-border: 1px solid #ababab;
-width: 200px;
-background: transparent url('.../images/bg.jpg') no-repeat;
-height:35px;
-padding:4px 8px;
-margin-bottom:0px;
-border-radius: 2px; 
--moz-border-radius: 2px; 
--webkit-border-radius: 2px; 
-text-color: #2387CC;
-background-color: white;
+.tb1-phone
+{
+    border: 1px solid #ababab;
+    width: 200px;
+    background: transparent url('.../images/bg.jpg') no-repeat;
+    height: 35px;
+    padding: 4px 8px;
+    margin-bottom: 0px;
+    border-radius: 2px; 
+    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px; 
+    text-color: #2387CC;
+    background-color: white;
 } 
 
-
-#friendsApp .ta10 {
-	background-image:url(.../images/form_bg.jpg);
-	background-repeat:repeat-x;
-	border:1px solid #d1c7ac;
-	width: 98%;
-	height: 150px;
-	color:#333333;
-	padding:3px;
-	margin-right:4px;
-	margin-bottom:8px;
-     border-radius: 2px; 
--moz-border-radius: 2px; 
--webkit-border-radius: 2px; 
-	font-family:tahoma, arial, sans-serif;
-     background-color: white;
-
+#friendsApp .ta10
+{
+    background-image: url(.../images/form_bg.jpg);
+    background-repeat: repeat-x;
+    border: 1px solid #d1c7ac;
+    width: 98%;
+    height: 150px;
+    color: #333333;
+    padding: 3px;
+    margin-right: 4px;
+    margin-bottom: 8px;
+    border-radius: 2px; 
+    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px; 
+    font-family: tahoma, arial, sans-serif;
+    background-color: white;
 }
 
-.tb2 {
-border: 1px solid #ababab;
-width: 96%;
-background: #ffffff;;
-background-image:url('../images/bgform.jpg') no-repeat;
-height:85px;
-padding:4px 8px;
-margin-bottom:0px;
-border-radius: 2px; 
--moz-border-radius: 2px; 
--webkit-border-radius: 2px;  
-text-color: #2387CC;
+.tb2
+{
+    border: 1px solid #ababab;
+    width: 96%;
+    background: #ffffff; ;
+    background-image: url('../images/bgform.jpg') no-repeat;
+    height: 85px;
+    padding: 4px 8px;
+    margin-bottom: 0px;
+    border-radius: 2px; 
+    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px; 
+    text-color: #2387CC;
 } 
 
-.smallcell {
-width: 30%;
+.smallcell
+{
+    width: 30%;
 }
 
-.content {
-width:96%;
-padding:4;
+.content
+{
+    width: 96%;
+    padding: 4;
 }
 
 #spotcountry
@@ -648,7 +655,6 @@ padding:4;
     width: 100%;
     height: 35px !important;
 }
-
 
 #spotstate, #spotype
 {
@@ -662,25 +668,26 @@ padding:4;
     height: 35px !important;
 }
 
-
-#CloseTimeMonFri,#OpenTimeSat,#OpenTimeMonFri, #spotmonfrifrom, #spotmonfrito, #spotopensatfrom, #spotopensatfrom, #spotopensatto, #spotopensunfrom, #CloseTimeSat, #OpenTimeSun, #spotopensunto, #CloseTimeSun, #select-choice-month, #select-choice-day, #select-choice-year   
+#CloseTimeMonFri, #OpenTimeSat, #OpenTimeMonFri, #spotmonfrifrom, #spotmonfrito, #spotopensatfrom, #spotopensatfrom, #spotopensatto, #spotopensunfrom, #CloseTimeSat, #OpenTimeSun, #spotopensunto, #CloseTimeSun, #select-choice-month, #select-choice-day, #select-choice-year   
 {
     width: 130px;
     height: 35px !important;
 }
 
-
-.cf {
+.cf
+{
     zoom: 1;
 }
 
 .cf:before,
-.cf:after {
+.cf:after
+{
     display: table;
     content: '';
 }
 
-.cf:after {
+.cf:after
+{
     clear: both;
 }
 
@@ -703,39 +710,46 @@ padding:4;
 .km-flat li.km-state-active .km-listview-link,
 .km-flat li.km-state-active .km-listview-label,
 .km-flat .km-listview-label input[type=radio]:checked,
-.km-flat .km-listview-label input[type=checkbox]:checked {
+.km-flat .km-listview-label input[type=checkbox]:checked
+{
     background: #3598db;
 }
 
 #friendsApp.km-flat,
 #friendsApp.km-flat .km-navbar,
-#friendsApp.km-flat .km-content {
+#friendsApp.km-flat .km-content
+{
     border: 0 none;
-     background-size: 100%;
-     font-family: "Open Sans", sans-serif;
+    background-size: 100%;
+    font-family: "Open Sans", sans-serif;
 }
 
-#friendsApp .center-block {
+#friendsApp .center-block
+{
     display: block;
     margin-right: auto;
     margin-left: auto;
 }
 
-#friendsApp .hide-text {
+#friendsApp .hide-text
+{
     overflow: hidden;
     text-indent: -999px;
 }
 
-#friendsApp .center-text {
+#friendsApp .center-text
+{
     text-align: center;
 }
 
-.disabled {
+.disabled
+{
     position: relative;
     display: block;
 }
 
-.disabled:before {
+.disabled:before
+{
     position: absolute;
     top: 0;
     right: -1px;
@@ -747,29 +761,35 @@ padding:4;
 
 /* Forms */
 
-::-webkit-input-placeholder {
+::-webkit-input-placeholder
+{
     color: #b6c5c6;
 }
 
-:-moz-placeholder {
+:-moz-placeholder
+{
     color: #b6c5c6;
 }
 
-::-moz-placeholder {
+::-moz-placeholder
+{
     color: #b6c5c6;
 }
 
-:-ms-input-placeholder {
+:-ms-input-placeholder
+{
     color: #b6c5c6;
 }
 
-#friendsApp.km-flat form .km-list > li {
+#friendsApp.km-flat form .km-list > li
+{
     padding: .7em .7em .5em;
     border-color: #eaeced;
 }
 
 #friendsApp.km-flat form .km-listinset > li:first-child,
-#friendsApp.km-flat form .km-listgroupinset .km-list > li:first-child {
+#friendsApp.km-flat form .km-listgroupinset .km-list > li:first-child
+{
     border-width: 0 0 1px;
     border-color: #eaeced;
     -webkit-border-radius: 2px 2px 0 0;
@@ -778,7 +798,8 @@ padding:4;
 }
 
 #friendsApp.km-flat form .km-listinset > li:last-child,
-#friendsApp.km-flat form .km-listgroupinset .km-list > li:last-child {
+#friendsApp.km-flat form .km-listgroupinset .km-list > li:last-child
+{
     border: 0 none;
     -webkit-border-radius: 0 0 2px 2px;
     -moz-border-radius: 0 0 2px 2px;
@@ -790,20 +811,23 @@ padding:4;
 #friendsApp.km-flat .km-list input[type="email"],
 #friendsApp.km-flat .km-list input[type="date"],
 #friendsApp.km-flat .km-list input[type="phonenumber"],
-#friendsApp.km-flat select {
+#friendsApp.km-flat select
+{
     position: static;
     width: 100%;
     height: 30px;
     font-size: 1rem;
 }
 
-#friendsApp.km-flat select {
+#friendsApp.km-flat select
+{
     padding: .4em .2em;
 }
 
 /* Buttons */
 
-#friendsApp .btn {
+#friendsApp .btn
+{
     position: relative;
     margin: 0 -1px;
     padding: .5em 0;
@@ -812,54 +836,64 @@ padding:4;
     font-size: 1.0rem;
 }
 
-#friendsApp .disabled .btn {
+#friendsApp .disabled .btn
+{
     opacity: .35;
 }
 
 #friendsApp .btn-login,
-#friendsApp .signup-view .btn-signup {
+#friendsApp .signup-view .btn-signup
+{
     background-color: #3598db;
 }
 
-#friendsApp .btn-contact {
+#friendsApp .btn-contact
+{
     background-color: #3598db;
-    width:32%;
+    width: 32%;
     padding-left: 10px;
 }
 
-
 #friendsApp .signup-view .btn-signup,
-#friendsApp .btn-delete {
+#friendsApp .btn-delete
+{
     display: block;
     text-align: center;
 }
 
-#friendsApp .btn-delete {
+#friendsApp .btn-delete
+{
     background-color: #e84c3d;
 }
 
-#friendsApp .oauth-item .btn {
+#friendsApp .oauth-item .btn
+{
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 
-#friendsApp .btn-login-fb {
+#friendsApp .btn-login-fb
+{
     background-image: url(../images/icon-facebook.png);
 }
 
-#friendsApp .btn-login-google {
+#friendsApp .btn-login-google
+{
     background-image: url(../images/icon-google.png);
 }
 
-#friendsApp .btn-login-liveid {
+#friendsApp .btn-login-liveid
+{
     background-image: url(../images/icon-liveid.png);
 }
 
-#friendsApp .btn-login-adsf {
+#friendsApp .btn-login-adsf
+{
     background-image: url(../images/icon-adsf.png);
 }
 
-#friendsApp .km-header .nav-button {
+#friendsApp .km-header .nav-button
+{
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -871,17 +905,20 @@ padding:4;
     background-repeat: no-repeat;
 }
 
-#friendsApp .km-header .nav-button-back {
+#friendsApp .km-header .nav-button-back
+{
     background-image: url(../images/icon-arrow_left.png);
     background-position: .65em 50%;
 }
 
-#friendsApp .km-header .nav-button-add {
+#friendsApp .km-header .nav-button-add
+{
     background-image: url(../images/icon-add.png);
 }
 
 #friendsApp .km-header .nav-button-cancel,
-#friendsApp .km-header .nav-button-post {
+#friendsApp .km-header .nav-button-post
+{
     width: auto;
     height: 0em;
     font-size: .85rem;
@@ -890,72 +927,84 @@ padding:4;
 
 /* App Header */
 
-#friendsApp.km-flat.km-on-ios.km-black-translucent-status-bar .km-header {
+#friendsApp.km-flat.km-on-ios.km-black-translucent-status-bar .km-header
+{
     min-height: 0px;
     background-color: #ffffff;
 }
 
-#friendsApp.km-flat .km-header .km-navbar {
+#friendsApp.km-flat .km-header .km-navbar
+{
     min-height: 20px;
-   /* background: transparent;*/
-     height: 50px;
+    /* background: transparent;*/
+    height: 50px;
 }
 
-#friendsApp.km-flat.km-on-ios.km-black-translucent-status-bar .km-header .km-navbar {
+#friendsApp.km-flat.km-on-ios.km-black-translucent-status-bar .km-header .km-navbar
+{
     min-height: 20px;
 }
 
 /*#friendsApp.km-flat .km-header .km-view-title {
-    margin-top: 0em;
-    font-size: 1rem;
+margin-top: 0em;
+font-size: 1rem;
 }*/
 
-#friendsApp.km-flat.km-on-ios.km-black-translucent-status-bar .km-header .km-view-title {
-  margin-top: 0em;
+#friendsApp.km-flat.km-on-ios.km-black-translucent-status-bar .km-header .km-view-title
+{
+    margin-top: 0em;
 }
 
 /* App Footer */
 
-#friendsApp .welcome-scrn .km-footer {
+#friendsApp .welcome-scrn .km-footer
+{
     background-color: transparent;
     color: #fff;
     text-align: center;
 }
 
-#friendsApp .welcome-scrn .km-footer p {
+#friendsApp .welcome-scrn .km-footer p
+{
     font-size: .75rem;
 }
 
 /* Welcome screen */
 
 #friendsApp .app-logo,
-#friendsApp .app-name {
+#friendsApp .app-name
+{
     margin-top: 1.5em;
 }
 
-#friendsApp .app-logo {
+#friendsApp .app-logo
+{
     width: 247px;
     height: 32px;
     background: transparent url(../images/logo-telerik_devcloud.png) no-repeat 0 0;
 }
 
-#friendsApp .app-name {
+#friendsApp .app-name
+{
     margin-bottom: 1.5em;
 }
 
-#friendsApp .app-name small {
+#friendsApp .app-name small
+{
     display: block;
     font-weight: 400;
     font-size: 1.15rem;
 }
 
 #login-form .username,
-#login-form .password {
+#login-form .password
+{
     position: relative;
 }
 
 #login-form .username:before,
-#login-form .password:before {
+#login-form .password:before
+{
     position: absolute;
     top: 50%;
     right: .75em;
@@ -969,103 +1018,122 @@ padding:4;
     content: '';
 }
 
-#login-form .username:before {
+#login-form .username:before
+{
     background-image: url(../images/icon-username.png);
 }
 
-#login-form .password:before {
+#login-form .password:before
+{
     background-image: url(../images/icon-password.png);
 }
 
-#friendsApp .welcome-scrn .group-wrp {
+#friendsApp .welcome-scrn .group-wrp
+{
     margin: -1em 1em 0;
     padding: 0;
     list-style-type: none;
     text-align: center;
 }
 
-#friendsApp .welcome-scrn .group-wrp li {
-  margin: 1.5em 0 0;
+#friendsApp .welcome-scrn .group-wrp li
+{
+    margin: 1.5em 0 0;
 }
 
-#friendsApp .welcome-scrn .group-wrp .btn {
+#friendsApp .welcome-scrn .group-wrp .btn
+{
     display: block;
 }
 
-#friendsApp .welcome-scrn .group-wrp .oauth {
+#friendsApp .welcome-scrn .group-wrp .oauth
+{
     margin-right: -1%;
     margin-left: -1%;
 }
 
-#friendsApp .welcome-scrn .group-wrp .oauth .oauth-item {
+#friendsApp .welcome-scrn .group-wrp .oauth .oauth-item
+{
     float: left;
     margin: 0 1%;
     width: 23%;
 }
 
-#friendsApp .welcome-scrn .group-wrp .oauth .btn {
+#friendsApp .welcome-scrn .group-wrp .oauth .btn
+{
     overflow: hidden;
     height: 45px;
     text-indent: -999px;
 }
 
 #friendsApp .welcome-scrn .group-wrp .oauth .btn span,
-#friendsApp .welcome-scrn .group-wrp .btn-signup span {
+#friendsApp .welcome-scrn .group-wrp .btn-signup span
+{
     font-weight: 500;
     font-size: 1rem;
 }
 
-#friendsApp .welcome-scrn .group-wrp .btn-signup {
+#friendsApp .welcome-scrn .group-wrp .btn-signup
+{
     border: 0 none;
     background-color: transparent;
 }
 
 /* No API Key screen */
 
-#friendsApp .noapikey-scrn p {
+#friendsApp .noapikey-scrn p
+{
     line-height: 1.5;
     color: #e4e4e4;
 }
 
 #friendsApp .noapikey-scrn p strong,
-#friendsApp .noapikey-scrn p span {
+#friendsApp .noapikey-scrn p span
+{
     color: #fff;
 }
 
-#friendsApp .noapikey-scrn p span {
+#friendsApp .noapikey-scrn p span
+{
     font-weight: 600;
 }
 
 /* Signup */
 
-#friendsApp .signup-view .select-wrp {
+#friendsApp .signup-view .select-wrp
+{
     -webkit-border-radius: 0 0 2px 2px;
     -moz-border-radius: 0 0 2px 2px;
     border-radius: 0 0 2px 2px;
 }
 
-#friendsApp.km-flat .signup-view .km-listinset > li:last-child {
+#friendsApp.km-flat .signup-view .km-listinset > li:last-child
+{
     margin: .5em 0 0;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
 }
 
-#friendsApp .txtarea-wrp textarea {
+#friendsApp .txtarea-wrp textarea
+{
     float: none;
     height: 5.5em;
     resize: none;
 }
 
-#friendsApp .signup-view .signup-btn-wrp {
+#friendsApp .signup-view .signup-btn-wrp
+{
     margin: 0 1em;
 }
 
-#friendsApp .signup-view .select-wrp select {
+#friendsApp .signup-view .select-wrp select
+{
     color: #b6c5c6;
 }
 
-#friendsApp .signup-view .select-wrp option:first-child {
+#friendsApp .signup-view .select-wrp option:first-child
+{
     color: #b6c5c6;
 }
 
@@ -1075,12 +1143,14 @@ padding:4;
 #friendsApp .activity-view .km-content,
 #friendsApp .add-activity-view .km-content,
 #friendsApp .add-comment-view .km-content,
-#friendsApp .activities-view .km-listview {
+#friendsApp .activities-view .km-listview
+{
     background-color: #fff;
 }
 
 #friendsApp .activities-view .km-list > li,
-#friendsApp .activity-view .km-list > li {
+#friendsApp .activity-view .km-list > li
+{
     overflow: visible;
     padding: .75em 0;
     border-width: 0 0 1px;
@@ -1091,21 +1161,25 @@ padding:4;
     color: #34495e;
 }
 
-#friendsApp .activity-view .comments-wrp {
+#friendsApp .activity-view .comments-wrp
+{
     margin-top: 1em;
     border-top: 1px solid #eaeced;
 }
 
-#friendsApp .activities-view .km-list > li:first-child {
+#friendsApp .activities-view .km-list > li:first-child
+{
     padding-top: 0;
 }
 
-#friendsApp .user-avatar {
+#friendsApp .user-avatar
+{
     float: left;
     width: 50px;
 }
 
-#friendsApp .user-avatar img {
+#friendsApp .user-avatar img
+{
     width: 50px;
     height: 50px;
     -webkit-border-radius: 25px;
@@ -1113,7 +1187,8 @@ padding:4;
     border-radius: 25px;
 }
 
-#friendsApp .activity-content {
+#friendsApp .activity-content
+{
     position: relative;
     padding-left: 5em;
     font-size: .85rem;
@@ -1122,27 +1197,31 @@ padding:4;
 #friendsApp .activity-content .person-name,
 #friendsApp .add-activity-view .person-name,
 #friendsApp .add-comment-view .person-name,
-#friendsApp .activity-content .time-span {
+#friendsApp .activity-content .time-span
+{
     font-weight: 600;
 }
 
 #friendsApp .add-activity-view .person-name,
 #friendsApp .add-comment-view .person-name,
-#friendsApp .activity-content .person-name {
+#friendsApp .activity-content .person-name
+{
     display: block;
     margin: 0 0 .5em;
     color: #3598db;
     font-size: 1.1rem;
 }
 
-#friendsApp .person-name {
+#friendsApp .person-name
+{
     overflow: hidden;
     width: 70%;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-#friendsApp .activity-content .time-span {
+#friendsApp .activity-content .time-span
+{
     position: absolute;
     top: 5px;
     right: 0;
@@ -1151,53 +1230,63 @@ padding:4;
     font-size: .7rem;
 }
 
-#friendsApp .activity-content .comment-content .time-span {
+#friendsApp .activity-content .comment-content .time-span
+{
     top: 12px;
     font-size: .6rem;
 }
 
-#friendsApp .user-share-txt {
+#friendsApp .user-share-txt
+{
     color: #34495e;
 }
 
-#friendsApp .activity-content .comment-content .user-share-txt {
+#friendsApp .activity-content .comment-content .user-share-txt
+{
     font-size: .75rem;
 }
 
 #friendsApp .activity-view .person-name,
 #friendsApp .add-activity-view .person-name,
-#friendsApp .add-comment-view .person-name {
+#friendsApp .add-comment-view .person-name
+{
     margin: .85em 0 1em;
 }
 
-#friendsApp .activity-view .comment-content .person-name {
+#friendsApp .activity-view .comment-content .person-name
+{
     margin: 0;
     color: #6c7884;
     font-size: .85rem;
 }
 
 #friendsApp .add-activity-view .person-name,
-#friendsApp .add-comment-view .person-name {
+#friendsApp .add-comment-view .person-name
+{
     padding-left: .75em;
 }
 
-#friendsApp .activity-view .picture {
+#friendsApp .activity-view .picture
+{
     margin: 1em 0 0;
 }
 
-#friendsApp .user-share {
+#friendsApp .user-share
+{
     position: relative;
     margin: 2.35em 0 0;
 }
 
-#friendsApp .user-share:before {
+#friendsApp .user-share:before
+{
     position: absolute;
     width: 0;
     height: 0;
     content: '';
 }
 
-#friendsApp .user-share:before {
+#friendsApp .user-share:before
+{
     top: -10px;
     left: 16px;
     border-right: 9px solid transparent;
@@ -1205,7 +1294,8 @@ padding:4;
     border-left: 9px solid transparent;
 }
 
-#friendsApp .user-share textarea {
+#friendsApp .user-share textarea
+{
     float: none;
     margin: 0;
     padding: .75em 1em;
@@ -1215,28 +1305,33 @@ padding:4;
     resize: none;
 }
 
-#friendsApp .activity-view .km-footer {
+#friendsApp .activity-view .km-footer
+{
     padding: 0 1em 1em;
     background: #fff none;
 }
 
 #friendsApp .add-activity-view .km-leftitem,
-#friendsApp .add-comment-view .km-leftitem {
+#friendsApp .add-comment-view .km-leftitem
+{
     left: 1em;
 }
 
 #friendsApp .add-activity-view .km-rightitem,
 #friendsApp .add-comment-view .km-rightitem,
-#friendsApp .activity-view .km-rightitem {
+#friendsApp .activity-view .km-rightitem
+{
     right: 1em;
 }
 
 #friendsApp.km-black-translucent-status-bar .km-navbar .km-leftitem,
-#friendsApp.km-black-translucent-status-bar .km-navbar .km-rightitem {
+#friendsApp.km-black-translucent-status-bar .km-navbar .km-rightitem
+{
     margin-top: .2em;
 }
 
-#friendsApp .k-invalid-msg {
+#friendsApp .k-invalid-msg
+{
     display: none;
     margin: 1rem 0 0;
     padding: 0 1rem;
@@ -1246,234 +1341,302 @@ padding:4;
 /* Retina Images */
 
 @media
-(-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 144dpi) {
+(-webkit-min-device-pixel-ratio: 2) ,
+(min-resolution: 144dpi)
+{
 
-    #friendsApp .app-logo {
+    #friendsApp .app-logo
+    {
         background-image: url(../images/logo-telerik_devcloud@2x.png);
         background-size: 247px 32px;
     }
 
-    #login-form .username:before {
+    #login-form .username:before
+    {
         background-image: url(../images/icon-username@2x.png);
         background-size: 12px 13px;
     }
 
-    #login-form .password:before {
+    #login-form .password:before
+    {
         background-image: url(../images/icon-password@2x.png);
         background-size: 10px 12px;
     }
 
-    #friendsApp .btn-login-fb {
+    #friendsApp .btn-login-fb
+    {
         background-image: url(../images/icon-facebook@2x.png);
         background-size: 11px 18px;
     }
 
-    #friendsApp .btn-login-google {
+    #friendsApp .btn-login-google
+    {
         background-image: url(../images/icon-google@2x.png);
         background-size: 20px 20px;
     }
 
-    #friendsApp .btn-login-liveid {
+    #friendsApp .btn-login-liveid
+    {
         background-image: url(../images/icon-liveid@2x.png);
         background-size: 22px 20px;
     }
 
-    #friendsApp .btn-login-adsf {
+    #friendsApp .btn-login-adsf
+    {
         background-image: url(images/icon-adsf@2x.png);
         background-size: 21px 20px;
     }
 
-    #friendsApp .km-header .nav-button-back {
+    #friendsApp .km-header .nav-button-back
+    {
         background-image: url(../images/icon-arrow_left@2x.png);
         background-size: 9px 20px;
     }
 
-    #friendsApp .km-header .nav-button-add {
+    #friendsApp .km-header .nav-button-add
+    {
         background-image: url(../images/icon-add@2x.png);
         background-size: 23px 23px;
     }
 }
 
+.km-ios #my-drawer .km-content, .km-android #my-drawer .km-content, .km-blackberry #my-drawer .km-content,
+.km-ios #my-drawer .km-list > li, .km-android #my-drawer .km-list > li, .km-blackberry #my-drawer .km-list > li,
+.km-ios #my-drawer .km-listview-link > .km-icon, .km-android #my-drawer .km-listview-link > .km-icon, .km-blackberry #my-drawer .km-listview-link > .km-icon,
+.km-ios #my-drawer .km-list li > .km-icon, .km-android #my-drawer .km-list li > .km-icon, .km-blackberry #my-drawer .km-list li > .km-icon
+{
+    background-color: #4e4e4e;
+    color: #fff;
+}
 
-   .km-ios #my-drawer .km-content, .km-android #my-drawer .km-content, .km-blackberry #my-drawer .km-content,
-      .km-ios #my-drawer .km-list > li, .km-android #my-drawer .km-list > li, .km-blackberry #my-drawer .km-list > li,
-      .km-ios #my-drawer .km-listview-link > .km-icon, .km-android #my-drawer .km-listview-link > .km-icon, .km-blackberry #my-drawer .km-listview-link > .km-icon,
-      .km-ios #my-drawer .km-list li > .km-icon, .km-android #my-drawer .km-list li > .km-icon, .km-blackberry #my-drawer .km-list li > .km-icon
-      {
-        background-color: #4e4e4e;
-        color: #fff;
-      }
+.km-ios #my-drawer .km-group-title,
+.km-blackberry #my-drawer .km-group-title
+{
+    background-color: #6e6e6e;
+    color: #fff;
+}
 
-      .km-ios #my-drawer .km-group-title,
-      .km-blackberry #my-drawer .km-group-title
-      {
-        background-color: #6e6e6e;
-        color: #fff;
-      }
+.km-drawer-button:before, .km-drawer-button:after { content: "\E077"; }
+.km-inbox:before, .km-inbox:after { content: "\E0B0"; }
+.km-sent:before, .km-sent:after { content: "\E0C6"; }
+.km-trash:before, .km-trash:after { content: "\E0C3"; }
+.km-spam:before, .km-spam:after { content: "\E0C5"; }
+.km-star:before, .km-star:after { content: "\E0D7"; }
+.km-settings:before, .km-settings:after { content: "\E0DA"; }
+.km-off:before, .km-off:after { content: "\E0B9"; }
 
-      .km-drawer-button:before, .km-drawer-button:after  { content: "\E077"; }
-      .km-inbox:before, .km-inbox:after { content: "\E0B0"; }
-      .km-sent:before, .km-sent:after { content: "\E0C6"; }
-      .km-trash:before, .km-trash:after { content: "\E0C3"; }
-      .km-spam:before, .km-spam:after { content: "\E0C5"; }
-      .km-star:before, .km-star:after { content: "\E0D7"; }
-      .km-settings:before, .km-settings:after { content: "\E0DA"; }
-      .km-off:before, .km-off:after { content: "\E0B9"; }
+.inboxList
+{
+    font-size: .8em;
+}
 
-      .inboxList
-      {
-        font-size: .8em;
-      }
+.inboxList p,
+.inboxList h2,
+.inboxList h3
+{
+    margin: 5px 2px;
+}
 
-      .inboxList p,
-      .inboxList h2,
-      .inboxList h3
-      {
-        margin: 5px 2px;
-      }
+.inboxList p,
+.inboxList h3
+{
+    color: #777;
+}
 
-      .inboxList p,
-      .inboxList h3
-      {
-        color: #777;
-      }
+.inboxList h3.time
+{
+    color: #369;
+    float: left;
+    margin-right: 10px;
+}
 
-      .inboxList h3.time
-      {
-        color: #369;
-        float: left;
-        margin-right: 10px;
-      }
+#drawer-spam .spam
+{
+    color: darkred;
+    background: currentcolor;
+    display: block;
+    margin: 2em;
+    font-size: 1.4em;
+}
 
-      #drawer-spam .spam
-      {
-        color: darkred;
-        background: currentcolor;
-        display: block;
-        margin: 2em;
-        font-size: 1.4em;
-      }
+#drawer-spam .spam .km-text
+{
+    color: white;
+}
 
-      #drawer-spam .spam .km-text
-      {
-        color: white;
-      }
-
-    .boldText{
-        font-weight:bold;
+.boldText
+{
+    font-weight: bold;
     	
-        padding:.5em .7em;
-    }
+    padding: .5em .7em;
+}
 
+.radio-options
+{
+    border: 1px solid white; 
+    border-radius: 3px;
+}
 
-    .radio-options{
-        border:1px solid white; 
-        border-radius:3px;
-    }
+.radio-options>div { margin: 5px; }
 
-    .radio-options>div{margin:5px;}
+.radio-options input[name="abc"]
+{ 
+    position: absolute;
+    right: 25px;
+}
 
-    .radio-options input[name="abc"]{    
-      position: absolute;
-    	right: 25px;
-    }
+input, textarea, select
+{ 
+    border-radius: 3px;
+    padding: 3px;
+}
 
-    input,textarea,select{    
-        border-radius:3px;
-        padding:3px;
-    }
+#my-drawer .km-content
+{
+    background: #207bb9 !important;
+}
 
+#userpage ul
+{
+    background: white;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
 
+#scrollview-container .photo
+{
+    margin: 0;
+    height: 220px;
+    display: inline-block;
+    -webkit-background-size: auto 100%;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 
-#my-drawer .km-content{
-    background:#3598db !important;
+.km-wp #scrollview-container .photo
+{
+    height: 15em;
+}
 
+.photo1 { background-image: url("../images/avatar.png"); }
+.photo2 { background-image: url("../images/donations.png"); }
+.photo3 { background-image: url("../images/foodwaste.png"); }
+
+#scrollview-container
+{
+    /*margin: 60px 0 1em 0;
+    padding-bottom: 20px;
+    padding-top: 20px;*/
+    background: rgba(0, 0, 0, .1);
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-width: 1px 0;
+    box-shadow: 0 1px 1px rgba(255, 255, 255, .3);
+}
+
+.km-flat #scrollview-container
+{
+    background: transparent;
+    border-width: 0;
+    box-shadow: none;
+}
+
+.km-ios #scrollview-container
+{
+    background: url(../content/shared/images/patterns/pattern1.png);
+    box-shadow: 0 0 2px rgba(255, 255, 255, .5), inset 0 0 7px #000;
+}
+
+#scrollview-container .km-ios .km-content
+{
+    background: #bbb;
+}
+.km-android .km-list .album-set a
+{
+    background-color: #277692;
+}
+.km-ios .km-list .album-set a
+{
+    background-color: #bbb;
+}
+.km-ios #scrollview-container.km-navbar
+{
+    background: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(255, 255, 255, .5)), color-stop(.06, rgba(255, 255, 255, .45)), color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, rgba(255, 255, 255, .15)), color-stop(1, rgba(100, 100, 100, 0))), url(../content/shared/images/patterns/pattern5.png);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, .5), rgba(255, 255, 255, .45) 6%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .15) 50%, rgba(100, 100, 100, 0)), url(../content/shared/images/patterns/pattern5.png);
+}
+.km-ios #scrollview-container .km-navbar .km-button
+{
+    background-color: #000;
+}
+.km-ios #scrollview-home .km-content
+{
+    background: url(../content/shared/images/patterns/pattern6.png);
+    box-shadow: inset 0 0 30px #000;
+}
+
+.km-ios #scrollview-container .km-pages .km-current-page
+{
+    background-color: #ff009c;
+}
+.km-ios #scrollview-container .km-pages
+{
+    padding-top: 18px;
+}
+
+#product-tabstrip .fields div
+{
+    font-weight: bold;
+    padding-left: 10px;
 }
 
 
-#userpage ul{
-    background:white;
-    border:1px solid lightgrey;
-    border-radius:5px;
+.km-flat .km-view .km-content
+{
+    /*background: white !important; */
+    
+    
+     background: url("../images/background_b.jpg") no-repeat !important;
+    background-size: 100% 100% !important; 
+    background-position: center center !important; 
+    background-color: #FFF;
+    -webkit-touch-callout: none; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 
+.km-flat .km-view#welcome .km-content
+{ 
+    background: url("../images/background.jpg") no-repeat !important;
+    background-size: 100% 100% !important; 
+    background-position: center center !important; 
+    background-color: #FFF;
+    -webkit-touch-callout: none; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
 
-    #scrollview-container .photo {
-        margin: 0;
-        height: 220px;
-        display: inline-block;
-        -webkit-background-size: auto 100%;
-        background-size: auto 100%;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
+#my-drawer label, #my-drawer a { color: white !important; }
+#my-drawer .km-listview-link:after { color: white; }
 
-    .km-wp #scrollview-container .photo {
-        height: 15em;
-    }
+.container-div
+{
+    width: 90%;
+    margin: auto;
+}
 
-    .photo1 {background-image: url("../images/avatar.png");}
-    .photo2 {background-image: url("../images/donations.png");}
-    .photo3 {background-image: url("../images/foodwaste.png");}
-   
-
-    #scrollview-container {
-    /*    margin: 60px 0 1em 0;
-        padding-bottom: 20px;
-        padding-top: 20px;*/
-        background: rgba(0,0,0,.1);
-        border: 1px solid rgba(0,0,0,.3);
-        border-width: 1px 0;
-        box-shadow: 0 1px 1px rgba(255,255,255,.3);
-    }
-
-    .km-flat #scrollview-container {
-        background: transparent;
-        border-width: 0;
-        box-shadow: none;
-    }
-
-    .km-ios #scrollview-container {
-        background: url(../content/shared/images/patterns/pattern1.png);
-        box-shadow: 0 0 2px rgba(255,255,255,.5), inset 0 0 7px #000;
-    }
-
-    #scrollview-container .km-ios .km-content {
-        background: #bbb;
-    }
-    .km-android .km-list .album-set a {
-    	background-color: #277692;
-    }
-    .km-ios .km-list .album-set a {
-    	background-color: #bbb;
-    }
-    .km-ios #scrollview-container.km-navbar {
-        background: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(255,255,255,.5)), color-stop(.06, rgba(255,255,255,.45)), color-stop(.5, rgba(255,255,255,.2)), color-stop(.5, rgba(255,255,255,.15)), color-stop(1, rgba(100,100,100,0))), url(../content/shared/images/patterns/pattern5.png);
-        background: -moz-linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,.45) 6%, rgba(255,255,255,.2) 50%, rgba(255,255,255,.15) 50%, rgba(100,100,100,0)), url(../content/shared/images/patterns/pattern5.png);
-	}
-    .km-ios #scrollview-container .km-navbar .km-button
-    {
-        background-color: #000;
-    }
-	.km-ios #scrollview-home .km-content {
-        background: url(../content/shared/images/patterns/pattern6.png);
-        box-shadow: inset 0 0 30px #000;
-	}
-
-	.km-ios #scrollview-container .km-pages .km-current-page {
-		background-color: #ff009c;
-	}
-	.km-ios #scrollview-container .km-pages {
-		padding-top: 18px;
-	}
+.container-div textarea, .container-div input, .container-div select
+{
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px;
+    -webkit-box-shadow: 2px 2px 4px;
+}
 
 
-    #product-tabstrip .fields div{
-        font-weight:bold;
-        padding-left: 10px;
-    }
 
 
 
