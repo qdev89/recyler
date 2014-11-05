@@ -1,57 +1,49 @@
-        <div data-role="view" id="confirm-spot-tabstrip" style="background-color: #f3f3f3;">
-            <div id="head" data-role="header">
-                    <h2>
-                        <label for="titletext_spot" data-localize="titletext_spot">
-                            Please confirm
-                        </label>
-                    </h2>
+<div data-role="view" id="confirm-spot-tabstrip" data-title="Please confirm" style="background-color: #f3f3f3;">
+    <!-- <div id="head" data-role="header">
+    <h2>
+    <label for="titletext_spot" data-localize="titletext_spot">
+    Please confirm
+    </label>
+    </h2>
               
-            </div>
-            <div data-role="content">
-                <div id="LoadingDiv" style="display: none; text-align: center">
-                </div>
-                <div id="Load" style="display: none">
-                    <div style="font-weight: bold">
-                        <label for="wait" data-localize="wait">
-                            Please wait...
+    </div>-->
+    <div data-role="content">
+        <div align="center">
+            <img src="images/earth.png"  alt="earth" width="100%">
+        </div>
+        <table width="100%" cellpadding="16">
+            <tr>
+                <td>
+                    <span class="basictext" id="result_box" lang="en">
+                        <label for="confirmspot" data-localize="confirmspot">
+                            You are about to create a spot in the "recycleworld" universe.<br>
+                            <br>
+                            Please verify that you are the owner of that spot - that ensures that the data is
+                            up to date and right showing. If you are not the owner please contact the person
+                            and make him aware of the recycleworld universe. We thank you for your help.
                         </label>
+                    </span>
+                    <br><br>
+                    <div>
+                        <a data-role="button"  class="btn btn-blue"   data-transition="fade" id="CreateSpot" onclick="CreateSpot();">
+                            <!-- next -->
+                            <label for="owner" data-localize="owner">
+                                Im the owner
+                            </label>
+                        </a>
                     </div>
-                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
-                         padding-top: 5px" />
-                </div>
-                <div>
-                    <ul data-role="listview" data-inset="true" data-theme="b">
-                        <li>
-                            <div align="center">
-                                <img src="images/earth_all.png" width="95%">
-                            </div>
-                            <span class="basictext" id="result_box" lang="en">
-                                <label for="confirmspot" data-localize="confirmspot">
-                                    You are about to create a spot in the "recycleworld" universe.<br>
-                                    <br>
-                                    Please verify that you are the owner of that spot - that ensures that the data is
-                                    up to date and right showing. If you are not the owner please contact the person
-                                    and make him aware of the recycleworld universe. We thank you for your help.
-                                </label>
-                            </span>
-                            <div>
-                                <a data-role="button" data-transition="fade" id="CreateSpot" onclick="CreateSpot();">
-                                    <!-- next -->
-                                    <label for="owner" data-localize="owner">
-                                        Im the owner
-                                    </label>
-                                </a>
-                            </div>
-                            <div>
-                                <a data-role="button" data-transition="fade" id="NotCreateSpot" onclick="NotCreate();">
-                                    <!-- next -->
-                                    <label for="dont" data-localize="dont">
-                                        Not owner - dont create spot
-                                    </label>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>         
-        </div>  
+                    <div>
+                        <br>
+                        <a data-role="button"  class="btn btn-blue"  data-transition="fade" id="NotCreateSpot" onclick="NotCreate();">
+                            <!-- next -->
+                            <label for="dont" data-localize="dont">
+                                Not owner - dont create spot
+                            </label>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div> 

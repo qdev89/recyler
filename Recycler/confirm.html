@@ -1,48 +1,73 @@
-<div data-role="view" id="confirm-tabstrip" style="background-color:#f3f3f3;">
+<div data-role="view" id="confirm-tabstrip" data-title="Nearest food" style="background-color:#f3f3f3;">
 
-    <div id="head" data-role="header" >
-            <h2>
+    <!--  <div id="head" data-role="header" >
+    <h2>
                 
-                <label for="titeltext">Nearest food</label>
-            </h2>
+    <label for="titeltext">Nearest food</label>
+    </h2>
         
-    </div>
+    </div>-->
 
     <div data-role="content">
 
-        <div>
-            <ul data-role="listview" data-inset="true" data-theme="b">
+        <div align="center">
+            <img src="images/earth.png"  alt="earth" width="100%">
+        </div>
+        <table class="content_table">
+            <tr>
+                <td align="left" text-align="left">
 
-                <li>
-                    <div align="center">
-                        <img src="images/earth.png"  alt="earth" width="100%">
-                    </div> Your items are worth x kg. Co2.
-                    The Co2 will be added to your account when your item is picked up. <br><br>
+                    Your items are worth x kg. Co2. The Co2 will be added to your account when your item is picked up. <br><br>
                     Since you have chosen to donate food.
                     You hereby confirm that the food is for humans, and that it is food that is not past its sell-by date. You confirm that it is handled according to all rules from the health department, and you is responsible. Recycleworld can not be taken as responsible in any ways. <br>
-                    <div></div><br>
-                    <p>
-                    <select size="1" name="D1">
-                        <option>5 donation spots closest to you</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="text-align:center">
+                        <span name="spn">Donation spots closest to you</span>
+                    </div>
+                    <div id="NearestPlaces" style="text-align:center">
+                    </div>
+                    <!--  <select size="1" name="D1" id="NearestSpots">
+                    <option value="0">3 donation spots closest to you</option>
+                    </select>-->
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea name="textarea" id="textinput"  class="tb2"  style="text-align:left" >Write message</textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
 
                     <div>
-                        <a data-role="button" data-transition="fade" href="sms" >
-                            <!-- next -->
-                            <label for="sms">Send SMS</label>
+                        <a data-role="button"    class="btn btn-blue" data-transition="fade" id="SendMessage">
+
+                            <span name="spn">
+                                <label for="sendsmsfood"   data-localize="sendsmsfood">Send SMS - online 1 hour later </label>
+                            </span>
                         </a>
                     </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
                     <div>
-                        <a data-role="button" data-transition="fade" href="mystuff.html" >
+                        <a data-role="button"   class="btn btn-blue" data-transition="fade" id="PostNow" data-click="checkConnection">
                             <!-- next -->
-                            <label for="sms">Let others have it.</label>
+                            <span name="spn">
+                                <label for="putonline" data-localize="putonline">Put online now</label>
+                            </span>
                         </a>
                     </div>
-                </li>
-            </ul>
-        </div>
-    </div>         
+                </td>
+            </tr>
+        </table>
+
+    </div>
 </div>

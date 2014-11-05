@@ -1,70 +1,46 @@
 
-        <div data-role="view" id="map-tabstrip" data-init="mapInit" style="background-color: #f3f3f3;">
-            <div id="head" data-role="header" >
-                <div style="text-align: center; font-weight: bold; line-height: 40px;">
-                    <label for="wait" data-localize="titletext_map">
-                        Find on map
-                    </label>
-                </div>
-                <div style="position: absolute; top: 3px; right: 5px;">
-                    <a id="menu" style="text-align: right">
-                        <img src="images/menu_but.png" width="45" height="38" align="right" alt="info">
-                    </a>
-                </div>
-            </div>
-            <div id="LoadingDiv" style="display: none; text-align: center">
-            </div>
-            <div id="Load" style="display: none">
-                <div style="font-weight: bold">
-                    <label for="wait" data-localize="wait">
-                        Please wait...
-                    </label>
-                </div>
-                <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
-                     padding-top: 5px" />
-            </div>
-            <div id="dvBlur">
-                <div id="map_canvas">
-                </div>
-            </div>         
-            <div id="footer" data-role="footer" data-id="foo1" >
-                <div data-role="navbar" data-iconpos="top" >
-                    <ul>
-                        <li>
-                            <a id="prodmap" data-transition="slide" href="#" rel="external" data-icon="custom">
-                              <img src="images/tabicons/products.png" />
-                                    Stuff
-                               
-                            </a>
-                        </li>
-                        <li>
-                            <a id="salemap" data-transition="slide" href="#" rel="external" data-icon="custom">
-                                 <img src="images/tabicons/sale.png" />   
-                                Sale
-                               
-                            </a>
-                        </li>
-                        <li>
-                            <a id="Foodmap" data-transition="slide" href="#" rel="external" data-icon="custom">
-                                 <img src="images/tabicons/food.png" />     Food
-                               
-                            </a>
-                        </li>
-                        <li>
-                            <a id="recmap" data-transition="slide" href="#" rel="external" data-icon="custom"
-                               class="ui-btn-active ui-state-persist">
-                                    <img src="images/tabicons/recycling.png" />  Recycle
-                                
-                            </a>
-                        </li>
-                        <li>
-                            <a id="ecomap" data-transition="slide" href="#" rel="external" data-icon="custom">
-                                    <img src="images/tabicons/eco.png" />  eco
-                               
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                
-            </div>           
-        </div>               
+<div data-role="view" id="map-tabstrip" data-init="mapInit" style="background-color: #f3f3f3;">
+    <script type="text/javascript">
+        var map;
+        
+        $(document).ready(function() {
+            map = new GMaps({
+                                el: '#map',
+                                lat: -12.043333,
+                                lng: -77.028333
+                            });
+            map.addMarker({
+                              lat: -12.043333,
+                              lng: -77.03,
+                              title: 'Lima',
+                              details: {
+                    database_id: 42,
+                    author: 'HPNeo'
+                },
+                              click: function(e) {
+                                  if (console.log)
+                                      console.log(e);
+                                  alert('You clicked in this marker');
+                              },
+                              mouseover: function(e) {
+                                  if (console.log)
+                                      console.log(e);
+                              }
+                          });
+            map.addMarker({
+                              lat: -12.042,
+                              lng: -77.028333,
+                              title: 'Marker with InfoWindow',
+                              infoWindow: {
+                    content: '<p>HTML Content</p>'
+                }
+                          });
+        });
+    </script>
+    
+    <div id="View1" data-role="view" align="center">
+        <div class="map" id="map-with-markers"></div>
+    
+    </div>
+
+</div> 

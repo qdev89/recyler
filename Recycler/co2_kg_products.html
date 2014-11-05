@@ -1,282 +1,251 @@
-        <div data-role="view" id="co2-kg-tabstrip" style="background-color: #f3f3f3;">
-            <div id="head" data-role="header" >
-                    <h2>
-                        <label for="titeltext" data-localize="titletext_materials">
-                            Co2 calculater
-                        </label>
-                    </h2>
+<div data-role="view" id="co2-kg-tabstrip" data-title="Co2 calculator" style="background-color: #f3f3f3;">
+    <!-- <div id="head" data-role="header" >
+    <h2>
+    <label for="titeltext" data-localize="titletext_materials">
+    Co2 calculater
+    </label>
+    </h2>
                 
              
-            </div>
-            <div data-role="content">
-                <div id="LoadingDiv" style="display: none; text-align: center">
-                </div>
-                <div id="Load" style="display: none">
-                    <div style="font-weight: bold">
-                        <label for="wait" data-localize="wait">
-                            Please wait....
+    </div>-->
+    <div data-role="content">
+        <div>
+            <img src="images/weight.png" alt="weight" width="86" height="49" align="right">
+        </div>
+        <table  class="content_table1">
+            <tr>
+                <td width="100%" colspan="2">
+                    <label for="howmany" data-localize="howmany">Materials/How many kg.</label>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material1 -->
+                    <label for="tree" data-localize="tree">Wood</label>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini0" id="slider-mini0"  class="tb1" value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material2 -->
+                    <span name="spn">
+                        <label for="paper" data-localize="paper">
+                            Paper
                         </label>
-                    </div>
-                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
-                         padding-top: 5px" />
-                </div>
-                <ul data-role="listview" data-inset="true" data-theme="b">
-                    <li>
-                        <table width="100%" border="0">
-                            <tr>
-                                <td>
-                                    <img src="images/recycleworld_logo1.png" width="100%">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <h4>
-                                        <!-- materials -->
-                                        <img src="images/weight.png" alt="weight" width="86" height="49" align="right">
-                                        <span name="spn">
-                                            <label for="howmany" data-localize="howmany">
-                                                Materials/How many kg.
-                                            </label>
-                                        </span>
-                                    </h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material1 -->
-                                    <label for="tree" data-localize="tree">
-                                        Tree
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini0" id="slider-mini0" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material2 -->
-                                    <span name="spn">
-                                        <label for="paper" data-localize="paper">
-                                            Paper
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini1" id="slider-mini1" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material3 -->
-                                    <span name="spn">
-                                        <label for="metal" data-localize="metal">
-                                            Metal
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini2" id="slider-mini2" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material4 -->
-                                    <span name="spn">
-                                        <label for="plastic" data-localize="plastic">
-                                            Plastic
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini3" id="slider-mini3" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material5 -->
-                                    <span name="spn">
-                                        <label for="glas" data-localize="glas">
-                                            Glass and cheramic
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini4" id="slider-mini4" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material6 -->
-                                    <span name="spn">
-                                        <label for="clothing" data-localize="clothing">
-                                            Clothing
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini5" id="slider-mini5" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material7 -->
-                                    <span name="spn">
-                                        <label for="tekstiles" data-localize="tekstiles">
-                                            Textiles (carpets etc.)
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini6" id="slider-mini6" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material8 -->
-                                    <span name="spn">
-                                        <label for="leather" data-localize="leather">
-                                            Leather (shoes, bags etc.)
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini7" id="slider-mini7" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material9 -->
-                                    <span name="spn">
-                                        <label for="electric" data-localize="electric">
-                                            Larger electronic (Washing machine etc.)
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini8" id="slider-mini8" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material9 -->
-                                    <span name="spn">
-                                        <label for="Smallerelectric" data-localize="Smallerelectric">
-                                            Smaller Electronic (Cables, lamps)
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini9" id="slider-mini9" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material10 -->
-                                    <span name="spn">
-                                        <label for="communication" data-localize="communication">
-                                            Communication equipment (radio, tv and telephone)*
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini10" id="slider-mini10" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material11 -->
-                                    <span name="spn">
-                                        <label for="office" data-localize="office">
-                                            Office machines and computers*
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini11" id="slider-mini11" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <!-- material12 -->
-                                    <span name="spn">
-                                        <label for="cleaning" data-localize="cleaning">
-                                            Cleaning articles
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <input type="text" name="slider-mini12" id="slider-mini12" value="0" min="0" max="250"
-                                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
-                                    <a data-role="button" onclick="AddMaterialProductCO2();">
-                                        <span name="spn">
-                                            <label for="update" data-localize="update">
-                                                Save
-                                            </label>
-                                        </span>
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <!-- verified -->
-                        <table>
-                            <tr>
-                                <td>
-                                    <span name="spn">
-                                        <label for="verified" data-localize="verified">
-                                            Co2 values and calcultions verified by
-                                        </label>
-                                    </span>
-                                </td>
-                                <td>
-                                    <img src="images/niras.png" align="right" width="131" height="50">
-                                </td>
-                            </tr>
-                        </table>
-                    </li>
-                </ul>
-            </div>        
-        </div>   
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini1" id="slider-mini1"  class="tb1"  value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material3 -->
+                    <span name="spn">
+                        <label for="metal" data-localize="metal">
+                            Metal
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini2" id="slider-mini2"  class="tb1" value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material4 -->
+                    <span name="spn">
+                        <label for="plastic" data-localize="plastic">
+                            Plastic
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini3" id="slider-mini3" class="tb1"  value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material5 -->
+                    <span name="spn">
+                        <label for="glas" data-localize="glas">
+                            Glass and cheramic
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini4" id="slider-mini4"  class="tb1"  value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material6 -->
+                    <span name="spn">
+                        <label for="clothing" data-localize="clothing">
+                            Clothing
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini5" id="slider-mini5" value="0" class="tb1"  min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material7 -->
+                    <span name="spn">
+                        <label for="tekstiles" data-localize="tekstiles">
+                            Textiles (carpets etc.)
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini6" id="slider-mini6"  class="tb1"  value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material8 -->
+                    <span name="spn">
+                        <label for="leather" data-localize="leather">
+                            Leather (shoes, bags etc.)
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini7" id="slider-mini7"  class="tb1" value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material9 -->
+                    <span name="spn">
+                        <label for="electric" data-localize="electric">
+                            Larger electronic (Washing machine etc.)
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini8" id="slider-mini8"  class="tb1" value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material9 -->
+                    <span name="spn">
+                        <label for="Smallerelectric" data-localize="Smallerelectric">
+                            Smaller Electronic (Cables, lamps)
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini9" id="slider-mini9"  class="tb1" value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material10 -->
+                    <span name="spn">
+                        <label for="communication" data-localize="communication">
+                            Communication equipment (radio, tv and telephone)*
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini10" id="slider-mini10"  class="tb1" value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material11 -->
+                    <span name="spn">
+                        <label for="office" data-localize="office">
+                            Office machines and computers*
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini11" id="slider-mini11" value="0"  class="tb1" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <!-- material12 -->
+                    <span name="spn">
+                        <label for="cleaning" data-localize="cleaning">
+                            Cleaning articles
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <input type="text" name="slider-mini12" id="slider-mini12"  class="tb1" value="0" min="0" max="250"
+                           onkeypress="return isNumber(event)" data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" colspan="2">
+                    <a data-role="button"     class="btn btn-blue"   onclick="AddMaterialProductCO2();">
+                        <span name="spn">
+                            <label for="update" data-localize="update">
+                                Save
+                            </label>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td >
+                    <span name="spn">
+                        <label for="verified" data-localize="verified">
+                            Co2 values and calcultions verified by
+                        </label>
+                    </span>
+                </td>
+                <td width="50%">
+                    <img src="images/niras.png" align="right" width="131" height="50">
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div> 

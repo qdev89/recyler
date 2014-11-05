@@ -1,67 +1,62 @@
-        <div data-role="view" id="co2-thanks-tabstrip" data-init="co2thanksInit"  style="background-color: #f3f3f3;">
-            <div id="head" data-role="header" >
-                    <h2>
-                        <!-- titel -->
-                        <span name="spn">
-                            <label for="titletext" data-localize="titletext_thanks">
-                                Your Co2
-                            </label>
-                        </span>
-                    </h2>
+<div data-role="view" id="co2-thanks-tabstrip" data-title="Your Co2" data-init="co2thanksInit"  style="background-color: #f3f3f3;">
+    <!-- <div id="head" data-role="header" >
+    <h2>
+                        
+    <span name="spn">
+    <label for="titletext" data-localize="titletext_thanks">
+    Your Co2
+    </label>
+    </span>
+    </h2>
                 
                
-            </div>
-            <div data-role="content">
-                <ul data-role="listview" data-inset="true" data-theme="b">
-                    <li>
-                        <div align="center">
-                            <img src="images/earth.png" width="100%">
-                        </div>
-                        <!-- saved -->
-                        <label for="saved" data-localize="saved">
-                            Your items are worth
+    </div>-->
+    <div data-role="content">
+        <div align="center">
+            <img src="images/earth.png" width="100%">
+        </div>
+
+        <table width="100%" cellpadding="16">
+            <tr>
+                <td align="left" text-align="left">
+                    <!-- saved -->
+                    <label for="saved" data-localize="saved">
+                        Your items are worth
+                    </label>
+                    <span id="CO2Val">x</span>
+                    <label for="saved1" data-localize="saved1">
+                        kg. Co2.
+                    </label>
+                    <br>
+                    <label for="saved2" data-localize="saved2">
+                        The Co2 will be added to your account when your item is picked up
+                    </label><br>
+                    <br>
+                    <a data-role="button"   class="btn btn-blue"  id="ProceedToDonate">
+                        <span name="spn">
+                            <label for="next" data-localize="next" >
+                                Next
+                            </label>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <span name="spn">
+                        <label for="verified" data-localize="verified">
+                            Co2 values and calcultions verified by
                         </label>
-                        <span id="CO2Val">x</span>
-                        <label for="saved1" data-localize="saved1">
-                            kg. Co2.
-                        </label>
-                        <br>
-                        <label for="saved2" data-localize="saved2">
-                            The Co2 will be added to your account when your item is picked up
-                        </label>
-                    </li>
-                    <li>
-                        <table width="100%">
-                            <tr>
-                                <td>
-                                    <a data-role="button" id="ProceedToDonate">
-                                        <span name="spn">
-                                            <label for="next" data-localize="next">
-                                                Next
-                                            </label>
-                                        </span>
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <table>
-                            <tr>
-                                <td>
-                                    <!-- verified -->
-                                    <span name="spn">
-                                        <label for="verified" data-localize="verified">
-                                            Co2 values and calcultions verified by
-                                        </label>
-                                    </span>
-                                </td>
-                                <td>
-                                    <img src="images/niras.png" align="right" width="131" height="50">
-                                </td>
-                            </tr>
-                        </table>
-                    </li>
-                </ul>
-            </div>          
-        </div> 
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="images/niras.png" align="right" width="131" height="50">
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div> 

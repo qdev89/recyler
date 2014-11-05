@@ -1,71 +1,95 @@
 <div data-role="view" id="setup-twitter-tabstrip" data-title="Social media" style="background-color: #f3f3f3;">
-    
-              <div> <img src="images/facebook-icon.jpg" width="100%" alt="ygg"> </div>
-            <table width="100%" cellpadding="13">
-                            <tr>
-                            <td align="left" text-align="left" colspan="2">
-<div width="100%">
-                                <h3>
-                                    <label for="rules" data-localize="rules">
-                                        Posting rules Facebook</label></h3>
-                     </div>
-                              <div width="100%">
-                        <div style="float: left; width:50%">
-                            <h4>
-                                <label for="postfbgroup" data-localize="fbgroup">
-                                    Post in FB group:</label></h4>
-                        </div>
-                        <div style="float: left; width:50%">
-                          <h4>  <label id="GroupName">
-                            </label></h4>
-                        </div>
-                    </div>
-                    <div id="trchangegroup" style="clear: both; width:100%">
-                        <a data-role="button"   class="btn btn-blue" id="changeGroup">
-                            <!--  gem -->
-                            <label for="getgroups" data-localize="getgroups">
-                                Click here to get all groups</label></a>
-                    </div>
-                    <div id="trFaceBookGroups" style="display: none;clear: both; width:100%">
-                        <select id="ddlGroups" name="groups" value="Groups"> <option selected="selected" value="0" data-localize="selectgroup">
-                                Select a group</option>
-                        </select>
-                    </div>
 
-         </td>
-							</tr>
-							<tr>
-                            <td align="left" text-align="left"> <h4>
-                                <label for="postfb">
-                                    Always on my page</label></h4>
-                    		</td>
-                            <td align="left" text-align="left"><select name="flip-2" id="OnPage" data-role="slider">
-                                <option value="off">Off</option>
-                                <option value="on">On</option>
-                            </select>
-                    &nbsp;</td>
-							</tr>
-							<tr>
-                            <td align="left" text-align="left">
-                    <h4>
-                                <!--  alwaysgroup -->
-                                <label for="alwaysgroup" data-localize="always">
-                                    Always in group</label></h4></td>
-                            <td align="left" text-align="left">
-                    <select name="flip-1" id="InGroup" data-role="slider">
-                                <option value="off">Off</option>
-                                <option value="on">On</option>
-                            </select></td>
-							</tr>
-							<tr>
-                            <td align="left" text-align="left" colspan="2">
-                    <div style="width: 100%; clear: both; height:40px; margin-top:10px">
-                        <a data-role="button"   class="btn btn-blue" id="SaveSettings">
-                            <!--  gem -->
-                            <label for="update" data-localize="update">
-                                Save/Update</label></a>
+    <div>
+        <img src="images/facebook-icon.jpg" width="100%" alt="ygg">
+    </div>
+    <table width="100%" cellpadding="13">
+        <tr>
+            <td align="left" text-align="left" colspan="2">
+                <div width="100%">
+                    <h3>
+                        <label for="rules" data-localize="rules">
+                            Posting rules Facebook
+                        </label>
+                    </h3>
+                </div>
+                <div width="100%">
+                    <div style="float: left; width:50%">
+                        <h4>
+                            <label for="postfbgroup" data-localize="fbgroup">
+                                Post in FB group:
+                            </label>
+                        </h4>
                     </div>
-         </td>
-							</tr>
-        </table> 
+                    <div style="float: left; width:50%">
+                        <h4>
+                            <label id="GroupName">
+                            </label>
+                        </h4>
+                    </div>
+                </div>
+                <div id="trchangegroup" style="clear: both; width:100%">
+                    <a data-role="button"   class="btn btn-blue" id="changeGroup">
+                        <!--  gem -->
+                        <label for="getgroups" data-localize="getgroups">
+                            Click here to get all groups
+                        </label>
+                    </a>
+                </div>
+                <div id="trFaceBookGroups" style="display: none;clear: both; width:100%">
+                    <select id="ddlGroups" name="groups" value="Groups">
+                        <option selected="selected" value="0" data-localize="selectgroup">
+                            Select a group
+                        </option>
+                    </select>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td align="left" text-align="left">
+                <h4>
+                    <label for="postfb">
+                        Always on my page
+                    </label>
+                </h4>
+            </td>
+            <td align="left" text-align="left">
+                <select name="flip-2" id="OnPage" data-role="slider">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td align="left" text-align="left">
+                <h4>
+                    <!--  alwaysgroup -->
+                    <label for="alwaysgroup" data-localize="always">
+                        Always in group
+                    </label>
+                </h4>
+            </td>
+            <td align="left" text-align="left">
+                <select name="flip-1" id="InGroup" data-role="slider">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" text-align="left" colspan="2">
+                <div style="width: 100%; clear: both; height:40px; margin-top:10px">
+                    <a data-role="button"   class="btn btn-blue" id="SaveSettings">
+                        <!--  gem -->
+                        <label for="update" data-localize="update">
+                            Save/Update
+                        </label>
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
 </div>

@@ -1,68 +1,236 @@
-        <div data-role="view" id="product-status-tabstrip" data-init="productStatusInit"  style="background-color: #f3f3f3;">
-            <div id="pageheader3" data-role="header" >
+<div data-role="view" id="product-status-tabstrip" data-title="Product" data-init="productStatusInit"  style="background-color: #f3f3f3;">
+    <!-- <div id="pageheader3" data-role="header" >
                
-                    <h2>
-                        <label for="newowner"   data-localize="titeltext_productstatus">Product</label>
-                    </h2>
+    <h2>
+    <label for="newowner"   data-localize="titeltext_productstatus">Product</label>
+    </h2>
                 
-            </div>
-            <div data-role="content">
-                <div id="LoadingDiv" style="display: none; text-align: center">
-                </div>
-                <div id="Load" style="display: none">
-                    <div style="font-weight:bold">
-                        <label for="wait"   data-localize="wait">Please wait....</label>
-                    </div>
-                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left:40px;padding-top:5px" />
-                </div>
-                <div align="center">
-                    <ul data-role="listview" data-inset="true" data-theme="b">
-                        <li text align="center">
-                            <div id="image_div" align="center" width="100%" text-align="center">
-                                <img id="image" alt="image" style="width: 80%;" src="images/imageplaceholder.png" />
-                                <br>
-                            </div>
-                        </li>
-                        <li>
-                            <span>
-                                <label for="newowner"   data-localize="newowner">Phone number of new owner</label>
+    </div>-->
+    <div data-role="content">
+        <table class="content_table1">
+
+            <tr>
+                <td  colspan="3">
+                    <span>
+                        <label for="newowner" data-localize="newowner">Phone number of new owner</label>
+                    </span><br>
+                    <input class="tb1-phone" type="number" name="newowner" id="newowner" value="" placeholder="" /><br> <br>
+
+                </td>
+            </tr>
+            <tr>
+                <td  colspan="3">
+                    <div>
+                        <a data-role="button" class="btn btn-blue" data-transition="fade" id="CollectMyCO2">
+                            <span name="spn">
+                                <label for="collectco2"   data-localize="collectco2">Collect my Co2</label>
                             </span>
-                            <input type="number" name="newowner" id="newowner" value="" placeholder="" /><br>
-                            <table id="tblGreenSlip" style="display:inline">
-                                <tr>
-                                    <td width="80%">
-                                        <span name="spn">
-                                            <label for="receipt"   data-localize="receipt">Do you want a receipt in mail: </label>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <select name="flip-1" id="flip-1" data-role="slider">
-                                            <option value="yes"  data-localize="yes">yes</option>
-                                            <option value="no"  data-localize="no">no</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </table>
-                        </li>
-                        <li>
-                            <div style="position: relative">
-                                <div>
-                                    <a data-role="button" data-transition="fade" id="CollectMyCO2">
-                                        <span name="spn">
-                                            <label for="collectco2"   data-localize="collectco2">Collect my Co2</label>
-                                        </span>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a data-role="button" data-transition="fade" id="DeleteProduct">
-                                        <span name="spn">
-                                            <label for="delete"   data-localize="delete">Delete product</label>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>              
-        </div>          
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td  colspan="3" >
+
+                    <h3>
+                        <span>
+                            <label for="desciption" data-localize="PRIC">Select</label>
+                        </span>
+                    </h3>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" >
+                    <label for="recycle" data-localize="recycle">Recycle / give away</label>
+                </td>
+                <td align="right">
+                    <input type="radio" class="iradio_flat-blue"  checked>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <label for="trade" data-localize="trade">Trade</label>
+                </td>
+                <td  align="right">
+                    <div>
+                        <input  type="radio" name="icheck" class="iradio_flat-blue" >
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <label for="sell" data-localize="sell">Sell</label>
+                </td>
+                <td align="right">
+                    <input  type="radio"  name="iCheck" class="iradio_flat-blue" >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <label for="lend" data-localize="lend">Lend</label>
+                </td>
+                <td align="right">
+                    <input type="radio" name="iCheck" class="iradio_flat-blue" >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <label for="rent" data-localize="rent">Rent</label>
+                </td>
+                <td  align="right">
+                    <input type="radio" name="iCheck" class="iradio_flat-blue" >
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" >
+                    <label for="service" data-localize="service">Service: I can help others with </label>
+                </td>
+                <td  align="right">
+                    <input type="radio" class="iradio_flat-blue"  value="ON" name="iCheck">
+                </td>
+            </tr>
+
+            <tr>
+
+            <tr>
+                <td colspan="3">
+                    <div style="position: relative">
+                        <div id="maskDiv">
+                        </div>
+
+                        <h3>
+                            <span >
+                                <label for="categories" data-localize="categories">Categories</label>
+                            </span>
+                        </h3>
+                        <div class="ui-field-contain" id="chooseCategory" style="position: relative">
+
+                            <select name="select-custom-24" multiple="multiple"  class="s2" data-native-menu="false" id="select-custom-24" data-iconpos="left">
+
+                            </select>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="3">
+                    <h3>Images</h3>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%" align="left" >
+                    <div id="itemimage" style="width: 100px;">
+                        <img id="image" class="imageshadow" alt="image" style="width: 80%;" src="images/imageplaceholder.png"
+                             onclick="takePicture();" />
+                    </div>
+                </td>
+                <td align="center" >
+                    <div id="itemimage" style="width: 100px;">
+                        <img id="image" class="imageshadow" alt="image" style="width: 80%;" src="images/imageplaceholder.png"
+                             onclick="takePicture();" />
+                    </div>
+                </td>
+                <td  align="right" >
+                    <div id="itemimage" style="width: 100px;">
+                        <img id="image" class="imageshadow" alt="image" style="width: 80%;" src="images/imageplaceholder.png"
+                             onclick="takePicture();" />
+                    </div>
+                </td>
+            </tr>
+
+            <tr id="trvalue" >
+                <td align="left" colspan="4">
+                    <span >
+                        <label for="desciption" data-localize="PRIC">
+                            Price
+                        </label>
+                    </span>
+                    <input type="text" id="SwapValue" class="tb1"  onKeyPress="return SetNumariaclOnly(event);"
+                           data-localize="value" placeholder="0" />
+                </td>
+            </tr>
+
+            <tr id="trvalue" >
+                <td colspan="4">
+                    Lend / Rent price
+                    <input type="text" id="lendprice" class="tb1"  onKeyPress="return SetNumariaclOnly(event);"
+                           data-localize="value" placeholder="0" />
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="3">
+                    <h3>
+                        <label for="desciption" data-localize="givedescription">
+                            Title / headline
+                        </label>
+                    </h3>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <textarea name="description" maxlength="100" class="tb1" id="description"></textarea>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <h3>
+                        <label for="long_description_title" data-localize="long_description_title">
+                            Further information
+                        </label>
+                    </h3>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <textarea name="long_description"  maxlength="200"  class="ta10" id="long_description"></textarea>
+
+                </td>
+            </tr>
+            <tr id="trMightLikelabel">
+                <td colspan="3">
+                    <h3>
+                        <label for="like" data-localize="like">
+                            I might like instead
+                        </label>
+                    </h3>
+                </td>
+            </tr>
+            <tr id="trMightLike">
+                <td colspan="3">
+                    <textarea name="MightLike" class="ta10" maxlength="200"  id="MightLike" ></textarea>
+
+                </td>
+            </tr>
+            <tr>
+                <td  colspan="3">
+                    <div>
+                        <a data-role="button" class="btn btn-blue" data-transition="fade" id="update">
+                            <span name="spn">
+                                <label for="update"   data-localize="update">Update product</label>
+                            </span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td  colspan="3">
+                    <div>
+                        <a data-role="button" class="btn btn-blue" data-transition="fade" id="DeleteProduct">
+                            <span name="spn">
+                                <label for="delete"   data-localize="delete">Delete product</label>
+                            </span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+</div> 

@@ -1,236 +1,203 @@
-        <div data-role="view" id="co2-food-tabstrip" style="background-color: #f3f3f3;">
-            <div id="head" data-role="header" >
-                    <h2>
-                        
-                        <label for="titeltext" data-localize="titletext_food">
-                            Co2 calculater
+<div data-role="view" id="co2-food-tabstrip" data-title="Co2 calculator" style="background-color: #f3f3f3;">
+   <!-- <div id="head" data-role="header" >
+        <h2>
+
+            <label for="titeltext" data-localize="titletext_food">
+                Co2 calculater
+            </label>
+        </h2>
+
+    </div>-->
+    <div data-role="content">
+        <table class="content_table1" >
+            <tr>
+                <td>
+
+                    <img src="images/weight.png" alt="weight" width="86" height="49" align="right">
+                    <!-- items -->
+                    <label for="howmany" data-localize="howmany">
+                        How many kg.
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- fooditem -->
+                    <span name="spn">
+                        <label for="beef" data-localize="beef">
+                            Beef
                         </label>
-                    </h2>
-               
-           
-            </div>
-            <div data-role="content">
-                <div id="LoadingDiv" style="display: none; text-align: center">
-                </div>
-                <div id="Load" style="display: none">
-                    <div style="font-weight: bold">
-                        <label for="wait" data-localize="wait">
-                            Please wait....
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="slider-mini" id="slider-mini0" class="tb1" value="0" min="0" max="250" onkeypress="return isNumber(event)"
+                           data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- fooditem -->
+                    <span name="spn">
+                        <label for="pork" data-localize="pork">
+                            Pork
                         </label>
-                    </div>
-                    <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
-                         padding-top: 5px" />
-                </div>
-                <ul data-role="listview" data-inset="true" data-theme="b">
-                    <li>
-                        <table width="100%" border="0">
-                            <tr>
-                                <td>
-                                    <img src="images/recycleworld_logo1.png" width="100%">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h4>
-                                        <img src="images/weight.png" alt="weight" width="86" height="49" align="right">
-                                        <!-- items -->
-                                        <label for="howmany" data-localize="howmany">
-                                            Items / How many kg.
-                                        </label>
-                                    </h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <!-- fooditem -->
-                                    <span name="spn">
-                                        <label for="beef" data-localize="beef">
-                                            Beef
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="slider-mini" id="slider-mini0" value="0" min="0" max="250" onkeypress="return isNumber(event)"
-                                           data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <!-- fooditem -->
-                                    <span name="spn">
-                                        <label for="pork" data-localize="pork">
-                                            Pork
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="slider-mini" id="slider-mini1" value="0" min="0" max="250" onkeypress="return isNumber(event)"
-                                           data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <!-- fooditem -->
-                                    <span name="spn">
-                                        <label for="Poultry" data-localize="poultry">
-                                            Poultry
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="slider-mini" id="slider-mini2" value="0" min="0" max="250" onkeypress="return isNumber(event)"
-                                           data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <!-- fooditem -->
-                                    <span name="spn">
-                                        <label for="fish" data-localize="fish">
-                                            Fish
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="slider-mini" id="slider-mini3" value="0" min="0" max="250" onkeypress="return isNumber(event)"
-                                           data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <!-- fooditem -->
-                                    <span name="spn">
-                                        <label for="diary" data-localize="diary">
-                                            Dairy products
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="slider-mini" id="slider-mini4" value="0" min="0" max="250" onkeypress="return isNumber(event)"
-                                           data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <!-- fooditem -->
-                                    <span name="spn">
-                                        <label for="fruit" data-localize="fruits">
-                                            Fruit and vegetables
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="slider-mini" id="slider-mini5" value="0" min="0" max="250" onkeypress="return isNumber(event)"
-                                           data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                            <tr>
-                                <td>
-                                    <!-- fooditem -->
-                                    <label for="potatoes" data-localize="Potatoes">
-                                        Potatoes
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="slider-mini" id="slider-mini6" value="0" min="0" max="250" onkeypress="return isNumber(event)"
-                                           data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                            <tr>
-                                <td>
-                                    <!-- fooditem -->
-                                    <label for="bread" data-localize="bread">
-                                        Bread, cookies, pasta, rice
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="slider-mini" id="slider-mini7" value="0" min="0" max="250" onkeypress="return isNumber(event)"
-                                           data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                            <tr>
-                                <td>
-                                    <!-- fooditem -->
-                                    <span name="spn">
-                                        <label for="beaverages" data-localize="drinks">
-                                            Beaverages
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="slider-mini" id="slider-mini8" value="0" min="0" max="250" onkeypress="return isNumber(event)"
-                                           data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <!-- fooditem -->
-                                    <span name="spn">
-                                        <label for="Rice" data-localize="Rice">
-                                            Rice
-                                        </label>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" name="slider-mini" id="slider-mini9" value="0" min="0" max="250" onkeypress="return isNumber(event)"
-                                           data-highlight="true" data-mini="true" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a data-role="button" onclick="AddFoodProductCO2();">
-                                        <span name="spn">
-                                            <label for="ok" data-localize="ok">
-                                                Ok
-                                            </label>
-                                        </span>
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <!-- verified -->
-                        <table>
-                            <tr>
-                                <td>
-                                    <span name="spn">
-                                        <label for="verified" data-localize="verified">
-                                            Co2 values and calcultions verified by
-                                        </label>
-                                    </span>
-                                </td>
-                                <td>
-                                    <img src="images/niras.png" align="right" width="131" height="50">
-                                </td>
-                            </tr>
-                        </table>
-                        <br>
-                        <br>
-                    </li>
-                </ul>
-            </div>         
-        </div>  
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="slider-mini" id="slider-mini1"  class="tb1" value="0" min="0" max="250" onkeypress="return isNumber(event)"
+                           data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- fooditem -->
+                    <span name="spn">
+                        <label for="Poultry" data-localize="poultry">
+                            Poultry
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="slider-mini" id="slider-mini2"  class="tb1" value="0" min="0" max="250" onkeypress="return isNumber(event)"
+                           data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- fooditem -->
+                    <span name="spn">
+                        <label for="fish" data-localize="fish">
+                            Fish
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="slider-mini" id="slider-mini3" value="0" class="tb1"  min="0" max="250" onkeypress="return isNumber(event)"
+                           data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- fooditem -->
+                    <span name="spn">
+                        <label for="diary" data-localize="diary">
+                            Dairy products
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="slider-mini" id="slider-mini4" value="0"  class="tb1" min="0" max="250" onkeypress="return isNumber(event)"
+                           data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- fooditem -->
+                    <span name="spn">
+                        <label for="fruit" data-localize="fruits">
+                            Fruit and vegetables
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="slider-mini" id="slider-mini5" value="0" min="0"  class="tb1" max="250" onkeypress="return isNumber(event)"
+                           data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- fooditem -->
+                    <label for="potatoes" data-localize="Potatoes">
+                        Potatoes
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="slider-mini" id="slider-mini6" value="0" min="0"  class="tb1"  max="250" onkeypress="return isNumber(event)"
+                           data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- fooditem -->
+                    <label for="bread" data-localize="bread">
+                        Bread, cookies, pasta, rice
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="slider-mini" id="slider-mini7" value="0" min="0"  class="tb1"  max="250" onkeypress="return isNumber(event)"
+                           data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- fooditem -->
+                    <span name="spn">
+                        <label for="beaverages" data-localize="drinks">
+                            Beaverages
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="slider-mini" id="slider-mini8" value="0"  class="tb1" min="0" max="250" onkeypress="return isNumber(event)"
+                           data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- fooditem -->
+                    <span name="spn">
+                        <label for="Rice" data-localize="Rice">
+                            Rice
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="slider-mini" id="slider-mini9" value="0" min="0"  class="tb1"  max="250" onkeypress="return isNumber(event)"
+                           data-highlight="true" data-mini="true" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a data-role="button"  class="btn btn-blue" onclick="AddFoodProductCO2();">
+                        <label for="ok" data-localize="ok">Ok</label>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span name="spn">
+                        <label for="verified" data-localize="verified">
+                            Co2 values and calcultions verified by
+                        </label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="images/niras.png" align="right" width="131" height="50">
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div> 
