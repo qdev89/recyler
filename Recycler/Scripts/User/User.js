@@ -37,7 +37,7 @@ var user = {
         $('#LoadingDiv,#Load').ajaxStart(function () { $('#LoadingDiv,#Load').show(); });
         $('#LoadingDiv,#Load').ajaxComplete(function () { $('#LoadingDiv,#Load').hide(); });
 
-        $.ajax({
+       /* $.ajax({
             type: "POST",
             url: URLFormed,
             dataType: 'json',
@@ -67,13 +67,13 @@ var user = {
                 alert('Please try again.');
             }
         });
-
+*/
     },
 
     CreateUser: function () {
         $.support.cors = true;
         var data = '{"UserID": "' + user.UserID + '",' +
-                   '"RoleID":"' + user.RoleID + '",' +
+                   '"RoleID":"' + user.UserRole + '",' +
                    '"Username":"' + user.Username + '",' +
                    '"Password":"' + user.Password + '",' +
                    '"Email":"' + user.Email + '",' +
@@ -102,7 +102,7 @@ var user = {
         $('#LoadingDiv,#Load').ajaxStart(function () { $('#LoadingDiv,#Load').show(); });
         $('#LoadingDiv,#Load').ajaxComplete(function () { $('#LoadingDiv,#Load').hide(); });
 
-        $.ajax({
+       /* $.ajax({
             type: "POST",
             url: URLFormed,
             dataType: 'json',
@@ -121,7 +121,7 @@ var user = {
                 console.log(xhr);
                 //navigator.notification.alert('Please try again.', '', 'Recycle World', 'OK');
             }
-        });
+        });*/
 
 
     },
@@ -399,7 +399,7 @@ var user = {
     },
 
     GetMembership: function () {       
-        $.support.cors = true;
+       /* $.support.cors = true;
         var OptionStr = '';
         var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetMemberships;
 
@@ -422,11 +422,11 @@ var user = {
                 //alert(data);
                 return false;
             }
-        });
+        });*/
     },
 
     GetLanguage: function () {       
-        $.support.cors = true;
+      /*  $.support.cors = true;
         var OptionStr = '';
         var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetLanguages;
 
@@ -450,7 +450,7 @@ var user = {
                 //alert(data);
                 return false;
             }
-        });
+        });*/
 
     },
     GetRoles: function () {       
@@ -851,7 +851,7 @@ var user = {
             return;
         }
 
-        $.support.cors = true;
+       /* $.support.cors = true;
         var OptionStr = '';
         var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._EmailLanguage;
 
@@ -909,7 +909,7 @@ var user = {
                 user.LanguageMailSent = false;
                 return false;
             }
-        });
+        });*/
     },
 
     SubscriptionPayment: function () {        
@@ -935,7 +935,7 @@ var user = {
     },
 
     OnInitFailure: function (result) {
-        user.RoleID = "1";
+        user.UserRole = "1";
         user.MemberShipID = '';
         user.SubscriptionPaid = false;
         alert("Payment Init ERROR: \r\n" + result);
@@ -960,7 +960,7 @@ var user = {
                 }
                 user.SubscriptionPaid = true;
                 user.MemberShipID = '1';
-                localStorage.SubscriptionPaid = "Paid_" + user.MemberShipID + "_" + user.RoleID;
+                localStorage.SubscriptionPaid = "Paid_" + user.MemberShipID + "_" + user.UserRole;
                 user.CreateUser();
                 break;
             case "CANCELLED" || "cancelled":
@@ -978,7 +978,7 @@ var user = {
                         alert(Language.Spanish.Pcancel);
                         break;
                 }
-                user.RoleID = "1";
+                user.UserRole = "1";
                 user.MemberShipID = '';
                 user.SubscriptionPaid = false;
                 break;
@@ -997,7 +997,7 @@ var user = {
                         alert(Language.Spanish.Prefund);
                         break;
                 }
-                user.RoleID = "1";
+                user.UserRole = "1";
                 user.MemberShipID = '';
                 user.SubscriptionPaid = false;
                 break;
@@ -1016,7 +1016,7 @@ var user = {
                         alert(Language.Spanish.Pexpire);
                         break;
                 }
-                user.RoleID = "1";
+                user.UserRole = "1";
                 user.MemberShipID = '';
                 user.SubscriptionPaid = false;
                 break;
@@ -1024,7 +1024,7 @@ var user = {
     },
 
     OnPaymentFailure: function (result) {
-        user.RoleID = "1";
+        user.UserRole = "1";
         user.MemberShipID = '';
         user.SubscriptionPaid = false;
         switch (localStorage.Language) {
@@ -1053,9 +1053,9 @@ $(document).ready(function () {
         User = $.parseJSON(localStorage.User);
         user.UserID = User.UserID;
         if (array[2] == '1')
-            user.RoleID = '1';
+            user.UserRole = '1';
         else
-            user.RoleID = '2';
+            user.UserRole = '2';
         user.Username = User.UserName;
         user.Password = User.Password;
         user.Email = User.EmailID;
@@ -1128,7 +1128,7 @@ $(document).ready(function () {
             if (user.UserID == null || user.UserID == "") {
                 user.UserID = '0';
             }
-            user.RoleID = $("#role option:selected").val();
+            user.UserRole = $("#role option:selected").val();
             user.Username = $("#username_fb").val();
             user.Password = $("#password_fb").val();
             user.Email = $("#email").val();
@@ -1180,7 +1180,7 @@ $(document).ready(function () {
                 }
             }
             
-            if (user.RoleID == "2") {
+            if (user.UserRole == "2") {
                 $('#Save').removeAttr('disabled');
                 if (user.MemberShipID == 'null' || user.MemberShipID == '' || user.MemberShipID == null) {
                     

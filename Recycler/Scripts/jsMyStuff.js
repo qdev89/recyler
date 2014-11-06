@@ -3,12 +3,12 @@ var User;
 function myStuffInit(){
     //changeLanguage(localStorage.Language);
 
-    var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
+   // var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
     //$("[data-localize]").localize("Recycle", opts);
 
     if(!isLogged())return;
 
-    if (User.RoleID == "3") {
+    if (User.UserRole == "3") {
         var message = '';
         switch (localStorage.Language) {
             case "1":
@@ -47,7 +47,7 @@ function myStuffInit(){
 
 function GetMyStuffItems() {
 
-    jQuery.support.cors = true;
+    /*jQuery.support.cors = true;
     var Parameters = User.UserID;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._GetMyStuff + '/' + Parameters;
 
@@ -111,7 +111,7 @@ function GetMyStuffItems() {
             }
 
         }
-    });
+    });*/
 
 }
 

@@ -136,7 +136,7 @@ function RemoveActiveFromFriendZone(ID) {
     //$.mobile.showPageLoadingMsg("b", "please wait...");
     array = ID.split('_');
   //  alert(array[0] + ', ' + array[1]);
-    jQuery.support.cors = true;
+   /* jQuery.support.cors = true;
     var Data = '{ "UserID": "' + array[0] + '" ,"FriendID":"' + array[1] + '"}';
 
     var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._RemoveFromActiveFriendZone;
@@ -178,7 +178,7 @@ function RemoveActiveFromFriendZone(ID) {
 
 
         }
-    });
+    });*/
 
 }
 
@@ -191,7 +191,7 @@ function RemoveFromFriendZone(PhoneNumber, Name ,FaceBookID) {
     //$.mobile.loadingMessageTextVisible = true;
 
     //$.mobile.showPageLoadingMsg("b", "please wait...");
-    jQuery.support.cors = true;
+   /* jQuery.support.cors = true;
     var Data = '{ "UserID": "' + User.UserID + '" ,"Friend": { "Name":"' + Name + '","Phonenumber" : "' + PhoneNumber + '" , "FaceBookID":"' + FaceBookID + '"}}';
 
     
@@ -234,7 +234,7 @@ function RemoveFromFriendZone(PhoneNumber, Name ,FaceBookID) {
 
 
         }
-    });
+    });*/
 
     //$.mobile.hidePageLoadingMsg();
 }
@@ -255,9 +255,9 @@ function AddToFriendZone(obj, PhoneNumber, Name, FaceBookID) {
 
 
 
-    if (User.RoleID == "1") {
+    if (User.UserRole == "1") {
 
-        jQuery.support.cors = true;
+      /*  jQuery.support.cors = true;
         var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetTotalChanceLeftForFriendZone + '/' + User.UserID;
 
 
@@ -280,7 +280,7 @@ function AddToFriendZone(obj, PhoneNumber, Name, FaceBookID) {
 
 
             }
-        });
+        });*/
     }
 
     //================================================================================================================================================================
@@ -316,7 +316,7 @@ function AddToFriendZone(obj, PhoneNumber, Name, FaceBookID) {
 
                 //$.mobile.showPageLoadingMsg("b", "please wait...");
 
-                jQuery.support.cors = true;
+              /*  jQuery.support.cors = true;
                 var Data = '{ "UserID": "' + User.UserID + '" ,"Friend": { "Name":"' + Name + '","Phonenumber" : "' + PhoneNumber + '" , "FaceBookID" : "' + FaceBookID + '"} }';
                 var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._AddToFriendZone;
 
@@ -356,7 +356,7 @@ function AddToFriendZone(obj, PhoneNumber, Name, FaceBookID) {
 
 
                     }
-                });
+                });*/
             }
         });
     }
@@ -395,7 +395,7 @@ function AddToFriendZone(obj, PhoneNumber, Name, FaceBookID) {
         if (FaceBookID == 'undefined' || FaceBookID == undefined)
             FaceBookID = '';
 
-        jQuery.support.cors = true;
+       /* jQuery.support.cors = true;
         var Data = '{ "UserID": "' + User.UserID + '" ,"Friend": { "Name":"' + Name + '","Phonenumber" : "' + PhoneNumber + '" , "FaceBookID" : "' + FaceBookID + '"} }';
         var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._AddToFriendZone;
 
@@ -452,7 +452,7 @@ function AddToFriendZone(obj, PhoneNumber, Name, FaceBookID) {
 
             }
         });
-
+*/
     }
 
 }
@@ -465,7 +465,7 @@ function AddToActiveFriendZone(ID) {
     //$.mobile.showPageLoadingMsg("b", "please wait...");
     array = ID.split('_');
     //alert(array[0] + ', ' + array[1]);
-    jQuery.support.cors = true;
+   /* jQuery.support.cors = true;
     var Data = '{ "UserID": "' + array[0] + '" ,"FriendID":"' + array[1] + '"}';
     var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._AddToActiveFriendZone;
 
@@ -506,7 +506,7 @@ function AddToActiveFriendZone(ID) {
 
 
         }
-    });
+    });*/
 }
 
 
@@ -535,7 +535,7 @@ function onContactSuccess(contacts) {//alert(contacts.length);
 
    
 
-    jQuery.support.cors = true;
+   /* jQuery.support.cors = true;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetAllFriendsSyncList + '/' + User.UserID;
 
 
@@ -673,7 +673,7 @@ function onContactSuccess(contacts) {//alert(contacts.length);
 
 
         }
-    });
+    });*/
 
   
 
@@ -691,7 +691,7 @@ function GetAllActiveFriends(SearchText) {
     //$.mobile.showPageLoadingMsg("b", "please wait...");
 
 
-    var Data = '{"SearchText":"' + SearchText + '","UserID" :"' + User.UserID + '"}';
+   /* var Data = '{"SearchText":"' + SearchText + '","UserID" :"' + User.UserID + '"}';
 
     jQuery.support.cors = true;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetAllUsers;
@@ -770,7 +770,7 @@ function GetAllActiveFriends(SearchText) {
 
 
         }
-    });
+    });*/
     //$.mobile.hidePageLoadingMsg();
     return false;
 }
@@ -790,7 +790,7 @@ function GetAllFaceBookFriends(SearchText) {
 
     //$.mobile.showPageLoadingMsg("b", "please wait...");
 
-    jQuery.support.cors = true;
+    /*jQuery.support.cors = true;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetAllFaceBookFriends + '/' + User.UserID;
 
 
@@ -965,7 +965,7 @@ function GetAllFaceBookFriends(SearchText) {
 
 
         }
-    });
+    });*/
 }
 
 

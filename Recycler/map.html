@@ -1,11 +1,11 @@
 
-<div data-role="view" id="map-tabstrip" data-init="mapInit" style="background-color: #f3f3f3;">
-    <script type="text/javascript">
+<div data-role="view" id="map-tabstrip" data-title="Map" data-init="mapInit" style="background-color: #f3f3f3;">
+   <!--<script type="text/javascript">
         var map;
         
         $(document).ready(function() {
             map = new GMaps({
-                                el: '#map',
+                                el: '#map-with-markers',
                                 lat: -12.043333,
                                 lng: -77.028333
                             });
@@ -35,12 +35,31 @@
                     content: '<p>HTML Content</p>'
                 }
                           });
+            
+            $("#map-with-markers").height($("#map-tabstrip .km-content").first().height())
         });
-    </script>
+    </script>-->
+   
+  <!--  <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: -34.397, lng: 150.644},
+          zoom: 8
+        };
+          console.log(document.getElementById('map-with-markers'))
+        var map = new google.maps.Map(document.getElementById('map-with-markers'),
+            mapOptions);
+          console.log(map)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>-->
     
-    <div id="View1" data-role="view" align="center">
-        <div class="map" id="map-with-markers"></div>
+        <div class="map" style="width:100%;" id="map-with-markers"></div>
     
-    </div>
-
+   
+<style>
+    #map-with-markers{
+        width:100% !important;
+   }
+</style>
 </div> 

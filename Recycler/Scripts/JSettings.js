@@ -10,7 +10,7 @@ $(document).ready(function () {
     else {
         User = $.parseJSON(localStorage.User);*/
 
-        //        if (User.RoleID == "2") {
+        //        if (User.UserRole == "2") {
 
         //            if (localStorage.SubscriptionInstallPaid != undefined && localStorage.SubscriptionInstallPaid != null) {
         //                UpdateUser(true);
@@ -106,7 +106,7 @@ $(document).ready(function () {
     });
     $('#Mystuff').click(function () {
 
-        if (User.RoleID == "3") {
+        if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to watch my stuff.Do you want to register now")) {
                 localStorage.User = null;
                app.application.navigate("signup_login.html");
@@ -122,7 +122,7 @@ $(document).ready(function () {
     });
     $('#MySpots').click(function () {
 
-        if (User.RoleID == "3") {
+        if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to watch my spots.Do you want to register now")) {
                 localStorage.User = null;
                 app.application.navigate("signup_login.html");
@@ -143,7 +143,7 @@ $(document).ready(function () {
     $('#invite').click(function () {
         //alert('Coming soon');
         //return;
-        if (User.RoleID == "3") {
+        if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to invite your friends.Do you want to register now")) {
                 localStorage.User = null;
                 app.application.navigate("signup_login.html");
@@ -166,7 +166,7 @@ $(document).ready(function () {
 
     });
     $('#BasicSettings').click(function () {
-        if (User.RoleID == "3") {
+        if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to update settings.Do you want to register now")) {
                 localStorage.User = null;
                app.application.navigate("signup_login.html");
@@ -181,7 +181,7 @@ $(document).ready(function () {
     });
     $('#FacebookSettings').click(function () {
 
-        if (User.RoleID == "3") {
+        if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to use this functionality.Do you want to register now")) {
                 localStorage.User = null;
                app.application.navigate("signup_login.html");
@@ -351,7 +351,7 @@ function UpdateUser(Paid) {
     if (Paid == false)
         data += '"RoleID":"1",';
     else
-        data += '"RoleID":"' + User.RoleID + '",';
+        data += '"RoleID":"' + User.UserRole + '",';
         data += '"Username":"' + User.UserName + '",' +
                    '"Password":"' + User.Password + '",' +
                    '"Email":"' + User.EmailID + '",' +
@@ -385,7 +385,7 @@ function UpdateUser(Paid) {
     $('#LoadingDiv,#Load').ajaxStart(function () { $('#LoadingDiv,#Load').show(); });
     $('#LoadingDiv,#Load').ajaxComplete(function () { $('#LoadingDiv,#Load').hide(); });
 
-    $.ajax({
+   /* $.ajax({
         type: "POST",
         url: URLFormed,
         dataType: 'json',
@@ -398,18 +398,18 @@ function UpdateUser(Paid) {
                 localStorage.User = JSON.stringify(result);
                 window.localStorage.removeItem('SubscriptionInstallPaid');
                 alert('Profile updated successfully.');
-           /* }
+           }
             else {
                 localStorage.User = JSON.stringify(result);
                 window.localStorage.removeItem('SubscriptionInstallPaid');
                 alert('Profile updated successfully.');
-            }*/
+            }
 
         },
         error: function (xhr, request, status, error) {
             console.log(xhr);
             alert('Please try again.');
         }
-    });
+    });*/
 
 }

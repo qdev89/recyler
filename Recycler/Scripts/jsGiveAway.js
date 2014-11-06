@@ -21,7 +21,7 @@ GiveProduct.Product = {
   function saveItem() {
              
                 if(User==undefined) return;
-                if (User.RoleID == "3") {
+                if (User.UserRole == "3") {
                     var message = '';
                     switch (localStorage.Language) {
                         case "1":
@@ -488,7 +488,7 @@ data.create({ 'UserID' : Data.UserID,"Name": Data.name, "Description" : Data.lon
                  /*   localStorage.PostedProduct = data.ProductID;*/
                     window.localStorage.removeItem('CacheItem');
 
-                    if (User.RoleID == "1") {
+                    if (User.UserRole == "1") {
                         app.application.navigate("Terra.html");
                     }
                     else {
@@ -538,10 +538,10 @@ data.create({ 'UserID' : Data.UserID,"Name": Data.name, "Description" : Data.lon
                     localStorage.PostedProduct = data.ProductID;
                     window.localStorage.removeItem('CacheItem');
 
-                    if (User.RoleID == "1") {
+                    if (User.UserRole == "1") {
                         app.application.navigate("Terra.html");
                     }
-                    else if (User.RoleID == "2") {
+                    else if (User.UserRole == "2") {
                         app.application.navigate("thanks.html");
                     }
                 }
@@ -806,7 +806,7 @@ function OnPaymentFailure(result) {
                     $('#select-custom-24').val(Item.GiveAwayProductCategories);
                         
                 if (Item.GiveAwayPrice != undefined && Item.GiveAwayPrice != '') {
-                    if (User.RoleID == "2" || User.RoleID == "3") {
+                    if (User.UserRole == "2" || User.UserRole == "3") {
                         $('#SwapValue').val(Item.GiveAwayPrice);
                     } else {
                         $('#SwapValue').val(0);

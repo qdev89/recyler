@@ -18,7 +18,7 @@ function getUrlVars() {
 
 function FindNearestPlaces(_CurrentLocation) {
 
-    jQuery.support.cors = true;
+   /* jQuery.support.cors = true;
     var Data = '{"Latitude":"' + _CurrentLocation.Latitude + '","Longitude":"' + _CurrentLocation.Longitude + '"}';
 
 
@@ -100,13 +100,13 @@ function FindNearestPlaces(_CurrentLocation) {
 
 
         }
-    });
+    });*/
 }
 
 
 
 function PostNow(Action) {
-    jQuery.support.cors = true;
+    /*jQuery.support.cors = true;
 
     if (localStorage.User == null || localStorage.User == undefined) {
        app.application.navigate('signup_login.html');
@@ -172,10 +172,10 @@ function PostNow(Action) {
                         window.localStorage.removeItem("PostProductData");
                         localStorage.PostedProduct = data.ProductID;
 
-                        if (User.RoleID == "1") {
+                        if (User.UserRole == "1") {
                            app.application.navigate("Terra.html");
                         }
-                        else if (User.RoleID == "2") {
+                        else if (User.UserRole == "2") {
                            app.application.navigate("thanks.html");
                         }
                        
@@ -199,10 +199,10 @@ function PostNow(Action) {
                         ProductData = '';
                         localStorage.PostedProduct = data.ProductID;
 
-                        if (User.RoleID == "1") {
+                        if (User.UserRole == "1") {
                            app.application.navigate("Terra.html");
                         }
-                        else if (User.RoleID == "2") {
+                        else if (User.UserRole == "2") {
                             app.application.navigate("thanks.html");
                         }
                        
@@ -245,7 +245,7 @@ function PostNow(Action) {
             }
 
         }
-    });
+    });*/
 
 }
 

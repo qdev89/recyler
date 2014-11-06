@@ -30,7 +30,10 @@ document.addEventListener("backbutton", BackButton, true);
 
 function navigateFromDrawer(view){
     
-    if(localStorage.User==undefined) return false;
+    if(localStorage.User==undefined || localStorage.User==null){
+        alert("You should login first, in order to browse the application!")
+        return false;
+        }
     
     app.application.navigate(view);
     
@@ -91,7 +94,7 @@ function SendMail(Name, Subject, Comments, MailTo) {
         $('#LoadingDiv,#Load').hide();
     });
                 
-    $.ajax({
+    /*$.ajax({
                type: "POST",
                url: URLFormed,
                dataType: 'json',
@@ -108,7 +111,7 @@ function SendMail(Name, Subject, Comments, MailTo) {
                error: function (xhr) {
                    alert('error');
                }
-           });
+           });*/
 }
 
 function getLanguageResources() {
@@ -327,7 +330,7 @@ function CreateSpot() {
             $('#LoadingDiv,#Load').hide();
         });
             
-        var URLFormed = Service.dataServiceURL + Service.ServiceName._SpotService + '/' + Service.ServiceMethods._CreateSpot;
+     /*   var URLFormed = Service.dataServiceURL + Service.ServiceName._SpotService + '/' + Service.ServiceMethods._CreateSpot;
         $.support.cors = true;
         $.ajax({
                    type: "POST",
@@ -409,7 +412,7 @@ function CreateSpot() {
                                break;
                        }
                    }
-               });
+               });*/
     } else
         app.application.navigate("createspot.html");
 }
@@ -436,7 +439,7 @@ function RecordTransaction(ID) {
         $('#LoadingDiv,#Load').hide();
     });
             
-    var Data = '{"RecieverID":"' + User.UserID + '","OwnerID":"' + localStorage.OwnerID + '","ProductID":"' + ID + '"}';
+   /* var Data = '{"RecieverID":"' + User.UserID + '","OwnerID":"' + localStorage.OwnerID + '","ProductID":"' + ID + '"}';
     var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._RecordTransaction;
             
     $.ajax({
@@ -530,13 +533,13 @@ function RecordTransaction(ID) {
                            break;
                    }
                }
-           });
+           });*/
 }
             
 //===================================================================== OWNER =============================================================
             
 function GetProductOwner(ID) {
-    jQuery.support.cors = true;
+   /* jQuery.support.cors = true;
     var Parameters = ID;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetProductOwner + '/' + Parameters;
             
@@ -594,7 +597,7 @@ function GetProductOwner(ID) {
                            break;
                    }
                }
-           });
+           });*/
 }
 
 
@@ -697,7 +700,7 @@ function signupLogin() {
     if (localStorage.User != null && localStorage.User != "null" && localStorage.User != undefined && localStorage.User != "") {
         var User = $.parseJSON(localStorage.User);
             
-        if (User.RoleID == "3") {
+        if (User.UserRole == "3") {
             return false;
         }
             
@@ -1380,7 +1383,7 @@ function OnPaymentFailure(result) {
 }
             
 function UpdateEarthHeartData() {
-    var Type = 'Donation';
+   /* var Type = 'Donation';
     var DonationAmount = AmountToDenote;
     var Transactions = 0;
     var FriendRecommendation = 0;
@@ -1418,21 +1421,21 @@ function UpdateEarthHeartData() {
                            window.localStorage.removeItem("IsNavigated");
                            app.application.navigate("mystuff.html");
                        }
-                       /*  } else {
+                         } else {
                        if (localStorage.IsNavigated == undefined || localStorage.IsNavigated == null) {
                        app.application.navigate("settings.html");
                        } else {
                        window.localStorage.removeItem("IsNavigated");
                        app.application.navigate("mystuff.html");
                        }
-                       }*/
+                       }
                    }
                },
                error: function (xhr) {
                    console.log(xhr);
                    alert('Please try again.');
                }
-           });
+           });*/
 }
 
 function takePictureSpot() {

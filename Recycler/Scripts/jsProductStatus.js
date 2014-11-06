@@ -2,7 +2,7 @@ var User;
 
 function GetProduct(ID) {
 
-jQuery.support.cors = true; 
+/*jQuery.support.cors = true; 
     var Parameters = ID;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._GetProduct + '/' + Parameters;
 
@@ -46,7 +46,7 @@ jQuery.support.cors = true;
             }
 
         }
-    });
+    });*/
 
 }
 
@@ -56,7 +56,7 @@ jQuery.support.cors = true;
 
 function DeleteProduct(ID) {
 
-    jQuery.support.cors = true; 
+  /*  jQuery.support.cors = true; 
     var Parameters = ID;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._RemoveProduct + '/' + Parameters;
 
@@ -137,7 +137,7 @@ function DeleteProduct(ID) {
 
         }
     });
-
+*/
 }
 
 
@@ -145,7 +145,7 @@ function DeleteProduct(ID) {
 
 var ProductStatus = {
     CheckRecipientExists: function () {
-        if (localStorage.User == null || localStorage.User == undefined) {
+        /*if (localStorage.User == null || localStorage.User == undefined) {
            app.application.navigate('signup_login.html');
         }
         else {
@@ -221,7 +221,7 @@ var ProductStatus = {
 
             }
         });
-
+*/
 
 
     },
@@ -263,7 +263,7 @@ var ProductStatus = {
 
     TransactionComplete: function (ID) {
 
-        jQuery.support.cors = true;
+       /* jQuery.support.cors = true;
         var Parameters = ID + '/' + localStorage.RecipientID;
         var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._TransactionComplete + '/' + Parameters;
         $("#LoadingDiv").css({ "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
@@ -297,7 +297,7 @@ var ProductStatus = {
                 }
 
             }
-        });
+        });*/
     },
 
     OnTransactionSuccess: function (Result) {
@@ -322,7 +322,7 @@ var ProductStatus = {
             data = $.parseJSON(data);
             if (data.TransactionComplete) {
 
-                if (User.RoleID == '2') {
+                if (User.UserRole == '2') {
                     if ($('#flip-1').val() == 'yes') {
 
                         ProductStatus.GenerateReciept(localStorage.MyProduct);
@@ -350,7 +350,7 @@ var ProductStatus = {
 
     GenerateReciept: function (ID) {
         
-        jQuery.support.cors = true;
+      /*  jQuery.support.cors = true;
         switch (localStorage.Language) {
             case "1":
                 alert(Language.Danish.GreenSlip);
@@ -424,7 +424,7 @@ var ProductStatus = {
                 }
 
             }
-        });
+        });*/
     },
 
     OnRecieptSuccess: function (Result) {
@@ -483,7 +483,7 @@ function productStatusInit(){
                     User = $.parseJSON(localStorage.User);
                 }
             
-                if (User.RoleID == '2') {
+                if (User.UserRole == '2') {
                     $('#tblGreenSlip').show();
                 }
                 $('#CollectMyCO2').click(function () {

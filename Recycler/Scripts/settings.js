@@ -10,7 +10,7 @@
                 } else {
                     User = $.parseJSON(localStorage.User);
                     
-                    if (User.RoleID == "2") {
+                    if (User.UserRole == "2") {
                         if (localStorage.SubscriptionInstallPaid != undefined && localStorage.SubscriptionInstallPaid != null) {
                             UpdateUser(true);
                         } else {
@@ -59,7 +59,7 @@
                     app.application.navigate("createspot.html");
                 });
                 $('#Mystuff').click(function () {
-                    if (User.RoleID == "3") {
+                    if (User.UserRole == "3") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -88,7 +88,7 @@
                     app.application.navigate("mystuff.html");
                 });
                 $('#MySpots').click(function () {
-                    if (User.RoleID == "3") {
+                    if (User.UserRole == "3") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -114,7 +114,7 @@
                         }
                     }
                     
-                    if (User.RoleID == "1") {
+                    if (User.UserRole == "1") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -145,7 +145,7 @@
                 $('#invite').click(function () {
                     //alert('Coming soon');
                     //return;
-                    if (User.RoleID == "3") {
+                    if (User.UserRole == "3") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -193,7 +193,7 @@
                   app.application.navigate("donate.html");
                 });
                 $('#BasicSettings').click(function () {
-                    if (User.RoleID == "3") {
+                    if (User.UserRole == "3") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -221,7 +221,7 @@
                    app.application.navigate("basic_setup.html");
                 });
                 $('#FacebookSettings').click(function () {
-                    if (User.RoleID == "3") {
+                    if (User.UserRole == "3") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -268,7 +268,7 @@
                 });
                
                 $('#friend').click(function () {
-                    if (User.RoleID == "3") {
+                    if (User.UserRole == "3") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -294,7 +294,7 @@
                         }
                     }
                     
-                    if (User.RoleID == "1") {
+                    if (User.UserRole == "1") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -381,7 +381,7 @@
                         User = $.parseJSON(localStorage.User);
                     }
                     
-                    if ((User.PhoneNumber == '' || User.PhoneNumber == 'null' || User.PhoneNumber == null) && User.RoleID != "3") {
+                    if ((User.PhoneNumber == '' || User.PhoneNumber == 'null' || User.PhoneNumber == null) && User.UserRole != "3") {
                         if (confirm('You are about to log out of the app without setting your details ! your account will be cancelled.Do you want to continue?')) {
                             var URLFormed = Service.dataServiceURL + Service.ServiceName._LoginService + '/' + Service.ServiceMethods._CancelRegistration;
                             jQuery.support.cors = true;
@@ -399,7 +399,7 @@
                                 $('#LoadingDiv,#Load').hide();
                             });
                             
-                            jQuery.support.cors = true;
+                           /* jQuery.support.cors = true;
                             $.ajax({
                                        type: "POST",
                                        url: URLFormed,
@@ -466,7 +466,7 @@
                                        },
                                        error: function (xhr) {
                                        }
-                                   });
+                                   });*/
                         } else {
                             return false;
                         }
@@ -660,12 +660,12 @@
             
             
             function UpdateUser(Paid) {
-                $.support.cors = true;
+               /* $.support.cors = true;
                 var data = '{"UserID": "' + User.UserID + '",';
                 if (Paid == false)
                     data += '"RoleID":"1",';
                 else
-                    data += '"RoleID":"' + User.RoleID + '",';
+                    data += '"RoleID":"' + User.UserRole + '",';
                 data += '"Username":"' + User.UserName + '",' +
                         '"Password":"' + User.Password + '",' +
                         '"Email":"' + User.EmailID + '",' +
@@ -727,7 +727,7 @@
                                            break;
                                    }
                                //}
-                              /* else {
+                               else {
                                    localStorage.User = JSON.stringify(result);
                                    window.localStorage.removeItem('SubscriptionInstallPaid');
                                    switch (localStorage.Language) {
@@ -744,7 +744,7 @@
                                            alert(Language.Spanish.Pupdate);
                                            break;
                                    }
-                               }*/
+                               }
                            },
                            error: function (xhr, request, status, error) {
                                switch (localStorage.Language) {
@@ -762,7 +762,7 @@
                                        break;
                                }
                            }
-                       });
+                       });*/
             }
             
          

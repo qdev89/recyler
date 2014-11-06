@@ -29,7 +29,7 @@ function Ins_Upd_EarthHeartData(_Data, _ReturnUrl) {
                     + _Data.Transactions + '/'
                     + _Data.FriendRecommendation + '/'
                     + _Data.CO2Saved;
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._EarthHeartData + '/' + Parameters;
+   /* var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._EarthHeartData + '/' + Parameters;
 
 
     jQuery.support.cors = true;
@@ -94,7 +94,7 @@ function Ins_Upd_EarthHeartData(_Data, _ReturnUrl) {
             }
 
         }
-    });
+    });*/
 
 }
 
@@ -117,7 +117,7 @@ function GetEarthHeartData(e) {
         User = $.parseJSON(localStorage.User);
     }
 
-    if (User.RoleID == "3" || User.RoleID == "1") {
+    if (User.UserRole == "3" || User.UserRole == "1") {
         $('#KarmaUser').css({ "display": "none" });
         $('#NoKarmaFreeUser').css({ "display": "block" });
 
@@ -140,7 +140,7 @@ function GetEarthHeartData(e) {
         $('#LoadingDiv,#Load').ajaxStart(function () { $('#LoadingDiv,#Load').show(); });
         $('#LoadingDiv,#Load').ajaxComplete(function () { $('#LoadingDiv,#Load').hide(); });
 
-        jQuery.support.cors = true;
+       /* jQuery.support.cors = true;
         $.ajax({
             type: "GET",
             url: URLFormed,
@@ -185,7 +185,7 @@ function GetEarthHeartData(e) {
                         $('#Position').html('0');
                         $('#transactions').html('0');
                         $('#Co2Saved').html('0');
-                        if (User.RoleID == "2") {
+                        if (User.UserRole == "2") {
                             $('#Donationsli').css({ 'display': 'none' });
                         }
                         else {
@@ -200,7 +200,7 @@ function GetEarthHeartData(e) {
                     $('#Position').html('0');
                     $('#transactions').html('0');
                     $('#Co2Saved').html('0');
-                    if (User.RoleID == "2") {
+                    if (User.UserRole == "2") {
                         $('#Donationsli').css({ 'display': 'none' });
                     }
                     else {
@@ -229,7 +229,7 @@ function GetEarthHeartData(e) {
                         break;
                 }
             }
-        });  
+        });  */
     }
     
         $('#SendMyCO2').click(function () {
@@ -237,7 +237,7 @@ function GetEarthHeartData(e) {
                 });
             
                 $('.clsSettings').click(function () {
-                    if (User.RoleID == "3") {
+                    if (User.UserRole == "3") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -264,7 +264,7 @@ function GetEarthHeartData(e) {
                         }
                     }
             
-                    if (User.RoleID == "1") {
+                    if (User.UserRole == "1") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -294,10 +294,6 @@ function GetEarthHeartData(e) {
                 });
 
 }
-
-
-
-
 
 
 
@@ -352,7 +348,7 @@ function SendCO2ToMail() {
     $('#LoadingDiv,#Load').ajaxStart(function () { $('#LoadingDiv,#Load').show(); });
     $('#LoadingDiv,#Load').ajaxComplete(function () { $('#LoadingDiv,#Load').hide(); });
 
-    jQuery.support.cors = true;
+   /* jQuery.support.cors = true;
     $.ajax({
         type: "POST",
         url: URLFormed,
@@ -379,7 +375,7 @@ function SendCO2ToMail() {
             }
 
         }
-    });
+    });*/
 }
 
 var OnSuccess = function (Result) {

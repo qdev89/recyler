@@ -1,4 +1,4 @@
-window.google = window.google || {};
+/*window.google = window.google || {};
 google.maps = google.maps || {};
 (function () {
 
@@ -18,7 +18,7 @@ google.maps = google.maps || {};
     };
     var loadScriptTime = (new Date).getTime();
     getScript("https://maps.gstatic.com/intl/en_us/mapfiles/api-3/17/2/main.js");
-})();
+})();*/
 
 
   		  var Type = '';
@@ -194,7 +194,7 @@ function findOnMapInit(){
                     } else {
                         User = $.parseJSON(localStorage.User);
                     }
-                    if (User.RoleID == "3") {
+                    if (User.UserRole == "3") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
@@ -238,7 +238,7 @@ function findOnMapInit(){
                 
                     
             function GetSpot() {
-                if (localStorage.User == null || localStorage.User == undefined) {
+               /* if (localStorage.User == null || localStorage.User == undefined) {
                     app.application.navigate('signup_login.html');
                 } else {
                     User = $.parseJSON(localStorage.User);
@@ -449,7 +449,7 @@ function findOnMapInit(){
                            }
                        });
             
-                GetCover();
+                GetCover();*/
             }
             
             function createSpots(Latitude, Longitude, SpotType, ImagePath, Name, Phone, Address, City, State, OpeningHoursWeekdaysFrom, OpeningHoursWeekdaysTo, EventDate, Description, OpeningHoursSaturdayFrom, OpeningHoursSaturdayTo, OpeningHoursSundayFrom, OpeningHoursSundayTo) {
@@ -590,7 +590,7 @@ function findOnMapInit(){
                     User = $.parseJSON(localStorage.User);
                 }
                                          
-                if (User.RoleID == "3") {
+                if (User.UserRole == "3") {
                     $("#dvBlur").css({
                                          /*"opacity": "0.2",*/ "z-index": "999999",
                                          'filter': 'alpha(opacity=20)', "width": "100%", "height": "100%",
@@ -614,7 +614,7 @@ function findOnMapInit(){
                 localStorage.SelectedProduct = ID;
                     
                 User = $.parseJSON(localStorage.User);
-                if (User.RoleID == "3") {
+                if (User.UserRole == "3") {
                     var message = '';
                     switch (localStorage.Language) {
                         case "1":
@@ -678,17 +678,25 @@ function findOnMapInit(){
                 $('#LoadingDiv,#Load').show();
                 app.application.navigate("ListAddress.html");
             }
-                
+  var googleMap = null;              
                 
          
 function mapInit(){
-       var ib = new InfoBubble(windowOptions);     
-        var me = new google.maps.LatLng(30.7514892, 76.7726050);
-                drawMaps2(me);
-                me = new google.maps.LatLng(30.5389944, 75.9550329);
-                drawMaps2(me);
-                me = new google.maps.LatLng(30.7291853, 76.7206652);
-                drawMaps2(me);
+    
+    if(googleMap!=null) return;
+    
+    var mapOptions = {
+          center: { lat: -34.397, lng: 150.644},
+          zoom: 8
+        };
+          console.log(document.getElementById('map-with-markers'))
+        googleMap = new google.maps.Map(document.getElementById('map-with-markers'),
+            mapOptions);
+         setTimeout(function(){
+     			 $("#map-with-markers").height($("#map-tabstrip .km-content").first().height());
+             },200);
+    
+     
 }
 
 

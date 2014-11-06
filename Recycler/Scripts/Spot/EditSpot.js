@@ -38,7 +38,7 @@ var spot = {
     GetSpotDetail: function () {
 
 
-        var Parameters = localStorage.spotID + '/' + spot.userId;
+      /*  var Parameters = localStorage.spotID + '/' + spot.userId;
         var URLFormed = Service.dataServiceURL + Service.ServiceName._SpotService + '/' + Service.ServiceMethods._GetSpotDetail + '/' + Parameters;
 
         $.support.cors = true;
@@ -367,7 +367,7 @@ var spot = {
                 }
 
             }
-        });
+        });*/
 
     },
 
@@ -376,7 +376,7 @@ var spot = {
 
     UpdateSpot: function () {
         
-        spot.SpotType = $('#spotype').val();
+       /* spot.SpotType = $('#spotype').val();
 
 
         if (spot.SpotType == "Garage sale/Market/Event") {
@@ -533,14 +533,14 @@ var spot = {
                 }
 
             }
-        });
+        });*/
 
 
     },
 
     DeleteSpot: function () {
 
-        var URLFormed = Service.dataServiceURL + Service.ServiceName._SpotService + '/' + Service.ServiceMethods._deleteSpot;
+       /* var URLFormed = Service.dataServiceURL + Service.ServiceName._SpotService + '/' + Service.ServiceMethods._deleteSpot;
 
         $("#LoadingDiv").css({ "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
             'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
@@ -633,7 +633,7 @@ var spot = {
                 }
 
             }
-        });
+        });*/
 
     }
 

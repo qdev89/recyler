@@ -11,7 +11,7 @@ Login.LoginDetails = {
 
 function GetLoginDetails(_LoginDetails) {
 
-    $("#LoadingDiv").css({ "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
+   /* $("#LoadingDiv").css({ "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
         'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
         'background-color': 'white'
     });
@@ -156,14 +156,14 @@ function GetLoginDetails(_LoginDetails) {
                     break;
             }
         }
-    });
+    });*/
 
 
 }
 
 function CreateNewUser(_Details) {
     
-    var Data = '{"UserID": "",' +
+   /* var Data = '{"UserID": "",' +
                    '"RoleID":"' + _Details.RoleID + '",' +
                    '"Username":"",' +
                    '"Password":"' + _Details.Password + '",' +
@@ -298,11 +298,11 @@ function CreateNewUser(_Details) {
                     break;
             }     
         }
-    });
+    });*/
 }
 
 function GetAllLanguages() {
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetLanguages;
+   /* var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetLanguages;
     jQuery.support.cors = true;
     $.ajax({
 
@@ -339,7 +339,7 @@ function GetAllLanguages() {
             navigator.notification.alert('Recycle world can not retrieve languages right now! your default language would be english', '', 'Recycle World', 'OK');
 
         }
-    });
+    });*/
 }
 
 function CreateUserWithRecycleWorld() {
@@ -516,7 +516,7 @@ function validateEmail(txtEmail) {
 
 function recoverPassword() {   
 
-    if ($.trim($('#email').val()) == '') {
+   /* if ($.trim($('#email').val()) == '') {
         switch (localStorage.Language) {
             case "1":
                 navigator.notification.alert(Language.Danish.EnterEmail, '', 'Recycle World', 'OK');
@@ -710,7 +710,7 @@ function recoverPassword() {
                     break;
             }
         }
-    });
+    });*/
 }
 
 

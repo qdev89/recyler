@@ -165,7 +165,7 @@ function SaveSettings(Data) {
     $('#LoadingDiv,#Load').ajaxComplete(function () { $('#LoadingDiv,#Load').hide(); });
 
 
-    jQuery.support.cors = true;
+    /*jQuery.support.cors = true;
     $.ajax({
 
         type: "POST",
@@ -231,7 +231,7 @@ function SaveSettings(Data) {
             }
 
         }
-    });
+    });*/
 }
 
 

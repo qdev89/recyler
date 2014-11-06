@@ -76,7 +76,7 @@ app.Login = (function () {
                 
                  app.everlive.Users.currentUser( 
                                             function(data) { 
-                                                console.log(data.result);    
+                                                //console.log(data.result);    
                                                
                                                localStorage.User = JSON.stringify(data.result);
                                                 fillUserData(data.result);

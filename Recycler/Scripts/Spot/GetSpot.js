@@ -4,7 +4,7 @@ var Getspot = {
 
     GetSpot: function () {
 
-        $.support.cors = true;
+      /*  $.support.cors = true;
         var UserIDParameter = Getspot.userId;
         var SportIDParameter = Getspot.Id;
 
@@ -15,9 +15,9 @@ var Getspot = {
         });
         $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
         $('#LoadingDiv,#Load').ajaxStart(function () { $('#LoadingDiv,#Load').show(); });
-        $('#LoadingDiv,#Load').ajaxComplete(function () { $('#LoadingDiv,#Load').hide(); });
+        $('#LoadingDiv,#Load').ajaxComplete(function () { $('#LoadingDiv,#Load').hide(); });*/
 
-        $.ajax({
+      /*  $.ajax({
             type: "GET",
             url: URLFormed,
             dataType: 'json',
@@ -72,7 +72,7 @@ var Getspot = {
                 }
 
             }
-        });
+        });*/
     }
 }
 

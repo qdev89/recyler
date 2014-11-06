@@ -11,7 +11,7 @@ prd.Co2Data = {
 
 function AddMaterialProductCO2() {
     
-    jQuery.support.cors = true;
+   /* jQuery.support.cors = true;
     var ID = localStorage.PostedProduct;
 
     prd.Co2Data.Co2Type = 'Material';
@@ -98,7 +98,7 @@ function AddMaterialProductCO2() {
             }
 
         }
-    });
+    });*/
 }
 
 function calculateMaterialCo2() {
@@ -172,7 +172,7 @@ function calculateMaterialCo2() {
 
 function AddFoodProductCO2() {
     
-    jQuery.support.cors = true;
+   /* jQuery.support.cors = true;
     var ID = localStorage.PostedProduct;
     prd.Co2Data.Co2Type = 'Food';
     calculateFoodCo2();
@@ -258,7 +258,7 @@ function AddFoodProductCO2() {
             }
 
         }
-    });
+    });*/
 
 }
 

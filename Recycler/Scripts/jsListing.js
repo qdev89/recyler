@@ -30,7 +30,7 @@ function listInit(){
 
 function GetAllItems(LatLong) {
 
-    var User = $.parseJSON(localStorage.User);
+    /*var User = $.parseJSON(localStorage.User);
 
     var array = LatLong.split('_');
 
@@ -83,7 +83,7 @@ function GetAllItems(LatLong) {
 
         }
     });
-
+*/
 }
 
 function GenerateListView(data) {

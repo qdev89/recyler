@@ -19,7 +19,7 @@ var User;
 
 function GetAllProducts(_ProductDisplayStyle, _ProductSearchFilters) {
   
-    User = $.parseJSON(localStorage.User);
+  /*  User = $.parseJSON(localStorage.User);
 
     jQuery.support.cors = true;
      var Data = '{         "Page":' + _ProductDisplayStyle.Page +
@@ -97,7 +97,7 @@ function GetAllProducts(_ProductDisplayStyle, _ProductSearchFilters) {
                     break;
             }
         }
-    });
+    });*/
 }
 
 
@@ -250,7 +250,7 @@ function GenerateGridView(data) {
 
 function GetProduct(ID) {
 
-    jQuery.support.cors = true;
+   /* jQuery.support.cors = true;
     var Parameters = ID;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._GetProduct + '/' + Parameters;
 
@@ -325,7 +325,7 @@ function GetProduct(ID) {
             }
 
         }
-    });
+    });*/
 
 }
 
@@ -392,7 +392,7 @@ function productInit(){
             
                     //$.mobile.showPageLoadingMsg("b", "please wait...");
                     User = $.parseJSON(localStorage.User);
-                    if (User.RoleID == "3") {
+                    if (User.UserRole == "3") {
                         var message = '';
                         switch (localStorage.Language) {
                             case "1":
