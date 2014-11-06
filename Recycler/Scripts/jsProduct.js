@@ -411,7 +411,7 @@ function productInit(){
             
                         if (confirm(message)) {
                             //$.mobile.hidePageLoadingMsg();
-                            localStorage.User = null;
+                          //  localStorage.User = null;
                             var CacheItem = '{"NavigateURL":"product.html",' +
                                             '"SelectedProduct":"' + localStorage.SelectedProduct + '"' +
                                             '}';

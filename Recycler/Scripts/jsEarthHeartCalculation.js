@@ -255,7 +255,7 @@ function GetEarthHeartData(e) {
                         }
             
                         if (confirm(message)) {
-                            localStorage.User = null;
+                           // localStorage.User = null;
                           app.application.navigate("signup_login.html");
                             return;
                         } else {

@@ -1111,7 +1111,7 @@ $(document).ready(function () {
                     break;
             }
             if (confirm(message)) {
-                localStorage.User = null;
+               // localStorage.User = null;
                 app.application.navigate("signup_login.html");
                 return;
             }

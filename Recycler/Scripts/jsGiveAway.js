@@ -39,7 +39,7 @@ GiveProduct.Product = {
                     }
             
                     if (confirm(message)) {
-                        localStorage.User = null;
+                       // localStorage.User = null;
                                         
                         var CacheItem = '{  "NavigateURL":"giveaway.html",' +
                                         '"GiveAwayImage":"' + ProductImage + '",' +

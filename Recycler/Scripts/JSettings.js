@@ -108,7 +108,7 @@ $(document).ready(function () {
 
         if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to watch my stuff.Do you want to register now")) {
-                localStorage.User = null;
+              //  localStorage.User = null;
                app.application.navigate("signup_login.html");
                 return;
             }
@@ -124,7 +124,7 @@ $(document).ready(function () {
 
         if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to watch my spots.Do you want to register now")) {
-                localStorage.User = null;
+               // localStorage.User = null;
                 app.application.navigate("signup_login.html");
                 return;
             }
@@ -145,7 +145,7 @@ $(document).ready(function () {
         //return;
         if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to invite your friends.Do you want to register now")) {
-                localStorage.User = null;
+              //  localStorage.User = null;
                 app.application.navigate("signup_login.html");
                 return;
             }
@@ -168,7 +168,7 @@ $(document).ready(function () {
     $('#BasicSettings').click(function () {
         if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to update settings.Do you want to register now")) {
-                localStorage.User = null;
+               // localStorage.User = null;
                app.application.navigate("signup_login.html");
                 return;
             }
@@ -183,7 +183,7 @@ $(document).ready(function () {
 
         if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to use this functionality.Do you want to register now")) {
-                localStorage.User = null;
+              //  localStorage.User = null;
                app.application.navigate("signup_login.html");
                 return;
             }

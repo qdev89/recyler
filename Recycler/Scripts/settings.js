@@ -77,7 +77,7 @@
                         }
                         
                         if (confirm(message)) {
-                            localStorage.User = null;
+                           // localStorage.User = null;
                             app.application.navigate("signup_login.html");
                             return;
                         } else {
@@ -106,7 +106,7 @@
                         }
                         
                         if (confirm(message)) {
-                            localStorage.User = null;
+                           // localStorage.User = null;
                             app.application.navigate("signup_login.html");
                             return;
                         } else {
@@ -163,7 +163,7 @@
                         }
                         
                         if (confirm(message)) {
-                            localStorage.User = null;
+                          //  localStorage.User = null;
                           app.application.navigate("signup_login.html");
                             return;
                         } else {
@@ -211,7 +211,7 @@
                         }
                         
                         if (confirm(message)) {
-                            localStorage.User = null;
+                           // localStorage.User = null;
                           app.application.navigate("signup_login.html");
                             return false;
                         } else {
@@ -239,7 +239,7 @@
                         }
                         
                         if (confirm(message)) {
-                            localStorage.User = null;
+                          //  localStorage.User = null;
                           app.application.navigate("signup_login.html");
                             return false;
                         } else {
@@ -286,7 +286,7 @@
                         }
                         
                         if (confirm(message)) {
-                            localStorage.User = null;
+                          //  localStorage.User = null;
                             app.application.navigate("signup_login.html");
                             return false;
                         } else {

@@ -1656,7 +1656,6 @@ margin-bottom: 5px;
 }
 .content_table td{
 	vertical-align:top;
-	background-color:#ffffff;
 	text-align:left;
 	padding:10px;
 }
@@ -1666,7 +1665,6 @@ margin-bottom: 5px;
 }
 .content_table1 td{
 	vertical-align:top;
-	background-color:#ffffff;
 	text-align:left;
 	padding:2px;
 }
@@ -1806,7 +1804,9 @@ padding:4;
 }
 
 
-
+ #map-with-markers{
+        width:100% !important;
+   }
 
 
 
