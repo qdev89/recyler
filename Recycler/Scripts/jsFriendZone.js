@@ -192,7 +192,7 @@ function RemoveFromFriendZone(PhoneNumber, Name ,FaceBookID) {
 
     //$.mobile.showPageLoadingMsg("b", "please wait...");
    /* jQuery.support.cors = true;
-    var Data = '{ "UserID": "' + User.UserID + '" ,"Friend": { "Name":"' + Name + '","Phonenumber" : "' + PhoneNumber + '" , "FaceBookID":"' + FaceBookID + '"}}';
+    var Data = '{ "UserID": "' + User.Id + '" ,"Friend": { "Name":"' + Name + '","Phonenumber" : "' + PhoneNumber + '" , "FaceBookID":"' + FaceBookID + '"}}';
 
     
     var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._RemoveFromFriendZone;
@@ -258,7 +258,7 @@ function AddToFriendZone(obj, PhoneNumber, Name, FaceBookID) {
     if (User.UserRole == "1") {
 
       /*  jQuery.support.cors = true;
-        var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetTotalChanceLeftForFriendZone + '/' + User.UserID;
+        var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetTotalChanceLeftForFriendZone + '/' + User.Id;
 
 
         $.ajax({
@@ -317,7 +317,7 @@ function AddToFriendZone(obj, PhoneNumber, Name, FaceBookID) {
                 //$.mobile.showPageLoadingMsg("b", "please wait...");
 
               /*  jQuery.support.cors = true;
-                var Data = '{ "UserID": "' + User.UserID + '" ,"Friend": { "Name":"' + Name + '","Phonenumber" : "' + PhoneNumber + '" , "FaceBookID" : "' + FaceBookID + '"} }';
+                var Data = '{ "UserID": "' + User.Id + '" ,"Friend": { "Name":"' + Name + '","Phonenumber" : "' + PhoneNumber + '" , "FaceBookID" : "' + FaceBookID + '"} }';
                 var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._AddToFriendZone;
 
 
@@ -396,7 +396,7 @@ function AddToFriendZone(obj, PhoneNumber, Name, FaceBookID) {
             FaceBookID = '';
 
        /* jQuery.support.cors = true;
-        var Data = '{ "UserID": "' + User.UserID + '" ,"Friend": { "Name":"' + Name + '","Phonenumber" : "' + PhoneNumber + '" , "FaceBookID" : "' + FaceBookID + '"} }';
+        var Data = '{ "UserID": "' + User.Id + '" ,"Friend": { "Name":"' + Name + '","Phonenumber" : "' + PhoneNumber + '" , "FaceBookID" : "' + FaceBookID + '"} }';
         var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._AddToFriendZone;
 
 
@@ -536,7 +536,7 @@ function onContactSuccess(contacts) {//alert(contacts.length);
    
 
    /* jQuery.support.cors = true;
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetAllFriendsSyncList + '/' + User.UserID;
+    var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetAllFriendsSyncList + '/' + User.Id;
 
 
     $('#dvAllUsers').html('');
@@ -691,7 +691,7 @@ function GetAllActiveFriends(SearchText) {
     //$.mobile.showPageLoadingMsg("b", "please wait...");
 
 
-   /* var Data = '{"SearchText":"' + SearchText + '","UserID" :"' + User.UserID + '"}';
+   /* var Data = '{"SearchText":"' + SearchText + '","UserID" :"' + User.Id + '"}';
 
     jQuery.support.cors = true;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetAllUsers;
@@ -791,7 +791,7 @@ function GetAllFaceBookFriends(SearchText) {
     //$.mobile.showPageLoadingMsg("b", "please wait...");
 
     /*jQuery.support.cors = true;
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetAllFaceBookFriends + '/' + User.UserID;
+    var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetAllFaceBookFriends + '/' + User.Id;
 
 
     $.ajax({

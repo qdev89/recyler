@@ -39,7 +39,7 @@ $(document).ready(function () {
         }
 
         var Data = '{ "SettingsID" : "' + User.SettingsID + '",' +
-                   '"UserID":"' + User.UserID + '",';
+                   '"UserID":"' + User.Id + '",';
 
         if ($('#ddlGroups option:selected').val() != '0') {
             Data = Data + '"GroupID" : "' + $('#ddlGroups option:selected').val() + '" ,' +

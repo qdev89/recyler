@@ -120,8 +120,8 @@ $(document).ready(function () {
        app.application.navigate("mystuff.html");
 
     });
+     
     $('#MySpots').click(function () {
-
         if (User.UserRole == "3") {
             if (confirm("You have to register with Recycle World to watch my spots.Do you want to register now")) {
                // localStorage.User = null;
@@ -131,11 +131,10 @@ $(document).ready(function () {
             else {
                 return;
             }
-        }
-     
+        }     
         app.application.navigate("myspots.html");
-
     });
+     
     $('#fooddonation').click(function () {
        app.application.navigate("food.html");
 
@@ -347,7 +346,7 @@ function OnPaymentFailure(result) {
 function UpdateUser(Paid) {
     
     $.support.cors = true;
-    var data = '{"UserID": "' + User.UserID + '",';
+    var data = '{"UserID": "' + User.Id + '",';
     if (Paid == false)
         data += '"RoleID":"1",';
     else

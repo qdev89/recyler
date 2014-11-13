@@ -99,7 +99,6 @@
     "recycling": "Recycling spot ",
     "company": "Recycling company",
     "food": "Food donation or FREE food",
-	 "food-short": "Free food",
     "picture": "Picture of place,shop,logo",
     "marketspot": "marketspot",
     "spotname": "Name: *",
@@ -127,7 +126,7 @@
     "donatetext": "We made this app free of charge, to put focus on recycling and stopfoodwaste so if you like this service please help us to keep this mobileservice alive... donate a bit or become supporter (no donate and influence on how we distrbiute any profit). Its only 2$ a month and secures that we can bring food out to those who need it and help environment.",
     "donate1": "I will donate 1$ ",
     "donate2": "I will donate 2$ ",
-    "profittext": "50% of recycleworlds profit is donated to organizations that make a difference for others or have a green agenda. Become supporter and get your earth star.",
+    "profittext": "50% of recycleworlds profit is donated to organizations that make a difference for others or have a green agenda. So become supporter and get your earth star.",
     "nowaytext": "No thanks",
     "titletext_edit": "Edit spot",
     "pictureplace": "Picture of place,shop,logo",
@@ -192,7 +191,7 @@
     "femail": "Friends email",
     "sendinvite": "Send invite",
     "titeltext_credits": "Thank you",
-    "credits1": "This solution became only possible because of many good people.  <br><br>Different inputs and many ideas & people that choosed to meet eachother with open mind and with a belief in that we as persons can change bigger things by helping eachother.<br><br>To the friendly people who helped translate:<br>Sila R. Weiss-Hug, Lilliana Bak. <br><br> Selina Juul from Stoopfoodwaste(NGO) for inspiring fight against unnecessary food waste<br>in Denmark and world in general. <br><br>MR. Key and Anine Brits for help to the Heraia universe. My team & family and anyone who chooses to be a supporter and helping us to make it a little bit better world.<p>Thanks to Tom Szaky and terracycle for presenting it.<br><br>Team recycleworld",
+    "credits1": "This solution became only possible because of many good people.  <br><br>Different inputs and many ideas & people that choosed to meet eachother with open mind and with a belief in that we as persons can change bigger things by helping eachother.<br><br>To the friendly people who helped translate:<br>Sila R. Weiss-Hug, Lilliana Bak. <br><br> Selina Juul from Stoopfoodwaste(NGO) for inspiring fight against unnecessary food waste<br>in Denmark and world in general. <br> Anyone who chooses to be a supporter and helping us to make it a little bit better world.<p>Thanks to Tom Szaky and terracycle for presenting it.<br><br>Team recycleworld",
     "titeltext_thankyou": "Thank you",
     "thankyou_generel": "Thank you for using or supporting recycleworld.<br>Together we can make changes.<br><br>Bjarke Steen Rasmussen<br>Creator of recycleworld",
     "heartstatus": "Earth heart",
@@ -302,7 +301,20 @@
 	"tags": "Tags/Group",
 	"supporters": "Total number of supporters",
 	"users": "Total number of users",
-	"help": "Help spot is if you need others to help you collect stuff in case of war, disasters etc. Its not for personal use - only if you are collecting to help others.",
+	"help": "Help spot is if you need others to help you collect stuff. It could be help collecting food for the homeless, or collecting stuff to charity or for helping people in need. Its not for personal use - only if you are collecting to help others. Use it with caution, so people take it serious. ",
 	"help1": "HELP spot",
-    "friendtext": "Put your friends into your friend group. Then you have a private group and you can give away, swap books, food etc. - the only  special thing is that they have to react within 8 hours or the stuff goes public to others."
+	
+	"becomesupporter": "Become supporter",
+	"onlysupporter": "Only for supporters",
+	"recycle": "Recycle / give away",
+	"trade": "Trade",
+	"sell": "Sell",
+	"lend": "Lend",
+	"rent": "Rent",
+	"service": "Service: I can help others with",
+	"ecospot": "ECO spot";
+	"ecospot1": "ECO spot is a place with focus on sustainable living. It could be a dedicated shop, cafe, place to visit. Sustainable living is the key",
+	"terraspot": "TERRACYCLE spot",
+	"terraspot_desc": ">A terracycle spot is a waste collection station driven by the terracycle brigades. Each place is a place where you can deliver your waste if you are part of the terracycle brigade family. If you want to know more about terracycle opportunities - <a href='terracycle.html'>read here</a>.",
+        "friendtext": "Put your friends into your friend group. Then you have a private group and you can give away, swap books, food etc. - the only  special thing is that they have to react within 8 hours or the stuff goes public to others."
 }

@@ -88,7 +88,7 @@ $(document).ready(function () {
     var User = $.parseJSON(localStorage.User); 
 
     Getspot.Id = '0';
-    Getspot.userId = User.UserID;
+    Getspot.userId = User.Id;
     Getspot.GetSpot();
 
 

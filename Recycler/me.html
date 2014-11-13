@@ -1,8 +1,8 @@
         <div data-role="view" id="userpage" data-title="My Earth heart" data-init="GetEarthHeartData" >
            
           
-            <div  id="KarmaUser" style="display: none">
-                <ul data-role="listview" data-inset="true" data-theme="b">
+            <div  id="KarmaUser" >
+                <ul data-role="listview" data-inset="true" >
                     <li>
                         <div style="text-align: center;">
                             <span name="spn">
@@ -20,12 +20,14 @@
                                 <label for="statusnow"  data-localize="statusnow">Your heart status is</label>
                             </span> &nbsp;<span id="HeartStatus"></span>%
                         </h4>
+                    </li>             <li class='clsSettings'>
+                        <img src="images/supporter-pic.png" width="100%" alt=""/>
                     </li>
                     <li class='clsSettings'>
-                        <label for="users"  data-localize="position">Total numbers of users: </label><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                        <label for="users"  data-localize="position">Total numbers of users: </label><br><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
                     </li>
                     <li class='clsSettings'>
-                        <label for="supportes"  data-localize="position">Number of supporters: </label><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                        <label for="supportes"  data-localize="position">Number of supporters: </label><br><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
                     </li>
 
                    <!-- <li class='clsSettings'>
@@ -49,28 +51,26 @@
                 </ul><br><br>
 
             </div>
-            <div id="NoKarmaFreeUser" style="display: none">
+            <div id="NoKarmaFreeUser" >
                 <ul data-role="listview" data-inset="true" data-theme="b">
                     <li>
                         <div style="text-align: center;">
                             <img src="images/karmaheart_free.png" alt="heart"  id="img1">
                         </div>
+                    </li>       
+                    <li class='clsSettings'>
+                        <label for="users"  data-localize="position">Total numbers of users: </label><br><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
                     </li>
                     <li class='clsSettings'>
-                        <label for="users"  data-localize="position">Total numbers of users: </label><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
-                    </li>
-                    <li class='clsSettings'>
-                        <label for="supportes"  data-localize="position">Number of supporters: </label><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                        <label for="supportes"  data-localize="position">Number of supporters: </label><br><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
                     </li>
 
-                    <li class='clsSettings'>
-                        <img src="images/supporter-pic.png" width="100%" alt=""/>
-                    </li>
+
                     <li class='clsSettings'>
                         <label for="position"  data-localize="position">Ranking: </label><span style="color: #046daf ; font-weight: bold; text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
                     </li>
                     <li class='clsSettings'>
-                        <label for="transactions"  data-localize="transacions">Number of transactions: </label><span style="color: #046daf; font-weight: bold;text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
+                        <label for="transactions"  data-localize="transacions">Number of transactions: </label><br><span style="color: #046daf; font-weight: bold;text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>
                     </li>
                     <li class='clsSettings'>
                         <label for="co2saved"  data-localize="co2saved">Saved Co2: </label><span style="color: #046daf; font-weight: bold;text-decoration:underline" data-localize="BecomeSuport">Become Supporter</span>

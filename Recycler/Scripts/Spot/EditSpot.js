@@ -656,7 +656,7 @@ $(document).ready(function () {
     var User = $.parseJSON(localStorage.User);
 
 
-    spot.userId = User.UserID;
+    spot.userId = User.Id;
 
     //----Update Spot-----
     $("#btnupdatespot").click(function () {

@@ -48,7 +48,7 @@ function myStuffInit(){
 function GetMyStuffItems() {
 
     /*jQuery.support.cors = true;
-    var Parameters = User.UserID;
+    var Parameters = User.Id;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._GetMyStuff + '/' + Parameters;
 
     $("#LoadingDiv").css({ "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",

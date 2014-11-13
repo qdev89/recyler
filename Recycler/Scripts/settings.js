@@ -404,7 +404,7 @@
                                        type: "POST",
                                        url: URLFormed,
                                        dataType: 'json',
-                                       data: '{"UserID":' + User.UserID + '}',
+                                       data: '{"UserID":' + User.Id + '}',
                                        contentType: "application/json;charset=utf-8",
                                        cache: false,
                                        async: false,
@@ -661,7 +661,7 @@
             
             function UpdateUser(Paid) {
                /* $.support.cors = true;
-                var data = '{"UserID": "' + User.UserID + '",';
+                var data = '{"UserID": "' + User.Id + '",';
                 if (Paid == false)
                     data += '"RoleID":"1",';
                 else

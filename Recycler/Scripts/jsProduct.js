@@ -24,7 +24,7 @@ function GetAllProducts(_ProductDisplayStyle, _ProductSearchFilters) {
     jQuery.support.cors = true;
      var Data = '{         "Page":' + _ProductDisplayStyle.Page +
                            ',"PageSize":' + _ProductDisplayStyle.PageSize +
-                           ',"UserId":"' + User.UserID +
+                           ',"UserId":"' + User.Id +
                            '","Distance":"' + _ProductSearchFilters.Distance +
                            '","Price":"' + _ProductSearchFilters.Price +
                            '","Categories":"' + _ProductSearchFilters.Categories +

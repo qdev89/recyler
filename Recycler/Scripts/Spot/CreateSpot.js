@@ -34,15 +34,11 @@ var spot = {
     CreateSpot: function () {
         if (spot.Image == null || spot.Image == undefined || spot.Image == "")
             spot.Image = "";
-        //        else
-        //            spot.Image = localStorage.SpotImage;
-        //alert(spot.Image);
-        $.support.cors = true;
-        var data = '{"SpotId": "' + spot.Id + '",' +
+      
+         var data = '{"SpotId": "' + spot.Id + '",' +
                    '"SpotType":"' + spot.SpotType + '",' +
                    '"UserID":"' + spot.userId + '",' +
                    '"Image":"' + spot.Image + '",' +
-                   //    '"Image":"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",' +
                    '"Name":"' + spot.Name + '",' +
                    '"Description":"' + spot.Description + '",' +
                    '"Address":"' + spot.Address + '",' +
@@ -67,19 +63,72 @@ var spot = {
                    '"OpeningTimeSun":"' + spot.OpeningTimeSun + '",' +
                    '"ClosingTimeSun":"' + spot.ClosingTimeSun + '"}';
         
-        localStorage.Spotdata = data;
-        $('#LoadingDiv,#Load').hide();
-
-        app.application.navigate("confirm_spot.html");
+        localStorage.Spotdata = data;  
+        
+      //  app.application.navigate("confirm_spot.html");
+         app.application.navigate("map.html?spot=true");
     }
 };
+
+
+function SaveSpot() {
+    var lat, long;
+    var Data = JSON.parse(localStorage.Spotdata);
+    if (markersArray[0] != undefined) {
+        lat = markersArray[0].position["k"];
+        long = markersArray[0].position["B"];
+    }
+    
+    var file = {
+        "Filename": "spotPicture.jpeg",
+        "ContentType": "image/jpeg",
+        "CustomField": "customValue",
+        "base64": Data.Image
+    };
+
+    app.everlive.Files.create(file,
+                              function (data) {
+                                  console.log(data);  
+                                  
+                                  var spot = app.everlive.data('Spot');     
+    
+                                  spot.create({
+                                                  'userId' : Data.UserID,"Name": Data.Name, "Description" : Data.Description,
+                                                  "Longitude":long,"Latitude" : lat,"Country":Data.Country,"City":Data.City,
+                                                  "CVR": Data.CVR, "Address":Data.Address,"EventDate":Data.EventDate,
+                                                  "Phone":Data.Phone,"SpotType": Data.SpotType,
+                                                  "State":Data.State, "Web":Data.Web, "Zip":Data.Zip,
+                                                  "ClosingTimeSat":Data.ClosingTimeSat,"ClosingTimeSun":Data.ClosingTimeSun,
+                                                  "ClosingTimeWeekdays":Data.ClosingTimeWeekdays,"OpeningHoursSaturdayFrom":Data.OpeningHoursSaturdayFrom,
+                                                  "OpeningHoursSaturdayTo":Data.OpeningHoursSaturdayTo,
+                                                  "OpeningHoursSundayFrom":Data.OpeningHoursSundayFrom,"OpeningHoursSundayTo":Data.OpeningHoursSundayTo,
+                                                  "OpeningHoursWeekdaysFrom":Data.OpeningHoursWeekdaysFrom,
+                                                  "OpeningHoursWeekdaysTo":Data.OpeningHoursWeekdaysTo,"OpeningTimeSat":Data.OpeningTimeSat,
+                                                  "OpeningTimeSun":Data.OpeningTimeSun,"OpeningTimeWeekdays":Data.OpeningTimeWeekdays,"Image":data.result.Id
+                                                  //  Image
+                                              },
+                                              function(data2) {
+                                                  // console.log(data);
+                                                  app.application.navigate("thanks.html");
+                                              },
+                                              function(error) {
+                                                  console.log(error);
+                                              });
+                              },
+                              function (error2) {
+                                  alert(JSON.stringify(error2)); 
+                              });          
+    
+}
+
+
 
 function InitCreateSpot() {
     Filldata();
 
     changeLanguage(localStorage.LanguageType);
 
-    var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
+   // var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
     //$("[data-localize]").localize("Recycle", opts);
 
     if (localStorage.CacheItem != undefined && localStorage.CacheItem != '') {
@@ -209,7 +258,7 @@ function InitCreateSpot() {
 
     $('#spotmonfrifrom').change(function () {
         if ($(this).val() == "00") {
-            $("#tdOpenWeek").hide();
+          //  $("#tdOpenWeek").hide();
             $("#OpenTimeMonFri").parent().children('span').find('.ui-btn-text').html('-');
             $('#OpenTimeMonFri>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -231,7 +280,7 @@ function InitCreateSpot() {
 
     $('#spotmonfrito').change(function () {
         if ($(this).val() == "00") {
-            $("#tdCloseWeek").hide();
+          //  $("#tdCloseWeek").hide();
             $("#CloseTimeMonFri").parent().children('span').find('.ui-btn-text').html('-');
             $('#CloseTimeMonFri>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -253,7 +302,7 @@ function InitCreateSpot() {
 
     $('#spotopensatfrom').change(function () {
         if ($(this).val() == "00") {
-            $("#tdOpenSat").hide();
+           // $("#tdOpenSat").hide();
             $("#OpenTimeSat").parent().children('span').find('.ui-btn-text').html('-');
             $('#OpenTimeSat>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -275,7 +324,7 @@ function InitCreateSpot() {
 
     $('#spotopensatto').change(function () {
         if ($(this).val() == "00") {
-            $("#tdCloseSat").hide();
+          //  $("#tdCloseSat").hide();
             $("#CloseTimeSat").parent().children('span').find('.ui-btn-text').html('-');
             $('#CloseTimeSat>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -297,7 +346,7 @@ function InitCreateSpot() {
 
     $('#spotopensunfrom').change(function () {
         if ($(this).val() == "00") {
-            $("#tdOpenSun").hide();
+          //  $("#tdOpenSun").hide();
             $("#OpenTimeSun").parent().children('span').find('.ui-btn-text').html('-');
             $('#OpenTimeSun>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -319,7 +368,7 @@ function InitCreateSpot() {
 
     $('#spotopensunto').change(function () {
         if ($(this).val() == "00") {
-            $("#tdCloseSun").hide();
+          //  $("#tdCloseSun").hide();
             $("#CloseTimeSun").parent().children('span').find('.ui-btn-text').html('-');
             $('#CloseTimeSun>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -773,7 +822,7 @@ function CreateASpot() {
         $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
         $('#LoadingDiv,#Load').show();
 
-        spot.userId = User.UserID;
+        spot.userId = User.Id;
 
         spot.Id = '0';
         spot.SpotType = $("#spotype option:selected").val();

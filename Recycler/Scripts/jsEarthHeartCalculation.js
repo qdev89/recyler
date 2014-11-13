@@ -23,7 +23,7 @@ function Ins_Upd_EarthHeartData(_Data, _ReturnUrl) {
         User = $.parseJSON(localStorage.User);
     }
 
-    var Parameters = User.UserID + '/'
+    var Parameters = User.Id + '/'
                     + _Data.Type + '/'
                     + _Data.DonationAmount + '/'
                     + _Data.Transactions + '/'
@@ -125,7 +125,7 @@ function GetEarthHeartData(e) {
     else {
         $('#KarmaUser').css({ "display": "block" });
         $('#NoKarmaFreeUser').css({ "display": "none" });
-        var Parameters = User.UserID;
+        var Parameters = User.Id;
 
         var URLFormed = Service.dataServiceURL
                     + Service.ServiceName._ProductService + '/'

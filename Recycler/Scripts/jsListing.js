@@ -36,7 +36,7 @@ function GetAllItems(LatLong) {
 
     jQuery.support.cors = true;
     var URLFormed = Service.dataServiceURL + Service.ServiceName._SpotService + '/' + Service.ServiceMethods._GetAllPoints;
-    var Data = '{"Latitude":"' + array[0] + '","Longitude":"' + array[1] + '","UserID":' + User.UserID + '}';
+    var Data = '{"Latitude":"' + array[0] + '","Longitude":"' + array[1] + '","UserID":' + User.Id + '}';
 
 
     $("#LoadingDiv").css({ "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",

@@ -20,7 +20,7 @@
                         </label>
                     </span>
                     <input type="radio" value="1" name="abc" id="giveaway" >
-                </div>
+                </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
                         <label >
@@ -28,7 +28,7 @@
                         </label>
                     </span>
                     <input type="radio" value="2" name="abc" id="trade">
-                </div>
+                </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
                         <label>
@@ -36,7 +36,7 @@
                         </label>
                     </span>
                     <input id="sell" value="3" name="abc" type="radio">
-                </div>
+                </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
                         <label>
@@ -44,7 +44,7 @@
                         </label>
                     </span>
                     <input id="lend" value="4" name="abc" type="radio">
-                </div>
+                </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
                         <label>
@@ -53,6 +53,7 @@
                     </span>
                     <input id="rent" value="5" name="abc" type="radio">
                 </div>
+                <br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
                         <label>
@@ -61,12 +62,13 @@
                     </span>
                     <input id="service" value="6" name="abc" type="radio">
                 </div>
+                <br><br>
             </div>
-            <br><br>
+
             <div  class="after-radio">
-                
-                 <div style="position: relative">
-                   <!-- <div id="maskDiv">
+
+                <div style="position: relative">
+                    <!-- <div id="maskDiv">
                     </div>-->
                     <div class="ui-field-contain" id="chooseCategory" style="position: relative">
 
@@ -76,16 +78,16 @@
                 </div>
                 <br>
                 <div class="price-div">
-                    
-                 	 <span class="price">Price</span> 
-                     <span class="lend">Lend / Rent price</span> 
+
+                    <span class="price">Price</span>
+                    <span class="lend">Lend / Rent price</span>
                     <input type="number" id="price" style="width: 30%;float:right;" maxlength="5" onKeyPress="return SetNumariaclOnly(event);" data-localize="value" placeholder="Value" />
                 </div>
-              <!--  <div class="lend">
+                <!--  <div class="lend">
                     
-                    <input type="number" id="lend" style="width: 30%;float:right;" maxlength="5" onKeyPress="return SetNumariaclOnly(event);" data-localize="value" placeholder="Value" />
+                <input type="number" id="lend" style="width: 30%;float:right;" maxlength="5" onKeyPress="return SetNumariaclOnly(event);" data-localize="value" placeholder="Value" />
                 </div>-->
-              
+
                 <br>
                 <div id="itemimage" style="width: 100%;">
                     <img id="image1" class="imageshadow" alt="image" style="width: 30%;max-height:90px;" src="images/imageplaceholder.png" onclick="takePictureGiveAway(1);" />
@@ -98,22 +100,22 @@
                 </label>
 
                 <textarea name="description" style="width:100%;" maxlength="100" id="description"></textarea>
-              
+
                 <label for="long_description_title" data-localize="long_description_title">
                     Further information
                 </label>
 
                 <textarea name="long_description" style="width:100%;height:140px;" maxlength="200"  id="long_description"></textarea>
-                
+
                 <label class="mightLike" for="like" data-localize="like">
                     I might like instead
                 </label>
 
                 <textarea class="mightLike" name="MightLike" style="width:100%;height:140px;" maxlength="200"  id="MightLike" ></textarea>
-               
-				<br><br>               
 
-                <a id="Save" data-role="button" onClick="saveItem();"  name="anchors" style="width: 100%;">
+                <br><br>
+
+                <a id="Save" data-role="button" onClick="saveItem();"    name="anchors" style="width: 100%;">
                     <span name="spn">Next</span>
                 </a>
 

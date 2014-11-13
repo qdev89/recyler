@@ -10,7 +10,7 @@
     background: #2489CE;
 }
 
-.km-flat .km-view:not(#terracycle-tabstrip):not(#niras-tabstrip):not(#product-tabstrip) .km-content
+.km-flat .km-view:not(#crowdfund-tabstrip):not(#how-works-tabstrip):not(#donate-tabstrip):not(#about-recycle-tabstrip):not(#confirm-spot-tabstrip):not(#credits-tabstrip):not(#about-app-tabstrip):not(#terracycle-tabstrip):not(#niras-tabstrip):not(#product-tabstrip) .km-content
 {
     padding: 15px;
 }
@@ -1642,8 +1642,9 @@ margin-bottom: 5px;
 
 
 .timeholder> *{
-    width:23% !important;
+    width:45% !important;
     display:inline-block;
+    margin-bottom:3px;
 }
 
 

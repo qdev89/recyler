@@ -21,26 +21,167 @@ getScript("https://maps.gstatic.com/intl/en_us/mapfiles/api-3/17/2/main.js");
 })();*/
 
 
-var googleMap = null;              
+var googleMap = null;   
+var markersArray=[];           
          
 function mapInit() {
     if (googleMap != null)
         return;
     $("#map-with-markers").height($("#map-tabstrip .km-content").first().height());
     var mapOptions = {
-        center: { lat: -34.397, lng: 150.644},
-        zoom: 6
+        center: { lat: 42.645335231440946, lng: 23.346939510345468},//42.645335231440946, B: 23.346939510345468
+        zoom: 6,
+         streetViewControl: false
     };
-    //  console.log(document.getElementById('map-with-markers'))
-    googleMap = new google.maps.Map(
+     googleMap = new google.maps.Map(
         document.getElementById('map-with-markers'),
         mapOptions
         );
     setTimeout(function() {
         $("#map-with-markers").height($("#map-tabstrip .km-content").first().height());
-        googleMap.setZoom(googleMap.getZoom());
+       
     }, 200);
 }
+
+
+
+function mapShow(e){
+    
+    console.log(e);
+    if(e.sender.params.spot!="true") return;
+    
+    
+    markersArray=[]; 
+    var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+    
+    var controlDiv = document.createElement('div');
+    controlDiv.style.padding = '5px';
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = 'white';
+    controlUI.style.borderStyle = 'solid';
+    controlUI.style.borderWidth = '2px';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.textAlign = 'center';
+    controlUI.title = '';
+    controlDiv.appendChild(controlUI);
+
+    // Set CSS for the control interior.
+    var controlText = document.createElement('div');
+    controlText.style.fontFamily = 'Arial,sans-serif';
+    controlText.style.fontSize = '12px';
+    controlText.style.paddingLeft = '4px';
+    controlText.style.paddingRight = '4px';
+    controlText.innerHTML = '<strong>Save</strong>';
+    controlUI.appendChild(controlText);
+    
+   
+//var myControl = new MyControl(controlDiv);
+
+google.maps.event.addDomListener(controlUI, 'click', function() {
+   app.application.navigate("confirm_spot.html");
+  });
+controlDiv.index = 1;
+googleMap.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
+    
+function success(pos) {
+  var crd = pos.coords;
+
+    
+    setPlace(crd.latitude, crd.longitude,true);
+    
+  console.log('Your current position is:');
+  console.log('Latitude : ' + crd.latitude);
+  console.log('Longitude: ' + crd.longitude);
+  console.log('More or less ' + crd.accuracy + ' meters.');
+};
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+     setPlace(0, 0,true);
+};
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+function setPlace(lat, long,draggable, type, map){
+    if(map==undefined) map=googleMap;
+    
+    if(draggable!=true) draggable =false;
+    
+    
+    var icon="";
+    switch(type){
+        case 1: icon = "images/mapicons/blaakors.png"
+        break;
+        case 2: icon = "images/mapicons/business.png"
+        break;
+        case 3: icon = "images/mapicons/church.png"
+        break;
+        case 4: icon = "images/mapicons/eco_spot.png"
+        break;
+        case 5: icon = "images/mapicons/food.png"
+        break;
+        default: icon = ""
+        break;
+    }   
+        
+    var LatLng = new google.maps.LatLng(lat, long);
+     var image = "";
+    if(icon != "")
+    image = {
+      url: icon,
+      size: new google.maps.Size(35, 35),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 0)
+	};   
+    
+    
+    
+      var marker1 = new google.maps.Marker({
+          position: LatLng,
+          map: map,
+          icon: image,
+          draggable:draggable
+      });
+    
+    marker1.type= type;    
+    map.setCenter(LatLng);    
+    markersArray.push(marker1);    
+    console.log(markersArray);
+    
+}
+
+function showMarkerType(type){
+    
+    markersArray.forEach(function(el,index){
+        if(type==-1) el.setVisible(true);
+        else{
+               if(el.type!=type) el.setVisible(false);
+                else el.setVisible(true);
+   	 }
+    });
+}
+
+
+
+
+
 
 var Type = '';
 var me, spot, currentPos, endPos;
@@ -256,7 +397,7 @@ function GetSpot() {
     User = $.parseJSON(localStorage.User);
     }
     MatchArray = [];
-    var Data = '{ "FriendID":' + User.UserID + ',"Type":"' + Type + '"}';
+    var Data = '{ "FriendID":' + User.Id + ',"Type":"' + Type + '"}';
     var URLFormed = Service.dataServiceURL + Service.ServiceName._SpotService + '/' + Service.ServiceMethods._GetMapProductSpot;
     $("#LoadingDiv").css({
     "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",

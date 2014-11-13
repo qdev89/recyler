@@ -384,7 +384,7 @@ var ProductStatus = {
            app.application.navigate("basic_setup.html");
         }
 
-        var Data = '{"ProductID":"' + ID + '","RecieverID":"' + localStorage.RecipientID + '","UserID":"' + User.UserID + '","EmailID":"'
+        var Data = '{"ProductID":"' + ID + '","RecieverID":"' + localStorage.RecipientID + '","UserID":"' + User.Id + '","EmailID":"'
                             + localStorage.RecipientEmailID + '"}';
 
         var URLFormed = Service.dataServiceURL +

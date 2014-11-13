@@ -1,15 +1,16 @@
-        <div data-role="view" id="find-item-tabstrip"  >           
-            <div id="head" data-role="header" >
-                <div style="text-align: center">
+        <div data-role="view" id="find-item-tabstrip" data-title="Latest stuff" data-init="app.Product.getProducts">           
+           
+            <div data-role="content" style="clear: both">
+                 <div style="text-align: center">
                     <table width="100%" border="0">
                         <tr>
                             <td width="40">
-                                <a id="Grid" href="#">
+                                <a id="Grid" >
                                     <img src="images/view1.png" alt="" height="31px" />
                                 </a>
                             </td>
                             <td>
-                                <a id="List" href="#">
+                                <a id="List" >
                                     <img src="images/view2.png" alt="" height="31px" />
                                 </a>
                             </td>
@@ -27,11 +28,14 @@
                         </tr>
                     </table>
                 </div>
-              
-            </div>
-            <div data-role="content" style="clear: both">
-                <ul id="ulProducts" data-role="listview"  width="30">
+                <ul id="ulProducts" >
                                 
                 </ul>
-            </div>         
+            </div>    
+            
+            <script type="text/x-kendo-template" id="productTemplate">
+      			<div style="display:inline-block;"> ${Name}</div>	
+                 <img src="${Image}" style="max-height:80px;display:inline-block;" />
+              
+   		 </script>
         </div>  

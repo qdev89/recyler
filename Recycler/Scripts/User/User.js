@@ -72,7 +72,7 @@ var user = {
 
     CreateUser: function () {
         $.support.cors = true;
-        var data = '{"UserID": "' + user.UserID + '",' +
+        var data = '{"UserID": "' + User.Id + '",' +
                    '"RoleID":"' + user.UserRole + '",' +
                    '"Username":"' + user.Username + '",' +
                    '"Password":"' + user.Password + '",' +
@@ -169,11 +169,11 @@ var user = {
                             user.navigate(result);
                             return;
                         },
-		            function (e) {
-		                alert('Message Failed:' + e);
-		            },
-		            d.PhoneNumber,
-		            message);
+    		            function (e) {
+    		                alert('Message Failed:' + e);
+    		            },
+    		            d.PhoneNumber,
+    		            message);
 
                     }
                     else {
@@ -275,7 +275,7 @@ var user = {
             data = $.parseJSON(localStorage.User);
             user.MemberShipID = data.MemberShipID;
             user.MemberShipType = data.MemberShipType;
-            if (data.RoleID == "2") {
+            if (data.UserRole == "2") {
                 $('#trMemberShip').show();
             }
             else {
@@ -327,7 +327,7 @@ var user = {
             }
 
             $("#phoneno").val(data.PhoneNumber);
-            user.UserID = data.UserID;
+            user.Id = data.Id;
             user.MailSent = data.MailSent;
             if (data.FacebookID != null && data.FacebookID != "") {
                 $("#password_fb").css({ "display": "none" });
@@ -339,7 +339,7 @@ var user = {
                 $("#username_fb").css({ "display": "none" });
             }
 
-            $("#role").val(data.RoleID);
+            $("#role").val(data.UserRole);
             $("#Languages").val(data.LanguageID);
 
             if (data.EmailID != "" && data.PhoneNumber != "") {
@@ -1051,7 +1051,7 @@ $(document).ready(function () {
     if (localStorage.SubscriptionPaid != undefined && localStorage.SubscriptionPaid != null) {
         var array = localStorage.SubscriptionPaid.split('_');
         User = $.parseJSON(localStorage.User);
-        user.UserID = User.UserID;
+        user.UserID = User.Id;
         if (array[2] == '1')
             user.UserRole = '1';
         else

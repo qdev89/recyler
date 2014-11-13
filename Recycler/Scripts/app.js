@@ -241,7 +241,7 @@ function runScript(e) {
             if (user.UserID == null || user.UserID == "") {
                 user.UserID = '0';
             }
-            user.RoleID = $("#role option:selected").val();
+            user.UserRole = $("#role option:selected").val();
             user.Username = $("#username_fb").val();
             user.Password = $("#password_fb").val();
             user.Email = $("#email").val();
@@ -439,7 +439,7 @@ function RecordTransaction(ID) {
         $('#LoadingDiv,#Load').hide();
     });
             
-   /* var Data = '{"RecieverID":"' + User.UserID + '","OwnerID":"' + localStorage.OwnerID + '","ProductID":"' + ID + '"}';
+   /* var Data = '{"RecieverID":"' + User.Id + '","OwnerID":"' + localStorage.OwnerID + '","ProductID":"' + ID + '"}';
     var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._RecordTransaction;
             
     $.ajax({
@@ -574,7 +574,7 @@ function GetProductOwner(ID) {
                        localStorage.OwnerID = data.UserID;
                        localStorage.OwnerPhoneNumber = data.PhoneNumber;
             
-                       if (data.RoleID == '2') {
+                       if (data.UserRole == '2') {
                            $('#RecycleStar').css({ 'display': 'block' }).attr('src', 'images/supporter.png');
                        } else {
                            $('#RecycleStar').css({ 'display': 'block' }).attr('src', 'images/notsupporter.png');
@@ -862,14 +862,14 @@ function signupLogin() {
             if ($('#FacebookLogin').is(':checked')) {
                 Login.LoginDetails.Password = null;
                 Login.LoginDetails.LangaugeID = localStorage.Language;
-                Login.LoginDetails.RoleID = 1;
+                Login.LoginDetails.UserRole = 1;
                 //localStorage.FaceBookObject = FB;
                 login();
             } else if ($('#RecycleLogin').is(':checked')) {
                 Login.LoginDetails.FacebookId = null;
                 // localStorage.FaceBookObject = null;
                 Login.LoginDetails.LangaugeID = localStorage.Language;
-                Login.LoginDetails.RoleID = 1;
+                Login.LoginDetails.UserRole = 1;
                 CreateUserWithRecycleWorld();
             }
         } else {
@@ -1395,7 +1395,7 @@ function UpdateEarthHeartData() {
         User = $.parseJSON(localStorage.User);
     }
                 
-    var Parameters = User.UserID + '/'
+    var Parameters = User.Id + '/'
                      + Type + '/'
                      + DonationAmount + '/'
                      + Transactions + '/'

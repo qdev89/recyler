@@ -16,7 +16,7 @@ var Roles =
             ],
             "Danish": [	{
                             "id": "0",
-                            "Value": "V�lg bruger profil"
+                            "Value": "Vælg bruger profil"
                         },
 			{
                             "id": "1",
@@ -29,7 +29,7 @@ var Roles =
             ],
             "German": [	{
                             "id": "0",
-                            "Value": "W�hlen Sie ein Benutzerprofil"
+                            "Value": "Wählen Sie ein Benutzerprofil"
                         },
 			{
                             "id": "1",
@@ -61,7 +61,7 @@ var Languages =
             "Danish": [
 			{   
 			    "id": "0",
-                            "Value": "V�lg sprog"
+                            "Value": "Vælg sprog"
 			
 			},
 			{
@@ -78,7 +78,7 @@ var Languages =
                         },
                         {
                             "id": "4",
-                            "Value": "Espa�ol"
+                            "Value": "Español"
                         }
             ],
 
@@ -89,7 +89,7 @@ var Languages =
 			},
 			{
                             "id": "1",
-                            "Value": "Danish"
+                            "Value": "Dansk"
                         },
                         {
                             "id": "2",
@@ -101,7 +101,7 @@ var Languages =
                         },
                         {
                             "id": "4",
-                            "Value": "Espa�ol"
+                            "Value": "Español"
                         }
             ],
             "German": [
@@ -111,7 +111,7 @@ var Languages =
 			
 			},{
                             "id": "1",
-                            "Value": "D�nish"
+                            "Value": "Dansk"
                         },
                         {
                             "id": "2",
@@ -123,7 +123,7 @@ var Languages =
                         },
                         {
                             "id": "4",
-                            "Value": "Espa�ol"
+                            "Value": "Español"
                         }
             ]
 ,
@@ -135,19 +135,19 @@ var Languages =
 			},
 			{
                             "id": "1",
-                            "Value": "Dan�s" 
+                            "Value": "Dansk" 
                         },
                         {
                             "id": "2",
-                            "Value": "Alem�n" 
+                            "Value": "Deutsch" 
                         },
                         {
                             "id": "3",
-                            "Value": "Ingl�s"
+                            "Value": "English"
                         },
                         {
                             "id": "4",
-                            "Value": "Espa�ol"
+                            "Value": "Español"
                         }
             ]
 
@@ -271,7 +271,7 @@ var Languages =
                         },
                         {
                             "id": "03",
-                            "Value": "M�r"
+                            "Value": "Mär"
                         },
                         {
                             "id": "04",
@@ -374,9 +374,14 @@ var Languages =
                             "id": "Garage sale/Market/Event",
                             "Value": "Garage sale/Market etc."
                         },
+						
+						{
+                            "id": "Terracycle spot",
+                            "Value": "Terracycle brigade spot"
+                        },
                         {
                             "id": "Eco/Green shop",
-                            "Value": "Eco shop"
+                            "Value": " Eco/sustainable store/place"
                         },
                         {
                             "id": "Recycling spot",
@@ -401,15 +406,19 @@ var Languages =
             ],
             "Danish": [{
                             "id": "0",
-                            "Value": "V�lg type"
+                            "Value": "Vælg type"
                         },
                         {
                             "id": "Garage sale/Market/Event",
                             "Value": "Garagesalg, marked el. lign"
                         },
+						{
+                            "id": "Terracycle spot",
+                            "Value": "Terracycle opsamlings sted"
+                        },
                         {
                             "id": "Eco/Green shop",
-                            "Value": "�ko butik"
+                            "Value": "Øko/bæredygtig butik/sted"
                         },
                         {
                             "id": "Recycling spot",
@@ -421,28 +430,33 @@ var Languages =
                         },
                         {
                             "id": "Food donation",
-                            "Value": "F�devare donation"
+                            "Value": "Fødevare donation"
                         },
 					    {
                             "id": "FREE Food",
-                            "Value": "GRATIS f�devarer eller frugt"
+                            "Value": "GRATIS fødevarer eller frugt"
                         },
 						{
                             "id": "Help",
-                            "Value": "HJ�LP os med at indsamle"
+                            "Value": "HJÆLP os med at indsamle"
                         }
             ],
             "German": [{
                             "id": "0",
-                            "Value": "Typ W�hlen"
+                            "Value": "Typ Wählen"
                         },
                         {
                             "id": "Garage sale/Market/Event",
                             "Value": "Garagenverkauf/Floh Market",
                         },
+						
+						{
+                            "id": "Terracycle spot",
+                            "Value": "Terracycle Brigade Ort"
+                        },
                         {
                             "id": "Eco/Green shop",
-                            "Value": "Eco shop"
+                            "Value": "Eco/nachhaltige store / Ort"
                         },
                         {
                             "id": "Recycling spot",
@@ -474,9 +488,13 @@ var Languages =
                             "id": "Garage sale/Market/Event",
                             "Value": "Venta de Garaje/ mercado"
                         },
+												{
+                            "id": "Terracycle spot",
+                            "Value": "Terracycle brigade spot"
+                        },
                         {
                             "id": "Eco/Green shop",
-                            "Value": "Tienda de ecol�gico"
+                            "Value": "Tienda sostenible / lugar"
                         },
                         {
                             "id": "Recycling spot",
@@ -484,11 +502,11 @@ var Languages =
 						},
                         {
                             "id": "Recycling company",
-                            "Value": "Reciclaje compa��a/Esacio"
+                            "Value": "Reciclaje compañía/Esacio"
                         },
                         {
                             "id": "Food donation",
-                            "Value": "Alimentos donaci�n"
+                            "Value": "Alimentos donación"
                         },
 						{
                             "id": "FREE Food",
@@ -496,7 +514,7 @@ var Languages =
                         },
 						{
                             "id": "Help",
-                            "Value": "AY�DANOS a recopilar"
+                            "Value": "AYÜDANOS a recopilar"
                         }
             ]
         }
@@ -626,7 +644,7 @@ var Languages =
 },
 {
 "id": "Children",
-"Value": "B�rne ting"
+"Value": "Børne ting"
 },
 {
 "id": "Animal",
@@ -634,11 +652,11 @@ var Languages =
 },
 {
 "id": "Indoor",
-"Value": "Indend�rs"
+"Value": "Indendørs"
 },
 {
 "id": "Outdoor",
-"Value": "Udend�rs"
+"Value": "Udendørs"
 }, 
 {
 "id": "Garden",
@@ -646,19 +664,19 @@ var Languages =
 },
 {
 "id": "Kitchen",
-"Value": "K�kken"
+"Value": "Køkken"
 },
 {
 "id": "Bathroom",
-"Value": "Badev�relse"
+"Value": "Badeværelse"
 }, 
 {
 "id": "Furniture",
-"Value": "M�bler"
+"Value": "Møbler"
 },
 {
 "id": "Books",
-"Value": "B�ger"
+"Value": "Bøger"
 },
 {
 "id": "Electronics",
@@ -674,15 +692,15 @@ var Languages =
 }, 
 {
 "id": "Tools",
-"Value": "V�rkt�jer"
+"Value": "Værktøjer"
 },
 {
 "id": "Clothing",
-"Value": "T�j"
+"Value": "Tøj"
 },
 {
 "id": "Toys",
-"Value": "Leget�j"
+"Value": "Legetøj"
 },
 {
 "id": "Sport",
@@ -698,7 +716,7 @@ var Languages =
 },
 {
 "id": "Food",
-"Value": "F�devarer"
+"Value": "Fødevarer"
 },
 {
 "id": "Private",
@@ -726,7 +744,7 @@ var Languages =
 },
 {
 "id": "Men",
-"Value": "M�nner Zeug"
+"Value": "Männer Zeug"
 },
 {
 "id": "Women",
@@ -754,7 +772,7 @@ var Languages =
 },
 {
 "Id": "Kitchen", 
-"Value": "K�che" 
+"Value": "Küche" 
 }, 
 {
 "Id": "Bathroom", 
@@ -762,11 +780,11 @@ var Languages =
 },
 {
 "id": "Furniture",
-"Value": "M�bel"
+"Value": "Möbel"
 },
 {
 "id": "Books",
-"Value": "B�cher"
+"Value": "Bücher"
 },
 {
 "id": "Electronics",
@@ -842,7 +860,7 @@ var Languages =
 },
 {
 "id": "Children",
-"Value": "Ni�os cosas"
+"Value": "Niños cosas"
 },
 {
 "id": "Animal",
@@ -858,7 +876,7 @@ var Languages =
 },
 {
 "id": "Garden",
-"Value": "Jard�n"
+"Value": "Jardín"
 },
 {
 "Id": "Kitchen", 
@@ -866,7 +884,7 @@ var Languages =
 },
 {
 "Id": "Bathroom", 
-"Value": "Cuarto de ba�o" 
+"Value": "Cuarto de baño" 
 }, 
 {
 "id": "Furniture",
@@ -878,11 +896,11 @@ var Languages =
 },
 {
 "id": "Electronics",
-"Value": "Art�culos electr�nicos"
+"Value": "Artículos electrónicos"
 },
 {
 "Id": "Phone", 
-"Value": "Tel�fonos" 
+"Value": "Teléfonos" 
 },
 {
 "id": "Computer",
@@ -906,7 +924,7 @@ var Languages =
 },
 {
 "id": "Mechanics",
-"Value": "Jard�n"
+"Value": "Jardín"
 },
 {
 "id": "Transportation",

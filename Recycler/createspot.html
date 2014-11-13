@@ -3,12 +3,12 @@
     <div data-role="content">
         <div>
             <div>
-                <a id="whatDifference" data-role="button" >
+                <a id="whatDifference" data-role="button"   class="btn btn-blue">
                     <!-- whatdifference -->
                     <label for="whatdifference"  data-localize="whatdifference">What is the difference?</label>
                 </a>
             </div>
-
+<br>
             <div>
                 <!-- spottype -->
                 <label for="spottype"  data-localize="spottype">Spot type:&nbsp;</label>
@@ -43,7 +43,7 @@
             <label style="display:none" id="EventDescription" for="spotdescription" data-localize="EventDescription">Event Description:</label>-->
 
             <div class="container-div">
-                <textarea name="spotdesciption" rows="10" maxlength="200" placeholder="Description.." id="spotdesc"  ></textarea>
+                <textarea name="spotdesciption" rows="10" maxlength="200" placeholder="Description" id="spotdesc"  class="ta10" ></textarea>
             </div>
 
             <!--<div id="EventDate" style="display:none">
@@ -119,12 +119,12 @@
             <!-- spotadress -->
             <!-- <label for="spotadress" data-localize="spotadress">Address: *</label>-->
             <div class="container-div">
-                <input type="text" name="spotadress" id="spotadress" value="" placeholder="Address*"  onkeypress="return StopSpecialchrOnly(event);" maxlength="30" size="30"/>
+                <input type="text" name="spotadress" id="spotadress" value="" placeholder="Address*"  onkeypress="return StopSpecialchrOnly(event);"  class="tb1" />
             </div>
             <!-- spotcity -->
             <!-- <label for="spotcity" data-localize="spotcity">City: *</label>-->
             <div class="container-div">
-                <input type="text" name="spotcity" id="spotcity" value="" placeholder="City*" onKeyPress="return StopSpecialchrOnly(event);" maxlength="30" size="30"/>
+                <input type="text" name="spotcity" id="spotcity" value="" placeholder="City*" onKeyPress="return StopSpecialchrOnly(event);"  class="tb1" />
             </div>
             <!-- spotzip -->
             <!--<label for="spotzip" data-localize="spotzip">Zip: *</label>-->
@@ -506,7 +506,7 @@
                     <option>24</option>
                 </select>
 
-                <div  id="tdOpenWeek" style="display:none" >
+                <div  id="tdOpenWeek"  >
                     <!-- spotclose -->
                     <select size="1" id="OpenTimeMonFri" name="AMMON" >
                         <option  value="-">-</option>
@@ -543,7 +543,7 @@
                     <option>24</option>
                 </select>
 
-                <div id="tdCloseWeek" style="display:none">
+                <div id="tdCloseWeek" >
                     <!-- spotclose -->
                     <select size="1" id="CloseTimeMonFri" name="AMMON" >
                         <option  value="-">-</option>
@@ -585,7 +585,7 @@
                     <option>24</option>
                 </select>
 
-                <div id="tdOpenSat" style="display:none">
+                <div id="tdOpenSat" >
                     <!-- spotclosesat -->
                     <select size="1" id="OpenTimeSat" name="AMMON2" >
                         <option  value="-">-</option>
@@ -622,7 +622,7 @@
                     <option>24</option>
                 </select>
 
-                <div id="tdCloseSat" style="display:none">
+                <div id="tdCloseSat" >
                     <!-- spotclosesat -->
                     <select size="1" id="CloseTimeSat" name="AMMON2" >
                         <option  value="-">-</option>
@@ -666,7 +666,7 @@
                     <option>24</option>
                 </select>
 
-                <div  id="tdOpenSun" style="display:none">
+                <div  id="tdOpenSun" >
                     <!-- spotsunclose -->
                     <select size="1" id="OpenTimeSun" name="AMMON3" >
                         <option  value="-">-</option>
@@ -703,7 +703,7 @@
                     <option>24</option>
                 </select>
 
-                <div  id="tdCloseSun" style="display:none">
+                <div  id="tdCloseSun" >
                     <!-- spotsunclose -->
                     <select size="1" id="CloseTimeSun" name="AMMON3" >
                         <option  value="-">-</option>
@@ -713,7 +713,7 @@
                 </div>
             </div>
             <br><br>
-            <a data-role="button" id="btnspot" data-transition="fade">
+            <a data-role="button" id="btnspot" data-transition="fade"  class="btn btn-blue">
                 <label for="createspot" data-localize="createspot">Create spot</label>
             </a>
 

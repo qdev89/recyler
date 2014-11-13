@@ -140,7 +140,7 @@ function InviteFriends() {
 
 
             var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._InviteFriends;
-            var Data = '{"UserId":"' + User.UserID + '","EmailID":"' + $('#Friendsemail').val() + '","Description":"' + $('#description').val() + '"}';
+            var Data = '{"UserId":"' + User.Id + '","EmailID":"' + $('#Friendsemail').val() + '","Description":"' + $('#description').val() + '"}';
 
 
             $("#LoadingDiv").css({ "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
@@ -227,7 +227,7 @@ function InviteFriends() {
 
 
         var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._InviteFriends;
-        var Data = '{"UserId":"' + User.UserID + '","EmailID":"' + $('#Friendsemail').val() + '","Description":"' + $('#description').val() + '"}';
+        var Data = '{"UserId":"' + User.Id + '","EmailID":"' + $('#Friendsemail').val() + '","Description":"' + $('#description').val() + '"}';
 
 
         $("#LoadingDiv").css({ "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
