@@ -84,7 +84,7 @@ app.Login = (function () {
                                                 if(data.result.Email == undefined || data.result.Email == "")
                                                  app.application.navigate('basic_setup.html');
                                                 else
-                                                 app.application.navigate('me.html');
+                                                 app.application.navigate('finditem.html');
                                             });
             })
             .then(null,

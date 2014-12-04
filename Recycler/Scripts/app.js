@@ -31,7 +31,8 @@ document.addEventListener("backbutton", BackButton, true);
 function navigateFromDrawer(view){
     
     if(localStorage.User==undefined || localStorage.User==null){
-        alert("You should login first, in order to browse the application!")
+        alert("You should login first, in order to browse the application!");
+         app.application.navigate('signup_login.html');
         return false;
         }
     
@@ -1844,6 +1845,7 @@ function setupInit() {
      
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
+           try{
             $.getJSON('http://ws.geonames.org/countryCode', {
                           lat: position.coords.latitude,
                           lng: position.coords.longitude,
@@ -1853,7 +1855,14 @@ function setupInit() {
                           //                alert(result.countryCode);
                           //                alert(CountryCode["IN"]);
                           user.CountryCode = result.countryCode;
-                      });
+                      }, function (err) {
+                          //                alert(result.countryCode);
+                          //                alert(CountryCode["IN"]);
+                         console.log(err);
+                      }
+                
+                );
+           }catch(err){console.log(err);}
         });
     }
 } 
@@ -1885,3 +1894,44 @@ function deleteUser() {
            'Delete account', 
            ['Delete','Cancel']);   
 }
+
+
+function resetScroller(e){
+    e.view.scroller.reset();
+}
+
+
+function showLoading(){$("#loaderDiv").show();}
+
+function hideLoading(){$("#loaderDiv").hide()}
+
+
+function setListStyle(el,style){
+    
+    
+  var ul =  $(el).closest(".km-view").find("ul.styled-list").first();
+    if($(ul).length>0){
+        if(style=="normal"){
+            $(ul).addClass("one-by-row").removeClass("three-by-row");
+        }else{
+             $(ul).addClass("three-by-row").removeClass("one-by-row");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

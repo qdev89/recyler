@@ -1,51 +1,149 @@
-<div data-role="view" id="findonmap" data-title="Find on map" data-init="findOnMapInit" style="background-color: #f3f3f3;">
-     
-    <div id="LoadingDiv" style="display: none; text-align: center">
-    </div>
-    <div id="Load" style="display: none">
-        <div style="font-weight: bold">
-            <label for="wait" data-localize="wait">
-                Please wait...
-            </label>
+<div data-role="view" id="findonmap" data-title="Find on map" data-init="iconMapInit" >
+    <script>
+        function closeModal() {
+            $("#modalview-icons").kendoMobileModalView("close");
+        }
+    </script>
+
+    <a data-role="button" class="btn btn-primary" data-rel="modalview" href="#modalview-icons" id="modalview-open-button">Filters</a>
+    <div class="map" style="width:96%;margin:auto;" id="map-with-icons"></div>
+
+</div>
+
+<div data-role="modalview" id="modalview-icons" style="width: 90%;height:90%;">
+    <div data-role="header">
+        <div data-role="navbar">
+             <a data-align="left" data-role="button" onclick="filterIcons()" ><img src="images/empty_filter.png" style="height: 14px;" /></a>
+            <span>Spot types</span>
+             <a data-align="right" data-role="button" onclick="closeModal()" >X</a>
         </div>
-        <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;
-             padding-top: 5px" />
-    </div>
-    <div id="dvBlur">
-        <div id="map_canvas">
-        </div>
     </div>
 
-    <div id="footer" data-role="footer">
-        <div data-role="tabstrip" >
-            <a id="prodmap"  href="#findonmap" >
-                <img src="images/tabicons/products.png" />
-                Stuff
+    <ul data-role="listview" id="IconFilters" class="icons-list" data-style="inset">
 
-            </a>
-            <a id="salemap" href="#findonmap" >
-                <img src="images/tabicons/sale.png" />
-                Sale
-
-            </a>
-
-            <a id="Foodmap"  href="#findonmap" >
-                <img src="images/tabicons/food.png" />
+        <li>
+            <div class="img-container">
+                <img src="images/mapicons/eco_spot.png" />
+            </div>
+            <div class="description-container">
+                Eco spot
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Eco/Green shop" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="img-container">
+                <img src="images/mapicons/food.png" />
+            </div>
+            <div class="description-container">
                 Food
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="FREE Food" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
 
-            </a>
+        <li>
+            <div class="img-container">
+                <img src="images/mapicons/business_smal.png" />
+            </div>
+            <div class="description-container">
+                Bussiness
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Recycling company" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="img-container">
+                <img src="images/mapicons/garagesale_small.png" />
+            </div>
+            <div class="description-container">
+                Garage sale
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Garage sale/Market/Event" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
 
-            <a id="recmap"  href="#findonmap" class="ui-btn-active ui-state-persist">
-                <img src="images/tabicons/recycling.png" />
-                Recycle
+        <li>
+            <div class="img-container">
+                <img src="images/mapicons/foodwaste_small.png" />
+            </div>
+            <div class="description-container">
+                Food waste
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Food donation" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="img-container">
+                <img src="images/mapicons/help-small.png" />
+            </div>
+            <div class="description-container">
+                Help
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Help" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
 
-            </a>
+        <li>
+            <div class="img-container">
+                <img src="images/mapicons/recycling_small.png" />
+            </div>
+            <div class="description-container">
+                Recycling
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Recycling spot" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li> 
+        <li>
+            <div class="img-container">
+                <img src="images/mapicons/upcycling_small.png" />
+            </div>
+            <div class="description-container">
+                Upcycling
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Upcycling" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="img-container">
+                <img src="images/mapicons/terracycle_small.png" />
+            </div>
+            <div class="description-container">
+                Terracycle
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Terracycle spot" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
 
-            <a id="ecomap"  href="#findonmap" >
-                <img src="images/tabicons/eco.png" />
-                eco
+    </ul>
+    <a class="btn btn-primary" id="modalview-login-button" onclick="filterIcons()" type="button" data-role="button">Filter</a><br>
+    <a class="btn btn-primary" type="button" data-role="button" onclick="closeModal()" >Cancel</a>
 
-            </a>
-        </div>
-    </div>
 </div>

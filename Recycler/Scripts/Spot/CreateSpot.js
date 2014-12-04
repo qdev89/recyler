@@ -35,7 +35,7 @@ var spot = {
         if (spot.Image == null || spot.Image == undefined || spot.Image == "")
             spot.Image = "";
       
-         var data = '{"SpotId": "' + spot.Id + '",' +
+        var data = '{"SpotId": "' + spot.Id + '",' +
                    '"SpotType":"' + spot.SpotType + '",' +
                    '"UserID":"' + spot.userId + '",' +
                    '"Image":"' + spot.Image + '",' +
@@ -64,12 +64,10 @@ var spot = {
                    '"ClosingTimeSun":"' + spot.ClosingTimeSun + '"}';
         
         localStorage.Spotdata = data;  
-        
-      //  app.application.navigate("confirm_spot.html");
-         app.application.navigate("map.html?spot=true");
+        //  app.application.navigate("confirm_spot.html");
+        app.application.navigate("map.html?spot=true");
     }
 };
-
 
 function SaveSpot() {
     var lat, long;
@@ -79,56 +77,78 @@ function SaveSpot() {
         long = markersArray[0].position["B"];
     }
     
+    if(Data.Image==""){
+        app.application.navigate("createspot.html");
+    	return;
+    }
+    
     var file = {
         "Filename": "spotPicture.jpeg",
         "ContentType": "image/jpeg",
         "CustomField": "customValue",
         "base64": Data.Image
     };
-
+    console.log(file);  
     app.everlive.Files.create(file,
-                              function (data) {
-                                  console.log(data);  
-                                  
-                                  var spot = app.everlive.data('Spot');     
-    
-                                  spot.create({
-                                                  'userId' : Data.UserID,"Name": Data.Name, "Description" : Data.Description,
-                                                  "Longitude":long,"Latitude" : lat,"Country":Data.Country,"City":Data.City,
-                                                  "CVR": Data.CVR, "Address":Data.Address,"EventDate":Data.EventDate,
-                                                  "Phone":Data.Phone,"SpotType": Data.SpotType,
-                                                  "State":Data.State, "Web":Data.Web, "Zip":Data.Zip,
-                                                  "ClosingTimeSat":Data.ClosingTimeSat,"ClosingTimeSun":Data.ClosingTimeSun,
-                                                  "ClosingTimeWeekdays":Data.ClosingTimeWeekdays,"OpeningHoursSaturdayFrom":Data.OpeningHoursSaturdayFrom,
-                                                  "OpeningHoursSaturdayTo":Data.OpeningHoursSaturdayTo,
-                                                  "OpeningHoursSundayFrom":Data.OpeningHoursSundayFrom,"OpeningHoursSundayTo":Data.OpeningHoursSundayTo,
-                                                  "OpeningHoursWeekdaysFrom":Data.OpeningHoursWeekdaysFrom,
-                                                  "OpeningHoursWeekdaysTo":Data.OpeningHoursWeekdaysTo,"OpeningTimeSat":Data.OpeningTimeSat,
-                                                  "OpeningTimeSun":Data.OpeningTimeSun,"OpeningTimeWeekdays":Data.OpeningTimeWeekdays,"Image":data.result.Id
-                                                  //  Image
-                                              },
-                                              function(data2) {
-                                                  // console.log(data);
-                                                  app.application.navigate("thanks.html");
-                                              },
-                                              function(error) {
-                                                  console.log(error);
-                                              });
-                              },
-                              function (error2) {
-                                  alert(JSON.stringify(error2)); 
-                              });          
-    
+      function (data) {
+          console.log(data);  
+          
+          app.everlive.Files.getById(data.result.Id)
+              .then(function(res) {
+                  var spot = app.everlive.data('Spot');     
+
+                  spot.create({
+                          'userId' : Data.UserID,
+                          "Name": Data.Name, 
+                          "Description" : Data.Description,
+                          "Longitude":long,
+                          "Latitude" : lat,
+                          "Country":Data.Country,
+                          "City":Data.City,
+                          "CVR": Data.CVR,
+                          "Address":Data.Address,
+                          "EventDate":Data.EventDate,
+                          "Phone":Data.Phone,
+                          "SpotType": Data.SpotType,
+                          "State":Data.State,
+                          "Web":Data.Web, "Zip":Data.Zip,
+                          "ClosingTimeSat":Data.ClosingTimeSat,
+                          "ClosingTimeSun":Data.ClosingTimeSun,
+                          "ClosingTimeWeekdays":Data.ClosingTimeWeekdays,
+                          "OpeningHoursSaturdayFrom":Data.OpeningHoursSaturdayFrom,
+                          "OpeningHoursSaturdayTo":Data.OpeningHoursSaturdayTo,
+                          "OpeningHoursSundayFrom":Data.OpeningHoursSundayFrom,
+                          "OpeningHoursSundayTo":Data.OpeningHoursSundayTo,
+                          "OpeningHoursWeekdaysFrom":Data.OpeningHoursWeekdaysFrom,
+                          "OpeningHoursWeekdaysTo":Data.OpeningHoursWeekdaysTo,
+                          "OpeningTimeSat":Data.OpeningTimeSat,
+                          "OpeningTimeSun":Data.OpeningTimeSun,
+                          "OpeningTimeWeekdays":Data.OpeningTimeWeekdays,
+                          "Image":res.result.Uri
+                          
+                      },
+                      function(data2) {
+                          // console.log(data);
+                          app.application.navigate("myspots.html");
+                      },
+                      function(error) {
+                          console.log(error);
+                      });
+              }, function (error3) {
+                  console.log(error3); 
+              }); 
+      },
+      function (error2) {
+          console.log(error2); 
+      });          
 }
-
-
 
 function InitCreateSpot() {
     Filldata();
 
     changeLanguage(localStorage.LanguageType);
 
-   // var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
+    // var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
     //$("[data-localize]").localize("Recycle", opts);
 
     if (localStorage.CacheItem != undefined && localStorage.CacheItem != '') {
@@ -258,7 +278,7 @@ function InitCreateSpot() {
 
     $('#spotmonfrifrom').change(function () {
         if ($(this).val() == "00") {
-          //  $("#tdOpenWeek").hide();
+            //  $("#tdOpenWeek").hide();
             $("#OpenTimeMonFri").parent().children('span').find('.ui-btn-text').html('-');
             $('#OpenTimeMonFri>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -280,7 +300,7 @@ function InitCreateSpot() {
 
     $('#spotmonfrito').change(function () {
         if ($(this).val() == "00") {
-          //  $("#tdCloseWeek").hide();
+            //  $("#tdCloseWeek").hide();
             $("#CloseTimeMonFri").parent().children('span').find('.ui-btn-text').html('-');
             $('#CloseTimeMonFri>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -302,7 +322,7 @@ function InitCreateSpot() {
 
     $('#spotopensatfrom').change(function () {
         if ($(this).val() == "00") {
-           // $("#tdOpenSat").hide();
+            // $("#tdOpenSat").hide();
             $("#OpenTimeSat").parent().children('span').find('.ui-btn-text').html('-');
             $('#OpenTimeSat>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -324,7 +344,7 @@ function InitCreateSpot() {
 
     $('#spotopensatto').change(function () {
         if ($(this).val() == "00") {
-          //  $("#tdCloseSat").hide();
+            //  $("#tdCloseSat").hide();
             $("#CloseTimeSat").parent().children('span').find('.ui-btn-text').html('-');
             $('#CloseTimeSat>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -346,7 +366,7 @@ function InitCreateSpot() {
 
     $('#spotopensunfrom').change(function () {
         if ($(this).val() == "00") {
-          //  $("#tdOpenSun").hide();
+            //  $("#tdOpenSun").hide();
             $("#OpenTimeSun").parent().children('span').find('.ui-btn-text').html('-');
             $('#OpenTimeSun>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -368,7 +388,7 @@ function InitCreateSpot() {
 
     $('#spotopensunto').change(function () {
         if ($(this).val() == "00") {
-          //  $("#tdCloseSun").hide();
+            //  $("#tdCloseSun").hide();
             $("#CloseTimeSun").parent().children('span').find('.ui-btn-text').html('-');
             $('#CloseTimeSun>option').each(function (i) {
                 if ($(this).html() == '-') {
@@ -823,17 +843,13 @@ function CreateASpot() {
         $('#LoadingDiv,#Load').show();
 
         spot.userId = User.Id;
-
         spot.Id = '0';
         spot.SpotType = $("#spotype option:selected").val();
 
-        if (spot.SpotType == "Garage sale/Market/Event") {
             spot.EventDate = $('#select-choice-month option:selected').val() + '/'
                              + $('#select-choice-day option:selected').val() + '/'
                              + $('#select-choice-year option:selected').val();
-        } else {
-            spot.EventDate = "";
-        }
+      
 
         spot.Name = $("#spotname").val();
         spot.Description = $("#spotdesc").val();
@@ -847,6 +863,7 @@ function CreateASpot() {
         } else {
             spot.State = $("#txtState").val();
         }
+        
         spot.Phone = $("#spotphone").val();
         spot.Web = $("#spotweb").val();
         spot.CVR = $("#Cvr").val();
@@ -856,21 +873,15 @@ function CreateASpot() {
         spot.OpeningHoursSaturdayTo = $("#spotopensatto").val();
         spot.OpeningHoursSundayFrom = $("#spotopensunfrom").val();
         spot.OpeningHoursSundayTo = $("#spotopensunto").val();
-
         spot.OpeningTimeWeekdays = $("#OpenTimeMonFri").val();
         spot.ClosingTimeWeekdays = $("#CloseTimeMonFri").val();
         spot.OpeningTimeSat = $("#OpenTimeSat").val();
         spot.ClosingTimeSat = $("#CloseTimeSat").val();
         spot.OpeningTimeSun = $("#OpenTimeSun").val();
         spot.ClosingTimeSun = $("#CloseTimeSun").val();
-
-        //spot.GetLonLat();
-        //$.mobile.loadingMessageTextVisible = true;
-
-        //$.mobile.showPageLoadingMsg("b", "please wait...");
         spot.CreateSpot();
     }
-    // spot.CreateSpot();
+   
 }
 
 function LoadStorageData() {

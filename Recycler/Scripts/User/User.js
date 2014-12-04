@@ -1068,14 +1068,22 @@ $(document).ready(function () {
         user.Country = User.Country;
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                $.getJSON('http://ws.geonames.org/countryCode', {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                    type: 'JSON',
-                    async: false
-                }, function (result) {
-                    user.CountryCode = result.countryCode;
-                });
+                try{
+                    $.getJSON('http://ws.geonames.org/countryCode', {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                        type: 'JSON',
+                        async: false
+                    }, 
+                    function (result) {
+                        user.CountryCode = result.countryCode;
+                    }, 
+                    function (err) {
+                          //                alert(result.countryCode);
+                          //                alert(CountryCode["IN"]);
+                         console.log(err);
+                    });
+               }catch(err){console.log(err);}
             });
         }
         else {

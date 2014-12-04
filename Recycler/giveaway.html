@@ -12,10 +12,11 @@
         <div id="item_info_div" style="width: 100%; text-align: left;">
 
             <div class="radio-options">
-                <div class="boldText">Select</div>
+                <label for="description" data-localice="choose">
+                <div class="boldText">Select</div></label>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label >
+                        <label for="description" data-localice="recycle">
                             Recycle / give away
                         </label>
                     </span>
@@ -23,7 +24,7 @@
                 </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label >
+                        <label for="description" data-localice="trade">
                             Trade
                         </label>
                     </span>
@@ -31,7 +32,7 @@
                 </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label>
+                        <label for="description" data-localice="sell">
                             Sell
                         </label>
                     </span>
@@ -39,7 +40,7 @@
                 </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label>
+                       <label for="description" data-localice="lend">
                             Lend
                         </label>
                     </span>
@@ -47,7 +48,7 @@
                 </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label>
+                        <label for="description" data-localice="lej">
                             Rent
                         </label>
                     </span>
@@ -56,7 +57,7 @@
                 <br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label>
+                        <label for="description" data-localice="service">
                             Service: I can help others with
                         </label>
                     </span>
@@ -79,8 +80,8 @@
                 <br>
                 <div class="price-div">
 
-                    <span class="price">Price</span>
-                    <span class="lend">Lend / Rent price</span>
+                      <label for="desciption" data-localize="price"> <span class="price">Price</span></label>
+                       <label for="desciption" data-localize="lendprice"><span class="lend">Lend / Rent price</span></label>
                     <input type="number" id="price" style="width: 30%;float:right;" maxlength="5" onKeyPress="return SetNumariaclOnly(event);" data-localize="value" placeholder="Value" />
                 </div>
                 <!--  <div class="lend">

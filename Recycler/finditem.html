@@ -1,41 +1,26 @@
-        <div data-role="view" id="find-item-tabstrip" data-title="Latest stuff" data-init="app.Product.getProducts">           
-           
-            <div data-role="content" style="clear: both">
-                 <div style="text-align: center">
-                    <table width="100%" border="0">
-                        <tr>
-                            <td width="40">
-                                <a id="Grid" >
-                                    <img src="images/view1.png" alt="" height="31px" />
-                                </a>
-                            </td>
-                            <td>
-                                <a id="List" >
-                                    <img src="images/view2.png" alt="" height="31px" />
-                                </a>
-                            </td>
-                            <td>
-                                <h4>
-                                    <!-- titel -->
-                                    <span name="spn" data-localize="titletext_find">Find stuff</span>
-                                </h4>
-                            </td>
-                            <td>
-                                <a onclick="appNavigate('filter.html');" id="GoToFilters">
-                                    <img src="images/filter_button.png" alt="" style="margin-top: 5px" height="31px" />
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <ul id="ulProducts" >
-                                
-                </ul>
-            </div>    
+<div data-role="view" id="find-item-tabstrip" data-title="Latest stuff" data-init="app.Product.getProducts">
+
+    <div onclick="appNavigate('filter.html');" id="GoToFilters">Quick Search</div>
+
+    <ul class="one-by-row styled-list" id="ulProducts" >
+
+    </ul>
+
+    <script type="text/x-kendo-template" id="productTemplate">
+        <div class="img-holder">
+            <img src="${Image}"  />
+        </div>
+        
+        <div class="item-info">
+            <div class="li-name"> Name: ${Name}</div>
+            <div class="li-type"> Type: ${Type}</div>
+            <div class="li-price"> Price: ${Price} </div>
             
-            <script type="text/x-kendo-template" id="productTemplate">
-      			<div style="display:inline-block;"> ${Name}</div>	
-                 <img src="${Image}" style="max-height:80px;display:inline-block;" />
-              
-   		 </script>
-        </div>  
+            #var date = new Date(CreatedAt);
+            var dateStr = date.toDateString();
+            #
+            <div class="li-date"> Date: ${dateStr}</div>
+        </div>
+        
+    </script>
+</div> 

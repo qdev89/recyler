@@ -309,10 +309,10 @@ function saveItem() {
         }
     }
                 
-    if ($('#Save').attr('disabled') == 'disabled')
+  /*  if ($('#Save').attr('disabled') == 'disabled')
         return;
     else
-        $('#Save').attr('disabled', 'disabled');
+        $('#Save').attr('disabled', 'disabled');*/
                     
     if (flag == false) {
         $('#Save').removeAttr('disabled');
@@ -878,7 +878,10 @@ function changeLanguage(lang) {
     // });
 }
        
-function showGiveAway() {
+function showGiveAway(e) {
+   resetScroller(e);
+   
+    
     $(".radio-options").show();
     $(".after-radio").hide();
     $('input:radio[name=abc]:checked').prop("checked", false);

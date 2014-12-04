@@ -71,18 +71,13 @@
 
     </head>
     <body id="friendsApp">
-        <!--style="background:url('images/background_big.jpg') no-repeat;
-        background-size: 100%;background-align: top;
-        background-attachment:fixed;
-        background-position: center bottom;
-        background-size:cover;background-color:#FFF;"-->
-        
+              
         <div data-role="view"  data-layout="tabstrip-layout" data-title="Welcome" class="welcome-scrn form-view" id="welcome" >
             
         </div>
 
         <div data-role="drawer" id="my-drawer" class="my-drawer" data-position="left" style="width: 270px"  data-swipe-to-open="false"
-             data-views="['finditem.html','filter.html','crowdfund.html','facebook_posting_rules.html','thanks.html','co2_kg_products.html','contactus.html',
+             data-views="['friendzone.html','info_createspot.html','finditem.html','filter.html','crowdfund.html','facebook_posting_rules.html','thanks.html','co2_kg_products.html','contactus.html',
             'confirm_spot.html','credits.html','map.html','non_supporter.html','myspots.html',
             'spot_difference.html','#welcome','index.html','me.html','giveaway.html','account_differences.html',
             'basic_setup_twitter.html','invite.html','mystuff.html', 'signup_login.html','howworks.html',
@@ -106,21 +101,21 @@
                     <ul>
                         <li>
                             <a onclick="navigateFromDrawer('finditem.html')">
-                                <label >
+                                <label data-localize="findstuff">
                                     Latest stuff
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a onclick="navigateFromDrawer('map.html')">
-                                <label >
+                            <a onclick="navigateFromDrawer('findonmap.html')">
+                                <label  for="”spotsbutton”" data-localize="spotsbutton">
                                     Look at map
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('filter.html')">
-                                <label >
+                                <label data-localize="titletext_filter">
                                     Search
                                 </label>
                             </a>
@@ -135,28 +130,28 @@
                     <ul>
                         <li>
                             <a onclick="navigateFromDrawer('giveaway.html')">
-                                <label>
+                                <label for="givebutton" data-localize="givebutton">
                                     Give away
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a onclick="navigateFromDrawer('createspot.html')">
-                                <label >
+                            <a onclick="navigateFromDrawer('info_createspot.html')">
+                                <label for="create" data-localize="create" >
                                     Create spot
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('spot_difference.html')">
-                                <label >
+                                <label for="titeltext_spotdifference" data-localize="titeltext_spotdifference">
                                     Spot differences
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('food.html')" >
-                                <label >
+                                <label for="fooddonation" data-localize="fooddonation">
                                     About Food Donations
                                 </label>
                             </a>
@@ -164,79 +159,93 @@
                     </ul>
 
                     <div>
-                        <a class="boldText">
-                            My account
-                        </a>
+                        <label for="basic" data-localize="basic">
+                            <a class="boldText">
+                                My account
+                            </a>
+                            
+                        </label>
                     </div>
                     <ul>
 
+                         <li>
+                            <a onclick="navigateFromDrawer('account_differences.html')" >
+                                <label for="differencetext"  data-localize="differencetext">
+                                    Account differences
+                                </label>
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="navigateFromDrawer('basic_setup.html')">
+                                <label for="titletext_basic" data-localize="titletext_basic">
+                                    My account settings
+                                </label>
+                            </a>
+                        </li>                        
                         <li>
                             <a onclick="navigateFromDrawer('me.html')" >
-                                <label >
+                                <label for="heartstatus"  data-localize="heartstatus">
                                     My stats
                                 </label>
                             </a>
                         </li>
-                        <li>
-                            <a onclick="navigateFromDrawer('basic_setup.html')" >
-                                <label >
-                                    My account settings
-                                </label>
-                            </a>
-                        </li>
+
                         <li>
                             <a onclick="navigateFromDrawer('mystuff.html')"  id="Mystuff" >
-                                <label>
+                                <label  for="mystuff" data-localize="mystuff">
                                     My stuff
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('myspots.html')" id="MySpots">
-                                <label >
+                                <label for="myspots" data-localize="myspots" >
                                     My spots
                                 </label>
                             </a>
                         </li>
                         <li>
-                            <a id="friend">
-                                <label >
+                            <a onclick="navigateFromDrawer('friendzone.html')" id="friend"  for="friendzone" data-localize="friendzone">
+                                <label  for="friendzone" data-localize="friendzone">
                                     My friendzone
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('facebook_posting_rules.html')" >
-                                <label >
+                                <label for="fb" data-localize="fb" >
                                     Facebook posting rules
                                 </label>
                             </a>
                         </li>
                     </ul>
 
-                    <div>
+                    <div>  
                         <a class="boldText">
-                            About Recycleworld
+                   		 <label for="about" data-localize="about">
+                                About Recycleworld
+                       	 </label>
+                            
                         </a>
                     </div>
                     <ul>
                         <li>
                             <a onclick="navigateFromDrawer('howworks.html')"  >
-                                <label >
+                                <label for="titeltext_how" data-localize="titletext_how">
                                     How it works
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('crowdfund.html')" >
-                                <label >
+                                <label  for="qa" data-localize="qa">
                                     Crowdfund with us
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('donate.html')" >
-                                <label>
+                                <label for="donate" data-localize="donate">
                                     Support us
                                 </label>
                                 <br>
@@ -244,21 +253,21 @@
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('about_recycleworld.html')" >
-                                <label >
+                                <label for="about" data-localize="about">
                                     About Recycleworld
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('terracycle.html')" >
-                                <label >
+                                <label  for="terracycle" data-localize="terracycle">
                                     Terracycle partner
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('niras.html')" >
-                                <label >
+                                <label  for="niras" data-localize="niras">
                                     Verified by Niras
                                 </label>
                             </a>
@@ -283,21 +292,21 @@
 
                         <li>
                             <a onclick="navigateFromDrawer('contactus.html')" >
-                                <label >
+                                <label for="contact" data-localize="contact" >
                                     Contact us
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a onclick="navigateFromDrawer('credits.html')" >
-                                <label >
+                                <label for="credits" data-localize="credits">
                                     Credits
                                 </label>
                             </a>
                         </li>
                         <li>
                             <a id="logout" onclick="logoutUser()">
-                                <label style="font-weight:bold;" >
+                                <label style="font-weight:bold;" for="logout" data-localize="logout">
                                     Log Out
                                 </label>
                             </a>
@@ -317,9 +326,20 @@
                 <div data-role="navbar">
                     <a class="drawer-button" data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="left"></a>
                     <span data-role="view-title" class="view-title"></span>
+                    
+                     <a class="list-style" data-align="right" onclick="setListStyle(this,'listview')" >
+                                    <img class="header-img" style="margin-right: 10px;" src="images/view1.png" alt="" />
+                     </a>
+                     <a class="list-style" data-align="right"  onclick="setListStyle(this,'normal')" >
+                                    <img class="header-img" src="images/view2.png" alt=""  />
+                     </a>
                 </div>
             </div>
 
+        </div>
+        
+        <div style="display:none;" id="loaderDiv">
+            <img id="loaderImg" src="images/loading2.gif" />
         </div>
     </body>
 </html>

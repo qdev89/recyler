@@ -10,7 +10,8 @@
     background: #2489CE;
 }
 
-.km-flat .km-view:not(#crowdfund-tabstrip):not(#how-works-tabstrip):not(#donate-tabstrip):not(#about-recycle-tabstrip):not(#confirm-spot-tabstrip):not(#credits-tabstrip):not(#about-app-tabstrip):not(#terracycle-tabstrip):not(#niras-tabstrip):not(#product-tabstrip) .km-content
+.km-flat .km-view#give_page .km-content,
+.km-flat .km-view#welcome .km-content
 {
     padding: 15px;
 }
@@ -1485,7 +1486,7 @@ font-size: 1rem;
     right: 25px;
 }
 
-input, textarea, select
+input:not([type='checkbox']), textarea, select
 { 
     border-radius: 3px;
     padding: 3px;
@@ -1604,7 +1605,6 @@ input, textarea, select
     -moz-background-size: cover;
     -o-background-size: cover;
 }
-
 
 .km-flat .km-view#welcome .km-content
 { 
@@ -1798,30 +1798,206 @@ padding:4;
 }
 
 
-#CloseTimeMonFri,#OpenTimeSat,#OpenTimeMonFri, #spotmonfrifrom, #spotmonfrito, #spotopensatfrom, #spotopensatfrom, #spotopensatto, #spotopensunfrom, #CloseTimeSat, #OpenTimeSun, #spotopensunto, #CloseTimeSun, #select-choice-month, #select-choice-day, #select-choice-year   
+#CloseTimeMonFri,
+#OpenTimeSat,
+#OpenTimeMonFri,
+ #spotmonfrifrom,
+ #spotmonfrito,
+ #spotopensatfrom,
+ #spotopensatfrom,
+ #spotopensatto,
+ #spotopensunfrom,
+ #CloseTimeSat,
+ #OpenTimeSun,
+ #spotopensunto,
+ #CloseTimeSun,
+ #select-choice-month,
+ #select-choice-day,
+ #select-choice-year   
 {
     width: 130px;
     height: 35px !important;
 }
 
 
- #map-with-markers{
-        width:100% !important;
-   }
+#loaderDiv{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color: rgba(173, 178, 180,0.7);
+    text-align:center;
+    vertical-align:middle;
+    z-index:100000;
+}
+
+
+#loaderImg{
+    height:30px;
+    width:30px;
+    position: relative;
+	top: 50%;
+}
+
+.header-img{
+    height:25px;
+}
+
+
+#GoToFilters{
+    width:100%;
+    background-color:#E4E4E4;
+    padding:15px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.btn.btn-primary{
+    width:94% !important;
+    margin:auto !important;
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    height: 30px !important;
+	margin-bottom: 10px !important;
+	margin-top: 10px !important;
+    
+}
+
+#map-with-markers{
+    margin-top: 10px !important;
+    width:94% !important;
+}
+
+
+#map-tabstrip .km-scroll-container{
+    text-align: center;
+}
+
+.km-view:not(#find-item-tabstrip):not(#my-spots-tabstrip):not(#my-stuff-tabstrip) .list-style{
+    display:none;
+}
+
+
+.three-by-row.styled-list li{
+    width:30%;
+    display:inline-block;
+    border:none;
+    padding:3px;
+}
+
+.three-by-row.styled-list li img{
+    border: 2px solid black;
+    border-radius: 1px;
+    box-shadow: 3px 3px 5px grey;
+    margin: 1px;
+    width: 100%;
+    max-height: 80px;
+}
+
+
+.three-by-row.styled-list li .item-info{
+    display:none; 
+}
+
+.styled-list {
+    padding-bottom: 10px;
+}
+
+
+.one-by-row.styled-list li .img-holder{
+    width:30%;
+    display:inline-block;
+}
 
 
 
+.one-by-row.styled-list li .img-holder img{
+    border: 2px solid black;
+    border-radius: 1px;
+    box-shadow: 3px 3px 5px grey;
+    margin: 1px;
+	max-width: 100%;
+    max-height: 80px;
+    display:inline-block;
+}
+
+.one-by-row.styled-list li .item-info{
+	display:inline-block;
+    width: 67%;
+	margin-left: 1%;
+    vertical-align: top;
+}
+
+#map-with-icons{   
+    width:94% !important;
+}
 
 
+#findonmap .km-scroll-container{
+    text-align: center;
+}
+
+ #modalview-icons .km-content{
+     text-align: center;
+     background:white !important;
+ }
+
+.icons-list li>div{
+    display:inline-block;
+}
+
+.icons-list li img{
+    
+    max-width:100%;
+    width:35px;
+    height:35px;
+}
+
+.icons-list li .img-container{
+    width:20%;
+    top: 5px;
+	position: relative;
+}
 
 
+.icons-list li .description-container{
+    width:66%;
+    top: -5px;
+	position: relative;
+    text-align: left;
+}
+
+.icons-list li .checkbox-container{
+    width:8%;
+    margin-right:5px;
+    top: -10px;
+    position: relative;
+}
 
 
+#modalview-icons .km-touch-scrollbar {
+background: #2489CE;
+}
+
+#modalview-icons input[type=checkbox]:checked {
+	background: #2489CE;
+    background-color: #2489CE;
+}
 
 
+#modalview-icons .btn{
+    width: 75% !important;
+}
+
+#modalview-icons .btn.km-state-active{
+    background: #64b905;
+    background-color: #64b905;
+}
 
 
-
-
+.km-flat .km-view#findonmap .km-content
+{   
+     background: white !important;   
+}
 
 

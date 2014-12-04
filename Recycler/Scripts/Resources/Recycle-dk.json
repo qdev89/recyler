@@ -190,7 +190,7 @@
     "femail": "Vens email",
     "sendinvite": "Send invitation",
     "titeltext_credits": "Credits",
-    "credits1": "Denne løsning blev kun mulig på grund af mange gode mennesker, deres forskellige inputs og mange forslag.<br><br>Folk der valgte at møde hinanden med åbent sind og med en tro på, at vi som personer kan ændre større ting ved at hjælpe hinanden.<br>Fra de venlige mennesker, der hjalp med at oversætte: <ul><li>Sila R. Weiss-Hug, Lilliana Bak</li><li>Selina Juul fra Stoopfoodwaste (NGO) for inspirerende lange kamp mod unødvendig madaffald i Danmark og verden i almindelighed.</li><li>Tom Szaky og Terracycle for at give det endnu mere udbredelse.</li></ul><p>Sidst, men ikke mindst .. Alle, der vælger at være en supportere.  </p><p><b>Team recycleworld</b> </p>",
+    "credits1": "Denne løsning blev kun mulig på grund af mange gode mennesker, deres forskellige inputs og mange forslag.<br><br>Folk der valgte at møde hinanden med åbent sind og med en tro på, at vi som personer kan ændre større ting ved at hjælpe hinanden.<br>Fra de venlige mennesker, der hjalp med at oversætte: <ul><li>Sila R. Weiss-Hug, Lilliana Bak</li><li>Selina Juul fra Stoopfoodwaste (NGO) for inspirerende lange kamp mod unødvendig madaffald i Danmark og verden i almindelighed.</li><li>MR. KEY, Anine Brits om hjælp til Heraia univers.</li><li>Mit team og familie for backup, støtte.</li><li>Tom Szaky og Terracycle for at give det endnu mere udbredelse.</li></ul><p>Sidst, men ikke mindst .. Alle, der vælger at være en supportere.  </p><p><b>Team recycleworld</b> </p>",
     "titeltext_thankyou": "Mange tak",
     "thankyou_generel": "Tak fordi du bruger og støtter recycleworld. Team recycleworld",
     "heartstatus": "Klode hjerte",
@@ -308,9 +308,13 @@
 	"lend": "Lån",
 	"rent": "Lej",
 	"service": "Service: Jeg kan hjælpe med",
-	
+	"choose": "vælg",
 	"ecospot": "ECO spot";
 	"ecospot1": "ECO spot er et sted med fokus på bæredygtig levevis. Det kunne være en dedikeret butik, cafe, sted at besøge. Bæredygtig levevis er nøglen",
+	
+	"confirm": "Bekræft du er ejeren",
+	"type": "Skriv dine info ",
+	"Place": "Placer ikon det rigtige sted på kortet",
 	
 	"terraspot": "TERRACYCLE spot",
 	"terraspot_desc": ">En TerraCycle spot er en affaldsindsamling station drevet af TerraCycle brigader . Hvert sted er et sted hvor du kan aflevere dit affald, hvis du er en del af TerraCycle brigade familien. Hvis du ønsker at vide mere om TerraCycle muligheder - <a href='terracycle.html'>Læs her</a>.",

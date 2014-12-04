@@ -1,9 +1,28 @@
-        <div data-role="view" data-title="My Stuff" data-init="myStuffInit" id="my-stuff-tabstrip">
+        <div data-role="view" data-title="My Stuff" data-init="app.Product.getMyProducts" id="my-stuff-tabstrip">
            
             <div data-role="content">
                
-                <ul data-role="listview"  id="ProductList">
+                <ul class="one-by-row styled-list" data-role="listview"  id="ulMyProducts">
 
                 </ul>
             </div>     
+            
+            
+             <script type="text/x-kendo-template" id="myProductTemplate">
+      			<div class="img-holder"> <img src="${Image}"  /></div>
+                
+              <div class="item-info">
+              	<div class="li-name"> Name: ${Name}</div>
+                  <div class="li-type"> Type: ${Type}</div>
+                  <div class="li-price"> Price: ${Price} </div>
+              
+              #var date = new Date(CreatedAt);
+              var dateStr = date.toDateString();
+              #
+                  <div class="li-date"> Date: ${dateStr}</div>
+              </div>
+              
+   		</script>
+            
+            
         </div>  

@@ -1,33 +1,58 @@
-/*window.google = window.google || {};
-google.maps = google.maps || {};
-(function () {
+var googleMap = null;   
+var markersArray=[];  
+var allSpots = [];
 
-function getScript(src) {
-document.write('<' + 'script src="' + src + '"' +
-' type="text/javascript"><' + '/script>');
+
+function iconMapInit() {
+    showLoading();
+    if (googleMap != null)
+        return;
+    $("#map-with-icons").height($("#findonmap .km-content").first().height()-60);
+    var mapOptions = {
+        center: { lat: 42.645335231440946, lng: 23.346939510345468},
+        zoom: 6,
+         streetViewControl: false
+    };
+     googleMap = new google.maps.Map(
+        document.getElementById('map-with-icons'),
+        mapOptions
+        );
+    setTimeout(function() {
+        $("#map-with-icons").height($("#findonmap .km-content").first().height()-60);       
+    }, 200);
+    
+    
+     var data = app.everlive.data('Spot');
+                           
+                            
+                          
+                            data.get().then(function(data) {
+                              
+                                hideLoading();
+                               allSpots=  data.result;
+                                console.log(allSpots);
+                                if(allSpots.length>0){
+                                    
+                                         $.each(allSpots, function (i) {                                        
+                                            setPlace(allSpots[i].Latitude, allSpots[i].Longitude, false, allSpots[i].SpotType, googleMap);                                             
+                                   	 });
+                                    }
+                                
+                            },
+                                                 function(error) {
+                                                     hideLoading();
+                                                     alert(JSON.stringify(error));
+                                                 });
+    
+    
 }
 
-var modules = google.maps.modules = {};
-google.maps.__gjsload__ = function (name, text) {
-modules[name] = text;
-};
-
-google.maps.Load = function (apiLoad) {
-delete google.maps.Load;
-apiLoad([0.009999999776482582, [[["https://mts0.googleapis.com/vt?lyrs=m@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.googleapis.com/vt?lyrs=m@264000000\u0026src=api\u0026hl=en-US\u0026"], null, null, null, null, "m@264000000", ["https://mts0.google.com/vt?lyrs=m@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.google.com/vt?lyrs=m@264000000\u0026src=api\u0026hl=en-US\u0026"]], [["https://khms0.googleapis.com/kh?v=150\u0026hl=en-US\u0026", "https://khms1.googleapis.com/kh?v=150\u0026hl=en-US\u0026"], null, null, null, 1, "150", ["https://khms0.google.com/kh?v=150\u0026hl=en-US\u0026", "https://khms1.google.com/kh?v=150\u0026hl=en-US\u0026"]], [["https://mts0.googleapis.com/vt?lyrs=h@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.googleapis.com/vt?lyrs=h@264000000\u0026src=api\u0026hl=en-US\u0026"], null, null, null, null, "h@264000000", ["https://mts0.google.com/vt?lyrs=h@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.google.com/vt?lyrs=h@264000000\u0026src=api\u0026hl=en-US\u0026"]], [["https://mts0.googleapis.com/vt?lyrs=t@132,r@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.googleapis.com/vt?lyrs=t@132,r@264000000\u0026src=api\u0026hl=en-US\u0026"], null, null, null, null, "t@132,r@264000000", ["https://mts0.google.com/vt?lyrs=t@132,r@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.google.com/vt?lyrs=t@132,r@264000000\u0026src=api\u0026hl=en-US\u0026"]], null, null, [["https://cbks0.googleapis.com/cbk?", "https://cbks1.googleapis.com/cbk?"]], [["https://khms0.googleapis.com/kh?v=84\u0026hl=en-US\u0026", "https://khms1.googleapis.com/kh?v=84\u0026hl=en-US\u0026"], null, null, null, null, "84", ["https://khms0.google.com/kh?v=84\u0026hl=en-US\u0026", "https://khms1.google.com/kh?v=84\u0026hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt/ft?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt/ft?hl=en-US\u0026"]], [["https://mts0.googleapis.com/vt?hl=en-US\u0026", "https://mts1.googleapis.com/vt?hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt/loom?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt/loom?hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt/ft?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt/ft?hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt/loom?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt/loom?hl=en-US\u0026"]]], ["en-US", "US", null, 0, null, null, "https://maps.gstatic.com/mapfiles/", "https://csi.gstatic.com", "https://maps.googleapis.com", "https://maps.googleapis.com"], ["https://maps.gstatic.com/intl/en_us/mapfiles/api-3/17/2", "3.17.2"], [1924552813], 1, null, null, null, null, null, "", null, null, 1, "https://khms.googleapis.com/mz?v=150\u0026", null, "https://earthbuilder.googleapis.com", "https://earthbuilder.googleapis.com", null, "https://mts.googleapis.com/vt/icon", [["https://mts0.googleapis.com/vt", "https://mts1.googleapis.com/vt"], ["https://mts0.googleapis.com/vt", "https://mts1.googleapis.com/vt"], [null, [[0, "m", 264000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[47], [37, [["smartmaps"]]]]], 0], [null, [[0, "m", 264000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[47], [37, [["smartmaps"]]]]], 3], [null, [[0, "m", 264000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[50], [37, [["smartmaps"]]]]], 0], [null, [[0, "m", 264000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[50], [37, [["smartmaps"]]]]], 3], [null, [[4, "t", 132], [0, "r", 132000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[5], [37, [["smartmaps"]]]]], 0], [null, [[4, "t", 132], [0, "r", 132000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[5], [37, [["smartmaps"]]]]], 3], [null, null, [null, "en-US", "US", null, 18], 0], [null, null, [null, "en-US", "US", null, 18], 3], [null, null, [null, "en-US", "US", null, 18], 6], [null, null, [null, "en-US", "US", null, 18], 0], ["https://mts0.google.com/vt", "https://mts1.google.com/vt"], "/maps/vt"], 2, 500, ["https://geo0.ggpht.com/cbk?cb_client=maps_sv.uv_api_demo", "https://www.gstatic.com/landmark/tour", "https://www.gstatic.com/landmark/config", "/maps/preview/reveal?authuser=0", "/maps/preview/log204", "/gen204?tbm=map", "https://static.panoramio.com.storage.googleapis.com/photos/"]], loadScriptTime);
-};
-var loadScriptTime = (new Date).getTime();
-getScript("https://maps.gstatic.com/intl/en_us/mapfiles/api-3/17/2/main.js");
-})();*/
-
-
-var googleMap = null;   
-var markersArray=[];           
+         
          
 function mapInit() {
     if (googleMap != null)
         return;
-    $("#map-with-markers").height($("#map-tabstrip .km-content").first().height());
+    $("#map-with-markers").height($("#map-tabstrip .km-content").first().height()-60);
     var mapOptions = {
         center: { lat: 42.645335231440946, lng: 23.346939510345468},//42.645335231440946, B: 23.346939510345468
         zoom: 6,
@@ -38,106 +63,66 @@ function mapInit() {
         mapOptions
         );
     setTimeout(function() {
-        $("#map-with-markers").height($("#map-tabstrip .km-content").first().height());
+        $("#map-with-markers").height($("#map-tabstrip .km-content").first().height()-60);
        
     }, 200);
 }
 
 
 
-function mapShow(e){
-    
+function mapShow(e){    
     console.log(e);
-    if(e.sender.params.spot!="true") return;
-    
+    if(e.sender.params.spot!="true") return;   
     
     markersArray=[]; 
     var options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
-};
+                  enableHighAccuracy: true,
+                  timeout: 5000,
+                  maximumAge: 0
+                };    
+ 
+    function success(pos) {
+      var crd = pos.coords;    
+      setPlace(crd.latitude, crd.longitude,true);    
+      console.log('Your current position is:');
+      console.log('Latitude : ' + crd.latitude);
+      console.log('Longitude: ' + crd.longitude);
+      console.log('More or less ' + crd.accuracy + ' meters.');
+    };
 
-    
-    var controlDiv = document.createElement('div');
-    controlDiv.style.padding = '5px';
-    var controlUI = document.createElement('div');
-    controlUI.style.backgroundColor = 'white';
-    controlUI.style.borderStyle = 'solid';
-    controlUI.style.borderWidth = '2px';
-    controlUI.style.cursor = 'pointer';
-    controlUI.style.textAlign = 'center';
-    controlUI.title = '';
-    controlDiv.appendChild(controlUI);
+    function error(err) {
+      console.warn('ERROR(' + err.code + '): ' + err.message);
+         setPlace(0, 0,true);
+    };
 
-    // Set CSS for the control interior.
-    var controlText = document.createElement('div');
-    controlText.style.fontFamily = 'Arial,sans-serif';
-    controlText.style.fontSize = '12px';
-    controlText.style.paddingLeft = '4px';
-    controlText.style.paddingRight = '4px';
-    controlText.innerHTML = '<strong>Save</strong>';
-    controlUI.appendChild(controlText);
-    
-   
-//var myControl = new MyControl(controlDiv);
-
-google.maps.event.addDomListener(controlUI, 'click', function() {
-   app.application.navigate("confirm_spot.html");
-  });
-controlDiv.index = 1;
-googleMap.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
-    
-function success(pos) {
-  var crd = pos.coords;
-
-    
-    setPlace(crd.latitude, crd.longitude,true);
-    
-  console.log('Your current position is:');
-  console.log('Latitude : ' + crd.latitude);
-  console.log('Longitude: ' + crd.longitude);
-  console.log('More or less ' + crd.accuracy + ' meters.');
-};
-
-function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
-     setPlace(0, 0,true);
-};
-
-navigator.geolocation.getCurrentPosition(success, error, options);
-    
-    
-    
-    
+    navigator.geolocation.getCurrentPosition(success, error, options);  
 }
 
 
-
-
-
-
-
-
 function setPlace(lat, long,draggable, type, map){
-    if(map==undefined) map=googleMap;
-    
-    if(draggable!=true) draggable =false;
-    
-    
+    if(map==undefined) map=googleMap;    
+    if(draggable!=true) draggable =false;     
     var icon="";
     switch(type){
-        case 1: icon = "images/mapicons/blaakors.png"
+        case "Eco/Green shop": icon = "images/mapicons/eco_spot.png"
         break;
-        case 2: icon = "images/mapicons/business.png"
+        case "FREE Food": icon = "images/mapicons/food.png"
         break;
-        case 3: icon = "images/mapicons/church.png"
+        case "Recycling company": icon = "images/mapicons/business_smal.png"
         break;
-        case 4: icon = "images/mapicons/eco_spot.png"
+        case "Garage sale/Market/Event": icon = "images/mapicons/garagesale_small.png"
         break;
-        case 5: icon = "images/mapicons/food.png"
+        case "Food donation": icon = "images/mapicons/foodwaste_small.png"
         break;
-        default: icon = ""
+         case "Help": icon = "images/mapicons/help-small.png"
+        break;
+        case "Recycling spot": icon = "images/mapicons/recycling_small.png"
+        break;
+        case "Upcycling": icon = "images/mapicons/upcycling_small.png"
+        break;        
+        case "Terracycle spot": icon = "images/mapicons/terracycle_small.png"
+        break;
+        default: icon = "";
         break;
     }   
         
@@ -146,13 +131,11 @@ function setPlace(lat, long,draggable, type, map){
     if(icon != "")
     image = {
       url: icon,
-      size: new google.maps.Size(35, 35),
+      size: new google.maps.Size(34, 34),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 0)
 	};   
-    
-    
-    
+           
       var marker1 = new google.maps.Marker({
           position: LatLng,
           map: map,
@@ -163,24 +146,37 @@ function setPlace(lat, long,draggable, type, map){
     marker1.type= type;    
     map.setCenter(LatLng);    
     markersArray.push(marker1);    
-    console.log(markersArray);
-    
+   // console.log(markersArray);
+    console.log(type,lat,long);
 }
 
-function showMarkerType(type){
+
+function filterIcons() {
+    closeModal();
+    var types = [];
     
-    markersArray.forEach(function(el,index){
-        if(type==-1) el.setVisible(true);
-        else{
-               if(el.type!=type) el.setVisible(false);
-                else el.setVisible(true);
-   	 }
+    $("#IconFilters input").each(function() {
+        if ($(this).is(":checked")) {
+            types.push($(this).attr("iconType"));
+        }
+    });
+    
+    showMarkerTypes(types);
+}
+
+
+function showMarkerTypes(types){
+    
+    markersArray.forEach(function(el,index){        
+        var hide = true;        
+        types.forEach(function(el2,index2){
+            console.log(el2,el.type);
+            if(el.type == el2) hide = false;           
+        });        
+        if(hide) el.setVisible(false);
+        else el.setVisible(true);
     });
 }
-
-
-
-
 
 
 var Type = '';
@@ -250,31 +246,6 @@ function findOnMapInit() {
     gpsEnabledSuccessCallback(true);             
 }
 
-/*  function locationEnabledSuccessCallback(result) {
-if (result)
-window.plugins.diagnostic.isGpsEnabled(gpsEnabledSuccessCallback, gpsEnabledErrorCallback);
-else {
-switch (localStorage.Language) {
-case "1":
-alert(Language.Danish.Location);
-break;
-case "2":
-alert(Language.German.Location);
-break;
-case "3":
-alert(Language.English.Location);
-break;
-case "4":
-alert(Language.Spanish.Location);
-break;
-}
-window.plugins.diagnostic.switchToLocationSettings();
-}
-}*/
-            
-/*      function locationEnabledErrorCallback(error) {
-alert("error" + error);
-}*/
                     
 function gpsEnabledSuccessCallback(result) {
     if (result) {
@@ -303,9 +274,6 @@ function gpsEnabledSuccessCallback(result) {
     }
 }
             
-/*   function gpsEnabledErrorCallback(error) {
-alert("error" + error);
-}*/
                 
 function drawMaps(latlng) {
     mapIcon = new google.maps.MarkerImage("images/spots.png");
@@ -390,208 +358,7 @@ function markerClick(map, m, ib) {
             
 var MatchArray = [];
                     
-function GetSpot() {
-    /* if (localStorage.User == null || localStorage.User == undefined) {
-    app.application.navigate('signup_login.html');
-    } else {
-    User = $.parseJSON(localStorage.User);
-    }
-    MatchArray = [];
-    var Data = '{ "FriendID":' + User.Id + ',"Type":"' + Type + '"}';
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._SpotService + '/' + Service.ServiceMethods._GetMapProductSpot;
-    $("#LoadingDiv").css({
-    "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
-    'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
-    'background-color': 'white'
-    });
-    $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
-    $('#LoadingDiv,#Load').ajaxStart(function () {
-    $('#LoadingDiv,#Load').show();
-    });
-    $('#LoadingDiv,#Load').ajaxComplete(function () {
-    $('#LoadingDiv,#Load').hide();
-    });
-    $.support.cors = true;
-    $.ajax({
-    type: "POST",
-    url: URLFormed,
-    dataType: 'json',
-    data: Data,
-    cache: false,
-    contentType: "application/json;charset=utf-8",
-    success: function (Result) {
-    if (Result != null) {
-    var Products = Result.Products;
-    var Spots = Result.Spots;
-    var SpotList = '';
-    var icon = '';
-    var iconspot = '';
-    if (Products != null) {
-    $.each(Products, function (outer) {
-    if ((Products[outer].Latitude == '' && Products[outer].Longitude == '') || (Products[outer].Latitude == '0' && Products[outer].Longitude == '0')) {
-    return;
-    }
-    var actLat = Products[outer].Latitude.substr(0, 5);
-    var actLong = Products[outer].Longitude.substr(0, 5);
-    var flag = true;
-    $.each(MatchArray, function (index) {
-    var array = MatchArray[index].split('|');
-    var compLat = array[2].substr(0, 5);
-    var compLong = array[3].substr(0, 5);
-    if (compLat == actLat && compLong == actLong && array[4] == 'PROD') {
-    flag = false;
-    return;
-    }
-    });
-    if (flag) {
-    var value = '';
-    var count = 0;
-    $.each(Products, function (inner) {
-    var compLat = Products[inner].Latitude.substr(0, 5);
-    var compLong = Products[inner].Longitude.substr(0, 5);
-    if (compLat == actLat && compLong == actLong) {
-    value = Products[inner].Latitude + '|' +
-    Products[inner].Longitude + '|' +
-    'PROD' + '|' +
-    Products[inner].ImagePath + '|' +
-    Products[inner].Name + '|' +
-    Products[inner].Description + '|' +
-    Products[inner].UserCity + '|' +
-    Products[inner].Type + '|' +
-    Products[inner].UserState + '|' +
-    Products[inner].Price + '|' +
-    Products[inner].ProductID + '|' +
-    Products[inner].PostImagePath;
-    count += 1;
-    }
-    });
-    if (count > 1) {
-    MatchArray.push('R|' + count + '|' + value);
-    } else {
-    MatchArray.push('S|' + count + '|' + value);
-    }
-    }
-    });
-    }
-    if (Spots != null) {
-    $.each(Spots, function (outer) {
-    if ((Spots[outer].Latitude == '' && Spots[outer].Longitude == '') || (Spots[outer].Latitude == '0' && Spots[outer].Longitude == '0')) {
-    return;
-    }
-    var actLat = Spots[outer].Latitude.substr(0, 5);
-    var actLong = Spots[outer].Longitude.substr(0, 5);
-    var flag = true;
-    $.each(MatchArray, function (index) {
-    var array = MatchArray[index].split('|');
-    var compLat = array[2].substr(0, 5);
-    var compLong = array[3].substr(0, 5);
-    if (compLat == actLat && compLong == actLong && array[4] == 'SPOT') {
-    flag = false;
-    return;
-    } else if (compLat == actLat && compLong == actLong && array[4] == 'PROD') {
-    if (array[0] == 'S') {
-    var New = 'R' + MatchArray[index].substr(1, MatchArray[index].length);
-    MatchArray[index] = New;
-    flag = false;
-    } else {
-    flag = false;
-    return;
-    }
-    }
-    });
-    if (flag) {
-    var value = '';
-    var count = 0;
-    $.each(Spots, function (inner) {
-    var compLat = Spots[inner].Latitude.substr(0, 5);
-    var compLong = Spots[inner].Longitude.substr(0, 5);
-    if (compLat == actLat && compLong == actLong) {
-    value = Spots[inner].Latitude + '|' +
-    Spots[inner].Longitude + '|' +
-    'SPOT' + '|' +
-    Spots[inner].SpotType + '|' +
-    Spots[inner].ImagePath + '|' +
-    Spots[inner].Name + '|' +
-    Spots[inner].Phone + '|' +
-    Spots[inner].Address + '|' +
-    Spots[inner].City + '|' +
-    Spots[inner].State + '|' +
-    Spots[inner].OpeningHoursWeekdaysFrom + '|' +
-    Spots[inner].OpeningHoursWeekdaysTo + '|' +
-    Spots[inner].EventDate + '|' +
-    Spots[inner].Description + '|' +
-    Spots[inner].OpeningHoursSaturdayFrom + '|' +
-    Spots[inner].OpeningHoursSaturdayTo + '|' +
-    Spots[inner].OpeningHoursSundayFrom + '|' +
-    Spots[inner].OpeningHoursSundayTo;
-    count += 1;
-    }
-    });
-    if (count > 1) {
-    MatchArray.push('R|' + count + '|' + value);
-    } else {
-    MatchArray.push('S|' + count + '|' + value);
-    }
-    }
-    });
-    }
-    $.each(MatchArray, function (i) {
-    var array = MatchArray[i].split('|');
-    var actLat = array[2].substr(0, 5);
-    var actLong = array[3].substr(0, 5);
-    var flag = true;
-    var innerhtml = '';
-    $.each(MatchArray, function (index) {
-    var array = MatchArray[index].split('|');
-    var compLat = array[2].substr(0, 5);
-    var compLong = array[3].substr(0, 5);
-    if (compLat == actLat && compLong == actLong) {
-    if (array[0] == 'R') {
-    innerhtml = "<div onclick=\"GetAll('" + array[2] + '_' + array[3] + "');\" style=\"float:left\"><img src=\"images/multiplestuff.png\" /></div>";
-    //                                        for (count = 0; count < parseInt(array[1]); count++) {
-    //                                            if (array[4] == 'PROD') {
-    //                                                innerhtml = innerhtml + "<div style=\"float:left\"><img src=\"images/product.png\" /></div>";
-    //                                            }
-    //                                            else {
-    //                                                innerhtml = innerhtml + "<div style=\"float:left\"><img src=\"images/mapicons/blaakors.png\" /></div>";
-    //                                            }
-    //                                        }
-    flag = false;
-    } else {
-    if (array[4] == 'PROD') {
-    createProductSpot(array[2], array[3], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13]);
-    } else {
-    createSpots(array[2], array[3], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15], array[16], array[17], array[18], array[19]);
-    }
-    flag = true;
-    }
-    }
-    });
-    if (flag == false) {
-    icon = 'images/product.png';
-    spot = new google.maps.LatLng(array[2], array[3]);
-    var html = "<div><div style=\"height:10px\"></div>" +
-    "<div style=\"float:left;width:60%\">" + innerhtml + "</div>";
-    // "<div class=\"me\" style=\"float:left\" onclick=\"GetAll('" + array[2] + '_' + array[3] + "');\"><img style=\"height: 35px;left: 75%;" +
-    //            "position: absolute;top: 45%;width: 35px;\" src=\"images/Arrow_Details.PNG\" /></div><div style=\"height:10px\"></div></div>";
-    spotMarker = new google.maps.Marker({
-    position: spot,
-    map: map,
-    icon: icon,
-    information: html
-    });
-    var fn = markerClick(map, spotMarker, ib);
-    google.maps.event.addListener(spotMarker, 'click', fn);
-    }
-    });
-    }
-    },
-    error: function (xhr) {
-    // alert("Some error occured: " + xhr.responseText);
-    }
-    });
-    GetCover();*/
-}
+
             
 function createSpots(Latitude, Longitude, SpotType, ImagePath, Name, Phone, Address, City, State, OpeningHoursWeekdaysFrom, OpeningHoursWeekdaysTo, EventDate, Description, OpeningHoursSaturdayFrom, OpeningHoursSaturdayTo, OpeningHoursSundayFrom, OpeningHoursSundayTo) {
     var data = SpotType;
@@ -873,3 +640,291 @@ function getData2() {
 
     return html;
 }
+
+
+function GetSpot() {
+    /* if (localStorage.User == null || localStorage.User == undefined) {
+    app.application.navigate('signup_login.html');
+    } else {
+    User = $.parseJSON(localStorage.User);
+    }
+    MatchArray = [];
+    var Data = '{ "FriendID":' + User.Id + ',"Type":"' + Type + '"}';
+    var URLFormed = Service.dataServiceURL + Service.ServiceName._SpotService + '/' + Service.ServiceMethods._GetMapProductSpot;
+    $("#LoadingDiv").css({
+    "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
+    'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
+    'background-color': 'white'
+    });
+    $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
+    $('#LoadingDiv,#Load').ajaxStart(function () {
+    $('#LoadingDiv,#Load').show();
+    });
+    $('#LoadingDiv,#Load').ajaxComplete(function () {
+    $('#LoadingDiv,#Load').hide();
+    });
+    $.support.cors = true;
+    $.ajax({
+    type: "POST",
+    url: URLFormed,
+    dataType: 'json',
+    data: Data,
+    cache: false,
+    contentType: "application/json;charset=utf-8",
+    success: function (Result) {
+    if (Result != null) {
+    var Products = Result.Products;
+    var Spots = Result.Spots;
+    var SpotList = '';
+    var icon = '';
+    var iconspot = '';
+    if (Products != null) {
+    $.each(Products, function (outer) {
+    if ((Products[outer].Latitude == '' && Products[outer].Longitude == '') || (Products[outer].Latitude == '0' && Products[outer].Longitude == '0')) {
+    return;
+    }
+    var actLat = Products[outer].Latitude.substr(0, 5);
+    var actLong = Products[outer].Longitude.substr(0, 5);
+    var flag = true;
+    $.each(MatchArray, function (index) {
+    var array = MatchArray[index].split('|');
+    var compLat = array[2].substr(0, 5);
+    var compLong = array[3].substr(0, 5);
+    if (compLat == actLat && compLong == actLong && array[4] == 'PROD') {
+    flag = false;
+    return;
+    }
+    });
+    if (flag) {
+    var value = '';
+    var count = 0;
+    $.each(Products, function (inner) {
+    var compLat = Products[inner].Latitude.substr(0, 5);
+    var compLong = Products[inner].Longitude.substr(0, 5);
+    if (compLat == actLat && compLong == actLong) {
+    value = Products[inner].Latitude + '|' +
+    Products[inner].Longitude + '|' +
+    'PROD' + '|' +
+    Products[inner].ImagePath + '|' +
+    Products[inner].Name + '|' +
+    Products[inner].Description + '|' +
+    Products[inner].UserCity + '|' +
+    Products[inner].Type + '|' +
+    Products[inner].UserState + '|' +
+    Products[inner].Price + '|' +
+    Products[inner].ProductID + '|' +
+    Products[inner].PostImagePath;
+    count += 1;
+    }
+    });
+    if (count > 1) {
+    MatchArray.push('R|' + count + '|' + value);
+    } else {
+    MatchArray.push('S|' + count + '|' + value);
+    }
+    }
+    });
+    }
+    if (Spots != null) {
+    $.each(Spots, function (outer) {
+    if ((Spots[outer].Latitude == '' && Spots[outer].Longitude == '') || (Spots[outer].Latitude == '0' && Spots[outer].Longitude == '0')) {
+    return;
+    }
+    var actLat = Spots[outer].Latitude.substr(0, 5);
+    var actLong = Spots[outer].Longitude.substr(0, 5);
+    var flag = true;
+    $.each(MatchArray, function (index) {
+    var array = MatchArray[index].split('|');
+    var compLat = array[2].substr(0, 5);
+    var compLong = array[3].substr(0, 5);
+    if (compLat == actLat && compLong == actLong && array[4] == 'SPOT') {
+    flag = false;
+    return;
+    } else if (compLat == actLat && compLong == actLong && array[4] == 'PROD') {
+    if (array[0] == 'S') {
+    var New = 'R' + MatchArray[index].substr(1, MatchArray[index].length);
+    MatchArray[index] = New;
+    flag = false;
+    } else {
+    flag = false;
+    return;
+    }
+    }
+    });
+    if (flag) {
+    var value = '';
+    var count = 0;
+    $.each(Spots, function (inner) {
+    var compLat = Spots[inner].Latitude.substr(0, 5);
+    var compLong = Spots[inner].Longitude.substr(0, 5);
+    if (compLat == actLat && compLong == actLong) {
+    value = Spots[inner].Latitude + '|' +
+    Spots[inner].Longitude + '|' +
+    'SPOT' + '|' +
+    Spots[inner].SpotType + '|' +
+    Spots[inner].ImagePath + '|' +
+    Spots[inner].Name + '|' +
+    Spots[inner].Phone + '|' +
+    Spots[inner].Address + '|' +
+    Spots[inner].City + '|' +
+    Spots[inner].State + '|' +
+    Spots[inner].OpeningHoursWeekdaysFrom + '|' +
+    Spots[inner].OpeningHoursWeekdaysTo + '|' +
+    Spots[inner].EventDate + '|' +
+    Spots[inner].Description + '|' +
+    Spots[inner].OpeningHoursSaturdayFrom + '|' +
+    Spots[inner].OpeningHoursSaturdayTo + '|' +
+    Spots[inner].OpeningHoursSundayFrom + '|' +
+    Spots[inner].OpeningHoursSundayTo;
+    count += 1;
+    }
+    });
+    if (count > 1) {
+    MatchArray.push('R|' + count + '|' + value);
+    } else {
+    MatchArray.push('S|' + count + '|' + value);
+    }
+    }
+    });
+    }
+    $.each(MatchArray, function (i) {
+    var array = MatchArray[i].split('|');
+    var actLat = array[2].substr(0, 5);
+    var actLong = array[3].substr(0, 5);
+    var flag = true;
+    var innerhtml = '';
+    $.each(MatchArray, function (index) {
+    var array = MatchArray[index].split('|');
+    var compLat = array[2].substr(0, 5);
+    var compLong = array[3].substr(0, 5);
+    if (compLat == actLat && compLong == actLong) {
+    if (array[0] == 'R') {
+    innerhtml = "<div onclick=\"GetAll('" + array[2] + '_' + array[3] + "');\" style=\"float:left\"><img src=\"images/multiplestuff.png\" /></div>";
+    //                                        for (count = 0; count < parseInt(array[1]); count++) {
+    //                                            if (array[4] == 'PROD') {
+    //                                                innerhtml = innerhtml + "<div style=\"float:left\"><img src=\"images/product.png\" /></div>";
+    //                                            }
+    //                                            else {
+    //                                                innerhtml = innerhtml + "<div style=\"float:left\"><img src=\"images/mapicons/blaakors.png\" /></div>";
+    //                                            }
+    //                                        }
+    flag = false;
+    } else {
+    if (array[4] == 'PROD') {
+    createProductSpot(array[2], array[3], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13]);
+    } else {
+    createSpots(array[2], array[3], array[5], array[6], array[7], array[8], array[9], array[10], array[11], array[12], array[13], array[14], array[15], array[16], array[17], array[18], array[19]);
+    }
+    flag = true;
+    }
+    }
+    });
+    if (flag == false) {
+    icon = 'images/product.png';
+    spot = new google.maps.LatLng(array[2], array[3]);
+    var html = "<div><div style=\"height:10px\"></div>" +
+    "<div style=\"float:left;width:60%\">" + innerhtml + "</div>";
+    // "<div class=\"me\" style=\"float:left\" onclick=\"GetAll('" + array[2] + '_' + array[3] + "');\"><img style=\"height: 35px;left: 75%;" +
+    //            "position: absolute;top: 45%;width: 35px;\" src=\"images/Arrow_Details.PNG\" /></div><div style=\"height:10px\"></div></div>";
+    spotMarker = new google.maps.Marker({
+    position: spot,
+    map: map,
+    icon: icon,
+    information: html
+    });
+    var fn = markerClick(map, spotMarker, ib);
+    google.maps.event.addListener(spotMarker, 'click', fn);
+    }
+    });
+    }
+    },
+    error: function (xhr) {
+    // alert("Some error occured: " + xhr.responseText);
+    }
+    });
+    GetCover();*/
+}
+
+/*  function locationEnabledSuccessCallback(result) {
+if (result)
+window.plugins.diagnostic.isGpsEnabled(gpsEnabledSuccessCallback, gpsEnabledErrorCallback);
+else {
+switch (localStorage.Language) {
+case "1":
+alert(Language.Danish.Location);
+break;
+case "2":
+alert(Language.German.Location);
+break;
+case "3":
+alert(Language.English.Location);
+break;
+case "4":
+alert(Language.Spanish.Location);
+break;
+}
+window.plugins.diagnostic.switchToLocationSettings();
+}
+}*/
+            
+/*      function locationEnabledErrorCallback(error) {
+alert("error" + error);
+}*/
+
+
+/*   var controlDiv = document.createElement('div');
+    controlDiv.style.padding = '5px';
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = 'white';
+    controlUI.style.borderStyle = 'solid';
+    controlUI.style.borderWidth = '2px';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.textAlign = 'center';
+    controlUI.title = '';
+    controlDiv.appendChild(controlUI);
+
+    // Set CSS for the control interior.
+    var controlText = document.createElement('div');
+    controlText.style.fontFamily = 'Arial,sans-serif';
+    controlText.style.fontSize = '12px';
+    controlText.style.paddingLeft = '4px';
+    controlText.style.paddingRight = '4px';
+    controlText.innerHTML = '<strong>Save</strong>';
+    controlUI.appendChild(controlText);
+    
+   
+//var myControl = new MyControl(controlDiv);
+
+google.maps.event.addDomListener(controlUI, 'click', function() {
+   app.application.navigate("confirm_spot.html");
+  });
+controlDiv.index = 1;
+googleMap.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
+    */
+
+
+/*window.google = window.google || {};
+google.maps = google.maps || {};
+(function () {
+
+function getScript(src) {
+document.write('<' + 'script src="' + src + '"' +
+' type="text/javascript"><' + '/script>');
+}
+
+var modules = google.maps.modules = {};
+google.maps.__gjsload__ = function (name, text) {
+modules[name] = text;
+};
+
+google.maps.Load = function (apiLoad) {
+delete google.maps.Load;
+apiLoad([0.009999999776482582, [[["https://mts0.googleapis.com/vt?lyrs=m@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.googleapis.com/vt?lyrs=m@264000000\u0026src=api\u0026hl=en-US\u0026"], null, null, null, null, "m@264000000", ["https://mts0.google.com/vt?lyrs=m@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.google.com/vt?lyrs=m@264000000\u0026src=api\u0026hl=en-US\u0026"]], [["https://khms0.googleapis.com/kh?v=150\u0026hl=en-US\u0026", "https://khms1.googleapis.com/kh?v=150\u0026hl=en-US\u0026"], null, null, null, 1, "150", ["https://khms0.google.com/kh?v=150\u0026hl=en-US\u0026", "https://khms1.google.com/kh?v=150\u0026hl=en-US\u0026"]], [["https://mts0.googleapis.com/vt?lyrs=h@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.googleapis.com/vt?lyrs=h@264000000\u0026src=api\u0026hl=en-US\u0026"], null, null, null, null, "h@264000000", ["https://mts0.google.com/vt?lyrs=h@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.google.com/vt?lyrs=h@264000000\u0026src=api\u0026hl=en-US\u0026"]], [["https://mts0.googleapis.com/vt?lyrs=t@132,r@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.googleapis.com/vt?lyrs=t@132,r@264000000\u0026src=api\u0026hl=en-US\u0026"], null, null, null, null, "t@132,r@264000000", ["https://mts0.google.com/vt?lyrs=t@132,r@264000000\u0026src=api\u0026hl=en-US\u0026", "https://mts1.google.com/vt?lyrs=t@132,r@264000000\u0026src=api\u0026hl=en-US\u0026"]], null, null, [["https://cbks0.googleapis.com/cbk?", "https://cbks1.googleapis.com/cbk?"]], [["https://khms0.googleapis.com/kh?v=84\u0026hl=en-US\u0026", "https://khms1.googleapis.com/kh?v=84\u0026hl=en-US\u0026"], null, null, null, null, "84", ["https://khms0.google.com/kh?v=84\u0026hl=en-US\u0026", "https://khms1.google.com/kh?v=84\u0026hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt/ft?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt/ft?hl=en-US\u0026"]], [["https://mts0.googleapis.com/vt?hl=en-US\u0026", "https://mts1.googleapis.com/vt?hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt/loom?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt/loom?hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt/ft?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt/ft?hl=en-US\u0026"]], [["https://mts0.googleapis.com/mapslt/loom?hl=en-US\u0026", "https://mts1.googleapis.com/mapslt/loom?hl=en-US\u0026"]]], ["en-US", "US", null, 0, null, null, "https://maps.gstatic.com/mapfiles/", "https://csi.gstatic.com", "https://maps.googleapis.com", "https://maps.googleapis.com"], ["https://maps.gstatic.com/intl/en_us/mapfiles/api-3/17/2", "3.17.2"], [1924552813], 1, null, null, null, null, null, "", null, null, 1, "https://khms.googleapis.com/mz?v=150\u0026", null, "https://earthbuilder.googleapis.com", "https://earthbuilder.googleapis.com", null, "https://mts.googleapis.com/vt/icon", [["https://mts0.googleapis.com/vt", "https://mts1.googleapis.com/vt"], ["https://mts0.googleapis.com/vt", "https://mts1.googleapis.com/vt"], [null, [[0, "m", 264000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[47], [37, [["smartmaps"]]]]], 0], [null, [[0, "m", 264000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[47], [37, [["smartmaps"]]]]], 3], [null, [[0, "m", 264000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[50], [37, [["smartmaps"]]]]], 0], [null, [[0, "m", 264000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[50], [37, [["smartmaps"]]]]], 3], [null, [[4, "t", 132], [0, "r", 132000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[5], [37, [["smartmaps"]]]]], 0], [null, [[4, "t", 132], [0, "r", 132000000]], [null, "en-US", "US", null, 18, null, null, null, null, null, null, [[5], [37, [["smartmaps"]]]]], 3], [null, null, [null, "en-US", "US", null, 18], 0], [null, null, [null, "en-US", "US", null, 18], 3], [null, null, [null, "en-US", "US", null, 18], 6], [null, null, [null, "en-US", "US", null, 18], 0], ["https://mts0.google.com/vt", "https://mts1.google.com/vt"], "/maps/vt"], 2, 500, ["https://geo0.ggpht.com/cbk?cb_client=maps_sv.uv_api_demo", "https://www.gstatic.com/landmark/tour", "https://www.gstatic.com/landmark/config", "/maps/preview/reveal?authuser=0", "/maps/preview/log204", "/gen204?tbm=map", "https://static.panoramio.com.storage.googleapis.com/photos/"]], loadScriptTime);
+};
+var loadScriptTime = (new Date).getTime();
+getScript("https://maps.gstatic.com/intl/en_us/mapfiles/api-3/17/2/main.js");
+})();*/
+
+
+
+

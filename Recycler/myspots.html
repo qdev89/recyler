@@ -1,8 +1,30 @@
-        <div data-role="view" data-title="My spots" id="my-spots-tabstrip" >
+        <div data-role="view" data-title="My spots" data-show="app.Spot.getMySpots" id="my-spots-tabstrip" >
             
             <div data-role="content">
              
-                <ul data-role="listview" id="getallspot">
+                <ul class="one-by-row styled-list"  id="my-spots-list">
                 </ul>
-            </div>        
+            </div>  
+            
+            
+            
+             <script type="text/x-kendo-template" id="spotTemplate">
+      			<div class="img-holder"> <img src="${Image}"  /></div>
+                
+              <div class="item-info">
+              	<div class="li-name"> Country: ${Country}</div>
+                  <div class="li-type"> City: ${City}</div>
+                  <div class="li-price"> Address: ${Address} </div>
+              
+              #var date = new Date(CreatedAt);
+              var dateStr = date.toDateString();
+              #
+                  <div class="li-date"> Date: ${dateStr}</div>
+              </div>
+              
+   		</script>
+            <!-- <script type="text/x-kendo-template" id="spotTemplate">
+      			<div class="li-name"> ${City} , ${Address}</div>
+                 <img src="${Image}"  />
+   		</script>-->
         </div>  
