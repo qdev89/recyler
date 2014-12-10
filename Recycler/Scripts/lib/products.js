@@ -13,7 +13,7 @@ app.Product = (function () {
         
         var getProducts = function (isMy) {         
             var interval = 12; 
-            
+         
             if(localStorage.User==undefined){
                 app.application.navigate("signup_login.html");
                 return;

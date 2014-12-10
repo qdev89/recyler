@@ -8,21 +8,62 @@
             </div>     
             
             
-             <script type="text/x-kendo-template" id="myProductTemplate">
-      			<div class="img-holder"> <img src="${Image}"  /></div>
-                
-              <div class="item-info">
-              	<div class="li-name"> Name: ${Name}</div>
-                  <div class="li-type"> Type: ${Type}</div>
-                  <div class="li-price"> Price: ${Price} </div>
-              
-              #var date = new Date(CreatedAt);
-              var dateStr = date.toDateString();
-              #
-                  <div class="li-date"> Date: ${dateStr}</div>
-              </div>
+           <script type="text/x-kendo-template" id="myProductTemplate">  
+               
+                <div onclick="openMyStuffModal(this)">
+                    <div class="img-holder">
+                        <img class="li-image" src="${Image}"  />
+                    </div>
+                    
+                    <div class="item-info">
+                        <div class="li-name"> Name: ${Name}</div>
+                        <div class="li-type"> Type: ${Type}</div>
+                        <div class="li-price"> Price: ${Price} </div>
+                         <div style="display:none;" class="li-desc"> Description:  ${Description}</div>
+                        #var date = new Date(CreatedAt);
+                        var dateStr = date.toDateString();
+                        #
+                        <div class="li-date"> Date: ${dateStr}</div>
+                    </div>
+                </div>
               
    		</script>
+            
+            <script>
+                function openMyStuffModal(row){
+                      var modal = "#modalview-myStuff";                 
+                 	 $(modal+" .image").attr("src",  $(row).find(".li-image").attr("src"));
+                      $(modal+" .name").html(  $(row).find(".li-name").html());
+                      $(modal+" .type").html(  $(row).find(".li-type").html());
+                      $(modal+" .price").html(  $(row).find(".li-price").html());
+                      $(modal+" .desc").html(  $(row).find(".li-desc").html());
+                      $(modal+" .date").html(  $(row).find(".li-date").html());                  
+                      $(modal).kendoMobileModalView("open");
+                }
+                
+                 function closeMyStuffModal() {
+                    $("#modalview-myStuff").kendoMobileModalView("close");
+                }
+            </script>
+            
+            
+             <div data-role="modalview" id="modalview-myStuff" style="width: 90%;height:90%;">
+                <div data-role="header">
+                    <div data-role="navbar">            
+                        <span>Product</span>
+                         <a data-align="right" data-role="button" onclick="closeMyStuffModal()" >X</a>
+                    </div>
+                </div>
+           	 <div>
+                     <div class="name"></div>
+                     <img style="width: 80%;" class="image"  />                         
+                     <div class="type"></div>
+                     <div class="price"></div>  
+                     <div class="date"></div>
+                     <div class="desc"></div>
+        		</div> 
+                <a class="btn btn-primary" type="button" data-role="button" onclick="closeMyStuffModal()" >Cancel</a>
+            </div>
             
             
         </div>  

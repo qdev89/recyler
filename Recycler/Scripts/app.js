@@ -1,3 +1,11 @@
+function log(obj){
+    console.log(obj);
+}
+
+function err(err){
+    alert(JSON.stringify(err));
+}
+
 var userData =null;
 
 (function (global) {
@@ -32,13 +40,10 @@ function navigateFromDrawer(view){
     
     if(localStorage.User==undefined || localStorage.User==null){
         alert("You should login first, in order to browse the application!");
-         app.application.navigate('signup_login.html');
+        app.application.navigate('signup_login.html');
         return false;
-        }
-    
-    app.application.navigate(view);
-    
-    
+   }    
+    app.application.navigate(view);  
 }
             
 function BackButton() {

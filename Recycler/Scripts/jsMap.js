@@ -2,7 +2,6 @@ var googleMap = null;
 var markersArray=[];  
 var allSpots = [];
 
-
 function iconMapInit() {
     showLoading();
     if (googleMap != null)
@@ -22,32 +21,56 @@ function iconMapInit() {
     }, 200);
     
     
-     var data = app.everlive.data('Spot');
-                           
-                            
+     var data = app.everlive.data('Spot');  
                           
-                            data.get().then(function(data) {
-                              
-                                hideLoading();
-                               allSpots=  data.result;
-                                console.log(allSpots);
-                                if(allSpots.length>0){
-                                    
-                                         $.each(allSpots, function (i) {                                        
-                                            setPlace(allSpots[i].Latitude, allSpots[i].Longitude, false, allSpots[i].SpotType, googleMap);                                             
-                                   	 });
-                                    }
+    data.get().then(function(data) {
+      
+        hideLoading();
+        allSpots=  data.result;
+      log(allSpots);
+        if(allSpots.length>0){            
+             $.each(allSpots, function (i) {   
+                
+                 
+                var content = 
+                    "<div class='table-container' ><table>" + 
+                 
+                    "<tr><td></td><td class='spotName'>" + allSpots[i].Name + "</td></tr>" + 
+                 
+                    "<tr class='img'><td></td><td> <img class='popupImg' src='" + allSpots[i].Image + "' /></td></tr>" + 
+                 
+                    "<tr> <td><img class='td-icon' src='images/mapicons/info_blue.png' /></td><td> " + allSpots[i].Description + "</td></tr>" + 
+                 
+                    "<tr><td><img class='td-icon' src='images/mapicons/phone_blue.png' /></td><td> " + allSpots[i].Phone + "</div>" +
+                 
+                    "<tr> <td><img class='td-icon' src='images/mapicons/opening_blue.png' /></td><td> Weekdays: " + allSpots[i].OpeningHoursWeekdaysFrom + " " + allSpots[i].OpeningTimeWeekdays + " - "
+                    + allSpots[i].OpeningHoursWeekdaysTo + " " + allSpots[i].ClosingTimeWeekdays + "</td></tr>" + 
+                 
+                    "<tr><td></td><td> Saturday: " + allSpots[i].OpeningHoursSaturdayFrom + " " + allSpots[i].OpeningTimeSat + " - "
+                    + allSpots[i].OpeningHoursSaturdayTo + " " + allSpots[i].ClosingTimeSat + "</td></tr>" + 
+                 
+                    "<tr><td></td><td> Sunday: " + allSpots[i].OpeningHoursSundayFrom + " " + allSpots[i].OpeningTimeSun + " - "
+                    + allSpots[i].OpeningHoursSundayTo + " " + allSpots[i].ClosingTimeSun + "</td></tr>" + 
+                 
+                    "<tr><td><img class='td-icon' src='images/mapicons/adress_blue.png' /></td><td>  " + allSpots[i].Address + "</td></tr>" + 
+               				
+                    "<tr><td></td><td>  " + allSpots[i].City + "</td></tr>" + 
                                 
-                            },
-                                                 function(error) {
-                                                     hideLoading();
-                                                     alert(JSON.stringify(error));
-                                                 });
-    
-    
-}
-
-         
+                    "<tr><td></td><td>" + allSpots[i].Zip + "</td></tr>" + 
+                 
+                    "<tr><td><img class='td-icon' src='images/mapicons/www_icon_blue.png' /></td><td>" + allSpots[i].Web + "</td></tr>" + 
+                    +"</table></div>";
+                
+                
+                setPlace(allSpots[i].Latitude, allSpots[i].Longitude, false, allSpots[i].SpotType, googleMap,content);                                             
+       	 });
+        }        
+    },
+     function(error) {
+         hideLoading();
+        err(error);
+     });    
+}         
          
 function mapInit() {
     if (googleMap != null)
@@ -99,7 +122,7 @@ function mapShow(e){
 }
 
 
-function setPlace(lat, long,draggable, type, map){
+function setPlace(lat, long,draggable, type, map,content){
     if(map==undefined) map=googleMap;    
     if(draggable!=true) draggable =false;     
     var icon="";
@@ -141,32 +164,39 @@ function setPlace(lat, long,draggable, type, map){
           map: map,
           icon: image,
           draggable:draggable
-      });
-    
+      });    
     marker1.type= type;    
     map.setCenter(LatLng);    
-    markersArray.push(marker1);    
-   // console.log(markersArray);
-    console.log(type,lat,long);
+    markersArray.push(marker1);      
+    var width = parseInt($(window).width()* 0.7);
+    var height = parseInt($(window).height()* 0.3);
+    if(content!=undefined){
+            var infowindow = new google.maps.InfoWindow({
+              content: content,
+              maxWidth: width,
+              maxHeight: height
+          });
+
+          google.maps.event.addListener(marker1, 'click', function() {            
+            infowindow.open(map,marker1);
+          });
+    }
 }
 
 
 function filterIcons() {
     closeModal();
-    var types = [];
-    
+    var types = [];    
     $("#IconFilters input").each(function() {
         if ($(this).is(":checked")) {
             types.push($(this).attr("iconType"));
         }
-    });
-    
+    });    
     showMarkerTypes(types);
 }
 
 
-function showMarkerTypes(types){
-    
+function showMarkerTypes(types){    
     markersArray.forEach(function(el,index){        
         var hide = true;        
         types.forEach(function(el2,index2){
@@ -297,8 +327,7 @@ function drawMaps(latlng) {
     }
             
     $("#map_canvas").height($(document).height() - ($("#footer").height() + 85));
-    map = new google.maps.Map(document.getElementById('map_canvas'), options);
-                                                      
+    map = new google.maps.Map(document.getElementById('map_canvas'), options);                                                      
     meMarker = new google.maps.Marker({
                                           position: latlng,
                                           map: map,
@@ -356,9 +385,7 @@ function markerClick(map, m, ib) {
     };
 }
             
-var MatchArray = [];
-                    
-
+var MatchArray = [];    
             
 function createSpots(Latitude, Longitude, SpotType, ImagePath, Name, Phone, Address, City, State, OpeningHoursWeekdaysFrom, OpeningHoursWeekdaysTo, EventDate, Description, OpeningHoursSaturdayFrom, OpeningHoursSaturdayTo, OpeningHoursSundayFrom, OpeningHoursSundayTo) {
     var data = SpotType;

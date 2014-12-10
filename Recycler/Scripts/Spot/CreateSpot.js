@@ -863,7 +863,7 @@ function CreateASpot() {
         } else {
             spot.State = $("#txtState").val();
         }
-        
+       
         spot.Phone = $("#spotphone").val();
         spot.Web = $("#spotweb").val();
         spot.CVR = $("#Cvr").val();
