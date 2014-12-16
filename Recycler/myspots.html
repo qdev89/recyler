@@ -4,13 +4,15 @@
         </ul>
     </div>
     <script type="text/x-kendo-template" id="spotTemplate">
-        <div class="img-holder">
-            <img src="${Image}"  />
-        </div>
-        <div class="item-info">
-            <div class="li-name"> Name: ${Name}</div>
-            <div class="li-price"> Address: ${Address} </div>
-            <div class="li-type"> City: ${City}</div>
+        <div spotID="${Id}" onclick="navigateEditSpot(this)">
+            <div class="img-holder">
+                <img src="${Image}"  />
+            </div>
+            <div class="item-info">
+                <div class="li-name"> Name: ${Name}</div>
+                <div class="li-price"> Address: ${Address} </div>
+                <div class="li-type"> City: ${City}</div>
+            </div>
         </div>
     </script>
 </div> 

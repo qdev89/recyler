@@ -11,6 +11,7 @@
 }
 
 .km-flat .km-view#give_page .km-content,
+.km-flat .km-view#edit-spot-tabstrip .km-content,
 .km-flat .km-view#createSpot .km-content,
 .km-flat .km-view#welcome .km-content
 {

@@ -936,22 +936,31 @@ function contactInit() {
     });
 }
 
-function takePictureSpot() {
-    // navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError);
+var isEdit=false;
+function takePictureSpot(edit) {
+   if(edit==undefined){ edit = "";
+       isEdit=false;
+       }
+    else isEdit=true;
     var destinationType = navigator.camera.DestinationType;
-    if ($('#image').attr('src') == "images/imageplaceholder.png") {
-        navigator.camera.getPicture(function (imageData) {
-            // localStorage.SpotImage = imageData;
-            spot.Image = imageData;
-                                
-            var damagephoto = document.getElementById('image');
-            damagephoto.src = "data:image/jpeg;base64," + imageData;
-        }
-                                    , onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+    if ($('#image'+edit).attr('src') == "images/imageplaceholder.png") {
+        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
+    } else if ($('#image'+edit).attr('src') != "images/imageplaceholder.png") {
+        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
     } else {
-        //ask user if he wants to replace photo
+       
         navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.', onTakePictureConfirm, 'New photo', 'No,Yes');
     }
+}
+
+function onPhotoDataSuccessSpot(imageData) {
+    //localStorage.EditSpotImage = imageData;
+    
+    var e = "";
+    if(isEdit) e="E";
+    spot.Image = imageData;
+    var damagephoto = document.getElementById('image'+e);
+    damagephoto.src = "data:image/jpeg;base64," + imageData;
 }
 
 var AmountToDenote;
@@ -1111,24 +1120,8 @@ function UpdateEarthHeartData() {
   
 }
 
-function takePictureSpot() {
-    // navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError);
-    var destinationType = navigator.camera.DestinationType;
-    if ($('#image').attr('src') == "images/imageplaceholder.png") {
-        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
-    } else if ($('#image').attr('src') != "images/imageplaceholder.png") {
-        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
-    } else {
-        //ask user if he wants to replace photo
-        navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.', onTakePictureConfirm, 'New photo', 'No,Yes');
-    }
-}
-function onPhotoDataSuccessSpot(imageData) {
-    //localStorage.EditSpotImage = imageData;
-    spot.Image = imageData;
-    var damagephoto = document.getElementById('image');
-    damagephoto.src = "data:image/jpeg;base64," + imageData;
-}
+
+
 
 function findItemInit() {
     $("#LoadingDiv").css({

@@ -671,17 +671,5 @@ $(document).ready(function () {
         }
     });
 
-    $('#role').change(function () {
-
-        if ($('#role option:selected').val() == '2') {
-            $('#trMemberShip').show();          
-        }
-        else {
-            $('#trMemberShip').hide();
-        }
-    });
-
-   /* $('#actDiff').click(function () {
-      app.application.navigate("account_differences.html");
-    });*/
+   
 });  
