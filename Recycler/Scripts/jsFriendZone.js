@@ -388,71 +388,10 @@ function AddToFriendZone(obj, PhoneNumber, Name, FaceBookID) {
 
 
 
-        //$.mobile.loadingMessageTextVisible = true;
-
-        //$.mobile.showPageLoadingMsg("b", "please wait...");
-
-        if (FaceBookID == 'undefined' || FaceBookID == undefined)
+          if (FaceBookID == 'undefined' || FaceBookID == undefined)
             FaceBookID = '';
 
-       /* jQuery.support.cors = true;
-        var Data = '{ "UserID": "' + User.Id + '" ,"Friend": { "Name":"' + Name + '","Phonenumber" : "' + PhoneNumber + '" , "FaceBookID" : "' + FaceBookID + '"} }';
-        var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._AddToFriendZone;
-
-
-        $.ajax({
-            type: "POST",
-            url: URLFormed,
-            dataType: 'json',
-            data: Data,
-            cache: false,
-            contentType: "application/json;charset=utf-8",
-            success: function (Result) {
-                //$.mobile.hidePageLoadingMsg();
-                if (Result) {
-                    alert('Added to Friend Zone successfully.');
-                    obj.attr('src', 'images/select_icon.png');
-                    if (FaceBookID == '' || FaceBookID == null) {
-                        // var Mesg = User.FirstName + " has added you in his friend Zone and want you to be a part of Recycle World! Download and install now and understand the value of recycling and tackle unnecessary food waste.";
-
-                  
-                        window.plugins.Sms.sendSMS(function () {
-
-                            alert('Sms sent successfully.');
-                        },
-                    function (e) {
-                        //alert('Message Failed:' + e);
-                    },
-                		        PhoneNumber,
-                                $('#TxtMessage').val());
-                		      //  'You are now in my friend Zone, Download and install Recycle World now and understand the value of recycling and tackle unnecessary food waste.');
-                    }
-                }
-                else {
-                    alert('Cannot be added! Please try again later.');
-
-                }
-            },
-            error: function (xhr) {
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Ptry);
-                        break;
-                    case "2":
-                        alert(Language.German.Ptry);
-                        break;
-                    case "3":
-                        alert(Language.English.Ptry);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Ptry);
-                        break;
-                }
-
-
-            }
-        });
-*/
+      
     }
 
 }

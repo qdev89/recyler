@@ -2039,24 +2039,24 @@ input:not([type='checkbox']), textarea, select
     background: white !important; 
 }
 
-.gm-style-iw .spotName
+.spot-info-content .spotName
 {
     font-size: 18px;
     font-weight: bold;
     color: black;
 }
 
-.gm-style-iw td
+.spot-info-content td
 {
     color: grey;
 }
 
-.gm-style-iw .img img
+.spot-info-content .img img
 {
     max-width: 100%;
 }
 
-.gm-style-iw td{
+.spot-info-content td{
     text-align:left;
 }
 
@@ -2078,7 +2078,10 @@ input:not([type='checkbox']), textarea, select
     background:white !important;
 }
 
-
+#spot-info-tabstrip .km-scroll-container{
+    text-align:center;
+    padding:5px;
+}
 
 
 

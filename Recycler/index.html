@@ -22,7 +22,7 @@
 
         <script src="Scripts/jsEarthHeartCalculation.js" type="text/javascript"></script>
       
-        <script type="text/javascript" src="Scripts/User/User.js"></script>
+   		<script type="text/javascript" src="Scripts/User/User.js"></script>
 
         <script type="text/javascript" src="Scripts/lib/everlive.all.min.js"></script>
         <script type="text/javascript" src="Scripts/lib/settings.js"></script>
@@ -36,24 +36,24 @@
         <script src="Scripts/cdv-plugin-fb-connect.js" type="text/javascript"></script>
         <script src="Scripts/facebook-js-sdk.js" type="text/javascript"></script>
         <script type="text/javascript" charset="utf-8" src="Scripts/inappbilling.js"></script>
-        <script src="Scripts/Spot/EditSpot.js" type="text/javascript"></script>
-        <script src="Scripts/jsProduct.js" type="text/javascript"></script>
+       <!-- <script src="Scripts/Spot/EditSpot.js" type="text/javascript"></script>
+        <script src="Scripts/jsProduct.js" type="text/javascript"></script>-->
        <script src="Scripts/jsMap.js" type="text/javascript"></script>
         <script src="Scripts/infobubble-compiled.js" type="text/javascript"></script>
         <script type="text/javascript" src="Scripts/settings.js"></script>
         <script type="text/javascript" src="Scripts/jsGiveAway.js"></script>
         <script src="Scripts/jsInviteFriends.js" type="text/javascript"></script>
-        <script src="Scripts/RecycleWorldDataService.js" type="text/javascript"></script>
+       <!-- <script src="Scripts/RecycleWorldDataService.js" type="text/javascript"></script>-->
         <script src="Scripts/jsCO2.js" type="text/javascript"></script>
         <script src="Scripts/jsFriendZone.js" type="text/javascript"></script>
         <script src="Scripts/Spot/CreateSpot.js" type="text/javascript"></script>
        
-        <script src="Scripts/jsLogin.js" type="text/javascript"></script>
+       <!-- <script src="Scripts/jsLogin.js" type="text/javascript"></script>-->
         <script src="Scripts/SmsPlugin.js" type="text/javascript"></script>
-        <script src="Scripts/jsListing.js" type="text/javascript"></script>
+       <!-- <script src="Scripts/jsListing.js" type="text/javascript"></script>-->
         <script src="Scripts/Spot/GetSpot.js" type="text/javascript"></script>
-        <script src="Scripts/jsMyStuff.js" type="text/javascript"></script>
-        <script src="Scripts/jsNearestFood.js" type="text/javascript"></script>
+       <!-- <script src="Scripts/jsMyStuff.js" type="text/javascript"></script>
+        <script src="Scripts/jsNearestFood.js" type="text/javascript"></script>-->
         <script src="Scripts/jsProductStatus.js" type="text/javascript"></script>
        <!-- <script src="Scripts/AdMob.js" type="text/javascript"></script>-->
        
@@ -78,10 +78,10 @@
 
         <div data-role="drawer" id="my-drawer" class="my-drawer" data-position="left" style="width: 270px"  data-swipe-to-open="false"
              data-views="['friendzone.html','info_createspot.html','finditem.html','filter.html','crowdfund.html','facebook_posting_rules.html','thanks.html','co2_kg_products.html','contactus.html',
-            'confirm_spot.html','credits.html','map.html','non_supporter.html','myspots.html',
+            'confirm_spot.html','credits.html','map.html','non_supporter.html','myspots.html','non_supporter_look_at_map.html',
             'spot_difference.html','#welcome','index.html','me.html','giveaway.html','account_differences.html',
             'basic_setup_twitter.html','invite.html','mystuff.html', 'signup_login.html','howworks.html',
-            'niras.html','donate.html','food.html','createspot.html','about_this_app.html',
+            'niras.html','donate.html','food.html','createspot.html','about_this_app.html','spotInfo.html',
             'about_recycleworld.html','terracycle.html','qa.html','findonmap.html','basic_setup.html']">
 
             <ul data-role="listview" data-type="group">
@@ -107,7 +107,7 @@
                             </a>
                         </li>
                         <li>
-                            <a onclick="navigateFromDrawer('findonmap.html')">
+                            <a onclick="navigateFromDrawer('findonmap.html',true)">
                                 <label  for="”spotsbutton”" data-localize="spotsbutton">
                                     Look at map
                                 </label>

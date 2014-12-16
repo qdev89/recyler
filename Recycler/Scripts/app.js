@@ -1,3 +1,8 @@
+function goToTop(e){
+    console.log(e);
+    e.sender.scroller.reset();
+}
+
 function log(obj){
     console.log(obj);
 }
@@ -36,14 +41,27 @@ $(document).ready(function () {
 
 document.addEventListener("backbutton", BackButton, true);
 
-function navigateFromDrawer(view){
+function navigateFromDrawer(view,checkIfSupporter){
     
     if(localStorage.User==undefined || localStorage.User==null){
         alert("You should login first, in order to browse the application!");
         app.application.navigate('signup_login.html');
         return false;
    }    
-    app.application.navigate(view);  
+    
+    if(checkIfSupporter){
+       // console.log(userData);
+        var created =new Date(userData.CreatedAt);
+        created.setTime(created.getTime() + (14*24*60*60*1000)); 
+        var today = new Date();
+        
+        if(userData.UserRole != "2" && created < today )           
+            app.application.navigate("non_supporter_look_at_map.html"); 
+        else
+   		 app.application.navigate(view);
+    }
+    else
+   	 app.application.navigate(view);  
 }
             
 function BackButton() {
@@ -81,43 +99,7 @@ function BackButton() {
 
 function SendMail(Name, Subject, Comments, MailTo) {
     var Data = '{"Name":"' + Name + '","Subject":"' + Subject + '","Comments":"' + Comments + '","To":"' + MailTo + '"}';
-                
-    jQuery.support.cors = true;
-                
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._SendContactUsMail;
-                
-    $("#LoadingDiv").css({
-                             "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
-                             'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
-                             'background-color': 'white'
-                         });
-                                     
-    $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
-    $('#LoadingDiv,#Load').ajaxStart(function () {
-        $('#LoadingDiv,#Load').show();
-    });
-    $('#LoadingDiv,#Load').ajaxComplete(function () {
-        $('#LoadingDiv,#Load').hide();
-    });
-                
-    /*$.ajax({
-               type: "POST",
-               url: URLFormed,
-               dataType: 'json',
-               data: Data,
-               cache: false,
-               contentType: "application/json;charset=utf-8",
-               success: function (Result) {
-                   if (Result) {
-                       alert('Mail Sent successfully');
-                   } else {
-                       alert('Mail sending Failed');
-                   }
-               },
-               error: function (xhr) {
-                   alert('error');
-               }
-           });*/
+              
 }
 
 function getLanguageResources() {
@@ -323,102 +305,7 @@ function CreateSpot() {
         $('#CreateSpot').attr('disabled', 'disabled');
 
     if (localStorage.Spotdata != undefined || localStorage.Spotdata != null) {
-        $("#LoadingDiv").css({
-                                 "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
-                                 'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
-                                 'background-color': 'white'
-                             });
-        $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
-        $('#LoadingDiv,#Load').ajaxStart(function () {
-            $('#LoadingDiv,#Load').show();
-        });
-        $('#LoadingDiv,#Load').ajaxComplete(function () {
-            $('#LoadingDiv,#Load').hide();
-        });
-            
-     /*   var URLFormed = Service.dataServiceURL + Service.ServiceName._SpotService + '/' + Service.ServiceMethods._CreateSpot;
-        $.support.cors = true;
-        $.ajax({
-                   type: "POST",
-                   url: URLFormed,
-                   dataType: 'json',
-                   data: localStorage.Spotdata,
-                   contentType: "application/json;charset=utf-8",
-                   cache: false,
-                   success: function (result) {
-                       window.localStorage.removeItem('CacheItem');
-                       window.localStorage.removeItem('Spotdata');
-                       $('#CreateSpot').removeAttr('disabled');
-                       if (result.SpotCreated == true || result.SpotCreated == 'true') {
-                           setTimeout(function () {
-                           }, 500);
-                           if (result.EmailSentSuccessfully == true || result.EmailSentSuccessfully == 'true') {
-                               switch (localStorage.Language) {
-                                   case "1":
-                                       alert(Language.Danish.SpotCreate);
-                                       break;
-                                   case "2":
-                                       alert(Language.German.SpotCreate);
-                                       break;
-                                   case "3":
-                                       alert(Language.English.SpotCreate);
-                                       break;
-                                   case "4":
-                                       alert(Language.Spanish.SpotCreate);
-                                       break;
-                               }
-                           } else {
-                               switch (localStorage.Language) {
-                                   case "1":
-                                       alert(Language.Danish.SpotNoMail);
-                                       break;
-                                   case "2":
-                                       alert(Language.German.SpotNoMail);
-                                       break;
-                                   case "3":
-                                       alert(Language.English.SpotNoMail);
-                                       break;
-                                   case "4":
-                                       alert(Language.Spanish.SpotNoMail);
-                                       break;
-                               }
-                           }
-                           app.application.navigate("myspots.html");
-                       } else {
-                           switch (localStorage.Language) {
-                               case "1":
-                                   alert(Language.Danish.Ptry);
-                                   break;
-                               case "2":
-                                   alert(Language.German.Ptry);
-                                   break;
-                               case "3":
-                                   alert(Language.English.Ptry);
-                                   break;
-                               case "4":
-                                   alert(Language.Spanish.Ptry);
-                                   break;
-                           }
-                       }
-                   },
-                   error: function (xhr, request, status, error) {
-                       $('#CreateSpot').removeAttr('disabled');
-                       switch (localStorage.Language) {
-                           case "1":
-                               alert(Language.Danish.Ptry);
-                               break;
-                           case "2":
-                               alert(Language.German.Ptry);
-                               break;
-                           case "3":
-                               alert(Language.English.Ptry);
-                               break;
-                           case "4":
-                               alert(Language.Spanish.Ptry);
-                               break;
-                       }
-                   }
-               });*/
+     
     } else
         app.application.navigate("createspot.html");
 }
@@ -429,181 +316,13 @@ function NotCreate() {
 }
 
 function RecordTransaction(ID) {
-    jQuery.support.cors = true;
-            
-    $("#LoadingDiv").css({
-                             "position": "absolute",
-                             "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
-                             'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
-                             'background-color': 'white'
-                         });
-    $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
-    $('#LoadingDiv,#Load').ajaxStart(function () {
-        $('#LoadingDiv,#Load').show();
-    });
-    $('#LoadingDiv,#Load').ajaxComplete(function () {
-        $('#LoadingDiv,#Load').hide();
-    });
-            
-   /* var Data = '{"RecieverID":"' + User.Id + '","OwnerID":"' + localStorage.OwnerID + '","ProductID":"' + ID + '"}';
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._RecordTransaction;
-            
-    $.ajax({
-               type: "POST",
-               url: URLFormed,
-               dataType: 'json',
-               data: Data,
-               contentType: "application/json;charset=utf-8",
-               cache: false,
-               success: function (Result) {
-                   $('#LoadingDiv,#Load').hide();
-                   if (Result != null && Result != 'null') {
-                       var data = JSON.stringify(Result);
-                     
-                       data = $.parseJSON(data);
-                       if (data.RecordTransacted == 1) {
-                           window.localStorage.removeItem("SelectedProduct");
-                           window.localStorage.removeItem("OwnerPhoneNumber");
-                           window.localStorage.removeItem("OwnerID");
-                           app.application.navigate("finditem.html");
-                       } else if (data.RecordTransacted == 2) {
-                           switch (localStorage.Language) {
-                               case "1":
-                                   alert(Language.Danish.Ralready);
-                                   break;
-                               case "2":
-                                   alert(Language.German.Ralready);
-                                   break;
-                               case "3":
-                                   alert(Language.English.Ralready);
-                                   break;
-                               case "4":
-                                   alert(Language.Spanish.Ralready);
-                                   break;
-                           }
-                           window.localStorage.removeItem("SelectedProduct");
-                           window.localStorage.removeItem("OwnerPhoneNumber");
-                           window.localStorage.removeItem("OwnerID");
-                           app.application.navigate("finditem.html");
-                           return;
-                       } else {
-                           switch (localStorage.Language) {
-                               case "1":
-                                   alert(Language.Danish.Ptry);
-                                   break;
-                               case "2":
-                                   alert(Language.German.Ptry);
-                                   break;
-                               case "3":
-                                   alert(Language.English.Ptry);
-                                   break;
-                               case "4":
-                                   alert(Language.Spanish.Ptry);
-                                   break;
-                           }
-                           window.localStorage.removeItem("SelectedProduct");
-                           window.localStorage.removeItem("OwnerPhoneNumber");
-                           window.localStorage.removeItem("OwnerID");
-                           app.application.navigate("finditem.html");
-                           return;
-                       }
-                   } else
-                       switch (localStorage.Language) {
-                           case "1":
-                               alert(Language.Danish.Ptry);
-                               break;
-                           case "2":
-                               alert(Language.German.Ptry);
-                               break;
-                           case "3":
-                               alert(Language.English.Ptry);
-                               break;
-                           case "4":
-                               alert(Language.Spanish.Ptry);
-                               break;
-                       }
-               },
-               error: function (xhr) {
-                   switch (localStorage.Language) {
-                       case "1":
-                           alert(Language.Danish.Ptry);
-                           break;
-                       case "2":
-                           alert(Language.German.Ptry);
-                           break;
-                       case "3":
-                           alert(Language.English.Ptry);
-                           break;
-                       case "4":
-                           alert(Language.Spanish.Ptry);
-                           break;
-                   }
-               }
-           });*/
+   
 }
             
 //===================================================================== OWNER =============================================================
             
 function GetProductOwner(ID) {
-   /* jQuery.support.cors = true;
-    var Parameters = ID;
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._GetProductOwner + '/' + Parameters;
-            
-    $.ajax({
-               type: "GET",
-               url: URLFormed,
-               dataType: 'json',
-               data: '{}',
-               cache: false,
-               success: function (Result) {
-                   if (Result != null && Result != 'null') {
-                       var data = JSON.stringify(Result);
-                       data = $.parseJSON(data);
-            
-                       if (data.Image == undefined || data.Image == '')
-                           $('#image').attr('src', 'images/NoImage.jpg');
-                       else
-                           $('#image').attr('src', 'data:image/jpeg;base64,' + data.Image);
-            
-                       $('#OwnerName').html(data.Name);
-                       $('#Position').html(data.Position);
-                       if (data.City != '0' && data.City != 0 && data.City != '')
-                           $('#OwnerCity').html(data.City);
-                       else
-                           $('#OwnerCity').html('--');
-            
-                       if (data.Country != '0' && data.Country != 0 && data.Country != '')
-                           $('#OwnerCountry').html(data.Country);
-                       else
-                           $('#OwnerCountry').html('--');
-            
-                       localStorage.OwnerID = data.UserID;
-                       localStorage.OwnerPhoneNumber = data.PhoneNumber;
-            
-                       if (data.UserRole == '2') {
-                           $('#RecycleStar').css({ 'display': 'block' }).attr('src', 'images/supporter.png');
-                       } else {
-                           $('#RecycleStar').css({ 'display': 'block' }).attr('src', 'images/notsupporter.png');
-                       }
-                   }
-               },
-               error: function (xhr) {
-                   switch (localStorage.Language) {
-                       case "1":
-                           alert(Language.Danish.Ptry);
-                           break;
-                       case "2":
-                           alert(Language.German.Ptry);
-                           break;
-                       case "3":
-                           alert(Language.English.Ptry);
-                           break;
-                       case "4":
-                           alert(Language.Spanish.Ptry);
-                           break;
-                   }
-               }
-           });*/
+  
 }
 
 
@@ -1389,59 +1108,7 @@ function OnPaymentFailure(result) {
 }
             
 function UpdateEarthHeartData() {
-   /* var Type = 'Donation';
-    var DonationAmount = AmountToDenote;
-    var Transactions = 0;
-    var FriendRecommendation = 0;
-    var CO2Saved = 0;
-                
-    if (localStorage.User == null || localStorage.User == undefined) {
-        app.application.navigate('signup_login.html');
-    } else {
-        User = $.parseJSON(localStorage.User);
-    }
-                
-    var Parameters = User.Id + '/'
-                     + Type + '/'
-                     + DonationAmount + '/'
-                     + Transactions + '/'
-                     + FriendRecommendation + '/'
-                     + CO2Saved;
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._EarthHeartData + '/' + Parameters;
-                
-    jQuery.support.cors = true;
-    $.ajax({
-               type: "GET",
-               url: URLFormed,
-               dataType: 'json',
-               data: '{}',
-               cache: false,
-               success: function (Result) {
-                   if (Result != null && Result != 'null') {
-                       var data = JSON.stringify(Result);
-                       data = $.parseJSON(data);
-                       //  if (data.IsDonated == true || data.IsDonated == 'true') {
-                       if (localStorage.IsNavigated == undefined || localStorage.IsNavigated == null) {
-                           app.application.navigate("settings.html");
-                       } else {
-                           window.localStorage.removeItem("IsNavigated");
-                           app.application.navigate("mystuff.html");
-                       }
-                         } else {
-                       if (localStorage.IsNavigated == undefined || localStorage.IsNavigated == null) {
-                       app.application.navigate("settings.html");
-                       } else {
-                       window.localStorage.removeItem("IsNavigated");
-                       app.application.navigate("mystuff.html");
-                       }
-                       }
-                   }
-               },
-               error: function (xhr) {
-                   console.log(xhr);
-                   alert('Please try again.');
-               }
-           });*/
+  
 }
 
 function takePictureSpot() {
@@ -1787,7 +1454,7 @@ function saveUserData() {
                 { 'Id': userData.Id}, // filter
                 function(data) {
                     console.log(data);
-                    navigator.notification.alert("Info saved successfully!", null, "Success");
+                    navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
                 },
                 function(error) { 
                     alert(JSON.stringify(error)); 
@@ -1923,19 +1590,6 @@ function setListStyle(el,style){
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

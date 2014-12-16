@@ -1,15 +1,6 @@
 <div id="registerPage" data-title="Basic settings" data-role="view" data-init="setupInit" style="background-color: #f3f3f3; height:100%; min-height:100%;">
     <div data-role="content">
-        <div id="LoadingDiv" style="display: none; text-align: center">
-        </div>
-        <div id="Load" style="display: none">
-            <div>
-                <label for="wait" data-localize="wait">
-                    Please wait...
-                </label>
-            </div>
-            <img src="images/loading2.gif" width="32px" height="32px" style="padding-left:40px;padding-top:5px" />
-        </div>
+       
 
         <!-- start of html -->
         <table class="content_table">
@@ -513,17 +504,17 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <a data-role="button" id="Save"   class="btn btn-blue" >
+                    <a data-role="button" onclick="saveUserData()"   class="btn btn-blue" >
                         <!--  gem -->
-                        <label onKeyPress="return runScript(event)" autopostback="true" id="saveuser" for="gem" tabindex="12"  data-localize="save">Save/Update</label>
+                        <label   data-localize="save">Save/Update</label>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <a data-role="button" id="Save"   class="btn btn-blue" >
+                    <a data-role="button" onclick="deleteUser()"  class="btn btn-blue" >
                         <!--  gem -->
-                        <label onKeyPress="return runScript(event)" autopostback="true" id="deleteuser" for="delete" tabindex="12"  data-localize="delete">Delete</label>
+                        <label  data-localize="delete">Delete</label>
                     </a>
                 </td>
             </tr>

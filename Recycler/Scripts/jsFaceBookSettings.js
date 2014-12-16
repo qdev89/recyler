@@ -154,84 +154,8 @@ function GetfacebookSettings(User) {
 
 function SaveSettings(Data) {
 
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._UserService + '/' + Service.ServiceMethods._SaveFaceBookSettings;
-
-    $("#LoadingDiv").css({ "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
-        'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
-        'background-color': 'white'
-    });
-    $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
-    $('#LoadingDiv,#Load').ajaxStart(function () { $('#LoadingDiv,#Load').show(); });
-    $('#LoadingDiv,#Load').ajaxComplete(function () { $('#LoadingDiv,#Load').hide(); });
-
-
-    /*jQuery.support.cors = true;
-    $.ajax({
-
-        type: "POST",
-        url: URLFormed,
-        dataType: 'json',
-        data: Data,
-        contentType: "application/json;charset=utf-8",
-        cache: false,
-        success: function (Result) {
-
-            if (Result != null && Result != 'null') {
-                localStorage.User = JSON.stringify(Result);
-               // if (User.SettingsID == '' || User.SettingsID == '0') {
-                    switch (localStorage.Language) {
-                        case "1":
-                            alert(Language.Danish.UpdateSucces);
-                            break;
-                        case "2":
-                            alert(Language.German.UpdateSucces);
-                            break;
-                        case "3":
-                            alert(Language.English.UpdateSucces);
-                            break;
-                        case "4":
-                            alert(Language.Spanish.UpdateSucces);
-                            break;
-                    }
-               /* }
-                else {
-                    switch (localStorage.Language) {
-                        case "1":
-                            alert(Language.Danish.UpdateSucces);
-                            break;
-                        case "2":
-                            alert(Language.German.UpdateSucces);
-                            break;
-                        case "3":
-                            alert(Language.English.UpdateSucces);
-                            break;
-                        case "4":
-                            alert(Language.Spanish.UpdateSucces);
-                            break;
-                    }
-                }*/
-                app.application.navigate("settings.html");
-            }
-        },
-        error: function (xhr) {
-            Result = null;
-            switch (localStorage.Language) {
-                case "1":
-                    alert(Language.Danish.Ptry);
-                    break;
-                case "2":
-                    alert(Language.German.Ptry);
-                    break;
-                case "3":
-                    alert(Language.English.Ptry);
-                    break;
-                case "4":
-                    alert(Language.Spanish.Ptry);
-                    break;
-            }
-
-        }
-    });*/
+  
+   
 }
 
 
