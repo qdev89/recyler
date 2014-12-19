@@ -5,7 +5,7 @@ var spotContent= "";
 
 
 function fillContent(e){
-    goToTop(e);
+     goToTop(e);
      $(".spot-info-content").html(spotContent);
 }
 
@@ -49,7 +49,7 @@ function iconMapInit() {
       
         hideLoading();
         allSpots=  data.result;
-        log(allSpots);
+       // log(allSpots);
         
         var today = new Date();
         today.setHours(0);
@@ -141,6 +141,7 @@ function mapInit() {
 
 
 function mapShow(e){    
+     TranslateApp();
     console.log(e);
     if(e.sender.params.spot!="true") return;   
     
@@ -170,8 +171,8 @@ function mapShow(e){
 
 
 function setPlace(lat, long,draggable, type, map,content,isGrey){
-    log(content);
-    log(isGrey);
+  //  log(content);
+  //  log(isGrey);
     if(map==undefined) map=googleMap;    
     if(draggable!=true) draggable =false;     
     var icon="";

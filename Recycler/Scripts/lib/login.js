@@ -52,6 +52,7 @@ app.Login = (function () {
         var show = function () {
             $loginUsername.val('');
             $loginPassword.val('');
+            TranslateApp();
         };
 
         // Authenticate to use Backend Services as a particular user
@@ -76,10 +77,33 @@ app.Login = (function () {
                 
                  app.everlive.Users.currentUser( 
                                             function(data) { 
-                                                //console.log(data.result);    
+                                                console.log(data.result);    
                                                
                                                localStorage.User = JSON.stringify(data.result);
                                                 fillUserData(data.result);
+                                                
+                                                 localStorage.Language = data.result.LanguageID;
+                                                
+
+                                                switch (localStorage.Language) {
+                                                    case "1":
+                                                        localStorage.LanguageType = "dk";
+                                                        break;
+                                                    case "2":
+                                                        localStorage.LanguageType = "de";
+                                                        break;
+                                                    case "3":
+                                                        localStorage.LanguageType = "en";
+                                                        break;
+                                                    case "4":
+                                                        localStorage.LanguageType = "es";
+                                                        break;
+                                                    default:
+                                                     localStorage.LanguageType = "en";
+                                                    break;
+                                                }
+                                                
+                                                
                                                 
                                                 if(data.result.Email == undefined || data.result.Email == "")
                                                  app.application.navigate('basic_setup.html');

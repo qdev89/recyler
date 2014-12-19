@@ -2,51 +2,7 @@ var User;
 
 function GetProduct(ID) {
 
-/*jQuery.support.cors = true; 
-    var Parameters = ID;
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._GetProduct + '/' + Parameters;
 
-    $.ajax({
-        type: "GET",
-        url: URLFormed,
-        dataType: 'json',
-        data: '{}',
-        cache: false,
-        success: function (Result) {
-     
-            if (Result != null && Result != 'null') {
-                var data = JSON.stringify(Result);
-                data = $.parseJSON(data);
-                if (data.ImagePath != '' && data.ImagePath != undefined && data.ImagePath != null)
-                {
-                    $('#image').attr('src','data:image/jpeg;base64,'+ data.ImagePath);
-                }
-                else
-                {
-                    $('#image').attr('src','images/NoImage.jpg');
-                }
-                localStorage.ProductCO2 = data.CO2;
-            }
-
-        },
-        error: function (xhr) {
-            switch (localStorage.Language) {
-                case "1":
-                    alert(Language.Danish.Ptry);
-                    break;
-                case "2":
-                    alert(Language.German.Ptry);
-                    break;
-                case "3":
-                    alert(Language.English.Ptry);
-                    break;
-                case "4":
-                    alert(Language.Spanish.Ptry);
-                    break;
-            }
-
-        }
-    });*/
 
 }
 
@@ -56,88 +12,7 @@ function GetProduct(ID) {
 
 function DeleteProduct(ID) {
 
-  /*  jQuery.support.cors = true; 
-    var Parameters = ID;
-    var URLFormed = Service.dataServiceURL + Service.ServiceName._ProductService + '/' + Service.ServiceMethods._RemoveProduct + '/' + Parameters;
-
-    $("#LoadingDiv").css({ "position": "absolute", "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
-        'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
-        'background-color': 'white'
-    });
-    $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
-    $('#LoadingDiv,#Load').ajaxStart(function () { $('#LoadingDiv,#Load').show(); });
-    $('#LoadingDiv,#Load').ajaxComplete(function () { $('#LoadingDiv,#Load').hide(); });
-
-    $.ajax({
-        type: "GET",
-        url: URLFormed,
-        dataType: 'json',
-        data: '{}',
-        cache: false,
-        success: function (Result) {
-
-            if (Result != null && Result != 'null') {
-
-                var data = JSON.stringify(Result);
-                data = $.parseJSON(data);
-                if (data.ProductRemoved) {
-                    switch (localStorage.Language) {
-                        case "1":
-                            alert(Language.Danish.RemovedSucces);
-                            break;
-                        case "2":
-                            alert(Language.German.RemovedSucces);
-                            break;
-                        case "3":
-                            alert(Language.English.RemovedSucces);
-                            break;
-                        case "4":
-                            alert(Language.Spanish.RemovedSucces);
-                            break;
-                    }
-                    window.localStorage.removeItem('MyProduct');
-                    window.localStorage.removeItem('ProductCO2'); 
-                   app.application.navigate("mystuff.html");
-                }
-                else {
-                    switch (localStorage.Language) {
-                        case "1":
-                            alert(Language.Danish.CantRemove);
-                            break;
-                        case "2":
-                            alert(Language.German.CantRemove);
-                            break;
-                        case "3":
-                            alert(Language.English.CantRemove);
-                            break;
-                        case "4":
-                            alert(Language.Spanish.CantRemove);
-                            break;
-                    }
-                }
-
-            }
-
-        },
-        error: function (xhr) {
-            switch (localStorage.Language) {
-                case "1":
-                    alert(Language.Danish.Ptry);
-                    break;
-                case "2":
-                    alert(Language.German.Ptry);
-                    break;
-                case "3":
-                    alert(Language.English.Ptry);
-                    break;
-                case "4":
-                    alert(Language.Spanish.Ptry);
-                    break;
-            }
-
-        }
-    });
-*/
+  
 }
 
 

@@ -298,29 +298,24 @@
 	"ecomap": "Eco",
 	"tags": "Tags/groupo",
 	"supporters": "Número total de partidarios",
-"users", "Número total de usuarios",
-"help": "Ayuda punto es que si usted necesita otros para ayudarle a recoger cosas. Podría ser ayudar a la recolección de alimentos para las personas sin hogar, o la recogida de la materia a la caridad o para ayudar a los necesitados. No es para uso personal - sólo si usted está recogiendo para ayudar a otros. Úsalo con precaución, por lo que la gente lo toma en serio.",
+	"users": "Número total de usuarios",
+	"help": "Ayuda punto es que si usted necesita otros para ayudarle a recoger cosas. Podría ser ayudar a la recolección de alimentos para las personas sin hogar, o la recogida de la materia a la caridad o para ayudar a los necesitados. No es para uso personal - sólo si usted está recogiendo para ayudar a otros. Úsalo con precaución, por lo que la gente lo toma en serio.",
 	"help1": "AYDA punto",
 	"terraspot": "TERRACYCLE spot",
 	"terraspot_desc": ">Un punto TerraCycle es una estación de recogida de residuos impulsado por las brigadas de TerraCycle . Cada lugar es un lugar donde usted puede entregar sus residuos si usted es parte de la familia brigada de TerraCycle . Si usted quiere saber más sobre las oportunidades de TerraCycle - <a href='terracycle.html'> leen aquí </a>.",
-	    "becomesupporter": "partidario convertido",
-		"onlysupporter": "Sólo para los partidarios",
-		"recycle": "Recycle / regalar",
-		"choose": "Seleccionar",
-
-	"ecospot": "ECO spot";
-	"ecospot1": "Lugar ECO es un lugar con el foco en la vida sostenible. Podría ser una tienda especializada, cafetería, lugar para visitar. Vida sostenible es la clave",
-		
+    "becomesupporter": "partidario convertido",
+	"onlysupporter": "Sólo para los partidarios",
+	"recycle": "Recycle / regalar",
+	"choose": "Seleccionar",
+	"ecospot": "ECO spot",
+	"ecospot1": "Lugar ECO es un lugar con el foco en la vida sostenible. Podría ser una tienda especializada, cafetería, lugar para visitar. Vida sostenible es la clave",		
 	"trade": "Comercio",
 	"sell": "Vender",
 	"lend": "Prestar",
 	"rent": "Renta",
-	
-		
-		"confirm": "Confirme su lugar",
+	"confirm": "Confirme su lugar",
 	"type": "Escriba su información",
 	"Place": "Coloque el icono en el mapa",
-	
 	
 	"service": "Servicio: puedo ayudar a otros con",
 	 "friendtext": "Agrega a tus amigos, familia, y Nabours en tu grupo de amistades. Asi tendras un grupo privado donde puedes regalar cosas, intercambiar libros, comida, etc. - el unico requerimiento especial es que ellos tienen que reaccionar en las siguientes 8 horas, o los articulos pasan a ser publicos."

@@ -1,16 +1,50 @@
 var editableSpot;
 
+function checkForCreate(){
+     TranslateApp();
+    //log(userData);    
+    if(userData.UserRole!="2"){        
+        var data = app.everlive.data('Spot');
+        data.count({ 'userId': userData.Id}, // filter
+            function(data){
+                if(data.result>0){
+                	alert("Non supporters can have no more than 1 spot. Become supporter and you can have as many spots as you like!");
+                    app.application.navigate("myspots.html");
+                }
+            },
+            function(error){
+                alert(JSON.stringify(error));
+            });
+    }
+}
+
+
+
 function deleteSpot(){
-    var id= editableSpot.Id;
-     var data = app.everlive.data('Spot');
-    data.destroySingle({ Id: id },
-    function(){
-        alert('Spot successfully deleted.');
-        app.application.navigate("myspots.html");
-    },
-    function(error){
-        alert(JSON.stringify(error));
-    });
+    
+     navigator.notification.confirm(
+                                    "Are you sure you want to delete this spot?", // message
+                                     function(button){
+                                         if(button==1)
+                                             var id= editableSpot.Id;
+                                             var data = app.everlive.data('Spot');
+                                            data.destroySingle({ Id: id },
+                                            function(){
+                                                alert('Spot successfully deleted.');
+                                                app.application.navigate("myspots.html");
+                                            },
+                                            function(error){
+                                                alert(JSON.stringify(error));
+                                            });
+                                         
+                                     },    
+                             	  'Delete spot',
+                                    ['Delete',           // title
+                                    'Cancel' ]        // buttonLabels
+                                );
+    
+    
+   
 }
 
 function updateSpot(){
@@ -115,6 +149,7 @@ function navigateEditSpot(id){
 }
 
 function editSpot(e){
+    TranslateApp();
     log(e.view.params.spotId);
      var spotID =e.view.params.spotId;
     var data = app.everlive.data('Spot');
@@ -319,9 +354,7 @@ function InitCreateSpot() {
 
     changeLanguage(localStorage.LanguageType);
 
-    // var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-    //$("[data-localize]").localize("Recycle", opts);
-
+   TranslateApp();
     if (localStorage.CacheItem != undefined && localStorage.CacheItem != '') {
         LoadStorageData();
     }
@@ -1322,7 +1355,7 @@ function SpotCacheObject() {
             '"ClosingTimeSat":"' + $("#CloseTimeSat").val() + '",' +
             '"OpeningTimeSun":"' + $("#OpenTimeSun").val() + '",' +
             '"ClosingTimeSun":"' + $("#CloseTimeSun").val() + '"}';
-    localStorage.CacheItem = data;
+    		localStorage.CacheItem = data;
 }
 
 function ValidateURL(txtUrl) {
@@ -1339,20 +1372,24 @@ function ValidateURL(txtUrl) {
 function Filldata(edit) {
     if(edit==undefined)
     edit = "";
-    switch (localStorage.Language) {
+     $('#select-choice-month'+edit).html("");
+     $('#spotype'+edit).html("");
+   //  $('#spotstate'+edit).html("");
+    // $('#spotcountry'+edit).html("");
+    switch (localStorage.Language) { 
         case "1":
 
             $.each(SpotType.Danish, function (i) {
                 $('#spotype'+edit).append('<option value="' + SpotType.Danish[i].id + '">' + SpotType.Danish[i].Value + '</option>');
             });
-            //            $.each(Country.English, function (i) {
-            //                $('#spotcountry').append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
-            //            
-            //            });
+                     /*  $.each(Country.English, function (i) {
+                            $('#spotcountry'+edit).append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
+                       
+                       });
 
-            //            $.each(States.English, function (i) {
-            //                $('#spotstate').append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
-            //            });
+                       $.each(States.English, function (i) {
+                           $('#spotstate'+edit).append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
+                      });*/
             $.each(date.Danish, function (i) {
                 $('#select-choice-month'+edit).append('<option value="' + date.Danish[i].id + '">' + date.Danish[i].Value + '</option>');
             });
@@ -1362,13 +1399,13 @@ function Filldata(edit) {
             $.each(SpotType.German, function (i) {
                 $('#spotype'+edit).append('<option value="' + SpotType.German[i].id + '">' + SpotType.German[i].Value + '</option>');
             });
-            //            $.each(Country.English, function (i) {
-            //                $('#spotcountry').append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
-            //            });
+                      /*  $.each(Country.English, function (i) {
+                            $('#spotcountry'+edit).append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
+                       });
 
-            //            $.each(States.English, function (i) {
-            //                $('#spotstate').append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
-            //            });
+                        $.each(States.English, function (i) {
+                            $('#spotstate'+edit).append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
+                        });*/
             $.each(date.German, function (i) {
                 $('#select-choice-month'+edit).append('<option value="' + date.German[i].id + '">' + date.German[i].Value + '</option>');
             });
@@ -1377,13 +1414,13 @@ function Filldata(edit) {
             $.each(SpotType.English, function (i) {
                 $('#spotype'+edit).append('<option value="' + SpotType.English[i].id + '">' + SpotType.English[i].Value + '</option>');
             });
-            //            $.each(Country.English, function (i) {
-            //                $('#spotcountry').append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
-            //            });
+                       /* $.each(Country.English, function (i) {
+                            $('#spotcountry'+edit).append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
+                        });
 
-            //            $.each(States.English, function (i) {
-            //                $('#spotstate').append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
-            //            });
+                        $.each(States.English, function (i) {
+                            $('#spotstate'+edit).append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
+                        });*/
             $.each(date.English, function (i) {
                 $('#select-choice-month'+edit).append('<option value="' + date.English[i].id + '">' + date.English[i].Value + '</option>');
             });
@@ -1392,13 +1429,13 @@ function Filldata(edit) {
             $.each(SpotType.Spanish, function (i) {
                 $('#spotype'+edit).append('<option value="' + SpotType.Spanish[i].id + '">' + SpotType.Spanish[i].Value + '</option>');
             });
-            //            $.each(Country.Spanish, function (i) {
-            //                $('#spotcountry').append('<option value="' + Country.Spanish[i].id + '">' + Country.Spanish[i].Value + '</option>');
-            //            });
+                       /* $.each(Country.Spanish, function (i) {
+                            $('#spotcountry'+edit).append('<option value="' + Country.Spanish[i].id + '">' + Country.Spanish[i].Value + '</option>');
+                        });
 
-            //            $.each(States.Spanish, function (i) {
-            //                $('#spotstate').append('<option value="' + States.Spanish[i].id + '">' + States.Spanish[i].Value + '</option>');
-            //            });
+                        $.each(States.Spanish, function (i) {
+                            $('#spotstate'+edit).append('<option value="' + States.Spanish[i].id + '">' + States.Spanish[i].Value + '</option>');
+                        });*/
             $.each(date.Spanish, function (i) {
                 $('#select-choice-month'+edit).append('<option value="' + date.Spanish[i].id + '">' + date.Spanish[i].Value + '</option>');
             });

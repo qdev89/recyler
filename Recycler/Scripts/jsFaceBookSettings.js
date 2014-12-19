@@ -14,9 +14,7 @@ $(document).ready(function () {
     });  
 
 
-    var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-    //$("[data-localize]").localize("Recycle", opts);
-
+  TranslateApp();
 
     /*if (localStorage.User == null || localStorage.User == undefined) {
 

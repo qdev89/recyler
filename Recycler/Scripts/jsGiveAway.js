@@ -351,6 +351,7 @@ function saveItem() {
     else
     GiveProduct.Product.Image = ProductImage;*/
       
+     GiveProduct.Product.Category = $("#select-custom-24").val();
     if ($("#image1").attr("src") != "images/imageplaceholder.png") {
         GiveProduct.Product.Image1 = $("#image1").attr("src").replace("data:image/jpeg;base64,", "")
     }else {
@@ -376,10 +377,11 @@ function saveItem() {
                '"name":"' + GiveProduct.Product.Name + '",' +
                '"description":"' + GiveProduct.Product.Description + '",' +
                '"long_description":"' + GiveProduct.Product.long_description + '",' +
-               '"Categorylist":"' + GiveProduct.Product.Category + '",' +
+             //  '"Categorylist":"' + GiveProduct.Product.Category + '",' +
                '"Image":"' + GiveProduct.Product.Image + '",' +
                '"Price":"' + GiveProduct.Product.Price + '",' +
                '"Type":"' + GiveProduct.Product.Type + '",' +
+        		 '"Category":"' + GiveProduct.Product.Category + '",' +
                '"Latitude":"' + ProductLat + '",' +
                '"Longitude":"' + ProductLong + '",';
                     
@@ -396,6 +398,7 @@ function saveItem() {
                '"Image3":"' + GiveProduct.Product.Image3 + '",' +
                '"Price":"' + GiveProduct.Product.Price + '",' +
                '"Type":"' + GiveProduct.Product.Type + '",' +
+       		 '"Category":"' + GiveProduct.Product.Category + '",' +
                '"Latitude":"' + ProductLat + '",' +
                '"Longitude":"' + ProductLong + '",' +
                '"IsActive":"' + GiveProduct.Product.IsActive + '",' +
@@ -416,10 +419,10 @@ function CreateProduct(Data) {
     console.log(Data);    
     var data = app.everlive.data('Product');     
     
-    data.create({ 'UserID' : Data.UserID,"Name": Data.name, "Description" : Data.long_description, "IsActive":Data.IsActive,"Price" : Data.Price,"Type" : Data.Type, "Status": Data.Status},
+    data.create({ 'UserID' : Data.UserID,"Name": Data.name, "Description" : Data.description,"MoreInformation":Data.long_description , "IsActive":Data.IsActive,"Price" : Data.Price,"Type" : Data.Type, "Status": Data.Status,"Category": Data.Category},
                 function(data) {
                     console.log(data);
-        
+        			localStorage.NewProductID = data.result.Id;
                     createGiveAwayImage(data.result.Id, Data.Image1,1);
                     createGiveAwayImage(data.result.Id, Data.Image2,2);
                     createGiveAwayImage(data.result.Id, Data.Image3,3);
@@ -539,34 +542,30 @@ function createGiveAwayImage(id, image,num) {
     };
 
     app.everlive.Files.create(file,
-                              function (data) {
-                                  console.log(data);  
-                                  
-                                  app.everlive.Files.getById(data.result.Id)
-                                    .then(function(res){
-                                         var d = app.everlive.data("Product");                                    
-                                  		var field ='Image'+num;  
-                                        var obj = {};
-                                        obj.Id = id;
-                                        obj[''+field] = res.result.Uri;
-                                                    console.log(obj);                    
-                                      d.updateSingle(obj,
-                                               function(i) {
-                                                   console.log(i);   
-                                               },
-                                               function(error) {
-                                                   console.log(error);
-                                               });              
-                                    },
-                                    function(error){
-                                        alert(JSON.stringify(error));
-                                    });
-                                  
-                                                        
-                              },
-                              function (error) {
-                                  alert(JSON.stringify(error)); 
-                              });            
+                  function (data) {
+                     app.everlive.Files.getById(data.result.Id)
+                        .then(function(res){
+                             var d = app.everlive.data("Product");                                    
+                      		var field ='Image'+num;  
+                            var obj = {};
+                            obj.Id = id;
+                            obj[''+field] = res.result.Uri;
+                                        console.log(obj);                    
+                          d.updateSingle(obj,
+                                   function(i) {
+                                       console.log(i);   
+                                   },
+                                   function(error) {
+                                       console.log(error);
+                                   });              
+                        },
+                        function(error){
+                            alert(JSON.stringify(error));
+                        });            
+                  },
+                  function (error) {
+                      alert(JSON.stringify(error)); 
+                  });            
 }   
 
 function setTags() {
@@ -879,12 +878,26 @@ function changeLanguage(lang) {
 }
        
 function showGiveAway(e) {
-   resetScroller(e);
-   
-    
+     TranslateApp();
+   resetScroller(e);      
     $(".radio-options").show();
     $(".after-radio").hide();
     $('input:radio[name=abc]:checked').prop("checked", false);
+       $("#Save").show();
+    $("#Update").hide();
+    
+    if(e.view.params.editSpotId!=undefined){
+        editThisProduct(e.view.params.editSpotId);
+    }else{
+        $('#description').val();
+        $('#MightLike').val();
+        $('#long_description').val();
+        $('#price').val();
+        $("#select-custom-24").val();  
+        $("#image1").attr("src", "images/imageplaceholder.png");
+        $("#image2").attr("src", "images/imageplaceholder.png");
+        $("#image3").attr("src", "images/imageplaceholder.png");   
+    }
 }
 
 function initGiveAway() {
@@ -924,7 +937,7 @@ function initGiveAway() {
             case "1":
                 localStorage.LanguageType = "dk";
                         
-                var menuItem = $("<option id=''></option>");
+                var menuItem = $("<option value='' id=''></option>");
                 menuItem.html("Tags/kategorier");
                 $("#select-custom-24").append(menuItem);
                             
@@ -932,12 +945,13 @@ function initGiveAway() {
                     var menuItem = $("<option id=''></option>");
                     menuItem.html(Tags.Danish[i].Value);
                     menuItem.attr('id', Tags.Danish[i].id);
+                    menuItem.attr('Value', Tags.Danish[i].id);
                     $("#select-custom-24").append(menuItem);
                 });
                 break;
             case "2":                        
                 localStorage.LanguageType = "de";
-                var menuItem = $("<option id=''></option>");
+                var menuItem = $("<option value='' id=''></option>");
                 menuItem.html("Tags/Categories");
                 $("#select-custom-24").append(menuItem);
                             
@@ -945,12 +959,13 @@ function initGiveAway() {
                     var menuItem = $("<option id=''></option>");
                     menuItem.html(Tags.German[i].Value);
                     menuItem.attr('id', Tags.German[i].id);
+                     menuItem.attr('value', Tags.German[i].id);
                     $("#select-custom-24").append(menuItem);
                 });                        
                 break;
             case "3":                        
                 localStorage.LanguageType = "en";
-                var menuItem = $("<option id=''></option>");
+                var menuItem = $("<option value='' id=''></option>");
                 menuItem.html("Tags/Categories");
                 $("#select-custom-24").append(menuItem);
                             
@@ -959,13 +974,14 @@ function initGiveAway() {
                     if (Tags.English[i] != undefined) {
                         menuItem.html(Tags.English[i].Value);
                         menuItem.attr('id', Tags.English[i].id);
+                          menuItem.attr('value', Tags.English[i].id);
                         $("#select-custom-24").append(menuItem);
                     }
                 });                       
                 break;
             case "4":                        
                 localStorage.LanguageType = "es";
-                var menuItem = $("<option id=''></option>");
+                var menuItem = $("<option value='' id=''></option>");
                 menuItem.html("Tags/Categories");
                 $("#select-custom-24").append(menuItem);
                             
@@ -973,6 +989,7 @@ function initGiveAway() {
                     var menuItem = $("<option id=''></option>");
                     menuItem.html(Tags.Spanish[i].Value);
                     menuItem.attr('id', Tags.Spanish[i].id);
+                       menuItem.attr('value', Tags.Spanish[i].id);
                     $("#select-custom-24").append(menuItem);
                 });                       
                 break;

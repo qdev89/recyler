@@ -1,22 +1,18 @@
 <div data-role="view" data-title="Give away" data-init="initGiveAway" data-show="showGiveAway" id="give_page"  style="background-color: #f3f3f3;">
 
     <div data-role="content">
-        <div id="LoadingDiv" style="display: none; text-align: center">
-        </div>
-        <div id="Load" style="display: none">
-            <div style="font-weight: bold">
-                Please wait....
-            </div>
-            <img src="images/loading2.gif" width="32px" height="32px" style="padding-left: 40px;padding-top: 5px;" />
-        </div>
+       
         <div id="item_info_div" style="width: 100%; text-align: left;">
 
             <div class="radio-options">
-                <label for="description" data-localice="choose">
-                <div class="boldText">Select</div></label>
+                <label for="description" data-localize="choose">
+                    
+                    <div class="boldText">Select</div>
+                    
+                </label>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label for="description" data-localice="recycle">
+                        <label for="description" data-localize="recycle">
                             Recycle / give away
                         </label>
                     </span>
@@ -24,7 +20,7 @@
                 </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label for="description" data-localice="trade">
+                        <label for="description" data-localize="trade">
                             Trade
                         </label>
                     </span>
@@ -32,7 +28,7 @@
                 </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label for="description" data-localice="sell">
+                        <label for="description" data-localize="sell">
                             Sell
                         </label>
                     </span>
@@ -40,7 +36,7 @@
                 </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                       <label for="description" data-localice="lend">
+                       <label for="description" data-localize="lend">
                             Lend
                         </label>
                     </span>
@@ -48,7 +44,7 @@
                 </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label for="description" data-localice="lej">
+                        <label for="description" data-localize="lej">
                             Rent
                         </label>
                     </span>
@@ -57,7 +53,7 @@
                 <br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                        <label for="description" data-localice="service">
+                        <label for="description" data-localize="service">
                             Service: I can help others with
                         </label>
                     </span>
@@ -119,7 +115,24 @@
                 <a id="Save" data-role="button" onClick="saveItem();"    name="anchors" style="width: 100%;">
                     <span name="spn">Next</span>
                 </a>
-
+                <div id="Update"  style="display:none;">
+                    <a  data-role="button" onClick="updateItem();" style="width: 100%;">
+                        <span name="spn">Update</span>
+                    </a>
+                    
+                    <br />
+               	   <br /> 
+                     <a data-role="button"  onclick="navigateFromDrawer('users.html')" style="width: 100%;">
+                            <span name="spn">
+                                <label for="collectco2"  style="width: 100%;"  data-localize="collectco2">Collect my Co2</label>
+                            </span>
+                        </a>
+                      <br />
+               	   <br /> 
+                    <a  data-role="button" onClick="deleteItem();" style="width: 100%;">
+                        <span name="spn">Delete</span>                      
+                    </a>
+				</div>
                 <br />
                 <br />
                 <br />

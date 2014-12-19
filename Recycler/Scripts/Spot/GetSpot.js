@@ -6,7 +6,7 @@ app.Spot = (function () {
     
     var spotsViewModel = (function () {        
         var getMySpots = function () {
-            
+            TranslateApp();
             if(localStorage.User==undefined){
                 app.application.navigate('signup_login.html');
                 return;
@@ -24,7 +24,7 @@ app.Spot = (function () {
                             var query = new Everlive.Query();
                             query.where().eq('userId', myId).done().skip(skip).take(interval);
                             data.get(query).then(function(data) {
-                                console.log(data.result);
+                               // console.log(data.result);
                                 options.success(data.result);
                                 hideLoading();
                                 if(data.result.length==interval){
@@ -105,9 +105,8 @@ app.Spot = (function () {
     
     
     
-    var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-    //$("[data-localize]").localize("Recycle", opts);
-    var User = $.parseJSON(localStorage.User); 
+   TranslateApp();
+  var User = $.parseJSON(localStorage.User); 
 
     Getspot.Id = '0';
     Getspot.userId = User.Id;

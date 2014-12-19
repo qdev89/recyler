@@ -9,129 +9,103 @@ EarthHeartData.Values = {
     CO2Saved: '',
     Type: ''
 }
-
-
-
 //=================================================== Calculate Material CO2 =========================================================
 
 function Ins_Upd_EarthHeartData(_Data, _ReturnUrl) {
-    if (localStorage.User == null || localStorage.User == undefined) {
-       app.application.navigate('signup_login.html');
-    }
-    else {
-
+    if (localStorage.User == null || localStorage.User == undefined) 
+        app.application.navigate('signup_login.html');    
+    else 
         User = $.parseJSON(localStorage.User);
-    }
 
-    var Parameters = User.Id + '/'
-                    + _Data.Type + '/'
-                    + _Data.DonationAmount + '/'
-                    + _Data.Transactions + '/'
-                    + _Data.FriendRecommendation + '/'
-                    + _Data.CO2Saved;
-  
-
+    var Parameters = User.Id + '/' 
+                     + _Data.Type + '/'
+                     + _Data.DonationAmount + '/'
+                     + _Data.Transactions + '/'
+                     + _Data.FriendRecommendation + '/'
+                     + _Data.CO2Saved;   
 }
-
-
-
-
-
 
 //================================================= GetEarthHeartData ======================================================
 
 function GetEarthHeartData(e) {    
-
+    TranslateApp();
     if (localStorage.User == null || localStorage.User == undefined) {
         e.preventDefault();
         app.application.navigate('signup_login.html');
         return;
-    }
-    else {
-
+    } else 
         User = $.parseJSON(localStorage.User);
-    }
-
-    if (User.UserRole == "3" || User.UserRole == "1") {
-        $('#KarmaUser').css({ "display": "none" });
-        $('#NoKarmaFreeUser').css({ "display": "block" });
-
-    }
-    else {
-        $('#KarmaUser').css({ "display": "block" });
-        $('#NoKarmaFreeUser').css({ "display": "none" });
-        var Parameters = User.Id;
-
-      
+ 
+    if (User.UserRole != "2") {
+        $('#KarmaUser').hide();
+        $('#NoKarmaFreeUser').show(); 
+        return;
     }
     
-        $('#SendMyCO2').click(function () {
-                    SendCO2ToMail();
-                });
-            
-                $('.clsSettings').click(function () {
-                    if (User.UserRole == "3") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.Register;
-                                break;
-                            case "2":
-                                message = Language.German.Register;
-                                break;
-                            case "3":
-                                message = Language.English.Register;
-                                break;
-                            case "4":
-                                message = Language.Spanish.Register;
-                                break;
-                        }
-            
-                        if (confirm(message)) {
-                           // localStorage.User = null;
-                          app.application.navigate("signup_login.html");
-                            return;
-                        } else {
-                            window.localStorage.removeItem('CacheItem');
-                            return;
-                        }
+    $('#KarmaUser').show();
+    $('#NoKarmaFreeUser').hide();
+     
+    showLoading();
+    app.everlive.Users.get() 
+        .then(function(data) {
+            var users = data.result;
+            var data = app.everlive.data('Product'); 
+            data.get().then(function(data) {
+                var products = data.result;                             
+                var lengthSupporters = 0;
+                var transactions = 0;
+                            
+                $.each(products, function(indexP, valueP) {                                         
+                    if (valueP.CreatedBy == User.Id && valueP.UserID != valueP.CreatedBy) {
+                        log(valueP.CreatedBy, User.Id, valueP.UserID);
+                        transactions++;
                     }
-            
-                    if (User.UserRole == "1") {
-                        var message = '';
-                        switch (localStorage.Language) {
-                            case "1":
-                                message = Language.Danish.PUpdate;
-                                break;
-                            case "2":
-                                message = Language.German.PUpdate;
-                                break;
-                            case "3":
-                                message = Language.English.PUpdate;
-                                break;
-                            case "4":
-                                message = Language.Spanish.PUpdate;
-                                break;
-                        }
-            
-                        if (confirm(message)) {
-                            app.application.navigate("basic_setup.html");
-                            return;
-                        } else {
-                            window.localStorage.removeItem('CacheItem');
-                            return;
-                        }
-                    }
-            
-                   app.application.navigate('basic_setup.html');
+                });                             
+                            
+                $.each(users, function(indexU, valueU) {  
+                    if (valueU.UserRole == "2")
+                        lengthSupporters++;                                    
+                    valueU.totalCo = 0;                                    
+                    $.each(products, function(indexP, valueP) {                                    	                                    	
+                        if (valueU.Id == valueP.UserID) {
+                            if (valueP.CO2 != undefined)
+                                valueU.totalCo+=valueP.CO2;     
+                        }                                          
+                    });                                    
+                }); 
+                            
+                var ranking = 1;
+                var userCo = 0; 
+                            
+                $.each(users, function(indexU, valueU) {                                     
+                    if (valueU.Id == User.Id) 
+                        userCo = valueU.totalCo;                                    
                 });
-
+                             
+                $.each(users, function(indexU, valueU) {
+                    if (valueU.Id != User.Id && valueU.totalCo > userCo) 
+                        ranking++;
+                });
+                           
+                $("#totalUsers").html(users.length);
+                $("#supporters").html(lengthSupporters);
+                $("#Position").html(ranking);
+                $("#Co2Saved").html(userCo);
+                $("#transactions").html(transactions);
+                hideLoading();
+            },
+            function(error) {
+                hideLoading();
+                alert(JSON.stringify(error));
+            });                        
+        },
+        function(error) {
+              hideLoading();
+              alert(JSON.stringify(error));
+        });
 }
 
-
-
 function SendCO2ToMail() {
-
     if (MailSent) {
         switch (localStorage.Language) {
             case "1":
@@ -150,31 +124,25 @@ function SendCO2ToMail() {
         return;
     }
 
-
     if (localStorage.User == null || localStorage.User == undefined) {
-       app.application.navigate('signup_login.html');
-    }
-    else {
+        app.application.navigate('signup_login.html');
+    } else {
         User = $.parseJSON(localStorage.User);
     }
     var Position = $('#Position').html();
     var Co2 = $('#Co2Saved').html();
     var HeartStatus = $('#HeartStatus').html();
 
-    var Data =  '{"Name":"' + User.FirstName + '",' +
-                '"HeartStatus":"' + HeartStatus + '",'+
-                '"Position":"' + Position + '","Co2":"' + Co2 + '",'+
-                '"EmailID": "' + User.EmailID + '",' +
-                '"Donation":"' + $('#Donations').html() + '",' +
-                '"transactions":"'+ $('#transactions').html() +'"}';
-
-
-  
+    var Data = '{"Name":"' + User.FirstName + '",' +
+               '"HeartStatus":"' + HeartStatus + '",' +
+               '"Position":"' + Position + '","Co2":"' + Co2 + '",' +
+               '"EmailID": "' + User.EmailID + '",' +
+               '"Donation":"' + $('#Donations').html() + '",' +
+               '"transactions":"' + $('#transactions').html() + '"}';
 }
 
 var OnSuccess = function (Result) {
-
-    var data = JSON.stringify(Result);
+    var data = JSON.stringify(Result); 
     data = $.parseJSON(data);
 
     if (data.CO2SentByMail) {
@@ -193,8 +161,7 @@ var OnSuccess = function (Result) {
                 alert(Language.Spanish.MailSucces);
                 break;
         }
-    }
-    else {
+    } else {
         MailSent = false;
         switch (localStorage.Language) {
             case "1":

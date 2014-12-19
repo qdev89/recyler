@@ -1,4 +1,163 @@
 var app = window.app = window.app || {};
+var editableProduct;
+
+function navigateToEditProduct(el){    
+    var productID = $(el).attr('productID');
+   // log(productID); 
+     app.application.navigate("giveaway.html?editSpotId=" + productID);
+}
+
+
+function giveToThisUser(el){
+    var userID = $(el).attr("userID");
+    console.log(userID, editableProduct.Id);
+    
+      navigator.notification.confirm(
+                "Are you sure you want to give the product to this user?", // message
+                 function(button){
+                     if(button==1){
+                        var data = app.everlive.data('Product');
+                       data.updateSingle({ Id: editableProduct.Id, 'UserID': userID },
+                            function(data){
+                                alert("Product transferred successfully!");
+                                app.application.navigate("mystuff.html"); 
+                            },
+                            function(error){
+                                alert(JSON.stringify(error));
+                            });
+                     }                                
+                 },    
+         	  'Collect CO2',
+                ['Give',           // title
+                'Cancel' ]        // buttonLabels
+            );
+}
+
+function editThisProduct(productID){
+   
+    log(productID);   
+    $(".radio-options").hide();
+    $(".after-radio").show();    
+    $("#Save").hide();
+    $("#Update").show();
+    
+     var data = app.everlive.data('Product');
+	data.getById(productID)
+    .then(function(data){       
+       
+        editableProduct = data.result;
+        log(editableProduct);
+        if(editableProduct.Type=="free") $(".price-div").hide();
+        else $(".price-div").show();
+        $('#description').val(editableProduct.Name);
+    	$('#MightLike').val(editableProduct.Description);
+   	 $('#long_description').val(editableProduct.MoreInformation);
+        $('#price').val(editableProduct.Price);
+         $("#select-custom-24").val(editableProduct.Category);
+        
+        if (editableProduct.Image1!=undefined) {
+         $("#image1").attr("src",editableProduct.Image1);
+        }else {
+           $("#image1").attr("src","images/imageplaceholder.png");
+        }
+        
+         if (editableProduct.Image2!=undefined) {
+         $("#image2").attr("src",editableProduct.Image2);
+        }else {
+           $("#image2").attr("src","images/imageplaceholder.png");
+        }
+        
+         if (editableProduct.Image3!=undefined) {
+         $("#image3").attr("src",editableProduct.Image3);
+        }else {
+           $("#image3").attr("src","images/imageplaceholder.png");
+        }
+            
+    },
+    function(error){
+        alert(JSON.stringify(error));
+    });
+    
+    
+}
+
+function deleteItem(){
+   
+     navigator.notification.confirm(
+                                    "Are you sure you want to delete this product?", // message
+                                     function(button){
+                                         if(button==1)
+                                            var data = app.everlive.data('Product');
+                                            data.destroySingle({ Id:  editableProduct.Id },
+                                            function(){
+                                                alert('Product successfully deleted.');
+                                                app.application.navigate("mystuff.html");
+                                            },
+                                            function(error){
+                                                alert(JSON.stringify(error));
+                                            });
+                                         
+                                     },    
+                             	  'Delete product',
+                                    ['Delete',           // title
+                                    'Cancel' ]        // buttonLabels
+                                );
+    
+      
+}
+
+function updateItem(){
+    
+   
+      var data = app.everlive.data('Product');     
+      editableProduct.Name= $('#description').val();
+      editableProduct.Description = $('#MightLike').val();
+      editableProduct.MoreInformation= $('#long_description').val();
+      editableProduct.Price=   $('#price').val();
+      editableProduct.Category= $("#select-custom-24").val();
+                                    
+                                    data.update({
+                                                      'Name': editableProduct.Name,                  
+                                                      'Description': editableProduct.Description,                  
+                                                      'MoreInformation': editableProduct.MoreInformation,                  
+                                                      'Price': editableProduct.Price,                  
+                                                      'Category': editableProduct.Category 
+                                                        			
+                                                }, // data
+                                                { 'Id': editableProduct.Id}, // filter
+                                                function(data) {
+                                                    console.log(data);
+                                                    navigator.notification.alert("Info saved successfully!", null, "Success");
+                                                },
+                                                function(error) { 
+                                                    alert(JSON.stringify(error)); 
+                                                });  
+    
+    
+    
+    
+    
+    
+    
+        if ( $("#image1").attr("src").indexOf("data:image/jpeg;base64,")!=-1) {
+        
+          var imageData =   $("#image1").attr("src").replace("data:image/jpeg;base64,","");
+             createGiveAwayImage(editableProduct.Id, imageData,1)
+        }
+        if ( $("#image2").attr("src").indexOf("data:image/jpeg;base64,")!=-1) {
+        
+          var imageData =   $("#image2").attr("src").replace("data:image/jpeg;base64,","");
+             createGiveAwayImage(editableProduct.Id, imageData,2)
+        }
+        if ( $("#image3").attr("src").indexOf("data:image/jpeg;base64,")!=-1) {        
+          var imageData =   $("#image3").attr("src").replace("data:image/jpeg;base64,","");
+             createGiveAwayImage(editableProduct.Id, imageData,3)
+        }
+    
+        
+}
+
+
 
 app.Product = (function () {
     'use strict';
@@ -11,7 +170,8 @@ app.Product = (function () {
            getProducts(true);
        }
         
-        var getProducts = function (isMy) {         
+        var getProducts = function (isMy) {     
+            TranslateApp();
             var interval = 12; 
          
             if(localStorage.User==undefined){

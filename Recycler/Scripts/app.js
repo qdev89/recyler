@@ -1,10 +1,21 @@
 function goToTop(e){
     console.log(e);
     e.sender.scroller.reset();
+     TranslateApp();
 }
 
-function log(obj){
-    console.log(obj);
+function TranslateApp(){
+    if(localStorage.LanguageType==undefined) localStorage.LanguageType = "en";
+    
+    log(localStorage.LanguageType);
+     var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" }; 
+        $("[data-localize]").localize("Recycle", opts);
+}
+
+function log(){    
+    for (var i = 0; i < arguments.length; i++) {
+   	 console.log(arguments[i]);  
+    }
 }
 
 function err(err){
@@ -24,8 +35,7 @@ var userData =null;
             localStorage.Language = 3;
             localStorage.LanguageType = "en";
         }
-        var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" }; 
-        //$("[data-localize]").localize("Recycle", opts);
+        TranslateApp();
     }, false);
 
     app.application = new kendo.mobile.Application(document.body, { skin:"flat", layout:"tabstrip-layout", initial:"signup_login.html", hashBang:true, loading:false }); 
@@ -269,8 +279,7 @@ function takePicture() {
 function onPhotoDataSuccess(imageData) {
     // localStorage.SpotImage = imageData;
     
-    user.image = imageData;  
-                
+    user.image = imageData;                  
     var damagephoto = document.getElementById('image');
     damagephoto.src = "data:image/jpeg;base64," + imageData;
 }
@@ -378,6 +387,9 @@ function getLoginStatus() {
 }
 
 function signupLogin() {
+    
+     TranslateApp();
+    
     //513813615309399   
     FB.init({ appId: "313796158728708", nativeInterface: CDV.FB, useCachedDialogs: false });
 
@@ -476,7 +488,7 @@ function signupLogin() {
         localStorage.LanguageType = "en";
         GetAllLanguages();
     } else {
-        GetAllLanguages();
+       // GetAllLanguages();
         switch (localStorage.Language) {
             case "1":
                 localStorage.LanguageType = "dk";
@@ -492,8 +504,7 @@ function signupLogin() {
                 break;
         }
 
-        var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-        //$("[data-localize]").localize("Recycle", opts);
+      TranslateApp();
     }
 
     $('#ddlCountry').change(function () {
@@ -542,8 +553,7 @@ function signupLogin() {
                 }
             });
 
-            var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-            //$("[data-localize]").localize("Recycle", opts);
+           TranslateApp();
         } else {
             switch (localStorage.Language) {
                 case "1":
@@ -702,6 +712,7 @@ function getFilters() {
 }
 
 function initFilters() {
+    TranslateApp();
     switch (localStorage.Language) {
         case "1":
             localStorage.LanguageType = "dk";
@@ -936,12 +947,13 @@ function contactInit() {
     });
 }
 
-var isEdit=false;
+var isEdit="";
 function takePictureSpot(edit) {
-   if(edit==undefined){ edit = "";
-       isEdit=false;
-       }
-    else isEdit=true;
+   if(edit==undefined)
+    	isEdit = "";       
+    else 
+    	isEdit="E";
+    
     var destinationType = navigator.camera.DestinationType;
     if ($('#image'+edit).attr('src') == "images/imageplaceholder.png") {
         navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
@@ -954,12 +966,9 @@ function takePictureSpot(edit) {
 }
 
 function onPhotoDataSuccessSpot(imageData) {
-    //localStorage.EditSpotImage = imageData;
-    
-    var e = "";
-    if(isEdit) e="E";
+   
     spot.Image = imageData;
-    var damagephoto = document.getElementById('image'+e);
+    var damagephoto = document.getElementById('image'+isEdit);
     damagephoto.src = "data:image/jpeg;base64," + imageData;
 }
 
@@ -1340,6 +1349,7 @@ function spotDifferenceInit() {
 }
 
 function terraShow() {
+    TranslateApp();
     setTimeout(function () {
         localStorage.IsNavigated = true;
         app.application.navigate("donate.html");
@@ -1357,207 +1367,6 @@ function thanksInit() {
     $('#ProceedAhead').click(function () {
         app.application.navigate("mystuff.html");
     });    
-}
-
-function isLogged() {
-    if ((window.User == undefined || window.User == null) && localStorage.User == undefined) {
-        app.application.navigate("signup_login.html");
-        return false;
-    }else if (window.User == undefined || window.User == null) 
-        window.User = JSON.parse(localStorage.User);
-       
-    return true;
-}
-
-function saveUserData() {   
-    
-    var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
-    if (!filter.test($("#email").val())) {
-        navigator.notification.alert("You should fill a valid email!", null, "");
-        return;
-    }    
-     
-    
-    if ($("#email").val() == "" || $("#name").val() == "" || $("#phoneno").val() == "") {
-        navigator.notification.alert("All mandatory fields are required!", null, "");
-        return;
-    }
-    
-    var base64 = $("#image").attr("src");
-    var ImageData= userData.ImageData;
-    
-    if (base64!="images/imageplaceholder.png" && base64.indexOf("data:image/jpeg;base64,")!=-1) {       
-        
-        var file = {
-        "Filename": "userPicture.jpeg",
-        "ContentType": "image/jpeg",
-        "CustomField": "customValue",
-        "base64": base64.replace("data:image/jpeg;base64,","") 
-            };
-
-        app.everlive.Files.create(file,
-                                  function (data) {
-                                      console.log(data);
-                        
-                                      ImageData = data.result.Uri;
-                        
-                                      var users = app.everlive.data('Users');
-                                      users.update({
-                                                      'ImageData':ImageData
-                                                  }, // data
-                                                  { 'Id': userData.Id}, // filter
-                                                  function(data) {
-                                                    //  console.log(data);
-                                                      navigator.notification.alert("Info saved successfully!", null, "Success");
-                                                  },
-                                                  function(error) { 
-                                                      alert(JSON.stringify(error)); 
-                                                  });    
-                                  },
-                                  function (error) {
-                                      alert(JSON.stringify(error)); 
-                                  });
-       
-    }
-    
-     var data = app.everlive.data('Users');
-    
-    
-    app.everlive.Users.updateSingle({ 'Id': userData.Id, 'Email': $("#email").val() },
-    function(data){
-        //alert(JSON.stringify(data));
-    },
-    function(error){
-        alert(JSON.stringify(error));
-    });
-    
-    data.update({
-                    'UserRole': $("#role").val(),                  
-                    'Email':  $("#email").val(),           
-                    'DisplayName': $("#name").val(),
-                    'PhoneNumber':  $("#phoneno").val(),  
-                    'CompanyName':      $("#companyname").val(),            
-                    'Zip': $("#zip").val(),            
-                    'AddressLine1':  $("#homeadress").val(),               
-                    'City':   $("#homecity").val(),            
-                    'Country':      $("#country").val(),            
-                    'State':    $("#txtState").val(),     
-                    'LanguageID':  $("#Languages").val()        			
-                }, // data
-                { 'Id': userData.Id}, // filter
-                function(data) {
-                    console.log(data);
-                    navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
-                },
-                function(error) { 
-                    alert(JSON.stringify(error)); 
-                });    
-}  
- 
-function fillUserData(user) { 
-   userData = user;
-   
-    if(user.ImageData!="" && user.ImageData!=undefined)
-    $("#image").attr("src",user.ImageData);
-    
-    if (user.Email != undefined)
-        $("#email").val(user.Email);                
-               
-    if (user.UserRole != undefined)
-        $("#role").val(user.UserRole);
-            
-    if (user.DisplayName != undefined)
-        $("#name").val(user.DisplayName);
-            
-    if (user.PhoneNumber != undefined)
-        $("#phoneno").val(user.PhoneNumber);
-            
-    if (user.CompanyName != undefined)
-        $("#companyname").val(user.CompanyName);
-            
-    if (user.Zip != undefined)
-        $("#zip").val(user.Zip);
-            
-    if (user.AddressLine1 != undefined)
-        $("#homeadress").val(user.AddressLine1);
-            
-    if (user.City != undefined)
-        $("#homecity").val(user.City);
-            
-    if (user.Country != undefined)
-        $("#country").val(user.Country);
-            
-    if (user.State != undefined)
-        $("#txtState").val(user.State); 
-            
-    if (user.LanguageID != undefined)
-        $("#Languages").val(user.LanguageID);
-} 
-   
-function setupInit() { 
-    user.GetRoles(); 
-      
-    if (localStorage.User == undefined) { 
-        app.everlive.Users.currentUser( 
-            function(data) { 
-                console.log(data.result);    
-               
-               localStorage.User = JSON.stringify(data.result);
-                fillUserData(data.result);
-            });
-    }else
-        fillUserData(JSON.parse(localStorage.User));
-     
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-           try{
-            $.getJSON('http://ws.geonames.org/countryCode', {
-                          lat: position.coords.latitude,
-                          lng: position.coords.longitude,
-                          type: 'JSON',
-                          async: false
-                      }, function (result) {
-                          //                alert(result.countryCode);
-                          //                alert(CountryCode["IN"]);
-                          user.CountryCode = result.countryCode;
-                      }, function (err) {
-                          //                alert(result.countryCode);
-                          //                alert(CountryCode["IN"]);
-                         console.log(err);
-                      }
-                
-                );
-           }catch(err){console.log(err);}
-        });
-    }
-} 
-
-function logoutUser(){
-    
-    if(localStorage.User==undefined) return false;    
-    app.everlive.Users.logout(function(d){console.log(d)});
-      localStorage.removeItem("User");
-    app.application.navigate("signup_login.html");
-    
-}
-
-function deleteUser() {   
-    navigator.notification.confirm("Are you sure you want to delete your profile?", 
-           function(button) {
-               if (button == 1) {
-                   app.everlive.Users.destroySingle({ Id: userData.Id },
-                                                    function() {
-                                                        alert('User successfully deleted.');
-                                                        localStorage.removeItem("User");
-                                                        app.application.navigate("signup_login.html");
-                                                    },
-                                                    function(error) {
-                                                        alert(JSON.stringify(error));
-                                                    });
-               }
-           }, 
-           'Delete account', 
-           ['Delete','Cancel']);   
 }
 
 

@@ -12,9 +12,7 @@ $(document).ready(function () {
         User = $.parseJSON(localStorage.User);
     }*/
 
-    var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-    //$("[data-localize]").localize("Recycle", opts);
-
+   TranslateApp();
 
 
     $('#Invite').click(function () {

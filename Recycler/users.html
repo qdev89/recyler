@@ -1,0 +1,21 @@
+<div data-role="view" data-title="All users" data-show="LoadAllUsers" id="users-tabstrip">
+
+    <div data-role="content">
+        <ul class="" data-role="listview"  id="ulAllUsers">
+        </ul>
+    </div>                
+            
+    <script type="text/x-kendo-template" id="userTemplate">
+
+        <div userID="${Id}" onclick="giveToThisUser(this)">
+            <div class="img-holder">
+                <img class="li-image" src="${ImageData}"  />
+            </div>
+            <div class="item-info">
+                <div class="li-name"> Name: ${DisplayName}</div>
+                <div class="li-date"> Phone: ${PhoneNumber}</div>
+            </div>
+        </div>
+
+    </script>
+</div> 

@@ -101,7 +101,7 @@
     "marketspot": "Marktort",
     "spotname": "Name: *",
     "spotdescription": "Beschreibung: ",
-    "posterdate": "Eventdatum: '",
+    "posterdate": "Eventdatum: ",
     "month": "Monat",
     "day": "Tag",
     "year": "Jahre",
@@ -160,9 +160,8 @@
     "checkbox-23a": "Kûche",
     "checkbox-24a": "Bad",	
     "checkbox-25a": "Werkzeuge",
-    "checkbox-24a": "Telefone",	
-	
-    'choose": "Wählen",
+    "checkbox-24a": "Telefone",		
+    "choose": "Wählen",
     "ok": "Ok",
     "titletext_aboutfood": "Lebensmittelspenden",
     "foodindhold": " in Ihrer Nähe einen Ort finden , wo Sie Ihre Überschussprodukte hinspenden können,",
@@ -267,7 +266,11 @@
     "giveaway": "weggeben",
     "titeltext_mystuff": "Meine Sache",
     "mystuffview": "Meine Sache",
-    "titletext_how": "Wie es funktioniert",
+    "titletext_how": "Wie es funktioniert"
+
+
+
+,
     "how1": "Importieren oder fügen Sie Ihre Freunde in die Freundeszone. Dann haben Sie eine persönliche Gruppe, und können Ihre Sachen direkt an Ihre Freunde verschenken, verkaufen oder mit ihnen tauschen. Foto von Sachen/Lebensmittel machen. Wenn Sie Lebensmittel wählen ist die drei nächsten aufeinander Spenden-Spots wird angezeigt, und Sie können eine Nachricht senden.",
     "how2": "Gratis Sachen: 0 Jede andere Sachen Wert:. Der Besitzer will Sachen, mit dem gleichen Wert",
     "how3": "Sie berechnen / schätzen, den CO2-Wert der Sachen (wenn Unterstützer)",
@@ -276,7 +279,25 @@
     "how6": "Happy Lösung für alle. Klima & Ressource sind bilden eine einvernehmliche Lösung.",
     "how7": "Mit uns können Sie mit Crowdfunding sich für die Umwelt einsetzen :-)",
     "how8": "Wenn Sie ein Preisschild setzen -. Bedeutet, dass Sie Geld wollen. Das ist für uns ok -.. Nicht alle Sachen können gratis sein oder sind tauschbar.  Wir berechenen jedoch Ihrem Betrieb einen 1$ .<br> Schlussendlich wird das Geld für Sie und die Umwelt eingesetzt. ",
-    "GRAT": "Gratis",
+    "GRAT": "Gratis"
+
+
+
+
+,
+    "spotmonfri": "Man - fritag:",
+    "saturday": "Samstag:",
+    "sunday": "Sonntag:",
+	"ecomap": "eco"
+,
+	"friendzone": "Freundes zone",
+	"Searchfilter": "Kategorie / Gruppe",
+	"ChooseFilter": "Grouppe",
+    "friends": "Freunde",
+	"phonefriends": "Mobil",
+	"fbfriends": "Facebook",
+    "spotopening": "Åbningstider:"
+,
     "SWAP": "Tauschen",
     "PRIC": "Preis",
     "BecomeSuport": "Bitte Unterstützer bleiben",
@@ -287,21 +308,17 @@
     "Searchforstuff": "Dinge suchen",
     "stuff": "Dinge",
     "sale": "Vertrieb",
-    "recycle": "Recycling",
-	"friendzone": "Freundes zone",
-	"Searchfilter": "Kategorie / Gruppe",
-	"ChooseFilter": "Grouppe",
-    "friends": "Freunde",
-	"phonefriends": "Mobil",
-	"fbfriends": "Facebook",
-    "spotopening": "Åbningstider:",
-    "spotmonfri": "Man - fritag:",
-    "saturday": "Samstag:",
-    "sunday": "Sonntag:",
-	"ecomap": "eco",
-	"tags": "Tags/Gruppe",
-	"supporters": "Anzahl der Unterstützer",
-"users", "Anzahl der Nutzer",
+    "recycle": "Recycling"
+
+
+
+,
+"users": "Anzahl der Nutzer"
+,
+	"supporters": "Anzahl der Unterstützer"
+,
+	"tags": "Tags/Gruppe"
+,
 "help": "Hilfe vor Ort ist, wenn man anderen hilft Ihnen Sachen sammeln müssen . Es könnte sein, zu helfen sammeln Lebensmittel für Obdachlose oder sammeln Zeug für wohltätige Zwecke oder für Menschen in Not zu helfen. Es ist nicht für den persönlichen Gebrauch - nur, wenn Sie sammeln, um anderen zu helfen. Verwenden Sie es mit Bedacht, so dass die Leute es ernst nehmen.",
 	"help1": "HILFE ort",
 	"terraspot": "TERRACYCLE ort",
@@ -319,7 +336,7 @@
 	"type": "Geben Sie Ihre Informationen ",
 	"Place": "Legen Sie das Symbol auf der Karte",
 	
-	"ecospot": "ECO ort";
+	"ecospot": "ECO ort",
 	"ecospot1": "ECO Ort ist ein Ort, mit dem Fokus auf eine nachhaltige Lebensweise. Es könnte ein dedizierter Shop, Café , Ort zu besuchen. Nachhaltiges Leben ist der Schlüssel",
 	
 "friendtext": "Importieren oder fügen Sie Ihre familie und Freunde in die Freundes zone. Dann haben Sie eine persönliche Gruppe, und können Ihre Sachen direkt an Ihre Freunde verschenken, verkaufen oder mit ihnen tauschen. Ihrer Fantasie sind keine Grenzen gesetzt - Bücher, Lebensmittel usw. – zu beachten ist, dass Ihre Freunde innerhalb von 8 Stunden reagieren müssen, ansonsten gehen die Sachen an die öffentliche Börse."
