@@ -96,9 +96,9 @@
     "eco": "Gebrauchte/Eco/Greenshop",
     "recycling": "RecyclingStelle",
     "company": "RecyclingFirma",
-    "food": "Lebensmittel",
+    "food": "Lebensmittelspende Ort oder kostenlose Lebensmittel",
     "picture": "PhotoderStelle, Geschäft, Logo",
-    "marketspot": "Marktort",
+    "marketspot": "Beschreibung und Infos",
     "spotname": "Name: *",
     "spotdescription": "Beschreibung: ",
     "posterdate": "Eventdatum: ",
@@ -188,7 +188,7 @@
     "femail": "E-Mail Freund",
     "sendinvite": "Senden Einladen",
     "titeltext_credits": "Vielen Dank",
-    "credits1": "Diese Lösung wurde nur möglich, dank vielen Menschen, die sich mit  verschiedenen Beiträgen und vielen guten Ideen einbrachten. Menschen, die einander mit offenem Geist begegnen und mit dem Glauben daran, dass wir gemeinsam größere Dinge erreichen können. <br><br> Zu den freundlichen Menschen gehören folgende Menschen:<br> Sila Hug und Lilliana Bak (Übersetzungen). <br><br> Für die Inspiration: Selina Juul aus Stoopfoodwaste (NGO) mit grossem Einsatz gegen unnötige Lebensmittelabfälle in Dänemark und in der ganzen Welt. <br><br>MR. Key, Anine Briten für die  Hilfe der Heraia Universums. <br><br>Mein Team, mein Bruder und meine Familie die mich unterstüzten die Welt ein bisschen besser zu machen.<br> Jeder, der mitmacht die Welt etwas besser zu machen. <br> Team recycleworld",
+    "credits1": "Diese Lösung wurde nur möglich, dank vielen Menschen, die sich mit  verschiedenen Beiträgen und vielen guten Ideen einbrachten. Menschen, die einander mit offenem Geist begegnen und mit dem Glauben daran, dass wir gemeinsam größere Dinge erreichen können. <br><br> Zu den freundlichen Menschen gehören folgende Menschen:<br> Sila Hug und Lilliana Bak (Übersetzungen). <br><br> Für die Inspiration: Selina Juul aus Stoopfoodwaste (NGO) mit grossem Einsatz gegen unnötige Lebensmittelabfälle in Dänemark und in der ganzen Welt. <br><br> Jeder, der mitmacht die Welt etwas besser zu machen. <br> Team recycleworld",
     "titeltext_thankyou": "Vielen Dank",
     "thankyou_generel": "Vielen Dank für die Nutzung und/oder Unterstützung von Recycleworld. <br> Gemeinsam werden wir etwas verändern können. <br> Team Recycleworld",
     "heartstatus": " Erd-Herz",
@@ -250,7 +250,7 @@
     "garage1": " Event, Flohmarkt & Märkte",
     "garage2": "Event, GarageSale & Markets <br> - eine Werbung für Ihren Flohmarkt <br> - ein pdf Plakat ausdrucken <br>",
     "other1": "Alle anderen Stellen: Second Hand / Ecoshop / Recycling Stelle",
-    "other": "Alle anderen Stellen <br>-alle notwendigen Informationen <br>-Adresse, Öffnungszeiten, Telefon, Internet <br> - auf unserer App map <br> zeigen - ein Diplom ausdrucken ",
+    "other": "Alle anderen Stellen <br> - alle notwendigen Informationen <br> - Adresse, Öffnungszeiten, Telefon, Internet <br> - auf unserer App map zeigen  <br>- ein Diplom ausdrucken ",
     "food1": "Lebensmittelspende-Stelle",
     "back": "<Zurück zur Stelle eröffnen.",
     "titeltext_terra": "Über Terracycle",
@@ -266,11 +266,7 @@
     "giveaway": "weggeben",
     "titeltext_mystuff": "Meine Sache",
     "mystuffview": "Meine Sache",
-    "titletext_how": "Wie es funktioniert"
-
-
-
-,
+    "titletext_how": "Wie es funktioniert",
     "how1": "Importieren oder fügen Sie Ihre Freunde in die Freundeszone. Dann haben Sie eine persönliche Gruppe, und können Ihre Sachen direkt an Ihre Freunde verschenken, verkaufen oder mit ihnen tauschen. Foto von Sachen/Lebensmittel machen. Wenn Sie Lebensmittel wählen ist die drei nächsten aufeinander Spenden-Spots wird angezeigt, und Sie können eine Nachricht senden.",
     "how2": "Gratis Sachen: 0 Jede andere Sachen Wert:. Der Besitzer will Sachen, mit dem gleichen Wert",
     "how3": "Sie berechnen / schätzen, den CO2-Wert der Sachen (wenn Unterstützer)",
@@ -279,25 +275,18 @@
     "how6": "Happy Lösung für alle. Klima & Ressource sind bilden eine einvernehmliche Lösung.",
     "how7": "Mit uns können Sie mit Crowdfunding sich für die Umwelt einsetzen :-)",
     "how8": "Wenn Sie ein Preisschild setzen -. Bedeutet, dass Sie Geld wollen. Das ist für uns ok -.. Nicht alle Sachen können gratis sein oder sind tauschbar.  Wir berechenen jedoch Ihrem Betrieb einen 1$ .<br> Schlussendlich wird das Geld für Sie und die Umwelt eingesetzt. ",
-    "GRAT": "Gratis"
-
-
-
-
-,
+    "GRAT": "Gratis",
     "spotmonfri": "Man - fritag:",
     "saturday": "Samstag:",
     "sunday": "Sonntag:",
-	"ecomap": "eco"
-,
+	"ecomap": "eco",
 	"friendzone": "Freundes zone",
 	"Searchfilter": "Kategorie / Gruppe",
 	"ChooseFilter": "Grouppe",
     "friends": "Freunde",
 	"phonefriends": "Mobil",
 	"fbfriends": "Facebook",
-    "spotopening": "Åbningstider:"
-,
+    "spotopening": "Öffnungszeiten:",
     "SWAP": "Tauschen",
     "PRIC": "Preis",
     "BecomeSuport": "Bitte Unterstützer bleiben",
@@ -308,36 +297,29 @@
     "Searchforstuff": "Dinge suchen",
     "stuff": "Dinge",
     "sale": "Vertrieb",
-    "recycle": "Recycling"
-
-
-
-,
-"users": "Anzahl der Nutzer"
-,
-	"supporters": "Anzahl der Unterstützer"
-,
-	"tags": "Tags/Gruppe"
-,
-"help": "Hilfe vor Ort ist, wenn man anderen hilft Ihnen Sachen sammeln müssen . Es könnte sein, zu helfen sammeln Lebensmittel für Obdachlose oder sammeln Zeug für wohltätige Zwecke oder für Menschen in Not zu helfen. Es ist nicht für den persönlichen Gebrauch - nur, wenn Sie sammeln, um anderen zu helfen. Verwenden Sie es mit Bedacht, so dass die Leute es ernst nehmen.",
+    "recycle": "Recycling",
+"users": "Anzahl der Nutzer",
+	"supporters": "Anzahl der Unterstützer",
+	"tags": "Tags/Gruppe",
+"help": "Hilfe vor Ort ist, wenn man anderen hilft Ihnen Sachen sammeln müssen. Es könnte sein, zu helfen sammeln Lebensmittel für Obdachlose oder sammeln Zeug für wohltätige Zwecke oder für Menschen in Not zu helfen. Es ist nicht für den persönlichen Gebrauch - nur, wenn Sie sammeln, um anderen zu helfen. Verwenden Sie es mit Bedacht, so dass die Leute es ernst nehmen.",
 	"help1": "HILFE ort",
 	"terraspot": "TERRACYCLE ort",
 	"terraspot_desc": ">Eine Terracycle Ort ist ein Abfallsammelstationvon den Terra Brigaden angetrieben . Jeder Ort ist ein Ort , wo Sie Ihre Abfälle zu liefern, wenn Sie einen Teil des Terra Brigade Familie sind. Wenn du mehr über Terracycle Möglichkeiten wissen möchten - <a href='terracycle.html'>Lesen Sie hier</a>.",
-      	"becomesupporter": "Werden Sie Stützer",
+     "becomesupporter": "Werden Sie Stützer",
 	"onlysupporter": "Nur für unterstützers",
-	"recycle": "Recycle / verschenken",
+	"recycle": "Verschenken",
 	"trade": "Handel",
 	"sell": "Verkaufen",
 	"lend": "Leien",
 	"rent": "Miete",
 	"service": "Service: Ich kann helfen, andere mit",
-	
-		"confirm": "Bestätigen Sie Ihre Spot",
+	"confirm": "Bestätigen Sie Ihre Spot",
 	"type": "Geben Sie Ihre Informationen ",
 	"Place": "Legen Sie das Symbol auf der Karte",
-	
 	"ecospot": "ECO ort",
 	"ecospot1": "ECO Ort ist ein Ort, mit dem Fokus auf eine nachhaltige Lebensweise. Es könnte ein dedizierter Shop, Café , Ort zu besuchen. Nachhaltiges Leben ist der Schlüssel",
-	
-"friendtext": "Importieren oder fügen Sie Ihre familie und Freunde in die Freundes zone. Dann haben Sie eine persönliche Gruppe, und können Ihre Sachen direkt an Ihre Freunde verschenken, verkaufen oder mit ihnen tauschen. Ihrer Fantasie sind keine Grenzen gesetzt - Bücher, Lebensmittel usw. – zu beachten ist, dass Ihre Freunde innerhalb von 8 Stunden reagieren müssen, ansonsten gehen die Sachen an die öffentliche Börse."
+   "upcycling": "Upcycling ort",
+	"upcycling1": "Upcycling Ort ist ein Ort, mit dem Fokus auf upcycling.",
+       
+	"friendtext": "Importieren oder fügen Sie Ihre familie und Freunde in die Freundes zone. Dann haben Sie eine persönliche Gruppe, und können Ihre Sachen direkt an Ihre Freunde verschenken, verkaufen oder mit ihnen tauschen. Ihrer Fantasie sind keine Grenzen gesetzt - Bücher, Lebensmittel usw. – zu beachten ist, dass Ihre Freunde innerhalb von 8 Stunden reagieren müssen, ansonsten gehen die Sachen an die öffentliche Börse."
 }

@@ -1,21 +1,45 @@
 <div data-role="view" data-title="All users" data-show="LoadAllUsers" id="users-tabstrip">
 
     <div data-role="content">
+        <div class="search">
+            <input id="searchField" /> <a  data-role="button" onclick="filterList()">Search</a>
+        </div>
+        
         <ul class="" data-role="listview"  id="ulAllUsers">
         </ul>
     </div>                
             
     <script type="text/x-kendo-template" id="userTemplate">
-
         <div userID="${Id}" onclick="giveToThisUser(this)">
             <div class="img-holder">
                 <img class="li-image" src="${ImageData}"  />
             </div>
             <div class="item-info">
                 <div class="li-name"> Name: ${DisplayName}</div>
-                <div class="li-date"> Phone: ${PhoneNumber}</div>
+                <div class="li-phone"> Phone: ${PhoneNumber}</div>
             </div>
         </div>
-
+    </script>
+    
+    
+    <script>
+        function filterList(){
+            
+            var word = $("#searchField").val().toLowerCase();
+            if(word=="") $("#ulAllUsers li").show();
+            else{
+                
+                $("#ulAllUsers li").each(function(){
+                    var name = $(this).find(".li-name").html().toLowerCase();
+                     var phone = $(this).find(".li-phone").html().toLowerCase();
+                    if(name.indexOf(word)!=-1 || phone.indexOf(word)!=-1)
+                  	  $(this).show();
+                    else 
+                   	 $(this).hide();
+                });
+                
+            }
+            
+        }
     </script>
 </div> 

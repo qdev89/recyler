@@ -1691,7 +1691,7 @@ input:not([type='checkbox']), textarea, select
 {
     vertical-align: top;
     text-align: left;
-    padding: 2px;
+    padding: 4px;
 }
 
 .btn

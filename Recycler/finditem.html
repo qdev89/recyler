@@ -14,14 +14,14 @@
             </div>
             
             <div class="item-info">
-                <div class="li-name"> Name: ${Name}</div>
-                <div class="li-type"> Type: ${Type}</div>
-                <div class="li-price"> Price: ${Price} </div>
-                 <div style="display:none;" class="li-desc"> Description: ${Description}</div>
+               <b> <div class="li-name" style="color:dodgerblue;font-size:large;"> ${Name}</div></b>
+                <div class="li-type" style="font-size:x-small;"> ${Type}</div>
+                <div style="display:none;" class="li-desc"> Description: ${Description}</div>
+                <div class="li-price" style="font-size:x-small;"> Price: ${Price} </div>
                 #var date = new Date(CreatedAt);
                 var dateStr = date.toDateString();
                 #
-                <div class="li-date"> Date: ${dateStr}</div>
+                <div class="li-date"  style="font-size:x-small;"> ${dateStr}</div>
             </div>
         </div>
     </script>
@@ -54,14 +54,14 @@
                  <a data-align="right" data-role="button" onclick="closeItemModal()" >X</a>
             </div>
         </div>
-       	 <div>
-                <div class="name"></div>
-                 <img style="width: 80%;" class="image"  />
+         <div align="left" style="	margin-left: 20px;	margin-right:20px;">
+               <br> <div class="name" style="color:dodgerblue;font-size:large;"></div>
+                 <img style="width: 100%;" class="image"  />
                  
                  <div class="type"></div>
-                 <div class="price"></div>  
-                 <div class="date"></div>
                  <div class="desc"></div>
+                 <div class="price"></div>  
+                 
     		</div>
       
        

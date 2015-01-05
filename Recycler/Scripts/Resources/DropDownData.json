@@ -590,6 +590,10 @@ var Languages =
 {
 "id": "Clothing",
 "Value": "Clothing"
+},    
+{
+"id": "shoes",
+"Value": "Shoes & accessories"
 },
 {
 "id": "Toys",
@@ -697,6 +701,10 @@ var Languages =
 {
 "id": "Clothing",
 "Value": "Tøj"
+},   
+{
+"id": "shoes",
+"Value": "Sko & accessories"
 },
 {
 "id": "Toys",
@@ -810,6 +818,11 @@ var Languages =
 "id": "Clothing",
 "Value": "Kleidung"
 },
+         
+{
+"id": "shoes",
+"Value": "Schuhe und Zubehör"
+},
 {
 "id": "Toys",
 "Value": "Spielzeug"
@@ -913,6 +926,11 @@ var Languages =
 {
 "id": "Clothing",
 "Value": "Ropa"
+},
+           
+{
+"id": "shoes",
+"Value": "Zapatos y accesorios"
 },
 {
 "id": "Toys",

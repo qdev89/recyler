@@ -17,7 +17,7 @@
 
             <div>
                 <!-- spottype --> 
-                <label for="spottype"  data-localize="spottype">Spot type:&nbsp;</label>
+                <label for="spottype"  data-localize="spottype"  style="color:dodgerblue;font-size:large;">Spot type:&nbsp;</label>
 
                 <select id="spotypeE" name="swpotype" value="GO"></select>
             </div><br>
@@ -35,7 +35,7 @@
             <br>
 
             <!-- marketspot -->
-            <label style="color:#999999" for="marketspot"  data-localize="marketspot" >
+            <label style="color:#999999" for="marketspot"  data-localize="marketspot"  style="color:dodgerblue;font-size:large;">
                 Create your add for event:
                 <BR>market, garage sale etc.
             </label>
@@ -45,16 +45,16 @@
             </div>
 
            
-            <fieldset data-role="controlgroup" data-type="horizontal">
+            <fieldset data-role="controlgroup" class='dates-fieldset' data-type="horizontal">
                 <div class="container-div">
-                    <label for="select-choice-month"  data-localize="month">Month</label>
+                    <label for="select-choice-month"  data-localize="month"  style="color:dodgerblue;font-size:large;">Month</label>
                     <select name="select-choice-month" id="select-choice-monthE">
 
                     </select>
                 </div>
                 <!-- posterday -->
                 <div class="container-div">
-                    <label for="select-choice-day">Day</label>
+                    <label for="select-choice-day"  style="color:dodgerblue;font-size:large;">Day</label>
                     <select name="select-choice-day" id="select-choice-dayE">
                         <option value="01">1</option>
                         <option value="02">2</option>
@@ -91,7 +91,7 @@
                 </div>
                 <!-- posteryear -->
                 <div class="container-div">
-                    <label for="select-choice-year">Year</label>
+                    <label for="select-choice-year"  style="color:dodgerblue;font-size:large;">Year</label>
                     <select name="select-choice-year" id="select-choice-yearE">
                         <option value="2014">2014</option>
                         <option value="2015">2015</option>
@@ -450,10 +450,10 @@
             </div>
             <br><br>
           
-            <label for="spotopening"  data-localize="spotopening">Opening hours:</label>
+            <label for="spotopening"  data-localize="spotopening"  style="color:dodgerblue;font-size:large;">Opening hours:</label>
 
           
-            <label for="spotmonfri"  data-localize="spotmonfri">Mon - friday: *</label>
+            <label for="spotmonfri"  data-localize="spotmonfri"  style="color:dodgerblue;font-size:large;">Mon - friday: *</label>
 
           
             <div class="timeholder">
@@ -534,7 +534,7 @@
             </div>
             <!-- spotsat -->
             <br>
-            <label for="saturday"  data-localize="saturday">Saturday:</label>
+            <label for="saturday"  data-localize="saturday"  style="color:dodgerblue;font-size:large;">Saturday:</label>
             <div class="timeholder">
                 <!-- spotopensat -->
                 <select size="1" id="spotopensatfromE" name="D20" >
@@ -612,7 +612,7 @@
                     </select>
                 </div>
             </div><br>
-            <label for="sunday"  data-localize="sunday">Sunday:</label>
+            <label for="sunday"  data-localize="sunday"  style="color:dodgerblue;font-size:large;">Sunday:</label>
             <div class="timeholder">
                 <!-- spotsun -->
 
@@ -706,4 +706,20 @@
         </div>
 
     </div>
+      <script>
+        $(document).ready(function(){
+            
+             if($("#spotypeE").val()=="Garage sale/Market/Event" || $("#spotypeE").val()=="Help")                    
+                    $(".dates-fieldset").show();
+                else
+                    $(".dates-fieldset").hide();
+            
+            $("#spotypeE").change(function(){
+                if($(this).val()=="Garage sale/Market/Event" || $(this).val()=="Help")                    
+                    $(".dates-fieldset").show();
+                else
+                    $(".dates-fieldset").hide();
+            });
+        });
+    </script>
 </div> 

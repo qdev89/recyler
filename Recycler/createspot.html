@@ -10,14 +10,14 @@
             </div>
 			<br>
             
-            <div>
-                
+            <div   style="color:dodgerblue;font-size:large;">
+                <label for="spottype"  data-localize="titel">Titel:&nbsp;</label>                
                  <input type="text" name="spotname" id="spotname" value="" placeholder="Name*"   class="tb1" />
             </div>
             
-            <div>
+            <div  style="color:dodgerblue;font-size:large;">
                 <!-- spottype -->
-                <label for="spottype"  data-localize="spottype">Spot type:&nbsp;</label>
+                <label for="spottype"  data-localize="spottype" >Spot type:&nbsp;</label>
 
                 <select id="spotype" name="swpotype" value="GO"></select>
             </div><br>
@@ -35,13 +35,11 @@
             <br>
 
             <!-- marketspot -->
-            <label style="color:#999999" for="marketspot"  data-localize="marketspot" >
+            <label for="marketspot"  data-localize="marketspot"  style="color:dodgerblue;font-size:large;">
                 Create your add for event:
                 <BR>market, garage sale etc.
             </label>
-
-          
-
+       
             <div class="container-div">
                 <textarea name="spotdesciption" rows="10" maxlength="200" placeholder="Description" id="spotdesc"  class="ta10" ></textarea>
             </div>
@@ -54,15 +52,15 @@
             </div>-->
 
             <!-- postermonth -->
-            <fieldset data-role="controlgroup" data-type="horizontal">
-                <div class="container-div">
+            <fieldset data-role="controlgroup" class='dates-fieldset' data-type="horizontal">
+                <div class="container-div"  style="color:dodgerblue;font-size:large;">
                     <label for="select-choice-month"  data-localize="month">Month</label>
                     <select name="select-choice-month" id="select-choice-month">
 
                     </select>
                 </div>
                 <!-- posterday -->
-                <div class="container-div">
+                <div class="container-div"  style="color:dodgerblue;font-size:large;"> 
                     <label for="select-choice-day">Day</label>
                     <select name="select-choice-day" id="select-choice-day">
                         <option value="01">1</option>
@@ -99,7 +97,7 @@
                     </select>
                 </div>
                 <!-- posteryear -->
-                <div class="container-div">
+                <div class="container-div"  style="color:dodgerblue;font-size:large;">
                     <label for="select-choice-year">Year</label>
                     <select name="select-choice-year" id="select-choice-year">
                         <option value="2014">2014</option>
@@ -470,10 +468,10 @@
             </div>
 <br><br>
             <!-- spotopening -->
-            <label for="spotopening"  data-localize="spotopening">Opening hours:</label>
+            <label for="spotopening"  data-localize="spotopening"  style="color:dodgerblue;font-size:large;">Opening hours:</label>
 
             <!-- spotmonfri -->
-            <label for="spotmonfri"  data-localize="spotmonfri">Mon - friday: *</label>
+            <label for="spotmonfri"  data-localize="spotmonfri"  style="color:dodgerblue;font-size:large;">Mon - friday: *</label>
 
             <!-- spotopen -->
             <div class="timeholder">
@@ -553,7 +551,7 @@
                 </div>
             </div>
             <!-- spotsat -->
-          <br>  <label for="saturday"  data-localize="saturday">Saturday:</label>
+          <br>  <label for="saturday"  data-localize="saturday"  style="color:dodgerblue;font-size:large;">Saturday:</label>
             <div class="timeholder">
                 <!-- spotopensat -->
                 <select size="1" id="spotopensatfrom" name="D20" >
@@ -631,7 +629,7 @@
                     </select>
                 </div>
             </div><br>
-            <label for="sunday"  data-localize="sunday">Sunday:</label>
+            <label for="sunday"  data-localize="sunday"  style="color:dodgerblue;font-size:large;">Sunday:</label>
             <div class="timeholder">
                 <!-- spotsun -->
                 
@@ -722,5 +720,16 @@
             <br>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+            
+            $("#spotype").change(function(){
+                if($(this).val()=="Garage sale/Market/Event" || $(this).val()=="Help")                    
+                    $(".dates-fieldset").show();
+                else
+                    $(".dates-fieldset").hide();
+            });
+        });
+    </script>
 </div>
   

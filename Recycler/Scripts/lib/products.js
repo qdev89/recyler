@@ -7,7 +7,7 @@ function navigateToEditProduct(el){
      app.application.navigate("giveaway.html?editSpotId=" + productID);
 }
 
-
+  
 function giveToThisUser(el){
     var userID = $(el).attr("userID");
     console.log(userID, editableProduct.Id);
@@ -31,7 +31,7 @@ function giveToThisUser(el){
                 ['Give',           // title
                 'Cancel' ]        // buttonLabels
             );
-}
+} 
 
 function editThisProduct(productID){
    
