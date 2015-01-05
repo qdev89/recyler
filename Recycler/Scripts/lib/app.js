@@ -79,6 +79,7 @@
         if (app.isKeySet(appSettings.feedback.apiKey)) {
             try {
                 feedback.initialize(appSettings.feedback.apiKey);
+               // log("feeeeeeed")
             } catch (err) {
                 console.log('Something went wrong:');
                 console.log(err);

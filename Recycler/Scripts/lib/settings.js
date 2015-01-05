@@ -15,7 +15,7 @@ var appSettings = {
     },
     
     feedback: {
-        apiKey: '$APPFEEDBACK_API_KEY$'  // Put your AppFeedback API key here
+        apiKey: 'd2e58af0-94ce-11e4-b931-ab97b7dcb41c'  // Put your AppFeedback API key here
     },
 
     facebook: {

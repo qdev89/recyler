@@ -74,6 +74,7 @@ app.Login = (function () {
             })
             .then(function () {
 					
+               // feedback.initialize('d2e58af0-94ce-11e4-b931-ab97b7dcb41c');
                 
                  app.everlive.Users.currentUser( 
                                             function(data) { 

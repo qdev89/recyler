@@ -26,13 +26,17 @@ function isValidDate(d) {
 
 function iconMapInit() {
     showLoading();
-    if (googleMap != null)
-        return;
+    if (googleMap != null){
+        hideLoading();
+         return;
+        
+    }
+       
     $("#map-with-icons").height($("#findonmap .km-content").first().height()-60);
     var mapOptions = {
-        center: { lat: 42.645335231440946, lng: 23.346939510345468},
-        zoom: 6,
-         streetViewControl: false
+        center: { lat: 0, lng: 0},
+        zoom: 1,
+        streetViewControl: false
     };
      googleMap = new google.maps.Map(
         document.getElementById('map-with-icons'),
@@ -41,15 +45,14 @@ function iconMapInit() {
     setTimeout(function() {
         $("#map-with-icons").height($("#findonmap .km-content").first().height()-60);       
     }, 200);
+        
     
-    
-     var data = app.everlive.data('Spot');  
+    var data = app.everlive.data('Spot'); 
                           
     data.get().then(function(data) {
       
         hideLoading();
         allSpots=  data.result;
-       // log(allSpots);
         
         var today = new Date();
         today.setHours(0);
@@ -171,6 +174,7 @@ function mapShow(e){
 
 
 function setPlace(lat, long,draggable, type, map,content,isGrey){
+   
   //  log(content);
   //  log(isGrey);
     if(map==undefined) map=googleMap;    
@@ -238,7 +242,7 @@ function setPlace(lat, long,draggable, type, map,content,isGrey){
           draggable:draggable
       });    
     marker1.type= type;    
-    map.setCenter(LatLng);    
+   // map.setCenter(LatLng);    
     markersArray.push(marker1); 
   
      if(content!=undefined){

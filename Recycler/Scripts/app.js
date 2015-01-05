@@ -1,5 +1,5 @@
 function goToTop(e){
-    console.log(e);
+   // console.log(e);
     e.sender.scroller.reset();
      TranslateApp();
 }
@@ -7,7 +7,7 @@ function goToTop(e){
 function TranslateApp(){
     if(localStorage.LanguageType==undefined) localStorage.LanguageType = "en";
     
-    log(localStorage.LanguageType);
+   // log(localStorage.LanguageType);
      var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" }; 
         $("[data-localize]").localize("Recycle", opts);
 }
@@ -39,7 +39,12 @@ var userData =null;
     }, false);
 
     app.application = new kendo.mobile.Application(document.body, { skin:"flat", layout:"tabstrip-layout", initial:"signup_login.html", hashBang:true, loading:false }); 
+    
+   
 })(window);
+
+
+
 
 $(document).ready(function () {  
     

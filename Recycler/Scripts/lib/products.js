@@ -159,6 +159,8 @@ function updateItem(){
 
 
 
+
+
 app.Product = (function () {
     'use strict';
 	var loadMore = true;
@@ -170,10 +172,16 @@ app.Product = (function () {
            getProducts(true);
        }
         
-        var getProducts = function (isMy) {     
+         var filterProducts = function () {     
+           var word = $("#filterWord").val();
+          //   log(word);
+           getProducts(false,word);
+       }
+        
+        var getProducts = function (isMy, filterWord) {     
             TranslateApp();
             var interval = 12; 
-         
+            
             if(localStorage.User==undefined){
                 app.application.navigate("signup_login.html");
                 return;
@@ -189,6 +197,8 @@ app.Product = (function () {
           	  templateID="#myProductTemplate";
             }
           
+            if(filterWord===undefined) $("#filterWord").val("");
+            
             var skip=0;
             var dataSource = new kendo.data.DataSource({ 
 			transport: {  
@@ -199,18 +209,31 @@ app.Product = (function () {
                             var query = new Everlive.Query();
                             
                             if (isMy===true)                          		 
-                                query .where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);                                  
+                                query .where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval); 
+                            else if (filterWord!==undefined)
+                                query.where().regex('Name', filterWord, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval); 
                             else
                                 query.orderDesc('CreatedAt').skip(skip).take(interval);                            
                             
                             data.get(query).then(function(data) {
-                                options.success(data.result);
+                                /* var res = [];
+                               log(data.result);
+                                if(filterWord!==undefined){
+                                    var word = filterWord.toLowerCase();                                   
+                                    data.result.forEach(function(el,index){                                       
+                                        if(el.Name.toLowerCase().indexOf(word)!==-1)
+                                        res.push(el);
+                                    });
+                                     options.success(res);
+                                }
+                                else*/
+                                    options.success(data.result);
                                 hideLoading();
                                 if(data.result.length==interval){
                                     loadMore = true;
                                     skip+=interval;
                                 }else
-                                loadMore = false;
+                                    loadMore = false;
                             },
                                                  function(error) {
                                                      alert(JSON.stringify(error));
@@ -230,7 +253,7 @@ app.Product = (function () {
            } ,
            schema: {        // describe the result format
                     parse: function (response) {
-                         console.log(response);
+                       //  console.log(response);
                         $.each(response, function (i, el) {
                             if (el.Name===undefined)
                                 el.Name = "No name";
@@ -271,7 +294,8 @@ app.Product = (function () {
          
         return {
             getProducts: getProducts  ,
-            getMyProducts: getMyProducts
+            getMyProducts: getMyProducts,
+            filterProducts: filterProducts
         };
     }());
 

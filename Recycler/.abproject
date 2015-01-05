@@ -33,7 +33,9 @@
     "org.apache.cordova.media",
     "org.apache.cordova.network-information",
     "org.apache.cordova.dialogs",
-    "org.apache.cordova.splashscreen"
+    "org.apache.cordova.splashscreen",
+    "com.telerik.plugin.eqatecanalytics",
+    "com.telerik.feedback"
   ],
   "AndroidPermissions": [
     "android.permission.ACCESS_COARSE_LOCATION",

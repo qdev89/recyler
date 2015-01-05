@@ -627,7 +627,6 @@ select#country { width: 150px; }
 
 #friendsApp .ta10
 {
-    background-image: url(.../images/form_bg.jpg);
     background-repeat: repeat-x;
     border: 1px solid #d1c7ac;
     width: 98%;
@@ -1765,8 +1764,7 @@ input:not([type='checkbox']), textarea, select
 } 
 
 .ta10
-{
-    background-image: url(.../images/form_bg.jpg);
+{   
     background-repeat: repeat-x;
     border: 1px solid #d1c7ac;
     width: 98%;
@@ -1875,7 +1873,8 @@ input:not([type='checkbox']), textarea, select
 {
     width: 100%;
     background-color: #E4E4E4;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
     margin-bottom: 10px;
     font-weight: bold;
 }
@@ -2112,9 +2111,9 @@ fieldset{border:none !important;}
     vertical-align: top;
 }
 
+#GoToFilters input{width:75%;}
 
-
-
+#GoToFilters button.btn.btn-primary{width:20% !important;}
 
 
 
