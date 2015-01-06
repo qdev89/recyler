@@ -1,7 +1,94 @@
+/////////////////////////////GET SPOT //////////////////////////////////////////////
+
+var app = window.app = window.app || {};
+
+app.Spot = (function () {
+    'use strict';
+	var loadMore = true;   
+    
+    var spotsViewModel = (function () {        
+        var getMySpots = function () {
+            TranslateApp();
+            if(localStorage.User==undefined){
+                app.application.navigate('signup_login.html');
+                return;
+            } 
+            
+            var myId = JSON.parse(localStorage.User).Id;   
+            var interval = 12;
+            var skip=0;
+            var dataSource = new kendo.data.DataSource({
+			transport: {  
+                    read: function(options) {
+                         showLoading();
+                        try {
+                            var data = app.everlive.data('Spot');
+                            var query = new Everlive.Query();
+                            query.where().eq('userId', myId).done().skip(skip).take(interval);
+                            data.get(query).then(function(data) {
+                               // console.log(data.result);
+                                options.success(data.result);
+                                hideLoading();
+                                if(data.result.length==interval){
+                                    loadMore = true;
+                                    skip+=interval;
+                                }else
+                                loadMore = false;
+                            },
+                             function(error) {
+                                 alert(JSON.stringify(error));
+                             });
+                        }catch (err) {
+                             hideLoading();
+                            console.log(err);
+                        }
+                    }
+                },
+           error: function(e) {
+               hideLoading();
+               if (typeof(e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
+                   app.application.navigate("index.html");
+               else
+                   displayErrorAlert();
+           }          
+          });
+            
+        		 $("#my-spots-list").kendoMobileListView({
+                                                     dataSource: dataSource,
+                                                     template:$("#spotTemplate").html(),
+                                                     appendOnRefresh:true   									
+                                                 });
+            
+            
+           var listView = $("#my-spots-list").data("kendoMobileListView");
+           if (listView != null) {
+               listView._scrollerInstance.scrollElement.on("touchend", function() {
+                   if (loadMore) {
+                       var tabstripId = "#find-item-tabstrip";
+                      
+                       if ($("#my-spots-list").height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))                         
+                         listView.dataSource.read();
+                   }       
+               });    			
+              listView._scrollerInstance.scrollTo(0, 0);    
+           }
+        }
+         
+        return {
+            getMySpots: getMySpots           
+        };
+    }());
+
+    return spotsViewModel;
+}());
+
+/////////////////////////////GET SPOT END //////////////////////////////////////////////
+
 var editableSpot;
 
 function checkForCreate(){
      TranslateApp();
+    editableSpot={};
     //log(userData);    
     if(userData.UserRole!="2"){        
         var data = app.everlive.data('Spot');
@@ -17,8 +104,6 @@ function checkForCreate(){
             });
     }
 }
-
-
 
 function deleteSpot(){
     
@@ -47,6 +132,87 @@ function deleteSpot(){
    
 }
 
+function updt(imgData){
+    
+      var data = app.everlive.data('Spot');     
+        editableSpot.SpotType = $("#spotypeE option:selected").val();
+    	editableSpot.EventDate = $('#select-choice-monthE option:selected').val() + '/'
+                             + $('#select-choice-dayE option:selected').val() + '/'
+                             + $('#select-choice-yearE option:selected').val();
+      
+
+        editableSpot.Name = $("#spotnameE").val();
+        editableSpot.Description = $("#spotdescE").val();
+        editableSpot.Address = $("#spotadressE").val();
+        editableSpot.City = $("#spotcityE").val();
+        editableSpot.Zip = $("#spotzipE").val();
+        editableSpot.Country = $('#spotcountryE').val();
+
+        if (editableSpot.Country == 'US') {
+            editableSpot.State = $('#spotstateE').val();
+        } else {
+            editableSpot.State = $("#txtStateE").val();
+        }
+       
+        editableSpot.Phone = $("#spotphoneE").val();
+        editableSpot.Web = $("#spotwebE").val();
+        editableSpot.CVR = $("#CvrE").val();
+        editableSpot.OpeningHoursWeekdaysFrom = $("#spotmonfrifromE").val();
+        editableSpot.OpeningHoursWeekdaysTo = $("#spotmonfritoE").val();
+        editableSpot.OpeningHoursSaturdayFrom = $("#spotopensatfromE").val();
+        editableSpot.OpeningHoursSaturdayTo = $("#spotopensattoE").val();
+        editableSpot.OpeningHoursSundayFrom = $("#spotopensunfromE").val();
+        editableSpot.OpeningHoursSundayTo = $("#spotopensuntoE").val();
+        editableSpot.OpeningTimeWeekdays = $("#OpenTimeMonFriE").val();
+        editableSpot.ClosingTimeWeekdays = $("#CloseTimeMonFriE").val();
+        editableSpot.OpeningTimeSat = $("#OpenTimeSatE").val();
+        editableSpot.ClosingTimeSat = $("#CloseTimeSatE").val();
+        editableSpot.OpeningTimeSun = $("#OpenTimeSunE").val();
+        editableSpot.ClosingTimeSun = $("#CloseTimeSunE").val();
+
+    var updateObj = {
+                      'SpotType': editableSpot.SpotType,                  
+                      'EventDate': editableSpot.EventDate,                  
+                      'Name': editableSpot.Name,                  
+                      'Description': editableSpot.Description,                  
+                      'Address': editableSpot.Address,                  
+                      'City': editableSpot.City,                  
+                      'Zip': editableSpot.Zip ,                  
+                      'Country': editableSpot.Country,                  
+                      'State': editableSpot.State,                  
+                      'Phone': editableSpot.Phone,                  
+                      'Web': editableSpot.Web,                  
+                      'CVR':editableSpot.CVR ,                  
+                      'OpeningHoursWeekdaysFrom':editableSpot.OpeningHoursWeekdaysFrom ,                  
+                      'OpeningHoursWeekdaysTo': editableSpot.OpeningHoursWeekdaysTo,                  
+                      'OpeningHoursSaturdayFrom': editableSpot.OpeningHoursSaturdayFrom,                  
+                      'OpeningHoursSaturdayTo': editableSpot.OpeningHoursSaturdayTo,                  
+                      'OpeningHoursSundayFrom':editableSpot.OpeningHoursSundayFrom ,                  
+                      'OpeningHoursSundayTo': editableSpot.OpeningHoursSundayTo,                  
+                      'OpeningTimeWeekdays': editableSpot.OpeningTimeWeekdays,                 
+                      'OpeningTimeSat': editableSpot.OpeningTimeSat,                  
+                      'ClosingTimeSat': editableSpot.ClosingTimeSat,                  
+                      'OpeningTimeSun': editableSpot.OpeningTimeSun,                  
+                      'ClosingTimeSun': editableSpot.ClosingTimeSun     				
+                        			
+                };
+    
+    if(imgData){
+        updateObj.Image = imgData;
+    }
+    
+    data.update(updateObj, // data
+                { 'Id': editableSpot.Id}, // filter
+                function(data) {
+                    console.log(data);
+                    navigator.notification.alert("Info saved successfully!", null, "Success");
+                    app.application.navigate("map.html?editSpot=true");
+                },
+                function(error) { 
+                    alert(JSON.stringify(error)); 
+                });  
+    }
+
 function updateSpot(){
       
     if( $("#imageE").attr("src").indexOf("data:image/jpeg;base64,")!=-1){
@@ -62,82 +228,14 @@ function updateSpot(){
                                   function (data) {
                                         console.log(data);                        
                                         ImageData = data.result.Uri;                        
-                                        var data = app.everlive.data('Spot');     
-                                        editableSpot.SpotType = $("#spotypeE option:selected").val();
-                                		editableSpot.EventDate = $('#select-choice-monthE option:selected').val() + '/'
-                                                             + $('#select-choice-dayE option:selected').val() + '/'
-                                                             + $('#select-choice-yearE option:selected').val();
-                                      
-
-                                        editableSpot.Name = $("#spotnameE").val();
-                                        editableSpot.Description = $("#spotdescE").val();
-                                        editableSpot.Address = $("#spotadressE").val();
-                                        editableSpot.City = $("#spotcityE").val();
-                                        editableSpot.Zip = $("#spotzipE").val();
-                                        editableSpot.Country = $('#spotcountryE').val();
-
-                                        if (editableSpot.Country == 'US') {
-                                            editableSpot.State = $('#spotstateE').val();
-                                        } else {
-                                            editableSpot.State = $("#txtStateE").val();
-                                        }
-                                       
-                                        editableSpot.Phone = $("#spotphoneE").val();
-                                        editableSpot.Web = $("#spotwebE").val();
-                                        editableSpot.CVR = $("#CvrE").val();
-                                        editableSpot.OpeningHoursWeekdaysFrom = $("#spotmonfrifromE").val();
-                                        editableSpot.OpeningHoursWeekdaysTo = $("#spotmonfritoE").val();
-                                        editableSpot.OpeningHoursSaturdayFrom = $("#spotopensatfromE").val();
-                                        editableSpot.OpeningHoursSaturdayTo = $("#spotopensattoE").val();
-                                        editableSpot.OpeningHoursSundayFrom = $("#spotopensunfromE").val();
-                                        editableSpot.OpeningHoursSundayTo = $("#spotopensuntoE").val();
-                                        editableSpot.OpeningTimeWeekdays = $("#OpenTimeMonFriE").val();
-                                        editableSpot.ClosingTimeWeekdays = $("#CloseTimeMonFriE").val();
-                                        editableSpot.OpeningTimeSat = $("#OpenTimeSatE").val();
-                                        editableSpot.ClosingTimeSat = $("#CloseTimeSatE").val();
-                                        editableSpot.OpeningTimeSun = $("#OpenTimeSunE").val();
-                                        editableSpot.ClosingTimeSun = $("#CloseTimeSunE").val();
-                                    
-                                    data.update({
-                                                      'SpotType': editableSpot.SpotType,                  
-                                                      'EventDate': editableSpot.EventDate,                  
-                                                      'Name': editableSpot.Name,                  
-                                                      'Description': editableSpot.Description,                  
-                                                      'Address': editableSpot.Address,                  
-                                                      'City': editableSpot.City,                  
-                                                      'Zip': editableSpot.Zip ,                  
-                                                      'Country': editableSpot.Country,                  
-                                                      'State': editableSpot.State,                  
-                                                      'Phone': editableSpot.Phone,                  
-                                                      'Web': editableSpot.Web,                  
-                                                      'CVR':editableSpot.CVR ,                  
-                                                      'OpeningHoursWeekdaysFrom':editableSpot.OpeningHoursWeekdaysFrom ,                  
-                                                      'OpeningHoursWeekdaysTo': editableSpot.OpeningHoursWeekdaysTo,                  
-                                                      'OpeningHoursSaturdayFrom': editableSpot.OpeningHoursSaturdayFrom,                  
-                                                      'OpeningHoursSaturdayTo': editableSpot.OpeningHoursSaturdayTo,                  
-                                                      'OpeningHoursSundayFrom':editableSpot.OpeningHoursSundayFrom ,                  
-                                                      'OpeningHoursSundayTo': editableSpot.OpeningHoursSundayTo,                  
-                                                      'OpeningTimeWeekdays': editableSpot.OpeningTimeWeekdays,                 
-                                                      'OpeningTimeSat': editableSpot.OpeningTimeSat,                  
-                                                      'ClosingTimeSat': editableSpot.ClosingTimeSat,                  
-                                                      'OpeningTimeSun': editableSpot.OpeningTimeSun,                  
-                                                      'ClosingTimeSun': editableSpot.ClosingTimeSun,
-                                      				'Image':ImageData
-                                                        			
-                                                }, // data
-                                                { 'Id': editableSpot.Id}, // filter
-                                                function(data) {
-                                                    console.log(data);
-                                                    navigator.notification.alert("Info saved successfully!", null, "Success");
-                                                },
-                                                function(error) { 
-                                                    alert(JSON.stringify(error)); 
-                                                });  
+                                       updt(ImageData);
                                   },
                                   function (error) {
                                       alert(JSON.stringify(error)); 
                                   });
         
+    }else{
+                updt();                       
     }
   
     	
@@ -157,41 +255,43 @@ function editSpot(e){
     .then(function(data){       
         Filldata("E");
         editableSpot = data.result;
-        spot=editableSpot;
-        $("#spotypeE").val( spot.SpotType);        
-        var obj = spot.EventDate.split("/");
-        $('#select-choice-monthE').val(obj[0]);
-        $('#select-choice-dayE').val(obj[1]) ;
-        $('#select-choice-yearE').val(obj[2]);    
-        $("#spotnameE").val( spot.Name);
-        $("#spotdescE").val( spot.Description);
-        $("#spotadressE").val( spot.Address );
-        $("#spotcityE").val(spot.City);
-        $("#spotzipE").val( spot.Zip );
-        $('#spotcountryE').val(spot.Country);
+       // spot=editableSpot;
+        $("#spotypeE").val( editableSpot.SpotType);   
+         var dt = new Date(editableSpot.EventDate);
+      
+        $('#select-choice-monthE').val(dt.getMonth());
+        $('#select-choice-dayE').val(dt.getDate()) ;
+        $('#select-choice-yearE').val(dt.getYear());  
+        console.log(editableSpot.Name);
+        $("#spotnameE").val( editableSpot.Name);
+        $("#spotdescE").val( editableSpot.Description);
+        $("#spotadressE").val( editableSpot.Address );
+        $("#spotcityE").val(editableSpot.City);
+        $("#spotzipE").val( editableSpot.Zip );
+        $('#spotcountryE').val(editableSpot.Country);
 
-        if (spot.Country == 'US') {
-            $('#spotstateE').val(spot.State);
+        if (editableSpot.Country == 'US') {
+            $('#spotstateE').val(editableSpot.State);
         } else {
-           $("#txtStateE").val( spot.State );
+           $("#txtStateE").val( editableSpot.State );
         }
        
-        $("#imageE").attr("src",spot.Image);
-        $("#spotphoneE").val(spot.Phone);
-        $("#spotwebE").val(spot.Web);
-        $("#CvrE").val( spot.CVR);
-        $("#spotmonfrifromE").val(spot.OpeningHoursWeekdaysFrom);
-        $("#spotmonfritoE").val(spot.OpeningHoursWeekdaysTo );
-        $("#spotopensatfromE").val(spot.OpeningHoursSaturdayFrom);
-        $("#spotopensattoE").val(spot.OpeningHoursSaturdayTo);
-        $("#spotopensunfromE").val(spot.OpeningHoursSundayFrom);
-        $("#spotopensuntoE").val(spot.OpeningHoursSundayTo);
-        $("#OpenTimeMonFriE").val(spot.OpeningTimeWeekdays);
-        $("#CloseTimeMonFriE").val(spot.ClosingTimeWeekdays);
-        $("#OpenTimeSatE").val(spot.OpeningTimeSat);
-        $("#CloseTimeSatE").val(spot.ClosingTimeSat);
-        $("#OpenTimeSunE").val(spot.OpeningTimeSun);
-        $("#CloseTimeSunE").val(spot.ClosingTimeSun );
+        $("#imageE").attr("src",editableSpot.Image);
+        $("#spotphoneE").val(editableSpot.Phone);
+        $("#spotwebE").val(editableSpot.Web);
+        $("#CvrE").val( editableSpot.CVR);
+        $("#spotmonfrifromE").val(editableSpot.OpeningHoursWeekdaysFrom);
+        $("#spotmonfritoE").val(editableSpot.OpeningHoursWeekdaysTo );
+        $("#spotopensatfromE").val(editableSpot.OpeningHoursSaturdayFrom);
+        $("#spotopensattoE").val(editableSpot.OpeningHoursSaturdayTo);
+        $("#spotopensunfromE").val(editableSpot.OpeningHoursSundayFrom);
+        $("#spotopensuntoE").val(editableSpot.OpeningHoursSundayTo);
+        $("#OpenTimeMonFriE").val(editableSpot.OpeningTimeWeekdays);
+        $("#CloseTimeMonFriE").val(editableSpot.ClosingTimeWeekdays);
+        $("#OpenTimeSatE").val(editableSpot.OpeningTimeSat);
+        $("#CloseTimeSatE").val(editableSpot.ClosingTimeSat);
+        $("#OpenTimeSunE").val(editableSpot.OpeningTimeSun);
+        $("#CloseTimeSunE").val(editableSpot.ClosingTimeSun );
     },
     function(error){
         alert(JSON.stringify(error));
@@ -199,10 +299,6 @@ function editSpot(e){
     
     
 }
-
-
-
-
 
 var spot = {
     Id: '',
@@ -277,10 +373,32 @@ var spot = {
 
 function SaveSpot() {
     var lat, long;
+   
+    if(editableSpot.Id!=undefined && markersArray[0] != undefined){
+         var data = app.everlive.data('Spot');  
+         var updateObj = {
+                      'Latitude':markersArray[0].position.lat(),                  
+                      'Longitude': markersArray[0].position.lng()
+             };
+        console.log(updateObj);
+         data.update(updateObj, // data
+                { 'Id': editableSpot.Id}, // filter
+                function(data) {
+                    console.log(data);
+                    navigator.notification.alert("Spot position saved successfully!", null, "Success");
+                    app.application.navigate("myspots.html");
+                },
+                function(error) { 
+                    alert(JSON.stringify(error)); 
+                });  
+        return;
+    }
+    
+    
     var Data = JSON.parse(localStorage.Spotdata);
     if (markersArray[0] != undefined) {
-        lat = markersArray[0].position["k"];
-        long = markersArray[0].position["B"];
+        lat = markersArray[0].position.lat();
+        long = markersArray[0].position.lng();
     }
     
     if(Data.Image==""){
@@ -301,9 +419,9 @@ function SaveSpot() {
           
           app.everlive.Files.getById(data.result.Id)
               .then(function(res) {
-                  var spot = app.everlive.data('Spot');     
+                  var spotData = app.everlive.data('Spot');     
 
-                  spot.create({
+                  spotData.create({
                           'userId' : Data.UserID,
                           "Name": Data.Name, 
                           "Description" : Data.Description,
@@ -395,6 +513,7 @@ function InitCreateSpot() {
 
     //window.localStorage.removeItem('Spotdata');
     window.localStorage.removeItem('CacheItem');
+    
     //spot.showAddress('Columbus Circle, New York, NY');
     //----Create Spot------
     $("#btnspot").click(function () {

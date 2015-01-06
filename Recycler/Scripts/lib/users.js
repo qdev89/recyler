@@ -976,11 +976,31 @@ function setupInit() {
     }
 } 
 
+
+function isUserLogged(){
+    
+    if(localStorage.Username!==undefined &&  localStorage.Password!==undefined ) return true;
+    else return false;
+    
+}
+function removeLocalStorageUser(){
+    
+     localStorage.removeItem("Username");
+     localStorage.removeItem("Password");
+     localStorage.removeItem("User");
+}
+
+function autoLogin(){
+    if(isUserLogged())
+    app.Login.login( localStorage.Username, localStorage.Password);
+}
+
+
 function logoutUser(){
     
     if(localStorage.User==undefined) return false;    
     app.everlive.Users.logout(function(d){console.log(d)});
-      localStorage.removeItem("User");
+     removeLocalStorageUser();
     app.application.navigate("signup_login.html");
     
 }

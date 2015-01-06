@@ -372,24 +372,23 @@ var Languages =
                         },
                         {
                             "id": "Garage sale/Market/Event",
-                            "Value": "Garage sale/Market etc."
-                        },
-						
+                            "Value": "Garage/Yard sale"
+                        },						
 						{
                             "id": "Terracycle spot",
-                            "Value": "Terracycle brigade spot"
-                        },
-                        {
-                            "id": "Eco/Green shop",
-                            "Value": " Eco/sustainable store/place"
+                            "Value": "Terracycle brigade"
                         },
                         {
                             "id": "Recycling spot",
                             "Value": "Second hand sale"
                         },
                         {
+                            "id": "upcycling",
+                            "Value": "Upcycling spot"
+                        },
+                        {
                             "id": "Recycling company",
-                            "Value": "Recycling spot/company"
+                            "Value": "Recycling spot"
                         },
                         {
                             "id": "Food donation",
@@ -401,7 +400,11 @@ var Languages =
                         },
 						{
                             "id": "Help",
-                            "Value": "HELP us to collect"
+                            "Value": "HELP"
+                        },
+                        {
+                            "id": "Eco/Green shop",
+                            "Value": " Eco/sustainable"
                         }
             ],
             "Danish": [{
@@ -410,19 +413,23 @@ var Languages =
                         },
                         {
                             "id": "Garage sale/Market/Event",
-                            "Value": "Garagesalg, marked el. lign"
+                            "Value": "Garagesalg"
                         },
 						{
                             "id": "Terracycle spot",
-                            "Value": "Terracycle opsamlings sted"
+                            "Value": "Terracycle opsamling"
                         },
                         {
                             "id": "Eco/Green shop",
-                            "Value": "Øko/bæredygtig butik/sted"
+                            "Value": "Øko/bæredygtig"
                         },
                         {
                             "id": "Recycling spot",
                             "Value": "Genbrugs salg"
+                        },
+                        {
+                            "id": "upcycling",
+                            "Value": "Upcycling sted"
                         },
                         {
                             "id": "Recycling company",
@@ -438,7 +445,7 @@ var Languages =
                         },
 						{
                             "id": "Help",
-                            "Value": "HJÆLP os med at indsamle"
+                            "Value": "HJÆLP"
                         }
             ],
             "German": [{
@@ -455,12 +462,12 @@ var Languages =
                             "Value": "Terracycle Brigade Ort"
                         },
                         {
-                            "id": "Eco/Green shop",
-                            "Value": "Eco/nachhaltige store / Ort"
-                        },
-                        {
                             "id": "Recycling spot",
                             "Value": "Second hand"
+                        },
+                        {
+                            "id": "upcycling",
+                            "Value": "Upcycling ort"
                         },
                         {
                             "id": "Recycling company",
@@ -470,13 +477,17 @@ var Languages =
                             "id": "Food donation",
                             "Value": "Lebensmittel donation"
                         },
-												                        {
+					{
                             "id": "FREE Food",
-                            "Value": "GRATIS Lebensmittel oder Frucht"
+                            "Value": "GRATIS Lebensmittel"
                         },
 						{
                             "id": "Help",
-                            "Value": "HELFEN Sie uns, zu sammeln"
+                            "Value": "HELFEN"
+                        },
+                        {
+                            "id": "Eco/Green shop",
+                            "Value": "Eco/nachhaltige"
                         }
 					
             ],
@@ -486,20 +497,20 @@ var Languages =
                         },
                         {
                             "id": "Garage sale/Market/Event",
-                            "Value": "Venta de Garaje/ mercado"
+                            "Value": "Venta de Garaje/mercado"
                         },
 												{
                             "id": "Terracycle spot",
                             "Value": "Terracycle brigade spot"
                         },
                         {
-                            "id": "Eco/Green shop",
-                            "Value": "Tienda sostenible / lugar"
-                        },
-                        {
                             "id": "Recycling spot",
                             "Value": "Ventas reciclados/tienda"
 						},
+                        {
+                            "id": "upcycling",
+                            "Value": "Upcycling spot"
+                        },
                         {
                             "id": "Recycling company",
                             "Value": "Reciclaje compañía/Esacio"
@@ -510,11 +521,15 @@ var Languages =
                         },
 						{
                             "id": "FREE Food",
-                            "Value": "GRATIS Los alimentos o frutas "
+                            "Value": "GRATIS Los alimentos "
                         },
 						{
                             "id": "Help",
                             "Value": "AYÜDANOS a recopilar"
+                        },
+                        {
+                            "id": "Eco/Green shop",
+                            "Value": "Tienda sostenible/lugar"
                         }
             ]
         }

@@ -9,7 +9,7 @@
     "titeltext_about": "Was ist Recycleworld",
     "indhold_about": "Recycleworld hat seinen Ursprung in Dänemark und wurde im Sommer 2012 konzipiert und zwar nach einer Finanzkrise, die viele in volkswirtschaftlichen Trümmern hinterlassen hat und in einer Zeit, in der man ständig von einer Welt hörte, auf deren Ressourcen immer mehr Druck ausgeübt wird, und von der Erhöhung der CO2-Emissionen – da war eine neue Denkweise gefragt!<br><br> Recyleworld wohnt in der Kommune Skanderborg in Dänemark und der Slogan der Gemeinde 'Clean Life' hat ihn dazu inspiriert, sich das gesellschaftliche Konsumverhalten näher anzusehen und nach Gelegenheiten zu suchen, wie man sowohl in der unmittelbaren Umgebung als auch weiter entfernt helfen könnte.<br><br>Unser Ziel ist es, den Recyclinggedanken zu revolutionieren und die unnötige Lebensmittelverschwendung zu stoppen. Sowohl mit Hilfe von moderner Internet-und Mobiltechnologie als auch die Hoffnung auf die aktive Teilnahme von Einzelpersonen und Unternehmen, die unsere Denkweise teilen.",
     "titletext_app": "Kontaktieren Sie uns",
-    "indhold_app": "Wenn Sie Kontakt wünsche - bitte brauchen diese formular. Vielen Dank für Ihr Verständnis.",
+    "indhold_app": "Wenn Sie zu uns Kontakt aufnehmen möchten - Schütteln Sie Ihr Handy und nutzen Sie unser Feedback-System. Vielen Dank für Ihr Verständnis.",
     "titletext_account": "Einstellung",
     "differencetext": "Was ist der Unterschied?",
     "select": "Wählen",
@@ -320,6 +320,6 @@
 	"ecospot1": "ECO Ort ist ein Ort, mit dem Fokus auf eine nachhaltige Lebensweise. Es könnte ein dedizierter Shop, Café , Ort zu besuchen. Nachhaltiges Leben ist der Schlüssel",
    "upcycling": "Upcycling ort",
 	"upcycling1": "Upcycling Ort ist ein Ort, mit dem Fokus auf upcycling.",
-       
-	"friendtext": "Importieren oder fügen Sie Ihre familie und Freunde in die Freundes zone. Dann haben Sie eine persönliche Gruppe, und können Ihre Sachen direkt an Ihre Freunde verschenken, verkaufen oder mit ihnen tauschen. Ihrer Fantasie sind keine Grenzen gesetzt - Bücher, Lebensmittel usw. – zu beachten ist, dass Ihre Freunde innerhalb von 8 Stunden reagieren müssen, ansonsten gehen die Sachen an die öffentliche Börse."
+    	"friendtext": "Importieren oder fügen Sie Ihre familie und Freunde in die Freundes zone. Dann haben Sie eine persönliche Gruppe, und können Ihre Sachen direkt an Ihre Freunde verschenken, verkaufen oder mit ihnen tauschen. Ihrer Fantasie sind keine Grenzen gesetzt - Bücher, Lebensmittel usw. – zu beachten ist, dass Ihre Freunde innerhalb von 8 Stunden reagieren müssen, ansonsten gehen die Sachen an die öffentliche Börse.",
+              "action": "Take action" 
 }

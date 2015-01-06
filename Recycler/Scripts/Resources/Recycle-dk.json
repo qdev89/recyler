@@ -9,8 +9,8 @@
     "titeltext_about": "Recycleworld",
     "indhold_about": "Recycleworld har sit udspring fra Danmark og blev udtænkt i 2012 efter at en finanskrise havde lagt mange økonomier i ruiner og vi stadig hørte om en jordklode med stigende pres på ressourcer - det var nødvendigt med et nyt tankesæt.<br><br>Recycleworlds ide blev tænkt i Skanderborg, Danmark og et slogan om 'Rent liv' inspirerede til at se på samfundets forbrugsmønstrer og muligheder for at hjælpe i nærmiljø såvel som fjern miljø. Vores mål er at ændre smid væk kultur til genbrugskultur til bæredygtighed og stoppe alt for meget unødvendigt madspild. Begge dele med hjælp fra moderne internet og mobil teknologi og så håbe på aktiv deltagelse fra såvel individer eller virksomheder der delte vores tankesæt.<br><br>Selina Juul - fra NGO organisationen Stopmadspild fungerede som sparring vedr. fødevare delen.<br><h3>Hvem er recycleworld's målgruppe?</h3> Vores primære målgruppe er alle :-) Nu har vi skabt platformen - så er det folk der skal støtte os med ting, butikker, garagesalgs oplysninger etc. Vi håber at personer, virksomheder, politikere støtter op om at udnytte de ressourcer vi har bedst muligt.<br><h3>Hvad er recycleworld for en størrelse?</h3>recycleworld er en privat virksomhed som i tæt samarbejde med selvstændige non-profit forbrugerorganisation er uafhængig af partipolitiske, religiøse interesser forsøger at gøre en forskel. Derfor donerer vi også 50% af vores overskud væk.</span><h3>Hvor stor er recycleworld?</h3>recycleworld håber på at blive stedet for denne tankegang. Om du sidder i dk eller USA. Vi har et fælles mål om at bruge klodens ressourcer bedst muligt.<br><h3>Hvad håber I at opnå med recycleworld?</h3>recycleworld's formål er at inspirere jordens befolkning til at komme unødvendig madspild til livs og bruge genbrugsting som det det er - værdifuld ressourcer. Vi kan ikke lave mirakler eller revolutioner alene - men støtter I op kan vores ideer vokse sig stærke. Og hvem ved – måske vi har held til at påvirke hele verdens beslutninger.",
     "titletext_app": "Kontakt os",
-    "indhold_app": "<h3> Hvis du ønsker at kontakte os - prøv sende en besked her. </ h3>Supportere vil blive besvaret først - vi håber inden for 24-48 timer. Tak for din forståelse.",
-    "titletext_account": "Konto",
+    "indhold_app": "<h3> Hvis du ønsker at kontakte os - RYST din tlf. og benyt vores feedback system til sende besked her. </h3> Supportere vil blive besvaret først - vi håber inden for 24-48 timer. Tak for din forståelse.",
+    "titletext_account": "Min konto",
     "differencetext": "Hvad er forskellen?",
     "select": "Vælg",
     "pictureyou": "Billede af dig",
@@ -254,7 +254,7 @@
     "other1": "Alle andre steder: Genbrugssalg / Økoshop / Genbrugssteder",
     "other": "Alle andre steder<br> - alt nødvendigt info<br> - Adresse, åbningstider, tlf, web<br> - bliver vist på vores kort<br> - får et diplom at printe ud",
     "food1": "Fødevare donations sted",
-    "back": "Tilbage til lav et sted",
+    "back": "Fortsæt",
     "titeltext_terra": "Terracycle partner",
     "terratext": "TerraCycles mål er at skrotte idéen om skrald. Det gør vi ved at oprette indsamlingsprogrammer for affald, som i dag ikke genanvendes eller genbruges. Det indsamlede affald bliver så opgraderet til nye og spændende produkter og materialer, fra parkbænke lavet af genbrugt plastik til tasker lavet af genanvendt emballage. <br><br>Med over 30 millioner mennesker, der hjælper os med at samle skrald i 22 lande, har vi forhindret, at milliarder af stykker skrald ender på lossepladser eller med at blive brændt. I stedet upcycler (genanvender) eller genbruger vi skraldet til at fremstille over 1500 forskellige nye produkter, som findes hos detailhandlere såsom Walmart og Whole Foods Market i USA.<br><br>Vi bidrager dermed til at skrotte idéen om skrald ved at skabe funktionelle genanvendelsessystemer for affald, som i dag ellers smides i skraldespanden.<br><b>www.terracycle.com</b>",
     "thankstext": "Tak fordi du tænker på miljøet! Kalkuler et estimat på hvor meget Co2 du har sparet istedet for at destruere ting. Co2 vil blive puttet på din konto når dine ting bliver afhentet",
@@ -320,5 +320,6 @@
 "lendprice": "låne gebyr",
 	"terraspot": "TERRACYCLE spot",
 	"terraspot_desc": "En TerraCycle spot er en affaldsindsamling station drevet af TerraCycle brigader . Hvert sted er et sted hvor du kan aflevere dit affald, hvis du er en del af TerraCycle brigade familien. Hvis du ønsker at vide mere om TerraCycle muligheder - <a href='terracycle.html'>Læs her</a>.",
-    "friendtext": "Inviter først alle din familie, venner og naboer ind i Venne gruppen. Så har I jeres eget lille område hvor I kan bytte, give væk eller sælge, intet smides ud uden at andre får buddet først og uden andre ser det. Det er så nødt til at reagere inden for 8 timer ellers bliver tingene offentlig for andre."
+    "friendtext": "Inviter først alle din familie, venner og naboer ind i Venne gruppen. Så har I jeres eget lille område hvor I kan bytte, give væk eller sælge, intet smides ud uden at andre får buddet først og uden andre ser det. Det er så nødt til at reagere inden for 8 timer ellers bliver tingene offentlig for andre.",
+         "action": "Take action"      
 }

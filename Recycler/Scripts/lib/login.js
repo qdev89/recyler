@@ -2,7 +2,7 @@
  * Login view model
  */
 
- var app = window.app = window.app || {};
+var app = window.app = window.app || {};
 app.Login = (function () {
     'use strict';
 
@@ -56,14 +56,19 @@ app.Login = (function () {
         };
 
         // Authenticate to use Backend Services as a particular user
-        var login = function () {
+        var login = function (user,pass) {
 
             var username = $loginUsername.val();
             var password = $loginPassword.val();
+            
+            if(user!== undefined && pass!==undefined){
+                username = user;
+                password = pass;
+            }
 
           //  console.log(
             // Authenticate using the username and password
-            app.everlive.Users.login(username, password/*,function(data){console.log(data);},function(err){console.log(err);}*/)
+            app.everlive.Users.login(username, password)
             .then(function () {
                 // EQATEC analytics monitor - track login type
                 if (isAnalytics) {
@@ -74,7 +79,8 @@ app.Login = (function () {
             })
             .then(function () {
 					
-               // feedback.initialize('d2e58af0-94ce-11e4-b931-ab97b7dcb41c');
+               localStorage.Username = username;
+               localStorage.Password = password;
                 
                  app.everlive.Users.currentUser( 
                                             function(data) { 

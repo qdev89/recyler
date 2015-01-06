@@ -70,7 +70,7 @@
 
         navigator.splashscreen.hide();
         fixViewResize();
-
+            autoLogin();
         if (analytics.isAnalytics()) {
             analytics.Start();
         }

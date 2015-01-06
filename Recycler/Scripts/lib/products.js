@@ -3,7 +3,7 @@ var editableProduct;
 
 function navigateToEditProduct(el){    
     var productID = $(el).attr('productID');
-   // log(productID); 
+    console.log(productID); 
      app.application.navigate("giveaway.html?editSpotId=" + productID);
 }
 

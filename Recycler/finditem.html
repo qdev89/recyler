@@ -3,7 +3,8 @@
     <div id="GoToFilters"><!-- onclick="appNavigate('filter.html');"  Quick Search-->
         
        <input type="text" id="filterWord" /> 
-        <button class="btn btn-primary"  onclick="app.Product.filterProducts()"> Search </button>        
+        <img  onclick="app.Product.filterProducts()" src="images/search_small.png" />
+       <!-- <button class="btn btn-primary"> Search </button> -->       
         
     </div>
 
@@ -35,14 +36,14 @@
     <script>
         function openModal(row){
             
-          			 var modal = "#modalview-spot";                 
-                 	 $(modal+" .image").attr("src",  $(row).find(".li-image").attr("src"));
-                      $(modal+" .name").html(  $(row).find(".li-name").html());
-                      $(modal+" .type").html(  $(row).find(".li-type").html());
-                      $(modal+" .price").html(  $(row).find(".li-price").html());
-                      $(modal+" .desc").html(  $(row).find(".li-desc").html());
-                      $(modal+" .date").html(  $(row).find(".li-date").html());                  
-                      $(modal).kendoMobileModalView("open");
+  			var modal = "#modalview-spot";                 
+         	 $(modal+" .image").attr("src",  $(row).find(".li-image").attr("src"));
+              $(modal+" .name").html(  $(row).find(".li-name").html());
+              $(modal+" .type").html(  $(row).find(".li-type").html());
+              $(modal+" .price").html(  $(row).find(".li-price").html());
+              $(modal+" .desc").html(  $(row).find(".li-desc").html());
+              $(modal+" .date").html(  $(row).find(".li-date").html());                  
+              $(modal).kendoMobileModalView("open");
          	
         }
         

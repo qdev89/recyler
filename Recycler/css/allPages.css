@@ -584,7 +584,7 @@ select#country { width: 150px; }
 {
     border: 1px solid #ababab;
     width: 100%;
-    background: transparent url('.../images/bg.jpg') no-repeat;
+   
     height: 32px;
     padding: 4px 8px;
     margin-bottom: 0px;
@@ -599,7 +599,7 @@ select#country { width: 150px; }
 {
     border: 1px solid #ababab;
     width: 100%;
-    background: transparent url('.../images/bg.jpg') no-repeat;
+   
     height: 32px;
     padding: 4px 8px;
     margin-bottom: 0px;
@@ -614,7 +614,7 @@ select#country { width: 150px; }
 {
     border: 1px solid #ababab;
     width: 200px;
-    background: transparent url('.../images/bg.jpg') no-repeat;
+   
     height: 35px;
     padding: 4px 8px;
     margin-bottom: 0px;
@@ -1722,7 +1722,7 @@ input:not([type='checkbox']), textarea, select
 {
     border: 1px solid #ababab;
     width: 100%;
-    background: transparent url('.../images/bg.jpg') no-repeat;
+    
     height: 32px;
     padding: 4px 8px;
     margin-bottom: 0px;
@@ -1737,8 +1737,7 @@ input:not([type='checkbox']), textarea, select
 {
     border: 1px solid #ababab;
     width: 100%;
-    background: transparent url('.../images/bg.jpg') no-repeat;
-    height: 32px;
+   height: 32px;
     padding: 4px 8px;
     margin-bottom: 0px;
     border-radius: 2px; 
@@ -1752,7 +1751,6 @@ input:not([type='checkbox']), textarea, select
 {
     border: 1px solid #ababab;
     width: 200px;
-    background: transparent url('.../images/bg.jpg') no-repeat;
     height: 35px;
     padding: 4px 8px;
     margin-bottom: 0px;
@@ -1871,10 +1869,10 @@ input:not([type='checkbox']), textarea, select
 
 #GoToFilters
 {
-    width: 100%;
+   width: 100%;
     background-color: #E4E4E4;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1%;
+    padding-right: 1%;
     margin-bottom: 10px;
     font-weight: bold;
 }
@@ -2111,9 +2109,15 @@ fieldset{border:none !important;}
     vertical-align: top;
 }
 
-#GoToFilters input{width:75%;}
+#GoToFilters input{
+   width: 80%;
+}
 
-#GoToFilters button.btn.btn-primary{width:20% !important;}
+#GoToFilters img{
+    width: 18%;
+    vertical-align: middle;
+    padding: 1%;
+}
 
 
 

@@ -38,8 +38,7 @@ var userData =null;
         TranslateApp();
     }, false);
 
-    app.application = new kendo.mobile.Application(document.body, { skin:"flat", layout:"tabstrip-layout", initial:"signup_login.html", hashBang:true, loading:false }); 
-    
+    app.application = new kendo.mobile.Application(document.body, { skin:"flat", layout:"tabstrip-layout", initial:"signup_login.html", hashBang:true, loading:false });     
    
 })(window);
 
@@ -65,7 +64,7 @@ function navigateFromDrawer(view,checkIfSupporter){
    }    
     
     if(checkIfSupporter){
-       // console.log(userData);
+       // console.log(userData); 
         var created =new Date(userData.CreatedAt);
         created.setTime(created.getTime() + (14*24*60*60*1000)); 
         var today = new Date();
