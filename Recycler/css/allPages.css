@@ -24,6 +24,15 @@
     font-size: 12px;
 }
 
+.menuhead
+{
+    color:#8ad8ff;
+    font-size:large;
+    margin-left:10px;
+    margin-top: 10px;
+    text-transform:uppercase;
+}
+
 .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li
 { 
     padding: .7em 20px; display: block

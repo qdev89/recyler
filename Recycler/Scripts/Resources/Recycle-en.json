@@ -324,5 +324,11 @@
 	"terraspot": "TERRACYCLE spot",
 	"terraspot_desc": "A terracycle spot is a waste collection station driven by the terracycle brigades. Each place is a place where you can deliver your waste if you are part of the terracycle brigade family. If you want to know more about terracycle opportunities - <a href='terracycle.html'>read here</a>.",
         "friendtext": "Put your friends into your friend group. Then you have a private group and you can give away, swap books, food etc. - the only  special thing is that they have to react within 8 hours or the stuff goes public to others.",
-                 "action": "Take action" 
+"action": "Take action",
+"fb1": "You can choose to post your stuff here, on your own FB page and in your favourite group at the same time.",
+"fb2": " Just setup your choices here.",
+"fz1": "Invite all your friends & family into your friendzone",
+"fz2": " Every time you post an item, your friends get a message and +4 hours to react, before your stuff goes public.",
+"fz3": " Build my friend & family zone now"
+                         
 }

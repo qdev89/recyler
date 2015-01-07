@@ -320,5 +320,10 @@
 "lendprice": "tarifa del préstamo",
 	"service": "Servicio: puedo ayudar a otros con",
 	 "friendtext": "Agrega a tus amigos, familia, y Nabours en tu grupo de amistades. Asi tendras un grupo privado donde puedes regalar cosas, intercambiar libros, comida, etc. - el unico requerimiento especial es que ellos tienen que reaccionar en las siguientes 8 horas, o los articulos pasan a ser publicos.",
-          "action": "Take action"
+          "action": "Take action",
+"fz1": "Usted puede elegir para publicar tus cosas aquí, en su propia página de FB y en su grupo favorito en el Sametime.",
+"fz2": "Acaba de configurar sus opciones aquí.",
+"fz1": "Invita a todos tus amigos y familiares en su Friend Zone",
+"fz2": "Cada vez que publique un artículo, tus amigos te un mensaje y 4 horas para reaccionar, antes de su materia se hace pública.",
+"fz3": "Construir mi amigo y familia zona ahora"
 }

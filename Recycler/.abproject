@@ -3,9 +3,9 @@
   "ProjectGuid": "768e2675-0d94-49ed-864b-fb76d1607d92",
   "projectVersion": 1,
   "AppIdentifier": "com.telerik.Recycler",
-  "DisplayName": "Recycler",
-  "Author": "BGO Media",
-  "Description": "Recycler",
+  "DisplayName": "Recyclewor",
+  "Author": "Recycleworld Aps",
+  "Description": "Together we change - take action and help us stop food waste & a better recycling for a better future. Using recyceworld benefits others and help us work towards sustanability.",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
@@ -22,21 +22,22 @@
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
   "FrameworkVersion": "3.5.0",
   "CorePlugins": [
-    "com.telerik.feedback",
-    "com.telerik.mobiletesting",
-    "com.telerik.plugin.eqatecanalytics",
     "org.apache.cordova.battery-status",
     "org.apache.cordova.camera",
+    "org.apache.cordova.media-capture",
+    "org.apache.cordova.contacts",
     "org.apache.cordova.device",
-    "org.apache.cordova.dialogs",
     "org.apache.cordova.file",
     "org.apache.cordova.geolocation",
     "org.apache.cordova.globalization",
     "org.apache.cordova.inappbrowser",
     "org.apache.cordova.media",
-    "org.apache.cordova.media-capture",
     "org.apache.cordova.network-information",
-    "org.apache.cordova.splashscreen"
+    "org.apache.cordova.dialogs",
+    "com.paypal.cordova.mobilesdk@2.1.1",
+    "org.apache.cordova.splashscreen",
+    "com.telerik.plugin.eqatecanalytics",
+    "com.telerik.feedback"
   ],
   "AndroidPermissions": [
     "android.permission.ACCESS_COARSE_LOCATION",
@@ -68,6 +69,5 @@
     "ID_RESOLUTION_WXGA",
     "ID_RESOLUTION_HD720P"
   ],
-  "Framework": "Cordova",
-  "CordovaPluginVariables": {}
+  "Framework": "Cordova"
 }

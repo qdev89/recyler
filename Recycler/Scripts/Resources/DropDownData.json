@@ -539,10 +539,6 @@ var Languages =
         {
  "English":[ 
 {
-"id": "Friend Zone",
-"Value": "Friend Zone"
-},
-{
 "id": "Men ",
 "Value": "Mens stuff"
 },
@@ -557,6 +553,10 @@ var Languages =
 {
 "id": "Animal",
 "Value": "Animal"
+},      
+{
+"id": "Food",
+"Value": "Food"
 },
 {
 "id": "Indoor",
@@ -627,10 +627,6 @@ var Languages =
 "Value": "Transportation"
 },
 {
-"id": "Food",
-"Value": "Food"
-},
-{
 "id": "Private",
 "Value": "Entertainment"
 }, ,
@@ -650,10 +646,6 @@ var Languages =
 
  "Danish": [
 {
-"id": "Friend Zone",
-"Value": "Venne gruppe"
-},
-{
 "id": "Men",
 "Value": "Herre ting"
 },
@@ -668,6 +660,10 @@ var Languages =
 {
 "id": "Animal",
 "Value": "Dyr"
+},    
+{
+"id": "Food",
+"Value": "Fødevarer"
 },
 {
 "id": "Indoor",
@@ -738,10 +734,6 @@ var Languages =
 "Value": "Transportmidler"
 },
 {
-"id": "Food",
-"Value": "Fødevarer"
-},
-{
 "id": "Private",
 "Value": "Underholdning"
 },
@@ -762,10 +754,6 @@ var Languages =
 
 "German": [
 {
-"id": "Friend Zone",
-"Value": "Freundes group"
-},
-{
 "id": "Men",
 "Value": "Männer Zeug"
 },
@@ -780,6 +768,10 @@ var Languages =
 {
 "id": "Animal",
 "Value": "Tiere"
+},
+{
+"id": "Food",
+"Value": "Lebensmittel"
 },
 {
 "id": "Indoor",
@@ -851,10 +843,6 @@ var Languages =
 "Value": "Mechanik"
 },
 {
-"id": "Food",
-"Value": "Lebensmittel"
-},
-{
 "id": "Private",
 "Value": "Unterhaltung"
 },
@@ -875,10 +863,6 @@ var Languages =
 
 "Spanish": [
 {
-"id": "Friend Zone",
-"Value": "grupo de amistades"
-},
-{
 "id": "Men",
 "Value": "Hombre cosas"
 },
@@ -893,6 +877,10 @@ var Languages =
 {
 "id": "Animal",
 "Value": "Animales"
+},    
+{
+"id": "Food",
+"Value": "Alimentos"
 },
 {
 "id": "Indoor",
@@ -962,10 +950,6 @@ var Languages =
 {
 "id": "Transportation",
 "Value": "Transporte"
-},
-{
-"id": "Food",
-"Value": "Alimentos"
 },
 {
 "id": "Private",

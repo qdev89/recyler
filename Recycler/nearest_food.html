@@ -19,6 +19,20 @@
                         <label  data-localize="NearestPoints">3 donation spots closest to you</label>
                     </h2>
                 </div>
+                 <div >
+                      <table>
+                           <tr><td>
+                             Place name                                  
+                                </td><td>
+                                show me info <img src="images/info_icon.png" alt=""/>
+                                </td>
+                                <td>
+                                 <input id="message" value="3" name="abc" type="radio">
+                                </td></tr>
+                      </table>
+                 </div>
+                 
+                 
                 <div id="NearestPlaces" style="text-align:center">
 
                 </div>
@@ -30,7 +44,7 @@
                     <span name="spn">
                         <label for="write"   data-localize="write">Write Message</label>
                     </span><br>
-                    <textarea name="textarea"  class="basictext" id="textinput" style="text-align:left"></textarea>
+                    <textarea name="textarea"  style="width:100%;height:140px;" maxlength="200"  id="textinput" style="text-align:left"></textarea>
                     <div>
                         <a data-role="button" data-transition="fade" id="SendMessage">
                             <!-- next -->
@@ -40,10 +54,10 @@
                         </a>
                     </div>
                     <div>
-                        <a data-role="button" data-transition="fade" id="PostNow">
+                        <a data-role="button" data-transition="fade" id="PostNow"  class="btn btn-blue">
                             <!-- next -->
                             <span name="spn">
-                                <label for="putonline"   data-localize="putonline">Put online now</label>
+                                <label for="putonline"   data-localize="putonline">Put online now to others</label>
                             </span>
                         </a>
                     </div>

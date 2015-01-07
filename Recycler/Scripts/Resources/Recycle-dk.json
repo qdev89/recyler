@@ -321,5 +321,10 @@
 	"terraspot": "TERRACYCLE spot",
 	"terraspot_desc": "En TerraCycle spot er en affaldsindsamling station drevet af TerraCycle brigader . Hvert sted er et sted hvor du kan aflevere dit affald, hvis du er en del af TerraCycle brigade familien. Hvis du ønsker at vide mere om TerraCycle muligheder - <a href='terracycle.html'>Læs her</a>.",
     "friendtext": "Inviter først alle din familie, venner og naboer ind i Venne gruppen. Så har I jeres eget lille område hvor I kan bytte, give væk eller sælge, intet smides ud uden at andre får buddet først og uden andre ser det. Det er så nødt til at reagere inden for 8 timer ellers bliver tingene offentlig for andre.",
-         "action": "Take action"      
+"action": "Take action",
+"fb1": "Du kan vælge at poste dine ting her, på din egen FB-side og i din favorit gruppe på samme tid.",
+"fb2": "Bare setup dine valg her.",
+"fZ1": "Inviter alle dine venner og familie i din friendzone",
+"fz2": "Hver gang du poster et emne, får dine venner en besked, og fire timer til at reagere, før dine ting går offentligheden.",
+"fz3": "Byg min ven & familie zone nu"
 }

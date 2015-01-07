@@ -1,4 +1,3 @@
-
 var prd = new Object();
 prd.Co2Data = {
     Co2: '',
@@ -6,17 +5,12 @@ prd.Co2Data = {
     Co2Values: ''
 }
 
-
 //=================================================== Calculate Material CO2 =========================================================
 
-function AddMaterialProductCO2() {
-    
-    if(localStorage.NewProductID==undefined) return;
-    
-     calculateMaterialCo2();
-    
-    saveProductCo2(localStorage.NewProductID);
-   
+function AddMaterialProductCO2() {    
+    if(localStorage.NewProductID==undefined) return;    
+     calculateMaterialCo2();    
+    saveProductCo2(localStorage.NewProductID);   
 }
 
 function calculateMaterialCo2() {
@@ -89,10 +83,9 @@ function calculateMaterialCo2() {
 //=================================================== Calculate Food CO2 =========================================================
 
 function AddFoodProductCO2() {
-     if(localStorage.NewProductID==undefined) return;
-   
-   calculateFoodCo2();
-
+     if(localStorage.NewProductID==undefined) return;   
+     calculateFoodCo2();
+     saveProductCo2(localStorage.NewProductID);
 }
 
 function calculateFoodCo2() {
@@ -149,23 +142,28 @@ function calculateFoodCo2() {
 }
 
 function  saveProductCo2(id){
-      var data = app.everlive.data('Product');     
-      
-                                    
-                                    data.update({
-                                                      'CO2': prd.Co2Data.Co2 ,                  
-                                                      'CO2Type': prd.Co2Data.Co2Type,                  
-                                                      'CO2Values': prd.Co2Data.Co2Values                 
-                                                     
-                                                        			
-                                                }, // data
-                                                { 'Id': id}, // filter
-                                                function(data) {
-                                                    console.log(data);
-                                                    navigator.notification.alert("Info saved successfully!", null, "Success");
-                                                    app.application.navigate("mystuff.html"); 
-                                                },
-                                                function(error) { 
-                                                    alert(JSON.stringify(error)); 
-                                                });  
+      var data = app.everlive.data('Product');  
+    
+    console.log({
+                          'CO2': prd.Co2Data.Co2 ,                  
+                          'CO2Type': prd.Co2Data.Co2Type,                  
+                          'CO2Values': prd.Co2Data.Co2Values  
+                    });
+    
+        data.update({
+                          'CO2': prd.Co2Data.Co2 ,                  
+                          'CO2Type': prd.Co2Data.Co2Type,                  
+                          'CO2Values': prd.Co2Data.Co2Values                 
+                         
+                            			
+                    }, // data
+                    { 'Id': id}, // filter
+                    function(data) {
+                        console.log(data);
+                        navigator.notification.alert("Info saved successfully!", null, "Success");
+                        app.application.navigate("mystuff.html"); 
+                    },
+                    function(error) { 
+                        alert(JSON.stringify(error)); 
+                    });  
 }
