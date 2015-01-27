@@ -134,15 +134,7 @@ var user = {
 
 
     validateEmail: function (txtEmail) {
-        var a = document.getElementById(txtEmail).value;
-        // var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{1,4}$/;
-        var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
-        if (filter.test(a)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+       
     },
 
     validateNumeric: function (txtNumeric) {
@@ -440,7 +432,7 @@ $(document).ready(function () {
 
                 // user.Language = $('#Languages').parent().children('span').find('.ui-btn-text').html();
                 localStorage.Language = user.Language;
-
+                 console.log((localStorage.Language))
                 switch (localStorage.Language) {
                     case "1":
                         localStorage.LanguageType = "dk";

@@ -76,7 +76,7 @@ function iconMapInit() {
                 if( allSpots[i].SpotType==="Garage sale/Market/Event" ||  allSpots[i].SpotType ==="Help"){
                      var date  = new Date(allSpots[i].EventDate);                     
                     if(!isValidDate(date) || date > twoDaysAfter || date < today){ 
-                        console.log(date," too early or old");                        
+                        console.log(allSpots[i].SpotType, date, " too early or old");                        
                         return true;                    
                     }else console.log(date," this is ok");  
                     console.log(date,oneDayAter);
@@ -89,6 +89,7 @@ function iconMapInit() {
                     "<div class='table-container' ><table>" + 
                  
                     "<tr><td></td><td class='spotName'>" + allSpots[i].Name + "</td></tr>" + 
+                   "<tr><td></td><td class='spotDate'>" + allSpots[i].EventDate + "</td></tr>" + 
                  
                     "<tr class='img'><td></td><td> <img class='popupImg' src='" + allSpots[i].Image + "' /></td></tr>" + 
                  
@@ -111,7 +112,7 @@ function iconMapInit() {
                                 
                     "<tr><td></td><td>" + allSpots[i].Zip + "</td></tr>" + 
                  
-                    "<tr><td><img class='td-icon' src='images/mapicons/www_icon_blue.png' /></td><td>" + allSpots[i].Web + "</td></tr>" +
+                    "<tr><td><img class='td-icon' src='images/mapicons/www_icon_blue.png' /></td><td> <a href='" + allSpots[i].Web + "'>" + allSpots[i].Web + "</a></td></tr>" +
                  
                     "</table></div>";
                 
@@ -208,13 +209,14 @@ function setPlace(lat, long,draggable, type, map,content,isGrey){
     if(map==undefined) map=googleMap;    
     if(draggable!=true) draggable =false;     
     var icon="";
+    console.log(type);
     switch(type){
         case "Eco/Green shop": 
         icon = "images/mapicons/eco_spot.png";
         break;
         
         case "FREE Food": 
-        icon = "images/mapicons/food.png";
+        icon = "images/mapicons/food_small.png";
         break;
         
         case "Recycling company": 
@@ -241,7 +243,7 @@ function setPlace(lat, long,draggable, type, map,content,isGrey){
         icon = "images/mapicons/recycling_small.png";
         break;
         
-        case "Upcycling": 
+        case "upcycling": 
         icon = "images/mapicons/upcycling_small.png";
         break;   
         

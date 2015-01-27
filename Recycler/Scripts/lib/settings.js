@@ -3,7 +3,8 @@
  */
 
 var appSettings = {
-
+    msKey : "VqvySBFGk4rP47eqzj92nIXjrlBgpVLV",
+    
     everlive: {
         apiKey: 'yPCpguY5pk7Zy5rc',  // Put your Backend Services API key here
         scheme: 'http'
@@ -42,4 +43,23 @@ var appSettings = {
         mistSimulatorAlert: 'The social login doesn\'t work in the In-Browser Client, you need to deploy the app to a device, or run it in the simulator of the Windows Client or Visual Studio.',
         removeActivityConfirm: 'Are you sure you want to delete this Activity?'
     }
+};
+
+var emailTemplates ={
+    friendzone:"Friendzoneposting", //appName, userName,FromEmail,DefaultFromName
+    
+    thankYou:"Thankyou",//appName, userName,FromEmail,DefaultFromName   
+    
+    garageSale:"Garagesale",//appName, userName, FromEmail,DefaultFromName
+    
+    food:"Food",//appName, userName, FromEmail,DefaultFromName
+    
+    spot:"Spot",//appName, userName, FromEmail,DefaultFromName
+    
+    help:"Help",//appName, userName, FromEmail,DefaultFromName
+    
+    test:"zzz", //appName, userName, FromEmail,DefaultFromName,teamName
+    
+    DefaultFromName:"Recycle world",
+    FromEmail:"bjarke@bsrweb.dk"
 };

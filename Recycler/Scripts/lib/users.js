@@ -269,15 +269,7 @@ var user = {
 
 
     validateEmail: function (txtEmail) {
-        var a = document.getElementById(txtEmail).value;
-        // var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{1,4}$/;
-        var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
-        if (filter.test(a)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+       
     },
 
     validateNumeric: function (txtNumeric) {
@@ -576,7 +568,7 @@ $(document).ready(function () {
 
                 // user.Language = $('#Languages').parent().children('span').find('.ui-btn-text').html();
                 localStorage.Language = user.Language;
-
+                 console.log((localStorage.Language))
                 switch (localStorage.Language) {
                     case "1":
                         localStorage.LanguageType = "dk";
@@ -811,10 +803,9 @@ $(document).ready(function () {
 });  
 
 
-function saveUserData() {   
-    
-    var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
-    if (!filter.test($("#email").val())) {
+function saveUserData() {       
+   
+    if (!validateEmail($("#email").val())) {
         navigator.notification.alert("You should fill a valid email!", null, "");
         return;
     }    
@@ -863,13 +854,16 @@ function saveUserData() {
      var data = app.everlive.data('Users');
     
     
-    app.everlive.Users.updateSingle({ 'Id': userData.Id, 'Email': $("#email").val() },
+    /*app.everlive.Users.updateSingle({ 'Id': userData.Id, 'Email': $("#email").val() },
     function(data){
         //alert(JSON.stringify(data));
     },
     function(error){
         alert(JSON.stringify(error));
-    });
+    });*/
+    var mail = false;
+    if(userData.UserRole!=2 && $("#role").val()==2)
+       mail=true;
     
     data.update({
                     'UserRole': $("#role").val(),                  
@@ -887,6 +881,9 @@ function saveUserData() {
                 { 'Id': userData.Id}, // filter
                 function(data) {
                     console.log(data);
+                    if(mail){
+                          sendMail(emailTemplates.thankYou,[userData.Email],{"appName":emailTemplates.DefaultFromName,"DefaultFromName":emailTemplates.DefaultFromName ,"userName":$("#name").val(), "FromEmail":emailTemplates.FromEmail});
+                    }
                     navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
                 },
                 function(error) { 
@@ -903,7 +900,7 @@ function fillUserData(user) {
     if (user.Email != undefined){
         $("#email").val(user.Email);       
         $("#email").prop("disabled",true);
-        }
+      }
     else  $("#email").prop("disabled",false);
                
     if (user.UserRole != undefined)

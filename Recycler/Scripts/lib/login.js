@@ -57,14 +57,27 @@ app.Login = (function () {
 
         // Authenticate to use Backend Services as a particular user
         var login = function (user,pass) {
-
+                                   
             var username = $loginUsername.val();
-            var password = $loginPassword.val();
+            var password = $loginPassword.val();          
+            
             
             if(user!== undefined && pass!==undefined){
                 username = user;
                 password = pass;
             }
+            
+             
+            if (!validateEmail(username)) {
+                navigator.notification.alert("You should fill a valid email!", null, "");
+                return;
+            }   
+            
+            if(username=="" || password==""){
+                alert("Please, fill username and password!");
+                return;
+            }
+                
 
           //  console.log(
             // Authenticate using the username and password
@@ -90,6 +103,10 @@ app.Login = (function () {
                                                 fillUserData(data.result);
                                                 
                                                  localStorage.Language = data.result.LanguageID;
+                                                  if (localStorage.Language == undefined || localStorage.Language == "undefined") { 
+                                                        localStorage.Language = 3;
+                                                        localStorage.LanguageType = "en";
+                                                    }
                                                 
 
                                                 switch (localStorage.Language) {
@@ -132,19 +149,22 @@ app.Login = (function () {
                             else{
                                 if(password.length>0 && username.length>0)
                                navigator.notification.confirm(
-                                    "This username doesn't exist in our database. Do you want to register with it?", // message
+                                    "This email doesn't exist in our database. Do you want to register with it?", // message
                                      function(button){
-                                         if(button==1)
-                                          app.everlive.Users.register(username,password,[], function (data) {
+                                         if(button==1){
+                                             var attrs = {
+                                                Email: username
+                                            };
+                                             
+                                          app.everlive.Users.register(username,password,attrs, function (data) {
                                                      app.everlive.Users.login(username, password,function(){
                                                          
                                                           app.application.navigate('basic_setup.html');
                                                           app.everlive.Users.currentUser( 
                                                             function(data) { 
-                                                                console.log(data.result);    
-                                                               
+                                                               console.log(data.result); 
                                                                localStorage.User = JSON.stringify(data.result);
-                                                                fillUserData(data.result);
+                                                               fillUserData(data.result);
                                                             });
                                                      },function(err){
                                                           app.showError(err.message);
@@ -154,7 +174,7 @@ app.Login = (function () {
                                                 function(error){
                                                     alert(JSON.stringify(error));
                                                 });
-                                         
+                                         }
                                      },    
                              	  'Register',
                                     ['Register',           // title

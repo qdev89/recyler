@@ -1,3 +1,68 @@
+function validateEmail(txtEmail) {
+    
+    var a = $.trim(txtEmail);
+    // var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{1,4}$/;
+    var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
+    if (filter.test(a)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function resetPassword(email){
+    var  object = {
+            "Email": email
+        };
+      
+   if( email != undefined && email!="" && validateEmail(email))   
+       
+    $.ajax({
+        type: "POST",
+        url: 'http://api.everlive.com/v1/' + appSettings.everlive.apiKey +'/Users/resetpassword',
+        contentType: "application/json",
+        data: JSON.stringify(object),
+        success: function(data) {
+            alert("Password reset email send successfully. Check your email box.");
+        },
+        error: function(error) {
+            console.log(error);
+            if(error.responseText!=undefined)
+                var err = JSON.parse(error.responseText);
+            if(err.message!=undefined)
+                alert(err.message);
+        }
+    });
+    
+    else alert("Please enter a valid email!");
+    
+    
+}
+
+function sendMail(name,recipients,context){
+    var attributes = {
+        "Recipients": recipients,
+        "Context": context
+    };
+
+    $.ajax({
+        type: "POST",
+        url: 'http://api.everlive.com/v1/Metadata/Applications/' + appSettings.everlive.apiKey +'/EmailTemplates/'+name+'/send',
+        contentType: "application/json",
+        headers: {
+            "Authorization": "Masterkey " + appSettings.msKey
+        },
+        data: JSON.stringify(attributes),
+        success: function(data) {
+           // alert("Email successfully sent.");
+        },
+        error: function(error) {
+            alert(JSON.stringify(error));
+        }
+    });
+}
+
 function goToTop(e){
    // console.log(e);
     e.sender.scroller.reset();
@@ -5,7 +70,10 @@ function goToTop(e){
 }
 
 function TranslateApp(){
-    if(localStorage.LanguageType==undefined) localStorage.LanguageType = "en";
+    if (localStorage.LanguageType == undefined) { 
+            localStorage.Language = 3;
+            localStorage.LanguageType = "en";
+        }
     
    // log(localStorage.LanguageType);
      var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" }; 
@@ -31,7 +99,7 @@ var userData =null;
         $(document.body).height(window.innerHeight);      
        
         localStorage.removeItem("User");
-        if (localStorage.Language == undefined) { 
+        if (localStorage.Language == undefined || localStorage.Language == "undefined") { 
             localStorage.Language = 3;
             localStorage.LanguageType = "en";
         }
@@ -236,44 +304,6 @@ function StopSpecialchrOnly(evt) {
     else
         return true;
 }
-function runScript(e) {
-    if (e.keyCode == 13) {
-        user.CreateClick();
-        if (user.blnFlag) {
-            if (user.UserID == null || user.UserID == "") {
-                user.UserID = '0';
-            }
-            user.UserRole = $("#role option:selected").val();
-            user.Username = $("#username_fb").val();
-            user.Password = $("#password_fb").val();
-            user.Email = $("#email").val();
-            user.FirstName = $("#name").val();
-            user.CompanyName = $("#companyname").val();
-            user.Address = $("#homeadress").val();
-            user.City = $("#homecity").val();
-            user.Zip = $("#zip").val();
-            user.Country = $("#country").val();
-            if (user.Country == 'US') {
-                user.State = $("#state").val();
-            } else {
-                user.State = $("#txtState").val();
-            }
-                        
-            user.Phoneno = $("#phoneno").val();
-                        
-            if ($("#Languages option:selected").val() == null || $("#Languages option:selected").val() == "") {
-                user.Language = localStorage.Language;
-            } else {
-                user.Language = $("#Languages option:selected").val();
-                localStorage.Language = user.Language;
-            }
-            user.CreateUser();
-        } else {
-            alert(user.Error);
-            user.Error = '';
-        }
-    }
-}
 
 function takePicture() {
     var destinationType = navigator.camera.DestinationType;              
@@ -339,24 +369,6 @@ function GetProductOwner(ID) {
 }
 
 
-function logout() {
-    FB.logout(function (response) {
-        alert('logged out');
-    });
-}
-            
-function login() {
-    FB.login(
-        function (response) {
-            if (response.session) {
-                alert('logged in');
-            } else {
-                // alert('not logged in');
-            }
-        },
-        { scope: "email" }
-        );
-}
 
 function handleStatusChange(session) {
     if (session.authResponse) {
@@ -487,7 +499,7 @@ function signupLogin() {
 
     $('#email').focus();
 
-    if (localStorage.Language == undefined && localStorage.Language == null || localStorage.Language == 0) {
+    if (localStorage.Language == undefined || localStorage.Language == null || localStorage.Language == 0) {
         localStorage.Language = "3";
         localStorage.LanguageType = "en";
         GetAllLanguages();
@@ -518,6 +530,7 @@ function signupLogin() {
             }
 
             localStorage.Language = $(this).val();
+            console.log($(this));
 
             $('#ddlCountry').html('');
 

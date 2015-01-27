@@ -6,7 +6,7 @@
     <form  data-bind="events: { keyup: checkEnter }" id="login-form">
         <ul data-role="listview" data-style="inset">
             <li class="username">
-                <input type="text" id="loginUsername" placeholder="Username" required validationMessage="Username is required!" />
+                <input type="text" id="loginUsername" placeholder="Email" required validationMessage="Email is required!" />
             </li>
             <li class="password">
                 <input type="password" id="loginPassword" placeholder="Password" required validationMessage="Password is required!" />
@@ -16,35 +16,71 @@
     <ol class="group-wrp">
         <li>
             <span id="login" data-role="touch" data-bind="events: { tap: login }">
-                <a data-role="button" class="btn btn-login" style="color:white;">Login</a>
+                <a data-role="button" class="btn btn-login" style="color:white;">Login / Register</a>
             </span>
         </li>
         <li class="oauth cf">
-            <span id="loginWithFacebook" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithFacebook }">
-                <a data-role="button" class="btn btn-login-fb">Login with Facebook</a>
-            </span>
-            <span id="loginWithGoogle" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithGoogle }">
-                <a data-role="button" class="btn btn-login-google">Login with Google</a>
-            </span>
-            <span id="loginWithLiveID" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithLiveID }">
-                <a data-role="button" class="btn btn-login-liveid">Login with Live ID</a>
-            </span>
-            <span id="loginWithADSF" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithADSF }">
-                <a data-role="button" class="btn btn-login-adsf">Login with ADSF</a>
-            </span>
-        </li>
-           </ol>
+        <span id="loginWithFacebook" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithFacebook }">
+            <a data-role="button" class="btn btn-login-fb">Login with Facebook</a>
+        </span>
+        <span id="loginWithGoogle" class="oauth-item" style="float:right" onclick="openModal()" data-role="touch"><!-- data-bind="events: { tap: loginWithGoogle }"-->
+            <a data-role="button" class="btn "  style="color:white;">Forgot?</a>
+        </span>
+       <!-- <span id="loginWithLiveID" class="oauth-item" data-role="touch"><!-- data-bind="events: { tap: loginWithLiveID }"
+            <a data-role="button" class="btn "  style="color:white;">Create</a>
+        </span>-->
+    </ol>
     <div align="center">
-        <br><div align="center">
-        <br><img src="images/badge6.png" width="65%"><br>
+        <br>
+        <div align="center">
+            <br><img src="images/badge6.png" width="65%"><br>
+        </div>
     </div>
-    </div>
-    
+
     <div>
         <p style="color:white;">
             &copy; <span data-bind="text: getYear"></span> Recycleworld Aps.
         </p>
     </div>
+            
+    <div data-role="modalview" id="modalview-reset" style="width: 90%;height:215px;">
+        <div data-role="header">
+            <div data-role="navbar">            
+                <span>Reset password</span>
+                 <a data-align="right" data-role="button" onclick="closeItemModal()" >X</a>
+            </div>
+        </div>
+        
+            <ul data-role="listview" data-style="inset" class="km-widget km-listview km-list km-listinset">
+                <li class="password">
+                    <input type="text" class="email" placeholder="Enter email" />
+                </li>
+            </ul>    
+        
+          <div class="buttons-div">
+                <a class="btn btn-primary" type="button" data-role="button" onclick="reset()" >Reset</a>              
+          </div>
+    </div>
+            
+    <script>
+        function reset() {                      
+          //  var username = $("#modalview-reset .username").val();
+            var email = $("#modalview-reset .email").val();                            
+            if (email == "") {
+                alert("You have to enter username or email !");
+                return;
+            }                      
+            resetPassword( email); 
+            closeItemModal();
+        }
+        
+        function closeItemModal() {
+            $("#modalview-reset").kendoMobileModalView("close");
+        }
+                
+        function openModal() { 
+            $("#modalview-reset").kendoMobileModalView("open");                 	
+        }
+    </script>
 </div>
 
-            

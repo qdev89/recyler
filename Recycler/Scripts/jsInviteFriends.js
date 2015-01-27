@@ -173,21 +173,6 @@ function InviteFriends() {
 
 
 
-
-function validateEmail(txtEmail) {
-
-    var a = $.trim(document.getElementById(txtEmail).value);
-    // var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{1,4}$/;
-    var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
-    if (filter.test(a)) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-
 function validateNumeric(txtNumeric) {
     var data = $.trim(document.getElementById(txtNumeric).value);
 

@@ -454,6 +454,29 @@ function SaveSpot() {
                       function(data2) {
                           // console.log(data);
                           app.application.navigate("myspots.html");
+                          var templateName = emailTemplates.spot;
+                          
+                          
+                          
+                           switch(Data.SpotType){                                                             
+                                case "FREE Food": 
+                                templateName =emailTemplates.food;
+                                break;
+                                         
+                                case "Garage sale/Market/Event": 
+                                templateName =emailTemplates.garageSale  ;
+                                break;
+                                
+                                case "Food donation": 
+                                templateName =emailTemplates.food;
+                                break;
+                                
+                                case "Help": 
+                                templateName =emailTemplates.help;
+                                break;                               
+                                
+                            }  
+                            sendMail(templateName,[userData.Email],{"appName":emailTemplates.DefaultFromName,"DefaultFromName":emailTemplates.DefaultFromName ,"userName":userData.DisplayName, "FromEmail":emailTemplates.FromEmail});
                       },
                       function(error) {
                           console.log(error);

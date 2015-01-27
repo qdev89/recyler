@@ -16,19 +16,41 @@
 
                 <div style="text-align:center">
                     <h2>
-                        <label  data-localize="NearestPoints">3 donation spots closest to you</label>
+                        <label  data-localize="NearestPoints">Donation spots closest to you</label>
                     </h2>
                 </div>
                  <div >
-                      <table>
-                           <tr><td>
+                    
+  <table width="100%">
+                           <tr>
+							<td>
                              Place name                                  
                                 </td><td>
-                                show me info <img src="images/info_icon.png" alt=""/>
-                                </td>
-                                <td>
-                                 <input id="message" value="3" name="abc" type="radio">
-                                </td></tr>
+                                &nbsp;Place info </td>
+                                <td>&nbsp;Get message</td>
+                                </tr>
+							<tr>
+								<td>
+                             Name 1</td><td>
+                                <img src="images/info_icon.png" alt=""/></td>
+                                <td> 
+								<input type="radio" value="V1" name="brigade2" id="brigade1" checked ></td>
+                                </tr>
+							<tr>
+								<td>
+                             Name 2</td><td>
+                                <img src="images/info_icon.png" alt=""/></td>
+                                <td> 
+								<input type="radio" value="V1" name="brigade3" id="brigade2" checked ></td>
+                                </tr>
+							<tr>
+								<td>
+                             Name 3</td><td>
+                                <img src="images/info_icon.png" alt=""/></td>
+                                <td> 
+								<input type="radio" value="V1" name="brigade4" id="brigade3" checked ></td>
+                                </tr>
+                        
                       </table>
                  </div>
                  
@@ -41,23 +63,19 @@
                 </select>-->
                 <br>
                 <div data-role="fieldcontain">
-                    <span name="spn">
-                        <label for="write"   data-localize="write">Write Message</label>
-                    </span><br>
-                    <textarea name="textarea"  style="width:100%;height:140px;" maxlength="200"  id="textinput" style="text-align:left"></textarea>
-                    <div>
-                        <a data-role="button" data-transition="fade" id="SendMessage">
+                         <div>
+                        <a data-role="button" data-transition="fade" id="SendMessage" class="btn btn-blue">
                             <!-- next -->
                             <span name="spn">
-                                <label for="sendsmsfood"   data-localize="sendsmsfood">Send SMS - online 1 hour later </label>
+                                <label for="sendsmsfood"   data-localize="sendsmsfood">Send message</label>
                             </span>
                         </a>
-                    </div>
+                    </div><br>
                     <div>
                         <a data-role="button" data-transition="fade" id="PostNow"  class="btn btn-blue">
                             <!-- next -->
                             <span name="spn">
-                                <label for="putonline"   data-localize="putonline">Put online now to others</label>
+                                <label for="putonline"   data-localize="putonline">No message - give to others</label>
                             </span>
                         </a>
                     </div>

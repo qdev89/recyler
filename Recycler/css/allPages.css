@@ -69,7 +69,7 @@ input[type=checkbox]
     width: 23px;
     height: 15px;
     margin: 0 0 0 0;
-    outline: 0!important;
+    outline: 0 !important;
 }
             
 textarea
@@ -562,6 +562,10 @@ select#country { width: 150px; }
 {
     width: 100%;
     text-decoration: none;
+     background-color: #ffffff;
+     color: dark-grey;
+     border-style: solid;
+     border-color: #bbbbbb;
 }
 
 .btn
@@ -900,31 +904,33 @@ select#country { width: 150px; }
     background-color: #e84c3d;
 }
 
-#friendsApp .oauth-item .btn
+#friendsApp #loginWithFacebook .btn
 {
     background-position: 50% 50%;
     background-repeat: no-repeat;
+    width: 160px;
 }
 
 #friendsApp .btn-login-fb
 {
     background-image: url(../images/icon-facebook.png);
+    
 }
 
-#friendsApp .btn-login-google
+/*#friendsApp .btn-login-google
 {
-    background-image: url(../images/icon-google.png);
-}
+    background-image: url(../images/forgot.png);
+    }
 
 #friendsApp .btn-login-liveid
 {
-    background-image: url(../images/icon-liveid.png);
-}
+    background-image: url(../images/create.png);
+}*/
 
-#friendsApp .btn-login-adsf
+/*#friendsApp .btn-login-adsf
 {
-    background-image: url(../images/icon-adsf.png);
-}
+    background-image: url(../images/create.png);
+}*/
 
 #friendsApp .km-header .nav-button
 {
@@ -1090,15 +1096,31 @@ font-size: 1rem;
 {
     float: left;
     margin: 0 1%;
-    width: 23%;
+    width: 48%;
 }
 
 #friendsApp .welcome-scrn .group-wrp .oauth .btn
 {
     overflow: hidden;
     height: 45px;
+ 
+
+}
+
+#friendsApp .welcome-scrn .group-wrp #loginWithFacebook .btn
+{ 
     text-indent: -999px;
 }
+
+#friendsApp .welcome-scrn .group-wrp :not(#loginWithFacebook) .btn:not(.btn-login) .km-text
+{ 
+    font-size:18px;
+    font-weight:bold;
+}
+
+#friendsApp .welcome-scrn .group-wrp :not(#loginWithFacebook) .btn:not(.btn-login){
+padding-top: 12px;
+    }
 
 #friendsApp .welcome-scrn .group-wrp .oauth .btn span,
 #friendsApp .welcome-scrn .group-wrp .btn-signup span
@@ -2128,10 +2150,23 @@ fieldset{border:none !important;}
     padding: 1%;
 }
 
+.spotDate{font-weight:bold;}
 
+#modalview-reset .buttons-div .btn-primary{
+    width : 100% !important;
+    text-align:center;
+}
+#modalview-reset .buttons-div{margin:1em;}
 
+#modalview-reset {
+    text-align:center;
+}
 
-
+#modalview-reset .km-content{
+    padding-top: 20px;
+    background:white !important;
+   
+}
 
 
 

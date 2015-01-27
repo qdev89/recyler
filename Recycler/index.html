@@ -68,7 +68,7 @@
             'spot_difference.html','#welcome','index.html','me.html','giveaway.html','account_differences.html',
             'basic_setup_twitter.html','invite.html','mystuff.html', 'signup_login.html','howworks.html','editspot.html',
             'niras.html','donate.html','food.html','createspot.html','about_this_app.html','spotInfo.html',
-            'about_recycleworld.html','terracycle.html','qa.html','findonmap.html','basic_setup.html']">
+            'about_recycleworld.html','terracycle.html','qa.html','findonmap.html','basic_setup.html','report.html','membership.html', 'profile.html', 'nearest_food.html']">
 
             <ul data-role="listview" data-type="group">
                 <li>
@@ -139,17 +139,38 @@
                                 </label>
                             </a>
                         </li>
+                                                 <li>
+                            <a onclick="navigateFromDrawer('nearest_food.html')" >
+                                <label for="fooddonation" data-localize="fooddonation">
+                                    Nearest food
+                                </label>
+                            </a>
+                        </li>
                     </ul>
                     <div class="menuhead"   data-localize="titletext_account">                       
                           
                                	 My account
                     </div>
                     <ul>
-                        <li>
+                                               <li>
+                            <a onclick="navigateFromDrawer('howworks.html')"  >
+                                <label for="titeltext_how" data-localize="titletext_how">
+                                    How it works
+                                </label>
+                            </a>
+                        </li>
+                         <li>
                             <a onclick="navigateFromDrawer('account_differences.html')" >
                                 <label for="differencetext"  data-localize="differencetext">
                                     Account differences
                                 </label>
+                            </a>
+                        </li>
+                                                 <li>
+                            <a onclick="navigateFromDrawer('membership.html')" >
+                                <label for="membership"  data-localize="membership">
+                                    Membership
+                                 </label>
                             </a>
                         </li>
                         <li>
@@ -163,6 +184,13 @@
                             <a onclick="navigateFromDrawer('me.html')" >
                                 <label for="heartstatus"  data-localize="heartstatus">
                                     My stats
+                                </label>
+                            </a>
+                        </li>
+                                                 <li>
+                            <a onclick="navigateFromDrawer('profile.html')" >
+                                <label for="heartstatus"  data-localize="profile">
+                                    My profile
                                 </label>
                             </a>
                         </li>
@@ -194,6 +222,13 @@
                                 </label>
                             </a>
                         </li>
+                           <li>
+                            <a onclick="navigateFromDrawer('report.html')" >
+                                <label for="report" data-localize="report" >
+                                    Report an error
+                                </label>
+                            </a>
+                        </li>
                     </ul>
                     <div class="menuhead"  data-localize="about">  
                        
@@ -201,13 +236,7 @@
                        	 
                     </div>
                     <ul>
-                        <li>
-                            <a onclick="navigateFromDrawer('howworks.html')"  >
-                                <label for="titeltext_how" data-localize="titletext_how">
-                                    How it works
-                                </label>
-                            </a>
-                        </li>
+
                         <li>
                             <a onclick="navigateFromDrawer('crowdfund.html')" >
                                 <label  for="qa" data-localize="qa">
@@ -243,7 +272,9 @@
                                     Verified by Niras
                                 </label>
                             </a>
+
                         </li>                      
+                                               
                         <li>
                             <a onclick="navigateFromDrawer('contactus.html')" >
                                 <label for="contact" data-localize="contact" >

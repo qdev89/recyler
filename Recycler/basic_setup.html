@@ -1,20 +1,27 @@
 <div id="registerPage" data-title="Basic settings" data-role="view" data-init="setupInit" data-show="TranslateApp" style="background-color: #f3f3f3; height:100%; min-height:100%;">
-    <div data-role="content">
-       
-
-        <!-- start of html -->
-        <table class="content_table">
+    <div data-role="content"> <!-- start of html -->
+   <table class="content_table">
             <tr>
                 <td align="center" colspan="2" text-align="center" >
-                    <h4>
-                        <a data-role="button" id="actDiff"  class="btn btn-blue" href="account_differences.html">
+                     <a data-role="button" id="actDiff"  class="btn btn-blue" href="account_differences.html">
                             <label for="differencetext" data-localize="differencetext">What is the difference? </label>
                         </a>
-                    </h4>
-
-                </td>
+                    </td>
             </tr>
-            <tr id="trMemberShip">
+            
+            <tr>
+                <td >
+                    <div id="image_div" align="left" width="100" text-align="center">
+                       <br> <img id="image" alt="image" width="100%" src="images/imageplaceholder.png" onClick="takePicture();"><br>
+
+                        <!-- takepicture -->
+                        
+                            <label for="pictureyou" data-localize="pictureyou"> Picture of you?</label>
+                        
+                    </div>
+                </td><td width="50%" align="right"> <img border="0" width="75%" src="images/notsupporter.png"></td>
+            </tr>
+             <tr id="trMemberShip">
                 <td colspan="2">
                     <select id="role" name="account0"  class="turnintodropdown"  >
                     </select>
@@ -30,32 +37,11 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div id="image_div" align="center" width="100" text-align="center">
-                        <img id="image" alt="image" width="60%" src="images/imageplaceholder.png" onClick="takePicture();">
-
-                        <!-- takepicture -->
-                        <h4>
-                            <label for="pictureyou" data-localize="pictureyou"> Picture of you?</label>
-                        </h4>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
                     <label for="mandatory" data-localize="mandatory">Fields marked * are mandatory</label>
 
                 </td>
             </tr>
-            <tr>
-                <td align="left" height="28" width="130">
-                    <label for="emailtitel" data-localize="emailtitel">Email: *</label>
-                </td>
-                <td align="left" height="28">
 
-                    <input type="email" name="email" tabindex="2" id="email"  class="tb1" value="" placeholder="Email" maxlength="255" >
-
-                </td>
-            </tr>
             <tr id="username" style="display:none">
                 <td align="left" width="130">
                     <label for="brugernavntitel"  data-localize="brugernavntitel">
@@ -87,18 +73,27 @@
             <tr>
                 <td align="left" width="130">
                     <!-- name -->
-                    <label for="name"   data-localize="name">Name:*</label>
+                    <label for="name"   data-localize="name">Name:</label>*
 
                 </td>
                 <td align="left">
-
                     <input type="text" name="name" tabindex="3" onKeyPress="return StopSpecialchrOnly(event);"  class="tb1" id="name" value="" placeholder="name" maxlength="30">
+
+                </td>
+            </tr>
+                    <tr>
+                <td align="left" height="28" width="130">
+                    <label for="emailtitel" data-localize="emailtitel">Email:</label>*
+                </td>
+                <td align="left" height="28">
+
+                    <input type="email" name="email" tabindex="2" id="email"  class="tb1" value="" placeholder="Email" maxlength="255" >
 
                 </td>
             </tr>
             <tr>
                 <td align="left" width="130">
-                    <label for="phoneno"  data-localize="phoneno">Phone No: *</label>
+                    <label for="phoneno"  data-localize="phoneno">Phone No: </label>*
                 </td>
                 <td align="left">
 
@@ -159,7 +154,7 @@
                 <td colspan="2" align="left">
                     <!-- homecountry -->
 
-                    <label for="homecountry"  data-localize="homecountry">Country: *</label>
+                    <label for="homecountry"  data-localize="homecountry">Country:</label>*
                 </td>
             </tr>
             <tr>
@@ -491,19 +486,98 @@
             <tr>
                 <td align="left">
                     <!--  sprogtitel -->
-                    <label for="sprogtitel"  data-localize="language">Language:</label>
+                    <label for="sprogtitel"  data-localize="language">Language:</label>*
                 </td>
                 <td align="left">
 
-                    <div id="country-select">
-                        <select id="Languages" name="Language" tabindex="11">
+                  <div id="country-select0">
+                        <select id="Languages0" name="Language0" tabindex="11">
                         </select>
                     </div>
 
                 </td>
             </tr>
+            <tr>
+                <td align="left">
+                    <!--  sprogtitel -->
+                    <label for="weight"  data-localize="weight">Weight unit:</label>*
+                </td>
+                <td align="left">
+
+                    <div id="country-select">
+                        <select id="weight" name="weight" tabindex="11" size="1">
+                        <option>kg</option>
+						<option>pound</option>
+                        </select>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    <!--  sprogtitel -->
+                   <label for="distance"  data-localize="distance"> Distance unit:</label>
+                </td>
+                <td align="left">
+
+                    <div id="distance-select">
+                        <select id="distance" name="distance" tabindex="11" size="1">
+                        <option>Km</option>
+						<option>Miles</option>
+                        </select>
+                    </div>
+
+                </td>
+            </tr>                         <tr>
+                <td align="left" width="130">
+                    <!-- Company Name-->
+                    <label for="facebook"   data-localize="facebookadress">Facebook adress: </label>
+
+                </td>
+                <td align="left">
+
+                    <input type="text" name="facebookadress" id="facebookadress" onKeyPress="return StopSpecialchrOnly(event);" tabindex="4"  class="tb1"  value="" placeholder="facebook adress" maxlength="30">
+
+                </td>
+            </tr>
+                                      <tr>
+                <td align="left" width="130">
+                    <!-- Company Name-->
+                    <label for="webadress"   data-localize="webadress">Web adress: </label>
+
+                </td>
+                <td align="left">
+
+                    <input type="text" name="webadress" id="wwwadress" onKeyPress="return StopSpecialchrOnly(event);" tabindex="4"  class="tb1"  value="" placeholder="web adress" maxlength="30">
+
+                </td>
+            </tr>
+                                      <tr>
+                <td align="left" width="130">
+                    <!-- Company Name-->
+                    <label for="twitteradress"   data-localize="twitteradress">Twitter adress: </label>
+
+                </td>
+                <td align="left">
+
+                    <input type="text" name="twitteradress" id="twitteradress" onKeyPress="return StopSpecialchrOnly(event);" tabindex="4"  class="tb1"  value="" placeholder="facebook adress" maxlength="30">
+
+                </td>
+            </tr>
+                  <tr>
+                <td align="left" width="130">
+                    <!-- Company Name-->
+                    <label for="snapchat"   data-localize="snapchat">Snap Chat: </label>
+
+                </td>
+                <td align="left">
+
+                    <input type="text" name="snapchat" id="snapchat" onKeyPress="return StopSpecialchrOnly(event);" tabindex="4"  class="tb1"  value="" placeholder="Snap chat" maxlength="30">
+
+                </td>
+            </tr>
              <tr><td>
-                  
+                  Terracycle brigade:     <input type="radio" value="1" name="brigade" id="brigade" >
                   
                   </td>
                   <td>
@@ -518,6 +592,14 @@
                     <a data-role="button" onclick="saveUserData()"   class="btn btn-blue" >
                         <!--  gem -->
                         <label   data-localize="save">Save/Update</label>
+                    </a>
+                </td>
+            </tr>
+                         <tr>
+                <td colspan="2">
+                    <a data-role="button" onclick="saveUserData()"   class="btn btn-blue" >
+                        <!--  gem -->
+                        <label  data-localize="view">View my profile page</label>
                     </a>
                 </td>
             </tr>
@@ -550,7 +632,6 @@
                 </td>
             </tr>
         </table>
-
         <!-- end of html -->
 
         <br><br>

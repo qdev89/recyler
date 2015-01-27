@@ -1,0 +1,50 @@
+<div data-role="view" data-title="Welcome" class="welcome-scrn form-view" id="welcome"style="background-color: #ffffff;" data-layout="tabstrip-layout" data-model="app.Login" data-init="app.Login.init" data-show="app.Login.show">
+    <div align="center">
+        <br><img src="images/recycleworld_logo1.png" width="90%"><br><img src="images/flags.png" >
+    </div>
+    <br>
+    <form  data-bind="events: { keyup: checkEnter }" id="login-form">
+        <ul data-role="listview" data-style="inset">
+            <li class="username">
+                <input type="text" id="loginUsername" placeholder="Username" required validationMessage="Username is required!" />
+            </li>
+            <li class="password">
+                <input type="password" id="loginPassword" placeholder="Password" required validationMessage="Password is required!" />
+            </li>
+        </ul>
+    </form>
+    <ol class="group-wrp">
+        <li>
+            <span id="login" data-role="touch" data-bind="events: { tap: login }">
+                <a data-role="button" class="btn btn-login" style="color:white;">Login</a>
+            </span>
+        </li>
+        <li class="oauth cf">
+            <span id="loginWithFacebook" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithFacebook }">
+                <a data-role="button" class="btn btn-login-fb">Login with Facebook</a>
+            </span>
+            <span id="loginWithGoogle" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithGoogle }">
+                <a data-role="button" class="btn btn-login-google">Login with Google</a>
+            </span>
+            <span id="loginWithLiveID" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithLiveID }">
+                <a data-role="button" class="btn btn-login-liveid">Login with Live ID</a>
+            </span>
+            <span id="loginWithADSF" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithADSF }">
+                <a data-role="button" class="btn btn-login-adsf">Login with ADSF</a>
+            </span>
+        </li>
+           </ol>
+    <div align="center">
+        <br><div align="center">
+        <br><img src="images/badge6.png" width="65%"><br>
+    </div>
+    </div>
+    
+    <div>
+        <p style="color:white;">
+            &copy; <span data-bind="text: getYear"></span> Recycleworld Aps.
+        </p>
+    </div>
+</div>
+
+            
