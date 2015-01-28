@@ -14,7 +14,7 @@
 
     <script type="text/x-kendo-template" id="productTemplate">
         
-        <div onclick="openModal(this)">
+        <div onclick="goToProduct(this)" productID="${Id}">
             <div class="img-holder">
                 <img class="li-image" src="${Image}"  />
             </div>
@@ -34,8 +34,14 @@
     
     
     <script>
-        function openModal(row){
+        
+        function goToProduct(row){         
+            console.log($(row).attr("productID"));
+            app.application.navigate("product.html?productID=" + $(row).attr("productID"));   
             
+        }       
+                
+        function openModal(row){            
   			var modal = "#modalview-spot";                 
          	 $(modal+" .image").attr("src",  $(row).find(".li-image").attr("src"));
               $(modal+" .name").html(  $(row).find(".li-name").html());
@@ -43,8 +49,7 @@
               $(modal+" .price").html(  $(row).find(".li-price").html());
               $(modal+" .desc").html(  $(row).find(".li-desc").html());
               $(modal+" .date").html(  $(row).find(".li-date").html());                  
-              $(modal).kendoMobileModalView("open");
-         	
+              $(modal).kendoMobileModalView("open");         	
         }
         
          function closeItemModal() {

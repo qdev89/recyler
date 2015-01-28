@@ -54,22 +54,40 @@ function GetEarthHeartData(e) {
                 var products = data.result;                             
                 var lengthSupporters = 0;
                 var transactions = 0;
+                var transactionsLastMonth=0;
                             
+                var monthBefore = new Date();
+                monthBefore.setDate(monthBefore.getDate()-30);
+                
                 $.each(products, function(indexP, valueP) {                                         
                     if (valueP.CreatedBy == User.Id && valueP.UserID != valueP.CreatedBy) {
                         log(valueP.CreatedBy, User.Id, valueP.UserID);
                         transactions++;
+                        
+                        if(new Date(valueP.ModifiedAt) > monthBefore)
+                            transactionsLastMonth++
                     }
-                });                             
-                            
+                });            
+                
+                console.log("last month",transactionsLastMonth); 
+               // transactionsLastMonth *= 25;
+                var transPercent = transactionsLastMonth*25;
+                if(transPercent>100)
+                    transPercent=100;
+                                
+                var img = 'images/EarthImages/' + transPercent + '_percent.jpg';               
+              
+                $("#HeartStatus").html(transPercent);
+                $("#imgHeart img").attr("src",img)
+                
                 $.each(users, function(indexU, valueU) {  
                     if (valueU.UserRole == "2")
                         lengthSupporters++;                                    
                     valueU.totalCo = 0;                                    
-                    $.each(products, function(indexP, valueP) {                                    	                                    	
-                        if (valueU.Id == valueP.UserID) {
+                    $.each(products, function(indexP, valueP) {   
+                         if (valueU.Id == valueP.CreatedBy && valueU.Id != valueP.UserID) {
                             if (valueP.CO2 != undefined)
-                                valueU.totalCo+=valueP.CO2;     
+                                  valueU.totalCo+=valueP.CO2; 
                         }                                          
                     });                                    
                 }); 

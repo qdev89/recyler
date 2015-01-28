@@ -308,11 +308,8 @@ function saveItem() {
             }
         }
     }
-                
-  /*  if ($('#Save').attr('disabled') == 'disabled')
-        return;
-    else
-        $('#Save').attr('disabled', 'disabled');*/
+               
+ 
                     
     if (flag == false) {
         $('#Save').removeAttr('disabled');

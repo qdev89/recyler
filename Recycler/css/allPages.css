@@ -2164,10 +2164,19 @@ fieldset{border:none !important;}
 
 #modalview-reset .km-content{
     padding-top: 20px;
-    background:white !important;
-   
+    background:white !important;   
 }
 
+#login .btn-login{
+    height: 45px;
+    padding-top: 12px;
+}
 
+#login .btn-login .km-text{
+    font-size: 18px;
+    font-weight: bold;
+}
 
-
+li.oauth.cf{
+    margin-top: 10px !important;
+}

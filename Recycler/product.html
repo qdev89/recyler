@@ -1,162 +1,47 @@
-<div data-role="view" data-init="productInit" id="product-tabstrip" data-show="TranslateApp"  style="background-color:white">
+<div data-role="view" data-init="productInit" id="product-tabstrip" data-title="Product" data-show="loadProduct"  style="background-color:white">
 
     <div data-role="content">
 
         <div id="scrollview-container">
-            <div data-role="scrollview" data-page="2">
-                <div class="photo photo1" data-role="page">
+            <div >
+               <!-- <div  class="photo photo1" data-role="page">
                 </div>
                 <div class="photo photo2" data-role="page">
                 </div>
                 <div class="photo photo3" data-role="page">
-                </div>
+                </div>-->
 
             </div>
         </div>
-
-        <!-- <ul data-role="listview" >
-        <li text align="center">-->
-        <!--<div data-role="fieldcontain" style="margin-bottom: 10px; text-align: center">
-        <div style="width: 100%">
-        <div style="float: left; width: 80%; text-align: left">
-        <h1>
-                                       
-        <label for="productnametext" id="ProductName" class="wordwrap" style="font-weight: bold;
-        font-size: large">
-        </label>
-        </h1>
-        </div>
-        <div style="float: left; text-align: right; width: 20%">
-        <img onclick="getLoginStatus2();" src="images/facebook_button.png" alt="fb">
-        </div>
-        <div style="clear: both">
-        <h2>
-        <div style="text-align: left" id="ProductCity" class="wordwrap">
-        </div>
-        </h2>
-        <h2>
-        <strong>
-        <b>
-        <div style="text-align: left; font-weight: bold; font-size: 8pt" id="ProductCreatedDate">
-        </div>
-        </b>
-                                            
-        </strong>
-        </h2>
-        </div>
-        </div>
-        <div style="clear: both;">
-        <div style="float: left; display: none; margin-left: 15%" id="swap">
-        <img src="images/swap_1.png" width="65" height="17" alt="swap">
-        </div>
-        <div style="float: left; display: none" id="priceTag">
-        <img src="images/ptag_1.png" width="65" height="17" alt="price">
-        </div>
-        <div style="float: left; display: none; margin-left: 15%" id="free">
-        <img src="images/free_green_1.png" width="65" height="17" alt="price">
-        </div>
-        <div style="float: left;">
-        <label for="givedescription" id="Price" style="color: #046DAF; font-weight: bold;
-        font-size: 12pt; padding-left: 6px">
-        </label>
-        </div>
-                    
-        </div>
-        <div style="clear: both;">
-        <img align="middle" id="image" alt="image" style="width: 95%; height: 180px" src="images/background_big.jpg" />
-        </div>
-        </div>-->
-        <!--     <table width="100%">
-        <tr>
-        <td style=" font-weight:bold">
-        <label for="Tags" data-localize="tags">
-        Tags:
-        </label>
-        </td>
-        </tr>
-        <tr>
-        <td id="Tags" style="color: #000000;font-weight: normal; font-size: 8pt">
-        </td>
-        </tr>
-        <tr>
-        <td style=" font-weight:bold">
-                                  
-        <label for="givedescription" data-localize="givedescription">
-        Titel / headline
-        </label>
-        :
-        </td>
-        </tr>
-        <tr>
-        <td id="whatisit" style="color: #000000;font-weight: normal; font-size: 8pt">
-        </td>
-        </tr>
-        <tr>
-        <td style=" font-weight:bold">
-                                   
-        <label for="long_description_title" data-localize="long_description_title">
-        Further information:
-        </label>
-        </td>
-        </tr>
-        <tr>
-        <td id="long" style="color: #000000;font-weight: normal; font-size: 8pt">
-        </td>
-        </tr>
-        <tr>
-        <td id="tdimightlike" style="display: none;font-weight:bold">
-        <label for="like" data-localize="like">
-        I might like instead:
-        </label>
-        </td>
-        </tr>
-        <tr>
-        <td id="imightlike" style="color: #000000;font-weight: normal; font-size: 8pt">
-        </td>
-        </tr>
-        </table>
-        <table>
-        <tr>
-        <td width="50%">
-        <a data-role="button" data-transition="fade" id="WantIt">
-                                       
-        <span name="spn">
-        <label for="iwantit" data-localize="iwantit">
-        I want it
-        </label>
-        </span>
-        </a>
-        </td>
-        <td width="50%">
-        <a data-role="button" data-transition="fade" id="NoInterest">
-                                       
-        <span name="spn">
-        <label for="nointerest" data-localize="nointerest">
-        No interest
-        </label>
-        </span>
-        </a>
-        </td>
-        </tr>
-        </table>
-        </li>
-        <li>
-        <div data-role="fieldcontain">
-        <div id="map_canvas">
-        </div>
-        </div>
-        </li>
-        </ul>-->
+        
+        <script id="scrollview-template" type="text/x-kendo-template">
+             <!--<div  class="photo photo1" data-role="page">
+                </div>-->
+            <img src="#= url #" />
+        </script>
+        
         <div class="fields">
-
-            <div>Type:</div>
-            <div>Title/headline:</div>
-            <div>Status:</div>
-            <div>Date:</div>
-            <div>Price:</div>            
-            <div>Further information:</div>
-            <div>I might like instead:</div>
-             
+            <div>
+                Type: <span class="type"></span>
+            </div>
+            <div>
+                Title/headline: <span class="title"></span>
+            </div>
+            <div>
+                Status: <span class="status"></span>
+            </div>
+            <div>
+                Date: <span class="date"></span>
+            </div>
+            <div>
+                Price: <span class="price"></span>
+            </div>
+            <div>
+                Further information: <span class="info"></span>
+            </div>
+            <div>
+                I might like instead: <span class="instead"></span>
+            </div>
         </div>
         <br>
         <div>
@@ -168,7 +53,7 @@
                 </span>
             </a>
 
-            <a data-role="button" data-transition="fade" id="NoInterest">
+            <a data-role="button" data-transition="fade" href="finditem.html" id="NoInterest">
                 <span name="spn">
                     <label for="nointerest" data-localize="nointerest">
                         No interest
