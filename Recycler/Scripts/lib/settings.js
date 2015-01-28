@@ -54,9 +54,16 @@ var emailTemplates ={
     
     food:"Food",//appName, userName, FromEmail,DefaultFromName
     
-    spot:"Spot",//appName, userName, FromEmail,DefaultFromName
+    upcycling:"upcycling",//appName, userName, FromEmail,DefaultFromName
     
     help:"Help",//appName, userName, FromEmail,DefaultFromName
+    
+    recycling:"recycling", //appName, userName, FromEmail,DefaultFromName,teamName
+    shop:"shop", //appName, userName, FromEmail,DefaultFromName,teamName
+    freeFood:"freefood", //appName, userName, FromEmail,DefaultFromName,teamName
+    terraspot:"terraspot", //appName, userName, FromEmail,DefaultFromName,teamName
+    ecospot:"ecospot", //appName, userName, FromEmail,DefaultFromName,teamName
+    
     
     test:"zzz", //appName, userName, FromEmail,DefaultFromName,teamName
     

@@ -455,12 +455,10 @@ function SaveSpot() {
                           // console.log(data);
                           app.application.navigate("myspots.html");
                           var templateName = emailTemplates.spot;
-                          
-                          
-                          
+                                                                            
                            switch(Data.SpotType){                                                             
                                 case "FREE Food": 
-                                templateName =emailTemplates.food;
+                                templateName =emailTemplates.freeFood;
                                 break;
                                          
                                 case "Garage sale/Market/Event": 
@@ -475,6 +473,26 @@ function SaveSpot() {
                                 templateName =emailTemplates.help;
                                 break;                               
                                 
+                                case "Eco/Green shop": 
+                                templateName =emailTemplates.ecospot;
+                                break;
+                                
+                               
+                                case "Recycling company": 
+                                templateName =emailTemplates.recycling;
+                                break;
+                                                                        
+                                case "Recycling spot": 
+                                templateName =emailTemplates.recycling;
+                                break;
+                                
+                                case "upcycling": 
+                                templateName =emailTemplates.upcycling;
+                                break;   
+                                
+                                case "Terracycle spot": 
+                                 templateName =emailTemplates.terraspot;
+                                break;
                             }  
                             sendMail(templateName,[userData.Email],{"appName":emailTemplates.DefaultFromName,"DefaultFromName":emailTemplates.DefaultFromName ,"userName":userData.DisplayName, "FromEmail":emailTemplates.FromEmail});
                       },
