@@ -41,7 +41,7 @@ import java.security.NoSuchAlgorithmException;
 public class AdMob extends CordovaPlugin {
     /** Common tag used for logging statements. */
     private static final String LOGTAG = "AdMob";
-    private static final String DEFAULT_PUBLISHER_ID = "ca-app-pub-6869992474017983/9375997553";
+    private static final String DEFAULT_PUBLISHER_ID = "ca-app-pub-9095907209455385/3710758159";
 
     /** Cordova Actions. */
     private static final String ACTION_SET_OPTIONS = "setOptions";

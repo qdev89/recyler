@@ -3,7 +3,7 @@
   "ProjectGuid": "768e2675-0d94-49ed-864b-fb76d1607d92",
   "projectVersion": 1,
   "AppIdentifier": "com.telerik.Recycler",
-  "DisplayName": "Recyclewor",
+  "DisplayName": "Recycleworld - together we change",
   "Author": "Recycleworld Aps",
   "Description": "Together we change - take action and help us stop food waste & a better recycling for a better future. Using recyceworld benefits others and help us work towards sustanability.",
   "BundleVersion": "1.0",
@@ -13,8 +13,8 @@
     "2"
   ],
   "iOSBackgroundMode": [],
-  "WP8TileTitle": "",
-  "WP8Publisher": "",
+  "WP8TileTitle": "Recyceworld - together we change",
+  "WP8Publisher": "Recycleworld Aps",
   "WP8Capabilities": [],
   "WP8Requirements": [],
   "WP8PublisherID": "{5c69005b-493d-432d-9315-b2e5b036cd43}",
@@ -22,22 +22,23 @@
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
   "FrameworkVersion": "3.5.0",
   "CorePlugins": [
+    "com.paypal.cordova.mobilesdk@2.1.1",
+    "com.phonegap.plugins.PushPlugin",
+    "com.telerik.feedback",
+    "com.telerik.plugin.eqatecanalytics",
     "org.apache.cordova.battery-status",
     "org.apache.cordova.camera",
-    "org.apache.cordova.media-capture",
     "org.apache.cordova.contacts",
     "org.apache.cordova.device",
+    "org.apache.cordova.dialogs",
     "org.apache.cordova.file",
     "org.apache.cordova.geolocation",
     "org.apache.cordova.globalization",
     "org.apache.cordova.inappbrowser",
     "org.apache.cordova.media",
+    "org.apache.cordova.media-capture",
     "org.apache.cordova.network-information",
-    "org.apache.cordova.dialogs",
-    "com.paypal.cordova.mobilesdk@2.1.1",
-    "org.apache.cordova.splashscreen",
-    "com.telerik.plugin.eqatecanalytics",
-    "com.telerik.feedback"
+    "org.apache.cordova.splashscreen"
   ],
   "AndroidPermissions": [
     "android.permission.ACCESS_COARSE_LOCATION",
@@ -69,5 +70,6 @@
     "ID_RESOLUTION_WXGA",
     "ID_RESOLUTION_HD720P"
   ],
-  "Framework": "Cordova"
+  "Framework": "Cordova",
+  "CordovaPluginVariables": {}
 }

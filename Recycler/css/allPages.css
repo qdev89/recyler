@@ -1524,7 +1524,7 @@ padding-top: 12px;
 {
     font-weight: bold;
     	
-    padding: .5em .7em;
+  /*  padding: .5em .7em;*/
 }
 
 .radio-options
@@ -1639,17 +1639,8 @@ input:not([type='checkbox']), textarea, select
     padding-top: 18px;
 }
 
-#product-tabstrip .fields div
-{
-    font-weight: bold;
-    padding-left: 10px;
-}
-
 .km-flat .km-view .km-content
-{
-    /*background: white !important; */
-    
-    
+{  
     background: url("../images/background_b.jpg") no-repeat !important;
     background-size: 100% 100% !important; 
     background-position: center center !important; 
@@ -2180,3 +2171,43 @@ fieldset{border:none !important;}
 li.oauth.cf{
     margin-top: 10px !important;
 }
+
+#scrollview-container img{
+    max-height:120px;
+    max-width:100%;
+}
+
+#product-tabstrip .fields .title,
+#product-tabstrip .fields .type,
+#product-tabstrip .fields .price
+{
+    color:#3598DB;    
+}
+
+
+
+#product-tabstrip .fields .title{
+    font-size:24px;
+     text-transform: uppercase;
+}
+
+#product-tabstrip .fields .type,
+#product-tabstrip .fields .price
+{
+    font-size:20px; 
+}
+
+#product-tabstrip .fields .price
+{
+    float: right;
+}
+
+
+#product-tabstrip .fields .date{
+    font-size: 13px;
+    font-weight: bold;
+    color: grey;
+}
+
+
+

@@ -2,65 +2,89 @@
 
     <div data-role="content">
 
-        <div id="scrollview-container">
-            <div >
-               <!-- <div  class="photo photo1" data-role="page">
-                </div>
-                <div class="photo photo2" data-role="page">
-                </div>
-                <div class="photo photo3" data-role="page">
-                </div>-->
-
-            </div>
+        <div id="scrollview-container" 
+            data-role="scrollview"        
+            data-template="scrollview-template"
+            data-content-height="120px">
+              
         </div>
-        
+
         <script id="scrollview-template" type="text/x-kendo-template">
-             <!--<div  class="photo photo1" data-role="page">
-                </div>-->
+            <!--<div  class="photo photo1" data-role="page">
+            </div>-->
             <img src="#= url #" />
         </script>
-        
-        <div class="fields">
-            <div>
-                Type: <span class="type"></span>
-            </div>
-            <div>
-                Title/headline: <span class="title"></span>
-            </div>
-            <div>
-                Status: <span class="status"></span>
-            </div>
-            <div>
-                Date: <span class="date"></span>
-            </div>
-            <div>
-                Price: <span class="price"></span>
-            </div>
-            <div>
-                Further information: <span class="info"></span>
-            </div>
-            <div>
-                I might like instead: <span class="instead"></span>
-            </div>
-        </div>
-        <br>
-        <div>
-            <a data-role="button" data-transition="fade" id="WantIt">
-                <span name="spn">
-                    <label for="iwantit" data-localize="iwantit">
-                        I want it
-                    </label>
-                </span>
-            </a>
+        <table width="100%" cellpadding="16">
+            <tr>
+                <td>
 
-            <a data-role="button" data-transition="fade" href="finditem.html" id="NoInterest">
-                <span name="spn">
-                    <label for="nointerest" data-localize="nointerest">
-                        No interest
-                    </label>
-                </span>
-            </a>
-        </div>
+                    <div class="fields">
+                        <div>
+                            <span class="boldText title"></span>
+                        </div>
+                        
+                        <div>
+                            <span class="date"></span>
+                        </div>
+                        <br>
+                        <div>
+                           <span class="boldText type"></span>
+                       
+                          <span class="boldText price"> </span>
+                        </div>
+                         <br>
+                        <div>
+                           
+                             <span class="boldText"> Further information:</span>
+                            <br>
+                            <span class="info"></span>
+                        </div>
+                         <br>
+                        <div>
+                             <span class="boldText">I might like instead:</span>
+                            <br>
+                            <span class="instead"></span>
+                        </div>
+                        <br>
+                        <div>
+                           <span class="boldText">  Posted by:</span>
+                            <br>
+                            <div class="username"></div>
+                            <div class="city"></div>
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <div>
+                        <a data-role="button"  class="btn btn-blue"  data-transition="fade" id="WantIt">
+                            <span name="spn">
+                                <label for="allstuff" data-localize="altstuff">
+                                    See all this user's stuff
+                                </label>
+                            </span>
+                        </a><br><br>
+
+                        <a data-role="button"   class="btn btn-blue"  data-transition="fade" id="WantIt">
+                            <span name="spn">
+                                <label for="iwantit"  data-localize="iwantit">
+                                    I want it
+                                </label>
+                            </span>
+                        </a><br><br>
+
+                        <a data-role="button"   class="btn btn-blue"  data-transition="fade" href="finditem.html?refresh=false" id="NoInterest">
+                            <span name="spn">
+                                <label for="nointerest" data-localize="nointerest">
+                                    No interest
+                                </label>
+                            </span>
+                        </a>
+                        <br>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
         <div id="dvFullScreen"></div>
     </div>
     <input type="hidden" id="ProductImageUrl" value="" />

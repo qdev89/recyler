@@ -9,56 +9,42 @@ function navigateToEditProduct(el){
 
 function loadProduct(e){
     TranslateApp();    
-    console.log(e);
+    //console.log(e);
     
     var fillProductInfo= function(product){
-        console.log(product);
-        
-        /*
-        CO2: 9339.199999999999
-        CO2Type: "Materials"
-        CO2Values: "055,055,055,055,055,055,055,05,055,055,055,055,055"
-        Category: "Indoor"
-        CreatedAt: Wed Jan 28 2015 14:03:30 GMT+0200 (FLE Standard Time)
-        CreatedBy: "4a230810-a53f-11e4-8ef7-793cc3c4a0c6"
-        Description: ""
-        Id: "ace2bde0-a6e5-11e4-9720-5761b1707099"
-        Image1: "https://bs2.cdn.telerik.com/v1/yPCpguY5pk7Zy5rc/ad4c5520-a6e5-11e4-9720-5761b1707099"
-        IsActive: "true"
-        Meta: Object
-        ModifiedAt: Wed Jan 28 2015 14:07:39 GMT+0200 (FLE Standard Time)
-        ModifiedBy: "4a230810-a53f-11e4-8ef7-793cc3c4a0c6"
-        MoreInformation: "info"
-        Name: "head"
-        Owner: "4a230810-a53f-11e4-8ef7-793cc3c4a0c6"
-        Price: "0"
-        Status: "POSTED"
-        Type: "free"
-        UserID: "a623bf70-34f5-11e4-98c4-8727e453409a"
-        */
-        
-        var selector = "#product-tabstrip .fields ";
-        $(selector + ".type").html(product.Type);
-        $(selector + ".title").html(product.Name);
-        $(selector + ".status").html(product.Status);
-        $(selector + ".date").html(new Date(product.CreatedAt).toDateString());
-        $(selector + ".price").html(product.Price);
-        $(selector + ".info").html(product.Description);
-        $(selector + ".instead").html(product.MoreInformation);
-        
-        
-        /*
-        var x = new kendo.data.DataSource({data:[{title:"Item 1", url:"https://scontent-b-vie.xx.fbcdn.net/hphotos-xap1/l/t31.0-8/10914832_1071675562859672_5119075484052789290_o.jpg"},
-            {title:"Item 2", url:"https://scontent-b-vie.xx.fbcdn.net/hphotos-xap1/l/t31.0-8/10914832_1071675562859672_5119075484052789290_o.jpg"}]});
-    
-        $("#scrollview-container div").first().kendoMobileScrollView({
-            dataSource: x,
-            template: $("#scrollview-template").html(),
-            contentHeight: 120,
-            enablePager: false
-        });
-        */
-        
+       
+        showLoading();
+        var fillCallback = function(user){
+            
+            console.log(user);
+            var selector = "#product-tabstrip .fields ";
+               $(selector + ".username").html(user.DisplayName);
+             $(selector + ".city").html(user.City);
+            
+            $(selector + ".type").html(product.Type);
+            $(selector + ".title").html(product.Name);
+            $(selector + ".status").html(product.Status);
+            $(selector + ".date").html(new Date(product.CreatedAt).toDateString());
+            $(selector + ".price").html(product.Price + " $");
+            $(selector + ".info").html(product.MoreInformation);
+            $(selector + ".instead").html(product.Description);
+            
+            var images = [];
+            if(product.Image1 != undefined)
+                images.push({url:product.Image1});
+            
+             if(product.Image2 != undefined)
+                images.push({url:product.Image2});
+            
+             if(product.Image3 != undefined)
+                images.push({url:product.Image3});
+            
+            var x = new kendo.data.DataSource({data:images});
+            $("#scrollview-container").data("kendoMobileScrollView").setDataSource(x);
+            hideLoading();
+        }
+        console.log(product.CreatedBy);
+        app.Users.getUserByID(product.CreatedBy,fillCallback);       
         
     };
     
@@ -240,6 +226,11 @@ app.Product = (function () {
             TranslateApp();
             var interval = 12; 
             
+            if(isMy && isMy.sender && isMy.sender.params.refresh=="false")
+                return;
+            
+            
+            
             if(localStorage.User==undefined){
                 app.application.navigate("signup_login.html");
                 return;
@@ -249,6 +240,7 @@ app.Product = (function () {
             var listID= "#ulProducts";
             var templateID="#productTemplate";
             var tabstripId = "#find-item-tabstrip";
+           
             if(isMy===true){
                 tabstripId = "#my-stuff-tabstrip";                
                 listID= "#ulMyProducts";

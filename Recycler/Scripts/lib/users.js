@@ -7,6 +7,19 @@ var app = app || {};
 app.Users = (function () {
     'use strict';
 
+    var getUserByID = function(id,callback){
+         
+        app.everlive.Users.getById(id)
+            .then(function (data) {
+                console.log(data)
+                callback(data.result);
+            },
+            function(error){
+                alert(JSON.stringify(error));
+            });
+    }
+    
+    
     var usersModel = (function () {
 
         var currentUser = kendo.observable({ data: null });
@@ -38,6 +51,7 @@ app.Users = (function () {
         };
 
         return {
+            getUserByID : getUserByID,
             load: loadUsers,
             users: function () {
                 return usersData;
