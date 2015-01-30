@@ -5,7 +5,7 @@
         <div id="scrollview-container" 
             data-role="scrollview"        
             data-template="scrollview-template"
-            data-content-height="120px">
+            data-content-height="180px">
               
         </div>
 
@@ -35,19 +35,19 @@
                          <br>
                         <div>
                            
-                             <span class="boldText"> Further information:</span>
+                             <span class="boldText"> <label for="long_description_title" data-localize="long_description_title"> Further information:</label></span>
                             <br>
                             <span class="info"></span>
                         </div>
                          <br>
                         <div>
-                             <span class="boldText">I might like instead:</span>
+                             <span class="boldText"> <label class="mightLike" for="like" data-localize="like">I might like instead:</label></span>
                             <br>
                             <span class="instead"></span>
                         </div>
                         <br>
                         <div>
-                           <span class="boldText">  Posted by:</span>
+                             <span class="boldText"> <label class="mightLike" for="posted by" data-localize="postedby"> Posted by:</label></span>
                             <br>
                             <div class="username"></div>
                             <div class="city"></div>
@@ -58,13 +58,13 @@
                     <div>
                         <a data-role="button"  class="btn btn-blue"  data-transition="fade" id="WantIt">
                             <span name="spn">
-                                <label for="allstuff" data-localize="altstuff">
+                                <label for="allstuff" data-localize="allstuff">
                                     See all this user's stuff
                                 </label>
                             </span>
                         </a><br><br>
 
-                        <a data-role="button"   class="btn btn-blue"  data-transition="fade" id="WantIt">
+                        <a data-role="button" href="profile.html"  class="btn btn-blue"  data-transition="fade" id="WantIt">
                             <span name="spn">
                                 <label for="iwantit"  data-localize="iwantit">
                                     I want it

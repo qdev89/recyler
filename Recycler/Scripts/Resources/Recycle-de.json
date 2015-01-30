@@ -121,10 +121,10 @@
     "sunday": "Sonntag: ",
     "createspot": "Stelle eröffnen",
     "titletext_donate": "Spende",
-    "donatetext": "Wir haben diese App kostenlos, sind auf Recycling fokusiert. <br> und Lebensmittelabfälle zu reduzieren. Wenn Sie diesen Dienst <br> bitte helfen Sie uns diesen Dienst am Leben zu erhalten..",
+    "donatetext": " Sie sind im Moment nicht Stützer. Wir haben diese App kostenlos, sind auf Recycling fokusiert. <br> und Lebensmittelabfälle zu reduzieren. Wenn Sie diesen Dienst <br> bitte helfen Sie uns diesen Dienst am Leben zu erhalten..",
     "donate1": "Ich will 1$ spenden",
     "donate2": "I will 2$ spenden",
-    "profittext": "50% des Recycleworld gewinnes wird an Organisationen, die einen Unterschied für andere machen oder eine grüne Öko Tagesordnung haben, gespendet. Werden Sie Unterstützer und erhalten Sie Ihre Erde Sterne.",
+    "profittext": "Werden Sie Unterstützer und erhalten Sie Ihre Erde Sterne. 50% des Recycleworld gewinnes wird an Organisationen, die einen Unterschied für andere machen oder eine grüne Öko Tagesordnung haben, gespendet. ",
     "nowaytext": "Kein Interesse",
     "titletext_edit": "Editieren Stelle",
     "pictureplace": "PhotoderStelle,Shop,Logo",
@@ -326,5 +326,7 @@
 "fb2": "Nur Setup Ihre Wahl hier.",
 "fz1": "Laden Sie alle Ihre Freunde und Familie in Ihrer Friendzone",
 "fz2": "Jedes Mal, wenn Sie einen Artikel veröffentlichen, erhalten Sie Ihren Freunden eine Meldung und 4 Stunden um zu reagieren, bevor Sie Ihre Sachen geht an die Börse.",
-"fz3": "Bauen Sie sich mein Freund und Familienzone"
+"fz3": "Bauen Sie sich mein Freund und Familienzone",
+"postedby": "Veröffentlicht von Recycleworld Benutzer:",  
+"allstuff": "Zeigen Sie alle Benutzer Zeug"
 }

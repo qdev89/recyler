@@ -123,10 +123,10 @@
     "sunday": "Domingos:",
     "createspot": "Crear un lugar",
     "titletext_donate": "Donación",
-    "donatetext": "Hemos desarrollado esta app gratuita, para llamar la atención hacier el reciclaje y detener el desecho de alimentos. Así que si te gusta este servicios, por favor, ayúdanos a mantener este servicio móvil funcionando...",
+    "donatetext": "Usted está en este momento no partidario. Hemos desarrollado esta app gratuita, para llamar la atención hacier el reciclaje y detener el desecho de alimentos. Así que si te gusta este servicios, por favor, ayúdanos a mantener este servicio móvil funcionando...",
     "donate1": "Donar 1$ ",
     "donate2": "Donar 2$ ",
-    "profittext": "El 50% de las ganancias de recycleworlds es donado a organizaciones que hacen la diferencia hacia otros, o que tienen una agenda verde. Hazte seguidor y conseguir que su estrella de la tierra",
+    "profittext": "Hazte seguidor y conseguir que su estrella de la tierra. El 50% de las ganancias de recycleworlds es donado a organizaciones que hacen la diferencia hacia otros, o que tienen una agenda verde. ",
     "nowaytext": "No me interesa...",
     "titletext_edit": "Editar lugar",
     "pictureplace": "Foto de ubicación, tienda, logo",
@@ -325,5 +325,7 @@
 "fz2": "Acaba de configurar sus opciones aquí.",
 "fz1": "Invita a todos tus amigos y familiares en su Friend Zone",
 "fz2": "Cada vez que publique un artículo, tus amigos te un mensaje y 4 horas para reaccionar, antes de su materia se hace pública.",
-"fz3": "Construir mi amigo y familia zona ahora"
+"fz3": "Construir mi amigo y familia zona ahora",
+     "postedby": "Publicado por el usuario Recycleworld:",
+          "allstuff": "Mostrar todas las cosas usuario"
 }

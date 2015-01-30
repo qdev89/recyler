@@ -16,27 +16,26 @@ function resetPassword(email){
             "Email": email
         };
       
-   if( email != undefined && email!="" && validateEmail(email))   
-       
-    $.ajax({
-        type: "POST",
-        url: 'http://api.everlive.com/v1/' + appSettings.everlive.apiKey +'/Users/resetpassword',
-        contentType: "application/json",
-        data: JSON.stringify(object),
-        success: function(data) {
-            alert("Password reset email send successfully. Check your email box.");
-        },
-        error: function(error) {
-            console.log(error);
-            if(error.responseText!=undefined)
-                var err = JSON.parse(error.responseText);
-            if(err.message!=undefined)
-                alert(err.message);
-        }
-    });
+   if( email != undefined && email!="" && validateEmail(email))
+        $.ajax({
+            type: "POST",
+            url: 'http://api.everlive.com/v1/' + appSettings.everlive.apiKey +'/Users/resetpassword',
+            contentType: "application/json",
+            data: JSON.stringify(object),
+            success: function(data) {
+                alert("Password reset email send successfully. Check your email box.");
+            },
+            error: function(error) {
+                console.log(error);
+                if(error.responseText!=undefined)
+                    var err = JSON.parse(error.responseText);
+                if(err.message!=undefined)
+                    alert(err.message);
+            }
+        });
     
-    else alert("Please enter a valid email!");
-    
+    else 
+        alert("Please enter a valid email!");    
     
 }
 
@@ -989,163 +988,6 @@ function onPhotoDataSuccessSpot(imageData) {
     damagephoto.src = "data:image/jpeg;base64," + imageData;
 }
 
-var AmountToDenote;
-
-function donateInit() {
-    $('#Donate1').click(function () {
-        AmountToDenote = 1;
-        ProductID = '';
-        Payment(ProductID);
-    });
-                
-    $('#Donate2').click(function () {
-        AmountToDenote = 2;
-        ProductID = '';
-        Payment(ProductID);
-    });
-                
-    $('#RedirectToMyStuff').click(function () {
-        if (localStorage.IsNavigated == undefined || localStorage.IsNavigated == null) {
-            app.application.navigate("settings.html");
-        } else {
-            window.localStorage.removeItem("IsNavigated");
-            app.application.navigate("mystuff.html");
-        }
-    });
-}
-
-function Payment(ProductID) {
-    // alert('Initializing Payment..');
-    inappbilling.init(OnInitSuccess, OnInitFailure);
-}
-            
-function OnInitSuccess(result) {
-    // alert("Payment Init Success: \r\n" + result);
-    switch (localStorage.Language) {
-        case "1":
-            alert(Language.Danish.Mpayment);
-            break;
-        case "2":
-            alert(Language.German.Mpayment);
-            break;
-        case "3":
-            alert(Language.English.Mpayment);
-            break;
-        case "4":
-            alert(Language.Spanish.Mpayment);
-            break;
-    }
-    inappbilling.purchase(OnPaymentSuccess, OnPaymentFailure, "android.test.purchased");
-}
-            
-function OnInitFailure(result) {
-    switch (localStorage.Language) {
-        case "1":
-            alert(Language.Danish.Ptry);
-            break;
-        case "2":
-            alert(Language.German.Ptry);
-            break;
-        case "3":
-            alert(Language.English.Ptry);
-            break;
-        case "4":
-            alert(Language.Spanish.Ptry);
-            break;
-    }
-}
-            
-function OnPaymentSuccess(result) {
-    switch (result) {
-        case "android.test.purchased":
-            switch (localStorage.Language) {
-                case "1":
-                    alert(Language.Danish.Donating);
-                    break;
-                case "2":
-                    alert(Language.German.Donating);
-                    break;
-                case "3":
-                    alert(Language.English.Donating);
-                    break;
-                case "4":
-                    alert(Language.Spanish.Donating);
-                    break;
-            }
-            UpdateEarthHeartData();
-            break;
-        case "CANCELLED" || "cancelled":
-            switch (localStorage.Language) {
-                case "1":
-                    alert(Language.Danish.Pcancel);
-                    break;
-                case "2":
-                    alert(Language.German.Pcancel);
-                    break;
-                case "3":
-                    alert(Language.English.Pcancel);
-                    break;
-                case "4":
-                    alert(Language.Spanish.Pcancel);
-                    break;
-            }
-            break;
-        case "REFUNDED" || "refunded":
-            switch (localStorage.Language) {
-                case "1":
-                    alert(Language.Danish.Prefund);
-                    break;
-                case "2":
-                    alert(Language.German.Prefund);
-                    break;
-                case "3":
-                    alert(Language.English.Prefund);
-                    break;
-                case "4":
-                    alert(Language.Spanish.Prefund);
-                    break;
-            }
-            break;
-        case "EXPIRED" || "expired":
-            switch (localStorage.Language) {
-                case "1":
-                    alert(Language.Danish.Pexpire);
-                    break;
-                case "2":
-                    alert(Language.German.Pexpire);
-                    break;
-                case "3":
-                    alert(Language.English.Pexpire);
-                    break;
-                case "4":
-                    alert(Language.Spanish.Pexpire);
-                    break;
-            }
-            break;
-    }
-}
-            
-function OnPaymentFailure(result) {
-    switch (localStorage.Language) {
-        case "1":
-            alert(Language.Danish.Ptry);
-            break;
-        case "2":
-            alert(Language.German.Ptry);
-            break;
-        case "3":
-            alert(Language.English.Ptry);
-            break;
-        case "4":
-            alert(Language.Spanish.Ptry);
-            break;
-    }
-}
-            
-function UpdateEarthHeartData() {
-  
-}
-
 
 
 
@@ -1392,9 +1234,13 @@ function resetScroller(e){
 }
 
 
-function showLoading(){$("#loaderDiv").show();}
+function showLoading(){
+    $("#loaderDiv").show();
+}
 
-function hideLoading(){$("#loaderDiv").hide()}
+function hideLoading(){
+    $("#loaderDiv").hide();
+}
 
 
 function setListStyle(el,style){

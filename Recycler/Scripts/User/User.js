@@ -25,33 +25,7 @@ var user = {
     LanguageMailSent: false,
     CountryCode: '',
 
-    CheckEmailExists: function (UserID, EmailId) {
-     
-    },
-
-    CreateUser: function () {
-       
-    },
-
-    UserCreated: function (result) {
-        
-      
-    },
-
-
-    navigate: function (result) {
-      
-    },
-
-  
-    GetMembership: function () {       
-     
-    },
-
-    GetLanguage: function () {       
-    
-
-    },
+   
     GetRoles: function () {       
 		if(Roles==undefined) return;
         switch (localStorage.Language) {
@@ -129,14 +103,6 @@ var user = {
     },
 
 
-   
-
-
-
-    validateEmail: function (txtEmail) {
-       
-    },
-
     validateNumeric: function (txtNumeric) {
         var data = document.getElementById(txtNumeric).value;
 
@@ -149,160 +115,9 @@ var user = {
         }
     },
 
-    SendEmailLanguage: function (Name, Email) {
-        
-
-        if (user.LanguageMailSent) {
-            switch (localStorage.Language) {
-                case "1":
-                    alert(Language.Danish.EmailSend);
-                    break;
-                case "2":
-                    alert(Language.German.EmailSend);
-                    break;
-                case "3":
-                    alert(Language.English.EmailSend);
-                    break;
-                case "4":
-                    alert(Language.Spanish.EmailSend);
-                    break;
-            }
-            return;
-        }
-
-      
-    },
-
-    SubscriptionPayment: function () {        
-        inappbilling.init(user.OnInitSuccess, user.OnInitFailure);
-    },
-
-    OnInitSuccess: function (result) {
-        switch (localStorage.Language) {
-            case "1":
-                alert(Language.Danish.Mpayment);
-                break;
-            case "2":
-                alert(Language.German.Mpayment);
-                break;
-            case "3":
-                alert(Language.English.Mpayment);
-                break;
-            case "4":
-                alert(Language.Spanish.Mpayment);
-                break;
-        }
-        inappbilling.purchase(user.OnPaymentSuccess, user.OnPaymentFailure, "android.test.purchased");
-    },
-
-    OnInitFailure: function (result) {
-        user.UserRole = "1";
-        user.MemberShipID = '';
-        user.SubscriptionPaid = false;
-        alert("Payment Init ERROR: \r\n" + result);
-    },
-
-    OnPaymentSuccess: function (result) {
-        switch (result) {
-            case "android.test.purchased":
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Paid);
-                        break;
-                    case "2":
-                        alert(Language.German.Paid);
-                        break;
-                    case "3":
-                        alert(Language.English.Paid);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Paid);
-                        break;
-                }
-                user.SubscriptionPaid = true;
-                user.MemberShipID = '1';
-                localStorage.SubscriptionPaid = "Paid_" + user.MemberShipID + "_" + user.UserRole;
-                user.CreateUser();
-                break;
-            case "CANCELLED" || "cancelled":
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Pcancel);
-                        break;
-                    case "2":
-                        alert(Language.German.Pcancel);
-                        break;
-                    case "3":
-                        alert(Language.English.Pcancel);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Pcancel);
-                        break;
-                }
-                user.UserRole = "1";
-                user.MemberShipID = '';
-                user.SubscriptionPaid = false;
-                break;
-            case "REFUNDED" || "refunded":
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Prefund);
-                        break;
-                    case "2":
-                        alert(Language.German.Prefund);
-                        break;
-                    case "3":
-                        alert(Language.English.Prefund);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Prefund);
-                        break;
-                }
-                user.UserRole = "1";
-                user.MemberShipID = '';
-                user.SubscriptionPaid = false;
-                break;
-            case "EXPIRED" || "expired":
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Pexpire);
-                        break;
-                    case "2":
-                        alert(Language.German.Pexpire);
-                        break;
-                    case "3":
-                        alert(Language.English.Pexpire);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Pexpire);
-                        break;
-                }
-                user.UserRole = "1";
-                user.MemberShipID = '';
-                user.SubscriptionPaid = false;
-                break;
-        }
-    },
-
-    OnPaymentFailure: function (result) {
-        user.UserRole = "1";
-        user.MemberShipID = '';
-        user.SubscriptionPaid = false;
-        switch (localStorage.Language) {
-            case "1":
-                alert(Language.Danish.Ptry);
-                break;
-            case "2":
-                alert(Language.German.Ptry);
-                break;
-            case "3":
-                alert(Language.English.Ptry);
-                break;
-            case "4":
-                alert(Language.Spanish.Ptry);
-                break;
-        }
-    }
+   
+ 
+    
 };
 
 $(document).ready(function () {

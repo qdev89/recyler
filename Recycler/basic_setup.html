@@ -1,27 +1,31 @@
 <div id="registerPage" data-title="Basic settings" data-role="view" data-init="setupInit" data-show="TranslateApp" style="background-color: #f3f3f3; height:100%; min-height:100%;">
-    <div data-role="content"> <!-- start of html -->
-   <table class="content_table">
+    <div data-role="content">
+        <!-- start of html -->
+        <table class="content_table">
             <tr>
                 <td align="center" colspan="2" text-align="center" >
-                     <a data-role="button" id="actDiff"  class="btn btn-blue" href="account_differences.html">
-                            <label for="differencetext" data-localize="differencetext">What is the difference? </label>
-                        </a>
-                    </td>
+                    <a data-role="button" id="actDiff"  class="btn btn-blue" href="account_differences.html">
+                        <label for="differencetext" data-localize="differencetext">What is the difference? </label>
+                    </a>
+                </td>
             </tr>
-            
+
             <tr>
                 <td >
                     <div id="image_div" align="left" width="100" text-align="center">
-                       <br> <img id="image" alt="image" width="100%" src="images/imageplaceholder.png" onClick="takePicture();"><br>
+                        <br> <img id="image" alt="image" width="100%" src="images/imageplaceholder.png" onClick="takePicture();"><br>
 
                         <!-- takepicture -->
-                        
-                            <label for="pictureyou" data-localize="pictureyou"> Picture of you?</label>
-                        
+
+                        <label for="pictureyou" data-localize="pictureyou"> Picture of you?</label>
+
                     </div>
-                </td><td width="50%" align="right"> <img border="0" width="75%" src="images/notsupporter.png"></td>
+                </td>
+                <td width="50%" align="right">
+                    <img id="isSupporter" border="0" width="75%" src="images/notsupporter.png">
+                </td>
             </tr>
-             <tr id="trMemberShip">
+            <tr id="trMemberShip">
                 <td colspan="2">
                     <select id="role" name="account0"  class="turnintodropdown"  >
                     </select>
@@ -30,9 +34,7 @@
             <tr id="trMemberShip" style="display:none">
                 <td colspan="2">
                     <div style=" text-align:center; width:100%"></div>
-                    <!-- <select id="MemberShip" name="account0">
-                    <option selected="selected" value="0">Select MemberShip Type</option>
-                    </select>-->
+                    
                 </td>
             </tr>
             <tr>
@@ -56,18 +58,18 @@
                 </td>
             </tr>
 
-           <!-- <tr id="Trpassword">
-                <td align="left" width="130">
-                    <label for="passwordtitel"  data-localize="passwordtitel">
-                        Password: *
-                    </label>
-                </td>
-                <td align="left">
+            <!-- <tr id="Trpassword">
+            <td align="left" width="130">
+            <label for="passwordtitel"  data-localize="passwordtitel">
+            Password: *
+            </label>
+            </td>
+            <td align="left">
                    
 
-                    <input name="password_fb" onKeyPress="return StopSpecialchrOnly(event);"  class="tb1" tabindex="1" id="password_fb" type="password" value="" placeholder="password">
+            <input name="password_fb" onKeyPress="return StopSpecialchrOnly(event);"  class="tb1" tabindex="1" id="password_fb" type="password" value="" placeholder="password">
 
-                </td>
+            </td>
             </tr>-->
 
             <tr>
@@ -81,7 +83,7 @@
 
                 </td>
             </tr>
-                    <tr>
+            <tr>
                 <td align="left" height="28" width="130">
                     <label for="emailtitel" data-localize="emailtitel">Email:</label>*
                 </td>
@@ -490,8 +492,8 @@
                 </td>
                 <td align="left">
 
-                  <div id="country-select0">
-                        <select id="Languages0" name="Language0" tabindex="11">
+                    <div id="country-select0">
+                        <select id="Languages" name="Language" tabindex="11">
                         </select>
                     </div>
 
@@ -504,10 +506,10 @@
                 </td>
                 <td align="left">
 
-                    <div id="country-select">
+                    <div id="weight-select">
                         <select id="weight" name="weight" tabindex="11" size="1">
-                        <option>kg</option>
-						<option>pound</option>
+                            <option>kg</option>
+                            <option>pound</option>
                         </select>
                     </div>
 
@@ -516,31 +518,32 @@
             <tr>
                 <td align="left">
                     <!--  sprogtitel -->
-                   <label for="distance"  data-localize="distance"> Distance unit:</label>
+                     <label for="distance"  data-localize="distance"> Distance unit:</label>:*
                 </td>
                 <td align="left">
 
                     <div id="distance-select">
                         <select id="distance" name="distance" tabindex="11" size="1">
-                        <option>Km</option>
-						<option>Miles</option>
+                            <option>Km</option>
+                            <option>Miles</option>
                         </select>
                     </div>
 
                 </td>
-            </tr>                         <tr>
+            </tr>
+            <tr>
                 <td align="left" width="130">
                     <!-- Company Name-->
-                    <label for="facebook"   data-localize="facebookadress">Facebook adress: </label>
+                    <label for="facebook"   data-localize="facebookadress">Facebook address: </label>
 
                 </td>
                 <td align="left">
 
-                    <input type="text" name="facebookadress" id="facebookadress" onKeyPress="return StopSpecialchrOnly(event);" tabindex="4"  class="tb1"  value="" placeholder="facebook adress" maxlength="30">
+                    <input type="text" name="facebookadress" id="facebookaddress"  tabindex="4"  class="tb1"  value="" placeholder="Facebook address" maxlength="30">
 
                 </td>
             </tr>
-                                      <tr>
+            <tr>
                 <td align="left" width="130">
                     <!-- Company Name-->
                     <label for="webadress"   data-localize="webadress">Web adress: </label>
@@ -548,33 +551,34 @@
                 </td>
                 <td align="left">
 
-                    <input type="text" name="webadress" id="wwwadress" onKeyPress="return StopSpecialchrOnly(event);" tabindex="4"  class="tb1"  value="" placeholder="web adress" maxlength="30">
+                    <input type="text" name="webadress" id="wwwaddress"  tabindex="4"  class="tb1"  value="" placeholder="Web address" maxlength="30">
 
                 </td>
             </tr>
-                                      <tr>
+            <tr>
                 <td align="left" width="130">
                     <!-- Company Name-->
-                    <label for="twitteradress"   data-localize="twitteradress">Twitter adress: </label>
+                    <label for="twitteradress"   data-localize="twitteradress">Twitter address: </label>
 
                 </td>
                 <td align="left">
 
-                    <input type="text" name="twitteradress" id="twitteradress" onKeyPress="return StopSpecialchrOnly(event);" tabindex="4"  class="tb1"  value="" placeholder="facebook adress" maxlength="30">
+                    <input type="text" name="twitteradress" id="twitteraddress" tabindex="4"  class="tb1"  value="" placeholder="Twitter address" maxlength="30">
 
                 </td>
             </tr>
-                            <tr><td>
-                  Terracycle brigade:     <input type="radio" value="1" name="brigade" id="brigade" >
-                  
-                  </td>
-                  <td>
-                  
-                  </td>
-             
-             </tr>
-             
-             
+            <tr>
+                <td>
+                    Terracycle brigade:
+                   
+
+                </td>
+                <td>
+                     <input type="checkbox" value="1" name="brigade" id="brigade" >
+                </td>
+
+            </tr>
+
             <tr>
                 <td colspan="2">
                     <a data-role="button" onclick="saveUserData()"   class="btn btn-blue" >
@@ -583,9 +587,9 @@
                     </a>
                 </td>
             </tr>
-                         <tr>
+            <tr>
                 <td colspan="2">
-                    <a data-role="button" onclick="saveUserData()"   class="btn btn-blue" >
+                    <a data-role="button"  href="profile.html?self=true"   class="btn btn-blue" >
                         <!--  gem -->
                         <label  data-localize="view">View my profile page</label>
                     </a>

@@ -23,7 +23,6 @@
   "FrameworkVersion": "3.5.0",
   "CorePlugins": [
     "com.paypal.cordova.mobilesdk@2.1.1",
-    "com.phonegap.plugins.PushPlugin",
     "com.telerik.feedback",
     "com.telerik.plugin.eqatecanalytics",
     "org.apache.cordova.battery-status",
@@ -38,6 +37,7 @@
     "org.apache.cordova.media",
     "org.apache.cordova.media-capture",
     "org.apache.cordova.network-information",
+    "org.apache.cordova.plugin.sms@0.1.0",
     "org.apache.cordova.splashscreen"
   ],
   "AndroidPermissions": [

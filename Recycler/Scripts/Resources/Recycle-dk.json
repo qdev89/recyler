@@ -123,10 +123,10 @@
     "sunday": "Søndag:",
     "createspot": "Lav et sted",
     "titletext_donate": "Donation",
-    "donatetext": "Vi lavede denne app så den blev gratis,for at sætte fokus genbrug, bæredygtighed og unødig madspild.<br>Vi kan kun fortsætte denne service der sikrer mad ud til dem der har mindst og hjælpe miljøet hvis der nok supporters (ingen donations skærm samt indflydelse på hvordan evt. overskud bruges). Så hvis du kan lide denne service <br>hjælp venligst til at holde os i live...",
+    "donatetext": "Du er lige ikke supporter. Vi lavede denne app så den blev gratis,for at sætte fokus genbrug, bæredygtighed og unødig madspild.<br>Vi kan kun fortsætte denne service der sikrer mad ud til dem der har mindst og hjælpe miljøet hvis der nok supporters. Så hvis du kan lide denne service, så hjælp venligst til at holde os i live...",
     "donate1": "Jeg vil donere 1$ ",
     "donate2": "Jeg vil donere 2$ ",
-    "profittext": "50% af recycleworlds profit bliver doneret. Så bliv supporter og få din jord stjerne",
+    "profittext": " Så bliv supporter og få din jord stjerne, og husk på 50% af recycleworlds profit bliver doneret.",
     "nowaytext": "Nej tak..",
     "titletext_edit": "Rediger",
     "pictureplace": "Billede af sted,shop,logo",
@@ -326,5 +326,7 @@
 "fb2": "Bare setup dine valg her.",
 "fZ1": "Inviter alle dine venner og familie i din friendzone",
 "fz2": "Hver gang du poster et emne, får dine venner en besked, og fire timer til at reagere, før dine ting går offentligheden.",
-"fz3": "Byg min ven & familie zone nu"
+"fz3": "Byg min ven & familie zone nu",
+"postedby": "Publiceret af Recycleworld bruger:",
+"allstuff": "Vis alle denne brugers ting"
 }

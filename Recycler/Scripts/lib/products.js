@@ -8,7 +8,8 @@ function navigateToEditProduct(el){
 }
 
 function loadProduct(e){
-    TranslateApp();    
+    TranslateApp();   
+    app.addBanner(10);   
     //console.log(e);
     
     var fillProductInfo= function(product){
@@ -17,8 +18,10 @@ function loadProduct(e){
         var fillCallback = function(user){
             
             console.log(user);
+            
+            app.lastProductOwner = user;
             var selector = "#product-tabstrip .fields ";
-               $(selector + ".username").html(user.DisplayName);
+             $(selector + ".username").html(user.DisplayName);
              $(selector + ".city").html(user.City);
             
             $(selector + ".type").html(product.Type);
@@ -33,10 +36,10 @@ function loadProduct(e){
             if(product.Image1 != undefined)
                 images.push({url:product.Image1});
             
-             if(product.Image2 != undefined)
+            if(product.Image2 != undefined)
                 images.push({url:product.Image2});
             
-             if(product.Image3 != undefined)
+            if(product.Image3 != undefined)
                 images.push({url:product.Image3});
             
             var x = new kendo.data.DataSource({data:images});
@@ -47,7 +50,7 @@ function loadProduct(e){
         app.Users.getUserByID(product.CreatedBy,fillCallback);       
         
     };
-    
+   
     app.Product.getProductByID(e.sender.params.productID,fillProductInfo);
 }
 

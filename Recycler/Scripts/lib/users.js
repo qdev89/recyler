@@ -1,6 +1,41 @@
 /**
  * Users model
  */
+function fillProfileInfo(e){
+    TranslateApp();
+    var user;
+    if(e.sender.params.self=="true"){
+        user = JSON.parse(localStorage.User);
+    }else{
+         user=app.lastProductOwner;
+    }
+    if(!user)return;
+    var selector = "#tabstrip-profile-details ";
+    
+    if(user.ImageData)
+        $(selector +"#userPicture").attr("src",user.ImageData);
+    else 
+         $(selector +"#userPicture").attr("src","images/NoImage.jpg");    
+         $(selector +".username").html(user.DisplayName);    
+         $(selector +".phone").html(user.PhoneNumber);
+        
+         $(selector +".email").html(user.Email);
+         $(selector +".address").html(user.AddressLine1);
+         $(selector +".city").html(user.City);
+         $(selector +".state").html(user.State);     
+    
+         $(selector +"#fbLink").attr("link",user.Facebook).addClass("link");         
+         $(selector +"#twitterLink").attr("link",user.Twitter).addClass("link");
+         $(selector +"#webLink").attr("link",user.Web).addClass("link");
+         $(selector +"#email_send").attr("link","mailto:"+user.Email).addClass("link");
+         $(selector +"#phone_num").attr("href","tel:+" + user.PhoneNumber);
+         $(selector +"#sms_num").attr("href","sms:" + user.PhoneNumber);
+    
+   
+    
+}
+ 
+
 
 var app = app || {};
 
@@ -174,33 +209,7 @@ var user = {
     LanguageMailSent: false,
     CountryCode: '',
 
-    CheckEmailExists: function (UserID, EmailId) {
-     
-    },
-
-    CreateUser: function () {
-       
-    },
-
-    UserCreated: function (result) {
-        
-      
-    },
-
-
-    navigate: function (result) {
-      
-    },
-
-  
-    GetMembership: function () {       
-     
-    },
-
-    GetLanguage: function () {       
-    
-
-    },
+   
     GetRoles: function () {       
 		if(Roles==undefined) return;
         switch (localStorage.Language) {
@@ -277,14 +286,7 @@ var user = {
        
     },
 
-
-   
-
-
-
-    validateEmail: function (txtEmail) {
-       
-    },
+  
 
     validateNumeric: function (txtNumeric) {
         var data = document.getElementById(txtNumeric).value;
@@ -296,162 +298,8 @@ var user = {
         else {
             return false;
         }
-    },
+    }  
 
-    SendEmailLanguage: function (Name, Email) {
-        
-
-        if (user.LanguageMailSent) {
-            switch (localStorage.Language) {
-                case "1":
-                    alert(Language.Danish.EmailSend);
-                    break;
-                case "2":
-                    alert(Language.German.EmailSend);
-                    break;
-                case "3":
-                    alert(Language.English.EmailSend);
-                    break;
-                case "4":
-                    alert(Language.Spanish.EmailSend);
-                    break;
-            }
-            return;
-        }
-
-      
-    },
-
-    SubscriptionPayment: function () {        
-        inappbilling.init(user.OnInitSuccess, user.OnInitFailure);
-    },
-
-    OnInitSuccess: function (result) {
-        switch (localStorage.Language) {
-            case "1":
-                alert(Language.Danish.Mpayment);
-                break;
-            case "2":
-                alert(Language.German.Mpayment);
-                break;
-            case "3":
-                alert(Language.English.Mpayment);
-                break;
-            case "4":
-                alert(Language.Spanish.Mpayment);
-                break;
-        }
-        inappbilling.purchase(user.OnPaymentSuccess, user.OnPaymentFailure, "android.test.purchased");
-    },
-
-    OnInitFailure: function (result) {
-        user.UserRole = "1";
-        user.MemberShipID = '';
-        user.SubscriptionPaid = false;
-        alert("Payment Init ERROR: \r\n" + result);
-    },
-
-    OnPaymentSuccess: function (result) {
-        switch (result) {
-            case "android.test.purchased":
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Paid);
-                        break;
-                    case "2":
-                        alert(Language.German.Paid);
-                        break;
-                    case "3":
-                        alert(Language.English.Paid);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Paid);
-                        break;
-                }
-                user.SubscriptionPaid = true;
-                user.MemberShipID = '1';
-                localStorage.SubscriptionPaid = "Paid_" + user.MemberShipID + "_" + user.UserRole;
-                user.CreateUser();
-                break;
-            case "CANCELLED" || "cancelled":
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Pcancel);
-                        break;
-                    case "2":
-                        alert(Language.German.Pcancel);
-                        break;
-                    case "3":
-                        alert(Language.English.Pcancel);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Pcancel);
-                        break;
-                }
-                user.UserRole = "1";
-                user.MemberShipID = '';
-                user.SubscriptionPaid = false;
-                break;
-            case "REFUNDED" || "refunded":
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Prefund);
-                        break;
-                    case "2":
-                        alert(Language.German.Prefund);
-                        break;
-                    case "3":
-                        alert(Language.English.Prefund);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Prefund);
-                        break;
-                }
-                user.UserRole = "1";
-                user.MemberShipID = '';
-                user.SubscriptionPaid = false;
-                break;
-            case "EXPIRED" || "expired":
-                switch (localStorage.Language) {
-                    case "1":
-                        alert(Language.Danish.Pexpire);
-                        break;
-                    case "2":
-                        alert(Language.German.Pexpire);
-                        break;
-                    case "3":
-                        alert(Language.English.Pexpire);
-                        break;
-                    case "4":
-                        alert(Language.Spanish.Pexpire);
-                        break;
-                }
-                user.UserRole = "1";
-                user.MemberShipID = '';
-                user.SubscriptionPaid = false;
-                break;
-        }
-    },
-
-    OnPaymentFailure: function (result) {
-        user.UserRole = "1";
-        user.MemberShipID = '';
-        user.SubscriptionPaid = false;
-        switch (localStorage.Language) {
-            case "1":
-                alert(Language.Danish.Ptry);
-                break;
-            case "2":
-                alert(Language.German.Ptry);
-                break;
-            case "3":
-                alert(Language.English.Ptry);
-                break;
-            case "4":
-                alert(Language.Spanish.Ptry);
-                break;
-        }
-    }
 };
 
 $(document).ready(function () {
@@ -556,6 +404,10 @@ $(document).ready(function () {
             user.Address = $("#homeadress").val();
             user.City = $("#homecity").val();
             user.Zip = $("#zip").val();
+            
+             user.Facebook = $("#facebookaddress").val();
+            user.Twitter = $("#twitteraddress").val();
+            user.Web = $("#wwwaddress").val();
             // user.Country = $("#country").val();
             user.Country = $('#country').val();
             if ((user.CountryCode == '' || user.CountryCode == null) && (user.Country == '' || user.Country == null || user.Country == '0' || user.Country == 0)) {
@@ -865,16 +717,9 @@ function saveUserData() {
                                   });
     }
     
-     var data = app.everlive.data('Users');
+     var data = app.everlive.data('Users');   
     
-    
-    /*app.everlive.Users.updateSingle({ 'Id': userData.Id, 'Email': $("#email").val() },
-    function(data){
-        //alert(JSON.stringify(data));
-    },
-    function(error){
-        alert(JSON.stringify(error));
-    });*/
+   
     var mail = false;
     if(userData.UserRole!=2 && $("#role").val()==2)
        mail=true;
@@ -890,7 +735,14 @@ function saveUserData() {
                     'City':   $("#homecity").val(),            
                     'Country':      $("#country").val(),            
                     'State':    $("#txtState").val(),     
-                    'LanguageID':  $("#Languages").val()        			
+                    'LanguageID':  $("#Languages").val(),
+                    "Facebook": $("#facebookaddress").val(),
+                    "Twitter" :$("#twitteraddress").val(),
+                    "Web" : $("#wwwaddress").val(),
+                    "weight" :$("#weight").val(),
+                    "distance" : $("#distance").val(), 
+                    "brigade" : $("#brigade").is(":checked")    
+         
                 }, // data
                 { 'Id': userData.Id}, // filter
                 function(data) {
@@ -919,6 +771,12 @@ function fillUserData(user) {
                
     if (user.UserRole != undefined)
         $("#role").val(user.UserRole);
+    
+    if(user.UserRole=="2"){
+        $("#isSupporter").attr("src","images/supporter.png");
+    }else{
+         $("#isSupporter").attr("src","images/notsupporter.png");
+    }
             
     if (user.DisplayName != undefined)
         $("#name").val(user.DisplayName);
@@ -946,6 +804,26 @@ function fillUserData(user) {
             
     if (user.LanguageID != undefined)
         $("#Languages").val(user.LanguageID);
+    
+     if (user.Facebook != undefined)
+        $("#facebookaddress").val(user.Facebook);
+    
+     if (user.Twitter != undefined)
+        $("#twitteraddress").val(user.Twitter);
+    
+     if (user.Web != undefined)
+        $("#wwwaddress").val(user.Web);
+
+     if (user.weight != undefined)
+        $("#weight").val(user.weight);
+    
+     if (user.distance != undefined)
+        $("#distance").val(user.distance);
+
+         
+     if (user.brigade != undefined)
+           $("#brigade").prop("checked",user.brigade);
+
 } 
    
 function setupInit() { 

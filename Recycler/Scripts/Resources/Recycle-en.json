@@ -123,10 +123,10 @@
     "sunday": "Sunday:",
     "createspot": "Create a spot",
     "titletext_donate": "Donation",
-    "donatetext": "We made this app free of charge, to put focus on recycling and stopfoodwaste so if you like this service please help us to keep this mobileservice alive... donate a bit or become supporter (no donate and influence on how we distrbiute any profit). Its only 2$ a month and secures that we can bring food out to those who need it and help environment.",
+    "donatetext": "You are right now a non supporter. We made this app free of charge, to put focus on recycling and stopfoodwaste so if you like this service please help us to keep this mobileservice alive... Its only 3,99$ a month and secures that we can bring food out to those who need it and help environment.",
     "donate1": "I will donate 1$ ",
     "donate2": "I will donate 2$ ",
-    "profittext": "50% of recycleworlds profit is donated to organizations that make a difference for others or have a green agenda. So become supporter and get your earth star.",
+    "profittext": " So become supporter and get your earth star. 50% of recycleworlds profit is donated to organizations that make a difference for others or have a green agenda.",
     "nowaytext": "No thanks",
     "titletext_edit": "Edit spot",
     "pictureplace": "Picture of place,shop,logo",
@@ -329,6 +329,7 @@
 "fb2": " Just setup your choices here.",
 "fz1": "Invite all your friends & family into your friendzone",
 "fz2": " Every time you post an item, your friends get a message and +4 hours to react, before your stuff goes public.",
-"fz3": " Build my friend & family zone now"
+"fz3": " Build my friend & family zone now",
+"postedby": "Publiced by Recycleworld user:"
                          
 }

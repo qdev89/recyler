@@ -63,7 +63,63 @@
             }
         }, 'Exit', ['OK', 'Cancel']);
     };
+    
+        
+   app.addBanner = function addBanner(time){
+        var timeout = time*1000;
+         if (window.plugins.AdMob) {
+                 if(!app.bannerShowed)                 
+                        try {                
+                            window.plugins.AdMob.createBannerView({                           
+                                         'publisherId':'ca-app-pub-9095907209455385/3710758159' ,
+                                         'adSize':window.plugins.AdMob.AD_SIZE.BANNER,
+                                         'bannerAtTop': false
+                                     }, 
 
+                                     function() {
+                                        window.plugins.AdMob.requestAd(
+                                             {'isTesting':false},                                
+                                             function() {    
+                                                 
+                                                
+                                                   window.plugins.AdMob.showAd(
+                                                         true,                                       
+                                                         function() {
+                                                             app.bannerShowed = true;
+                                                              setTimeout(function(){
+                                                                  window.plugins.AdMob.destroyBannerView();
+                                                                  app.bannerShowed = false;
+                                                              },
+                                                             timeout
+                                                             );
+                                                         },
+                                                         // showAd error callback 
+                                                         function() {
+                                                             alert('failed to show ad')
+                                                         });
+                                                
+                                             },
+                                             // requestAd error callback 
+                                             function() {
+                                                 alert('failed to request ad');
+                                             }
+                                             );
+                                     },                        
+                                     function(err) {
+                                         
+                                     }
+                                );
+                                            
+                        }catch (err) {               
+                            alert(err);
+                            alert(JSON.stringify(err));
+                        }
+            }else {
+                alert("No admobExport");
+            }
+    
+    }
+    
     var onDeviceReady = function() {
         // Handle "backbutton" event
         document.addEventListener('backbutton', onBackKeyDown, false);
@@ -87,65 +143,9 @@
         } else {
           //  console.log('Telerik AppFeedback API key is not set. You cannot use feedback service.');
         }
-        setTimeout(function(){
-      
-        if (window.plugins.AdMob) {
-            try {
-                // alert("admobExport exists");
-                /*  BANNER: 'BANNER',
-                IAB_MRECT: 'IAB_MRECT',
-                IAB_BANNER: 'IAB_BANNER',
-                IAB_LEADERBOARD: 'IAB_LEADERBOARD',
-                SMART_BANNER: 'SMART_BANNER'*/
-                window.plugins.AdMob.createBannerView({
-                            //'publisherId': 'ca-app-pub-5656565656565/1234567890',
-                             'publisherId':'ca-app-pub-xxx/4353543543' ,
-                             'adSize':window.plugins.AdMob.AD_SIZE.BANNER,
-                             'bannerAtTop': false
-                         }, 
-
-                         function() {
-                             //alert("create");
-                             window.plugins.AdMob.requestAd(
-                                 {'isTesting':false},
-                                 // requestAd success callback: we can now show he ad in the placeholder
-                                 function() {
-                                   //  alert("req");
-                                     window.plugins.AdMob.showAd(
-                                         true,
-                                         // showAd success callback: if this is called, the ad is being shown
-                                         function() {
-                                           //  alert('show ok')
-                                              setTimeout(function(){
-                                                  window.plugins.AdMob.destroyBannerView();
-                                              },10000);
-                                         },
-                                         // showAd error callback
-                                         function() {
-                                             alert('failed to show ad')
-                                         });
-                                 },
-                                 // requestAd error callback
-                                 function() {
-                                     alert('failed to request ad');
-                                 }
-                                 );
-                         },
-                         // createBannerView error callback
-                         function(err) {
-                             //alert(JSON.stringify(err));
-                             //alert('failed to create banner view');
-                         }
-                    );
-                                
-            }catch (err) {               
-                alert(err);
-                alert(JSON.stringify(err));
-            }
-        }else {
-            alert("No admobExport");
-        }
-            },100);
+        /*setTimeout(function(){      
+                app.addBanner(5);              
+        },100);*/
     };
 
     // Handle "deviceready" event

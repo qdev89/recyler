@@ -372,7 +372,7 @@ var Languages =
                         },
                         {
                             "id": "Garage sale/Market/Event",
-                            "Value": "Garage/Yard sale"
+                            "Value": "Garage sale/market"
                         },						
 						{
                             "id": "Terracycle spot",
@@ -413,7 +413,7 @@ var Languages =
                         },
                         {
                             "id": "Garage sale/Market/Event",
-                            "Value": "Garagesalg"
+                            "Value": "Garagesalg/marked"
                         },
 						{
                             "id": "Terracycle spot",
