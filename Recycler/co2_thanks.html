@@ -1,16 +1,5 @@
-<div data-role="view" id="co2-thanks-tabstrip" data-title="Your Co2" data-init="co2thanksInit" data-show="TranslateApp"  style="background-color: #f3f3f3;">
-    <!-- <div id="head" data-role="header" >
-    <h2>
-                        
-    <span name="spn">
-    <label for="titletext" data-localize="titletext_thanks">
-    Your Co2
-    </label>
-    </span>
-    </h2>
-                
-               
-    </div>-->
+<div data-role="view" id="co2-thanks-tabstrip" data-title="Your Co2"  data-show="fillCO2Value"  style="background-color: #f3f3f3;">
+   
     <div data-role="content">
         <div align="center">
             <img src="images/earth.png" width="100%">
@@ -32,7 +21,7 @@
                         The Co2 will be added to your account when your item is picked up
                     </label><br>
                     <br>
-                    <a data-role="button"   class="btn btn-blue"  id="ProceedToDonate">
+                    <a data-role="button" class="btn btn-blue" onclick="donateOrStuff()" >
                         <span name="spn">
                             <label for="next" data-localize="next" >
                                 Next

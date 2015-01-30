@@ -161,9 +161,26 @@ function  saveProductCo2(id){
                     function(data) {
                         console.log(data);
                         navigator.notification.alert("Info saved successfully!", null, "Success");
-                        app.application.navigate("mystuff.html"); 
+                        app.application.navigate("co2_thanks.html"); 
                     },
                     function(error) { 
                         alert(JSON.stringify(error)); 
                     });  
+}
+
+function fillCO2Value(){
+    TranslateApp();
+   $("#CO2Val").html(prd.Co2Data.Co2);
+}
+
+function donateOrStuff(){
+    if(userData)
+        {
+            if(userData.UserRole== "2")
+                app.application.navigate("mystuff.html");
+            else
+                app.application.navigate("donate.html");
+        }else{
+                app.application.navigate("donate.html");
+        }
 }

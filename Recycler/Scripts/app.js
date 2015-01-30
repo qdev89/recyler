@@ -848,15 +848,7 @@ function aboutThisAppInit() {
     }); 
 }
 
-function co2thanksInit() {
-    var CO2 = localStorage.CalculatedCO2;
-    window.localStorage.removeItem("CalculatedCO2");
-    $('#CO2Val').html(CO2);
-            
-    $('#ProceedToDonate').click(function () {
-        app.application.navigate("mystuff.html");
-    });
-}
+
 
 function contactInit() {
     if (localStorage.User == null || localStorage.User == undefined) {
