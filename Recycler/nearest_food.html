@@ -9,52 +9,66 @@
                 </div>
                 <br>
                 <span name="spn">
-                    <label for="fooddisc"   data-localize="fooddisc">Since you have chosen to donate food. You hereby confirm that the food its for humans, and that it is food that is not past its sell-by date. You confirm that it is handled according to all rules from the health department, and you is responsible. Recycleworld can not be taken as responsible in any ways.</label>
+                    <label for="fooddisc" data-localize="fooddisc">Since you have chosen to donate food. You hereby confirm that the food its for humans, and that it is food that is not past its sell-by date. You confirm that it is handled according to all rules from the health department, and you is responsible. Recycleworld can not be taken as responsible in any ways.</label>
                 </span>
                 <br>
                 <br>
 
                 <div style="text-align:center">
                     <h2>
-                        <label  data-localize="NearestPoints">Donation spots closest to you</label>
+                        <label data-localize="NearestPoints">Donation spots closest to you</label>
                     </h2>
                 </div>
-                 <div >
-                    
-  <table width="100%">
-                           <tr>
-							<td>
-                             Place name                                  
-                                </td><td>
-                                &nbsp;Place info </td>
+                <div>
+                    <div id="spotNearestTable"></div>
+                    <!--<table width="100%">
+                            <tr>
+                                <td>
+                                    Place name
+                                </td>
+                                <td>
+                                    &nbsp;Place info
+                                </td>
                                 <td>&nbsp;Get message</td>
-                                </tr>
-							<tr>
-								<td>
-                             Name 1</td><td>
-                                <img src="images/info_icon.png" alt=""/></td>
-                                <td> 
-								<input type="radio" value="V1" name="brigade2" id="brigade1" checked ></td>
-                                </tr>
-							<tr>
-								<td>
-                             Name 2</td><td>
-                                <img src="images/info_icon.png" alt=""/></td>
-                                <td> 
-								<input type="radio" value="V1" name="brigade3" id="brigade2" checked ></td>
-                                </tr>
-							<tr>
-								<td>
-                             Name 3</td><td>
-                                <img src="images/info_icon.png" alt=""/></td>
-                                <td> 
-								<input type="radio" value="V1" name="brigade4" id="brigade3" checked ></td>
-                                </tr>
-                        
-                      </table>
-                 </div>
-                 
-                 
+                            </tr>
+                            <tr>
+                                <td>
+                                    Name 1
+                                </td>
+                                <td>
+                                    <img src="images/info_icon.png" alt="" />
+                                </td>
+                                <td>
+                                    <input type="radio" value="V1" name="brigade2" id="brigade1" checked>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Name 2
+                                </td>
+                                <td>
+                                    <img src="images/info_icon.png" alt="" />
+                                </td>
+                                <td>
+                                    <input type="radio" value="V1" name="brigade3" id="brigade2" checked>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Name 3
+                                </td>
+                                <td>
+                                    <img src="images/info_icon.png" alt="" />
+                                </td>
+                                <td>
+                                    <input type="radio" value="V1" name="brigade4" id="brigade3" checked>
+                                </td>
+                            </tr>
+
+                        </table>-->
+                </div>
+
+
                 <div id="NearestPlaces" style="text-align:center">
 
                 </div>
@@ -63,19 +77,19 @@
                 </select>-->
                 <br>
                 <div data-role="fieldcontain">
-                         <div>
+                    <div>
                         <a data-role="button" data-transition="fade" id="SendMessage" class="btn btn-blue">
                             <!-- next -->
                             <span name="spn">
-                                <label for="sendsmsfood"   data-localize="sendsmsfood">Send message</label>
+                                <label for="sendsmsfood" data-localize="sendsmsfood">Send message</label>
                             </span>
                         </a>
                     </div><br>
                     <div>
-                        <a data-role="button" data-transition="fade" id="PostNow"  class="btn btn-blue">
+                        <a data-role="button" data-transition="fade" id="PostNow" class="btn btn-blue">
                             <!-- next -->
                             <span name="spn">
-                                <label for="putonline"   data-localize="putonline">No message - give to others</label>
+                                <label for="putonline" data-localize="putonline">No message - give to others</label>
                             </span>
                         </a>
                     </div>
@@ -84,4 +98,47 @@
         </ul><br><br><br>
     </div>
 </div>
-           
+<script id="spotNearestTableTemplate" type="text/x-kendo-template">
+    <div>
+        <table id="spotNearestTB">
+            <thead>
+                <tr>
+                    <th>Place name</th>
+                    <th>Place info</th>
+                    <th>Get message</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                # for (var i = 0; i < data.length; i++) { #
+                <tr>
+                    <td>#:data[i].Description#</td>
+                    <td><img src="images/info_icon.png" alt="" onclick="onSpotInfoClick('#:data[i].Id#')" /></td>
+                    <td class="center">
+                        <input type="checkbox" name="query_myTextEditBox" onclick="onSpotInfoClick('#:data[i].Id#')">
+                    </td>
+                </tr>
+                # } #
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<style>
+    #spotNearestTB input[type=checkbox] {
+        -webkit-appearance: checkbox !important;
+        position: inherit;
+    }
+
+    .center {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #spotNearestTB thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+        border: 1px solid black;
+    }
+</style>

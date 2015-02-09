@@ -1,0 +1,921 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>99a892bd-59a7-45c5-b3d5-d30e5a4903e7</ProjectGuid>
+    <ProjectTypeGuids>{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".abproject" />
+    <Content Include=".debug.abproject" />
+    <Content Include=".release.abproject" />
+    <Content Include="about_recycleworld.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="about_this_app.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="account_differences.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="basic_setup.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="basic_setup_twitter.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="book.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="co2_food_products.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="co2_kg_products.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="co2_thanks.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="confirm.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="confirm_spot.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="contact.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="contactus.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="cordova.android.js" />
+    <Content Include="cordova.ios.js" />
+    <Content Include="cordova.wp8.js" />
+    <Content Include="Cordova\phonegap-1.4.1.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="createspot.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="credits.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="crowdfund.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="donate.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="editspot.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="facebook_posting.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="facebook_posting_rules.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="filter.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="finditem.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="findonmap.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="food.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="friendzone.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="generel_thanks.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="giveaway.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="howworks.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\avatar.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\back.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\background.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\background_b.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\background_big.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\badge6.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\badge8.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\bg.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\bg_form.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\bg_form.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\closeButtonBlack.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\create.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\crowd.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\crowd_small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\donations.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\earth.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\EarthImages\0_percent.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\EarthImages\100_percent.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\EarthImages\25_percent.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\EarthImages\50_percent.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\EarthImages\75_percent.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\EarthImages\nonsupporter.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\earth_all.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\eco.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\empty.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\empty_filter.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\facebook-icon.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\facebook.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\facebook_group.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\fb_button.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\fb_pic.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\filter_button.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\find_button.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\flags.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\foodwaste.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\forgot.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\form_bg.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\friends_zone.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\giveaway_button.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\HELP.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\help.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\HELPbadge.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\home.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\how_top.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-add%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-add.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-adsf%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-adsf.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-arrow_left%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-arrow_left.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-facebook%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-facebook.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-google%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-google.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-liveid%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-liveid.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-password%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-password.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-username%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icon-username.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icons\icon114.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icons\icon114_b.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icons\icon144.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icons\icon144_b.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icons\icon512.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icons\icon512_b.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icons\icon57.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icons\icon57_b.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icons\icon72.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\icons\icon72_b.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\imageplaceholder.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\info_icon.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\iwant.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\launch\.picasa.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\launch\Default%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\launch\Default%402x_small.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\launch\Default%402x_small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\launch\Default.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\loader.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\loading2.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\logo-telerik_devcloud%402x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\logo-telerik_devcloud.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\Man.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\man_icon.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\adress_blue.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\business.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\business_smal.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\ecospot_big.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\eco_spot.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\food.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\foodwaste.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\foodwaste1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\foodwaste_small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\food_small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\garagesale.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\garagesale_grey.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\garagesale_small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\help-grey.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\help-small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\help.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\icons.psd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\icons_big.psd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\info_blue.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\opening_blue.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\phone_blue.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\recycling.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\recycling1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\recycling_small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\shop.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\shop_small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\terracycle_big.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\terracycle_small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\upcycling_small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\up_recycling.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\mapicons\www_icon_blue.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\niras.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\niras_pic.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\NoImage.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\nonslect.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\NothingFound\nothing_de.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\NothingFound\nothing_dk.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\NothingFound\nothing_es.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\NothingFound\nothing_fr.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\NothingFound\nothing_gb_us.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\notsupporter.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\number1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\number2.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\number3.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\number4.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\one_drag.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\peoples_map.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\phone.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\phoneicon.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\profilbut\emailbut.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\profilbut\fbbut.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\profilbut\no_terrabut.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\profilbut\phonebut.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\profilbut\smsbut.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\profilbut\terrabut.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\profilbut\twittbutt.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\profilbut\www.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\profile_background.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\receipt.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\recycleworld_logo.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\search.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\search_small.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\search_small1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\select-arrow-close.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\select-arrow-open.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\select_icon.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\selina_info.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\shake.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\sms.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\spot_button.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\spread1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\stopwastingfood_b.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\supporter-pic.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\supporter.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\supporter_benefits.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\supporter_benefits.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\team.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\TEAM_membership.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\terracycle.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\topicons1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\tribute.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\twitt_button.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\view1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\view2.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\world-map.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\wwwicon.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\yggdrasil.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="index.html" />
+    <Content Include="info_createspot.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="info_facebook_posting.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="info_friendzone.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="invite.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ithankyou.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="kendo\js\jquery.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="kendo\js\kendo.mobile.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="kendo\styles\custom.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="kendo\styles\images\back.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="kendo\styles\images\kendoui.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="kendo\styles\images\kendoui.woff">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="kendo\styles\images\wp8_icons.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="kendo\styles\images\wp8_inverseicons.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="kendo\styles\kendo.mobile.all.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ListAddress.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="map.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="me.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="membership.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="myspots.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="mystuff.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="nearest_food.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="niras.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="non_supporter.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="non_supporter_look_at_map.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="product.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="product_status.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="profile.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="qa.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="report.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\AdMob.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\app.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\jsCO2.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\jsEarthHeartCalculation.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\jsGiveAway.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\jsMap.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\jsProductMap.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\jsProductStatus.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\analytics-monitor.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\app.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\everlive.all.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\everlive.images.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\identity-provider.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\login.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\nearestFood.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\products.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\settings.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\spot.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\lib\users.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\LocalizationFiles\jquery.localize.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\map\mapUtility.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\Resources\CountryCodes.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\Resources\DropDownData.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\Resources\Messages.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\Resources\Recycle-de.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\Resources\Recycle-dk.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\Resources\Recycle-en.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\Resources\Recycle-es.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\User\User.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="settings.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="signup_login.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="spotInfo.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="spot_difference.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="terms.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Terra.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="terracycle.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="thanks.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="thanksshort.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="userItems.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="users.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-mdpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
+    <Resource Include="App_Resources\iOS\Default-568h@2x.png" />
+    <Resource Include="App_Resources\iOS\Default-667h.png" />
+    <Resource Include="App_Resources\iOS\Default-736h.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape-667h.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape-736h.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape@2x.png" />
+    <Resource Include="App_Resources\iOS\Default-Portrait.png" />
+    <Resource Include="App_Resources\iOS\Default-Portrait@2x.png" />
+    <Resource Include="App_Resources\iOS\Default.png" />
+    <Resource Include="App_Resources\iOS\Default@2x.png" />
+    <Resource Include="App_Resources\iOS\icon-40.png" />
+    <Resource Include="App_Resources\iOS\icon-40@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-40@3x.png" />
+    <Resource Include="App_Resources\iOS\icon-60.png" />
+    <Resource Include="App_Resources\iOS\icon-60@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-60@3x.png" />
+    <Resource Include="App_Resources\iOS\icon-72.png" />
+    <Resource Include="App_Resources\iOS\icon-72@2x.png" />
+    <Resource Include="App_Resources\iOS\icon-76.png" />
+    <Resource Include="App_Resources\iOS\icon-76@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small-50.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small-50@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small@2x.png" />
+    <Resource Include="App_Resources\iOS\icon.png" />
+    <Resource Include="App_Resources\iOS\icon@2x.png" />
+    <Resource Include="App_Resources\WP8\ApplicationIcon.png" />
+    <Resource Include="App_Resources\WP8\SplashScreenImage.jpg" />
+    <Resource Include="App_Resources\WP8\Tiles\Iconic\110x110.png" />
+    <Resource Include="App_Resources\WP8\Tiles\Iconic\202x202.png" />
+    <Content Include="css\index.css" />
+    <Content Include="img\cordova.png" />
+    <Content Include="img\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Resources\" />
+    <Folder Include="App_Resources\Android\" />
+    <Folder Include="App_Resources\Android\drawable-hdpi\" />
+    <Folder Include="App_Resources\Android\drawable-ldpi\" />
+    <Folder Include="App_Resources\Android\drawable-mdpi\" />
+    <Folder Include="App_Resources\Android\drawable-nodpi\" />
+    <Folder Include="App_Resources\iOS\" />
+    <Folder Include="App_Resources\WP8\" />
+    <Folder Include="App_Resources\WP8\Tiles\" />
+    <Folder Include="App_Resources\WP8\Tiles\Iconic\" />
+    <Folder Include="Cordova\" />
+    <Folder Include="css\" />
+    <Folder Include="images\" />
+    <Folder Include="images\EarthImages\" />
+    <Folder Include="images\icons\" />
+    <Folder Include="images\launch\" />
+    <Folder Include="images\mapicons\" />
+    <Folder Include="images\NothingFound\" />
+    <Folder Include="images\profilbut\" />
+    <Folder Include="img\" />
+    <Folder Include="kendo\" />
+    <Folder Include="kendo\js\" />
+    <Folder Include="kendo\styles\" />
+    <Folder Include="kendo\styles\images\" />
+    <Folder Include="Plugins\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Scripts\lib\" />
+    <Folder Include="Scripts\LocalizationFiles\" />
+    <Folder Include="Scripts\map\" />
+    <Folder Include="Scripts\Resources\" />
+    <Folder Include="Scripts\User\" />
+  </ItemGroup>
+  <Import Project="$(IceniumTargets)Build.targets" />
+  <!--
+    TODO: Uncomment this code if you need to customize the build process.
+    <Target Name="BeforeBuild">
+        <Message Text="TODO: Implement BeforeBuild" Importance="high" />
+    </Target>
+
+    <Target Name="AfterBuild">
+        <Message Text="TODO: Implement AfterBuild" Importance="high" />
+    </Target>
+    -->
+</Project>
