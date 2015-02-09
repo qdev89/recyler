@@ -32,9 +32,20 @@ function onSpotInfoClick(id) {
     var query = new Everlive.Query();
     query.where().eq('Id', id).done();
     data.get(query).then(function (data) {
-        var spot = data.result[0];
-        debugger;
+        app.currentNearestSpot = data.result[0];
+        app.application.navigate('nearestSpotInfo.html');
+
         hideLoading();
+
+    },
+         function (error) {
+             alert(JSON.stringify(error));
+         });
+}
+
+function fillNearestSpotInfoContent() {
+    if (app.currentNearestSpot) {
+        var spot = app.currentNearestSpot;
         var content =
             "<div class='table-container' ><table>" +
                 "<tr><td></td><td class='spotName'>" + spot.Name + "</td></tr>" +
@@ -53,10 +64,6 @@ function onSpotInfoClick(id) {
                 "<tr><td></td><td>" + spot.Zip + "</td></tr>" +
                 "<tr><td><img class='td-icon' src='images/mapicons/www_icon_blue.png' /></td><td> <a href='" + spot.Web + "'>" + spot.Web + "</a></td></tr>" +
                 "</table></div>";
-        app.application.navigate('nearestSpotInfo.html');
         $(".spot-info-content").html(content);
-    },
-         function (error) {
-             alert(JSON.stringify(error));
-         });
+    }
 }

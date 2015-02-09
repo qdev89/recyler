@@ -688,6 +688,7 @@
     <Content Include="mystuff.html">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="nearestSpotInfo.html" />
     <Content Include="nearest_food.html">
       <SubType>Content</SubType>
     </Content>
