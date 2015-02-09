@@ -12,8 +12,10 @@ function fillProfileInfo(e){
     if(!user)return;
     var selector = "#tabstrip-profile-details ";
     
-    if(user.ImageData)
-        $(selector +"#userPicture").attr("src",user.ImageData);
+    if(user.ImageData){
+        $(selector +"#userPicture").attr("data-src",user.ImageData);
+       everliveImages.responsiveAll();
+        }
     else 
          $(selector +"#userPicture").attr("src","images/NoImage.jpg");    
          $(selector +".username").html(user.DisplayName);    
@@ -741,7 +743,8 @@ function saveUserData() {
                     "Web" : $("#wwwaddress").val(),
                     "weight" :$("#weight").val(),
                     "distance" : $("#distance").val(), 
-                    "brigade" : $("#brigade").is(":checked")    
+                    "brigade" : $("#brigade").is(":checked"),  
+                    "onlycountry" : $("#onlycountry").is(":checked")
          
                 }, // data
                 { 'Id': userData.Id}, // filter
@@ -820,10 +823,11 @@ function fillUserData(user) {
      if (user.distance != undefined)
         $("#distance").val(user.distance);
 
-         
      if (user.brigade != undefined)
            $("#brigade").prop("checked",user.brigade);
-
+      
+     if (user.onlycountry != undefined)
+           $("#onlycountry").prop("checked",user.onlycountry);
 } 
    
 function setupInit() { 

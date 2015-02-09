@@ -14,57 +14,19 @@
     <div data-role="header">
         <div data-role="navbar">
              <a data-align="left" data-role="button" onclick="filterIcons()" ><img src="images/empty_filter.png" style="height: 14px;" /></a>
-            <span>Spot types</span>
+             <span>  <label for="select-choice-month"  data-localize="month">Spot types</label></span>
              <a data-align="right" data-role="button" onclick="closeModal()" >X</a>
         </div>
     </div>
 
     <ul data-role="listview" id="IconFilters" class="icons-list" data-style="inset">
-        <li>
-            <div class="img-container">
-                <img src="images/mapicons/eco_spot.png" />
-            </div>
-            <div class="description-container">
-                Eco spot
-            </div>
-            <div class="checkbox-container">
-                <label class="km-listview-label">
-                    <input type="checkbox" iconType="Eco/Green shop" checked="checked" class="km-widget km-icon km-check">
-                </label>
-            </div>
-        </li>
-        <li>
-            <div class="img-container">
-                <img src="images/mapicons/food.png" />
-            </div>
-            <div class="description-container">
-                Food
-            </div>
-            <div class="checkbox-container">
-                <label class="km-listview-label">
-                    <input type="checkbox" iconType="FREE Food" checked="checked" class="km-widget km-icon km-check">
-                </label>
-            </div>
-        </li>
-        <li>
-            <div class="img-container">
-                <img src="images/mapicons/business_smal.png" />
-            </div>
-            <div class="description-container">
-                Bussiness
-            </div>
-            <div class="checkbox-container">
-                <label class="km-listview-label">
-                    <input type="checkbox" iconType="Recycling company" checked="checked" class="km-widget km-icon km-check">
-                </label>
-            </div>
-        </li>
+              
         <li>
             <div class="img-container">
                 <img src="images/mapicons/garagesale_small.png" />
             </div>
             <div class="description-container">
-                Garage sale
+                 <label for="garage"  data-localize="garage"> Garage sale</label>
             </div>
             <div class="checkbox-container">
                 <label class="km-listview-label">
@@ -72,25 +34,12 @@
                 </label>
             </div>
         </li>
-        <li>
-            <div class="img-container">
-                <img src="images/mapicons/foodwaste_small.png" />
-            </div>
-            <div class="description-container">
-                Food donation
-            </div>
-            <div class="checkbox-container">
-                <label class="km-listview-label">
-                    <input type="checkbox" iconType="Food donation" checked="checked" class="km-widget km-icon km-check">
-                </label>
-            </div>
-        </li>
-        <li>
+                <li>
             <div class="img-container">
                 <img src="images/mapicons/help-small.png" />
             </div>
             <div class="description-container">
-                Help
+                 <label for="help1"  data-localize="help1"> Help</label>
             </div>
             <div class="checkbox-container">
                 <label class="km-listview-label">
@@ -103,7 +52,7 @@
                 <img src="images/mapicons/recycling_small.png" />
             </div>
             <div class="description-container">
-                Recycling
+                 <label for="recyclemap"  data-localize="recyclemap"> Recycling</label>
             </div>
             <div class="checkbox-container">
                 <label class="km-listview-label">
@@ -116,7 +65,7 @@
                 <img src="images/mapicons/upcycling_small.png" />
             </div>
             <div class="description-container">
-                Upcycling
+                  <label for="upcycling"  data-localize="upcycling">Upcycling</label>
             </div>
             <div class="checkbox-container">
                 <label class="km-listview-label">
@@ -134,6 +83,58 @@
             <div class="checkbox-container">
                 <label class="km-listview-label">
                     <input type="checkbox" iconType="Terracycle spot" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
+         <li>
+            <div class="img-container">
+                <img src="images/mapicons/foodwaste_small.png" />
+            </div>
+            <div class="description-container">
+                 <label for="food1"  data-localize="food1"> Food donation</label>
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Food donation" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
+          <li>
+            <div class="img-container">
+                <img src="images/mapicons/food.png" />
+            </div>
+            <div class="description-container">
+                  <label for="freefood"  data-localize="freefood">Food</label>
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="FREE Food" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
+         <li>
+            <div class="img-container">
+                <img src="images/mapicons/eco_spot.png" />
+            </div>
+            <div class="description-container">
+                 <label for="ecospot"  data-localize="ecospot"> Eco spot</label>
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Eco/Green shop" checked="checked" class="km-widget km-icon km-check">
+                </label>
+            </div>
+        </li>
+         <li>
+            <div class="img-container">
+                <img src="images/mapicons/business_smal.png" />
+            </div>
+            <div class="description-container">
+                  <label for="recyclingcompany"  data-localize="recyclingcompany">Bussiness</label>
+            </div>
+            <div class="checkbox-container">
+                <label class="km-listview-label">
+                    <input type="checkbox" iconType="Recycling company" checked="checked" class="km-widget km-icon km-check">
                 </label>
             </div>
         </li>

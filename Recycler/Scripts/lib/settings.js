@@ -68,5 +68,5 @@ var emailTemplates ={
     test:"zzz", //appName, userName, FromEmail,DefaultFromName,teamName
     
     DefaultFromName:"Recycle world",
-    FromEmail:"bjarke@bsrweb.dk"
+    FromEmail:"info@recycleworld.dk"
 };

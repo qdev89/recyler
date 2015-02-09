@@ -1,92 +1,102 @@
-<div data-role="view" data-init="productInit" id="product-tabstrip" data-title="Product" data-show="loadProduct"  style="background-color:white">
-
-    <div data-role="content">
-
-        <div id="scrollview-container" 
-            data-role="scrollview"        
-            data-template="scrollview-template"
-            data-content-height="180px">
-              
-        </div>
-
-        <script id="scrollview-template" type="text/x-kendo-template">
-            <!--<div  class="photo photo1" data-role="page">
-            </div>-->
-            <img src="#= url #" />
-        </script>
-        <table width="100%" cellpadding="16">
-            <tr>
-                <td>
-
-                    <div class="fields">
-                        <div>
-                            <span class="boldText title"></span>
-                        </div>
-                        
-                        <div>
-                            <span class="date"></span>
-                        </div>
-                        <br>
-                        <div>
-                           <span class="boldText type"></span>
-                       
-                          <span class="boldText price"> </span>
-                        </div>
-                         <br>
-                        <div>
-                           
-                             <span class="boldText"> <label for="long_description_title" data-localize="long_description_title"> Further information:</label></span>
-                            <br>
-                            <span class="info"></span>
-                        </div>
-                         <br>
-                        <div>
-                             <span class="boldText"> <label class="mightLike" for="like" data-localize="like">I might like instead:</label></span>
-                            <br>
-                            <span class="instead"></span>
-                        </div>
-                        <br>
-                        <div>
-                             <span class="boldText"> <label class="mightLike" for="posted by" data-localize="postedby"> Posted by:</label></span>
-                            <br>
-                            <div class="username"></div>
-                            <div class="city"></div>
-                        </div>
-                        
-                    </div>
-                    <br>
-                    <div>
-                        <a data-role="button"  class="btn btn-blue"  data-transition="fade" id="WantIt">
-                            <span name="spn">
+<div data-role="view" data-init="productInit" id="product-tabstrip" data-title="Product" data-show="loadProduct" style="background-color:white">
+     <div data-role="content">
+          <div id="scrollview-container" data-role="scrollview" data-template="scrollview-template" data-content-height="210px">
+          </div>
+          <script id="scrollview-template" type="text/x-kendo-templatmap-with-markerse">
+              <div data-role="page"> <img class="photo" src="#= url #" /> </div>
+          </script>
+          <table width="100%" cellpadding="16">
+               <tr>
+                    <td>
+                         <div class="fields">
+                              <div>
+                                   <span class="boldText title"></span>
+                              </div>
+                              <br>
+                              <div>
+                                   <table width="100%">
+                                        <tr>
+                                             <td width="50%"> <span class="boldText type"></span>
+                                             </td>
+                                             <td>
+                                                  <label for="desciption" data-localize="estimated"> </label>
+                                             </td>
+                                             <td> <span class="boldText price"> </span>
+                                             </td>
+                                        </tr>
+                                   </table>
+                              </div>
+                              <hr color="#C0C0C0" size="1">
+                              <div>
+                                   <span class="boldText"> <label for="long_description_title" data-localize="long_description_title"> Further information:</label>:</span>
+                                   <br>
+                                   <span class="info"></span>
+                              </div>
+                              <br>
+                              <hr color="#C0C0C0" size="1">
+                              <div>
+                                   <span class="boldText"> <label class="mightLike" for="like" data-localize="like">I might like instead:</label>:</span>
+                                   <br>
+                                   <span class="instead"></span>
+                              </div>
+                              <br>
+                              <div>
+                                   <hr color="#C0C0C0" size="1">
+                                   <b><div class="mightLike" for="posted by" data-localize="postedby"> Posted by:</div></b>
+                                   <div class="username"></div>
+                                   <div class="city"></div>
+                                   <div><span class="date"></span>
+                                   </div>
+                              </div>
+                              <!--- HERE SHOULD THERE BE A MAP VIEW OF WHERE THE ITEM IS PLACED -->
+                              <div id="map_of_where_item_is_placed">
+                                   <!--                               <div class="map_view">
+                                   <h3>This is mapview area</h3>
+                                   <div class="map" style="width:96%;margin:auto;" id="map-item"></div>
+                                        </div>               
+                              </div> -->
+                              </div>
+                              <!--- HERE SHOULD THERE BE A MAP VIEW OF WHERE THE ITEM IS PLACED -->
+                              <br>
+                              <div>
+                                   <a data-role="button" class="btn btn-blue" data-transition="fade" id="WantIt">
+                                        <span name="spn">
                                 <label for="allstuff" data-localize="allstuff">
                                     See all this user's stuff
                                 </label>
                             </span>
-                        </a><br><br>
-
-                        <a data-role="button" href="profile.html"  class="btn btn-blue"  data-transition="fade" id="WantIt">
-                            <span name="spn">
+                                   </a>
+                                   <br>
+                                   <br>
+                                   <a data-role="button" href="profile.html" class="btn btn-blue" data-transition="fade" id="WantIt">
+                                        <span name="spn">
                                 <label for="iwantit"  data-localize="iwantit">
                                     I want it
                                 </label>
                             </span>
-                        </a><br><br>
-
-                        <a data-role="button"   class="btn btn-blue"  data-transition="fade" href="finditem.html?refresh=false" id="NoInterest">
-                            <span name="spn">
+                                   </a>
+                                   <br>
+                                   <br>
+                                   <a data-role="button" class="btn btn-blue" data-transition="fade" href="finditem.html?refresh=false" id="NoInterest">
+                                        <span name="spn">
                                 <label for="nointerest" data-localize="nointerest">
                                     No interest
                                 </label>
                             </span>
-                        </a>
-                        <br>
-                    </div>
-                </td>
-            </tr>
-        </table>
-
-        <div id="dvFullScreen"></div>
-    </div>
-    <input type="hidden" id="ProductImageUrl" value="" />
+                                   </a>
+                                   <br>
+                              </div>
+                         </div>
+                    </td>
+               </tr>
+          </table>
+          <div id="dvFullScreen"></div>
+     </div>
+     <input type="hidden" id="ProductImageUrl" value="" />
 </div>
-            
+<style>
+     #map_of_where_item_is_placed {
+          min-height: 250px;
+          width: 100%;
+     }
+</style>

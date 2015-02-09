@@ -463,7 +463,7 @@ var Languages =
                         },
                         {
                             "id": "Recycling spot",
-                            "Value": "Second hand"
+                            "Value": "Secondhandladen"
                         },
                         {
                             "id": "upcycling",
@@ -471,7 +471,7 @@ var Languages =
                         },
                         {
                             "id": "Recycling company",
-                            "Value": "Recycled Firma/Platz"
+                            "Value": "Recycled Firma"
                         },
                         {
                             "id": "Food donation",
@@ -479,7 +479,7 @@ var Languages =
                         },
 					{
                             "id": "FREE Food",
-                            "Value": "GRATIS Lebensmittel"
+                            "Value": "Kostenlose Lebensmittel"
                         },
 						{
                             "id": "Help",

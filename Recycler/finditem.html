@@ -3,7 +3,7 @@
     <div id="GoToFilters"><!-- onclick="appNavigate('filter.html');"  Quick Search-->
         
        <input type="text" id="filterWord" /> 
-        <img  onclick="app.Product.filterProducts()" src="images/search_small.png" />
+        <img  onclick="app.Product.filterProducts()" src="images/search_small1.png"/>
        <!-- <button class="btn btn-primary"> Search </button> -->       
         
     </div>
@@ -14,22 +14,27 @@
 
     <script type="text/x-kendo-template" id="productTemplate">
         
-        <div onclick="goToProduct(this)" productID="${Id}">
+<div onclick="goToProduct(this)" productID="${Id}">
             <div class="img-holder">
-                <img class="li-image" src="${Image}"  />
-            </div>
-            
+                <img class="li-image resimgs" data-src="${Image}"  />
+                <h4><span>NEW</span></h4>
+            </div> 
+
+               
             <div class="item-info">
                <b> <div class="li-name" style="color:dodgerblue;font-size:large;"> ${Name}</div></b>
-                <div class="li-type" style="font-size:x-small;"> ${Type}</div>
+                <div class="li-type" style="font-size:small;"> ${Type}</div>
                 <div style="display:none;" class="li-desc"> Description: ${Description}</div>
-                <div class="li-price" style="font-size:x-small;"> Price: ${Price} </div>
+                <div class="li-price" style="font-size:small;"><label for="desciption" data-localize="estimated"> </label>: ${Price}</div>
                 #var date = new Date(CreatedAt);
                 var dateStr = date.toDateString();
                 #
-                <div class="li-date"  style="font-size:x-small;"> ${dateStr}</div>
-            </div>
+                  <div class="city"></div>
+                  <div class="li-date"  style="font-size:small;"> ${dateStr}</div>
+           </div>
         </div>
+
+     
     </script>
     
     
@@ -43,7 +48,7 @@
                 
         function openModal(row){            
   			var modal = "#modalview-spot";                 
-         	 $(modal+" .image").attr("src",  $(row).find(".li-image").attr("src"));
+         	 $(modal+" .image").attr("data-src",  $(row).find(".li-image").attr("src"));
               $(modal+" .name").html(  $(row).find(".li-name").html());
               $(modal+" .type").html(  $(row).find(".li-type").html());
               $(modal+" .price").html(  $(row).find(".li-price").html());
@@ -67,7 +72,7 @@
         </div>
          <div align="left" style="	margin-left: 20px;	margin-right:20px;">
                <br> <div class="name" style="color:dodgerblue;font-size:large;"></div>
-                 <img style="width: 100%;" class="image"  />
+                 <img style="width: 100%;" class="image  resimgs"  />
                  
                  <div class="type"></div>
                  <div class="desc"></div>

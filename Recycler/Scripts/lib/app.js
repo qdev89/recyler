@@ -123,7 +123,9 @@
     var onDeviceReady = function() {
         // Handle "backbutton" event
         document.addEventListener('backbutton', onBackKeyDown, false);
-
+        
+        everliveImages.init(appSettings.everlive.apiKey);
+        
         navigator.splashscreen.hide();
         fixViewResize();
             autoLogin();

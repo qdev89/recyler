@@ -963,9 +963,9 @@ function takePictureSpot(edit) {
     	isEdit="E";
     
     var destinationType = navigator.camera.DestinationType;
-    if ($('#image'+edit).attr('src') == "images/imageplaceholder.png") {
+    if ($('#image'+edit).attr('data-src') == "images/imageplaceholder.png") {
         navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
-    } else if ($('#image'+edit).attr('src') != "images/imageplaceholder.png") {
+    } else if ($('#image'+edit).attr('data-src') != "images/imageplaceholder.png") {
         navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
     } else {
        
@@ -1243,8 +1243,18 @@ function setListStyle(el,style){
         if(style=="normal"){
             $(ul).addClass("one-by-row").removeClass("three-by-row");
         }else{
-             $(ul).addClass("three-by-row").removeClass("one-by-row");
+             $(ul).addClass("three-by-row").removeClass("one-by-row");           
         }
+        
+        // $(ul).find("li").height($(ul).find(".img-holder").first().width());
+         
+                                $(".li-image").each(function(){
+                                    if($(this).height()>$(this).width())
+                                        $(this).css("width","100%");
+                                    else 
+                                        $(this).css("height","100%")
+                                });
+                                   
     }
 }
 

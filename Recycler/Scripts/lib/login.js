@@ -50,8 +50,11 @@ app.Login = (function () {
         };
 
         var show = function () {
-            $loginUsername.val('');
-            $loginPassword.val('');
+            //$loginUsername.val('');
+            //$loginPassword.val('');
+            // TEST
+            $loginUsername.val("bjarke@bsrweb.dk");
+            $loginPassword.val("Rec0089");
             TranslateApp();
         };
 

@@ -415,8 +415,13 @@ function saveItem() {
 function CreateProduct(Data) {  
     console.log(Data);    
     var data = app.everlive.data('Product');     
-    
-    data.create({ 'UserID' : Data.UserID,"Name": Data.name, "Description" : Data.description,"MoreInformation":Data.long_description , "IsActive":Data.IsActive,"Price" : Data.Price,"Type" : Data.Type, "Status": Data.Status,"Category": Data.Category},
+     window.getLocation() 
+			.done(function(position) { 
+                          debugger;
+				    data.create({ 'UserID' : Data.UserID,"Name": Data.name, "Description" : Data.description,"MoreInformation":Data.long_description , 
+                        "IsActive":Data.IsActive,"Price" : Data.Price,"Type" : Data.Type, "Status": Data.Status,"Category": Data.Category,
+                    "Latitude":position.coords.latitude, "Longitude":position.coords.longitude
+                    },
                 function(data) {
                     console.log(data);
         			localStorage.NewProductID = data.result.Id;
@@ -449,6 +454,11 @@ function CreateProduct(Data) {
                 function(error) {
                     console.log(error);
                 });
+			})
+			.fail(function(error) { 
+				alert(error.message); /*TODO: Better handling*/ 
+			});
+
     
 }
 
