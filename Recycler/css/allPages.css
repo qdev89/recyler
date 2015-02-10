@@ -1,3 +1,4 @@
+
 element.style {
 height: 66px;
 }
@@ -80,6 +81,9 @@ input[type=checkbox]
 textarea
 {
     resize: none;
+      font-size: large;
+     color: darkgrey;
+         
 }
 
 .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li
@@ -1569,6 +1573,10 @@ input:not([type='checkbox']), textarea, select
     padding: 3px;
 }
 
+
+
+
+
 #my-drawer .km-content
 {
     background: #207bb9 !important;
@@ -1584,7 +1592,7 @@ input:not([type='checkbox']), textarea, select
 #scrollview-container .photo
 {
     margin: 0;
-    height: 220px;
+    height: 250px;
     display: inline-block;
     -webkit-background-size: auto 100%;
     background-size: auto 100%;
@@ -1690,7 +1698,7 @@ input:not([type='checkbox']), textarea, select
 
 .container-div
 {
-    width: 90%;
+    width: 98%;
     margin: auto;
 }
 
@@ -1698,17 +1706,16 @@ input:not([type='checkbox']), textarea, select
 {
     width: 100%;
     border: 1px solid lightgrey;
-    border-radius: 3px;
-    box-shadow: 2px 2px 4px rgb(167, 167, 167);
-    -webkit-box-shadow: 2px 2px 4px rgb(167, 167, 167);
+    border-radius: 1px;
     padding: 8px;
     font-size: 14px;
     margin-bottom: 5px;
+
 }
 
 .timeholder> *
 {
-    width: 45% !important;
+    width: 48% !important;
     display: inline-block;
     margin-bottom: 3px;
 }
@@ -2191,6 +2198,7 @@ input:not([type='checkbox']), textarea, select
 
 fieldset{
     border:none !important;
+     width:100%;
 }
 
 #users-tabstrip li .img-holder

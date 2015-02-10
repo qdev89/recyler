@@ -81,7 +81,7 @@
                         <a data-role="button" data-transition="fade" id="SendMessage" class="btn btn-blue">
                             <!-- next -->
                             <span name="spn">
-                                <label for="sendsmsfood" data-localize="sendsmsfood">Send message</label>
+                                <label for="sendsmsfood" data-localize="sendsmsfood" onclick="sendEmailForCheckedPlaces()">Send message</label>
                             </span>
                         </a>
                     </div><br>
@@ -115,7 +115,7 @@
                     <td>#:data[i].Description#</td>
                     <td><img src="images/info_icon.png" alt="" onclick="onSpotInfoClick('#:data[i].Id#')" /></td>
                     <td class="center">
-                        <input type="checkbox" name="query_myTextEditBox" onclick="onSpotInfoClick('#:data[i].Id#')">
+                        <input type="checkbox" name="query_myTextEditBox" onclick="onSendMessagesChecked(this, '#:data[i].userId#')">
                     </td>
                 </tr>
                 # } #

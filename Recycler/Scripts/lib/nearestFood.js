@@ -67,3 +67,60 @@ function fillNearestSpotInfoContent() {
         $(".spot-info-content").html(content);
     }
 }
+
+var nearestPlacesIdChecked= [];
+function onSendMessagesChecked(cb, id)
+{
+    if(cb.checked)
+    {
+        nearestPlacesIdChecked.push(id);
+    }
+    else{
+        //var index = nearestPlacesIdChecked.indexOf(id);
+        nearestPlacesIdChecked.remove(id)        
+    }
+}
+
+function sendEmailForCheckedPlaces()
+{
+    if(nearestPlacesIdChecked.length>0)
+    {
+        showLoading();
+          var data = app.everlive.data('Users');                              
+         var  query = new Everlive.Query(); 
+        query.where().isin('Id', nearestPlacesIdChecked);
+    data.get(query).then(function (data) {
+   debugger;
+        if(data.result.length>0)
+        {
+            var emailList = [];
+            data.result.forEach(function(user) {
+ emailList.push(user.Email);
+        sendMail("fooddonation_email",emailList,{"userName":User.DisplayName,  "appName":emailTemplates.DefaultFromName,"DefaultFromName":emailTemplates.DefaultFromName ,"userName":User.DisplayName, "FromEmail":emailTemplates.FromEmail});
+                
+})
+        }
+       
+
+        hideLoading();
+
+    },
+         function (error) {
+         hideLoading();
+             alert(JSON.stringify(error));
+         });
+    }
+}
+
+
+
+Array.prototype.remove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};
