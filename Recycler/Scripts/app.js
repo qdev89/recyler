@@ -991,7 +991,9 @@ function onPhotoDataSuccessSpot(imageData) {
         //https://github.com/viliusle/Hermite-resize/
         resample_hermite(canvas, W, H, 350, 350);
 
-        spot.Image = canvas.toDataURL("image/jpeg");
+        // UNDONE: implement Cordova for this https://jbkflex.wordpress.com/2012/12/21/html5-canvas-todataurl-support-for-android-devices-working-phonegap-2-2-0-plugin/#comment-2803
+        //spot.Image = canvas.toDataURL("image/jpeg");
+        spot.Image = "data:image/jpeg;base64," + imageData;
         var damagephoto = document.getElementById('image' + isEdit);
         damagephoto.src = img.src;
     }

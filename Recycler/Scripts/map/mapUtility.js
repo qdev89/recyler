@@ -198,8 +198,8 @@
     };
 
     $.extend(window, {
-        mapInit: _app.mapInit,
-        mapShow: _app.mapShow,
+        mapUtilityInit: _app.mapInit,
+        mapUtitityShow: _app.mapShow,
         getLocation: _private.getLocation
     });
 }(jQuery, document));

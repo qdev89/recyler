@@ -67,7 +67,7 @@ function loadProduct(e) {
                          lat: product.Latitude,
                          lng: product.Longitude
                     };
-                    window.mapShow(product.Name, geo);
+                    window.mapUtitityShow(product.Name, geo);
                } else {
                     $('#map_of_where_item_is_placed').hide();
                }
