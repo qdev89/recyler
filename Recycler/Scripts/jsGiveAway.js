@@ -36,7 +36,7 @@ function saveItem() {
                 message = Language.Spanish.Register;
                 break;
         }
-            
+
         if (confirm(message)) {
             // localStorage.User = null;
             var CacheItem = '{  "NavigateURL":"giveaway.html",' +
@@ -56,7 +56,7 @@ function saveItem() {
             return;
         }
     }
-                    
+
     if (User.FirstName == "" || User.PhoneNumber == "" || User.EmailID == "") {
         var message = '';
         switch (localStorage.Language) {
@@ -73,7 +73,7 @@ function saveItem() {
                 message = Language.Spanish.PleaseUpdate;
                 break;
         }
-                                        
+
         if (confirm(message)) {
             var CacheItem = '{"NavigateURL":"giveaway.html",' +
                             '"GiveAwayImage":"' + ProductImage + '",' +
@@ -92,7 +92,7 @@ function saveItem() {
             return;
         }
     }
-                
+
     var flag = true;
     var Error = '';
     if (PictureTaken == false) {
@@ -129,7 +129,7 @@ function saveItem() {
             }
         }
     }
-                    
+
     if ($('#description').val() == '') {
         flag = false;
         if (Error == '') {
@@ -164,11 +164,11 @@ function saveItem() {
             }
         }
     }
-                    
+
     var filter = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
-                
+
     var selectedOption = $("input[name='abc']:checked").val();
-                
+
     if (selectedOption == "3" || selectedOption == "4" || selectedOption == "5" || selectedOption == "6") {
         if ($('#price').val() == 'Value' || $('#price').val() == '' || $('#price').val() == '0') {
             flag = false;
@@ -238,7 +238,7 @@ function saveItem() {
             }
         }
     }
-                        
+
     if (selectedOption == "4" || selectedOption == "5") {
         if ($('#price').val() == 'Value' || $('#price').val() == '' || $('#price').val() == '0') {
             flag = false;
@@ -308,22 +308,22 @@ function saveItem() {
             }
         }
     }
-               
- 
-                    
+
+
+
     if (flag == false) {
         $('#Save').removeAttr('disabled');
         alert(Error);
         return;
     }
-                
+
     GiveProduct.Product.Name = $('#description').val();
     GiveProduct.Product.Description = $('#MightLike').val();
     GiveProduct.Product.long_description = $('#long_description').val();
-                    
+
     if (selectedOption == "3" || selectedOption == "4" || selectedOption == "5" || selectedOption == "6") {
         GiveProduct.Product.Price = $('#price').val();
-                   
+
         if (selectedOption == "4" || selectedOption == "5")
             GiveProduct.Product.Type = 'Swap';
         else
@@ -331,45 +331,45 @@ function saveItem() {
     } else {
         GiveProduct.Product.Price = 0;
         GiveProduct.Product.Type = 'free';
-    } 
-                    
+    }
+
     var str = "";
     $("select option:selected").each(function () {
         str += $(this).attr('id') + ",";
     });
-                
+
     if ($.trim(str) != "" && $.trim(str) != null)
         GiveProduct.Product.Category = str.substring(0, str.length - 1);
     else
         GiveProduct.Product.Category = "NO";
-                
+
     /* if (ProductImage == '')
     GiveProduct.Product.Image = "";
     else
     GiveProduct.Product.Image = ProductImage;*/
-      
-     GiveProduct.Product.Category = $("#select-custom-24").val();
+
+    GiveProduct.Product.Category = $("#select-custom-24").val();
     if ($("#image1").attr("src") != "images/imageplaceholder.png") {
         GiveProduct.Product.Image1 = $("#image1").attr("src").replace("data:image/jpeg;base64,", "")
-    }else {
+    } else {
         GiveProduct.Product.Image1 = "";
     }
-                  
+
     if ($("#image2").attr("src") != "images/imageplaceholder.png") {
         GiveProduct.Product.Image2 = $("#image2").attr("src").replace("data:image/jpeg;base64,", "")
-    }else {
+    } else {
         GiveProduct.Product.Image2 = "";
     }
-                  
+
     if ($("#image3").attr("src") != "images/imageplaceholder.png") {
         GiveProduct.Product.Image3 = $("#image3").attr("src").replace("data:image/jpeg;base64,", "")
-    }else {
+    } else {
         GiveProduct.Product.Image3 = "";
     }
-            
+
     if (GiveProduct.Product.Category.indexOf("Food") >= 0) {
         IsFoodSelected = true;
-                           
+
         Data = '{"UserID": "' + User.Id + '",' +
                '"name":"' + GiveProduct.Product.Name + '",' +
                '"description":"' + GiveProduct.Product.Description + '",' +
@@ -381,7 +381,7 @@ function saveItem() {
         		 '"Category":"' + GiveProduct.Product.Category + '",' +
                '"Latitude":"' + ProductLat + '",' +
                '"Longitude":"' + ProductLong + '",';
-                    
+
         localStorage.PostProductData = Data;
     } else {
         IsFoodSelected = false;
@@ -401,7 +401,7 @@ function saveItem() {
                '"IsActive":"' + GiveProduct.Product.IsActive + '",' +
                '"Status":"' + GiveProduct.Product.Status + '"}';
     }
-                
+
     if ($('#PriceTag').is(':checked')) {
         Payment();
     } else {
@@ -412,60 +412,61 @@ function saveItem() {
     }
 }
 
-function CreateProduct(Data) {  
-    console.log(Data);    
-    var data = app.everlive.data('Product');     
-     window.getLocation() 
-			.done(function(position) { 
-                          debugger;
-				    data.create({ 'UserID' : Data.UserID,"Name": Data.name, "Description" : Data.description,"MoreInformation":Data.long_description , 
-                        "IsActive":Data.IsActive,"Price" : Data.Price,"Type" : Data.Type, "Status": Data.Status,"Category": Data.Category,
-                    "Latitude":position.coords.latitude, "Longitude":position.coords.longitude
-                    },
-                function(data) {
-                    console.log(data);
-        			localStorage.NewProductID = data.result.Id;
-                    createGiveAwayImage(data.result.Id, Data.Image1,1);
-                    createGiveAwayImage(data.result.Id, Data.Image2,2);
-                    createGiveAwayImage(data.result.Id, Data.Image3,3);
-        
-                    switch (localStorage.Language) {
-                        case "1":
-                            alert(Language.Danish.ItemPosted);
-                            break;
-                        case "2":
-                            alert(Language.German.ItemPosted);
-                            break;
-                        case "3":
-                            alert(Language.English.ItemPosted);
-                            break;
-                        case "4":
-                            alert(Language.Spanish.ItemPosted);
-                            break;
-                    }
-             
-                    window.localStorage.removeItem('CacheItem');
-                    if (User.UserRole == "1") {
-                        app.application.navigate("Terra.html");
-                    } else {
-                        app.application.navigate("thanks.html");
-                    }
-                },
-                function(error) {
-                    console.log(error);
-                });
-			})
-			.fail(function(error) { 
-				alert(error.message); /*TODO: Better handling*/ 
-			});
+function CreateProduct(Data) {
+    console.log(Data);
+    var data = app.everlive.data('Product');
+    window.getLocation()
+           .done(function (position) {
+               debugger;
+               data.create({
+                   'UserID': Data.UserID, "Name": Data.name, "Description": Data.description, "MoreInformation": Data.long_description,
+                   "IsActive": Data.IsActive, "Price": Data.Price, "Type": Data.Type, "Status": Data.Status, "Category": Data.Category,
+                   "Latitude": position.coords.latitude, "Longitude": position.coords.longitude
+               },
+           function (data) {
+               console.log(data);
+               localStorage.NewProductID = data.result.Id;
+               createGiveAwayImage(data.result.Id, Data.Image1, 1);
+               createGiveAwayImage(data.result.Id, Data.Image2, 2);
+               createGiveAwayImage(data.result.Id, Data.Image3, 3);
 
-    
+               switch (localStorage.Language) {
+                   case "1":
+                       alert(Language.Danish.ItemPosted);
+                       break;
+                   case "2":
+                       alert(Language.German.ItemPosted);
+                       break;
+                   case "3":
+                       alert(Language.English.ItemPosted);
+                       break;
+                   case "4":
+                       alert(Language.Spanish.ItemPosted);
+                       break;
+               }
+
+               window.localStorage.removeItem('CacheItem');
+               if (User.UserRole == "1") {
+                   app.application.navigate("Terra.html");
+               } else {
+                   app.application.navigate("thanks.html");
+               }
+           },
+           function (error) {
+               console.log(error);
+           });
+           })
+           .fail(function (error) {
+               alert(error.message); /*TODO: Better handling*/
+           });
+
+
 }
 
-function createGiveAwayImage(id, image,num) {
+function createGiveAwayImage(id, image, num) {
     if (image == "")
         return;
-    
+
     var file = {
         "Filename": "giveAwayPicture.jpeg",
         "ContentType": "image/jpeg",
@@ -475,37 +476,37 @@ function createGiveAwayImage(id, image,num) {
 
     app.everlive.Files.create(file,
                   function (data) {
-                     app.everlive.Files.getById(data.result.Id)
-                        .then(function(res){
-                             var d = app.everlive.data("Product");                                    
-                      		var field ='Image'+num;  
-                            var obj = {};
-                            obj.Id = id;
-                            obj[''+field] = res.result.Uri;
-                                        console.log(obj);                    
-                          d.updateSingle(obj,
-                                   function(i) {
-                                       console.log(i);   
-                                   },
-                                   function(error) {
-                                       console.log(error);
-                                   });              
-                        },
-                        function(error){
-                            alert(JSON.stringify(error));
-                        });            
+                      app.everlive.Files.getById(data.result.Id)
+                         .then(function (res) {
+                             var d = app.everlive.data("Product");
+                             var field = 'Image' + num;
+                             var obj = {};
+                             obj.Id = id;
+                             obj['' + field] = res.result.Uri;
+                             console.log(obj);
+                             d.updateSingle(obj,
+                                      function (i) {
+                                          console.log(i);
+                                      },
+                                      function (error) {
+                                          console.log(error);
+                                      });
+                         },
+                         function (error) {
+                             alert(JSON.stringify(error));
+                         });
                   },
                   function (error) {
-                      alert(JSON.stringify(error)); 
-                  });            
-}   
+                      alert(JSON.stringify(error));
+                  });
+}
 
 
 //===========================================================PAYMENT======================================================================
 
 
 ///////////////////////////////////////////////////give html
-   
+
 var IsFoodSelected = false;
 var ProductLat = '';
 var ProductLong = '';
@@ -514,7 +515,7 @@ var PictureTaken = false;
 var geocoder;
 var User = null;
 var Data;
-                
+
 function LoadStorageData() {
     // var Item = JSON.stringify(localStorage.CacheItem);
     Item = $.parseJSON(localStorage.CacheItem);
@@ -524,7 +525,7 @@ function LoadStorageData() {
         var Image = document.getElementById('image');
         Image.src = "data:image/jpeg;base64," + Item.GiveAwayImage;
     }
-                
+
     if (Item.GiveAwayProductName != undefined && Item.GiveAwayProductName != '')
         $('#description').val(Item.GiveAwayProductName);
     if (Item.GiveAwayProductDescription != undefined && Item.GiveAwayProductDescription != '')
@@ -533,7 +534,7 @@ function LoadStorageData() {
         $('#long_description').val(Item.GiveAwayProductDescription);
     if (Item.GiveAwayProductCategories != undefined && Item.GiveAwayProductCategories != '')
         $('#select-custom-24').val(Item.GiveAwayProductCategories);
-                        
+
     if (Item.GiveAwayPrice != undefined && Item.GiveAwayPrice != '') {
         if (User.UserRole == "2" || User.UserRole == "3") {
             $('#SwapValue').val(Item.GiveAwayPrice);
@@ -546,7 +547,7 @@ function LoadStorageData() {
     if (Item.GiveAwayLong != undefined && Item.GiveAwayLong != '')
         ProductLong = Item.GiveAwayLong;
 }
-                
+
 function onGetCurrentPositionSuccess(position) {
     //  alert(position.coords.latitude + ',' + position.coords.longitude);
     var lat = parseFloat(position.coords.latitude);
@@ -554,32 +555,32 @@ function onGetCurrentPositionSuccess(position) {
     ProductLat = lat;
     ProductLong = lng;
 }
-            
+
 function onGetCurrentPositionError(error) {
     alert("Couldn't get geo coords from device");
 }
-            
+
 function takePicture() {
     gpsEnabledSuccessCallback(true);
     // window.plugins.diagnostic.isLocationEnabled(locationEnabledSuccessCallback, locationEnabledErrorCallback);
 }
-                
+
 function onPhotoDataSuccess(imageData) {
     PictureTaken = true;
     ProductImage = imageData;
     var Image = document.getElementById('image');
     Image.src = "data:image/jpeg;base64," + imageData;
 }
-                
+
 function onFail(message) {
     // alert('There was a problem when taking the picture: \n Possible issues:\n'+
     //        'Memory card is not available.');
 }
-            
+
 function onTakePictureConfirm(buttonIndex) {
     //alert('You selected button ' + buttonIndex);
 }
-                    
+
 function locationEnabledSuccessCallback(result) {
     if (result)
         window.plugins.diagnostic.isGpsEnabled(gpsEnabledSuccessCallback, gpsEnabledErrorCallback);
@@ -601,11 +602,11 @@ function locationEnabledSuccessCallback(result) {
         window.plugins.diagnostic.switchToLocationSettings();
     }
 }
-            
+
 function locationEnabledErrorCallback(error) {
     alert("error location enabled: " + error);
 }
-                    
+
 function gpsEnabledSuccessCallback(result) {
     if (result) {
         var options = { maximumAge: 60000, timeout: 40000, enableHighAccuracy: true };
@@ -627,13 +628,13 @@ function gpsEnabledSuccessCallback(result) {
                     break;
             }
         }
-                        
+
         var destinationType = navigator.camera.DestinationType;
         if ($('#image').attr('src') == "images/imageplaceholder.png") {
             navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
         } else {
             navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.',
-                                           function() {
+                                           function () {
                                                navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
                                            }, 'New photo', 'No,Yes');
         }
@@ -655,11 +656,11 @@ function gpsEnabledSuccessCallback(result) {
         window.plugins.diagnostic.switchToLocationSettings();
     }
 }
-            
+
 function gpsEnabledErrorCallback(error) {
     alert("error gps enabled: " + error);
 }
-            
+
 // Show a custom confirmation dialog
 //
 
@@ -669,71 +670,71 @@ function changeLanguage(lang) {
     //  $(elt).html(langResources[$.trim($(elt).text())]);
     // });
 }
-       
+
 function showGiveAway(e) {
-     TranslateApp();
-   resetScroller(e);      
+    TranslateApp();
+    resetScroller(e);
     $(".radio-options").show();
     $(".after-radio").hide();
     $('input:radio[name=abc]:checked').prop("checked", false);
-       $("#Save").show();
+    $("#Save").show();
     $("#Update").hide();
-    
-    if(e.view.params.editSpotId!=undefined){
+
+    if (e.view.params.editSpotId != undefined) {
         editThisProduct(e.view.params.editSpotId);
-    }else{
+    } else {
         $('#description').val();
         $('#MightLike').val();
         $('#long_description').val();
         $('#price').val();
-        $("#select-custom-24").val();  
+        $("#select-custom-24").val();
         $("#image1").attr("src", "images/imageplaceholder.png");
         $("#image2").attr("src", "images/imageplaceholder.png");
-        $("#image3").attr("src", "images/imageplaceholder.png");   
+        $("#image3").attr("src", "images/imageplaceholder.png");
     }
 }
 
 function initGiveAway() {
     try {
-        $('input:radio[name=abc]').click(function() {
+        $('input:radio[name=abc]').click(function () {
             $(".radio-options").hide();
-            $(".after-radio").show();                    
+            $(".after-radio").show();
             var opt = $('input:radio[name=abc]:checked').val();
-            if (opt == '2' || opt == '5' || opt == '6') {                            
+            if (opt == '2' || opt == '5' || opt == '6') {
                 $(".mightLike").show();
-            }else {
-                $(".mightLike").hide();                                
+            } else {
+                $(".mightLike").hide();
             }
-                         
+
             if (opt == '3' || opt == '6') {
                 $(".price").show();
                 $(".lend").hide();
                 $(".price-div").show();
-            }else if (opt == '4' || opt == '5') {
+            } else if (opt == '4' || opt == '5') {
                 $(".price").hide();
                 $(".lend").show();
                 $(".price-div").show();
-            }else {                             
+            } else {
                 $(".price-div").hide();
-            }    
-        });  
-                    
+            }
+        });
+
         $('#trMightLike,#trMightLikelabel').css({ 'display': 'none' });
-                
+
         if (localStorage.User == null || localStorage.User == undefined) {
             app.application.navigate('signup_login.html');
         } else {
             User = $.parseJSON(localStorage.User);
         }
-                        
+
         switch (localStorage.Language) {
             case "1":
                 localStorage.LanguageType = "dk";
-                        
+
                 var menuItem = $("<option value='' id=''></option>");
                 menuItem.html("Tags/kategorier");
                 $("#select-custom-24").append(menuItem);
-                            
+
                 $.each(Tags.Danish, function (i) {
                     var menuItem = $("<option id=''></option>");
                     menuItem.html(Tags.Danish[i].Value);
@@ -742,70 +743,70 @@ function initGiveAway() {
                     $("#select-custom-24").append(menuItem);
                 });
                 break;
-            case "2":                        
+            case "2":
                 localStorage.LanguageType = "de";
                 var menuItem = $("<option value='' id=''></option>");
                 menuItem.html("Tags/Categories");
                 $("#select-custom-24").append(menuItem);
-                            
+
                 $.each(Tags.German, function (i) {
                     var menuItem = $("<option id=''></option>");
                     menuItem.html(Tags.German[i].Value);
                     menuItem.attr('id', Tags.German[i].id);
-                     menuItem.attr('value', Tags.German[i].id);
+                    menuItem.attr('value', Tags.German[i].id);
                     $("#select-custom-24").append(menuItem);
-                });                        
+                });
                 break;
-            case "3":                        
+            case "3":
                 localStorage.LanguageType = "en";
                 var menuItem = $("<option value='' id=''></option>");
                 menuItem.html("Tags/Categories");
                 $("#select-custom-24").append(menuItem);
-                            
+
                 $.each(Tags.English, function (i) {
                     var menuItem = $("<option id=''></option>");
                     if (Tags.English[i] != undefined) {
                         menuItem.html(Tags.English[i].Value);
                         menuItem.attr('id', Tags.English[i].id);
-                          menuItem.attr('value', Tags.English[i].id);
+                        menuItem.attr('value', Tags.English[i].id);
                         $("#select-custom-24").append(menuItem);
                     }
-                });                       
+                });
                 break;
-            case "4":                        
+            case "4":
                 localStorage.LanguageType = "es";
                 var menuItem = $("<option value='' id=''></option>");
                 menuItem.html("Tags/Categories");
                 $("#select-custom-24").append(menuItem);
-                            
+
                 $.each(Tags.Spanish, function (i) {
                     var menuItem = $("<option id=''></option>");
                     menuItem.html(Tags.Spanish[i].Value);
                     menuItem.attr('id', Tags.Spanish[i].id);
-                       menuItem.attr('value', Tags.Spanish[i].id);
+                    menuItem.attr('value', Tags.Spanish[i].id);
                     $("#select-custom-24").append(menuItem);
-                });                       
+                });
                 break;
         }
-                  
+
         if (localStorage.CacheItem != undefined && localStorage.CacheItem != '') {
             LoadStorageData();
         }
-                
+
         window.localStorage.removeItem('CacheItem');
-                
+
         $('.ui-select').parent().css({ 'z-index': '1' });
-                                      
+
         $('#maskDiv').css({
-                              'top': '0px',
-                              'left': '0px',
-                              'width': '100%',
-                              'height': '100%',
-                              'z-index': '2',
-                              'display': 'block',
-                              'position': 'absolute'
-                          });
-                    
+            'top': '0px',
+            'left': '0px',
+            'width': '100%',
+            'height': '100%',
+            'z-index': '2',
+            'display': 'block',
+            'position': 'absolute'
+        });
+
         $('#maskDiv').click(function () {
             var flag = true;
             var Error = '';
@@ -843,7 +844,7 @@ function initGiveAway() {
                     }
                 }
             }
-                        
+
             if ($('#description').val() == '') {
                 flag = false;
                 if (Error == '') {
@@ -878,7 +879,7 @@ function initGiveAway() {
                     }
                 }
             }
-                        
+
             var filter = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
             if ($('#PriceTag').is(':checked')) {
                 if ($('#SwapValue').val() == 'Value' || $('#SwapValue').val() == '' || $('#SwapValue').val() == '0') {
@@ -949,7 +950,7 @@ function initGiveAway() {
                     }
                 }
             }
-                            
+
             if ($('#chkSwap').is(':checked')) {
                 if ($('#SwapValue').val() == 'Value' || $('#SwapValue').val() == '' || $('#SwapValue').val() == '0') {
                     flag = false;
@@ -1019,7 +1020,7 @@ function initGiveAway() {
                     }
                 }
             }
-                        
+
             if (flag) {
                 $('#maskDiv').css({ 'display': 'none' });
                 //  $('select').selectmenu('open');
@@ -1029,7 +1030,7 @@ function initGiveAway() {
                 return false;
             }
         });
-                    
+
         $('#PriceTag').click(function () {
             $('#trMightLike ,#trMightLikelabel').removeAttr('style');
             $('#trvalue').css({ 'display': 'block' });
@@ -1051,7 +1052,7 @@ function initGiveAway() {
                         message = Language.Spanish.pricetag;
                         break;
                 }
-                        
+
                 if (confirm(message)) {
                     return;
                 } else {
@@ -1062,21 +1063,21 @@ function initGiveAway() {
                 }
             }
         });
-                    
+
         $('#chkFree').click(function () {
             $('#trMightLike,#trMightLikelabel').css({ 'display': 'none' });
             $('#trvalue').css({ 'display': 'none' });
             $('#chkSwap').removeAttr('checked');
             $('#PriceTag').removeAttr('checked');
         });
-                    
+
         $('#chkSwap').click(function () {
             $('#trMightLike ,#trMightLikelabel').removeAttr('style');
             $('#trvalue').css({ 'display': 'block' });
             $('#chkFree').removeAttr('checked');
             $('#PriceTag').removeAttr('checked');
         });
-    }catch (err) {
+    } catch (err) {
         alert(err);
         alert(JSON.stringify(err));
     }
@@ -1086,13 +1087,34 @@ var imgNumber = "";
 
 function takePictureGiveAway(e) {
     imgNumber = e;
-    var destinationType = navigator.camera.DestinationType;              
+    var destinationType = navigator.camera.DestinationType;
     navigator.camera.getPicture(onPhotoDataSuccessGA, onFail, { quality: 70, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
 }
 
 function onPhotoDataSuccessGA(imageData) {
     // localStorage.SpotImage = imageData;      
     PictureTaken = true;
-    var photo = document.getElementById('image' + imgNumber);
-    photo.src = "data:image/jpeg;base64," + imageData;
+    debugger;
+    var canvas = document.getElementById("cc");
+    var ctx = canvas.getContext("2d");
+
+    var img = new Image();
+    img.crossOrigin = "Anonymous"; //cors support
+    img.onload = function () {
+        var W = img.width;
+        var H = img.height;
+        canvas.width = W;
+        canvas.height = H;
+        ctx.drawImage(img, 0, 0); //draw image
+
+        //resize manually with 350 x 350 px
+        //https://github.com/viliusle/Hermite-resize/
+        resample_hermite(canvas, W, H, 350, 350);
+
+        var resizedImageData = canvas.toDataURL("image/jpeg");
+        var photo = document.getElementById('image' + imgNumber);
+        photo.src = resizedImageData;
+    }
+
+    img.src = "data:image/jpeg;base64," + imageData;
 }
