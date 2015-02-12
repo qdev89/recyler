@@ -1114,8 +1114,8 @@ function onPhotoDataSuccessGA(imageData) {
         var resizedImageData = canvas.toDataURL("image/jpeg");
         var photo = document.getElementById('image' + imgNumber);
         // UNDONE: implement Cordova for this https://jbkflex.wordpress.com/2012/12/21/html5-canvas-todataurl-support-for-android-devices-working-phonegap-2-2-0-plugin/#comment-2803
-        //photo.src = resizedImageData;
-        photo.src = "data:image/jpeg;base64," + imageData;
+        photo.src = resizedImageData;
+        //photo.src = "data:image/jpeg;base64," + imageData;
     }
 
     img.src = "data:image/jpeg;base64," + imageData;
