@@ -836,6 +836,18 @@
     <Content Include="users.html">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="views\activitiesView.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\activityView.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\addActivityView.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\addCommentView.html">
+      <SubType>Content</SubType>
+    </Content>
     <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
     <Resource Include="App_Resources\Android\drawable-mdpi\icon.png" />
@@ -907,6 +919,7 @@
     <Folder Include="Scripts\map\" />
     <Folder Include="Scripts\Resources\" />
     <Folder Include="Scripts\User\" />
+    <Folder Include="views\" />
   </ItemGroup>
   <Import Project="$(IceniumTargets)Build.targets" />
   <!--

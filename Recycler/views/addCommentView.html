@@ -1,8 +1,12 @@
-<div data-role="view" id="share" data-layout="default" data-transition="overlay:down" class="add-comment-view"
+<div data-role="view" id="share" data-transition="overlay:down" class="add-comment-view"
     data-init="app.AddComment.init" data-show="app.AddComment.show" data-model="app.AddComment"  data-title="Comment news">
     <div data-role="header">
         <div data-role="navbar">
-            <a class="nav-button nav-button-cancel" data-align="left" data-role="backbutton">Cancel</a>
+            <!--<a class="nav-button nav-button-cancel" data-align="left" data-role="backbutton">Cancel</a>-->
+            <div class="km-leftitem">
+                <a class="drawer-button km-widget km-button" data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="left">
+                </a>
+            </div>
             <a class="nav-button nav-button-post" data-align="right" data-role="button" data-bind="click: saveComment">Post</a>
         </div>
     </div>
