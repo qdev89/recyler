@@ -343,7 +343,10 @@
                                    "view": "Show me my profile page",
                                          "intro": "If you dont think you want to give, swap og lend things out. You can make a garagesale annonce or see where you can help others.",
 "intro1": "This is not for feedback, ideas, faults or reporting of ads, that can be done by shaking your phone and send your comments. This is only for subjects mentioned below.",
-"postedby": "Publiced by Recycleworld user:"
+     "oknews":"Show me the news" ,
+          "news1":"Create channel news",
+"news":"This is our community news channel. The rules are as follows: use this to share info on subjects like substainabilty, terracycle events, foodwaste event, upcycling ideas etc. <br><br>Remember to keep a respectfull tone and keep the content fresh and for everyone.<br><br> Spread positivy and lets make a change.<br>" ,
+     "postedby": "Publiced by Recycleworld user:"
 
                          
 }

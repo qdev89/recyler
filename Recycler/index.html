@@ -59,11 +59,7 @@
 
         <div data-role="drawer" id="my-drawer" class="my-drawer" data-position="left" style="width: 270px"  data-swipe-to-open="false"
              data-views="['product.html','friendzone.html','info_createspot.html','finditem.html','filter.html','crowdfund.html','facebook_posting_rules.html','thanks.html','co2_kg_products.html','contactus.html',
-             'confirm_spot.html','credits.html','map.html','non_supporter.html','myspots.html','non_supporter_look_at_map.html',
-             'spot_difference.html','#welcome','index.html','me.html','giveaway.html','account_differences.html',
-             'basic_setup_twitter.html','invite.html','mystuff.html', 'signup_login.html','howworks.html','editspot.html',
-             'niras.html','donate.html','food.html','createspot.html','about_this_app.html','spotInfo.html',
-                         'about_recycleworld.html','terracycle.html','qa.html','findonmap.html','basic_setup.html','report.html','membership.html', 'profile.html', 'nearest_food.html','views/activityiesView.html']">
+             'confirm_spot.html','credits.html','map.html','non_supporter.html','myspots.html','non_supporter_look_at_map.html','spot_difference.html','#welcome','index.html','me.html','giveaway.html','account_differences.html','basic_setup_twitter.html','invite.html','mystuff.html', 'signup_login.html','howworks.html','editspot.html','niras.html','donate.html','food.html','createspot.html','about_this_app.html','spotInfo.html','about_recycleworld.html','terracycle.html','qa.html','findonmap.html','basic_setup.html','report.html','membership.html', 'profile.html', 'nearest_food.html','info_newschannel.html','views/activityiesView.html','views/activityView.html','views/addActivityView.html','view/addCommentView.html']">
 
             <ul data-role="listview" data-type="group">
                 <li>
@@ -85,13 +81,7 @@
                                 </label>
                             </a>
                         </li>
-                        <li>
-                            <a onclick="navigateFromDrawer('findonmap.html', true)">
-                                <label  for="”spotsbutton”" data-localize="spotsbutton">
-                                    Look at map
-                                </label>
-                            </a>
-                        </li>
+
                         <li>
                             <a onclick="navigateFromDrawer('filter.html')">
                                 <label data-localize="titletext_filter">
@@ -100,7 +90,14 @@
                             </a>
                         </li>
                                                  <li>
-                                                      <a onclick="navigateFromDrawer('views/activitiesView.html')">
+                            <a onclick="navigateFromDrawer('findonmap.html', true)">
+                                <label  for="”spotsbutton”" data-localize="spotsbutton">
+                                    Look at map
+                                </label>
+                            </a>
+                        </li>
+                                                 <li>
+                                                      <a onclick="navigateFromDrawer('info_newschannel.html')">
                                 <label data-localize="newschannel">
                                     The News channel
                                 </label>
@@ -122,6 +119,13 @@
                             <a onclick="navigateFromDrawer('info_createspot.html')">
                                 <label for="create" data-localize="create" >
                                     Create spot
+                                </label>
+                            </a>
+                        </li>
+                                                 <li>
+                                                      <a onclick="navigateFromDrawer('views/addCommentView.html')">
+                                <label for="news1" data-localize="news1" >
+                                    Create News
                                 </label>
                             </a>
                         </li>

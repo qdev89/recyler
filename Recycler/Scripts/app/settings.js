@@ -10,7 +10,7 @@ var appSettings = {
     },
 
     eqatec: {
-        productKey: '$EQATEC_PRODUCT_KEY$',  // Put your EQATEC product key here
+        productKey: '226d439884fa480aa5af8be1c8cba824',  // Put your EQATEC product key here
         version: '1.0.0.0' // Put your application version here
     },
     

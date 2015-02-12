@@ -342,6 +342,9 @@
                                  "view": "Vis mig min profil side",
                                       "intro": "Hvis du ikke syntes du vil give, bytte, låne så lav en annonce for dit garagesalg eller se hvor du kan hjælpe andre.",
                                            "intro1": "Dette er ikke til feedback, ideer, fejl, rapportering af annoncer, det gør du ved at 'ryste' din telefon og indsende dine kommentarer. Dette er kun til nedenstående emner.",
-
+     "oknews":"Vis mig nyhederne" ,
+          "news1":"Lav en nyhed til kanalen",
+         "news": "Opret kanal news",
+"news": "Dette er vores community nyhedskanal. Reglerne er som følger: Brug dette til at dele information om emner som bæredygtihged, TerraCycle begivenheder, madspild begivenhed, upcycling ideer osv <br> Husk at holde en respectfull tone og holde indholdet frisk og for alle. <br> Spred positivitet og lad os foretage en ændring sammen. <br> ",  
 "freefood": "Gratis fødevarer"
 }
