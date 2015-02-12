@@ -643,6 +643,7 @@
     <Content Include="ithankyou.html">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="kendo\js\hermite.js" />
     <Content Include="kendo\js\jquery.min.js">
       <SubType>Content</SubType>
     </Content>

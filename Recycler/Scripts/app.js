@@ -974,10 +974,30 @@ function takePictureSpot(edit) {
 }
 
 function onPhotoDataSuccessSpot(imageData) {
+    debugger;
+    var canvas = document.getElementById("cc");
+    var ctx = canvas.getContext("2d");
 
-    spot.Image = imageData;
-    var damagephoto = document.getElementById('image' + isEdit);
-    damagephoto.src = "data:image/jpeg;base64," + imageData;
+    var img = new Image();
+    img.crossOrigin = "Anonymous"; //cors support
+    img.onload = function () {
+        var W = img.width;
+        var H = img.height;
+        canvas.width = W;
+        canvas.height = H;
+        ctx.drawImage(img, 0, 0); //draw image
+        
+        //resize manually with 350 x 350 px
+        //https://github.com/viliusle/Hermite-resize/
+        resample_hermite(canvas, W, H, 350, 350);
+
+        spot.Image = canvas.toDataURL("image/jpeg");
+        var damagephoto = document.getElementById('image' + isEdit);
+        damagephoto.src = img.src;
+    }
+
+    img.src = "data:image/jpeg;base64," + imageData;
+   
 }
 
 
