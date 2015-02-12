@@ -1,59 +1,64 @@
 <div data-role="view" data-title="All users" data-show="LoadAllUsers" id="users-tabstrip">
 
-    <div data-role="content">
-                 <table class="content_table1">
+    <table class="content_table1">
 
-            <tr>
-                <td >
-                     <label for="getmyco2" data-localize="getmyco2">Find the new owner of your stuff and get the Co2 added to your account</label><br><br>
-        <div class="search">
-            <input id="searchField"  style='display:block;width:100%'><br><a  data-role="button" class="btn btn-blue"  onclick="filterList()">Search</a>
-        </div></tr>
-                      <tr><td> 
-                      
-        <ul class="" data-role="listview"  id="ulAllUsers">
-        </ul>
+        <tr>
+            <td>
+                <label for="getmyco2" data-localize="getmyco2">Find the new owner of your stuff and get the Co2 added to your account</label><br><br>
+                <div class="search">
+                    <input id="searchField" style='display:block;width:100%'>
+                    <br><a data-role="button" class="btn btn-blue" onclick="filterList()">Search</a>
+                </div>
+        </tr>
+        <tr>
+            <td>
 
-                                
-            
-    <script type="text/x-kendo-template" id="userTemplate">
-         <table><tr><td> 
-         <div userID="${Id}" onclick="giveToThisUser(this)">
-          <div class="img-holder">
-                <img class="li-image" src="${ImageData}"  />
-                      </div></td>
-                      
-                      <td>
-            <div class="item-info">
-                <div class="li-name">${DisplayName}</div>
-                <div class="li-phone">${PhoneNumber}</div>
-            </div>
-        </div>
-        </td></tr></table>
-    </script>
-    
-    
-    <script>
-        function filterList(){
-            
-            var word = $("#searchField").val().toLowerCase();
-            if(word=="") $("#ulAllUsers li").show();
-            else{
-                
-                $("#ulAllUsers li").each(function(){
-                    var name = $(this).find(".li-name").html().toLowerCase();
-                     var phone = $(this).find(".li-phone").html().toLowerCase();
-                    if(name.indexOf(word)!=-1 || phone.indexOf(word)!=-1)
-                  	  $(this).show();
-                    else 
-                   	 $(this).hide();
-                });
-                
-            }
-            
+                <ul class="" data-role="listview" id="ulAllUsers"></ul>
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/x-kendo-template" id="userTemplate">
+    <table>
+        <tr>
+            <td>
+                <div userid="${Id}" onclick="giveToThisUser(this)">
+                    <div class="img-holder">
+                        <img class="li-image" src="${ImageData}" />
+                    </div>
+            </td>
+
+            <td>
+                <div class="item-info">
+                    <div class="li-name">${DisplayName}</div>
+                    <div class="li-phone">${PhoneNumber}</div>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+</script>
+
+
+<script>
+    function filterList() {
+
+        var word = $("#searchField").val().toLowerCase();
+        if (word == "") $("#ulAllUsers li").show();
+        else {
+
+            $("#ulAllUsers li").each(function () {
+                var name = $(this).find(".li-name").html().toLowerCase();
+                var phone = $(this).find(".li-phone").html().toLowerCase();
+                if (name.indexOf(word) != -1 || phone.indexOf(word) != -1)
+                    $(this).show();
+                else
+                    $(this).hide();
+            });
+
         }
-    </script>
-         </td></tr>
-         </table>
-</div> 
-     
+
+    }
+</script>

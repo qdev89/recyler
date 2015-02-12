@@ -1,5 +1,5 @@
 function validateEmail(txtEmail) {
-    
+
     var a = $.trim(txtEmail);
     // var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{1,4}$/;
     var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
@@ -11,35 +11,35 @@ function validateEmail(txtEmail) {
     }
 }
 
-function resetPassword(email){
-    var  object = {
-            "Email": email
-        };
-      
-   if( email != undefined && email!="" && validateEmail(email))
+function resetPassword(email) {
+    var object = {
+        "Email": email
+    };
+
+    if (email != undefined && email != "" && validateEmail(email))
         $.ajax({
             type: "POST",
-            url: 'http://api.everlive.com/v1/' + appSettings.everlive.apiKey +'/Users/resetpassword',
+            url: 'http://api.everlive.com/v1/' + appSettings.everlive.apiKey + '/Users/resetpassword',
             contentType: "application/json",
             data: JSON.stringify(object),
-            success: function(data) {
+            success: function (data) {
                 alert("Password reset email send successfully. Check your email box.");
             },
-            error: function(error) {
+            error: function (error) {
                 console.log(error);
-                if(error.responseText!=undefined)
+                if (error.responseText != undefined)
                     var err = JSON.parse(error.responseText);
-                if(err.message!=undefined)
+                if (err.message != undefined)
                     alert(err.message);
             }
         });
-    
-    else 
-        alert("Please enter a valid email!");    
-    
+
+    else
+        alert("Please enter a valid email!");
+
 }
 
-function sendMail(name,recipients,context){
+function sendMail(name, recipients, context) {
     var attributes = {
         "Recipients": recipients,
         "Context": context
@@ -47,104 +47,104 @@ function sendMail(name,recipients,context){
 
     $.ajax({
         type: "POST",
-        url: 'http://api.everlive.com/v1/Metadata/Applications/' + appSettings.everlive.apiKey +'/EmailTemplates/'+name+'/send',
+        url: 'http://api.everlive.com/v1/Metadata/Applications/' + appSettings.everlive.apiKey + '/EmailTemplates/' + name + '/send',
         contentType: "application/json",
         headers: {
             "Authorization": "Masterkey " + appSettings.msKey
         },
         data: JSON.stringify(attributes),
-        success: function(data) {
-           // alert("Email successfully sent.");
+        success: function (data) {
+            // alert("Email successfully sent.");
         },
-        error: function(error) {
+        error: function (error) {
             alert(JSON.stringify(error));
         }
     });
 }
 
-function goToTop(e){
-   // console.log(e);
+function goToTop(e) {
+    // console.log(e);
     e.sender.scroller.reset();
-     TranslateApp();
+    TranslateApp();
 }
 
-function TranslateApp(){
-    if (localStorage.LanguageType == undefined) { 
-            localStorage.Language = 3;
-            localStorage.LanguageType = "en";
-        }
-    
-   // log(localStorage.LanguageType);
-     var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" }; 
-        $("[data-localize]").localize("Recycle", opts);
+function TranslateApp() {
+    if (localStorage.LanguageType == undefined) {
+        localStorage.Language = 3;
+        localStorage.LanguageType = "en";
+    }
+
+    // log(localStorage.LanguageType);
+    var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
+    $("[data-localize]").localize("Recycle", opts);
 }
 
-function log(){    
+function log() {
     for (var i = 0; i < arguments.length; i++) {
-   	 console.log(arguments[i]);  
+        console.log(arguments[i]);
     }
 }
 
-function err(err){
+function err(err) {
     alert(JSON.stringify(err));
 }
 
-var userData =null;
+var userData = null;
 
 (function (global) {
     var app = global.app = global.app || {};
     document.addEventListener('deviceready', function () {
-        navigator.splashscreen.hide();       
-        $(document.body).height(window.innerHeight);      
-       
+        navigator.splashscreen.hide();
+        $(document.body).height(window.innerHeight);
+
         localStorage.removeItem("User");
-        if (localStorage.Language == undefined || localStorage.Language == "undefined") { 
+        if (localStorage.Language == undefined || localStorage.Language == "undefined") {
             localStorage.Language = 3;
             localStorage.LanguageType = "en";
         }
         TranslateApp();
     }, false);
 
-    app.application = new kendo.mobile.Application(document.body, { skin:"flat", layout:"tabstrip-layout", initial:"signup_login.html", hashBang:true, loading:false });     
-   
+    app.application = new kendo.mobile.Application(document.body, { skin: "flat", layout: "tabstrip-layout", initial: "signup_login.html", hashBang: true, loading: false });
+
 })(window);
 
 
 
 
-$(document).ready(function () {  
-    
-    $('#createspot').click(function () {                   
+$(document).ready(function () {
+
+    $('#createspot').click(function () {
         app.application.navigate("createspot.html");
-    }); 
-        
+    });
+
 });
 
 document.addEventListener("backbutton", BackButton, true);
 
-function navigateFromDrawer(view,checkIfSupporter){
-    
-    if(localStorage.User==undefined || localStorage.User==null){
+function navigateFromDrawer(view, checkIfSupporter) {
+
+    if (localStorage.User == undefined || localStorage.User == null) {
         alert("You should login first, in order to browse the application!");
         app.application.navigate('signup_login.html');
         return false;
-   }    
-    
-    if(checkIfSupporter){
-       // console.log(userData); 
-        var created =new Date(userData.CreatedAt);
-        created.setTime(created.getTime() + (14*24*60*60*1000)); 
+    }
+
+    if (checkIfSupporter) {
+        // console.log(userData); 
+        var created = new Date(userData.CreatedAt);
+        created.setTime(created.getTime() + (14 * 24 * 60 * 60 * 1000));
         var today = new Date();
-        
-        if(userData.UserRole != "2" && created < today )           
-            app.application.navigate("non_supporter_look_at_map.html"); 
+
+        if (userData.UserRole != "2" && created < today)
+            app.application.navigate("non_supporter_look_at_map.html");
         else
-   		 app.application.navigate(view);
+            app.application.navigate(view);
     }
     else
-   	 app.application.navigate(view);  
+        app.application.navigate(view);
 }
-            
+
 function BackButton() {
     if (app.application.view().id == "index.html")//check if index
     {
@@ -166,7 +166,7 @@ function BackButton() {
         window.localStorage.removeItem('SubscriptionPaid');
         window.localStorage.removeItem('SubscriptionInstallPaid');
         window.localStorage.removeItem('RecipientEmailID');
-        app.application.navigate("signup_login.html");      
+        app.application.navigate("signup_login.html");
     } else if (app.application.view().id == "signup_login.html" || app.application.view().id == "signup_login_org.html") {
         setTimeout(function () {
             if (confirm("Do you want to exit?")) {
@@ -180,7 +180,7 @@ function BackButton() {
 
 function SendMail(Name, Subject, Comments, MailTo) {
     var Data = '{"Name":"' + Name + '","Subject":"' + Subject + '","Comments":"' + Comments + '","To":"' + MailTo + '"}';
-              
+
 }
 
 function getLanguageResources() {
@@ -188,7 +188,7 @@ function getLanguageResources() {
     var de = new Array();
     var en = new Array();
     var es = new Array();
-                
+
     dk['Username'] = "Brugernavn";
     dk['password'] = "Password";
     dk['Email'] = "Email adresse";
@@ -199,7 +199,7 @@ function getLanguageResources() {
     dk['city'] = "By";
     dk['zip'] = "Postnummer";
     dk['State'] = "Stat";
-                
+
     de['Username'] = "Benutzername";
     de['password'] = "Passwort";
     de['Email'] = "Email adresse";
@@ -210,7 +210,7 @@ function getLanguageResources() {
     de['city'] = "Stadt";
     de['zip'] = "Plz";
     de['State'] = "Stat";
-                
+
     en['Username'] = "Username";
     en['password'] = "Password";
     en['Email'] = "Email";
@@ -221,7 +221,7 @@ function getLanguageResources() {
     en['city'] = "City";
     en['zip'] = "Zip";
     en['State'] = "State";
-                
+
     es['Username'] = "Navn";
     es['password'] = "Beskrivelse";
     es['Email'] = "Adresse";
@@ -232,7 +232,7 @@ function getLanguageResources() {
     es['city'] = "Web";
     es['zip'] = "CVR no.";
     es['State'] = "CVR no.";
-    
+
     dk['name'] = "Navn";
     dk['description'] = "Beskrivelse";
     dk['Address'] = "Adresse";
@@ -242,7 +242,7 @@ function getLanguageResources() {
     dk['phone'] = "Tlf";
     dk['www'] = "Web";
     dk['VAT'] = "CVR no.";
-    
+
     de['name'] = "Name";
     de['description'] = "Beschreibung";
     de['Address'] = "Addresse";
@@ -252,7 +252,7 @@ function getLanguageResources() {
     de['phone'] = "Phone";
     de['www'] = "Web";
     de['VAT'] = "MwSt. no.";
-    
+
     en['name'] = "Name";
     en['description'] = "description";
     en['Address'] = "Address";
@@ -262,7 +262,7 @@ function getLanguageResources() {
     en['phone'] = "phone";
     en['www'] = "www";
     en['VAT'] = "VAT";
-    
+
     es['name'] = "Nombre";
     es['description'] = "Descripci�n";
     es['Address'] = "Direcci�n";
@@ -272,7 +272,7 @@ function getLanguageResources() {
     es['phone'] = "Tel�fono";
     es['www'] = "Web";
     es['VAT'] = "Registro Fiscal no.";
-                
+
     var resources = new Array();
     resources['dk'] = dk;
     resources['de'] = de;
@@ -280,10 +280,10 @@ function getLanguageResources() {
     resources['es'] = es;
     return resources;
 }
-            
+
 function changeLanguage(lang) {
     var langResources = getLanguageResources()[lang];
-                
+
     $("input").each(function (i, elt) {
         $(elt).attr('placeholder', langResources[$.trim($(elt).attr('placeholder'))]);
     });
@@ -305,41 +305,41 @@ function StopSpecialchrOnly(evt) {
 }
 
 function takePicture() {
-    var destinationType = navigator.camera.DestinationType;              
+    var destinationType = navigator.camera.DestinationType;
     navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 70, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
 }
-            
+
 function onPhotoDataSuccess(imageData) {
     // localStorage.SpotImage = imageData;
-    
-    user.image = imageData;                  
+
+    user.image = imageData;
     var damagephoto = document.getElementById('image');
     damagephoto.src = "data:image/jpeg;base64," + imageData;
 }
-            
+
 function onFail(message) {
     console.log(message);
 }
-            
+
 // process the confirmation dialog result
 function onTakePictureConfirm(buttonIndex) {
     alert('You selected button ' + buttonIndex);
-}            
+}
 
 function isNumber(evt) {
     evt = (evt) ? evt : window.event;
     var charCode = (evt.which) ? evt.which : evt.keyCode;
-            
+
     if (charCode == 46) {
         return true;
     }
-            
+
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
         return false;
     }
     return true;
 }
- 
+
 function CreateSpot() {
     if ($('#CreateSpot').attr('disabled') == 'disabled')
         return;
@@ -347,7 +347,7 @@ function CreateSpot() {
         $('#CreateSpot').attr('disabled', 'disabled');
 
     if (localStorage.Spotdata != undefined || localStorage.Spotdata != null) {
-     
+
     } else
         app.application.navigate("createspot.html");
 }
@@ -358,13 +358,13 @@ function NotCreate() {
 }
 
 function RecordTransaction(ID) {
-   
+
 }
-            
+
 //===================================================================== OWNER =============================================================
-            
+
 function GetProductOwner(ID) {
-  
+
 }
 
 
@@ -373,8 +373,8 @@ function handleStatusChange(session) {
     if (session.authResponse) {
         //Fetch user's id, name, and picture
         FB.api('/me', {
-                   fields: 'id, name, picture,email'
-               },
+            fields: 'id, name, picture,email'
+        },
                function (response) {
                    if (!response.error) {
                        user = response;
@@ -402,22 +402,22 @@ function getLoginStatus() {
 }
 
 function signupLogin() {
-    
-     TranslateApp();
-    
+
+    TranslateApp();
+
     //513813615309399   
     FB.init({ appId: "313796158728708", nativeInterface: CDV.FB, useCachedDialogs: false });
 
     // PhoneGap.exec(null, null, "App", "clearCache", []);
-            
+
     /*  PhoneGap.addConstructor(function () {
     PhoneGap.addPlugin("Sms", new SmsPlugin());
     });*/
-            
+
     var networkState = "unknown";
     if (navigator.connection != undefined)
         networkState = navigator.connection.type;
-            
+
     var states = {};
     states[Connection.UNKNOWN] = 'Unknown connection';
     states[Connection.ETHERNET] = 'Ethernet connection';
@@ -442,20 +442,20 @@ function signupLogin() {
                 navigator.notification.alert(Language.Spanish.noNetwork, '', 'Recycle World', 'OK');
                 break;
         }
-            
+
         setTimeout(function () {
             navigator.app.exitApp()
         }, 2000);
         return;
     }
-            
+
     if (localStorage.User != null && localStorage.User != "null" && localStorage.User != undefined && localStorage.User != "") {
         var User = $.parseJSON(localStorage.User);
-            
+
         if (User.UserRole == "3") {
             return false;
         }
-            
+
         switch (localStorage.Language) {
             case "1":
                 navigator.notification.alert(Language.Danish.WelcomeMessage, '', 'Recycle World', 'OK');
@@ -470,27 +470,27 @@ function signupLogin() {
                 navigator.notification.alert(Language.Spanish.WelcomeMessage, '', 'Recycle World', 'OK');
                 break;
         }
-            
+
         if (User.PhoneNumber != '' && User.EmailID != '') {
             app.application.navigate("index.html");
         } else {
             app.application.navigate("basic_setup.html");
         }
     }
-    
+
     if ((typeof PhoneGap == 'undefined') && (typeof PhoneGap == 'undefined'))
         alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
     if (typeof CDV == 'undefined')
         alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
     if (typeof FB == 'undefined')
         alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-            
+
     FB.Event.subscribe('auth.login', function (response) {
     });
-            
+
     FB.Event.subscribe('auth.logout', function (response) {
     });
-            
+
     FB.Event.subscribe('auth.sessionChange', function (response) {
     });
 
@@ -503,7 +503,7 @@ function signupLogin() {
         localStorage.LanguageType = "en";
         GetAllLanguages();
     } else {
-       // GetAllLanguages();
+        // GetAllLanguages();
         switch (localStorage.Language) {
             case "1":
                 localStorage.LanguageType = "dk";
@@ -519,7 +519,7 @@ function signupLogin() {
                 break;
         }
 
-      TranslateApp();
+        TranslateApp();
     }
 
     $('#ddlCountry').change(function () {
@@ -569,7 +569,7 @@ function signupLogin() {
                 }
             });
 
-           TranslateApp();
+            TranslateApp();
         } else {
             switch (localStorage.Language) {
                 case "1":
@@ -698,7 +698,7 @@ function showMe() {
     if (localStorage.User == null || localStorage.User == undefined) {
         app.application.navigate('signup_login.html');
         return;
-    }else
+    } else
         app.application.navigate("me.html");
 }
 
@@ -710,12 +710,12 @@ function getFilters() {
     var Distance = $('#Distance').val();
     var Price = $('#Price').val();
     var Text = $('#Search').val();
-            
+
     var str = "";
     $("select option:selected").each(function () {
         str += $(this).attr('id') + ",";
     });
-            
+
     if ($.trim(str) != "" && $.trim(str) != null) {
         localStorage.Filters = Text + '&' + Distance + '&' + Price + '&' + str.substring(0, str.length - 1);
         localStorage.isFilterEnabled = true;
@@ -723,7 +723,7 @@ function getFilters() {
         localStorage.Filters = Text + '&' + Distance + '&' + Price + '&' + 'null';
         localStorage.isFilterEnabled = true;
     }
-            
+
     app.application.navigate("finditem.html");
 }
 
@@ -732,11 +732,11 @@ function initFilters() {
     switch (localStorage.Language) {
         case "1":
             localStorage.LanguageType = "dk";
-            
+
             var menuItem = $("<option id=''></option>");
             menuItem.html("Tags/kategorier");
             $("#select-custom-24").append(menuItem);
-            
+
             $.each(Tags.Danish, function (i) {
                 if (Tags.Danish[i] != undefined) {
                     var menuItem = $("<option id=''></option>");
@@ -745,17 +745,17 @@ function initFilters() {
                     $("#select-custom-24").append(menuItem);
                 }
             });
-            
+
             // $("#select-custom-24").selectmenu('refresh');
-            
+
             break;
         case "2":
-            
+
             localStorage.LanguageType = "de";
             var menuItem = $("<option id=''></option>");
             menuItem.html("Tags/Categories");
             $("#select-custom-24").append(menuItem);
-            
+
             $.each(Tags.German, function (i) {
                 if (Tags.German[i] != undefined) {
                     var menuItem = $("<option id=''></option>");
@@ -765,15 +765,15 @@ function initFilters() {
                 }
             });
             //  $("#select-custom-24").selectmenu('refresh');
-            
+
             break;
         case "3":
-            
+
             localStorage.LanguageType = "en";
             var menuItem = $("<option id=''></option>");
             menuItem.html("Tags/Categories");
             $("#select-custom-24").append(menuItem);
-            
+
             $.each(Tags.English, function (i) {
                 if (Tags.English[i] != undefined) {
                     var menuItem = $("<option id=''></option>");
@@ -783,15 +783,15 @@ function initFilters() {
                 }
             });
             //  $("#select-custom-24").selectmenu('refresh');
-            
+
             break;
         case "4":
-            
+
             localStorage.LanguageType = "es";
             var menuItem = $("<option id=''></option>");
             menuItem.html("Tags/Categories");
             $("#select-custom-24").append(menuItem);
-            
+
             $.each(Tags.Spanish, function (i) {
                 if (Tags.Spanish[i] != undefined) {
                     var menuItem = $("<option id=''></option>");
@@ -801,7 +801,7 @@ function initFilters() {
                 }
             });
             //  $("#select-custom-24").selectmenu('refresh');
-            
+
             break;
     }
 }
@@ -812,7 +812,7 @@ function aboutThisAppInit() {
         var ErrorMessage = "";
         var MailTo = "feedback@recycleworld.dk";
         //var MailTo = "rbhardwaj@seasiainfotech.com";
-                    
+
         if ($('#Name').val() == "") {
             Flag = false;
             if (Error == '') {
@@ -821,7 +821,7 @@ function aboutThisAppInit() {
                 ErrorMessage = ErrorMessage + 'Please provide name.\n';
             }
         }
-                    
+
         if ($('#Subject').val() == "0") {
             Flag = false;
             if (Error == '') {
@@ -830,7 +830,7 @@ function aboutThisAppInit() {
                 ErrorMessage = ErrorMessage + 'Please provide Subject.\n';
             }
         }
-                    
+
         if ($('#Comments').val() == "") {
             Flag = false;
             if (Error == '') {
@@ -839,13 +839,13 @@ function aboutThisAppInit() {
                 ErrorMessage = ErrorMessage + 'Please provide some text.\n';
             }
         }
-                    
+
         if (Flag) {
             SendMail($('#Name').val(), $('#Subject').val(), $('#Comments').val(), MailTo);
         } else {
             alert(ErrorMessage);
         }
-    }); 
+    });
 }
 
 
@@ -856,7 +856,7 @@ function contactInit() {
     } else {
         User = $.parseJSON(localStorage.User);
     }
-                
+
     var ID = localStorage.SelectedProduct;
     GetProductOwner(ID);
 
@@ -877,7 +877,7 @@ function contactInit() {
                     message = Language.Spanish.PleaseUpdate;
                     break;
             }
-            
+
             if (confirm(message)) {
                 app.application.navigate("basic_setup.html");
                 return false;
@@ -885,7 +885,7 @@ function contactInit() {
                 return false;
             }
         }
-            
+
         if ($('#textinput').val() == '') {
             switch (localStorage.Language) {
                 case "1":
@@ -903,7 +903,7 @@ function contactInit() {
             }
             return;
         }
-            
+
         if (localStorage.OwnerPhoneNumber == '' || localStorage.OwnerPhoneNumber == undefined) {
             switch (localStorage.Language) {
                 case "1":
@@ -921,9 +921,9 @@ function contactInit() {
             }
             return;
         }
-            
+
         var Message = $('#textinput').val() + " ,  Please contact (" + User.PhoneNumber + ") ";
-            
+
         // alert("Transaction recorded successfully");
         window.plugins.Sms.sendSMS(function () {
             switch (localStorage.Language) {
@@ -940,7 +940,7 @@ function contactInit() {
                     alert(Language.Spanish.Rsent);
                     break;
             }
-            
+
             RecordTransaction(ID);
         },
                                    function (e) {
@@ -949,34 +949,34 @@ function contactInit() {
                                    localStorage.OwnerPhoneNumber,
                                    Message);
     });
-            
+
     $('#call').click(function () {
         window.location = "tel:" + localStorage.OwnerPhoneNumber;
     });
 }
 
-var isEdit="";
+var isEdit = "";
 function takePictureSpot(edit) {
-   if(edit==undefined)
-    	isEdit = "";       
-    else 
-    	isEdit="E";
-    
+    if (edit == undefined)
+        isEdit = "";
+    else
+        isEdit = "E";
+
     var destinationType = navigator.camera.DestinationType;
-    if ($('#image'+edit).attr('data-src') == "images/imageplaceholder.png") {
+    if ($('#image' + edit).attr('data-src') == "images/imageplaceholder.png") {
         navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
-    } else if ($('#image'+edit).attr('data-src') != "images/imageplaceholder.png") {
+    } else if ($('#image' + edit).attr('data-src') != "images/imageplaceholder.png") {
         navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
     } else {
-       
+
         navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.', onTakePictureConfirm, 'New photo', 'No,Yes');
     }
 }
 
 function onPhotoDataSuccessSpot(imageData) {
-   
+
     spot.Image = imageData;
-    var damagephoto = document.getElementById('image'+isEdit);
+    var damagephoto = document.getElementById('image' + isEdit);
     damagephoto.src = "data:image/jpeg;base64," + imageData;
 }
 
@@ -985,11 +985,11 @@ function onPhotoDataSuccessSpot(imageData) {
 
 function findItemInit() {
     $("#LoadingDiv").css({
-                             "position": "absolute",
-                             "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
-                             'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
-                             'background-color': 'white'
-                         });
+        "position": "absolute",
+        "left": "0px", "top": "0px", 'opacity': '0.8', "z-index": "20002",
+        'filter': 'alpha(opacity=40)', "width": "100%", "height": "100%",
+        'background-color': 'white'
+    });
     $("#Load").css({ "position": "fixed", "z-index": "20003", "top": "50%", "left": "30%" });
     $('#LoadingDiv,#Load').ajaxStart(function () {
         $('#LoadingDiv,#Load').show();
@@ -1004,7 +1004,7 @@ function findItemInit() {
     } else {
         window.localStorage.removeItem('isFilterEnabled');
     }
-            
+
     if (localStorage.Filters != undefined && localStorage.Filters != null) {
         var SearchFilter = localStorage.Filters.split('&');
         Product.Display.Page = 1;
@@ -1014,7 +1014,7 @@ function findItemInit() {
         Product.SearchFilters.Price = SearchFilter[2];
         Product.SearchFilters.Categories = SearchFilter[3];
     }
-            
+
     $('#List').click(function () {
         $('#ulProducts').html('');
         Product.Display.Page = 1;
@@ -1022,7 +1022,7 @@ function findItemInit() {
         Product.Display.Style = "List";
         GetAllProducts(Product.Display, Product.SearchFilters);
     });
-            
+
     $('#Grid').click(function () {
         $('#ulProducts').html('');
         Product.Display.Page = 1;
@@ -1030,20 +1030,20 @@ function findItemInit() {
         Product.Display.Style = "Grid";
         GetAllProducts(Product.Display, Product.SearchFilters);
     });
-            
+
     $('.clsProduct').click(function () {
         //$.mobile.loadingMessageTextVisible = true;
         //$.mobile.showPageLoadingMsg("b", "please wait...");
         localStorage.SelectedProduct = $(this).attr('id');
         app.application.navigate("product.html");
     });
-            
+
     $('#GetMore').click(function () {
         $('#ulProducts').find('#GetMore').remove();
         Product.Display.Page += 1;
         GetAllProducts(Product.Display, Product.SearchFilters);
     });
-            
+
     $('#imgSearch').click(function () {
         $('#ulProducts').html('');
         Product.Display.Page = 1;
@@ -1055,7 +1055,7 @@ function findItemInit() {
 
     gpsEnabledSuccessCallback(true);
 }
-    
+
 function locationEnabledSuccessCallback(result) {
     if (result)
         window.plugins.diagnostic.isGpsEnabled(gpsEnabledSuccessCallback, gpsEnabledErrorCallback);
@@ -1077,7 +1077,7 @@ function locationEnabledSuccessCallback(result) {
         window.plugins.diagnostic.switchToLocationSettings();
     }
 }
-            
+
 function locationEnabledErrorCallback(error) {
     switch (localStorage.Language) {
         case "1":
@@ -1094,14 +1094,14 @@ function locationEnabledErrorCallback(error) {
             break;
     }
 }
-            
+
 function gpsEnabledSuccessCallback(result) {
     if (result) {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 Product.SearchFilters.Latitude = position.coords.latitude;
                 Product.SearchFilters.Longitude = position.coords.longitude;
-            
+
                 GetAllProducts(Product.Display, Product.SearchFilters);
                 //                        if (localStorage.Filters != undefined && localStorage.Filters != null) {
                 //                            window.localStorage.removeItem('Filters');
@@ -1135,7 +1135,7 @@ function gpsEnabledSuccessCallback(result) {
         window.plugins.diagnostic.switchToLocationSettings();
     }
 }
-            
+
 function gpsEnabledErrorCallback(error) {
     //alert('W3C Geolocation API is not available');
     Product.SearchFilters.Latitude = 0;
@@ -1160,20 +1160,20 @@ function gpsEnabledErrorCallback(error) {
     //                break;
     //        }
 }
-            
+
 function onGPSError(error) {
     //alert('W3C Geolocation API is not available');
     Product.SearchFilters.Latitude = 0;
     Product.SearchFilters.Longitude = 0;
     GetAllProducts(Product.Display, Product.SearchFilters);
 }
-            
+
 function spotDifferenceInit() {
     $("#spot-difference-tabstrip #me").click(function () {
         window.localStorage.removeItem('CacheItem');
         app.application.navigate("me.html");
     });
-                    
+
     $("#spot-difference-tabstrip #give").click(function () {
         window.localStorage.removeItem('CacheItem');
         app.application.navigate("giveaway.html");
@@ -1211,50 +1211,50 @@ function thanksInit() {
     $('#CO2_kg').click(function () {
         app.application.navigate("co2_kg_products.html");
     });
-                
+
     $('#CO2_food').click(function () {
         app.application.navigate("co2_food_products.html");
     });
     $('#ProceedAhead').click(function () {
         app.application.navigate("mystuff.html");
-    });    
+    });
 }
 
 
-function resetScroller(e){
+function resetScroller(e) {
     e.view.scroller.reset();
 }
 
 
-function showLoading(){
+function showLoading() {
     $("#loaderDiv").show();
 }
 
-function hideLoading(){
+function hideLoading() {
     $("#loaderDiv").hide();
 }
 
 
-function setListStyle(el,style){
-    
-    
-  var ul =  $(el).closest(".km-view").find("ul.styled-list").first();
-    if($(ul).length>0){
-        if(style=="normal"){
+function setListStyle(el, style) {
+
+
+    var ul = $(el).closest(".km-view").find("ul.styled-list").first();
+    if ($(ul).length > 0) {
+        if (style == "normal") {
             $(ul).addClass("one-by-row").removeClass("three-by-row");
-        }else{
-             $(ul).addClass("three-by-row").removeClass("one-by-row");           
+        } else {
+            $(ul).addClass("three-by-row").removeClass("one-by-row");
         }
-        
+
         // $(ul).find("li").height($(ul).find(".img-holder").first().width());
-         
-                                $(".li-image").each(function(){
-                                    if($(this).height()>$(this).width())
-                                        $(this).css("width","100%");
-                                    else 
-                                        $(this).css("height","100%")
-                                });
-                                   
+
+        $(".li-image").each(function () {
+            if ($(this).height() > $(this).width())
+                $(this).css("width", "100%");
+            else
+                $(this).css("height", "100%")
+        });
+
     }
 }
 
