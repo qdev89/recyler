@@ -107,7 +107,7 @@ var app = (function (win) {
             if (id && id !== emptyGuid) {
                 return el.Files.getDownloadUrl(id);
             } else {
-                return 'styles/images/avatar.png';
+                return '../images/avatar.png';
             }
         },
 
