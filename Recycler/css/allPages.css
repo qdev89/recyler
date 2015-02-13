@@ -1257,13 +1257,13 @@ padding-top: 12px;
 #friendsApp .user-avatar
 {
     float: left;
-    width: 50px;
+    width: 75px;
 }
 
 #friendsApp .user-avatar img
 {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
@@ -1378,13 +1378,17 @@ padding-top: 12px;
 
 #friendsApp .user-share textarea
 {
-    float: none;
-    margin: 0;
-    padding: .75em 1em;
-    min-height: 3em;
-    height: 13.5em;
-    background-color: #f5f7f8;
-    resize: none;
+float: none;
+margin: 0;
+padding: .75em 1em;
+min-height: 3em;
+height: 20.5em;
+width: 100%;
+background-color: #f5f7f8;
+resize: none;
+border-width: 1px;
+border-color: black;
+     
 }
 
 #friendsApp .activity-view .km-footer
@@ -2370,18 +2374,6 @@ img.resimgs {
     padding-top: 0;
 }
 
-#friendsApp .user-avatar {
-    float: left;
-    width: 50px;
-}
-
-#friendsApp .user-avatar img {
-    width: 50px;
-    height: 50px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
-}
 
 #friendsApp .activity-content {
     position: relative;
