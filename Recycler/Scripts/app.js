@@ -264,12 +264,12 @@ function getLanguageResources() {
     en['VAT'] = "VAT";
 
     es['name'] = "Nombre";
-    es['description'] = "Descripci�n";
-    es['Address'] = "Direcci�n";
+    es['description'] = "Descripcion";
+    es['Address'] = "Direccion";
     es['city'] = "Ciudad";
-    es['zip'] = "C�digo Postal";
+    es['zip'] = "Codigo Postal";
     es['State'] = "Estado";
-    es['phone'] = "Tel�fono";
+    es['phone'] = "Telefono";
     es['www'] = "Web";
     es['VAT'] = "Registro Fiscal no.";
 
@@ -354,7 +354,7 @@ function CreateSpot() {
 
 function NotCreate() {
     window.localStorage.removeItem('Spotdata');
-    app.application.navigate("settings.html");
+    app.application.navigate("myspots.html");
 }
 
 function RecordTransaction(ID) {

@@ -2228,7 +2228,15 @@ fieldset{
 
 #GoToFilters input{
    width: 80%;
-}
+   height: 38px;
+  font-size: 14pt; 
+  height: 40; 
+  padding-left: 3px; 
+  padding-right: 3px; 
+  padding-top: 2px; 
+  padding-bottom: 2px;
+  border: 1px solid #C0C0C0;
+  }
 
 #GoToFilters img{
     width: 18%;
@@ -2446,27 +2454,6 @@ img.resimgs {
 #friendsApp .activity-view .picture {
     margin: 1em 0 0;
 }
-
-#friendsApp .user-share {
-    position: relative;
-    margin: 2.35em 0 0;
-}
-
-#friendsApp .user-share:before {
-    position: absolute;
-    width: 0;
-    height: 0;
-    content: '';
-}
-
-#friendsApp .user-share:before {
-    top: -10px;
-    left: 16px;
-    border-right: 9px solid transparent;
-    border-bottom: 10px solid #f5f7f8;
-    border-left: 9px solid transparent;
-}
-
 
 #friendsApp .activity-view .km-footer {
     padding: 0 1em 1em;
