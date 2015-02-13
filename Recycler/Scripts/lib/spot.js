@@ -35,6 +35,7 @@ app.Spot = (function () {
                             data.get(query).then(function(data) {
                                // console.log(data.result);
                                 options.success(data.result);
+                                everliveImages.responsiveAll();
                                 hideLoading();
                                 if(data.result.length==interval){
                                     loadMore = true;
@@ -283,7 +284,7 @@ function editSpot(e){
            $("#txtStateE").val( editableSpot.State );
         }
        
-        $("#imageE").attr("src",editableSpot.Image);
+        $("#imageE").attr("data-src",editableSpot.Image);
         $("#spotphoneE").val(editableSpot.Phone);
         $("#spotwebE").val(editableSpot.Web);
         $("#CvrE").val( editableSpot.CVR);
@@ -298,7 +299,8 @@ function editSpot(e){
         $("#OpenTimeSatE").val(editableSpot.OpeningTimeSat);
         $("#CloseTimeSatE").val(editableSpot.ClosingTimeSat);
         $("#OpenTimeSunE").val(editableSpot.OpeningTimeSun);
-        $("#CloseTimeSunE").val(editableSpot.ClosingTimeSun );
+        $("#CloseTimeSunE").val(editableSpot.ClosingTimeSun);
+        everliveImages.responsiveAll();
     },
     function(error){
         alert(JSON.stringify(error));
