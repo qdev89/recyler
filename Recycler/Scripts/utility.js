@@ -2,7 +2,8 @@ window.utility = {};
 (function ($, doc) {
 
     function scrollToTop() {
-        $("#friendsApp").data("kendoMobileScroller").scrollTo(-30, -30);
+        // UNDONE: 
+        //$("#friendsApp").data("kendoMobileScroller").scrollTo(-30, -30);
     }
 
     function resetScroller(e) {
