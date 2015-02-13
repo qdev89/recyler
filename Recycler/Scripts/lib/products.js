@@ -2,184 +2,185 @@ var app = window.app = window.app || {};
 var editableProduct;
 
 function navigateToEditProduct(el) {
-     var productID = $(el).attr('productID');
-     console.log(productID);
-     app.application.navigate("giveaway.html?editSpotId=" + productID);
+    var productID = $(el).attr('productID');
+    console.log(productID);
+    app.application.navigate("giveaway.html?editSpotId=" + productID);
 }
 
 function loadProduct(e) {
-     TranslateApp();
-     app.addBanner(10);
-     //console.log(e);
+    window.utility.resetScroller(e);
+    TranslateApp();
+    app.addBanner(10);
+    //console.log(e);
 
-     var fillProductInfo = function (product) {
+    var fillProductInfo = function (product) {
 
-          showLoading();
-          var fillCallback = function (user) {
+        showLoading();
+        var fillCallback = function (user) {
 
-               console.log(user);
+            console.log(user);
 
-               app.lastProductOwner = user;
-               var selector = "#product-tabstrip .fields ";
-               $(selector + ".username").html(user.DisplayName);
-               $(selector + ".city").html(user.City);
+            app.lastProductOwner = user;
+            var selector = "#product-tabstrip .fields ";
+            $(selector + ".username").html(user.DisplayName);
+            $(selector + ".city").html(user.City);
 
-               $(selector + ".type").html(product.Type);
-               $(selector + ".title").html(product.Name);
-               $(selector + ".status").html(product.Status);
-               $(selector + ".date").html(new Date(product.CreatedAt).toDateString());
-               $(selector + ".price").html(product.Price);
-               $(selector + ".info").html(product.MoreInformation);
-               $(selector + ".instead").html(product.Description);
-               
-               $("#WantIt").attr("href", "userItems.html?userId=" + product.UserID);
+            $(selector + ".type").html(product.Type);
+            $(selector + ".title").html(product.Name);
+            $(selector + ".status").html(product.Status);
+            $(selector + ".date").html(new Date(product.CreatedAt).toDateString());
+            $(selector + ".price").html(product.Price);
+            $(selector + ".info").html(product.MoreInformation);
+            $(selector + ".instead").html(product.Description);
 
-               var images = [];
-               if (product.Image1 != undefined)
-                    images.push({
-                         url: product.Image1
-                    });
+            $("#WantIt").attr("href", "userItems.html?userId=" + product.UserID);
 
-               if (product.Image2 != undefined)
-                    images.push({
-                         url: product.Image2
-                    });
+            var images = [];
+            if (product.Image1 != undefined)
+                images.push({
+                    url: product.Image1
+                });
 
-               if (product.Image3 != undefined)
-                    images.push({
-                         url: product.Image3
-                    });
+            if (product.Image2 != undefined)
+                images.push({
+                    url: product.Image2
+                });
 
-               var x = new kendo.data.DataSource({
-                    data: images
-               });
-               $("#scrollview-container").data("kendoMobileScrollView").setDataSource(x);
-               everliveImages.responsiveAll();
+            if (product.Image3 != undefined)
+                images.push({
+                    url: product.Image3
+                });
 
-               // add map location
+            var x = new kendo.data.DataSource({
+                data: images
+            });
+            $("#scrollview-container").data("kendoMobileScrollView").setDataSource(x);
+            everliveImages.responsiveAll();
 
-               // MOCKUP:
-               // var geoString = '{ "lat": -34.397, "lng" : 150.644}';
-               //var geo =JSON.parse(geoString);
-               if (product.Latitude && product.Longitude) {
-                    $('#map_of_where_item_is_placed').show();
-                    var geo = {
-                         lat: product.Latitude,
-                         lng: product.Longitude
-                    };
-                    window.mapUtitityShow(product.Name, geo);
-               } else {
-                    $('#map_of_where_item_is_placed').hide();
-               }
+            // add map location
 
-               hideLoading();
-          }
-          console.log(product.CreatedBy);
-          app.Users.getUserByID(product.CreatedBy, fillCallback);
+            // MOCKUP:
+            // var geoString = '{ "lat": -34.397, "lng" : 150.644}';
+            //var geo =JSON.parse(geoString);
+            if (product.Latitude && product.Longitude) {
+                $('#map_of_where_item_is_placed').show();
+                var geo = {
+                    lat: product.Latitude,
+                    lng: product.Longitude
+                };
+                window.mapUtitityShow(product.Name, geo);
+            } else {
+                $('#map_of_where_item_is_placed').hide();
+            }
 
-     };
+            hideLoading();
+        }
+        console.log(product.CreatedBy);
+        app.Users.getUserByID(product.CreatedBy, fillCallback);
 
-     app.Product.getProductByID(e.sender.params.productID, fillProductInfo);
+    };
+
+    app.Product.getProductByID(e.sender.params.productID, fillProductInfo);
 }
 
 
 function giveToThisUser(el) {
-     var userID = $(el).attr("userID");
-     console.log(userID, editableProduct.Id);
+    var userID = $(el).attr("userID");
+    console.log(userID, editableProduct.Id);
 
-     navigator.notification.confirm(
-          "Are you sure you want to give the product to this user?", // message
-          function (button) {
-               if (button == 1) {
-                    var data = app.everlive.data('Product');
-                    data.updateSingle({
-                              Id: editableProduct.Id,
-                              'UserID': userID
-                         },
-                         function (data) {
-                              alert("Product transferred successfully!");
-                              app.application.navigate("mystuff.html");
-                         },
-                         function (error) {
-                              alert(JSON.stringify(error));
-                         });
-               }
-          },
-          'Collect CO2', ['Give', // title
-                'Cancel'] // buttonLabels
-     );
+    navigator.notification.confirm(
+         "Are you sure you want to give the product to this user?", // message
+         function (button) {
+             if (button == 1) {
+                 var data = app.everlive.data('Product');
+                 data.updateSingle({
+                     Id: editableProduct.Id,
+                     'UserID': userID
+                 },
+                      function (data) {
+                          alert("Product transferred successfully!");
+                          app.application.navigate("mystuff.html");
+                      },
+                      function (error) {
+                          alert(JSON.stringify(error));
+                      });
+             }
+         },
+         'Collect CO2', ['Give', // title
+               'Cancel'] // buttonLabels
+    );
 }
 
 function editThisProduct(productID) {
 
-     log(productID);
-     $(".radio-options").hide();
-     $(".after-radio").show();
-     $("#Save").hide();
-     $("#Update").show();
+    log(productID);
+    $(".radio-options").hide();
+    $(".after-radio").show();
+    $("#Save").hide();
+    $("#Update").show();
 
-     var data = app.everlive.data('Product');
-     data.getById(productID)
-          .then(function (data) {
+    var data = app.everlive.data('Product');
+    data.getById(productID)
+         .then(function (data) {
 
-                    editableProduct = data.result;
-                    log(editableProduct);
-                    if (editableProduct.Type == "free") $(".price-div").hide();
-                    else $(".price-div").show();
-                    $('#description').val(editableProduct.Name);
-                    $('#MightLike').val(editableProduct.Description);
-                    $('#long_description').val(editableProduct.MoreInformation);
-                    $('#price').val(editableProduct.Price);
-                    $("#select-custom-24").val(editableProduct.Category);
+             editableProduct = data.result;
+             log(editableProduct);
+             if (editableProduct.Type == "free") $(".price-div").hide();
+             else $(".price-div").show();
+             $('#description').val(editableProduct.Name);
+             $('#MightLike').val(editableProduct.Description);
+             $('#long_description').val(editableProduct.MoreInformation);
+             $('#price').val(editableProduct.Price);
+             $("#select-custom-24").val(editableProduct.Category);
 
-                    if (editableProduct.Image1 != undefined) {
-                         $("#image1").attr("src", editableProduct.Image1);
-                    } else {
-                         $("#image1").attr("src", "images/imageplaceholder.png");
-                    }
+             if (editableProduct.Image1 != undefined) {
+                 $("#image1").attr("src", editableProduct.Image1);
+             } else {
+                 $("#image1").attr("src", "images/imageplaceholder.png");
+             }
 
-                    if (editableProduct.Image2 != undefined) {
-                         $("#image2").attr("src", editableProduct.Image2);
-                    } else {
-                         $("#image2").attr("src", "images/imageplaceholder.png");
-                    }
+             if (editableProduct.Image2 != undefined) {
+                 $("#image2").attr("src", editableProduct.Image2);
+             } else {
+                 $("#image2").attr("src", "images/imageplaceholder.png");
+             }
 
-                    if (editableProduct.Image3 != undefined) {
-                         $("#image3").attr("src", editableProduct.Image3);
-                    } else {
-                         $("#image3").attr("src", "images/imageplaceholder.png");
-                    }
+             if (editableProduct.Image3 != undefined) {
+                 $("#image3").attr("src", editableProduct.Image3);
+             } else {
+                 $("#image3").attr("src", "images/imageplaceholder.png");
+             }
 
-               },
-               function (error) {
-                    alert(JSON.stringify(error));
-               });
+         },
+              function (error) {
+                  alert(JSON.stringify(error));
+              });
 
 
 }
 
 function deleteItem() {
 
-     navigator.notification.confirm(
-          "Are you sure you want to delete this product?", // message
-          function (button) {
-               if (button == 1)
-                    var data = app.everlive.data('Product');
-               data.destroySingle({
-                         Id: editableProduct.Id
-                    },
-                    function () {
-                         alert('Product successfully deleted.');
-                         app.application.navigate("mystuff.html");
-                    },
-                    function (error) {
-                         alert(JSON.stringify(error));
-                    });
+    navigator.notification.confirm(
+         "Are you sure you want to delete this product?", // message
+         function (button) {
+             if (button == 1)
+                 var data = app.everlive.data('Product');
+             data.destroySingle({
+                 Id: editableProduct.Id
+             },
+                  function () {
+                      alert('Product successfully deleted.');
+                      app.application.navigate("mystuff.html");
+                  },
+                  function (error) {
+                      alert(JSON.stringify(error));
+                  });
 
-          },
-          'Delete product', ['Delete', // title
-                                    'Cancel'] // buttonLabels
-     );
+         },
+         'Delete product', ['Delete', // title
+                                   'Cancel'] // buttonLabels
+    );
 
 
 }
@@ -187,333 +188,336 @@ function deleteItem() {
 function updateItem() {
 
 
-     var data = app.everlive.data('Product');
-     editableProduct.Name = $('#description').val();
-     editableProduct.Description = $('#MightLike').val();
-     editableProduct.MoreInformation = $('#long_description').val();
-     editableProduct.Price = $('#price').val();
-     editableProduct.Category = $("#select-custom-24").val();
+    var data = app.everlive.data('Product');
+    editableProduct.Name = $('#description').val();
+    editableProduct.Description = $('#MightLike').val();
+    editableProduct.MoreInformation = $('#long_description').val();
+    editableProduct.Price = $('#price').val();
+    editableProduct.Category = $("#select-custom-24").val();
 
-     data.update({
-               'Name': editableProduct.Name,
-               'Description': editableProduct.Description,
-               'MoreInformation': editableProduct.MoreInformation,
-               'Price': editableProduct.Price,
-               'Category': editableProduct.Category
+    data.update({
+        'Name': editableProduct.Name,
+        'Description': editableProduct.Description,
+        'MoreInformation': editableProduct.MoreInformation,
+        'Price': editableProduct.Price,
+        'Category': editableProduct.Category
 
-          }, // data
-          {
-               'Id': editableProduct.Id
-          }, // filter
-          function (data) {
-               console.log(data);
-               navigator.notification.alert("Info saved successfully!", null, "Success");
-          },
-          function (error) {
-               alert(JSON.stringify(error));
-          });
-
-
+    }, // data
+         {
+             'Id': editableProduct.Id
+         }, // filter
+         function (data) {
+             console.log(data);
+             navigator.notification.alert("Info saved successfully!", null, "Success");
+         },
+         function (error) {
+             alert(JSON.stringify(error));
+         });
 
 
 
 
 
-     if ($("#image1").attr("src").indexOf("data:image/jpeg;base64,") != -1) {
 
-          var imageData = $("#image1").attr("src").replace("data:image/jpeg;base64,", "");
-          createGiveAwayImage(editableProduct.Id, imageData, 1)
-     }
-     if ($("#image2").attr("src").indexOf("data:image/jpeg;base64,") != -1) {
 
-          var imageData = $("#image2").attr("src").replace("data:image/jpeg;base64,", "");
-          createGiveAwayImage(editableProduct.Id, imageData, 2)
-     }
-     if ($("#image3").attr("src").indexOf("data:image/jpeg;base64,") != -1) {
-          var imageData = $("#image3").attr("src").replace("data:image/jpeg;base64,", "");
-          createGiveAwayImage(editableProduct.Id, imageData, 3)
-     }
+    if ($("#image1").attr("src").indexOf("data:image/jpeg;base64,") != -1) {
+
+        var imageData = $("#image1").attr("src").replace("data:image/jpeg;base64,", "");
+        createGiveAwayImage(editableProduct.Id, imageData, 1)
+    }
+    if ($("#image2").attr("src").indexOf("data:image/jpeg;base64,") != -1) {
+
+        var imageData = $("#image2").attr("src").replace("data:image/jpeg;base64,", "");
+        createGiveAwayImage(editableProduct.Id, imageData, 2)
+    }
+    if ($("#image3").attr("src").indexOf("data:image/jpeg;base64,") != -1) {
+        var imageData = $("#image3").attr("src").replace("data:image/jpeg;base64,", "");
+        createGiveAwayImage(editableProduct.Id, imageData, 3)
+    }
 
 
 }
 
 
-
+function onProductShow(e) {
+    window.utility.resetScroller(e);
+    app.Product.getProducts();
+}
 
 
 app.Product = (function () {
-     'use strict';
+    'use strict';
 
-     var loadMore = true;
+    var loadMore = true;
 
 
-     var productsViewModel = (function () {
-          var userId = null;
-          var getProductsByUserID = function (e) {
-               debugger;
-               userId = e.sender.params.userId;
-              showLoading();
-          var fillCallback = function (user) {       
-              $("#user-items-tabstrip span.view-title").text(user.DisplayName +"'s Stuff")
-               TranslateApp();
-               var interval = 12;
+    var productsViewModel = (function () {
+        var userId = null;
+        var getProductsByUserID = function (e) {
+            debugger;
+            userId = e.sender.params.userId;
+            showLoading();
+            var fillCallback = function (user) {
+                $("#user-items-tabstrip span.view-title").text(user.DisplayName + "'s Stuff")
+                TranslateApp();
+                var interval = 12;
 
-               var listID = "#ulUserProducts";
-               var templateID = "#productTemplate";
-               var tabstripId = "#user-items-tabstrip";
+                var listID = "#ulUserProducts";
+                var templateID = "#productTemplate";
+                var tabstripId = "#user-items-tabstrip";
 
-               var skip = 0;
-               var dataSource = new kendo.data.DataSource({
+                var skip = 0;
+                var dataSource = new kendo.data.DataSource({
                     transport: {
-                         read: function (options) {
-                              showLoading();
-                              try {
-                                   var data = app.everlive.data('Product');
-                                   var query = new Everlive.Query();
-                                  query.where().eq('UserID', userId).done().orderDesc('CreatedAt').skip(skip).take(interval);
-                                   data.get(query).then(function (data) {
-                                       hideLoading();
-                                             options.success(data.result);
+                        read: function (options) {
+                            showLoading();
+                            try {
+                                var data = app.everlive.data('Product');
+                                var query = new Everlive.Query();
+                                query.where().eq('UserID', userId).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                data.get(query).then(function (data) {
+                                    hideLoading();
+                                    options.success(data.result);
 
-                                             setTimeout(function () {
-                                                  $(".img-holder").first().width();
-                                             }, 10);
-                                             everliveImages.responsiveAll();
-                                             hideLoading();
-                                             if (data.result.length == interval) {
-                                                  loadMore = true;
-                                                  skip += interval;
-                                             } else
-                                                  loadMore = false;
-                                        },
-                                        function (error) {
-                                             alert(JSON.stringify(error));
-                                        });
-                              } catch (err) {
-                                   hideLoading();
-                                   console.log(err);
-                              }
-                         }
+                                    setTimeout(function () {
+                                        $(".img-holder").first().width();
+                                    }, 10);
+                                    everliveImages.responsiveAll();
+                                    hideLoading();
+                                    if (data.result.length == interval) {
+                                        loadMore = true;
+                                        skip += interval;
+                                    } else
+                                        loadMore = false;
+                                },
+                                     function (error) {
+                                         alert(JSON.stringify(error));
+                                     });
+                            } catch (err) {
+                                hideLoading();
+                                console.log(err);
+                            }
+                        }
                     },
                     error: function (e) {
-                         hideLoading();
-                         if (typeof (e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
-                              app.application.navigate("index.html");
-                         else
-                              displayErrorAlert();
+                        hideLoading();
+                        if (typeof (e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
+                            app.application.navigate("index.html");
+                        else
+                            displayErrorAlert();
                     },
                     schema: { // describe the result format
-                         parse: function (response) {
-                              //  console.log(response);
-                              $.each(response, function (i, el) {
-                                   if (el.Name === undefined)
-                                        el.Name = "No name";
+                        parse: function (response) {
+                            //  console.log(response);
+                            $.each(response, function (i, el) {
+                                if (el.Name === undefined)
+                                    el.Name = "No name";
 
-                                   el.Image = "";
+                                el.Image = "";
 
-                                   if (el.Image1 !== undefined)
-                                        el.Image = el.Image1;
-                                   else if (el.Image2 !== undefined)
-                                        el.Image = el.Image2;
-                                   else if (el.Image3 !== undefined)
-                                        el.Image = el.Image3;
+                                if (el.Image1 !== undefined)
+                                    el.Image = el.Image1;
+                                else if (el.Image2 !== undefined)
+                                    el.Image = el.Image2;
+                                else if (el.Image3 !== undefined)
+                                    el.Image = el.Image3;
 
-                              });
-                              return response;
-                         }
+                            });
+                            return response;
+                        }
 
                     }
-               });
+                });
 
-               $(listID).kendoMobileListView({
+                $(listID).kendoMobileListView({
                     dataSource: dataSource,
                     template: $(templateID).html(),
                     appendOnRefresh: true
-               });
+                });
 
-               var listView = $(listID).data("kendoMobileListView");
-               if (listView != null) {
+                var listView = $(listID).data("kendoMobileListView");
+                if (listView != null) {
                     listView._scrollerInstance.scrollElement.on("touchend", function () {
-                         if (loadMore) {
-                              if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))
-                                   listView.dataSource.read();
-                         }
+                        if (loadMore) {
+                            if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))
+                                listView.dataSource.read();
+                        }
                     });
                     listView._scrollerInstance.scrollTo(0, 0);
-               }
-             }
-              
-              app.Users.getUserByID(userId, fillCallback);
-          }
+                }
+            }
 
-          var getMyProducts = function () {
-               getProducts(true);
-          }
+            app.Users.getUserByID(userId, fillCallback);
+        }
 
-          var filterProducts = function () {
-               var word = $("#filterWord").val();
-               //   log(word);
-               getProducts(false, word);
-          }
+        var getMyProducts = function () {
+            getProducts(true);
+        }
 
-          var getProducts = function (isMy, filterWord) {
-               TranslateApp();
-               var interval = 12;
+        var filterProducts = function () {
+            var word = $("#filterWord").val();
+            //   log(word);
+            getProducts(false, word);
+        }
 
-               if (isMy && isMy.sender && isMy.sender.params.refresh == "false")
-                    return;
+        var getProducts = function (isMy, filterWord) {
+            TranslateApp();
+            var interval = 12;
+
+            if (isMy && isMy.sender && isMy.sender.params.refresh == "false")
+                return;
 
 
 
-               if (localStorage.User == undefined) {
-                    app.application.navigate("signup_login.html");
-                    return;
-               }
+            if (localStorage.User == undefined) {
+                app.application.navigate("signup_login.html");
+                return;
+            }
 
-               var myId = JSON.parse(localStorage.User).Id;
-               var listID = "#ulProducts";
-               var templateID = "#productTemplate";
-               var tabstripId = "#find-item-tabstrip";
-               if (isMy === true) {
-                    tabstripId = "#my-stuff-tabstrip";
-                    listID = "#ulMyProducts";
-                    templateID = "#myProductTemplate";
-               }
+            var myId = JSON.parse(localStorage.User).Id;
+            var listID = "#ulProducts";
+            var templateID = "#productTemplate";
+            var tabstripId = "#find-item-tabstrip";
+            if (isMy === true) {
+                tabstripId = "#my-stuff-tabstrip";
+                listID = "#ulMyProducts";
+                templateID = "#myProductTemplate";
+            }
 
-               if (filterWord === undefined) $("#filterWord").val("");
+            if (filterWord === undefined) $("#filterWord").val("");
 
-               var skip = 0;
-               var dataSource = new kendo.data.DataSource({
-                    transport: {
-                         read: function (options) {
-                              showLoading();
-                              try {
-                                   var data = app.everlive.data('Product');
-                                   var query = new Everlive.Query();
+            var skip = 0;
+            var dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: function (options) {
+                        showLoading();
+                        try {
+                            var data = app.everlive.data('Product');
+                            var query = new Everlive.Query();
 
-                                   if (isMy === true)
-                                        query.where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
-                                   else if (filterWord !== undefined)
-                                        query.where().regex('Name', filterWord, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
-                                   else
-                                        query.orderDesc('CreatedAt').skip(skip).take(interval);
+                            if (isMy === true)
+                                query.where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                            else if (filterWord !== undefined)
+                                query.where().regex('Name', filterWord, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
+                            else
+                                query.orderDesc('CreatedAt').skip(skip).take(interval);
 
-                                   data.get(query).then(function (data) {
-                                             options.success(data.result);
+                            data.get(query).then(function (data) {
+                                options.success(data.result);
 
-                                             setTimeout(function () {
+                                setTimeout(function () {
 
-                                                  // var ul = $(".li-image").first().closest("ul");
-                                                  // $(ul).find("li").height($(ul).find(".img-holder").first().width());
+                                    // var ul = $(".li-image").first().closest("ul");
+                                    // $(ul).find("li").height($(ul).find(".img-holder").first().width());
 
-                                                  /*$(".li-image").each(function(){
-                                                      if($(this).height()>$(this).width())
-                                                          $(this).css("width","100%");
-                                                      else 
-                                                          $(this).css("height","100%")
-                                                  });*/
+                                    /*$(".li-image").each(function(){
+                                        if($(this).height()>$(this).width())
+                                            $(this).css("width","100%");
+                                        else 
+                                            $(this).css("height","100%")
+                                    });*/
 
-                                                  $(".img-holder").first().width();
-                                             }, 10);
-                                             everliveImages.responsiveAll();
-                                             hideLoading();
-                                             if (data.result.length == interval) {
-                                                  loadMore = true;
-                                                  skip += interval;
-                                             } else
-                                                  loadMore = false;
-                                        },
-                                        function (error) {
-                                             alert(JSON.stringify(error));
-                                        });
-                              } catch (err) {
-                                   hideLoading();
-                                   console.log(err);
-                              }
-                         }
-                    },
-                    error: function (e) {
-                         hideLoading();
-                         if (typeof (e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
-                              app.application.navigate("index.html");
-                         else
-                              displayErrorAlert();
-                    },
-                    schema: { // describe the result format
-                         parse: function (response) {
-                              //  console.log(response);
-                              $.each(response, function (i, el) {
-                                   if (el.Name === undefined)
-                                        el.Name = "No name";
-
-                                   el.Image = "";
-
-                                   if (el.Image1 !== undefined)
-                                        el.Image = el.Image1;
-                                   else if (el.Image2 !== undefined)
-                                        el.Image = el.Image2;
-                                   else if (el.Image3 !== undefined)
-                                        el.Image = el.Image3;
-
-                              });
-                              return response;
-                         }
-
+                                    $(".img-holder").first().width();
+                                }, 10);
+                                everliveImages.responsiveAll();
+                                hideLoading();
+                                if (data.result.length == interval) {
+                                    loadMore = true;
+                                    skip += interval;
+                                } else
+                                    loadMore = false;
+                            },
+                                 function (error) {
+                                     alert(JSON.stringify(error));
+                                 });
+                        } catch (err) {
+                            hideLoading();
+                            console.log(err);
+                        }
                     }
-               });
+                },
+                error: function (e) {
+                    hideLoading();
+                    if (typeof (e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
+                        app.application.navigate("index.html");
+                    else
+                        displayErrorAlert();
+                },
+                schema: { // describe the result format
+                    parse: function (response) {
+                        //  console.log(response);
+                        $.each(response, function (i, el) {
+                            if (el.Name === undefined)
+                                el.Name = "No name";
 
-               $(listID).kendoMobileListView({
-                    dataSource: dataSource,
-                    template: $(templateID).html(),
-                    appendOnRefresh: true
-               });
+                            el.Image = "";
 
-               var listView = $(listID).data("kendoMobileListView");
-               if (listView != null) {
-                    listView._scrollerInstance.scrollElement.on("touchend", function () {
-                         if (loadMore) {
-                              if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))
-                                   listView.dataSource.read();
-                         }
-                    });
-                    listView._scrollerInstance.scrollTo(0, 0);
-               }
-          }
+                            if (el.Image1 !== undefined)
+                                el.Image = el.Image1;
+                            else if (el.Image2 !== undefined)
+                                el.Image = el.Image2;
+                            else if (el.Image3 !== undefined)
+                                el.Image = el.Image3;
 
+                        });
+                        return response;
+                    }
 
-          var getProductByID = function (id, callback) {
-               showLoading();
-               if (localStorage.User == undefined) {
-                    app.application.navigate("signup_login.html");
-                    return;
-               }
+                }
+            });
 
-               var data = app.everlive.data('Product');
+            $(listID).kendoMobileListView({
+                dataSource: dataSource,
+                template: $(templateID).html(),
+                appendOnRefresh: true
+            });
 
-               data.getById(id)
-                    .then(function (data) {
-                              callback(data.result);
-                              hideLoading();
-                         },
-                         function (error) {
-                              alert(JSON.stringify(error));
-                         });
-          }
-          return {
-               userId: userId,
-               getProducts: getProducts,
-               getProductsByUserID: getProductsByUserID,
-               getMyProducts: getMyProducts,
-               filterProducts: filterProducts,
-               getProductByID: getProductByID
-
-          };
-     }());
-
-     //<!-- here the google code starts -->
+            var listView = $(listID).data("kendoMobileListView");
+            if (listView != null) {
+                listView._scrollerInstance.scrollElement.on("touchend", function () {
+                    if (loadMore) {
+                        if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))
+                            listView.dataSource.read();
+                    }
+                });
+                listView._scrollerInstance.scrollTo(0, 0);
+            }
+        }
 
 
+        var getProductByID = function (id, callback) {
+            showLoading();
+            if (localStorage.User == undefined) {
+                app.application.navigate("signup_login.html");
+                return;
+            }
+
+            var data = app.everlive.data('Product');
+
+            data.getById(id)
+                 .then(function (data) {
+                     callback(data.result);
+                     hideLoading();
+                 },
+                      function (error) {
+                          alert(JSON.stringify(error));
+                      });
+        }
+        return {
+            userId: userId,
+            getProducts: getProducts,
+            getProductsByUserID: getProductsByUserID,
+            getMyProducts: getMyProducts,
+            filterProducts: filterProducts,
+            getProductByID: getProductByID
+
+        };
+    }());
+
+    //<!-- here the google code starts -->
 
 
-     return productsViewModel;
+
+
+    return productsViewModel;
 }());

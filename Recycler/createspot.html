@@ -1,136 +1,133 @@
-<div id="createSpot" data-title="Create spot" data-show="TranslateApp" data-role="view" data-init="InitCreateSpot" style="background-color: #f3f3f3;">
+<div id="createSpot" data-title="Create spot" data-show="onCreateSpotShow" data-role="view" data-init="InitCreateSpot" style="background-color: #f3f3f3;">
 
     <div data-role="content">
         <div>
             <div>
-                <a id="whatDifference" data-role="button"   class="btn btn-blue">
+                <a id="whatDifference" data-role="button" class="btn btn-blue">
                     <!-- whatdifference -->
-                    <label for="whatdifference"  data-localize="whatdifference">What is the difference?</label>
+                    <label for="whatdifference" data-localize="whatdifference">What is the difference?</label>
                 </a>
             </div>
-			<br>
-            
-            <div   style="color:dodgerblue;font-size:large;">
-                <label for="spottype"  data-localize="titel">Titel:&nbsp;</label>                
-                 <input type="text" name="spotname" id="spotname" value="" placeholder="Name*"   class="tb1" />
+            <br>
+
+            <div style="color:dodgerblue;font-size:large;">
+                <label for="spottype" data-localize="titel">Titel:&nbsp;</label>
+                <input type="text" name="spotname" id="spotname" value="" placeholder="Name*" class="tb1" />
             </div>
-            
-            <div  style="color:dodgerblue;font-size:large;">
+
+            <div style="color:dodgerblue;font-size:large;">
                 <!-- spottype -->
-                <label for="spottype"  data-localize="spottype" >Spot type:&nbsp;</label>
+                <label for="spottype" data-localize="spottype">Spot type:&nbsp;</label>
 
                 <select id="spotype" name="swpotype" value="GO"></select>
             </div><br>
 
             <div id="image_div" align="center" width="100" text-align="center">
-                <img id="image" alt="image" width="60%" src="images/imageplaceholder.png" onClick="takePictureSpot();"/><br>
-                <label for="picture"  data-localize="picture">Picture of your place,shop,logo</label>
+                <img id="image" alt="image" width="60%" src="images/imageplaceholder.png" onclick="takePictureSpot();" /><br>
+                <label for="picture" data-localize="picture">Picture of your place,shop,logo</label>
             </div><br>
 
             <div>
                 <i>
-                    <label for="mandatory"  data-localize="mandatory">Fields marked with * are mandatory</label>
+                    <label for="mandatory" data-localize="mandatory">Fields marked with * are mandatory</label>
                 </i>
             </div>
             <br>
 
             <!-- marketspot -->
-     
+
             <div class="container-div">
-            <label for="marketspot"  data-localize="marketspot"  style="color:dodgerblue;font-size:large;">
-                Create your add for event:
-                <br>market, garage sale etc.<br>
-            </label>
-                 
-                  <hr color="#C0C0C0" size="1">
-                 <textarea name="spotdesciption" rows="10" maxlength="200" placeholder="Description" id="spotdesc"  class="ta10" ></textarea>
-          
+                <label for="marketspot" data-localize="marketspot" style="color:dodgerblue;font-size:large;">
+                    Create your add for event:
+                    <br>market, garage sale etc.<br>
+                </label>
 
-            <!--<div id="EventDate" style="display:none">
+                <hr color="#C0C0C0" size="1">
+                <textarea name="spotdesciption" rows="10" maxlength="200" placeholder="Description" id="spotdesc" class="ta10"></textarea>
 
-              
-            <label for="posterdate"  data-localize="posterdate">Event date: *</label>
 
-            </div>-->
+                <!--<div id="EventDate" style="display:none">
 
-            <!-- postermonth -->
-            <fieldset data-role="controlgroup" class='dates-fieldset' data-type="horizontal">
-                <div  style="color:dodgerblue;font-size:large;">
-                    <label for="select-choice-month"  data-localize="month">Month</label>
-                    <select name="select-choice-month" id="select-choice-month">
 
-                    </select>
-                </div>
-                <!-- posterday -->
-                <div style="color:dodgerblue;font-size:large;"> 
-                    <label for="select-choice-day">Day</label>
-                    <select name="select-choice-day" id="select-choice-day">
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                        <option value="07">7</option>
-                        <option value="08">8</option>
-                        <option value="09">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                    </select>
-                </div>
-                <!-- posteryear -->
-                <div  style="color:dodgerblue;font-size:large;">
-                    <label for="select-choice-year">Year</label>
-                    <select name="select-choice-year" id="select-choice-year">
-                        <option value="2015">2015</option>
-                        <option value="2016">2016</option>
-                        <option value="2017">2017</option>
-                        <option value="2018">2018</option>
-                        <option value="2019">2019</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2021</option>
-                        <option value="2020">2022</option>
-                    </select>
+                <label for="posterdate"  data-localize="posterdate">Event date: *</label>
 
-                </div><br>
- <hr color="#C0C0C0" size="1">
-             
-             </fieldset>
-  </div>
+                </div>-->
+                <!-- postermonth -->
+                <fieldset data-role="controlgroup" class='dates-fieldset' data-type="horizontal">
+                    <div style="color:dodgerblue;font-size:large;">
+                        <label for="select-choice-month" data-localize="month">Month</label>
+                        <select name="select-choice-month" id="select-choice-month"></select>
+                    </div>
+                    <!-- posterday -->
+                    <div style="color:dodgerblue;font-size:large;">
+                        <label for="select-choice-day">Day</label>
+                        <select name="select-choice-day" id="select-choice-day">
+                            <option value="01">1</option>
+                            <option value="02">2</option>
+                            <option value="03">3</option>
+                            <option value="04">4</option>
+                            <option value="05">5</option>
+                            <option value="06">6</option>
+                            <option value="07">7</option>
+                            <option value="08">8</option>
+                            <option value="09">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
+                    </div>
+                    <!-- posteryear -->
+                    <div style="color:dodgerblue;font-size:large;">
+                        <label for="select-choice-year">Year</label>
+                        <select name="select-choice-year" id="select-choice-year">
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2021</option>
+                            <option value="2020">2022</option>
+                        </select>
+
+                    </div><br>
+                    <hr color="#C0C0C0" size="1">
+
+                </fieldset>
+            </div>
             <!-- spotadress -->
             <!-- <label for="spotadress" data-localize="spotadress">Address: *</label>-->
             <div class="container-div">
-                <input type="text" name="spotadress" id="spotadress" value="" placeholder="Address*"  onkeypress="return StopSpecialchrOnly(event);"  class="tb1" />
+                <input type="text" name="spotadress" id="spotadress" value="" placeholder="Address*" onkeypress="return StopSpecialchrOnly(event);" class="tb1" />
             </div>
             <!-- spotcity -->
             <!-- <label for="spotcity" data-localize="spotcity">City: *</label>-->
             <div class="container-div">
-                <input type="text" name="spotcity" id="spotcity" value="" placeholder="City*" onKeyPress="return StopSpecialchrOnly(event);"  class="tb1" />
+                <input type="text" name="spotcity" id="spotcity" value="" placeholder="City*" onkeypress="return StopSpecialchrOnly(event);" class="tb1" />
             </div>
             <!-- spotzip -->
             <!--<label for="spotzip" data-localize="spotzip">Zip: *</label>-->
             <div class="container-div">
-                <input type="text" name="spotzip" id="spotzip" value="" placeholder="Zip*" onKeyPress="return StopSpecialchrOnly(event)";   maxlength="6" size="10"/>
+                <input type="text" name="spotzip" id="spotzip" value="" placeholder="Zip*" onkeypress="return StopSpecialchrOnly(event)" ; maxlength="6" size="10" />
             </div>
             <!-- spotcountry -->
             <!--  <label for="spotcountry"  data-localize="spotcountry">Country: *</label>-->
@@ -387,13 +384,13 @@
             <!--<label for="spotstate"  data-localize="spotstate">State: </label>-->
 
             <div class="container-div">
-                <input type="text" name="State" onKeyPress="return StopSpecialchrOnly(event);" tabindex="10" id="txtState" value="" placeholder="State"
+                <input type="text" name="State" onkeypress="return StopSpecialchrOnly(event);" tabindex="10" id="txtState" value="" placeholder="State"
                        maxlength="25" />
 
             </div>
             <div id="dvState" data-role="fieldcontain" style="display: none">
 
-                <div data-role="fieldcontain"  class="container-div">
+                <div data-role="fieldcontain" class="container-div">
                     <select name="select-choice-3" id="spotstate">
                         <option value="0">State</option>
                         <option value="AL">Alabama</option>
@@ -454,33 +451,33 @@
             <!--  <label for="spotphone"  data-localize="spotphone">Phone: *</label>-->
             <div class="container-div">
 
-                <input type="number" name="spotphone" id="spotphone" onKeyPress="return SetNumariaclOnly(event)";  maxlength="10" value="" placeholder="Phone*" size="10"/>
+                <input type="number" name="spotphone" id="spotphone" onkeypress="return SetNumariaclOnly(event)" ; maxlength="10" value="" placeholder="Phone*" size="10" />
             </div>
             <!-- spotweb -->
             <!--  <label for="spotweb"  data-localize="spotweb">Web:</label>-->
             <div class="container-div">
-                <input type="url" name="www" id="spotweb" maxlength="100" value="" placeholder="Web" size="10"/>
+                <input type="url" name="www" id="spotweb" maxlength="100" value="" placeholder="Web" size="10" />
             </div>
-            <div   class="container-div" id="SpotCVR">
+            <div class="container-div" id="SpotCVR">
 
                 <!-- spotcvr -->
                 <!-- <label for="cvr"  data-localize="cvr">VAT:</label>-->
 
-                <input type="text" name="Cvr" id="Cvr" value="" placeholder="VAT" size="10" onKeyPress="return StopSpecialchrOnly(event);"  maxlength="30"/>
+                <input type="text" name="Cvr" id="Cvr" value="" placeholder="VAT" size="10" onkeypress="return StopSpecialchrOnly(event);" maxlength="30" />
 
             </div>
-<br><br>
+            <br><br>
             <!-- spotopening -->
-            <label for="spotopening"  data-localize="spotopening"  style="color:dodgerblue;font-size:large;">Opening hours:</label>
+            <label for="spotopening" data-localize="spotopening" style="color:dodgerblue;font-size:large;">Opening hours:</label>
 
             <!-- spotmonfri -->
-            <label for="spotmonfri"  data-localize="spotmonfri"  style="color:dodgerblue;font-size:large;">Mon - friday: *</label>
+            <label for="spotmonfri" data-localize="spotmonfri" style="color:dodgerblue;font-size:large;">Mon - friday: *</label>
 
             <!-- spotopen -->
             <div class="timeholder">
                 <select size="1" id="spotmonfrifrom" name="spotopen">
 
-                    <option  value="00">00</option>
+                    <option value="00">00</option>
                     <option>01</option>
                     <option>02</option>
                     <option>03</option>
@@ -507,17 +504,17 @@
                     <option>24</option>
                 </select>
 
-                <div  id="tdOpenWeek"  >
+                <div id="tdOpenWeek">
                     <!-- spotclose -->
-                    <select size="1" id="OpenTimeMonFri" name="AMMON" >
-                        <option  value="-">-</option>
+                    <select size="1" id="OpenTimeMonFri" name="AMMON">
+                        <option value="-">-</option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
                 </div>
 
-                <select size="1" id="spotmonfrito" name="spotclose" >
-                    <option  value="00">00</option>
+                <select size="1" id="spotmonfrito" name="spotclose">
+                    <option value="00">00</option>
                     <option>01</option>
                     <option>02</option>
                     <option>03</option>
@@ -544,20 +541,20 @@
                     <option>24</option>
                 </select>
 
-                <div id="tdCloseWeek" >
+                <div id="tdCloseWeek">
                     <!-- spotclose -->
-                    <select size="1" id="CloseTimeMonFri" name="AMMON" >
-                        <option  value="-">-</option>
+                    <select size="1" id="CloseTimeMonFri" name="AMMON">
+                        <option value="-">-</option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
                 </div>
             </div>
             <!-- spotsat -->
-          <br>  <label for="saturday"  data-localize="saturday"  style="color:dodgerblue;font-size:large;">Saturday:</label>
+            <br>  <label for="saturday" data-localize="saturday" style="color:dodgerblue;font-size:large;">Saturday:</label>
             <div class="timeholder">
                 <!-- spotopensat -->
-                <select size="1" id="spotopensatfrom" name="D20" >
+                <select size="1" id="spotopensatfrom" name="D20">
 
                     <option value="00">00</option>
                     <option>01</option>
@@ -586,16 +583,16 @@
                     <option>24</option>
                 </select>
 
-                <div id="tdOpenSat" >
+                <div id="tdOpenSat">
                     <!-- spotclosesat -->
-                    <select size="1" id="OpenTimeSat" name="AMMON2" >
-                        <option  value="-">-</option>
+                    <select size="1" id="OpenTimeSat" name="AMMON2">
+                        <option value="-">-</option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
                 </div>
 
-                <select size="1" id="spotopensatto" name="D21" >
+                <select size="1" id="spotopensatto" name="D21">
                     <option value="00">00</option>
                     <option>01</option>
                     <option>02</option>
@@ -623,22 +620,20 @@
                     <option>24</option>
                 </select>
 
-                <div id="tdCloseSat" >
+                <div id="tdCloseSat">
                     <!-- spotclosesat -->
-                    <select size="1" id="CloseTimeSat" name="AMMON2" >
-                        <option  value="-">-</option>
+                    <select size="1" id="CloseTimeSat" name="AMMON2">
+                        <option value="-">-</option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
                 </div>
             </div><br>
-            <label for="sunday"  data-localize="sunday"  style="color:dodgerblue;font-size:large;">Sunday:</label>
+            <label for="sunday" data-localize="sunday" style="color:dodgerblue;font-size:large;">Sunday:</label>
             <div class="timeholder">
                 <!-- spotsun -->
-                
-
                 <!-- spotsunopen -->
-                <select size="1" id="spotopensunfrom" name="D22" >
+                <select size="1" id="spotopensunfrom" name="D22">
 
                     <option value="00">00</option>
                     <option>01</option>
@@ -667,16 +662,16 @@
                     <option>24</option>
                 </select>
 
-                <div  id="tdOpenSun" >
+                <div id="tdOpenSun">
                     <!-- spotsunclose -->
-                    <select size="1" id="OpenTimeSun" name="AMMON3" >
-                        <option  value="-">-</option>
+                    <select size="1" id="OpenTimeSun" name="AMMON3">
+                        <option value="-">-</option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
                 </div>
 
-                <select size="1" id="spotopensunto" name="D23" >
+                <select size="1" id="spotopensunto" name="D23">
                     <option value="00">00</option>
                     <option>01</option>
                     <option>02</option>
@@ -704,17 +699,17 @@
                     <option>24</option>
                 </select>
 
-                <div  id="tdCloseSun" >
+                <div id="tdCloseSun">
                     <!-- spotsunclose -->
-                    <select size="1" id="CloseTimeSun" name="AMMON3" >
-                        <option  value="-">-</option>
+                    <select size="1" id="CloseTimeSun" name="AMMON3">
+                        <option value="-">-</option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
                 </div>
             </div>
             <br><br>
-            <a data-role="button" id="btnspot" data-transition="fade"  class="btn btn-blue">
+            <a data-role="button" id="btnspot" data-transition="fade" class="btn btn-blue">
                 <label for="createspot" data-localize="createspot">Create spot</label>
             </a>
 
@@ -724,10 +719,10 @@
         </div>
     </div>
     <script>
-        $(document).ready(function(){
-            
-            $("#spotype").change(function(){
-                if($(this).val()=="Garage sale/Market/Event" || $(this).val()=="Help")                    
+        $(document).ready(function () {
+
+            $("#spotype").change(function () {
+                if ($(this).val() == "Garage sale/Market/Event" || $(this).val() == "Help")
                     $(".dates-fieldset").show();
                 else
                     $(".dates-fieldset").hide();
@@ -735,4 +730,5 @@
         });
     </script>
 </div>
+
   

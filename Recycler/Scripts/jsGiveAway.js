@@ -673,7 +673,7 @@ function changeLanguage(lang) {
 
 function showGiveAway(e) {
     TranslateApp();
-    resetScroller(e);
+    window.utility.resetScroller(e);
     $(".radio-options").show();
     $(".after-radio").hide();
     $('input:radio[name=abc]:checked').prop("checked", false);

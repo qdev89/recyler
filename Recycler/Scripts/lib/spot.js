@@ -2,6 +2,13 @@
 
 var app = window.app = window.app || {};
 
+function onCreateSpotShow(e) {
+    utility.resetScroller(e);
+    TranslateApp();
+}
+
+ 
+
 app.Spot = (function () {
     'use strict';
 	var loadMore = true;   
