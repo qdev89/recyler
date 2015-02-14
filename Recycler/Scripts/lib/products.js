@@ -258,7 +258,7 @@ app.Product = (function () {
             userId = e.sender.params.userId;
             showLoading();
             var fillCallback = function (user) {
-                $("#user-items-tabstrip span.view-title").text(user.DisplayName + "'s Stuff")
+                $("#user-items-tabstrip span.view-title").text(user.DisplayName + "'s Stuff");
                 TranslateApp();
                 var interval = 12;
 

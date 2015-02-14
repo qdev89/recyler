@@ -1,14 +1,14 @@
-<div data-role="view" data-title="My Stuff" data-show="app.Product.getMyProducts" id="my-stuff-tabstrip">
+<div data-role="view" data-title="Filtered Results" data-show="filter.onFilteredResultsShow" id="find-result-tabstrip">
 
     <div data-role="content">
 
-        <ul class="one-by-row styled-list" data-role="listview" id="ulMyProducts"></ul>
+        <ul class="one-by-row styled-list" data-role="listview" id="ulFilterResults"></ul>
     </div>
 
 
-    <script type="text/x-kendo-template" id="myProductTemplate">
+    <script type="text/x-kendo-template" id="findResultTemplate">
 
-        <div productid="${Id}" onclick="navigateToEditProduct(this)">
+        <div productid="${Id}" onclick="goToProduct(this)">
             <div class="img-holder">
                 <img class="li-image resimgs" data-src="${Image}" />
             </div>
@@ -26,4 +26,7 @@
         </div>
 
     </script>
+
+
+
 </div>  
