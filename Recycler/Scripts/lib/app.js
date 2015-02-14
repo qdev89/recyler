@@ -12,7 +12,7 @@
         showAlert(message, 'Error occured');
     };
 
-    /*win.addEventListener('error', function (e) {
+   win.addEventListener('error', function (e) {
         e.preventDefault();
 
         var message = e.message + "' from " + e.filename + ":" + e.lineno;
@@ -20,7 +20,7 @@
         showAlert(message, 'Error occured');
 
         return true;
-    });*/
+    });
 
     // Global confirm dialog
     var showConfirm = function(message, title, callback) {
@@ -170,7 +170,7 @@
             if (id && id !== emptyGuid) {
                 return el.Files.getDownloadUrl(id);
             } else {
-                return 'styles/images/avatar.png';
+                return '../images/avatar.png';
             }
         },
 
@@ -194,17 +194,19 @@
         }
     };
 
-  /*  var os = kendo.support.mobileOS,
-        statusBarStyle = os.ios && os.flatVersion >= 700 ? 'black-translucent' : 'black';
+ /* var os = kendo.support.mobileOS,
+statusBarStyle = os.ios && os.flatVersion >= 700 ? 'black-translucent' : 'black';
 */
-    // Initialize KendoUI mobile application
-   /* var mobileApp = new kendo.mobile.Application(document.body, {
-                                                     transition: 'slide',
-                                                     statusBarStyle: statusBarStyle,
-                                                     skin: 'flat'
-                                                 });
+
+     // Initialize KendoUI mobile application
+/* var mobileApp = new kendo.mobile.Application(document.body, {
+transition: 'slide',
+statusBarStyle: statusBarStyle,
+skin: 'flat'
+});
 */
-    
+
+   
     var getYear = (function () {
         return new Date().getFullYear();
     }());    
