@@ -82,12 +82,29 @@ window.filter = {};
         }
     }
 
+    function onClearFilter() {
+        $("#filterSearch").val('');
+        $("#select-custom-24 option:selected").val(-1);
+        $("#Distance").val(0);
+        $("#PriceFrom").val(0);
+        $("#PriceTo").val(1000);
+        $("input[name='productTypeCheckBox']:checked").val(-1);
+
+        $("#DistanceVal").html($("#Distance").val());
+
+        $("#PriceFromValue").html($("#PriceFrom").val());
+
+        $("#PriceToValue").html($("#PriceTo").val());
+    }
+
     function onFilter() {
         // get filter criteria 
         var search = $("#filterSearch").val();
         var category = $("#select-custom-24 option:selected").text();
         var distance = $("#Distance").val();
-        var price = $("#Price").val();
+        var priceFrom = $("#PriceFrom").val();
+        var priceTo = $("#PriceTo").val();
+        var selectedProductTypeIndex = $("input[name='productTypeCheckBox']:checked").val();
         showLoading();
         window.getLocation()
             .done(function (position) {
@@ -97,15 +114,39 @@ window.filter = {};
                 var contQuery = query.where().and();
 
                 // search Name
-                if (search) {
+                if (search && search != '') {
                     var searchRegEx = ".*" + search + ".*";
                     contQuery.regex('Name', searchRegEx, 'i');
                 }
 
-                // TODO for checkbox?
+                // TODO for checkbox
+                if (selectedProductTypeIndex && selectedProductTypeIndex > 0) {
+                    var productType;
+                    switch (selectedProductTypeIndex) {
+                        case "1":
+                            productType = 'giveaway';
+                            break;
+                        case "2":
+                            productType = 'trade';
+                            break;
+                        case "3":
+                            productType = 'lend';
+                            break;
+                        case "4":
+                            productType = 'service';
+                            break;
+                        default:
+                            // it should be an exception
+                            productType = 'none';
+                            break;
+                    }
+
+                    var typeRegEx = ".*" + productType + ".*";
+                    contQuery.regex('Type', typeRegEx, 'i');
+                }
 
                 // for Category
-                if (category) {
+                if (category && category != 'Tags/Categories') {
                     var categoryRegEx = ".*" + category + ".*";
                     contQuery.regex('Category', categoryRegEx, 'i');
                 }
@@ -116,20 +157,24 @@ window.filter = {};
                 }
 
                 // for Price
-                if (price && price > 0) {
-                    // not sure which
-                    //contQuery.greaterThanEqual("Price", price);
-                    contQuery.lessThanEqual("Price", price);
+                if (priceFrom && priceTo) {
+                    // priceFrom =< price =< priceTo
+                    contQuery.greaterThanEqual("Price", priceFrom);
+                    contQuery.lessThanEqual("Price", priceTo);
                 }
 
                 contQuery.done();
                 query.orderDesc('CreatedAt');
                 data.get(query).then(
                     function (data) {
-                        findResults = data.result;
-                        debugger;
                         hideLoading();
 
+                        if (data.result.length == 0) {
+                            alert("No result found.");
+                            return;
+                        }
+
+                        findResults = data.result;
                         app.application.navigate('filterResults.html');
                     },
                     function (error) {
@@ -222,6 +267,7 @@ window.filter = {};
     window.filter = {
         initFilters: initFilters,
         onFilter: onFilter,
-        onFilteredResultsShow: onFilteredResultsShow
+        onFilteredResultsShow: onFilteredResultsShow,
+        onClearFilter: onClearFilter,
     }
 }(jQuery, document));

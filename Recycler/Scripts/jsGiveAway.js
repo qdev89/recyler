@@ -168,7 +168,7 @@ function saveItem() {
     var filter = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
 
     var selectedOption = $("input[name='abc']:checked").val();
-
+    debugger;
     if (selectedOption == "3" || selectedOption == "4" || selectedOption == "5" || selectedOption == "6") {
         if ($('#price').val() == 'Value' || $('#price').val() == '' || $('#price').val() == '0') {
             flag = false;
@@ -331,6 +331,26 @@ function saveItem() {
     } else {
         GiveProduct.Product.Price = 0;
         GiveProduct.Product.Type = 'free';
+    }
+
+    debugger;
+    switch(selectedOption) {
+        case "1":
+            GiveProduct.Product.Type = 'giveaway';
+            break;
+        case "2":
+            GiveProduct.Product.Type = 'trade';
+            break;
+        case "3":
+            GiveProduct.Product.Type = 'lend';
+            break;
+        case "4":
+            GiveProduct.Product.Type = 'service';
+            break;
+        default:
+            // it should be an exception
+            GiveProduct.Product.Type = 'none';
+            break;
     }
 
     var str = "";

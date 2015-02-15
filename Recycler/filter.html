@@ -1,5 +1,5 @@
 <div data-role="view" data-show="filter.initFilters" id="filter-tabstrip" data-title="Filter" style="background-color: #f3f3f3;">
-    <table  class="content_table1" >
+    <table class="content_table1">
         <tr>
             <td colspan="2">
                 <input type="text" id="filterSearch" style="width:100%;" class="tb1" data-localize="Searchforstuff" placeholder="Search for stuff..."
@@ -7,52 +7,55 @@
             </td>
         </tr>
 
-       <tr>
-            <td  ><h3>
-                 
-                 <label for="description" data-localize="recycle" >Recycle / give away</label></h3></td>
+        <tr>
+            <td>
+                <h3>
+
+                    <label for="description" data-localize="recycle">Recycle / give away</label>
+                </h3>
+            </td>
             <td align="right">
-                <input type="radio" name="iCheck" class="iradio_flat-blue" id="filterIsRecycle">
+                <input type="radio" name="productTypeCheckBox" class="iradio_flat-blue" id="filterIsRecycle">
             </td>
         </tr>
         <tr>
-             <td  ><h3><label for="description" data-localize="trade"  >Trade</label></h3></td>
-            <td  align="right">
-                <input type="radio" name="iCheck" class="iradio_flat-blue" id="filterTrade">
+            <td><h3><label for="description" data-localize="trade">Trade</label></h3></td>
+            <td align="right">
+                <input type="radio" name="productTypeCheckBox" class="iradio_flat-blue" id="filterTrade">
             </td>
         </tr>
 
         <tr>
-             <td  ><h3><label for="description" data-localize="lend" >Lend</label></h3></td>
+            <td><h3><label for="description" data-localize="lend">Lend</label></h3></td>
             <td align="right">
-                <input type="radio" name="iCheck" class="iradio_flat-blue" id="filterIsLend">
+                <input type="radio" name="productTypeCheckBox" class="iradio_flat-blue" id="filterIsLend">
             </td>
         </tr>
-         <!--
+        <!--
         <tr>
              <td  ><h3><label for="description" data-localize="rent" >Rent</label></h3></td>
             <td  align="right">
-                <input type="radio" name="iCheck" class="iradio_flat-blue" >
+                <input type="radio" name="productTypeCheckBox" class="iradio_flat-blue" >
             </td>
         </tr> -->
         <tr>
-             <td  ><h3><label for="description" data-localize="service">Service: I can help others with</label></h3></td>
-            <td  align="right">
-                <input type="radio" class="iradio_flat-blue" value="ON" name="iCheck" id="filterIsService">
+            <td><h3><label for="description" data-localize="service">Service: I can help others with</label></h3></td>
+            <td align="right">
+                <input type="radio" class="iradio_flat-blue" value="ON" name="productTypeCheckBox" id="filterIsService">
             </td>
         </tr>
         <!--<tr>
             <td ><h3>
                  <label for="description" data-localize="sell">Sell</label></h3></td>
             <td align="right">
-                <input  type="radio"  name="iCheck" class="iradio_flat-blue" >
+                <input  type="radio"  name="productTypeCheckBox" class="iradio_flat-blue" >
             </td>
         </tr> -->
         <tr>
             <td colspan="2">
                 <div class="ui-field-contain">
                     <h3>
-                        <label for="select-custom-24" data-localize="choosecat"  style="color:dodgerblue;font-size:large;">
+                        <label for="select-custom-24" data-localize="choosecat" style="color:dodgerblue;font-size:large;">
                             Categories:
                         </label>
                     </h3>
@@ -64,10 +67,10 @@
             <td colspan="2">
                 <h3>
                     <span name="spn">
-                        <span for="distance" data-localize="distance"  style="color:dodgerblue;font-size:large;">
-                            Distance in km.                            
-                        </span>: 
-                          <span id="DistanceVal">0</span> km
+                        <span for="distance" data-localize="distance" style="color:dodgerblue;font-size:large;">
+                            Distance in km.
+                        </span>:
+                        <span id="DistanceVal">0</span> km
                     </span>
                 </h3>
             </td>
@@ -75,50 +78,84 @@
         <tr>
             <td colspan="2">
                 <input type="range" name="slider-mini" id="Distance" value="0" min="0" max="250"
-                       data-highlight="true" style="width:100%;"/>
+                       data-highlight="true" style="width:100%;" />
             </td>
         </tr>
-        
         <tr>
             <td>
                 <h3>
-                    <span name="spn">
-                        <span for="exchange" data-localize="exchange"  style="color:dodgerblue;font-size:large;">Exchange value</span>:
-                          <span colspan="2" id="ExchangeVal">
-                			0
-           			 </span>
+                    <span name="spn" >
+                        <!--<span for="exchange" data-localize="exchange" style="color:dodgerblue;font-size:large;">Exchange value</span>-->:
+                        <span for="exchange" data-localize="price" style="color:dodgerblue;font-size:large;">Price</span>:
+                    </span>
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>
+                    <span name="spn" style="margin-left: 10px">
+                        <span for="exchange" data-localize="from" style="color:dodgerblue;font-size:large;">From</span>:
+                        <span colspan="2" id="PriceFromValue">
+                            0
+                        </span>
+                    </span>
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" >
+                <input type="range" name="slider-mini1" id="PriceFrom" value="0" min="0" max="1000" data-highlight="true"
+                       size="20" style="width:100%;" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>
+                    <span name="spn" style="margin-left: 5px">
+                        <span for="exchange" data-localize="to" style="color:dodgerblue;font-size:large;">To</span>:
+                        <span colspan="2" id="PriceToValue">
+                            1000
+                        </span>
                     </span>
                 </h3>
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <input type="range" name="slider-mini1" id="Price" value="0" min="0" max="1000" data-highlight="true"
+                <input type="range" name="slider-mini1" id="PriceTo" value="1000" min="0" max="1000" data-highlight="true"
                        size="20" style="width:100%;" />
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <a data-role="button"  class="btn btn-blue"  data-transition="fade" id="GetFilters" onclick="filter.onFilter()">
+                <a data-role="button" class="btn btn-blue" data-transition="fade" id="GetFilters" onclick="filter.onFilter()">
                     <label data-localize="ok">
-                        Ok
+                        OK
                     </label>
                 </a>
-
+                <a data-role="button" class="btn btn-blue" data-transition="fade" id="cancelFilter" onclick="filter.onClearFilter()">
+                    <label data-localize="cancel">
+                        Cancel
+                    </label>
+                </a>
             </td>
         </tr>
 
     </table>
-<script>
-    $(document).ready(function(){
-        $("#Distance").change(function() {
-            $("#DistanceVal").html($("#Distance").val());
+    <script>
+        $(document).ready(function () {
+            $("#Distance").change(function () {
+                $("#DistanceVal").html($("#Distance").val());
+            });
+
+            $("#PriceFrom").change(function () {
+                $("#PriceFromValue").html($("#PriceFrom").val());
+            });
+
+            $("#PriceTo").change(function () {
+                $("#PriceToValue").html($("#PriceTo").val());
+            });
         });
-        
-         $("#Price").change(function() {
-             $("#ExchangeVal").html($("#Price").val());
-         });
-    });
-</script>
+    </script>
 </div>
- 
