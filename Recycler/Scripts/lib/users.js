@@ -743,7 +743,7 @@ function saveUserData() {
                     "Web" : $("#wwwaddress").val(),
                     "weight" :$("#weight").val(),
                     "distance" : $("#distance").val(), 
-                    "Brigade" : $("#brigade").is(":checked"),  
+                    "brigade" : $("#brigade").is(":checked"),  
                     "onlycountry" : $("#onlycountry").is(":checked")
          
                 }, // data
@@ -833,7 +833,7 @@ function fillUserData(user) {
         $("#distance").val(user.distance);
 
      if (user.brigade != undefined)
-           $("#brigade").prop("No",user.brigade);
+           $("#brigade").prop("checked",user.brigade);
       
      if (user.onlycountry != undefined)
            $("#onlycountry").prop("checked",user.onlycountry);
