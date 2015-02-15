@@ -164,12 +164,13 @@ window.filter = {};
 
                 contQuery.done();
                 query.orderDesc('CreatedAt');
+                debugger;
                 data.get(query).then(
                     function (data) {
                         hideLoading();
 
                         if (data.result.length == 0) {
-                            alert("No result found.");
+                            app.application.navigate('notFound.html');
                             return;
                         }
 
@@ -263,10 +264,36 @@ window.filter = {};
         }
     }
 
+    function onNotFoundShow() {
+        switch (localStorage.Language) {
+            case "1":
+                localStorage.LanguageType = "dk";
+
+                $("#notFoundImage").attr("src", "images/NothingFound/nothing_dk.png");
+                break;
+            case "2":
+                localStorage.LanguageType = "de";
+                $("#notFoundImage").attr("src", "images/NothingFound/nothing_de.png");
+
+                break;
+            case "3":
+                localStorage.LanguageType = "en";
+                $("#notFoundImage").attr("src", "images/NothingFound/nothing_gb_us.png");
+
+                break;
+            case "4":
+                localStorage.LanguageType = "es";
+                $("#notFoundImage").attr("src", "images/NothingFound/nothing_es.png");
+
+                break;
+        }
+    }
+
     window.filter = {
         initFilters: initFilters,
         onFilter: onFilter,
         onFilteredResultsShow: onFilteredResultsShow,
         onClearFilter: onClearFilter,
+        onNotFoundShow: onNotFoundShow,
     }
 }(jQuery, document));
