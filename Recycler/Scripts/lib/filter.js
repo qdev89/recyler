@@ -141,8 +141,7 @@ window.filter = {};
                             break;
                     }
 
-                    var typeRegEx = ".*" + productType + ".*";
-                    contQuery.regex('Type', typeRegEx, 'i');
+                    contQuery.eq('Type', productType);
                 }
 
                 // for Category
