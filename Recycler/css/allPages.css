@@ -2014,12 +2014,33 @@ input:not([type='checkbox']), textarea, select
      
 }
 
-.one-by-row.styled-list li .img-holder h4 { 
+@media screen and (min-resolution: 1dppx) {
+ .one-by-row.styled-list li .img-holder h4 { 
    position: absolute; 
    top: 40px; 
    left: 40px; 
    width: 100%; 
 }
+}
+
+@media screen and (min-resolution: 1.5dppx) {
+ .one-by-row.styled-list li .img-holder h4 { 
+   position: absolute; 
+   top: 40px; 
+   left: 70px; 
+   width: 100%; 
+}
+}
+
+@media screen and (min-resolution: 2dppx) {
+ .one-by-row.styled-list li .img-holder h4 { 
+   position: absolute; 
+   top: 40px; 
+   left: 100px; 
+   width: 100%; 
+}
+}
+
 
 .one-by-row.styled-list li .img-holder span { 
    color: white; 
