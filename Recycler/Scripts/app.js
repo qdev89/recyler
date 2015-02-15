@@ -727,84 +727,7 @@ function getFilters() {
     app.application.navigate("finditem.html");
 }
 
-function initFilters() {
-    TranslateApp();
-    switch (localStorage.Language) {
-        case "1":
-            localStorage.LanguageType = "dk";
 
-            var menuItem = $("<option id=''></option>");
-            menuItem.html("Tags/kategorier");
-            $("#select-custom-24").append(menuItem);
-
-            $.each(Tags.Danish, function (i) {
-                if (Tags.Danish[i] != undefined) {
-                    var menuItem = $("<option id=''></option>");
-                    menuItem.html(Tags.Danish[i].Value);
-                    menuItem.attr('id', Tags.Danish[i].id);
-                    $("#select-custom-24").append(menuItem);
-                }
-            });
-
-            // $("#select-custom-24").selectmenu('refresh');
-
-            break;
-        case "2":
-
-            localStorage.LanguageType = "de";
-            var menuItem = $("<option id=''></option>");
-            menuItem.html("Tags/Categories");
-            $("#select-custom-24").append(menuItem);
-
-            $.each(Tags.German, function (i) {
-                if (Tags.German[i] != undefined) {
-                    var menuItem = $("<option id=''></option>");
-                    menuItem.html(Tags.German[i].Value);
-                    menuItem.attr('id', Tags.German[i].id);
-                    $("#select-custom-24").append(menuItem);
-                }
-            });
-            //  $("#select-custom-24").selectmenu('refresh');
-
-            break;
-        case "3":
-
-            localStorage.LanguageType = "en";
-            var menuItem = $("<option id=''></option>");
-            menuItem.html("Tags/Categories");
-            $("#select-custom-24").append(menuItem);
-
-            $.each(Tags.English, function (i) {
-                if (Tags.English[i] != undefined) {
-                    var menuItem = $("<option id=''></option>");
-                    menuItem.html(Tags.English[i].Value);
-                    menuItem.attr('id', Tags.English[i].id);
-                    $("#select-custom-24").append(menuItem);
-                }
-            });
-            //  $("#select-custom-24").selectmenu('refresh');
-
-            break;
-        case "4":
-
-            localStorage.LanguageType = "es";
-            var menuItem = $("<option id=''></option>");
-            menuItem.html("Tags/Categories");
-            $("#select-custom-24").append(menuItem);
-
-            $.each(Tags.Spanish, function (i) {
-                if (Tags.Spanish[i] != undefined) {
-                    var menuItem = $("<option id=''></option>");
-                    menuItem.html(Tags.Spanish[i].Value);
-                    menuItem.attr('id', Tags.Spanish[i].id);
-                    $("#select-custom-24").append(menuItem);
-                }
-            });
-            //  $("#select-custom-24").selectmenu('refresh');
-
-            break;
-    }
-}
 
 function aboutThisAppInit() {
     $('#SendMail').click(function () {
@@ -847,8 +770,6 @@ function aboutThisAppInit() {
         }
     });
 }
-
-
 
 function contactInit() {
     if (localStorage.User == null || localStorage.User == undefined) {

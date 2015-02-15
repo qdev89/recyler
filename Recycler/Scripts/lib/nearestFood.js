@@ -3,8 +3,10 @@ function nearestFoodInit() {
     window.getLocation()
          .done(function (position) {
              var query = new Everlive.Query();
-             //query.where().nearSphere('Location', [position.coords.latitude, position.coords.longitude], 20, 'km');
-             query.where().nearSphere('Location', [43.465187, -80.52237200000002], 20, 'km');
+             query.where().nearSphere('Location', [position.coords.latitude, position.coords.longitude], 20, 'km');
+
+             // TODO: uncomment in release
+             //query.where().nearSphere('Location', [43.465187, -80.52237200000002], 20, 'km');
              query.take(10);
              var data = app.everlive.data('Spot');
              data.get(query)

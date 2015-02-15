@@ -93,6 +93,7 @@
     <Content Include="filter.html">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="filterResults.html" />
     <Content Include="finditem.html">
       <SubType>Content</SubType>
     </Content>
@@ -789,6 +790,7 @@
     <Content Include="Scripts\lib\everlive.images.min.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Scripts\lib\filter.js" />
     <Content Include="Scripts\lib\identity-provider.js">
       <SubType>Content</SubType>
     </Content>
