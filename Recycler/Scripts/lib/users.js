@@ -406,7 +406,7 @@ $(document).ready(function () {
             user.Address = $("#homeadress").val();
             user.City = $("#homecity").val();
             user.Zip = $("#zip").val();
-            
+             
              user.Facebook = $("#facebookaddress").val();
             user.Twitter = $("#twitteraddress").val();
             user.Web = $("#wwwaddress").val();
@@ -743,7 +743,7 @@ function saveUserData() {
                     "Web" : $("#wwwaddress").val(),
                     "weight" :$("#weight").val(),
                     "distance" : $("#distance").val(), 
-                    "brigade" : $("#brigade").is(":checked"),  
+                    "Brigade" : $("#brigade").is(":checked"),  
                     "onlycountry" : $("#onlycountry").is(":checked")
          
                 }, // data
@@ -780,7 +780,16 @@ function fillUserData(user) {
     }else{
          $("#isSupporter").attr("src","images/notsupporter.png");
     }
-            
+     
+      if (user.brigade != undefined)
+        $("#brigade").val(user.brigade);
+    
+    if(user.brigade=="Yes"){
+        $("#brigade").attr("src","images/profilbut/terrabut.jpg");
+    }else{
+         $("#brigade").attr("src","images/profilbut/no_terrabut.jpg");
+    }
+     
     if (user.DisplayName != undefined)
         $("#name").val(user.DisplayName);
             
@@ -824,7 +833,7 @@ function fillUserData(user) {
         $("#distance").val(user.distance);
 
      if (user.brigade != undefined)
-           $("#brigade").prop("checked",user.brigade);
+           $("#brigade").prop("No",user.brigade);
       
      if (user.onlycountry != undefined)
            $("#onlycountry").prop("checked",user.onlycountry);
