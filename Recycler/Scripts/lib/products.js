@@ -240,8 +240,12 @@ function updateItem() {
 
 
 function onProductShow(e) {
-    window.utility.resetScroller(e);
-    app.Product.getProducts();
+    debugger;
+    if (e.sender.params.refresh != "false") {
+        utility.resetScroller(e);
+        app.Product.getProducts();
+
+    }
 }
 
 
