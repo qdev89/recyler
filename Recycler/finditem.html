@@ -39,8 +39,12 @@
 
     <div onclick="goToProduct(this)" productid="${Id}">
         <div class="img-holder">
+            #if(!isVisited){#
             <img class="li-image resimgs" data-src="${Image}" />
             <h4><span>NEW</span></h4>
+            #}else{#
+            <img class="li-image resimgs grayscale-img" data-src="${Image}" />
+            #}#
         </div>
 
 
@@ -48,7 +52,7 @@
             <b> <div class="li-name" style="color:dodgerblue;font-size:large;"> ${Name}</div></b>
             <div class="li-type" style="font-size:small;"> ${Type}</div>
             <div style="display:none;" class="li-desc"> Description: ${Description}</div>
-            <div class="li-price" style="font-size:small;"><label for="estimated" data-localize="estimated"> </label>: ${Price}</div>
+            <div class="li-price" style="font-size:small;"><label for="estimated" data-localize="estimated"></label>: ${Price}</div>
             #var date = new Date(CreatedAt);
             var dateStr = date.toDateString();
             #

@@ -8,6 +8,16 @@ function navigateToEditProduct(el) {
 }
 
 function loadProduct(e) {
+    var visitedProductIds = [];
+    if (localStorage.isVisitedProductIds) {
+        visitedProductIds = JSON.parse(localStorage.isVisitedProductIds);
+    }
+
+    if (visitedProductIds.indexOf(e.sender.params.productID) == -1) {
+        visitedProductIds.push(e.sender.params.productID);
+        localStorage.isVisitedProductIds = JSON.stringify(visitedProductIds);
+    }
+
     window.utility.resetScroller(e);
     TranslateApp();
     app.addBanner(10);
@@ -240,11 +250,9 @@ function updateItem() {
 
 
 function onProductShow(e) {
-    debugger;
     if (e.sender.params.refresh != "false") {
         utility.resetScroller(e);
         app.Product.getProducts();
-
     }
 }
 
@@ -258,7 +266,11 @@ app.Product = (function () {
     var productsViewModel = (function () {
         var userId = null;
         var getProductsByUserID = function (e) {
-            debugger;
+            var visitedProductIds = [];
+            if (localStorage.isVisitedProductIds) {
+                visitedProductIds = JSON.parse(localStorage.isVisitedProductIds);
+            }
+
             userId = e.sender.params.userId;
             showLoading();
             var fillCallback = function (user) {
@@ -280,6 +292,8 @@ app.Product = (function () {
                                 var query = new Everlive.Query();
                                 query.where().eq('UserID', userId).done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 data.get(query).then(function (data) {
+                                    debugger;
+
                                     hideLoading();
                                     options.success(data.result);
 
@@ -314,6 +328,8 @@ app.Product = (function () {
                         parse: function (response) {
                             //  console.log(response);
                             $.each(response, function (i, el) {
+                                el.isVisited = visitedProductIds.indexOf(el.Id) != -1;
+
                                 if (el.Name === undefined)
                                     el.Name = "No name";
 
@@ -365,6 +381,11 @@ app.Product = (function () {
         }
 
         var getProducts = function (isMy, filterWord) {
+            var visitedProductIds = [];
+            if (localStorage.isVisitedProductIds) {
+                visitedProductIds = JSON.parse(localStorage.isVisitedProductIds);
+            }
+
             TranslateApp();
             var interval = 12;
 
@@ -451,6 +472,8 @@ app.Product = (function () {
                     parse: function (response) {
                         //  console.log(response);
                         $.each(response, function (i, el) {
+                            el.isVisited = visitedProductIds.indexOf(el.Id) != -1;
+
                             if (el.Name === undefined)
                                 el.Name = "No name";
 

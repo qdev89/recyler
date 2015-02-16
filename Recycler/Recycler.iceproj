@@ -78,6 +78,27 @@
     <Content Include="crowdfund.html">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="css\allPages.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\images\ajax-loader.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\images\icons-18-black.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\images\icons-18-white.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\images\icons-36-black.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\images\icons-36-white.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\recycleworld_theme.min.css">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="donate.html">
       <SubType>Content</SubType>
     </Content>
@@ -941,6 +962,7 @@
     <Folder Include="App_Resources\WP8\Tiles\Iconic\" />
     <Folder Include="Cordova\" />
     <Folder Include="css\" />
+    <Folder Include="css\images\" />
     <Folder Include="images\" />
     <Folder Include="images\EarthImages\" />
     <Folder Include="images\icons\" />

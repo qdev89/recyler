@@ -1,31 +1,37 @@
 <div data-role="view" id="user-items-tabstrip" data-title="User stuff" data-show="app.Product.getProductsByUserID">
-     <div id="GoToFilters">
-          <input type="text" id="filterWord" />
-          <img onclick="app.Product.filterProducts()" src="images/search_small1.png" />
-     </div>
-     <ul class="one-by-row styled-list" id="ulUserProducts"></ul>
-     <script type="text/x-kendo-template" id="productTemplate">
-          <div onclick="goToProduct(this)" productID="${Id}">
-               <div class="img-holder">
-                    <img class="li-image resimgs" data-src="${Image}" />
-               </div>
-               <div class="item-info">
-                    <b> <div class="li-name" style="color:dodgerblue;font-size:large;"> ${Name}</div></b>
-                    <div class="li-type" style="font-size:small;"> ${Type}</div>
-                    <div style="display:none;" class="li-desc"> Description: ${Description}</div>
-                    <div class="li-price" style="font-size:small;">
-                         <label for="desciption" data-localize="estimated"> </label>: ${Price}</div>
-                    #var date = new Date(CreatedAt); var dateStr = date.toDateString(); #
-                    <div class="city"></div>
-                    <div class="li-date" style="font-size:small;"> ${dateStr}</div>
-               </div>
-          </div>
-     </script>
-     <script>
-          function goToProduct(row) {
-               console.log($(row).attr("productID"));
-               app.application.navigate("product.html?productID=" + $(row).attr("productID"));
+    <div id="GoToFilters">
+        <input type="text" id="filterWord" />
+        <img onclick="app.Product.filterProducts()" src="images/search_small1.png" />
+    </div>
+    <ul class="one-by-row styled-list" id="ulUserProducts"></ul>
+    <script type="text/x-kendo-template" id="productTemplate">
+        <div onclick="goToProduct(this)" productid="${Id}">
+            <div class="img-holder">
+                #if(!isVisited){#
+                <img class="li-image resimgs" data-src="${Image}" />
+                <h4><span>NEW</span></h4>
+                #}else{#
+                <img class="li-image resimgs grayscale-img" data-src="${Image}" />
+                #}#
+            </div>
+            <div class="item-info">
+                <b> <div class="li-name" style="color:dodgerblue;font-size:large;"> ${Name}</div></b>
+                <div class="li-type" style="font-size:small;"> ${Type}</div>
+                <div style="display:none;" class="li-desc"> Description: ${Description}</div>
+                <div class="li-price" style="font-size:small;">
+                    <label for="desciption" data-localize="estimated"> </label>: ${Price}
+                </div>
+                #var date = new Date(CreatedAt); var dateStr = date.toDateString(); #
+                <div class="city"></div>
+                <div class="li-date" style="font-size:small;"> ${dateStr}</div>
+            </div>
+        </div>
+    </script>
+    <script>
+        function goToProduct(row) {
+            console.log($(row).attr("productID"));
+            app.application.navigate("product.html?productID=" + $(row).attr("productID"));
 
-          }
-     </script>
+        }
+    </script>
 </div>
