@@ -75,17 +75,24 @@
                                 <span for="distance" data-localize="distance" style="color:dodgerblue;font-size:large;">
                                     Distance in km.
                                 </span>:
-                                <span id="DistanceVal">0</span> km
+                                <!--<span id="DistanceVal">0</span> km-->
                             </span>
                         </h3>
                     </td>
+                    <td align="right">
+                        <span>
+                            <input type="number" id="Distance" value="0" min="0" max="250"
+                                   data-highlight="true" />
+                        </span>
+                    </td>
+                    <td align="right">km</td>
                 </tr>
-                <tr>
+                <!--<tr>
                     <td colspan="2">
                         <input type="range" name="slider-mini" id="Distance" value="0" min="0" max="250"
                                data-highlight="true" style="width:100%;" />
                     </td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td>
                         <h3>
@@ -108,7 +115,7 @@
                             </span>
                         </h3>
                     </td>
-                    <td align="right">
+                    <td align="right" colspan="2">
                         <input type="number" id="PriceFrom" value="0" min="0" data-highlight="true"
                                size="20" style="width:100%;" />
                     </td>
@@ -131,7 +138,7 @@
                             </span>
                         </h3>
                     </td>
-                    <td align="right">
+                    <td align="right" colspan="2">
                         <input type="number" id="PriceTo" value="0" min="0" data-highlight="true"
                                size="20" style="width:100%;" />
                     </td>

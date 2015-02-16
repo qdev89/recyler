@@ -9,6 +9,7 @@ window.filter = {};
         // init numeric input
         $("#PriceFrom").ForceNumericOnly();
         $("#PriceTo").ForceNumericOnly();
+        $("#Distance").ForceNumericOnly();
 
         switch (localStorage.Language) {
             case "1":
@@ -94,8 +95,6 @@ window.filter = {};
         $("#PriceFrom").val(0);
         $("#PriceTo").val(0);
         $("input[name='productTypeCheckBox']:checked").val(-1);
-
-        $("#DistanceVal").html($("#Distance").val());
     }
 
     function onFilter() {
