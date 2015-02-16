@@ -5,6 +5,11 @@ window.filter = {};
     function initFilters(e) {
         utility.resetScroller(e);
         TranslateApp();
+
+        // init numeric input
+        $("#PriceFrom").ForceNumericOnly();
+        $("#PriceTo").ForceNumericOnly();
+
         switch (localStorage.Language) {
             case "1":
                 localStorage.LanguageType = "dk";
@@ -87,14 +92,10 @@ window.filter = {};
         $("#select-custom-24 option:selected").val(-1);
         $("#Distance").val(0);
         $("#PriceFrom").val(0);
-        $("#PriceTo").val(1000);
+        $("#PriceTo").val(0);
         $("input[name='productTypeCheckBox']:checked").val(-1);
 
         $("#DistanceVal").html($("#Distance").val());
-
-        $("#PriceFromValue").html($("#PriceFrom").val());
-
-        $("#PriceToValue").html($("#PriceTo").val());
     }
 
     function onFilter() {
@@ -156,7 +157,7 @@ window.filter = {};
                 }
 
                 // for Price
-                if (priceFrom && priceTo) {
+                if (priceFrom && priceTo && priceTo > priceFrom) {
                     // priceFrom =< price =< priceTo
                     contQuery.greaterThanEqual("Price", priceFrom);
                     contQuery.lessThanEqual("Price", priceTo);
@@ -297,3 +298,26 @@ window.filter = {};
         onNotFoundShow: onNotFoundShow,
     }
 }(jQuery, document));
+
+
+// Numeric only control handler
+jQuery.fn.ForceNumericOnly =
+function () {
+    return this.each(function () {
+        $(this).keydown(function (e) {
+            var key = e.charCode || e.keyCode || 0;
+            // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
+            // home, end, period, and numpad decimal
+            return (
+                key == 8 ||
+                key == 9 ||
+                key == 13 ||
+                key == 46 ||
+                key == 110 ||
+                key == 190 ||
+                (key >= 35 && key <= 40) ||
+                (key >= 48 && key <= 57) ||
+                (key >= 96 && key <= 105));
+        });
+    });
+};
