@@ -313,7 +313,7 @@
 	"lend": "Heraus leihen",
 	"rent": "Miete",
 	"service": "Service: Ich kann helfen, andere mit",
-	"confirm": "Bestätigen Sie Ihre Spot",
+	"confirm": "Bestätigen Sie Ihre ort",
 	"type": "Geben Sie Ihre Informationen ",
 	"Place": "Legen Sie das Symbol auf der Karte",
 	"ecospot": "ECO ort",
@@ -329,7 +329,7 @@
 "fz3": "Bauen Sie sich mein Freund und Familienzone",
 "postedby": "Veröffentlicht von Recycleworld Benutzer:",  
 "allstuff": "Zeigen Sie alle Benutzer Zeug",
-"recyclingcompany": "Recyclingunternehmen",
+"recyclingcompany": "Recycling unternehmen",
      "estimated": "Tausch-Wert",
      "recyclemenu": "Give-Away, tauschen, ausleihen",
               "getmyco2": "Hier finden Sie die neuen Benutzer Ihre Sachen und erhalten Sie Ihre Co2",
@@ -341,6 +341,10 @@
                                     "view": "Zeige meine Profilseite",
                   "Intro": "Wenn Sie denken, Sie nicht aufgeben wollen, tauschen og verleihen Dinge aus Sie können einen Garage annonce machen oder zu sehen, wo man anderen helfen.",
 "intro1":. "Das ist nicht für Feedback, Ideen, Fehler oder Meldung von Anzeigen, die durch Schütteln Sie Ihr Handy und senden Sie Ihre Kommentare getan werden kann, ist diese nur für Themen unten erwähnt.",
+     "oknews":"Zeigen Sie mir die Nachrichten" ,
+          "news1":"Erstellen Sie Kanal Nachrichten",
+"news":"Das ist unserer Nachrichtenkanal. Die Regeln sind: Verwenden Sie diese zu teilen Informationen über Themen wie substainabilty, terra-Zyklusereignisse, Lebensmittelabfälle Fall, Upcycling Ideen usw. <br> Angemeldet beiden halten ein respekt Ton und halten den Inhalt frisch und für alle. vVerteilen nur positivy und ermöglicht eine Änderung vornehmen. <br> ", ,
 "freefood": "Kostenlose Lebensmittel"
+
      
 }

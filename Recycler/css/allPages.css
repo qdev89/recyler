@@ -879,7 +879,7 @@ select#country { width: 150px; }
 {
     position: static;
     width: 100%;
-    height: 30px;
+    height: 40px;
     font-size: 1rem;
 }
 
@@ -2014,32 +2014,14 @@ input:not([type='checkbox']), textarea, select
      
 }
 
-@media screen and (min-resolution: 1dppx) {
- .one-by-row.styled-list li .img-holder h4 { 
+
+.one-by-row.styled-list li .img-holder h4 { 
    position: absolute; 
    top: 40px; 
    left: 40px; 
    width: 100%; 
 }
-}
 
-@media screen and (min-resolution: 1.5dppx) {
- .one-by-row.styled-list li .img-holder h4 { 
-   position: absolute; 
-   top: 40px; 
-   left: 70px; 
-   width: 100%; 
-}
-}
-
-@media screen and (min-resolution: 2dppx) {
- .one-by-row.styled-list li .img-holder h4 { 
-   position: absolute; 
-   top: 40px; 
-   left: 100px; 
-   width: 100%; 
-}
-}
 
 
 .one-by-row.styled-list li .img-holder span { 
@@ -2252,7 +2234,7 @@ fieldset{
 }
 
 #GoToFilters input{
-   width: 80%;
+   width: 85%;
    height: 38px;
   font-size: 14pt; 
   height: 40; 
@@ -2263,8 +2245,22 @@ fieldset{
   border: 1px solid #C0C0C0;
   }
 
+
+#GoToFilters1 input{
+   width: 100%;
+   height: 38px;
+  font-size: 14pt; 
+  height: 40; 
+  padding-left: 3px; 
+  padding-right: 3px; 
+  padding-top: 2px; 
+  padding-bottom: 2px;
+  border: 1px solid #C0C0C0;
+  }
+
+
 #GoToFilters img{
-    width: 18%;
+    width: 12%;
     vertical-align: middle;
     padding: 1%;
 }

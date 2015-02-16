@@ -1,32 +1,35 @@
-<div data-role="view" data-show="filter.initFilters" id="filter-tabstrip" data-title="Filter" style="background-color: #f3f3f3;">
-    <table class="content_table1">
-        <tr>
-            <td colspan="2">
-                <input type="text" id="filterSearch" style="width:100%;" class="tb1" data-localize="Searchforstuff" placeholder="Search for stuff..."
-                       maxlength="255" />
+<div data-role="view" data-show="filter.initFilters" id="filter-tabstrip" data-title="Search" style="background-color: #f3f3f3;">
+     <div data-role="content">
+    <div align="center">
+
+        <table border="0" width="90%" cellspacing="0" cellpadding="3">
+             
+          <tr>
+            <td colspan="2"><div  id="GoToFilters1">         
+                 <input type="text" id="filterSearch" data-localize="Searchforstuff" placeholder="Search for stuff..." /></div>
             </td>
         </tr>
 
         <tr>
             <td>
-                <h3>
+                <h4>
 
                     <label for="description" data-localize="recycle">Recycle / give away</label>
-                </h3>
+                </h4>
             </td>
             <td align="right">
                 <input type="radio" name="productTypeCheckBox" class="iradio_flat-blue" id="filterIsRecycle">
             </td>
         </tr>
         <tr>
-            <td><h3><label for="description" data-localize="trade">Trade</label></h3></td>
+            <td><h4><label for="description" data-localize="trade">Trade</label></h4></td>
             <td align="right">
                 <input type="radio" name="productTypeCheckBox" class="iradio_flat-blue" id="filterTrade">
             </td>
         </tr>
 
         <tr>
-            <td><h3><label for="description" data-localize="lend">Lend</label></h3></td>
+            <td><h4><label for="description" data-localize="lend">Lend</label></h4></td>
             <td align="right">
                 <input type="radio" name="productTypeCheckBox" class="iradio_flat-blue" id="filterIsLend">
             </td>
@@ -39,7 +42,7 @@
             </td>
         </tr> -->
         <tr>
-            <td><h3><label for="description" data-localize="service">Service: I can help others with</label></h3></td>
+            <td><h4><label for="description" data-localize="service">Service: I can help others with</label></h4></td>
             <td align="right">
                 <input type="radio" class="iradio_flat-blue" value="ON" name="productTypeCheckBox" id="filterIsService">
             </td>
@@ -85,8 +88,8 @@
             <td>
                 <h3>
                     <span name="spn" >
-                        <!--<span for="exchange" data-localize="exchange" style="color:dodgerblue;font-size:large;">Exchange value</span>-->:
-                        <span for="exchange" data-localize="price" style="color:dodgerblue;font-size:large;">Price</span>:
+                        <!--<span for="exchange" data-localize="exchange" style="color:dodgerblue;font-size:large;">Exchange value</span>-->
+                        <span for="estimated"><label for="estimated" data-localize="estimated"> </label></span>
                     </span>
                 </h3>
             </td>
@@ -133,7 +136,7 @@
                     <label data-localize="ok">
                         OK
                     </label>
-                </a>
+                </a><br><br>
                 <a data-role="button" class="btn btn-blue" data-transition="fade" id="cancelFilter" onclick="filter.onClearFilter()">
                     <label data-localize="cancel">
                         Cancel
@@ -157,5 +160,5 @@
                 $("#PriceToValue").html($("#PriceTo").val());
             });
         });
-    </script>
+         </script></div></div>
 </div>

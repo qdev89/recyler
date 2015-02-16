@@ -488,7 +488,7 @@ function SaveSpot() {
                                 
                                
                                 case "Recycling company": 
-                                templateName =emailTemplates.recycling;
+                                templateName =emailTemplates.business;
                                 break;
                                                                         
                                 case "Recycling spot": 
@@ -502,6 +502,12 @@ function SaveSpot() {
                                 case "Terracycle spot": 
                                  templateName =emailTemplates.terraspot;
                                 break;
+                                     
+                                case "Recycling spot": 
+                                templateName =emailTemplates.shop;
+                                break;
+                                     
+                                     
                             }  
                             sendMail(templateName,[userData.Email],{"appName":emailTemplates.DefaultFromName,"DefaultFromName":emailTemplates.DefaultFromName ,"userName":userData.DisplayName, "FromEmail":emailTemplates.FromEmail});
                       },
@@ -601,12 +607,12 @@ function InitCreateSpot() {
 
             switch (localStorage.Language) {
                 case "1":
-                    $('#btnspot').find('label').text('Opret h�ndelse eller tilf�je');
+                    $('#btnspot').find('label').text('Opret hændelse eller tilføje');
                     $('#Title').text('Event Maker');
                     break;
                 case "2":
                     $('#btnspot').find('label').text('Schaffen Sie Ereignis oder beitragen');
-                    $('#Title').text('Ereignis-Sch�pfer');
+                    $('#Title').text('Ereignis-Schopfer');
                     break;
                 case "3":
                     $('#btnspot').find('label').text('Create event or add');

@@ -332,7 +332,8 @@
           "freefood": "Alimentos gratuitos",
      "become": "Hazte Simpatizante ahora",
 "recyclemenu": "Regalar, permuta, prestar hacia fuera",
-          "getmyco2": "Find den nye bruger af denne ting og få din Co2",
+               "estimated": "Estimated value",
+          "getmyco2": "Encuentra el nuevo usuario de tus cosas y conseguir que su Co2",
                   "facebookadress": "Facebook dirección",
                     "twitteradress": "Twitter dirección",
                     "webadress": "www dirección",
@@ -341,6 +342,9 @@
                                          "view": "Mostrar mi página de perfil",
                                     "intro": "Si usted no cree que quiere dar, de permuta og prestarle cosas Usted puede hacer una venta de garaje annonce o ver dónde se puede ayudar a otros..",
 "intro1": "Esto no es para realizar comentarios, ideas, faltas o informes de los anuncios, que se puede realizar agitando el teléfono y enviar tus comentarios Esto es sólo para los temas mencionados a continuación.",
-     "allstuff": "Mostrar todas las cosas usuario"
-          
+"oknews":"Muéstrame las noticias" ,
+"news1":"Crear canal de noticias",
+"news":"Este es nuestro canal de noticias de la comunidad Las reglas son således:. usar esta información de dos acción en temas como substainabilty, eventos de ciclo terra, evento residuos de alimentos, las ideas upcycling etc. <br> Recuerde dos mantener un tono respetuoso y mantener el contenido fresco y para todos. <br> Spread positivy y vamos a hacer un cambio. <br>" ,
+
+     "allstuff": "Mostrar todas las cosas usuario"          
 }
