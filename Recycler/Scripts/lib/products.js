@@ -44,6 +44,7 @@ function loadProduct(e) {
             $(selector + ".instead").html(product.Description);
 
             $("#WantIt").attr("href", "userItems.html?userId=" + product.UserID);
+            $("#NoInterest").attr("productId", product.Id);
 
             var images = [];
             if (product.Image1 != undefined)
@@ -265,6 +266,37 @@ app.Product = (function () {
 
     var productsViewModel = (function () {
         var userId = null;
+
+        var nointerest = function (i) {
+            debugger;
+            var productId = $("#NoInterest").attr("productId");
+
+            var visitedProductIds = [];
+            if (localStorage.isVisitedProductIds) {
+                visitedProductIds = JSON.parse(localStorage.isVisitedProductIds);
+            }
+
+            var index = visitedProductIds.indexOf(productId);
+
+            if (index != -1) {
+                visitedProductIds.splice(index, 1);
+                localStorage.isVisitedProductIds = JSON.stringify(visitedProductIds);
+            }
+            var selector = "[productid-finditem=" + productId + "]";
+            var selectorNew = "[productid-finditem-new=" + productId + "]";
+            var item = $(selector);
+            var itemNew = $(selectorNew);
+            if (item) {
+                item.removeClass('grayscale-img');
+            }
+
+            if (itemNew) {
+                itemNew.removeAttr('style');
+            }
+
+            app.application.navigate("finditem.html?refresh=false");
+        }
+
         var getProductsByUserID = function (e) {
             var visitedProductIds = [];
             if (localStorage.isVisitedProductIds) {
@@ -536,8 +568,8 @@ app.Product = (function () {
             getProductsByUserID: getProductsByUserID,
             getMyProducts: getMyProducts,
             filterProducts: filterProducts,
-            getProductByID: getProductByID
-
+            getProductByID: getProductByID,
+            nointerest: nointerest
         };
     }());
 

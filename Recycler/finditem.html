@@ -40,10 +40,11 @@
     <div onclick="goToProduct(this)" productid="${Id}">
         <div class="img-holder">
             #if(!isVisited){#
-            <img class="li-image resimgs" data-src="${Image}" />
+            <img class="li-image resimgs" data-src="${Image}"/>
             <h4><span>NEW</span></h4>
             #}else{#
-            <img class="li-image resimgs grayscale-img" data-src="${Image}" />
+            <img class="li-image resimgs grayscale-img" data-src="${Image}" productid-finditem="${Id}" />
+            <h4><span style="display:none" productid-finditem-new="${Id}">NEW</span></h4>
             #}#
         </div>
 
