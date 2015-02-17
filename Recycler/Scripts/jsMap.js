@@ -86,7 +86,7 @@ function iconMapInit() {
                 }
                 
                 var content = 
-                    "<div class='table-container' ><table>" + 
+                    "<div class='table-container' align='center'><table>" + 
                  
                     "<tr><td></td><td class='spotName'>" + allSpots[i].Name + "</td></tr>" + 
                    "<tr><td></td><td class='spotDate'>" + allSpots[i].EventDate + "</td></tr>" + 
@@ -251,6 +251,11 @@ function setPlace(lat, long,draggable, type, map,content,isGrey){
         icon = "images/mapicons/terracycle_small.png";
         break;
         
+        case "Shop": 
+        icon = "images/mapicons/shop_small.png";
+        break;
+              
+              
         default: icon = "";
         break;
     }   

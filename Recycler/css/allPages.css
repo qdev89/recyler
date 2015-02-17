@@ -2042,6 +2042,18 @@ fieldset {
     border: 1px solid #C0C0C0;
 }
 
+#GoToFilters2 input  {
+    width: 100%;
+    height: 38px;
+    font-size: 14pt;
+    height: 40;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border: 1px solid #C0C0C0;
+}
+
 
 #GoToFilters img {
     width: 12%;
@@ -2351,4 +2363,4 @@ img.resimgs {
   filter: grayscale(100%);
   filter: url(#greyscale);
   filter: gray;
-}
+  }
