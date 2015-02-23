@@ -1,6 +1,5 @@
 var app = window.app = window.app || {};
 var editableProduct;
-
 function navigateToEditProduct(el) {
     var productID = $(el).attr('productID');
     console.log(productID);
@@ -360,6 +359,10 @@ app.Product = (function () {
                         parse: function (response) {
                             //  console.log(response);
                             $.each(response, function (i, el) {
+                                el.Views = el.Views || 0;
+                                el.City = el.City || '';
+                                el.Distance = el.City || 'N/A';
+
                                 el.isVisited = visitedProductIds.indexOf(el.Id) != -1;
 
                                 if (el.Name === undefined)
@@ -504,6 +507,16 @@ app.Product = (function () {
                     parse: function (response) {
                         //  console.log(response);
                         $.each(response, function (i, el) {
+                            el.Views = el.Views || 0;
+                            el.City = el.City || '';
+
+                            // calculate distance
+                            if (el.Latitude && el.Longitude && app.currentPosition) {
+                                el.Distance = getDistanceFromLatLonInKm(el.Latitude, el.Longitude, app.currentPosition.coords.latitude, app.currentPosition.coords.longitude);
+                            } else {
+                                el.Distance = 0;
+                            }
+
                             el.isVisited = visitedProductIds.indexOf(el.Id) != -1;
 
                             if (el.Name === undefined)

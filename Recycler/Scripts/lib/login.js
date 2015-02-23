@@ -3,6 +3,8 @@
  */
 
 var app = window.app = window.app || {};
+app.currentPosition = null;
+
 app.Login = (function () {
     'use strict';
 
@@ -40,13 +42,13 @@ app.Login = (function () {
                 $('#loginWithLiveID').addClass('disabled');
                 console.log('LiveID Client ID and/or Redirect URI not set. You cannot use LiveID login.');
             }
-          /*  if (!isAdfsLogin) {
-                $('#loginWithADSF').addClass('disabled');
-                console.log('ADFS Realm and/or Endpoint not set. You cannot use ADFS login.');
-            }
-            if (!isAnalytics) {
-                console.log('EQATEC product key is not set. You cannot use EQATEC Analytics service.');
-            }*/
+            /*  if (!isAdfsLogin) {
+                  $('#loginWithADSF').addClass('disabled');
+                  console.log('ADFS Realm and/or Endpoint not set. You cannot use ADFS login.');
+              }
+              if (!isAnalytics) {
+                  console.log('EQATEC product key is not set. You cannot use EQATEC Analytics service.');
+              }*/
         };
 
         var show = function () {
@@ -59,30 +61,30 @@ app.Login = (function () {
         };
 
         // Authenticate to use Backend Services as a particular user
-        var login = function (user,pass) {
-                                   
+        var login = function (user, pass) {
+
             var username = $loginUsername.val();
-            var password = $loginPassword.val();          
-            
-            
-            if(user!== undefined && pass!==undefined){
+            var password = $loginPassword.val();
+
+
+            if (user !== undefined && pass !== undefined) {
                 username = user;
                 password = pass;
             }
-            
-             
+
+
             if (!validateEmail(username)) {
                 navigator.notification.alert("You should fill a valid email!", null, "");
                 return;
-            }   
-            
-            if(username=="" || password==""){
+            }
+
+            if (username == "" || password == "") {
                 alert("Please, fill username and password!");
                 return;
             }
-                
 
-          //  console.log(
+
+            //  console.log(
             // Authenticate using the username and password
             app.everlive.Users.login(username, password)
             .then(function () {
@@ -91,113 +93,127 @@ app.Login = (function () {
                     analytics.TrackFeature('Login.Regular');
                 }
 
-               // return app.Users.load();
+                // return app.Users.load();
             })
             .then(function () {
-					
-               localStorage.Username = username;
-               localStorage.Password = password;
-                
-                 app.everlive.Users.currentUser( 
-                                            function(data) { 
-                                                console.log(data.result);    
-                                               
-                                               localStorage.User = JSON.stringify(data.result);
-                                                fillUserData(data.result);
-                                                
-                                                 localStorage.Language = data.result.LanguageID;
-                                                  if (localStorage.Language == undefined || localStorage.Language == "undefined") { 
-                                                        localStorage.Language = 3;
-                                                        localStorage.LanguageType = "en";
-                                                    }
-                                                
 
-                                                switch (localStorage.Language) {
-                                                    case "1":
-                                                        localStorage.LanguageType = "dk";
-                                                        break;
-                                                    case "2":
-                                                        localStorage.LanguageType = "de";
-                                                        break;
-                                                    case "3":
-                                                        localStorage.LanguageType = "en";
-                                                        break;
-                                                    case "4":
-                                                        localStorage.LanguageType = "es";
-                                                        break;
-                                                    default:
-                                                     localStorage.LanguageType = "en";
-                                                    break;
-                                                }
-                                                
-                                                
-                                                
-                                                if(data.result.Email == undefined || data.result.Email == "")
-                                                 app.application.navigate('basic_setup.html');
-                                                else
-                                                 app.application.navigate('finditem.html');
-                                            });
+                localStorage.Username = username;
+                localStorage.Password = password;
+
+                app.everlive.Users.currentUser(
+                                           function (data) {
+                                               console.log(data.result);
+
+                                               localStorage.User = JSON.stringify(data.result);
+                                               fillUserData(data.result);
+
+                                               localStorage.Language = data.result.LanguageID;
+                                               if (localStorage.Language == undefined || localStorage.Language == "undefined") {
+                                                   localStorage.Language = 3;
+                                                   localStorage.LanguageType = "en";
+                                               }
+
+
+                                               switch (localStorage.Language) {
+                                                   case "1":
+                                                       localStorage.LanguageType = "dk";
+                                                       break;
+                                                   case "2":
+                                                       localStorage.LanguageType = "de";
+                                                       break;
+                                                   case "3":
+                                                       localStorage.LanguageType = "en";
+                                                       break;
+                                                   case "4":
+                                                       localStorage.LanguageType = "es";
+                                                       break;
+                                                   default:
+                                                       localStorage.LanguageType = "en";
+                                                       break;
+                                               }
+
+                                               // get current loction 
+                                               window.getLocation()
+                                                    .done(function (position) {
+                                                        app.currentPosition = position;
+
+                                                        if (data.result.Email == undefined || data.result.Email == "")
+                                                            app.application.navigate('basic_setup.html');
+                                                        else
+                                                            app.application.navigate('finditem.html');
+                                                    })
+                                                    .fail(function (error) {
+                                                        app.currentPosition = null;
+
+                                                        if (data.result.Email == undefined || data.result.Email == "")
+                                                            app.application.navigate('basic_setup.html');
+                                                        else
+                                                            app.application.navigate('finditem.html');
+                                                    });
+
+
+                                           });
             })
             .then(null,
                   function (err) {
-                     // console.log(err);
-                     var filter = new Everlive.Query();
-					filter.where().eq('Username', username);
+                      // console.log(err);
+                      var filter = new Everlive.Query();
+                      filter.where().eq('Username', username);
 
 
-                     app.everlive.Users.get(filter)
-                        .then(function(data){
-                         
-                            if(data.result.length>0){ app.showError(err.message);}
-                            else{
-                                if(password.length>0 && username.length>0)
-                               navigator.notification.confirm(
-                                    "This email doesn't exist in our database. Do you want to register with it?", // message
-                                     function(button){
-                                         if(button==1){
-                                             var attrs = {
-                                                Email: username
-                                            };
-                                             
-                                          app.everlive.Users.register(username,password,attrs, function (data) {
-                                                     app.everlive.Users.login(username, password,function(){
-                                                         
-                                                          app.application.navigate('basic_setup.html');
-                                                          app.everlive.Users.currentUser( 
-                                                            function(data) { 
-                                                               console.log(data.result); 
-                                                               localStorage.User = JSON.stringify(data.result);
-                                                               fillUserData(data.result);
-                                                            });
-                                                     },function(err){
-                                                          app.showError(err.message);
-                                                         
-                                                     });
-                                                },
-                                                function(error){
-                                                    alert(JSON.stringify(error));
-                                                });
-                                         }
-                                     },    
-                             	  'Register',
-                                    ['Register',           // title
-                                    'Cancel' ]        // buttonLabels
-                                );
-                                else app.showError(err.message);
-                            }
-                        },
-                        function(error){
+                      app.everlive.Users.get(filter)
+                         .then(function (data) {
+
+                             if (data.result.length > 0) { app.showError(err.message); }
+                             else {
+                                 if (password.length > 0 && username.length > 0)
+                                     navigator.notification.confirm(
+                                          "This email doesn't exist in our database. Do you want to register with it?", // message
+                                           function (button) {
+                                               if (button == 1) {
+                                                   var attrs = {
+                                                       Email: username
+                                                   };
+
+                                                   app.everlive.Users.register(username, password, attrs, function (data) {
+                                                       app.everlive.Users.login(username, password, function () {
+
+                                                           app.application.navigate('basic_setup.html');
+                                                           app.everlive.Users.currentUser(
+                                                             function (data) {
+                                                                 console.log(data.result);
+                                                                 localStorage.User = JSON.stringify(data.result);
+                                                                 fillUserData(data.result);
+                                                             });
+                                                       }, function (err) {
+                                                           app.showError(err.message);
+
+                                                       });
+                                                   },
+                                                         function (error) {
+                                                             alert(JSON.stringify(error));
+                                                         });
+                                               }
+                                           },
+                                        'Register',
+                                          ['Register',           // title
+                                          'Cancel']        // buttonLabels
+                                      );
+                                 else app.showError(err.message);
+                             }
+                         },
+                         function (error) {
                              app.showError(err.message);
-                        });
-                      
-                      
-                     
+                         });
+
+
+
                   }
             );
         };
 
         // Authenticate using Facebook credentials
-        var loginWithFacebook = function() {
+        var loginWithFacebook = function () {
 
             if (!isFacebookLogin) {
                 return;
@@ -220,7 +236,7 @@ app.Login = (function () {
             var facebook = new IdentityProvider(facebookConfig);
             app.application.showLoading();
 
-            facebook.getAccessToken(function(token) {
+            facebook.getAccessToken(function (token) {
                 app.everlive.Users.loginWithFacebook(token)
                 .then(function () {
                     // EQATEC analytics monitor - track login type
@@ -267,7 +283,7 @@ app.Login = (function () {
             var google = new IdentityProvider(googleConfig);
             app.application.showLoading();
 
-            google.getAccessToken(function(token) {
+            google.getAccessToken(function (token) {
                 app.everlive.Users.loginWithGoogle(token)
                 .then(function () {
                     // EQATEC analytics monitor - track login type
@@ -314,7 +330,7 @@ app.Login = (function () {
             var liveId = new IdentityProvider(liveIdConfig);
             app.application.showLoading();
 
-            liveId.getAccessToken(function(token) {
+            liveId.getAccessToken(function (token) {
                 app.everlive.Users.loginWithLiveID(token)
                 .then(function () {
                     // EQATEC analytics monitor - track login type
@@ -357,7 +373,7 @@ app.Login = (function () {
             var adfs = new IdentityProvider(adfsConfig);
             app.application.showLoading();
 
-            adfs.getAccessToken(function(token) {
+            adfs.getAccessToken(function (token) {
                 app.everlive.Users.loginWithADFS(token)
                 .then(function () {
                     // EQATEC analytics monitor - track login type
@@ -384,15 +400,15 @@ app.Login = (function () {
         var showMistAlert = function () {
             alert(appSettings.messages.mistSimulatorAlert);
         };
-        
-       var checkEnter = function (e) {
+
+        var checkEnter = function (e) {
             var that = this;
             if (e.keyCode === 13) {
                 $(e.target).blur();
                 app.Login.login();
             }
         }
-        
+
 
         return {
             init: init,

@@ -1827,6 +1827,14 @@ input:not([type='checkbox']), textarea, select {
     width: 100%;
 }
 
+.one-by-row.styled-list li .img-holder .view-count {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 4px;
+}
+
 
 
 .one-by-row.styled-list li .img-holder span {
@@ -1859,6 +1867,12 @@ input:not([type='checkbox']), textarea, select {
     padding: 8px;
 }
 
+.view-count-icon {
+    background: url('../images/icon-eye.png')no-repeat top left;
+    width: 25px !important;
+    height: 15px !important;
+    display: inline-table;
+}
 
 .styled-list li .img-holder img {
     width: 100% !important;
@@ -2042,7 +2056,7 @@ fieldset {
     border: 1px solid #C0C0C0;
 }
 
-#GoToFilters2 input  {
+#GoToFilters2 input {
     width: 100%;
     height: 38px;
     font-size: 14pt;
@@ -2358,9 +2372,10 @@ img.resimgs {
 }
 
 .grayscale-img {
-  -webkit-filter: grayscale(1);
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  filter: url(#greyscale);
-  filter: gray;
-  }
+    -webkit-filter: grayscale(1);
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: url(#greyscale);
+    filter: gray;
+}
+

@@ -286,6 +286,7 @@
     <Content Include="images\icon-arrow_left.png">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="images\icon-eye.png" />
     <Content Include="images\icon-facebook%402x.png">
       <SubType>Content</SubType>
     </Content>
