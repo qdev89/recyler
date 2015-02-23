@@ -466,15 +466,15 @@ function SaveSpot() {
                           var templateName = emailTemplates.spot;
                                                                             
                            switch(Data.SpotType){                                                             
-                                case "FREE Food": 
+                                case "FREE_Food": 
                                 templateName =emailTemplates.freeFood;
                                 break;
                                          
-                                case "Garage sale/Market/Event": 
+                                case "Garage_sale": 
                                 templateName =emailTemplates.garageSale  ;
                                 break;
                                 
-                                case "Food donation": 
+                                case "Food_donation": 
                                 templateName =emailTemplates.food;
                                 break;
                                 
@@ -482,28 +482,28 @@ function SaveSpot() {
                                 templateName =emailTemplates.help;
                                 break;                               
                                 
-                                case "Eco/Green shop": 
+                                case "Eco": 
                                 templateName =emailTemplates.ecospot;
                                 break;
                                 
                                
-                                case "Recycling company": 
+                                case "Recycling_company": 
                                 templateName =emailTemplates.business;
                                 break;
                                                                         
-                                case "Recycling spot": 
+                                case "Recycling_spot": 
                                 templateName =emailTemplates.recycling;
                                 break;
                                 
-                                case "upcycling": 
+                                case "Upcycling": 
                                 templateName =emailTemplates.upcycling;
                                 break;   
                                 
-                                case "Terracycle spot": 
+                                case "Terracycle_spot": 
                                  templateName =emailTemplates.terraspot;
                                 break;
                                      
-                                case "Recycling spot": 
+                                case "Shop": 
                                 templateName =emailTemplates.shop;
                                 break;
                                      
@@ -594,7 +594,7 @@ function InitCreateSpot() {
     });
 
     $('#spotype').change(function () {
-        if ($(this).val() == "Garage sale/Market/Event") {
+        if ($(this).val() == "Garage_sale") {
             $('#lblGarageSale').show();
             $('#SpotName').hide();
             $('#GarageName').show();

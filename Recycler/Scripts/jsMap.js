@@ -73,7 +73,7 @@ function iconMapInit() {
                 
                  var grey =true;
                                   
-                if( allSpots[i].SpotType==="Garage sale/Market/Event" ||  allSpots[i].SpotType ==="Help"){
+                if( allSpots[i].SpotType==="Garage_sale" ||  allSpots[i].SpotType ==="Help"){
                      var date  = new Date(allSpots[i].EventDate);                     
                     if(!isValidDate(date) || date > twoDaysAfter || date < today){ 
                         console.log(allSpots[i].SpotType, date, " too early or old");                        
@@ -211,48 +211,48 @@ function setPlace(lat, long,draggable, type, map,content,isGrey){
     var icon="";
     console.log(type);
     switch(type){
-        case "Eco/Green shop": 
-        icon = "images/mapicons/eco_spot.png";
+        case "Eco": 
+        icon = "images/mapicons/eco_spot_dot.png";
         break;
         
-        case "FREE Food": 
-        icon = "images/mapicons/food_small.png";
+        case "FREE_Food": 
+        icon = "images/mapicons/food_small_dot.png";
         break;
         
-        case "Recycling company": 
-        icon = "images/mapicons/business_smal.png";
+        case "Recycling_company": 
+        icon = "images/mapicons/business_smal_dot.png";
         break;
         
-        case "Garage sale/Market/Event": 
+        case "Garage_sale": 
         if(!isGrey)
-        icon = "images/mapicons/garagesale_small.png";
-        else  icon = "images/mapicons/garagesale_grey.png";
+        icon = "images/mapicons/garagesale_small_dot.png";
+        else  icon = "images/mapicons/garagesale_grey_dot.png";
         break;
         
-        case "Food donation": 
-        icon = "images/mapicons/foodwaste_small.png";
+        case "Food_donation": 
+        icon = "images/mapicons/foodwaste_small_dot.png";
         break;
         
          case "Help": 
          if(!isGrey)
-        icon = "images/mapicons/help-small.png";
-        else  icon = "images/mapicons/help-grey.png";
+        icon = "images/mapicons/help-small_dot.png";
+        else  icon = "images/mapicons/help-grey_dot.png";
         break;
         
-        case "Recycling spot": 
-        icon = "images/mapicons/recycling_small.png";
+        case "Recycling_Place": 
+        icon = "images/mapicons/recycling_small_dot.png";
         break;
         
-        case "upcycling": 
-        icon = "images/mapicons/upcycling_small.png";
+        case "Upcycling": 
+        icon = "images/mapicons/upcycling_small_dot.png";
         break;   
         
-        case "Terracycle spot": 
-        icon = "images/mapicons/terracycle_small.png";
+        case "Terracycle": 
+        icon = "images/mapicons/terracycle_small_dot.png";
         break;
         
         case "Shop": 
-        icon = "images/mapicons/shop_small.png";
+        icon = "images/mapicons/shop_small_dot.png";
         break;
               
               
