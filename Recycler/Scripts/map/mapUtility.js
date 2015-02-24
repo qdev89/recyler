@@ -71,8 +71,8 @@
                          title: title
                      });
 
-                     _mapObj.setCenter(marker.position);
-                     google.maps.event.trigger(mapObj, "resize");
+                     //_mapObj.setCenter(marker.position);
+                     //google.maps.event.trigger(mapObj, "resize");
 
                      _mapObj = mapObj; //Cache at app level                 
                  } else {

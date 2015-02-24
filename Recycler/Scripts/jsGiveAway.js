@@ -334,7 +334,7 @@ function saveItem() {
     }
 
     debugger;
-    switch(selectedOption) {
+    switch (selectedOption) {
         case "1":
             GiveProduct.Product.Type = 'giveaway';
             break;
@@ -436,54 +436,68 @@ function saveItem() {
 }
 
 function CreateProduct(Data) {
+    showLoading();
     console.log(Data);
     var data = app.everlive.data('Product');
     window.getLocation()
            .done(function (position) {
-               debugger;
-               data.create({
-                   'UserID': Data.UserID, "Name": Data.name, "Description": Data.description, "MoreInformation": Data.long_description,
-                   "IsActive": Data.IsActive, "Price": Data.Price, "Type": Data.Type, "Status": Data.Status, "Category": Data.Category,
-                   "Latitude": position.coords.latitude, "Longitude": position.coords.longitude
-               },
-           function (data) {
-               console.log(data);
-               localStorage.NewProductID = data.result.Id;
-               createGiveAwayImage(data.result.Id, Data.Image1, 1);
-               createGiveAwayImage(data.result.Id, Data.Image2, 2);
-               createGiveAwayImage(data.result.Id, Data.Image3, 3);
+               var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+               var geocoder = new google.maps.Geocoder();
+               geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                   debugger;
+                   var city = "N/A";
+                   if (status == google.maps.GeocoderStatus.OK) {
+                       // get city, postal code, country
+                       if (results[6]) {
+                           alert(results[6].toJSON());
+                           city = results[6].formatted_address;
+                       }
+                   }
 
-               switch (localStorage.Language) {
-                   case "1":
-                       alert(Language.Danish.ItemPosted);
-                       break;
-                   case "2":
-                       alert(Language.German.ItemPosted);
-                       break;
-                   case "3":
-                       alert(Language.English.ItemPosted);
-                       break;
-                   case "4":
-                       alert(Language.Spanish.ItemPosted);
-                       break;
-               }
+                   data.create({
+                       'UserID': Data.UserID, "Name": Data.name, "Description": Data.description, "MoreInformation": Data.long_description,
+                       "IsActive": Data.IsActive, "Price": Data.Price, "Type": Data.Type, "Status": Data.Status, "Category": Data.Category,
+                       "Latitude": position.coords.latitude, "Longitude": position.coords.longitude, "City": city
+                   }, function (data) {
+                       console.log(data);
+                       localStorage.NewProductID = data.result.Id;
+                       createGiveAwayImage(data.result.Id, Data.Image1, 1);
+                       createGiveAwayImage(data.result.Id, Data.Image2, 2);
+                       createGiveAwayImage(data.result.Id, Data.Image3, 3);
 
-               window.localStorage.removeItem('CacheItem');
-               if (User.UserRole == "1") {
-                   app.application.navigate("Terra.html");
-               } else {
-                   app.application.navigate("thanks.html");
-               }
-           },
-           function (error) {
-               console.log(error);
-           });
+                       switch (localStorage.Language) {
+                           case "1":
+                               alert(Language.Danish.ItemPosted);
+                               break;
+                           case "2":
+                               alert(Language.German.ItemPosted);
+                               break;
+                           case "3":
+                               alert(Language.English.ItemPosted);
+                               break;
+                           case "4":
+                               alert(Language.Spanish.ItemPosted);
+                               break;
+                       }
+
+                       window.localStorage.removeItem('CacheItem');
+                       hideLoading();
+                       if (User.UserRole == "1") {
+                           app.application.navigate("Terra.html");
+                       } else {
+                           app.application.navigate("thanks.html");
+                       }
+                   }, function (error) {
+                       hideLoading();
+                       console.log(error);
+                   });
+               });
+
            })
            .fail(function (error) {
+               hideLoading();
                alert(error.message); /*TODO: Better handling*/
            });
-
-
 }
 
 function createGiveAwayImage(id, image, num) {

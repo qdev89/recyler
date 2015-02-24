@@ -85,7 +85,6 @@ function iconMapInit() {
                         }
                     }
 
-                    debugger;
                     var content =
                         "<div class='table-container' align='center'><table>" +
 

@@ -83,6 +83,21 @@ function loadProduct(e) {
                 $('#map_of_where_item_is_placed').hide();
             }
 
+
+            // Update Views
+            var views = product.Views ? product.Views + 1 : 1;
+            var updateProduct = app.everlive.data('Product');
+
+            updateProduct.updateSingle({
+                Id: product.Id,
+                'Views': views
+                }, function (data) {
+                    console.log(data);
+                },
+                 function (error) {
+                     // DO NOTHING
+                 });
+
             hideLoading();
         }
         console.log(product.CreatedBy);
