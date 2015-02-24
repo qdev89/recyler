@@ -444,13 +444,13 @@ function CreateProduct(Data) {
                var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                var geocoder = new google.maps.Geocoder();
                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                   debugger;
+                   //debugger;
+                   //JSON.stringify(results);
                    var city = "N/A";
                    if (status == google.maps.GeocoderStatus.OK) {
                        // get city, postal code, country
-                       if (results[6]) {
-                           alert(results[6].toJSON());
-                           city = results[6].formatted_address;
+                       if (results[0] && results[0].address_components[3]) {
+                           city = results[0].address_components[3].long_name;
                        }
                    }
 
