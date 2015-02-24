@@ -347,6 +347,9 @@ function saveItem() {
         case "4":
             GiveProduct.Product.Type = 'service';
             break;
+        case "5":
+            GiveProduct.Product.Type = 'sell';
+            break;
         default:
             // it should be an exception
             GiveProduct.Product.Type = 'none';

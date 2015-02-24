@@ -345,6 +345,8 @@
      "oknews":"Vis mig nyhederne" ,
           "news1":"Lav en nyhed til kanalen",
          "news": "Opret kanal news",
-"news": "Dette er vores community nyhedskanal. Reglerne er som følger: Brug dette til at dele information om emner som bæredygtihged, TerraCycle begivenheder, madspild begivenhed, upcycling ideer osv <br> Husk at holde en respectfull tone og holde indholdet frisk og for alle. <br> Spred positivitet og lad os foretage en ændring sammen. <br> ",  
+              "city":"By",
+                    "distance":"Afstand",
+"news": "Dette er vores community nyheds kanal. Reglerne er som følger: Brug dette til at dele information om emner som bæredygtihged, TerraCycle begivenheder, madspild begivenhed, upcycling ideer osv. Husk at holde en respektfuld tone og holde indholdet frisk og for alle.<br> <br> Spred positivitet og lad os foretage en ændring sammen. <br> ",  
 "freefood": "Gratis fødevarer"
 }
