@@ -450,6 +450,7 @@ function CreateProduct(Data) {
                    if (status == google.maps.GeocoderStatus.OK) {
                        // get city, postal code, country
                        if (results[1]) {
+                           var hasLevel1AdminArea = false;
                            //find country name
                            for (var i = 0; i < results[0].address_components.length; i++) {
                                for (var b = 0; b < results[0].address_components[i].types.length; b++) {
@@ -458,7 +459,23 @@ function CreateProduct(Data) {
                                    if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
                                        //this is the object you are looking for
                                        city = results[0].address_components[i].long_name;
+                                       hasLevel1AdminArea = true;
                                        break;
+                                   }
+                               }
+                           }
+
+                           if (!hasLevel1AdminArea) {
+                               for (var i = 0; i < results[0].address_components.length; i++) {
+                                   for (var b = 0; b < results[0].address_components[i].types.length; b++) {
+
+                                       //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                                       if (results[0].address_components[i].types[b] == "administrative_area_level_2") {
+                                           //this is the object you are looking for
+                                           city = results[0].address_components[i].long_name;
+                                           hasLevel1AdminArea = true;
+                                           break;
+                                       }
                                    }
                                }
                            }
