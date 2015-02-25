@@ -1851,7 +1851,13 @@ input:not([type='checkbox']), textarea, select {
     width: 100% !important;
 }
 
-
+.three-by-row.styled-list li .img-holder .view-count {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    color: white;
+}
 .three-by-row.styled-list li .img-holder h4 {
     position: absolute;
     top: 40px;
