@@ -1832,7 +1832,8 @@ input:not([type='checkbox']), textarea, select {
     top: 0;
     left: 0;
     width: 100%;
-    margin: 4px;
+    margin: 10px;
+    color: white;
 }
 
 
