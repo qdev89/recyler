@@ -24,13 +24,16 @@ function isValidDate(d) {
     return !isNaN(d.getTime());
 }
 
-function iconMapInit() {
+function iconMapInit(e) {
+    debugger;
+    window.utility.resetScroller(e);
+    TranslateApp();
     showLoading();
-    if (googleMap != null) {
-        hideLoading();
-        return;
+    //if (googleMap != null) {
+    //    hideLoading();
+    //    return;
 
-    }
+    //}
 
     navigator.geolocation.getCurrentPosition(function (x) {
 

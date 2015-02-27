@@ -25,6 +25,7 @@ function isValidDate(d) {
 }
 
 function iconMapInit() {
+    debugger;
     showLoading();
     if (googleMap != null) {
         hideLoading();
