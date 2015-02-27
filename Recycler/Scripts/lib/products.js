@@ -30,8 +30,16 @@ function loadProduct(e) {
             console.log(user);
 
             app.lastProductOwner = user;
+
+            // calculate distance
+            var distance = 0;
+            if (product.Latitude && product.Longitude && app.currentPosition) {
+                distance = getDistanceFromLatLonInKm(product.Latitude, product.Longitude, app.currentPosition.coords.latitude, app.currentPosition.coords.longitude);
+            } 
+
             var selector = "#product-tabstrip .fields ";
             $(selector + ".username").html(user.DisplayName);
+            $(selector + ".distance").html(distance);
             $(selector + ".city").html(user.City);
 
             $(selector + ".type").html(product.Type);
@@ -376,7 +384,7 @@ app.Product = (function () {
                             $.each(response, function (i, el) {
                                 el.Views = el.Views || 0;
                                 el.City = el.City || '';
-                                el.Distance = el.City || 'N/A';
+                                el.Distance = 0;
 
                                 el.isVisited = visitedProductIds.indexOf(el.Id) != -1;
 
