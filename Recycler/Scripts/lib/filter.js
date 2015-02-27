@@ -1,10 +1,12 @@
 window.filter = {};
 (function ($, doc) {
     var findResults = [];
-
+    var currentDefaultTag;
     function initFilters(e) {
         utility.resetScroller(e);
         TranslateApp();
+
+        onClearFilter();
 
         // init numeric input
         $("#PriceFrom").ForceNumericOnly();
@@ -16,7 +18,8 @@ window.filter = {};
                 localStorage.LanguageType = "dk";
 
                 var menuItem = $("<option id=''></option>");
-                menuItem.html("Tags/kategorier");
+                currentDefaultTag = "Tags/kategorier";
+                menuItem.html(currentDefaultTag);
                 $("#select-custom-24").append(menuItem);
 
                 $.each(Tags.Danish, function (i) {
@@ -35,7 +38,8 @@ window.filter = {};
 
                 localStorage.LanguageType = "de";
                 var menuItem = $("<option id=''></option>");
-                menuItem.html("Tags/Categories");
+                currentDefaultTag = "Tags/Categories";
+                menuItem.html(currentDefaultTag);
                 $("#select-custom-24").append(menuItem);
 
                 $.each(Tags.German, function (i) {
@@ -53,7 +57,8 @@ window.filter = {};
 
                 localStorage.LanguageType = "en";
                 var menuItem = $("<option id=''></option>");
-                menuItem.html("Tags/Categories");
+                currentDefaultTag = "Tags/Categories";
+                menuItem.html(currentDefaultTag);
                 $("#select-custom-24").append(menuItem);
 
                 $.each(Tags.English, function (i) {
@@ -71,7 +76,8 @@ window.filter = {};
 
                 localStorage.LanguageType = "es";
                 var menuItem = $("<option id=''></option>");
-                menuItem.html("Tags/Categories");
+                currentDefaultTag = "Tags/Categories";
+                menuItem.html(currentDefaultTag);
                 $("#select-custom-24").append(menuItem);
 
                 $.each(Tags.Spanish, function (i) {
@@ -90,17 +96,18 @@ window.filter = {};
 
     function onClearFilter() {
         $("#filterSearch").val('');
-        $("#select-custom-24 option:selected").val(-1);
         $("#Distance").val(0);
         $("#PriceFrom").val(0);
         $("#PriceTo").val(0);
-        $("input[name='productTypeCheckBox']:checked").val(-1);
+        $('input[name="productTypeCheckBox"]').attr('checked', false);
+        $("#select-custom-24").val($("#select-custom-24").data("default-value"));
     }
 
     function onFilter() {
         // get filter criteria 
         var search = $("#filterSearch").val();
         var category = $("#select-custom-24 option:selected").text();
+        var categoryIndex = $("#select-custom-24 option:selected").val();
         var distance = $("#Distance").val();
         var priceFrom = $("#PriceFrom").val();
         var priceTo = $("#PriceTo").val();
@@ -121,6 +128,7 @@ window.filter = {};
 
                 // TODO for checkbox
                 if (selectedProductTypeIndex && selectedProductTypeIndex > 0) {
+                    debugger;
                     var productType;
                     switch (selectedProductTypeIndex) {
                         case "1":
@@ -135,6 +143,9 @@ window.filter = {};
                         case "4":
                             productType = 'service';
                             break;
+                        case "5":
+                            productType = 'sell';
+                            break;
                         default:
                             // it should be an exception
                             productType = 'none';
@@ -145,7 +156,7 @@ window.filter = {};
                 }
 
                 // for Category
-                if (category && category != 'Tags/Categories') {
+                if (category && category != currentDefaultTag) {
                     var categoryRegEx = ".*" + category + ".*";
                     contQuery.regex('Category', categoryRegEx, 'i');
                 }

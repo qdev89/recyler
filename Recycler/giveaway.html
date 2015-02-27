@@ -1,17 +1,17 @@
-<div data-role="view" data-title="Give away" data-init="initGiveAway" data-show="showGiveAway" id="give_page"  style="background-color: #f3f3f3;">
+<div data-role="view" data-title="Give away" data-init="initGiveAway" data-show="showGiveAway" id="give_page" style="background-color: #f3f3f3;">
 
     <div data-role="content">
- <div id="item_info_div" style="width: 100%; text-align: left;">
-<label for="intro"  data-localize="intro" >Hvis du ikke syntes du vil give, bytte, låne så lav en annonce for dit garagesalg eller se hvor du kan hjælpe andre. </label><br><br>
-       
-            <div class="radio-options" >
-                    <div>
+        <div id="item_info_div" style="width: 100%; text-align: left;">
+            <label for="intro" data-localize="intro">Hvis du ikke syntes du vil give, bytte, låne så lav en annonce for dit garagesalg eller se hvor du kan hjælpe andre. </label><br><br>
+
+            <div class="radio-options">
+                <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
                         <label for="description" data-localize="recycle" style="color:dodgerblue;font-size:large;">
                             Recycle / give away
                         </label>
                     </span>
-                         <label for="checkbox1"><span></span> <input type="radio" value="1" name="abc" id="giveaway" ></label>
+                    <label for="checkbox1"><span></span> <input type="radio" value="1" name="abc" id="giveaway"></label>
                 </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
@@ -19,17 +19,18 @@
                             Trade
                         </label>
                     </span>
-                     <label for="checkbox1"><span></span> <input type="radio" value="2" name="abc" id="trade"></label>
+                    <label for="checkbox1"><span></span> <input type="radio" value="2" name="abc" id="trade"></label>
                 </div><br>
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
-                       <label for="description" data-localize="lend" style="color:dodgerblue;font-size:large;">
+                        <label for="description" data-localize="lend" style="color:dodgerblue;font-size:large;">
                             Lend
                         </label>
                     </span>
-                     <label for="checkbox1"><span></span>  <input id="lend" value="4" name="abc" type="radio"></label>
+                    <label for="checkbox1"><span></span>  <input id="lend" value="3" name="abc" type="radio"></label>
                 </div>
-              <br> <!--  <div>
+                <br>
+                <!--  <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
                         <label for="description" data-localize="rent" style="color:dodgerblue;font-size:large;">
                             Rent
@@ -44,40 +45,39 @@
                             Service: I can help others with
                         </label>
                     </span>
-                    <input id="service" value="6" name="abc" type="radio">
+                    <input id="service" value="4" name="abc" type="radio">
                 </div>
-                  <br>
-                 <div>
+                <br>
+                <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
                         <label for="description" data-localize="sell" style="color:dodgerblue;font-size:large;">
                             Sell
                         </label>
                     </span>
-                    <input id="sell" value="3" name="abc" type="radio">
+                    <input id="sell" value="5" name="abc" type="radio">
                 </div><br>
-                 <br>
+                <br>
             </div>
 
-            <div  class="after-radio">
+            <div class="after-radio">
 
                 <div style="position: relative">
                     <!-- <div id="maskDiv">
                     </div>-->
                     <div class="ui-field-contain" id="chooseCategory" style="position: relative">
 
-                        <select name="select-custom-24" id="select-custom-24" >
-                        </select>
+                        <select name="select-custom-24" id="select-custom-24"></select>
                     </div>
                 </div>
                 <br>
                 <div class="price-div">
 
-                      <label for="desciption" data-localize="estimated"  style="color:dodgerblue;font-size:large;"> <span class="price">Price</span></label>
-                  <!--     <label for="desciption" data-localize="lendprice"  style="color:dodgerblue;font-size:large;"><span class="lend">Lend / Rent price</span></label>-->
-                    <input type="number" id="price" style="width: 30%;float:right;" maxlength="5" onKeyPress="return SetNumariaclOnly(event);" data-localize="value" placeholder="Value" />
+                    <label for="desciption" data-localize="estimated" style="color:dodgerblue;font-size:large;"> <span class="price">Price</span></label>
+                    <!--     <label for="desciption" data-localize="lendprice"  style="color:dodgerblue;font-size:large;"><span class="lend">Lend / Rent price</span></label>-->
+                    <input type="number" id="price" style="width: 30%;float:right;" maxlength="5" onkeypress="return SetNumariaclOnly(event);" data-localize="value" placeholder="Value" />
                 </div>
                 <!--  <div class="lend">
-                    
+
                 <input type="number" id="lend" style="width: 30%;float:right;" maxlength="5" onKeyPress="return SetNumariaclOnly(event);" data-localize="value" placeholder="Value" />
                 </div>-->
 
@@ -88,47 +88,47 @@
                     <img id="image3" class="imageshadow" alt="image" style="width: 30%;max-height:90px;" src="images/imageplaceholder.png" onclick="takePictureGiveAway(3);" />
                 </div>
 
-                <label for="desciption" data-localize="givedescription"  style="color:dodgerblue;font-size:large;">
+                <label for="desciption" data-localize="givedescription" style="color:dodgerblue;font-size:large;">
                     Title / headline
                 </label>
 
                 <textarea name="description" style="width:100%;" maxlength="100" id="description"></textarea>
 
-                <label for="long_description_title" data-localize="long_description_title"  style="color:dodgerblue;font-size:large;">
+                <label for="long_description_title" data-localize="long_description_title" style="color:dodgerblue;font-size:large;">
                     Further information
                 </label>
 
-                <textarea name="long_description" style="width:100%;height:140px;" maxlength="200"  id="long_description"></textarea>
+                <textarea name="long_description" style="width:100%;height:140px;" maxlength="200" id="long_description"></textarea>
 
-                <label class="mightLike" for="like" data-localize="like"  style="color:dodgerblue;font-size:large;">
+                <label class="mightLike" for="like" data-localize="like" style="color:dodgerblue;font-size:large;">
                     I might like instead
                 </label>
 
-                <textarea class="mightLike" name="MightLike" style="width:100%;height:140px;" maxlength="200"  id="MightLike" ></textarea>
+                <textarea class="mightLike" name="MightLike" style="width:100%;height:140px;" maxlength="200" id="MightLike"></textarea>
 
                 <br>
-                 <br>
-                <a id="Save" data-role="button"  class="btn btn-blue"  onClick="saveItem();"    name="anchors" style="width: 100%;">
+                <br>
+                <a id="Save" data-role="button" class="btn btn-blue" onclick="saveItem();" name="anchors" style="width: 100%;">
                     <span name="spn">Next</span>
                 </a>
-                <div id="Update"  style="display:none;">
-                    <a  data-role="button" onClick="updateItem();" style="width: 100%;">
+                <div id="Update" style="display:none;">
+                    <a data-role="button" onclick="updateItem();" style="width: 100%;">
                         <span name="spn">Update</span>
                     </a>
-                    
+
                     <br />
-               	   <br /> 
-                     <a data-role="button"  onclick="navigateFromDrawer('users.html')" style="width: 100%;">
-                            <span name="spn">
-                                <label for="collectco2"  style="width: 100%;"  data-localize="collectco2">Collect my Co2</label>
-                            </span>
-                        </a>
-                      <br />
-               	   <br /> 
-                    <a  data-role="button" onClick="deleteItem();" style="width: 100%;">
-                        <span name="spn">Delete</span>                      
+                    <br />
+                    <a data-role="button" onclick="navigateFromDrawer('users.html')" style="width: 100%;">
+                        <span name="spn">
+                            <label for="collectco2" style="width: 100%;" data-localize="collectco2">Collect my Co2</label>
+                        </span>
                     </a>
-				</div>
+                    <br />
+                    <br />
+                    <a data-role="button" onclick="deleteItem();" style="width: 100%;">
+                        <span name="spn">Delete</span>
+                    </a>
+                </div>
                 <br />
                 <br />
                 <br />

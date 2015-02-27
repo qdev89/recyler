@@ -739,6 +739,20 @@ function changeLanguage(lang) {
 function showGiveAway(e) {
     TranslateApp();
     window.utility.resetScroller(e);
+
+    //reset value
+    $(".radio-options").show();
+    $(".after-radio").hide();
+
+    $("#select-custom-24").val($("#select-custom-24").data("default-value"));
+    $("#price").val(null);
+    $("#image1").attr("src", "images/imageplaceholder.png");
+    $("#image2").attr("src", "images/imageplaceholder.png");
+    $("#image3").attr("src", "images/imageplaceholder.png");
+    $("#description").val('');
+    $("#long_description").val('');
+    $("#MightLike").val('');
+
     $(".radio-options").show();
     $(".after-radio").hide();
     $('input:radio[name=abc]:checked').prop("checked", false);
@@ -761,6 +775,7 @@ function showGiveAway(e) {
 
 function initGiveAway() {
     try {
+      
         $('input:radio[name=abc]').click(function () {
             $(".radio-options").hide();
             $(".after-radio").show();
@@ -1159,7 +1174,6 @@ function takePictureGiveAway(e) {
 function onPhotoDataSuccessGA(imageData) {
     // localStorage.SpotImage = imageData;      
     PictureTaken = true;
-    debugger;
     var canvas = document.getElementById("cc");
     var ctx = canvas.getContext("2d");
 
