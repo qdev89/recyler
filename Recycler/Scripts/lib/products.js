@@ -482,8 +482,16 @@ app.Product = (function () {
 
                             var user = $.parseJSON(localStorage.User);
                             var country = user.Country || '';
+                            var city = user.cityGeo || '';
 
-                            if (country && user.onlycountry) {
+                            if (cityGeo && user.onlycity) {
+                                if (isMy === true)
+                                    query.where().and().eq('UserID', myId).eq('City', cityGeo).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                else if (filterWord !== undefined)
+                                    query.where().and().regex('Name', filterWord, 'i').eq('City', cityGeo).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                else
+                                    query.where().eq('Country', country).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                            } else if (country && user.onlycountry) {
                                 if (isMy === true)
                                     query.where().and().eq('UserID', myId).eq('Country', country).done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else if (filterWord !== undefined)

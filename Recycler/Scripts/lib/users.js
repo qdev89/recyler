@@ -1,42 +1,42 @@
 /**
  * Users model
  */
-function fillProfileInfo(e){
+function fillProfileInfo(e) {
     TranslateApp();
     var user;
-    if(e.sender.params.self=="true"){
+    if (e.sender.params.self == "true") {
         user = JSON.parse(localStorage.User);
-    }else{
-         user=app.lastProductOwner;
+    } else {
+        user = app.lastProductOwner;
     }
-    if(!user)return;
+    if (!user) return;
     var selector = "#tabstrip-profile-details ";
-    
-    if(user.ImageData){
-        $(selector +"#userPicture").attr("data-src",user.ImageData);
-       everliveImages.responsiveAll();
-        }
-    else 
-         $(selector +"#userPicture").attr("src","images/NoImage.jpg");    
-         $(selector +".username").html(user.DisplayName);    
-         $(selector +".phone").html(user.PhoneNumber);
-        
-         $(selector +".email").html(user.Email);
-         $(selector +".address").html(user.AddressLine1);
-         $(selector +".city").html(user.City);
-         $(selector +".state").html(user.State);     
-    
-         $(selector +"#fbLink").attr("link",user.Facebook).addClass("link");         
-         $(selector +"#twitterLink").attr("link",user.Twitter).addClass("link");
-         $(selector +"#webLink").attr("link",user.Web).addClass("link");
-         $(selector +"#email_send").attr("link","mailto:"+user.Email).addClass("link");
-         $(selector +"#phone_num").attr("href","tel:+" + user.PhoneNumber);
-         $(selector +"#sms_num").attr("href","sms:" + user.PhoneNumber);
-    
-   
-    
+
+    if (user.ImageData) {
+        $(selector + "#userPicture").attr("data-src", user.ImageData);
+        everliveImages.responsiveAll();
+    }
+    else
+        $(selector + "#userPicture").attr("src", "images/NoImage.jpg");
+    $(selector + ".username").html(user.DisplayName);
+    $(selector + ".phone").html(user.PhoneNumber);
+
+    $(selector + ".email").html(user.Email);
+    $(selector + ".address").html(user.AddressLine1);
+    $(selector + ".city").html(user.City);
+    $(selector + ".state").html(user.State);
+
+    $(selector + "#fbLink").attr("link", user.Facebook).addClass("link");
+    $(selector + "#twitterLink").attr("link", user.Twitter).addClass("link");
+    $(selector + "#webLink").attr("link", user.Web).addClass("link");
+    $(selector + "#email_send").attr("link", "mailto:" + user.Email).addClass("link");
+    $(selector + "#phone_num").attr("href", "tel:+" + user.PhoneNumber);
+    $(selector + "#sms_num").attr("href", "sms:" + user.PhoneNumber);
+
+
+
 }
- 
+
 
 
 var app = app || {};
@@ -44,19 +44,19 @@ var app = app || {};
 app.Users = (function () {
     'use strict';
 
-    var getUserByID = function(id,callback){
-         
+    var getUserByID = function (id, callback) {
+
         app.everlive.Users.getById(id)
             .then(function (data) {
                 console.log(data)
                 callback(data.result);
             },
-            function(error){
+            function (error) {
                 alert(JSON.stringify(error));
             });
     }
-    
-    
+
+
     var usersModel = (function () {
 
         var currentUser = kendo.observable({ data: null });
@@ -70,7 +70,7 @@ app.Users = (function () {
             .then(function (data) {
 
                 var currentUserData = data.result;
-              //  currentUserData.PictureUrl = app.helper.resolveProfilePictureUrl(currentUserData.Picture);
+                //  currentUserData.PictureUrl = app.helper.resolveProfilePictureUrl(currentUserData.Picture);
                 currentUser.set('data', currentUserData);
 
                 // Get the data about all registered users
@@ -88,7 +88,7 @@ app.Users = (function () {
         };
 
         return {
-            getUserByID : getUserByID,
+            getUserByID: getUserByID,
             load: loadUsers,
             users: function () {
                 return usersData;
@@ -103,84 +103,84 @@ app.Users = (function () {
 }());
 
 
-function LoadAllUsers(){
+function LoadAllUsers() {
     TranslateApp();
-          //  var myId = JSON.parse(localStorage.User).Id;
-            var listID= "#ulAllUsers";
-            var templateID="#userTemplate";
-          //  var tabstripId = "#users-tabstrip";
-           
-          
-            var skip=0;
-            var dataSource = new kendo.data.DataSource({ 
-			transport: {  
-                    read: function(options) {
-                         showLoading();
-                        try {
-                            		app.everlive.Users.get()
-                                    .then(function(data){
-                                       var users=  data.result;
-                                        log(users);
-                                         options.success(users);
-                                 		hideLoading();
-                                    },
-                                    function(error){
-                                          hideLoading();
-                                        alert(JSON.stringify(error));
-                                    });
-                                                
-                        }catch (err) {
-                             hideLoading();
-                            console.log(err);
-                        }
-                    }
-                },
-           error: function(e) {
-               hideLoading();
-               if (typeof(e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
-                   app.application.navigate("index.html");
-               else
-                   displayErrorAlert();
-           },
-           schema: {        // describe the result format
-                    parse: function (response) {
-                         console.log(response);
-                       response =  $.grep(response, function (el, i) {
-                           if(el.Id == userData.Id) return false;
-                           
-                              if (el.ImageData===undefined)
-                                	el.ImageData = "images/imageplaceholder.png";                            
-                              if(el.DisplayName==undefined)
-                               	 el.DisplayName="";                            
-                              if(el.PhoneNumber==undefined)
-                           		 el.PhoneNumber="";
-                           
-                           return true;
-                                                          
-                        });
-                        return response;
-                    }
-                                                                
-                }                         
-                
-          });
-            
-           		 $(listID).kendoMobileListView({
-                									dataSource: dataSource,
-                                                     template:$(templateID).html()
-                                                    								
-                                                 });
-            
-         //   var listView = $(listID).data("kendoMobileListView");
-          /* if ( listView != null) {
-              listView._scrollerInstance.scrollElement.on("touchend", function() {
-                   if (loadMore) {
-                       if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))                         
-                         listView.dataSource.read();
-                   }       
-               });    			
-              listView._scrollerInstance.scrollTo(0, 0);    
-           }*/
+    //  var myId = JSON.parse(localStorage.User).Id;
+    var listID = "#ulAllUsers";
+    var templateID = "#userTemplate";
+    //  var tabstripId = "#users-tabstrip";
+
+
+    var skip = 0;
+    var dataSource = new kendo.data.DataSource({
+        transport: {
+            read: function (options) {
+                showLoading();
+                try {
+                    app.everlive.Users.get()
+                    .then(function (data) {
+                        var users = data.result;
+                        log(users);
+                        options.success(users);
+                        hideLoading();
+                    },
+                    function (error) {
+                        hideLoading();
+                        alert(JSON.stringify(error));
+                    });
+
+                } catch (err) {
+                    hideLoading();
+                    console.log(err);
+                }
+            }
+        },
+        error: function (e) {
+            hideLoading();
+            if (typeof (e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
+                app.application.navigate("index.html");
+            else
+                displayErrorAlert();
+        },
+        schema: {        // describe the result format
+            parse: function (response) {
+                console.log(response);
+                response = $.grep(response, function (el, i) {
+                    if (el.Id == userData.Id) return false;
+
+                    if (el.ImageData === undefined)
+                        el.ImageData = "images/imageplaceholder.png";
+                    if (el.DisplayName == undefined)
+                        el.DisplayName = "";
+                    if (el.PhoneNumber == undefined)
+                        el.PhoneNumber = "";
+
+                    return true;
+
+                });
+                return response;
+            }
+
+        }
+
+    });
+
+    $(listID).kendoMobileListView({
+        dataSource: dataSource,
+        template: $(templateID).html()
+
+    });
+
+    //   var listView = $(listID).data("kendoMobileListView");
+    /* if ( listView != null) {
+        listView._scrollerInstance.scrollElement.on("touchend", function() {
+             if (loadMore) {
+                 if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))                         
+                   listView.dataSource.read();
+             }       
+         });    			
+        listView._scrollerInstance.scrollTo(0, 0);    
+     }*/
 }
 
 
@@ -211,9 +211,9 @@ var user = {
     LanguageMailSent: false,
     CountryCode: '',
 
-   
-    GetRoles: function () {       
-		if(Roles==undefined) return;
+
+    GetRoles: function () {
+        if (Roles == undefined) return;
         switch (localStorage.Language) {
             case "1":
                 $.each(Roles.Danish, function (i) {
@@ -228,7 +228,7 @@ var user = {
             case "2":
                 $.each(Roles.German, function (i) {
                     $('#role').append('<option value="' + Roles.German[i].id + '">' + Roles.German[i].Value + '</option>');
-                });               
+                });
 
                 $.each(Languages.German, function (i) {
                     $('#Languages').append('<option value="' + Languages.German[i].id + '">' + Languages.German[i].Value + '</option>');
@@ -239,7 +239,7 @@ var user = {
                 $.each(Roles.English, function (i) {
                     $('#role').append('<option value="' + Roles.English[i].id + '">' + Roles.English[i].Value + '</option>');
                 });
-             
+
                 $.each(Languages.English, function (i) {
                     $('#Languages').append('<option value="' + Languages.English[i].id + '">' + Languages.English[i].Value + '</option>');
                 });
@@ -248,7 +248,7 @@ var user = {
             case "4":
                 $.each(Roles.Spanish, function (i) {
                     $('#role').append('<option value="' + Roles.Spanish[i].id + '">' + Roles.Spanish[i].Value + '</option>');
-                });              
+                });
 
                 $.each(Languages.Spanish, function (i) {
                     $('#Languages').append('<option value="' + Languages.Spanish[i].id + '">' + Languages.Spanish[i].Value + '</option>');
@@ -285,10 +285,10 @@ var user = {
                 return;
             }
         });
-       
+
     },
 
-  
+
 
     validateNumeric: function (txtNumeric) {
         var data = document.getElementById(txtNumeric).value;
@@ -300,14 +300,14 @@ var user = {
         else {
             return false;
         }
-    }  
+    }
 
 };
 
 $(document).ready(function () {
     changeLanguage(localStorage.LanguageType);
-   TranslateApp();
-    
+    TranslateApp();
+
     if (localStorage.SubscriptionPaid != undefined && localStorage.SubscriptionPaid != null) {
         var array = localStorage.SubscriptionPaid.split('_');
         User = $.parseJSON(localStorage.User);
@@ -328,23 +328,23 @@ $(document).ready(function () {
         user.Country = User.Country;
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                try{
+                try {
                     $.getJSON('http://ws.geonames.org/countryCode', {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
-                        username:'Recycle',
+                        username: 'Recycle',
                         type: 'JSON',
                         async: false
-                    }, 
+                    },
                     function (result) {
                         user.CountryCode = result.countryCode;
-                    }, 
+                    },
                     function (err) {
-                          //                alert(result.countryCode);
-                          //                alert(CountryCode["IN"]);
-                         console.log(err);
+                        //                alert(result.countryCode);
+                        //                alert(CountryCode["IN"]);
+                        console.log(err);
                     });
-               }catch(err){console.log(err);}
+                } catch (err) { console.log(err); }
             });
         }
         else {
@@ -380,7 +380,7 @@ $(document).ready(function () {
                     break;
             }
             if (confirm(message)) {
-               // localStorage.User = null;
+                // localStorage.User = null;
                 app.application.navigate("signup_login.html");
                 return;
             }
@@ -406,14 +406,14 @@ $(document).ready(function () {
             user.Address = $("#homeadress").val();
             user.City = $("#homecity").val();
             user.Zip = $("#zip").val();
-             
-             user.Facebook = $("#facebookaddress").val();
+
+            user.Facebook = $("#facebookaddress").val();
             user.Twitter = $("#twitteraddress").val();
             user.Web = $("#wwwaddress").val();
             // user.Country = $("#country").val();
             user.Country = $('#country').val();
             if ((user.CountryCode == '' || user.CountryCode == null) && (user.Country == '' || user.Country == null || user.Country == '0' || user.Country == 0)) {
-               
+
             }
             else {
                 user.CountryCode = user.Country;
@@ -427,7 +427,7 @@ $(document).ready(function () {
             }
 
             user.Phoneno = $("#phoneno").val();
-            
+
             if ($("#Languages option:selected").val() == null || $("#Languages option:selected").val() == "" || $("#Languages option:selected").val() == '0') {
                 user.Language = localStorage.Language;
             }
@@ -436,7 +436,7 @@ $(document).ready(function () {
 
                 // user.Language = $('#Languages').parent().children('span').find('.ui-btn-text').html();
                 localStorage.Language = user.Language;
-                 console.log((localStorage.Language))
+                console.log((localStorage.Language))
                 switch (localStorage.Language) {
                     case "1":
                         localStorage.LanguageType = "dk";
@@ -452,11 +452,11 @@ $(document).ready(function () {
                         break;
                 }
             }
-            
+
             if (user.UserRole == "2") {
                 $('#Save').removeAttr('disabled');
                 if (user.MemberShipID == 'null' || user.MemberShipID == '' || user.MemberShipID == null) {
-                    
+
                     //var Plan = $('#MemberShip').parent().children('span').find('.ui-btn-text').html();
                     var Plan = $('#Plan').text();
                     var message = '';
@@ -477,10 +477,10 @@ $(document).ready(function () {
 
                     if (confirm(message)) {
                         user.UpdateSubscription = true;
-                        if (user.SubscriptionPaid) {                         
+                        if (user.SubscriptionPaid) {
                             user.CreateUser();
                         }
-                        else {                           
+                        else {
                             user.SubscriptionPayment();
                         }
                     }
@@ -488,13 +488,13 @@ $(document).ready(function () {
                         return;
                     }
                 }
-                else {   
+                else {
                     user.UpdateSubscription = false;
-                     user.CreateUser();
-                 
+                    user.CreateUser();
+
                 }
             }
-            else {              
+            else {
 
                 if (user.MemberShipID != 'null' && user.MemberShipID != '' && user.MemberShipID != null) {
                     $('#Save').removeAttr('disabled');
@@ -529,9 +529,9 @@ $(document).ready(function () {
                 }
             }
         }
-        else {            
+        else {
             alert(user.Error);
-            user.Error = '';            
+            user.Error = '';
         }
     });
 
@@ -667,271 +667,323 @@ $(document).ready(function () {
         }
     });
 
-   
-});  
+
+});
 
 
-function saveUserData() {       
-   
+function saveUserData() {
+
     if (!validateEmail($("#email").val())) {
         navigator.notification.alert("You should fill a valid email!", null, "");
         return;
-    }    
-     
+    }
+
     if ($("#email").val() == "" || $("#name").val() == "" || $("#phoneno").val() == "" || $("#country").val() == "0") {
         navigator.notification.alert("All mandatory fields are required!", null, "");
         return;
     }
-    
+
     var base64 = $("#image").attr("src");
-    var ImageData= userData.ImageData;
-    
-    if (base64!="images/imageplaceholder.png" && base64.indexOf("data:image/jpeg;base64,")!=-1) {       
-        
+    var ImageData = userData.ImageData;
+
+    if (base64 != "images/imageplaceholder.png" && base64.indexOf("data:image/jpeg;base64,") != -1) {
+
         var file = {
-        "Filename": "userPicture.jpeg",
-        "ContentType": "image/jpeg",
-        "CustomField": "customValue",
-        "base64": base64.replace("data:image/jpeg;base64,","") 
-            };
+            "Filename": "userPicture.jpeg",
+            "ContentType": "image/jpeg",
+            "CustomField": "customValue",
+            "base64": base64.replace("data:image/jpeg;base64,", "")
+        };
 
         app.everlive.Files.create(file,
                                   function (data) {
                                       console.log(data);
-                        
+
                                       ImageData = data.result.Uri;
-                        
+
                                       var users = app.everlive.data('Users');
                                       users.update({
-                                                      'ImageData':ImageData
-                                                  }, // data
-                                                  { 'Id': userData.Id}, // filter
-                                                  function(data) {
-                                                    //  console.log(data);
+                                          'ImageData': ImageData
+                                      }, // data
+                                                  { 'Id': userData.Id }, // filter
+                                                  function (data) {
+                                                      //  console.log(data);
                                                       navigator.notification.alert("Info saved successfully!", null, "Success");
                                                   },
-                                                  function(error) { 
-                                                      alert(JSON.stringify(error)); 
-                                                  });    
+                                                  function (error) {
+                                                      alert(JSON.stringify(error));
+                                                  });
                                   },
                                   function (error) {
-                                      alert(JSON.stringify(error)); 
+                                      alert(JSON.stringify(error));
                                   });
     }
-    
-     var data = app.everlive.data('Users');   
-    
-   
+
+    var data = app.everlive.data('Users');
+
+
     var mail = false;
-    if(userData.UserRole!=2 && $("#role").val()==2)
-       mail=true;
-    
+    if (userData.UserRole != 2 && $("#role").val() == 2)
+        mail = true;
+
     data.update({
-                    'UserRole': $("#role").val(),                  
-                    'Email':  $("#email").val(),           
-                    'DisplayName': $("#name").val(),
-                    'PhoneNumber':  $("#phoneno").val(),  
-                    'CompanyName':      $("#companyname").val(),            
-                    'Zip': $("#zip").val(),            
-                    'AddressLine1':  $("#homeadress").val(),               
-                    'City':   $("#homecity").val(),            
-                    'Country':      $("#country").val(),            
-                    'State':    $("#txtState").val(),     
-                    'LanguageID':  $("#Languages").val(),
-                    "Facebook": $("#facebookaddress").val(),
-                    "Twitter" :$("#twitteraddress").val(),
-                    "Web" : $("#wwwaddress").val(),
-                    "weight" :$("#weight").val(),
-                    "distance" : $("#distance").val(), 
-                    "brigade" : $("#brigade").is(":checked"),  
-                    "onlycountry" : $("#onlycountry").is(":checked")
-         
-                }, // data
-                { 'Id': userData.Id}, // filter
-                function(data) {
+        'UserRole': $("#role").val(),
+        'Email': $("#email").val(),
+        'DisplayName': $("#name").val(),
+        'PhoneNumber': $("#phoneno").val(),
+        'CompanyName': $("#companyname").val(),
+        'Zip': $("#zip").val(),
+        'AddressLine1': $("#homeadress").val(),
+        'City': $("#homecity").val(),
+        'Country': $("#country").val(),
+        'State': $("#txtState").val(),
+        'LanguageID': $("#Languages").val(),
+        "Facebook": $("#facebookaddress").val(),
+        "Twitter": $("#twitteraddress").val(),
+        "Web": $("#wwwaddress").val(),
+        "weight": $("#weight").val(),
+        "distance": $("#distance").val(),
+        "brigade": $("#brigade").is(":checked"),
+        "onlycountry": $("#onlycountry").is(":checked"),
+        "onlycity": $("#onlycity").is(":checked"),
+        "cityGeo": user.cityGeo
+
+    }, // data
+                { 'Id': userData.Id }, // filter
+                function (data) {
                     console.log(data);
-                    if(mail){
-                          sendMail(emailTemplates.thankYou,[userData.Email],{"appName":emailTemplates.DefaultFromName,"DefaultFromName":emailTemplates.DefaultFromName ,"userName":$("#name").val(), "FromEmail":emailTemplates.FromEmail});
+                    if (mail) {
+                        sendMail(emailTemplates.thankYou, [userData.Email], { "appName": emailTemplates.DefaultFromName, "DefaultFromName": emailTemplates.DefaultFromName, "userName": $("#name").val(), "FromEmail": emailTemplates.FromEmail });
                     }
                     navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
                 },
-                function(error) { 
-                    alert(JSON.stringify(error)); 
-                });    
-}  
- 
-function fillUserData(user) { 
-   userData = user;
-   
-    if(user.ImageData!="" && user.ImageData!=undefined)
-    $("#image").attr("src",user.ImageData);
-    
-    if (user.Email != undefined){
-        $("#email").val(user.Email);       
-        $("#email").prop("disabled",true);
-      }
-    else  $("#email").prop("disabled",false);
-               
+                function (error) {
+                    alert(JSON.stringify(error));
+                });
+}
+
+function fillUserData(user) {
+    userData = user;
+
+    if (user.ImageData != "" && user.ImageData != undefined)
+        $("#image").attr("src", user.ImageData);
+
+    if (user.Email != undefined) {
+        $("#email").val(user.Email);
+        $("#email").prop("disabled", true);
+    }
+    else $("#email").prop("disabled", false);
+
     if (user.UserRole != undefined)
         $("#role").val(user.UserRole);
-    
-    if(user.UserRole=="2"){
-        $("#isSupporter").attr("src","images/supporter.png");
-    }else{
-         $("#isSupporter").attr("src","images/notsupporter.png");
+
+    if (user.UserRole == "2") {
+        $("#isSupporter").attr("src", "images/supporter.png");
+    } else {
+        $("#isSupporter").attr("src", "images/notsupporter.png");
     }
-     
-      if (user.brigade != undefined)
+
+    if (user.brigade != undefined)
         $("#brigade").val(user.brigade);
-    
-    if(user.brigade=="Yes"){
-        $("#brigade").attr("src","images/profilbut/terrabut.jpg");
-    }else{
-         $("#brigade").attr("src","images/profilbut/no_terrabut.jpg");
+
+    if (user.brigade == "Yes") {
+        $("#brigade").attr("src", "images/profilbut/terrabut.jpg");
+    } else {
+        $("#brigade").attr("src", "images/profilbut/no_terrabut.jpg");
     }
-     
+
     if (user.DisplayName != undefined)
         $("#name").val(user.DisplayName);
-            
+
     if (user.PhoneNumber != undefined)
         $("#phoneno").val(user.PhoneNumber);
-            
+
     if (user.CompanyName != undefined)
         $("#companyname").val(user.CompanyName);
-            
+
     if (user.Zip != undefined)
         $("#zip").val(user.Zip);
-            
+
     if (user.AddressLine1 != undefined)
         $("#homeadress").val(user.AddressLine1);
-            
+
     if (user.City != undefined)
         $("#homecity").val(user.City);
-            
+
     if (user.Country != undefined)
         $("#country").val(user.Country);
-            
+
     if (user.State != undefined)
-        $("#txtState").val(user.State); 
-            
+        $("#txtState").val(user.State);
+
     if (user.LanguageID != undefined)
         $("#Languages").val(user.LanguageID);
-    
-     if (user.Facebook != undefined)
+
+    if (user.Facebook != undefined)
         $("#facebookaddress").val(user.Facebook);
-    
-     if (user.Twitter != undefined)
+
+    if (user.Twitter != undefined)
         $("#twitteraddress").val(user.Twitter);
-    
-     if (user.Web != undefined)
+
+    if (user.Web != undefined)
         $("#wwwaddress").val(user.Web);
 
-     if (user.weight != undefined)
+    if (user.weight != undefined)
         $("#weight").val(user.weight);
-    
-     if (user.distance != undefined)
+
+    if (user.distance != undefined)
         $("#distance").val(user.distance);
 
-     if (user.brigade != undefined)
-           $("#brigade").prop("checked",user.brigade);
-      
-     if (user.onlycountry != undefined)
-           $("#onlycountry").prop("checked",user.onlycountry);
-} 
-   
-function setupInit() { 
-    user.GetRoles(); 
-      
-    if (localStorage.User == undefined) { 
-        app.everlive.Users.currentUser( 
-            function(data) { 
-                console.log(data.result);    
-               
-               localStorage.User = JSON.stringify(data.result);
+    if (user.brigade != undefined)
+        $("#brigade").prop("checked", user.brigade);
+
+    if (user.onlycountry != undefined)
+        $("#onlycountry").prop("checked", user.onlycountry);
+
+    if (user.onlycity != undefined)
+        $("#onlycity").prop("checked", user.onlycity);
+}
+
+function setupInit() {
+    user.GetRoles();
+
+    if (localStorage.User == undefined) {
+        app.everlive.Users.currentUser(
+            function (data) {
+                console.log(data.result);
+
+                localStorage.User = JSON.stringify(data.result);
                 fillUserData(data.result);
             });
-    }else
+    } else
         fillUserData(JSON.parse(localStorage.User));
-     
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-           try{
-            $.getJSON('http://ws.geonames.org/countryCode', {
-                          lat: position.coords.latitude,
-                          lng: position.coords.longitude,
-                          type: 'JSON',
-                		  username:'Recycle',
-                          async: false
-                      }, function (result) {
-                          //                alert(result.countryCode);
-                          //                alert(CountryCode["IN"]);
-                          user.CountryCode = result.countryCode;
-                      }, function (err) {
-                          //                alert(result.countryCode);
-                          //                alert(CountryCode["IN"]);
-                         console.log(err);
-                      }
-                
-                );
-           }catch(err){console.log(err);}
+            try {
+                var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                    debugger;
+                    var city = "N/A";
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        // get city, postal code, country
+                        if (results[1]) {
+                            var hasLevel1AdminArea = false;
+                            //find city name
+                            for (var i = 0; i < results[0].address_components.length; i++) {
+                                for (var b = 0; b < results[0].address_components[i].types.length; b++) {
+
+                                    //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                                    if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
+                                        //this is the object you are looking for
+                                        city = results[0].address_components[i].long_name;
+                                        hasLevel1AdminArea = true;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (!hasLevel1AdminArea) {
+                                for (var i = 0; i < results[0].address_components.length; i++) {
+                                    for (var b = 0; b < results[0].address_components[i].types.length; b++) {
+
+                                        //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                                        if (results[0].address_components[i].types[b] == "administrative_area_level_2") {
+                                            //this is the object you are looking for
+                                            city = results[0].address_components[i].long_name;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (user.City === undefined || user.City == '') {
+                        user.cityGeo = city;
+                        user.City = city;
+                        $("#homecity").val(user.City);
+                    }
+
+                });
+
+                $.getJSON('http://ws.geonames.org/countryCode', {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                    type: 'JSON',
+                    username: 'Recycle',
+                    async: false
+                }, function (result) {
+                    //                alert(result.countryCode);
+                    //                alert(CountryCode["IN"]);
+                    user.CountryCode = result.countryCode;
+                }, function (err) {
+                    //                alert(result.countryCode);
+                    //                alert(CountryCode["IN"]);
+                    console.log(err);
+                }
+
+                    );
+            } catch (err) { console.log(err); }
         });
     }
-} 
+}
 
 
-function isUserLogged(){
-    
-    if(localStorage.Username!==undefined &&  localStorage.Password!==undefined ) return true;
+function isUserLogged() {
+
+    if (localStorage.Username !== undefined && localStorage.Password !== undefined) return true;
     else return false;
-    
-}
-function removeLocalStorageUser(){
-    
-     localStorage.removeItem("Username");
-     localStorage.removeItem("Password");
-     localStorage.removeItem("User");
-}
 
-function autoLogin(){
-    if(isUserLogged())
-    app.Login.login( localStorage.Username, localStorage.Password);
+}
+function removeLocalStorageUser() {
+
+    localStorage.removeItem("Username");
+    localStorage.removeItem("Password");
+    localStorage.removeItem("User");
 }
 
+function autoLogin() {
+    if (isUserLogged())
+        app.Login.login(localStorage.Username, localStorage.Password);
+}
 
-function logoutUser(){
-    
-    if(localStorage.User==undefined) return false;    
-    app.everlive.Users.logout(function(d){console.log(d)});
-     removeLocalStorageUser();
+
+function logoutUser() {
+
+    if (localStorage.User == undefined) return false;
+    app.everlive.Users.logout(function (d) { console.log(d) });
+    removeLocalStorageUser();
     app.application.navigate("signup_login.html");
-    
+
 }
 
-function deleteUser() {   
-    navigator.notification.confirm("Are you sure you want to delete your profile?", 
-           function(button) {
+function deleteUser() {
+    navigator.notification.confirm("Are you sure you want to delete your profile?",
+           function (button) {
                if (button == 1) {
                    app.everlive.Users.destroySingle({ Id: userData.Id },
-                                                    function() {
+                                                    function () {
                                                         alert('User successfully deleted.');
                                                         localStorage.removeItem("User");
                                                         app.application.navigate("signup_login.html");
                                                     },
-                                                    function(error) {
+                                                    function (error) {
                                                         alert(JSON.stringify(error));
                                                     });
                }
-           }, 
-           'Delete account', 
-           ['Delete','Cancel']);   
+           },
+           'Delete account',
+           ['Delete', 'Cancel']);
 }
 
 function isLogged() {
     if ((window.User == undefined || window.User == null) && localStorage.User == undefined) {
         app.application.navigate("signup_login.html");
         return false;
-    }else if (window.User == undefined || window.User == null) 
+    } else if (window.User == undefined || window.User == null)
         window.User = JSON.parse(localStorage.User);
-       
+
     return true;
 }
