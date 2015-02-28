@@ -482,22 +482,24 @@ app.Product = (function () {
 
                             var user = $.parseJSON(localStorage.User);
                             var country = user.Country || '';
-                            var city = user.cityGeo || '';
-
+                            debugger;
+                            var city = user.City || '';
+                            var cityRegEx = ".*" + city + ".*";
+                            var countryRegEx = ".*" + country + ".*";
                             if (city && user.onlycity) {
                                 if (isMy === true)
-                                    query.where().and().eq('UserID', myId).eq('City', city).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                    query.where().and().eq('UserID', myId).regex('City', cityRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else if (filterWord !== undefined)
-                                    query.where().and().regex('Name', filterWord, 'i').eq('City', city).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                    query.where().and().regex('Name', filterWord, 'i').regex('City', cityRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else
-                                    query.where().eq('Country', country).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                    query.where().regex('City', cityRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                             } else if (country && user.onlycountry) {
                                 if (isMy === true)
-                                    query.where().and().eq('UserID', myId).eq('Country', country).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                    query.where().and().eq('UserID', myId).regex('Country', countryRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else if (filterWord !== undefined)
-                                    query.where().and().regex('Name', filterWord, 'i').eq('Country', country).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                    query.where().and().regex('Name', filterWord, 'i').regex('Country', countryRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else
-                                    query.where().eq('Country', country).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                    query.where().regex('Country', countryRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                             } else {
                                 if (isMy === true)
                                     query.where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
