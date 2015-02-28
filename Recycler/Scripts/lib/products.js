@@ -35,7 +35,7 @@ function loadProduct(e) {
             var distance = 0;
             if (product.Latitude && product.Longitude && app.currentPosition) {
                 distance = getDistanceFromLatLonInKm(product.Latitude, product.Longitude, app.currentPosition.coords.latitude, app.currentPosition.coords.longitude);
-            } 
+            }
 
             var selector = "#product-tabstrip .fields ";
             $(selector + ".username").html(user.DisplayName);
@@ -99,9 +99,9 @@ function loadProduct(e) {
             updateProduct.updateSingle({
                 Id: product.Id,
                 'Views': views
-                }, function (data) {
-                    console.log(data);
-                },
+            }, function (data) {
+                console.log(data);
+            },
                  function (error) {
                      // DO NOTHING
                  });
@@ -478,12 +478,26 @@ app.Product = (function () {
                             var data = app.everlive.data('Product');
                             var query = new Everlive.Query();
 
-                            if (isMy === true)
-                                query.where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
-                            else if (filterWord !== undefined)
-                                query.where().regex('Name', filterWord, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
-                            else
-                                query.orderDesc('CreatedAt').skip(skip).take(interval);
+                            debugger;
+
+                            var user = $.parseJSON(localStorage.User);
+                            var country = user.Country || '';
+
+                            if (country && user.onlycountry) {
+                                if (isMy === true)
+                                    query.where().and().eq('UserID', myId).eq('Country', country).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                else if (filterWord !== undefined)
+                                    query.where().and().regex('Name', filterWord, 'i').eq('Country', country).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                else
+                                    query.where().eq('Country', country).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                            } else {
+                                if (isMy === true)
+                                    query.where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                else if (filterWord !== undefined)
+                                    query.where().regex('Name', filterWord, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                else
+                                    query.orderDesc('CreatedAt').skip(skip).take(interval);
+                            }
 
                             data.get(query).then(function (data) {
                                 options.success(data.result);

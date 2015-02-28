@@ -446,12 +446,15 @@ function CreateProduct(Data) {
                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                    //debugger;
                    //JSON.stringify(results);
+                   debugger;
                    var city = "N/A";
+                   var user = $.parseJSON(localStorage.User);
+                   var country = user.Country || '';
                    if (status == google.maps.GeocoderStatus.OK) {
                        // get city, postal code, country
                        if (results[1]) {
                            var hasLevel1AdminArea = false;
-                           //find country name
+                           //find city name
                            for (var i = 0; i < results[0].address_components.length; i++) {
                                for (var b = 0; b < results[0].address_components[i].types.length; b++) {
 
@@ -473,7 +476,6 @@ function CreateProduct(Data) {
                                        if (results[0].address_components[i].types[b] == "administrative_area_level_2") {
                                            //this is the object you are looking for
                                            city = results[0].address_components[i].long_name;
-                                           hasLevel1AdminArea = true;
                                            break;
                                        }
                                    }
@@ -485,7 +487,7 @@ function CreateProduct(Data) {
                    data.create({
                        'UserID': Data.UserID, "Name": Data.name, "Description": Data.description, "MoreInformation": Data.long_description,
                        "IsActive": Data.IsActive, "Price": Data.Price, "Type": Data.Type, "Status": Data.Status, "Category": Data.Category,
-                       "Latitude": position.coords.latitude, "Longitude": position.coords.longitude, "City": city
+                       "Latitude": position.coords.latitude, "Longitude": position.coords.longitude, "City": city, "Country": country
                    }, function (data) {
                        console.log(data);
                        localStorage.NewProductID = data.result.Id;
@@ -775,7 +777,7 @@ function showGiveAway(e) {
 
 function initGiveAway() {
     try {
-      
+
         $('input:radio[name=abc]').click(function () {
             $(".radio-options").hide();
             $(".after-radio").show();

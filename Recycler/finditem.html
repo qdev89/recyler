@@ -32,42 +32,6 @@
         <a class="btn btn-primary" type="button" data-role="button" onclick="closeItemModal()">Close</a>
     </div>
 </div>
-
-
-
-<!--<script type="text/x-kendo-template" id="productTemplate">
-
-    <div onclick="goToProduct(this)" productid="${Id}">
-        <div class="img-holder">
-            #if(!isVisited){#
-            <img class="li-image resimgs" data-src="${Image}" />
-            <p class="view-count"> <i class="view-count-icon" />  ${Views}</p>
-            <h4><span>NEW</span></h4>
-            #}else{#
-            <img class="li-image resimgs grayscale-img" data-src="${Image}" productid-finditem="${Id}" />
-            <p class="view-count"> <i class="view-count-icon" />  ${Views}</p>
-            <h4><span style="display:none" productid-finditem-new="${Id}">NEW</span></h4>
-            #}#
-        </div>
-
-
-        <div class="item-info">
-            <b> <div class="li-name" style="color:dodgerblue;font-size:large;"> ${Name}</div></b>
-            <div class="li-type" style="font-size:small;"> ${Type}</div>
-            <div style="display:none;" class="li-desc"> Description: ${Description}</div>
-            <div class="li-price" style="font-size:small;"><label for="estimated" data-localize="estimated"></label>: ${Price}</div>
-            #var date = new Date(CreatedAt);
-            var dateStr = date.toDateString();
-            #
-            <div class="city"></div>
-            <div class="li-type" style="font-size:small;">City: ${City}</div>
-            <div class="li-type" style="font-size:small;">Distance: ${Distance}</div>
-            <div class="li-date" style="font-size:small;"> ${dateStr}</div>
-        </div>
-    </div>
-
-
-</script>-->
 <script type="text/x-kendo-template" id="productTemplate">
 
     <div onclick="goToProduct(this)" productid="${Id}">
