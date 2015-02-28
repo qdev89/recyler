@@ -484,11 +484,11 @@ app.Product = (function () {
                             var country = user.Country || '';
                             var city = user.cityGeo || '';
 
-                            if (cityGeo && user.onlycity) {
+                            if (city && user.onlycity) {
                                 if (isMy === true)
-                                    query.where().and().eq('UserID', myId).eq('City', cityGeo).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                    query.where().and().eq('UserID', myId).eq('City', city).done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else if (filterWord !== undefined)
-                                    query.where().and().regex('Name', filterWord, 'i').eq('City', cityGeo).done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                    query.where().and().regex('Name', filterWord, 'i').eq('City', city).done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else
                                     query.where().eq('Country', country).done().orderDesc('CreatedAt').skip(skip).take(interval);
                             } else if (country && user.onlycountry) {
