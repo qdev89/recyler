@@ -7,83 +7,83 @@ function onCreateSpotShow(e) {
     TranslateApp();
 }
 
- 
+
 
 app.Spot = (function () {
     'use strict';
-	var loadMore = true;   
-    
-    var spotsViewModel = (function () {        
+    var loadMore = true;
+
+    var spotsViewModel = (function () {
         var getMySpots = function () {
             TranslateApp();
-            if(localStorage.User==undefined){
+            if (localStorage.User == undefined) {
                 app.application.navigate('signup_login.html');
                 return;
-            } 
-            
-            var myId = JSON.parse(localStorage.User).Id;   
+            }
+
+            var myId = JSON.parse(localStorage.User).Id;
             var interval = 12;
-            var skip=0;
+            var skip = 0;
             var dataSource = new kendo.data.DataSource({
-			transport: {  
-                    read: function(options) {
-                         showLoading();
+                transport: {
+                    read: function (options) {
+                        showLoading();
                         try {
                             var data = app.everlive.data('Spot');
                             var query = new Everlive.Query();
                             query.where().eq('userId', myId).done().skip(skip).take(interval);
-                            data.get(query).then(function(data) {
-                               // console.log(data.result);
+                            data.get(query).then(function (data) {
+                                // console.log(data.result);
                                 options.success(data.result);
                                 everliveImages.responsiveAll();
                                 hideLoading();
-                                if(data.result.length==interval){
+                                if (data.result.length == interval) {
                                     loadMore = true;
-                                    skip+=interval;
-                                }else
-                                loadMore = false;
+                                    skip += interval;
+                                } else
+                                    loadMore = false;
                             },
-                             function(error) {
+                             function (error) {
                                  alert(JSON.stringify(error));
                              });
-                        }catch (err) {
-                             hideLoading();
+                        } catch (err) {
+                            hideLoading();
                             console.log(err);
                         }
                     }
                 },
-           error: function(e) {
-               hideLoading();
-               if (typeof(e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
-                   app.application.navigate("index.html");
-               else
-                   displayErrorAlert();
-           }          
-          });
-            
-        		 $("#my-spots-list").kendoMobileListView({
-                                                     dataSource: dataSource,
-                                                     template:$("#spotTemplate").html(),
-                                                     appendOnRefresh:true   									
-                                                 });
-            
-            
-           var listView = $("#my-spots-list").data("kendoMobileListView");
-           if (listView != null) {
-               listView._scrollerInstance.scrollElement.on("touchend", function() {
-                   if (loadMore) {
-                       var tabstripId = "#find-item-tabstrip";
-                      
-                       if ($("#my-spots-list").height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))                         
-                         listView.dataSource.read();
-                   }       
-               });    			
-              listView._scrollerInstance.scrollTo(0, 0);    
-           }
+                error: function (e) {
+                    hideLoading();
+                    if (typeof (e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
+                        app.application.navigate("index.html");
+                    else
+                        displayErrorAlert();
+                }
+            });
+
+            $("#my-spots-list").kendoMobileListView({
+                dataSource: dataSource,
+                template: $("#spotTemplate").html(),
+                appendOnRefresh: true
+            });
+
+
+            var listView = $("#my-spots-list").data("kendoMobileListView");
+            if (listView != null) {
+                listView._scrollerInstance.scrollElement.on("touchend", function () {
+                    if (loadMore) {
+                        var tabstripId = "#find-item-tabstrip";
+
+                        if ($("#my-spots-list").height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))
+                            listView.dataSource.read();
+                    }
+                });
+                listView._scrollerInstance.scrollTo(0, 0);
+            }
         }
-         
+
         return {
-            getMySpots: getMySpots           
+            getMySpots: getMySpots
         };
     }());
 
@@ -94,202 +94,202 @@ app.Spot = (function () {
 
 var editableSpot;
 
-function checkForCreate(){
-     TranslateApp();
-    editableSpot={};
+function checkForCreate() {
+    TranslateApp();
+    editableSpot = {};
     //log(userData);    
-    if(userData.UserRole!="2"){        
+    if (userData.UserRole != "2") {
         var data = app.everlive.data('Spot');
-        data.count({ 'userId': userData.Id}, // filter
-            function(data){
-                if(data.result>0){
-                	alert("Non supporters can have no more than 1 spot. Become supporter and you can have as many spots as you like!");
+        data.count({ 'userId': userData.Id }, // filter
+            function (data) {
+                if (data.result > 0) {
+                    alert("Non supporters can have no more than 1 spot. Become supporter and you can have as many spots as you like!");
                     app.application.navigate("myspots.html");
                 }
             },
-            function(error){
+            function (error) {
                 alert(JSON.stringify(error));
             });
     }
 }
 
-function deleteSpot(){
-    
-     navigator.notification.confirm(
-                                    "Are you sure you want to delete this spot?", // message
-                                     function(button){
-                                         if(button==1)
-                                             var id= editableSpot.Id;
-                                             var data = app.everlive.data('Spot');
-                                            data.destroySingle({ Id: id },
-                                            function(){
-                                                alert('Spot successfully deleted.');
-                                                app.application.navigate("myspots.html");
-                                            },
-                                            function(error){
-                                                alert(JSON.stringify(error));
-                                            });
-                                         
-                                     },    
-                             	  'Delete spot',
-                                    ['Delete',           // title
-                                    'Cancel' ]        // buttonLabels
-                                );
-    
-    
-   
+function deleteSpot() {
+
+    navigator.notification.confirm(
+                                   "Are you sure you want to delete this spot?", // message
+                                    function (button) {
+                                        if (button == 1)
+                                            var id = editableSpot.Id;
+                                        var data = app.everlive.data('Spot');
+                                        data.destroySingle({ Id: id },
+                                        function () {
+                                            alert('Spot successfully deleted.');
+                                            app.application.navigate("myspots.html");
+                                        },
+                                        function (error) {
+                                            alert(JSON.stringify(error));
+                                        });
+
+                                    },
+                                 'Delete spot',
+                                   ['Delete',           // title
+                                   'Cancel']        // buttonLabels
+                               );
+
+
+
 }
 
-function updt(imgData){
-    
-      var data = app.everlive.data('Spot');     
-        editableSpot.SpotType = $("#spotypeE option:selected").val();
-    	editableSpot.EventDate = $('#select-choice-monthE option:selected').val() + '/'
-                             + $('#select-choice-dayE option:selected').val() + '/'
-                             + $('#select-choice-yearE option:selected').val();
-      
+function updt(imgData) {
 
-        editableSpot.Name = $("#spotnameE").val();
-        editableSpot.Description = $("#spotdescE").val();
-        editableSpot.Address = $("#spotadressE").val();
-        editableSpot.City = $("#spotcityE").val();
-        editableSpot.Zip = $("#spotzipE").val();
-        editableSpot.Country = $('#spotcountryE').val();
+    var data = app.everlive.data('Spot');
+    editableSpot.SpotType = $("#spotypeE option:selected").val();
+    editableSpot.EventDate = $('#select-choice-monthE option:selected').val() + '/'
+                         + $('#select-choice-dayE option:selected').val() + '/'
+                         + $('#select-choice-yearE option:selected').val();
 
-        if (editableSpot.Country == 'US') {
-            editableSpot.State = $('#spotstateE').val();
-        } else {
-            editableSpot.State = $("#txtStateE").val();
-        }
-       
-        editableSpot.Phone = $("#spotphoneE").val();
-        editableSpot.Web = $("#spotwebE").val();
-        editableSpot.CVR = $("#CvrE").val();
-        editableSpot.OpeningHoursWeekdaysFrom = $("#spotmonfrifromE").val();
-        editableSpot.OpeningHoursWeekdaysTo = $("#spotmonfritoE").val();
-        editableSpot.OpeningHoursSaturdayFrom = $("#spotopensatfromE").val();
-        editableSpot.OpeningHoursSaturdayTo = $("#spotopensattoE").val();
-        editableSpot.OpeningHoursSundayFrom = $("#spotopensunfromE").val();
-        editableSpot.OpeningHoursSundayTo = $("#spotopensuntoE").val();
-        editableSpot.OpeningTimeWeekdays = $("#OpenTimeMonFriE").val();
-        editableSpot.ClosingTimeWeekdays = $("#CloseTimeMonFriE").val();
-        editableSpot.OpeningTimeSat = $("#OpenTimeSatE").val();
-        editableSpot.ClosingTimeSat = $("#CloseTimeSatE").val();
-        editableSpot.OpeningTimeSun = $("#OpenTimeSunE").val();
-        editableSpot.ClosingTimeSun = $("#CloseTimeSunE").val();
+
+    editableSpot.Name = $("#spotnameE").val();
+    editableSpot.Description = $("#spotdescE").val();
+    editableSpot.Address = $("#spotadressE").val();
+    editableSpot.City = $("#spotcityE").val();
+    editableSpot.Zip = $("#spotzipE").val();
+    editableSpot.Country = $('#spotcountryE').val();
+
+    if (editableSpot.Country == 'US') {
+        editableSpot.State = $('#spotstateE').val();
+    } else {
+        editableSpot.State = $("#txtStateE").val();
+    }
+
+    editableSpot.Phone = $("#spotphoneE").val();
+    editableSpot.Web = $("#spotwebE").val();
+    editableSpot.CVR = $("#CvrE").val();
+    editableSpot.OpeningHoursWeekdaysFrom = $("#spotmonfrifromE").val();
+    editableSpot.OpeningHoursWeekdaysTo = $("#spotmonfritoE").val();
+    editableSpot.OpeningHoursSaturdayFrom = $("#spotopensatfromE").val();
+    editableSpot.OpeningHoursSaturdayTo = $("#spotopensattoE").val();
+    editableSpot.OpeningHoursSundayFrom = $("#spotopensunfromE").val();
+    editableSpot.OpeningHoursSundayTo = $("#spotopensuntoE").val();
+    editableSpot.OpeningTimeWeekdays = $("#OpenTimeMonFriE").val();
+    editableSpot.ClosingTimeWeekdays = $("#CloseTimeMonFriE").val();
+    editableSpot.OpeningTimeSat = $("#OpenTimeSatE").val();
+    editableSpot.ClosingTimeSat = $("#CloseTimeSatE").val();
+    editableSpot.OpeningTimeSun = $("#OpenTimeSunE").val();
+    editableSpot.ClosingTimeSun = $("#CloseTimeSunE").val();
 
     var updateObj = {
-                      'SpotType': editableSpot.SpotType,                  
-                      'EventDate': editableSpot.EventDate,                  
-                      'Name': editableSpot.Name,                  
-                      'Description': editableSpot.Description,                  
-                      'Address': editableSpot.Address,                  
-                      'City': editableSpot.City,                  
-                      'Zip': editableSpot.Zip ,                  
-                      'Country': editableSpot.Country,                  
-                      'State': editableSpot.State,                  
-                      'Phone': editableSpot.Phone,                  
-                      'Web': editableSpot.Web,                  
-                      'CVR':editableSpot.CVR ,                  
-                      'OpeningHoursWeekdaysFrom':editableSpot.OpeningHoursWeekdaysFrom ,                  
-                      'OpeningHoursWeekdaysTo': editableSpot.OpeningHoursWeekdaysTo,                  
-                      'OpeningHoursSaturdayFrom': editableSpot.OpeningHoursSaturdayFrom,                  
-                      'OpeningHoursSaturdayTo': editableSpot.OpeningHoursSaturdayTo,                  
-                      'OpeningHoursSundayFrom':editableSpot.OpeningHoursSundayFrom ,                  
-                      'OpeningHoursSundayTo': editableSpot.OpeningHoursSundayTo,                  
-                      'OpeningTimeWeekdays': editableSpot.OpeningTimeWeekdays,                 
-                      'OpeningTimeSat': editableSpot.OpeningTimeSat,                  
-                      'ClosingTimeSat': editableSpot.ClosingTimeSat,                  
-                      'OpeningTimeSun': editableSpot.OpeningTimeSun,                  
-                      'ClosingTimeSun': editableSpot.ClosingTimeSun     				
-                        			
-                };
-    
-    if(imgData){
+        'SpotType': editableSpot.SpotType,
+        'EventDate': editableSpot.EventDate,
+        'Name': editableSpot.Name,
+        'Description': editableSpot.Description,
+        'Address': editableSpot.Address,
+        'City': editableSpot.City,
+        'Zip': editableSpot.Zip,
+        'Country': editableSpot.Country,
+        'State': editableSpot.State,
+        'Phone': editableSpot.Phone,
+        'Web': editableSpot.Web,
+        'CVR': editableSpot.CVR,
+        'OpeningHoursWeekdaysFrom': editableSpot.OpeningHoursWeekdaysFrom,
+        'OpeningHoursWeekdaysTo': editableSpot.OpeningHoursWeekdaysTo,
+        'OpeningHoursSaturdayFrom': editableSpot.OpeningHoursSaturdayFrom,
+        'OpeningHoursSaturdayTo': editableSpot.OpeningHoursSaturdayTo,
+        'OpeningHoursSundayFrom': editableSpot.OpeningHoursSundayFrom,
+        'OpeningHoursSundayTo': editableSpot.OpeningHoursSundayTo,
+        'OpeningTimeWeekdays': editableSpot.OpeningTimeWeekdays,
+        'OpeningTimeSat': editableSpot.OpeningTimeSat,
+        'ClosingTimeSat': editableSpot.ClosingTimeSat,
+        'OpeningTimeSun': editableSpot.OpeningTimeSun,
+        'ClosingTimeSun': editableSpot.ClosingTimeSun
+
+    };
+
+    if (imgData) {
         updateObj.Image = imgData;
     }
-    
+
     data.update(updateObj, // data
-                { 'Id': editableSpot.Id}, // filter
-                function(data) {
+                { 'Id': editableSpot.Id }, // filter
+                function (data) {
                     console.log(data);
                     navigator.notification.alert("Info saved successfully!", null, "Success");
                     app.application.navigate("map.html?editSpot=true");
                 },
-                function(error) { 
-                    alert(JSON.stringify(error)); 
-                });  
-    }
+                function (error) {
+                    alert(JSON.stringify(error));
+                });
+}
 
-function updateSpot(){
-      
-    if( $("#imageE").attr("src").indexOf("data:image/jpeg;base64,")!=-1){
-        
-         var file = {
-        "Filename": "spotPicture.jpeg",
-        "ContentType": "image/jpeg",
-        "CustomField": "customValue",
-        "base64": $("#imageE").attr("src").replace("data:image/jpeg;base64,","") 
-            };
+function updateSpot() {
+
+    if ($("#imageE").attr("src").indexOf("data:image/jpeg;base64,") != -1) {
+
+        var file = {
+            "Filename": "spotPicture.jpeg",
+            "ContentType": "image/jpeg",
+            "CustomField": "customValue",
+            "base64": $("#imageE").attr("src").replace("data:image/jpeg;base64,", "")
+        };
 
         app.everlive.Files.create(file,
                                   function (data) {
-                                        console.log(data);                        
-                                        ImageData = data.result.Uri;                        
-                                       updt(ImageData);
+                                      console.log(data);
+                                      ImageData = data.result.Uri;
+                                      updt(ImageData);
                                   },
                                   function (error) {
-                                      alert(JSON.stringify(error)); 
+                                      alert(JSON.stringify(error));
                                   });
-        
-    }else{
-                updt();                       
+
+    } else {
+        updt();
     }
-  
-    	
+
+
 }
 
-function navigateEditSpot(id){
-     var spotID = $(id).attr("spotId");
-    app.application.navigate("editspot.html?spotId="+ spotID);    
+function navigateEditSpot(id) {
+    var spotID = $(id).attr("spotId");
+    app.application.navigate("editspot.html?spotId=" + spotID);
 }
 
-function editSpot(e){
+function editSpot(e) {
     TranslateApp();
     log(e.view.params.spotId);
-     var spotID =e.view.params.spotId;
+    var spotID = e.view.params.spotId;
     var data = app.everlive.data('Spot');
-	data.getById(spotID)
-    .then(function(data){       
+    data.getById(spotID)
+    .then(function (data) {
         Filldata("E");
         editableSpot = data.result;
-       // spot=editableSpot;
-        $("#spotypeE").val( editableSpot.SpotType);   
-         var dt = new Date(editableSpot.EventDate);
-      
+        // spot=editableSpot;
+        $("#spotypeE").val(editableSpot.SpotType);
+        var dt = new Date(editableSpot.EventDate);
+
         $('#select-choice-monthE').val(dt.getMonth());
-        $('#select-choice-dayE').val(dt.getDate()) ;
-        $('#select-choice-yearE').val(dt.getYear());  
+        $('#select-choice-dayE').val(dt.getDate());
+        $('#select-choice-yearE').val(dt.getYear());
         console.log(editableSpot.Name);
-        $("#spotnameE").val( editableSpot.Name);
-        $("#spotdescE").val( editableSpot.Description);
-        $("#spotadressE").val( editableSpot.Address );
+        $("#spotnameE").val(editableSpot.Name);
+        $("#spotdescE").val(editableSpot.Description);
+        $("#spotadressE").val(editableSpot.Address);
         $("#spotcityE").val(editableSpot.City);
-        $("#spotzipE").val( editableSpot.Zip );
+        $("#spotzipE").val(editableSpot.Zip);
         $('#spotcountryE').val(editableSpot.Country);
 
         if (editableSpot.Country == 'US') {
             $('#spotstateE').val(editableSpot.State);
         } else {
-           $("#txtStateE").val( editableSpot.State );
+            $("#txtStateE").val(editableSpot.State);
         }
-       
-        $("#imageE").attr("data-src",editableSpot.Image);
+
+        $("#imageE").attr("data-src", editableSpot.Image);
         $("#spotphoneE").val(editableSpot.Phone);
         $("#spotwebE").val(editableSpot.Web);
-        $("#CvrE").val( editableSpot.CVR);
+        $("#CvrE").val(editableSpot.CVR);
         $("#spotmonfrifromE").val(editableSpot.OpeningHoursWeekdaysFrom);
-        $("#spotmonfritoE").val(editableSpot.OpeningHoursWeekdaysTo );
+        $("#spotmonfritoE").val(editableSpot.OpeningHoursWeekdaysTo);
         $("#spotopensatfromE").val(editableSpot.OpeningHoursSaturdayFrom);
         $("#spotopensattoE").val(editableSpot.OpeningHoursSaturdayTo);
         $("#spotopensunfromE").val(editableSpot.OpeningHoursSundayFrom);
@@ -302,11 +302,11 @@ function editSpot(e){
         $("#CloseTimeSunE").val(editableSpot.ClosingTimeSun);
         everliveImages.responsiveAll();
     },
-    function(error){
+    function (error) {
         alert(JSON.stringify(error));
     });
-    
-    
+
+
 }
 
 var spot = {
@@ -345,7 +345,7 @@ var spot = {
     CreateSpot: function () {
         if (spot.Image == null || spot.Image == undefined || spot.Image == "")
             spot.Image = "";
-      
+
         var data = '{"SpotId": "' + spot.Id + '",' +
                    '"SpotType":"' + spot.SpotType + '",' +
                    '"UserID":"' + spot.userId + '",' +
@@ -373,8 +373,8 @@ var spot = {
                    '"ClosingTimeSat":"' + spot.ClosingTimeSat + '",' +
                    '"OpeningTimeSun":"' + spot.OpeningTimeSun + '",' +
                    '"ClosingTimeSun":"' + spot.ClosingTimeSun + '"}';
-        
-        localStorage.Spotdata = data;  
+
+        localStorage.Spotdata = data;
         //  app.application.navigate("confirm_spot.html");
         app.application.navigate("map.html?spot=true");
     }
@@ -382,145 +382,153 @@ var spot = {
 
 function SaveSpot() {
     var lat, long;
-   
-    if(editableSpot.Id!=undefined && markersArray[0] != undefined){
-         var data = app.everlive.data('Spot');  
-         var updateObj = {
-                      'Latitude':markersArray[0].position.lat(),                  
-                      'Longitude': markersArray[0].position.lng()
-             };
+
+    if (editableSpot.Id != undefined && markersArray[0] != undefined) {
+        var data = app.everlive.data('Spot');
+        var updateObj = {
+            'Latitude': markersArray[0].position.lat(),
+            'Longitude': markersArray[0].position.lng()
+        };
         console.log(updateObj);
-         data.update(updateObj, // data
-                { 'Id': editableSpot.Id}, // filter
-                function(data) {
-                    console.log(data);
-                    navigator.notification.alert("Spot position saved successfully!", null, "Success");
-                    app.application.navigate("myspots.html");
-                },
-                function(error) { 
-                    alert(JSON.stringify(error)); 
-                });  
+        data.update(updateObj, // data
+               { 'Id': editableSpot.Id }, // filter
+               function (data) {
+                   console.log(data);
+                   navigator.notification.alert("Spot position saved successfully!", null, "Success");
+                   app.application.navigate("myspots.html");
+               },
+               function (error) {
+                   alert(JSON.stringify(error));
+               });
         return;
     }
-    
-    
+
+
     var Data = JSON.parse(localStorage.Spotdata);
+    debugger;
+    var location = {};
     if (markersArray[0] != undefined) {
         lat = markersArray[0].position.lat();
         long = markersArray[0].position.lng();
+        //location = "{'Latitude':" + lat + ", 'Longitude':" + long + "}";
+        location = {
+            longitude: long,
+            latitude: lat
+        }
     }
-    
-    if(Data.Image==""){
+
+    if (Data.Image == "") {
         app.application.navigate("createspot.html");
-    	return;
+        return;
     }
-    
+
     var file = {
         "Filename": "spotPicture.jpeg",
         "ContentType": "image/jpeg",
         "CustomField": "customValue",
         "base64": Data.Image
     };
-    console.log(file);  
+    console.log(file);
     app.everlive.Files.create(file,
       function (data) {
-          console.log(data);  
-          
+          console.log(data);
+
           app.everlive.Files.getById(data.result.Id)
-              .then(function(res) {
-                  var spotData = app.everlive.data('Spot');     
+              .then(function (res) {
+                  var spotData = app.everlive.data('Spot');
 
                   spotData.create({
-                          'userId' : Data.UserID,
-                          "Name": Data.Name, 
-                          "Description" : Data.Description,
-                          "Longitude":long,
-                          "Latitude" : lat,
-                          "Country":Data.Country,
-                          "City":Data.City,
-                          "CVR": Data.CVR,
-                          "Address":Data.Address,
-                          "EventDate":Data.EventDate,
-                          "Phone":Data.Phone,
-                          "SpotType": Data.SpotType,
-                          "State":Data.State,
-                          "Web":Data.Web, "Zip":Data.Zip,
-                          "ClosingTimeSat":Data.ClosingTimeSat,
-                          "ClosingTimeSun":Data.ClosingTimeSun,
-                          "ClosingTimeWeekdays":Data.ClosingTimeWeekdays,
-                          "OpeningHoursSaturdayFrom":Data.OpeningHoursSaturdayFrom,
-                          "OpeningHoursSaturdayTo":Data.OpeningHoursSaturdayTo,
-                          "OpeningHoursSundayFrom":Data.OpeningHoursSundayFrom,
-                          "OpeningHoursSundayTo":Data.OpeningHoursSundayTo,
-                          "OpeningHoursWeekdaysFrom":Data.OpeningHoursWeekdaysFrom,
-                          "OpeningHoursWeekdaysTo":Data.OpeningHoursWeekdaysTo,
-                          "OpeningTimeSat":Data.OpeningTimeSat,
-                          "OpeningTimeSun":Data.OpeningTimeSun,
-                          "OpeningTimeWeekdays":Data.OpeningTimeWeekdays,
-                          "Image":res.result.Uri
-                          
-                      },
-                      function(data2) {
+                      'userId': Data.UserID,
+                      "Name": Data.Name,
+                      "Description": Data.Description,
+                      "Longitude": long,
+                      "Latitude": lat,
+                      "Country": Data.Country,
+                      "City": Data.City,
+                      "CVR": Data.CVR,
+                      "Address": Data.Address,
+                      "EventDate": Data.EventDate,
+                      "Phone": Data.Phone,
+                      "SpotType": Data.SpotType,
+                      "State": Data.State,
+                      "Web": Data.Web, "Zip": Data.Zip,
+                      "ClosingTimeSat": Data.ClosingTimeSat,
+                      "ClosingTimeSun": Data.ClosingTimeSun,
+                      "ClosingTimeWeekdays": Data.ClosingTimeWeekdays,
+                      "OpeningHoursSaturdayFrom": Data.OpeningHoursSaturdayFrom,
+                      "OpeningHoursSaturdayTo": Data.OpeningHoursSaturdayTo,
+                      "OpeningHoursSundayFrom": Data.OpeningHoursSundayFrom,
+                      "OpeningHoursSundayTo": Data.OpeningHoursSundayTo,
+                      "OpeningHoursWeekdaysFrom": Data.OpeningHoursWeekdaysFrom,
+                      "OpeningHoursWeekdaysTo": Data.OpeningHoursWeekdaysTo,
+                      "OpeningTimeSat": Data.OpeningTimeSat,
+                      "OpeningTimeSun": Data.OpeningTimeSun,
+                      "OpeningTimeWeekdays": Data.OpeningTimeWeekdays,
+                      "Image": res.result.Uri,
+                      "Location": location
+
+                  },
+                      function (data2) {
                           // console.log(data);
                           app.application.navigate("myspots.html");
                           var templateName = emailTemplates.spot;
-                                                                            
-                           switch(Data.SpotType){                                                             
-                                case "FREE_Food": 
-                                templateName =emailTemplates.freeFood;
-                                break;
-                                         
-                                case "Garage_sale": 
-                                templateName =emailTemplates.garageSale  ;
-                                break;
-                                
-                                case "Food_donation": 
-                                templateName =emailTemplates.food;
-                                break;
-                                
-                                case "Help": 
-                                templateName =emailTemplates.help;
-                                break;                               
-                                
-                                case "Eco": 
-                                templateName =emailTemplates.ecospot;
-                                break;
-                                
-                               
-                                case "Recycling_company": 
-                                templateName =emailTemplates.business;
-                                break;
-                                                                        
-                                case "Recycling_spot": 
-                                templateName =emailTemplates.recycling;
-                                break;
-                                
-                                case "Upcycling": 
-                                templateName =emailTemplates.upcycling;
-                                break;   
-                                
-                                case "Terracycle_spot": 
-                                 templateName =emailTemplates.terraspot;
-                                break;
-                                     
-                                case "Shop": 
-                                templateName =emailTemplates.shop;
-                                break;
-                                     
-                                     
-                            }  
-                            sendMail(templateName,[userData.Email],{"appName":emailTemplates.DefaultFromName,"DefaultFromName":emailTemplates.DefaultFromName ,"userName":userData.DisplayName, "FromEmail":emailTemplates.FromEmail});
+
+                          switch (Data.SpotType) {
+                              case "FREE_Food":
+                                  templateName = emailTemplates.freeFood;
+                                  break;
+
+                              case "Garage_sale":
+                                  templateName = emailTemplates.garageSale;
+                                  break;
+
+                              case "Food_donation":
+                                  templateName = emailTemplates.food;
+                                  break;
+
+                              case "Help":
+                                  templateName = emailTemplates.help;
+                                  break;
+
+                              case "Eco":
+                                  templateName = emailTemplates.ecospot;
+                                  break;
+
+
+                              case "Recycling_company":
+                                  templateName = emailTemplates.business;
+                                  break;
+
+                              case "Recycling_spot":
+                                  templateName = emailTemplates.recycling;
+                                  break;
+
+                              case "Upcycling":
+                                  templateName = emailTemplates.upcycling;
+                                  break;
+
+                              case "Terracycle_spot":
+                                  templateName = emailTemplates.terraspot;
+                                  break;
+
+                              case "Shop":
+                                  templateName = emailTemplates.shop;
+                                  break;
+
+
+                          }
+                          sendMail(templateName, [userData.Email], { "appName": emailTemplates.DefaultFromName, "DefaultFromName": emailTemplates.DefaultFromName, "userName": userData.DisplayName, "FromEmail": emailTemplates.FromEmail });
                       },
-                      function(error) {
+                      function (error) {
                           console.log(error);
                       });
               }, function (error3) {
-                  console.log(error3); 
-              }); 
+                  console.log(error3);
+              });
       },
       function (error2) {
-          console.log(error2); 
-      });          
+          console.log(error2);
+      });
 }
 
 function InitCreateSpot() {
@@ -528,7 +536,7 @@ function InitCreateSpot() {
 
     changeLanguage(localStorage.LanguageType);
 
-   TranslateApp();
+    TranslateApp();
     if (localStorage.CacheItem != undefined && localStorage.CacheItem != '') {
         LoadStorageData();
     }
@@ -569,7 +577,7 @@ function InitCreateSpot() {
 
     //window.localStorage.removeItem('Spotdata');
     window.localStorage.removeItem('CacheItem');
-    
+
     //spot.showAddress('Columbus Circle, New York, NY');
     //----Create Spot------
     $("#btnspot").click(function () {
@@ -1213,16 +1221,17 @@ function CreateASpot() {
         alert(spot.Error);
         return;
     } else if (spot.blnFlag == true || spot.blnFlag == 'true') {
-       
+
+        debugger;
 
         spot.userId = User.Id;
         spot.Id = '0';
         spot.SpotType = $("#spotype option:selected").val();
 
-            spot.EventDate = $('#select-choice-month option:selected').val() + '/'
-                             + $('#select-choice-day option:selected').val() + '/'
-                             + $('#select-choice-year option:selected').val();
-      
+        spot.EventDate = $('#select-choice-month option:selected').val() + '/'
+                         + $('#select-choice-day option:selected').val() + '/'
+                         + $('#select-choice-year option:selected').val();
+
 
         spot.Name = $("#spotname").val();
         spot.Description = $("#spotdesc").val();
@@ -1236,7 +1245,7 @@ function CreateASpot() {
         } else {
             spot.State = $("#txtState").val();
         }
-       
+
         spot.Phone = $("#spotphone").val();
         spot.Web = $("#spotweb").val();
         spot.CVR = $("#Cvr").val();
@@ -1254,7 +1263,7 @@ function CreateASpot() {
         spot.ClosingTimeSun = $("#CloseTimeSun").val();
         spot.CreateSpot();
     }
-   
+
 }
 
 function LoadStorageData() {
@@ -1288,7 +1297,7 @@ function LoadStorageData() {
             $('#Title').text('Event Maker');
 
             var array = Item.EventDate.split('/');
-           
+
             $('#select-choice-month>option').each(function (i) {
                 if ($(this).val() == array[0]) {
                     $('#select-choice-month').val($(this).val());
@@ -1296,7 +1305,7 @@ function LoadStorageData() {
                     return;
                 }
             });
-         
+
             $('#select-choice-day>option').each(function (i) {
                 if ($(this).val() == array[1]) {
                     $('#select-choice-day').val($(this).val());
@@ -1530,7 +1539,7 @@ function SpotCacheObject() {
             '"ClosingTimeSat":"' + $("#CloseTimeSat").val() + '",' +
             '"OpeningTimeSun":"' + $("#OpenTimeSun").val() + '",' +
             '"ClosingTimeSun":"' + $("#CloseTimeSun").val() + '"}';
-    		localStorage.CacheItem = data;
+    localStorage.CacheItem = data;
 }
 
 function ValidateURL(txtUrl) {
@@ -1545,96 +1554,96 @@ function ValidateURL(txtUrl) {
 }
 
 function Filldata(edit) {
-    if(edit==undefined)
-    edit = "";
-     $('#select-choice-month'+edit).html("");
-     $('#spotype'+edit).html("");
-   //  $('#spotstate'+edit).html("");
+    if (edit == undefined)
+        edit = "";
+    $('#select-choice-month' + edit).html("");
+    $('#spotype' + edit).html("");
+    //  $('#spotstate'+edit).html("");
     // $('#spotcountry'+edit).html("");
-    switch (localStorage.Language) { 
+    switch (localStorage.Language) {
         case "1":
 
             $.each(SpotType.Danish, function (i) {
-                $('#spotype'+edit).append('<option value="' + SpotType.Danish[i].id + '">' + SpotType.Danish[i].Value + '</option>');
+                $('#spotype' + edit).append('<option value="' + SpotType.Danish[i].id + '">' + SpotType.Danish[i].Value + '</option>');
             });
-                     /*  $.each(Country.English, function (i) {
-                            $('#spotcountry'+edit).append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
-                       
-                       });
+            /*  $.each(Country.English, function (i) {
+                   $('#spotcountry'+edit).append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
+              
+              });
 
-                       $.each(States.English, function (i) {
-                           $('#spotstate'+edit).append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
-                      });*/
+              $.each(States.English, function (i) {
+                  $('#spotstate'+edit).append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
+             });*/
             $.each(date.Danish, function (i) {
-                $('#select-choice-month'+edit).append('<option value="' + date.Danish[i].id + '">' + date.Danish[i].Value + '</option>');
+                $('#select-choice-month' + edit).append('<option value="' + date.Danish[i].id + '">' + date.Danish[i].Value + '</option>');
             });
-            
+
             break;
         case "2":
             $.each(SpotType.German, function (i) {
-                $('#spotype'+edit).append('<option value="' + SpotType.German[i].id + '">' + SpotType.German[i].Value + '</option>');
+                $('#spotype' + edit).append('<option value="' + SpotType.German[i].id + '">' + SpotType.German[i].Value + '</option>');
             });
-                      /*  $.each(Country.English, function (i) {
-                            $('#spotcountry'+edit).append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
-                       });
+            /*  $.each(Country.English, function (i) {
+                  $('#spotcountry'+edit).append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
+             });
 
-                        $.each(States.English, function (i) {
-                            $('#spotstate'+edit).append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
-                        });*/
+              $.each(States.English, function (i) {
+                  $('#spotstate'+edit).append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
+              });*/
             $.each(date.German, function (i) {
-                $('#select-choice-month'+edit).append('<option value="' + date.German[i].id + '">' + date.German[i].Value + '</option>');
+                $('#select-choice-month' + edit).append('<option value="' + date.German[i].id + '">' + date.German[i].Value + '</option>');
             });
             break;
         case "3":
             $.each(SpotType.English, function (i) {
-                $('#spotype'+edit).append('<option value="' + SpotType.English[i].id + '">' + SpotType.English[i].Value + '</option>');
+                $('#spotype' + edit).append('<option value="' + SpotType.English[i].id + '">' + SpotType.English[i].Value + '</option>');
             });
-                       /* $.each(Country.English, function (i) {
-                            $('#spotcountry'+edit).append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
-                        });
+            /* $.each(Country.English, function (i) {
+                 $('#spotcountry'+edit).append('<option value="' + Country.English[i].id + '">' + Country.English[i].Value + '</option>');
+             });
 
-                        $.each(States.English, function (i) {
-                            $('#spotstate'+edit).append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
-                        });*/
+             $.each(States.English, function (i) {
+                 $('#spotstate'+edit).append('<option value="' + States.English[i].id + '">' + States.English[i].Value + '</option>');
+             });*/
             $.each(date.English, function (i) {
-                $('#select-choice-month'+edit).append('<option value="' + date.English[i].id + '">' + date.English[i].Value + '</option>');
+                $('#select-choice-month' + edit).append('<option value="' + date.English[i].id + '">' + date.English[i].Value + '</option>');
             });
             break;
         case "4":
             $.each(SpotType.Spanish, function (i) {
-                $('#spotype'+edit).append('<option value="' + SpotType.Spanish[i].id + '">' + SpotType.Spanish[i].Value + '</option>');
+                $('#spotype' + edit).append('<option value="' + SpotType.Spanish[i].id + '">' + SpotType.Spanish[i].Value + '</option>');
             });
-                       /* $.each(Country.Spanish, function (i) {
-                            $('#spotcountry'+edit).append('<option value="' + Country.Spanish[i].id + '">' + Country.Spanish[i].Value + '</option>');
-                        });
+            /* $.each(Country.Spanish, function (i) {
+                 $('#spotcountry'+edit).append('<option value="' + Country.Spanish[i].id + '">' + Country.Spanish[i].Value + '</option>');
+             });
 
-                        $.each(States.Spanish, function (i) {
-                            $('#spotstate'+edit).append('<option value="' + States.Spanish[i].id + '">' + States.Spanish[i].Value + '</option>');
-                        });*/
+             $.each(States.Spanish, function (i) {
+                 $('#spotstate'+edit).append('<option value="' + States.Spanish[i].id + '">' + States.Spanish[i].Value + '</option>');
+             });*/
             $.each(date.Spanish, function (i) {
-                $('#select-choice-month'+edit).append('<option value="' + date.Spanish[i].id + '">' + date.Spanish[i].Value + '</option>');
+                $('#select-choice-month' + edit).append('<option value="' + date.Spanish[i].id + '">' + date.Spanish[i].Value + '</option>');
             });
             break;
     }
 
-    $('#spotcountry'+edit +'>option').each(function (i) {
+    $('#spotcountry' + edit + '>option').each(function (i) {
         if ($(this).val() == '0') {
-            $('#spotcountry'+edit).val($(this).val());
-            $('#spotcountry'+edit).parent().children('span').find('.ui-btn-text').html($(this).html());
+            $('#spotcountry' + edit).val($(this).val());
+            $('#spotcountry' + edit).parent().children('span').find('.ui-btn-text').html($(this).html());
             return;
         }
     });
-    $('#spotstate'+edit +'>option').each(function (i) {
+    $('#spotstate' + edit + '>option').each(function (i) {
         if ($(this).val() == '0') {
-            $('#spotstate'+edit).val($(this).val());
-            $('#spotstate'+edit).parent().children('span').find('.ui-btn-text').html($(this).html());
+            $('#spotstate' + edit).val($(this).val());
+            $('#spotstate' + edit).parent().children('span').find('.ui-btn-text').html($(this).html());
             return;
         }
     });
-    $('#spotype'+edit +'>option').each(function (i) {
+    $('#spotype' + edit + '>option').each(function (i) {
         if ($(this).val() == '0') {
-            $('#spotype'+edit).val($(this).val());
-            $('#spotype'+edit).parent().children('span').find('.ui-btn-text').html($(this).html());
+            $('#spotype' + edit).val($(this).val());
+            $('#spotype' + edit).parent().children('span').find('.ui-btn-text').html($(this).html());
             return;
         }
     });

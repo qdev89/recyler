@@ -3,14 +3,15 @@ function nearestFoodInit() {
     window.getLocation()
          .done(function (position) {
              var query = new Everlive.Query();
-             query.where().nearSphere('Location', [position.coords.latitude, position.coords.longitude], 20, 'km');
+             //query.where().nearSphere('Location', [position.coords.latitude, position.coords.longitude], 20, 'km');
 
              // TODO: uncomment in release
-             //query.where().nearSphere('Location', [43.465187, -80.52237200000002], 20, 'km');
+             query.where().nearSphere('Location', [9.048379726348116,56.55474784012899], 20, 'km');
              query.take(10);
              var data = app.everlive.data('Spot');
              data.get(query)
                  .then(function (data) {
+                     debugger;
                      var spots = data.result;
                      //Get the external template definition using a jQuery selector
                      var template = kendo.template($('#spotNearestTableTemplate').html());
@@ -70,53 +71,67 @@ function fillNearestSpotInfoContent() {
     }
 }
 
-var nearestPlacesIdChecked= [];
-function onSendMessagesChecked(cb, id)
-{
-    if(cb.checked)
-    {
+var nearestPlacesIdChecked = [];
+function onSendMessagesChecked(cb, id) {
+    if (cb.checked) {
         nearestPlacesIdChecked.push(id);
     }
-    else{
+    else {
         //var index = nearestPlacesIdChecked.indexOf(id);
-        nearestPlacesIdChecked.remove(id)        
+        nearestPlacesIdChecked.remove(id);
     }
 }
 
-function sendEmailForCheckedPlaces()
-{
-    if(nearestPlacesIdChecked.length>0)
-    {
+function sendEmailForCheckedPlaces() {
+    if (nearestPlacesIdChecked.length > 0) {
         showLoading();
-          var data = app.everlive.data('Users');                              
-         var  query = new Everlive.Query(); 
+        var data = app.everlive.data('Users');
+        var query = new Everlive.Query();
         query.where().isin('Id', nearestPlacesIdChecked);
-    data.get(query).then(function (data) {
-   debugger;
-        if(data.result.length>0)
-        {
-            var emailList = [];
-            data.result.forEach(function(user) {
- emailList.push(user.Email);
-        sendMail("fooddonation_email",emailList,{"userName":User.DisplayName,  "appName":emailTemplates.DefaultFromName,"DefaultFromName":emailTemplates.DefaultFromName ,"userName":User.DisplayName, "FromEmail":emailTemplates.FromEmail});
-                
-})
-        }
-       
+        data.get(query).then(function (data) {
+            debugger;
+            var foodProduct = {};
+            if (app.foodProduct) {
+                foodProduct = app.foodProduct;
+            }
 
-        hideLoading();
+            if (data.result.length > 0) {
+                var emailList = [];
+                data.result.forEach(function (user) {
+                    emailList.push(user.Email);
+                });
 
-    },
-         function (error) {
-         hideLoading();
-             alert(JSON.stringify(error));
-         });
+                //sendMail("fooddonation_email", emailList,
+                sendMail("fooddonation_email", ["nmquoc89@gmail.com"],
+                {
+                    "userName": User.DisplayName,
+                    "appName": emailTemplates.DefaultFromName,
+                    "DefaultFromName": emailTemplates.DefaultFromName,
+                    "FromEmail": emailTemplates.FromEmail,
+                    "UserPhoto": User.ImageData,
+                    "Phone": User.PhoneNumber,
+                    "Email": User.Email,
+                    "Address": User.AddressLine1 + "," + User.City + " " + User.State + "," + User.Country,
+                    "ProductPhoto1": foodProduct.Image1,
+                    "ProductPhoto2": foodProduct.Image2,
+                    "ProductPhoto3": foodProduct.Image3,
+                    "ProductDescription": foodProduct.Description
+                });
+            }
+
+            hideLoading();
+
+        },
+             function (error) {
+                 hideLoading();
+                 alert(JSON.stringify(error));
+             });
     }
 }
 
 
 
-Array.prototype.remove = function() {
+Array.prototype.remove = function () {
     var what, a = arguments, L = a.length, ax;
     while (L && this.length) {
         what = a[--L];

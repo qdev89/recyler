@@ -895,7 +895,6 @@ function takePictureSpot(edit) {
 }
 
 function onPhotoDataSuccessSpot(imageData) {
-    debugger;
     var canvas = document.getElementById("cc");
     var ctx = canvas.getContext("2d");
 

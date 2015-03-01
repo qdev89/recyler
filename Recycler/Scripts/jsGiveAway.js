@@ -393,22 +393,25 @@ function saveItem() {
     if (GiveProduct.Product.Category.indexOf("Food") >= 0) {
         IsFoodSelected = true;
 
-        Data = '{"UserID": "' + User.Id + '",' +
-               '"name":"' + GiveProduct.Product.Name + '",' +
-               '"description":"' + GiveProduct.Product.Description + '",' +
-               '"long_description":"' + GiveProduct.Product.long_description + '",' +
-             //  '"Categorylist":"' + GiveProduct.Product.Category + '",' +
-               '"Image":"' + GiveProduct.Product.Image + '",' +
-               '"Price":"' + GiveProduct.Product.Price + '",' +
-               '"Type":"' + GiveProduct.Product.Type + '",' +
-        		 '"Category":"' + GiveProduct.Product.Category + '",' +
-               '"Latitude":"' + ProductLat + '",' +
-               '"Longitude":"' + ProductLong + '",';
+        //Data = '{"UserID": "' + User.Id + '",' +
+        //       '"name":"' + GiveProduct.Product.Name + '",' +
+        //       '"description":"' + GiveProduct.Product.Description + '",' +
+        //       '"long_description":"' + GiveProduct.Product.long_description + '",' +
+        //     //  '"Categorylist":"' + GiveProduct.Product.Category + '",' +
+        //       '"Image":"' + GiveProduct.Product.Image + '",' +
+        //       '"Price":"' + GiveProduct.Product.Price + '",' +
+        //       '"Type":"' + GiveProduct.Product.Type + '",' +
+        //		 '"Category":"' + GiveProduct.Product.Category + '",' +
+        //       '"Latitude":"' + ProductLat + '",' +
+        //       '"Longitude":"' + ProductLong + '",';
 
-        localStorage.PostProductData = Data;
+        //localStorage.PostProductData = Data;
     } else {
         IsFoodSelected = false;
-        Data = '{"UserID": "' + User.Id + '",' +
+
+    }
+
+    Data = '{"UserID": "' + User.Id + '",' +
                '"name":"' + GiveProduct.Product.Name + '",' +
                '"description":"' + GiveProduct.Product.Description + '",' +
                '"long_description":"' + GiveProduct.Product.long_description + '",' +
@@ -423,15 +426,17 @@ function saveItem() {
                '"Longitude":"' + ProductLong + '",' +
                '"IsActive":"' + GiveProduct.Product.IsActive + '",' +
                '"Status":"' + GiveProduct.Product.Status + '"}';
-    }
+    localStorage.PostProductData = Data;
 
     if ($('#PriceTag').is(':checked')) {
         Payment();
     } else {
         if (IsFoodSelected == false)
             CreateProduct(JSON.parse(Data));
-        else
+        else {
+            app.foodProduct = Data;
             app.application.navigate("nearest_food.html");
+        }
     }
 }
 
@@ -483,11 +488,15 @@ function CreateProduct(Data) {
                            }
                        }
                    }
-
+                   var location = {
+                       longitude: position.coords.longitude,
+                       latitude: position.coords.latitude
+                   }
                    data.create({
                        'UserID': Data.UserID, "Name": Data.name, "Description": Data.description, "MoreInformation": Data.long_description,
                        "IsActive": Data.IsActive, "Price": Data.Price, "Type": Data.Type, "Status": Data.Status, "Category": Data.Category,
-                       "Latitude": position.coords.latitude, "Longitude": position.coords.longitude, "City": city, "Country": country
+                       "Latitude": position.coords.latitude, "Longitude": position.coords.longitude, "City": city, "Country": country,
+                       "Location": location
                    }, function (data) {
                        console.log(data);
                        localStorage.NewProductID = data.result.Id;
