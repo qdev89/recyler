@@ -5,7 +5,7 @@ function nearestFoodInit() {
              var query = new Everlive.Query();
              //query.where().nearSphere('Location', [position.coords.latitude, position.coords.longitude], 20, 'km');
 
-             // TODO: uncomment in release
+             // TODO: uncomment this when release
              query.where().nearSphere('Location', [9.048379726348116,56.55474784012899], 20, 'km');
              query.take(10);
              var data = app.everlive.data('Spot');
@@ -101,8 +101,9 @@ function sendEmailForCheckedPlaces() {
                     emailList.push(user.Email);
                 });
 
+                // TODO: uncomment this when release
                 //sendMail("fooddonation_email", emailList,
-                sendMail("fooddonation_email", ["nmquoc89@gmail.com"],
+                sendMail("fooddonation_email", ["bjarke@bsrweb.dk"],
                 {
                     "userName": User.DisplayName,
                     "appName": emailTemplates.DefaultFromName,
