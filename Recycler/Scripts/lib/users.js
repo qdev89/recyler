@@ -725,7 +725,6 @@ function saveUserData() {
     var mail = false;
     if (userData.UserRole != 2 && $("#role").val() == 2)
         mail = true;
-
     data.update({
         'UserRole': $("#role").val(),
         'Email': $("#email").val(),
@@ -752,10 +751,11 @@ function saveUserData() {
                 { 'Id': userData.Id }, // filter
                 function (data) {
                     console.log(data);
+                    navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
                     if (mail) {
                         sendMail(emailTemplates.thankYou, [userData.Email], { "appName": emailTemplates.DefaultFromName, "DefaultFromName": emailTemplates.DefaultFromName, "userName": $("#name").val(), "FromEmail": emailTemplates.FromEmail });
+                        app.application.navigate("membership.html");
                     }
-                    navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
                 },
                 function (error) {
                     alert(JSON.stringify(error));

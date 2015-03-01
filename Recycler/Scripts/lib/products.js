@@ -290,7 +290,7 @@ app.Product = (function () {
         var userId = null;
 
         var nointerest = function (i) {
-            debugger;
+            
             var productId = $("#NoInterest").attr("productId");
 
             var visitedProductIds = [];
@@ -346,7 +346,7 @@ app.Product = (function () {
                                 var query = new Everlive.Query();
                                 query.where().eq('UserID', userId).done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 data.get(query).then(function (data) {
-                                    debugger;
+                                    
 
                                     hideLoading();
                                     options.success(data.result);
@@ -439,7 +439,7 @@ app.Product = (function () {
         }
 
         var getProducts = function (isMy, filterWord) {
-            debugger;
+            
             var visitedProductIds = [];
             if (localStorage.isVisitedProductIds) {
                 visitedProductIds = JSON.parse(localStorage.isVisitedProductIds);
@@ -479,11 +479,11 @@ app.Product = (function () {
                             var data = app.everlive.data('Product');
                             var query = new Everlive.Query();
 
-                            debugger;
+                            
 
                             var user = $.parseJSON(localStorage.User);
                             var country = user.Country || '';
-                            debugger;
+                            
                             var city = user.City || '';
                             var cityRegEx = ".*" + city + ".*";
                             var countryRegEx = ".*" + country + ".*";
