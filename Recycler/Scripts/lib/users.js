@@ -864,7 +864,7 @@ function setupInit() {
                 var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                    debugger;
+                    
                     var city = "N/A";
                     if (status == google.maps.GeocoderStatus.OK) {
                         // get city, postal code, country

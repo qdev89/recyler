@@ -405,7 +405,7 @@ function SaveSpot() {
 
 
     var Data = JSON.parse(localStorage.Spotdata);
-    debugger;
+    
     var location = {};
     if (markersArray[0] != undefined) {
         lat = markersArray[0].position.lat();
@@ -1222,7 +1222,7 @@ function CreateASpot() {
         return;
     } else if (spot.blnFlag == true || spot.blnFlag == 'true') {
 
-        debugger;
+        
 
         spot.userId = User.Id;
         spot.Id = '0';

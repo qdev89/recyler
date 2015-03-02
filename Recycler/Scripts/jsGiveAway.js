@@ -168,7 +168,7 @@ function saveItem() {
     var filter = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
 
     var selectedOption = $("input[name='abc']:checked").val();
-    debugger;
+    
     if (selectedOption == "3" || selectedOption == "4" || selectedOption == "5" || selectedOption == "6") {
         if ($('#price').val() == 'Value' || $('#price').val() == '' || $('#price').val() == '0') {
             flag = false;
@@ -333,7 +333,7 @@ function saveItem() {
         GiveProduct.Product.Type = 'free';
     }
 
-    debugger;
+    
     switch (selectedOption) {
         case "1":
             GiveProduct.Product.Type = 'giveaway';
@@ -431,16 +431,17 @@ function saveItem() {
     if ($('#PriceTag').is(':checked')) {
         Payment();
     } else {
-        if (IsFoodSelected == false)
-            CreateProduct(JSON.parse(Data));
-        else {
-            app.foodProduct = Data;
-            app.application.navigate("nearest_food.html");
-        }
+        ////if (IsFoodSelected == false)
+        ////    CreateProduct(JSON.parse(Data));
+        ////else {
+        ////    app.foodProduct = Data;
+        ////    app.application.navigate("nearest_food.html");
+        ////}
+        CreateProduct(JSON.parse(Data), IsFoodSelected);
     }
 }
 
-function CreateProduct(Data) {
+function CreateProduct(Data, isFood) {
     showLoading();
     console.log(Data);
     var data = app.everlive.data('Product');
@@ -449,9 +450,9 @@ function CreateProduct(Data) {
                var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                var geocoder = new google.maps.Geocoder();
                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                   //debugger;
+                   //
                    //JSON.stringify(results);
-                   debugger;
+                   
                    var city = "N/A";
                    var user = $.parseJSON(localStorage.User);
                    var country = user.Country || '';
@@ -521,11 +522,17 @@ function CreateProduct(Data) {
 
                        window.localStorage.removeItem('CacheItem');
                        hideLoading();
-                       if (User.UserRole == "1") {
-                           app.application.navigate("Terra.html");
+                       if (isFood) {
+                           app.foodProductId = data.result.Id;
+                           app.application.navigate("nearest_food.html");
                        } else {
-                           app.application.navigate("thanks.html");
+                           if (User.UserRole == "1") {
+                               app.application.navigate("Terra.html");
+                           } else {
+                               app.application.navigate("thanks.html");
+                           }
                        }
+                     
                    }, function (error) {
                        hideLoading();
                        console.log(error);

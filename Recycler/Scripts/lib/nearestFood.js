@@ -6,12 +6,12 @@ function nearestFoodInit() {
              //query.where().nearSphere('Location', [position.coords.latitude, position.coords.longitude], 20, 'km');
 
              // TODO: uncomment this when release
-             query.where().nearSphere('Location', [9.048379726348116,56.55474784012899], 20, 'km');
+             query.where().nearSphere('Location', [9.048379726348116, 56.55474784012899], 20, 'km');
              query.take(10);
              var data = app.everlive.data('Spot');
              data.get(query)
                  .then(function (data) {
-                     debugger;
+
                      var spots = data.result;
                      //Get the external template definition using a jQuery selector
                      var template = kendo.template($('#spotNearestTableTemplate').html());
@@ -83,50 +83,63 @@ function onSendMessagesChecked(cb, id) {
 }
 
 function sendEmailForCheckedPlaces() {
+    debugger;
     if (nearestPlacesIdChecked.length > 0) {
         showLoading();
-        var data = app.everlive.data('Users');
-        var query = new Everlive.Query();
-        query.where().isin('Id', nearestPlacesIdChecked);
-        data.get(query).then(function (data) {
-            debugger;
-            var foodProduct = {};
-            if (app.foodProduct) {
-                foodProduct = app.foodProduct;
-            }
+        var foodProduct = {};
+        if (app.foodProductId) {
+            var data = app.everlive.data('Product');
+            var query = new Everlive.Query();
+            query.where().eq('Id', app.foodProductId);
+            data.get(query).then(function (product) {
+                debugger;
+                foodProduct = product.result[0];
+                var data1 = app.everlive.data('Users');
+                var query1 = new Everlive.Query();
+                query1.where().isin('Id', nearestPlacesIdChecked);
+                data1.get(query1).then(function (data) {
+                    if (data.result.length > 0) {
+                        var emailList = [];
+                        data.result.forEach(function (user) {
+                            emailList.push(user.Email);
+                        });
 
-            if (data.result.length > 0) {
-                var emailList = [];
-                data.result.forEach(function (user) {
-                    emailList.push(user.Email);
-                });
+                        // TODO: uncomment this when release
+                        sendMail("fooddonation_email", emailList,
+                        //sendMail("fooddonation_email", ["bjarke@bsrweb.dk", "nmquoc89@gmail.com","quoc.dev@outlook.com","quocfreelancer@gmail.com","quoc.nguyen@dnafor.net"],
+                        //sendMail("fooddonation_email", ["bjarke@bsrweb.dk"],
+                        {
+                            "userName": User.DisplayName,
+                            "appName": emailTemplates.DefaultFromName,
+                            "DefaultFromName": emailTemplates.DefaultFromName,
+                            "FromEmail": emailTemplates.FromEmail,
+                            "UserPhoto": User.ImageData,
+                            "Phone": User.PhoneNumber,
+                            "Email": User.Email,
+                            "Address": User.AddressLine1 + "," + User.City + " " + User.State + "," + User.Country,
+                            "ProductPhoto1": foodProduct.Image1,
+                            "ProductPhoto2": foodProduct.Image2,
+                            "ProductPhoto3": foodProduct.Image3,
+                            "ProductDescription": foodProduct.Description
+                        });
+                    }
 
-                // TODO: uncomment this when release
-                //sendMail("fooddonation_email", emailList,
-                sendMail("fooddonation_email", ["bjarke@bsrweb.dk"],
-                {
-                    "userName": User.DisplayName,
-                    "appName": emailTemplates.DefaultFromName,
-                    "DefaultFromName": emailTemplates.DefaultFromName,
-                    "FromEmail": emailTemplates.FromEmail,
-                    "UserPhoto": User.ImageData,
-                    "Phone": User.PhoneNumber,
-                    "Email": User.Email,
-                    "Address": User.AddressLine1 + "," + User.City + " " + User.State + "," + User.Country,
-                    "ProductPhoto1": foodProduct.Image1,
-                    "ProductPhoto2": foodProduct.Image2,
-                    "ProductPhoto3": foodProduct.Image3,
-                    "ProductDescription": foodProduct.Description
-                });
-            }
+                    hideLoading();
 
+                },
+                     function (error) {
+                         hideLoading();
+                         alert(JSON.stringify(error));
+                     });
+
+            },
+                 function (error) {
+                     hideLoading();
+                     alert(JSON.stringify(error));
+                 });
+        } else {
             hideLoading();
-
-        },
-             function (error) {
-                 hideLoading();
-                 alert(JSON.stringify(error));
-             });
+        }
     }
 }
 

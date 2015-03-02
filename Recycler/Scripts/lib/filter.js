@@ -128,7 +128,7 @@ window.filter = {};
 
                 // TODO for checkbox
                 if (selectedProductTypeIndex && selectedProductTypeIndex > 0) {
-                    debugger;
+                    
                     var productType;
                     switch (selectedProductTypeIndex) {
                         case "1":
@@ -175,7 +175,7 @@ window.filter = {};
 
                 contQuery.done();
                 query.orderDesc('CreatedAt');
-                debugger;
+                
                 data.get(query).then(
                     function (data) {
                         hideLoading();

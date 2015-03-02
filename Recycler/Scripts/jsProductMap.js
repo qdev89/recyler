@@ -25,7 +25,7 @@ function isValidDate(d) {
 }
 
 function iconMapInit() {
-    debugger;
+    
     showLoading();
     if (googleMap != null) {
         hideLoading();
@@ -209,7 +209,7 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
 
     //  log(content);
     //  log(isGrey);
-    //  debugger;
+    //  
     if (map == undefined) map = googleMap;
     if (draggable != true) draggable = false;
     var icon = "";

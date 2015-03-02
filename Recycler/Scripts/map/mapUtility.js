@@ -101,7 +101,7 @@
                          geocoder.geocode({
                              'address': address
                          }, function (results, status) {
-                             debugger;
+                             
                              if (status == google.maps.GeocoderStatus.OK) {
                                  var retailerResult = results[0];
                                  //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
