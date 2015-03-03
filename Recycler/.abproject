@@ -2,7 +2,7 @@
   "ProjectName": "Recycler",
   "ProjectGuid": "768e2675-0d94-49ed-864b-fb76d1607d92",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.Recycler",
+  "AppIdentifier": "dk.recycleworld.recycleworld",
   "DisplayName": "Recycleworld - together we change",
   "Author": "Recycleworld Aps",
   "Description": "Together we change - take action and help us stop food waste & a better recycling for a better future. Using recyceworld benefits others and help us work towards sustanability.",
