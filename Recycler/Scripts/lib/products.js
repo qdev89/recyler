@@ -43,12 +43,16 @@ function loadProduct(e) {
             $(selector + ".city").html(user.City);
 
             $(selector + ".type").html(product.Type);
+            $(selector + ".type").attr("data-localize", product.Type);
             $(selector + ".title").html(product.Name);
             $(selector + ".status").html(product.Status);
             $(selector + ".date").html(new Date(product.CreatedAt).toDateString());
             $(selector + ".price").html(product.Price);
             $(selector + ".info").html(product.MoreInformation);
             $(selector + ".instead").html(product.Description);
+            $(selector + ".category").html(" " + product.Category);
+            $("#categoryProduct").attr("href", "categoryProducts.html?category=" + product.Category);
+            //$(selector + ".category").attr("category", product.Category);
 
             $("#WantIt").attr("href", "userItems.html?userId=" + product.UserID);
             $("#NoInterest").attr("productId", product.Id);
@@ -290,7 +294,7 @@ app.Product = (function () {
         var userId = null;
 
         var nointerest = function (i) {
-            
+
             var productId = $("#NoInterest").attr("productId");
 
             var visitedProductIds = [];
@@ -346,7 +350,7 @@ app.Product = (function () {
                                 var query = new Everlive.Query();
                                 query.where().eq('UserID', userId).done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 data.get(query).then(function (data) {
-                                    
+
 
                                     hideLoading();
                                     options.success(data.result);
@@ -439,7 +443,7 @@ app.Product = (function () {
         }
 
         var getProducts = function (isMy, filterWord) {
-            
+
             var visitedProductIds = [];
             if (localStorage.isVisitedProductIds) {
                 visitedProductIds = JSON.parse(localStorage.isVisitedProductIds);
@@ -479,11 +483,11 @@ app.Product = (function () {
                             var data = app.everlive.data('Product');
                             var query = new Everlive.Query();
 
-                            
+
 
                             var user = $.parseJSON(localStorage.User);
                             var country = user.Country || '';
-                            
+
                             var city = user.City || '';
                             var cityRegEx = ".*" + city + ".*";
                             var countryRegEx = ".*" + country + ".*";

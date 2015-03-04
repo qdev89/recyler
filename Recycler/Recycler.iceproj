@@ -807,6 +807,7 @@
     <Content Include="Scripts\lib\app.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Scripts\lib\categoryProducts.js" />
     <Content Include="Scripts\lib\everlive.all.min.js">
       <SubType>Content</SubType>
     </Content>
@@ -911,6 +912,7 @@
     <Content Include="views\addCommentView.html">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="categoryProducts.html" />
     <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
     <Resource Include="App_Resources\Android\drawable-mdpi\icon.png" />

@@ -1,9 +1,10 @@
 <div data-role="view" data-init="productInit" id="product-tabstrip" data-title="Product" data-show="loadProduct" style="background-color:white">
     <div data-role="content">
-         <div class="fields">
-                      <br>  <div style="margin-left:16px;">
-                            <span class="boldText title"></span>
-              </div></div>
+        <div class="fields">
+            <br>  <div style="margin-left:16px;">
+                <span class="boldText title"></span>
+            </div>
+        </div>
         <div id="scrollview-container" data-role="scrollview" data-template="scrollview-template" data-content-height="250px">
         </div>
         <script id="scrollview-template" type="text/x-kendo-templatmap-with-markerse">
@@ -14,10 +15,17 @@
                 <td>
                     <div class="fields">
                         <div>
+                            <a data-role="button" class="btn btn-blue" data-transition="fade" id="categoryProduct">
+                                <label for="category" data-localize="category">Category</label>    <span class="category"></span>
+                            </a>
+                        </div>
+                        <br>
+                        <hr color="#C0C0C0" size="1">
+                        <div>
                             <table width="100%">
                                 <tr>
                                     <td width="50%">
-                                        <span class="boldText type"></span>
+                                        <label class="boldText type"></label>
                                     </td>
                                     <td>
                                         <label for="desciption" data-localize="estimated"> </label>
@@ -28,6 +36,7 @@
                                 </tr>
                             </table>
                         </div>
+                        <br>
                         <hr color="#C0C0C0" size="1">
                         <div>
                             <span class="boldText"> <label for="long_description_title" data-localize="long_description_title"> Further information:</label>:</span>
@@ -112,3 +121,11 @@
         width: 100%;
     }
 </style>
+
+<script>
+
+    function goToCategoryProduct(row) {
+        var category = $(row).attr("category");
+        app.application.navigate("categoryProducts.html?category=" + category);
+    }
+</script>
