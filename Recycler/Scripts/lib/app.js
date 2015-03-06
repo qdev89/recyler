@@ -13,7 +13,7 @@
     };
 
    win.addEventListener('error', function (e) {
-        e.preventDefault();
+        //e.preventDefault();
 
         var message = e.message + "' from " + e.filename + ":" + e.lineno;
 
