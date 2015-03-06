@@ -34,9 +34,9 @@ app.AddActivity = (function () {
                 debugger;
                 var activity = activities.add();// doesn't work!
                 //var activity = {};
-
+                debugger;
                 activity.Text = $newStatus.val();
-                activity.UserId = user.UserID;
+                activity.UserId = user.Id;
                 //activities.add(activity);
                 activities.one('sync', function () {
                     app.application.navigate('#:back');
