@@ -105,6 +105,7 @@ app.Login = (function () {
                                                console.log(data.result);
 
                                                localStorage.User = JSON.stringify(data.result);
+                                               app.AddActivity.me = data.result;
                                                fillUserData(data.result);
 
                                                localStorage.Language = data.result.LanguageID;

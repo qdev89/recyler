@@ -44,23 +44,16 @@ app.Activities = (function () {
                 return app.helper.resolvePictureUrl(this.get('Picture'));
             },
             User: function () {
-
-                var userId = this.get('UserId');
-
-                var user = $.grep(app.Users.users(), function (e) {
-                    return e.Id === userId;
-                })[0];
-
-                return user ? {
-                    DisplayName: user.DisplayName,
-                    PictureUrl: app.helper.resolveProfilePictureUrl(user.Picture)
-                } : {
-                    DisplayName: 'Anonymous',
-                    PictureUrl: app.helper.resolveProfilePictureUrl()
-                };
+                var user = JSON.parse(localStorage.User);
+                if (!user.ImageData) {
+                    user.ImageData = "../images/avatar.png";
+                }
+                return user;
             },
+            //User: JSON.parse(localStorage.User),
             isVisible: function () {
-                var currentUserId = app.Users.currentUser.data.Id;
+                var user = JSON.parse(localStorage.User);
+                var currentUserId = user.Id;
                 var userId = this.get('UserId');
 
                 return currentUserId === userId;
@@ -101,13 +94,13 @@ app.Activities = (function () {
         // Navigate to activityView When some activity is selected
         var activitySelected = function (e) {
 
-            app.mobileApp.navigate('views/activityView.html?uid=' + e.data.uid);
+            app.application.navigate('views/activityView.html?uid=' + e.data.uid);
         };
 
         // Navigate to app home
         var navigateHome = function () {
 
-            app.mobileApp.navigate('#welcome');
+            app.application.navigate('#welcome');
         };
 
         // Logout user
