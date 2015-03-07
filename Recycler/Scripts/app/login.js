@@ -23,7 +23,7 @@ app.Login = (function () {
         var init = function () {
 
             if (!app.isKeySet(appSettings.everlive.apiKey)) {
-                app.mobileApp.navigate('views/noApiKey.html', 'fade');
+               app.application.navigate('views/noApiKey.html', 'fade');
             }
 
             $loginUsername = $('#loginUsername');
@@ -73,7 +73,7 @@ app.Login = (function () {
             })
             .then(function () {
 
-                app.mobileApp.navigate('views/activitiesView.html');
+               app.application.navigate('views/activitiesView.html');
             })
             .then(null,
                   function (err) {
@@ -104,7 +104,7 @@ app.Login = (function () {
                 display: 'touch'
             };
             var facebook = new IdentityProvider(facebookConfig);
-            app.mobileApp.showLoading();
+           app.application.showLoading();
 
             facebook.getAccessToken(function(token) {
                 app.everlive.Users.loginWithFacebook(token)
@@ -116,11 +116,11 @@ app.Login = (function () {
                     return app.Users.load();
                 })
                 .then(function () {
-                    app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                   app.application.hideLoading();
+                   app.application.navigate('views/activitiesView.html');
                 })
                 .then(null, function (err) {
-                    app.mobileApp.hideLoading();
+                   app.application.hideLoading();
                     if (err.code == 214) {
                         app.showError('The specified identity provider is not enabled in the backend portal.');
                     } else {
@@ -151,7 +151,7 @@ app.Login = (function () {
                 display: 'touch'
             };
             var google = new IdentityProvider(googleConfig);
-            app.mobileApp.showLoading();
+           app.application.showLoading();
 
             google.getAccessToken(function(token) {
                 app.everlive.Users.loginWithGoogle(token)
@@ -163,11 +163,11 @@ app.Login = (function () {
                     return app.Users.load();
                 })
                 .then(function () {
-                    app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                   app.application.hideLoading();
+                   app.application.navigate('views/activitiesView.html');
                 })
                 .then(null, function (err) {
-                    app.mobileApp.hideLoading();
+                   app.application.hideLoading();
                     if (err.code == 214) {
                         app.showError('The specified identity provider is not enabled in the backend portal.');
                     } else {
@@ -198,7 +198,7 @@ app.Login = (function () {
                 display: 'touch'
             };
             var liveId = new IdentityProvider(liveIdConfig);
-            app.mobileApp.showLoading();
+           app.application.showLoading();
 
             liveId.getAccessToken(function(token) {
                 app.everlive.Users.loginWithLiveID(token)
@@ -210,11 +210,11 @@ app.Login = (function () {
                     return app.Users.load();
                 })
                 .then(function () {
-                    app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                   app.application.hideLoading();
+                   app.application.navigate('views/activitiesView.html');
                 })
                 .then(null, function (err) {
-                    app.mobileApp.hideLoading();
+                   app.application.hideLoading();
                     if (err.code == 214) {
                         app.showError('The specified identity provider is not enabled in the backend portal.');
                     } else {
@@ -241,7 +241,7 @@ app.Login = (function () {
                 wtrealm: appSettings.adfs.adfsRealm
             };
             var adfs = new IdentityProvider(adfsConfig);
-            app.mobileApp.showLoading();
+           app.application.showLoading();
 
             adfs.getAccessToken(function(token) {
                 app.everlive.Users.loginWithADFS(token)
@@ -253,11 +253,11 @@ app.Login = (function () {
                     return app.Users.load();
                 })
                 .then(function () {
-                    app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                   app.application.hideLoading();
+                   app.application.navigate('views/activitiesView.html');
                 })
                 .then(null, function (err) {
-                    app.mobileApp.hideLoading();
+                   app.application.hideLoading();
                     if (err.code == 214) {
                         app.showError('The specified identity provider is not enabled in the backend portal.');
                     } else {

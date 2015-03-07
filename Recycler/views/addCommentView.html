@@ -1,9 +1,9 @@
 <div data-role="view" id="share" data-transition="overlay:down" class="add-comment-view"
-    data-init="app.AddComment.init" data-show="app.AddComment.show" data-model="app.AddComment"  data-title="Comment news">
+     data-init="app.AddComment.init" data-show="app.AddComment.show" data-model="app.AddComment" data-title="Comment news">
     <div data-role="header">
         <div data-role="navbar">
             <a class="nav-button nav-button-cancel" data-align="left" data-role="backbutton">Cancel</a>
-             <!-- <div class="km-leftitem">
+            <!-- <div class="km-leftitem">
                 <a class="drawer-button km-widget km-button" data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="left">
                 </a>
             </div>-->
@@ -12,11 +12,11 @@
     </div>
     <div id="enterComment" class="share-form-wrp" data-role="listview" data-style="inset">
         <div class="user-avatar">
-             <img data-bind="attr:{src: me.get('data').ImageData}" alt="avatar.png" />
+            <img data-bind="attr:{src: me.get('data').ImageData}" alt="images/avatar.png" />
         </div>
         <h2 class="person-name" data-bind="text: me.get('data').DisplayName">Me</h2>
         <div class="user-share">
-            <textarea id="newComment" placeholder="Whats your NEWS story?" required validationMessage="Comment text is required!"></textarea>
+            <textarea id="newComment" placeholder="Whats your NEWS story?" required validationmessage="Comment text is required!"></textarea>
         </div>
     </div>
 </div>

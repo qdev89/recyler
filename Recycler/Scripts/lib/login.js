@@ -93,7 +93,7 @@ app.Login = (function () {
                     analytics.TrackFeature('Login.Regular');
                 }
 
-                // return app.Users.load();
+                return app.Users.load();
             })
             .then(function () {
 

@@ -44,16 +44,24 @@ app.Activities = (function () {
                 return app.helper.resolvePictureUrl(this.get('Picture'));
             },
             User: function () {
-                var user = JSON.parse(localStorage.User);
-                if (!user.ImageData) {
-                    user.ImageData = "../images/avatar.png";
-                }
-                return user;
+                var userId = this.get('UserId');
+
+                var user = $.grep(app.Users.users(), function (e) {
+                    return e.Id === userId;
+                })[0];
+
+                return user ? {
+                    DisplayName: user.DisplayName,
+                    //PictureUrl: app.helper.resolveProfilePictureUrl(user.Picture)
+                    PictureUrl: user.ImageData ? user.ImageData : "images/avatar.png"
+                } : {
+                    DisplayName: 'Anonymous',
+                    //PictureUrl: app.helper.resolveProfilePictureUrl()
+                    PictureUrl: "images/avatar.png"
+                };
             },
-            //User: JSON.parse(localStorage.User),
             isVisible: function () {
-                var user = JSON.parse(localStorage.User);
-                var currentUserId = user.Id;
+                var currentUserId = app.Users.currentUser.data.Id;
                 var userId = this.get('UserId');
 
                 return currentUserId === userId;

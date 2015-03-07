@@ -216,7 +216,7 @@ skin: 'flat'
          app.showError= showError;
          app.showConfirm= showConfirm;
          app.isKeySet= isKeySet,
-       //  app.mobileApp= mobileApp;
+       // app.application= mobileApp;
          app.helper= AppHelper;
          app.everlive= el;
          app.getYear= getYear;
