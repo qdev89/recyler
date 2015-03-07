@@ -32,7 +32,7 @@ app.Signup = (function () {
                 dataSource)
             .then(function () {
                 app.showAlert("Registration successful");
-                app.mobileApp.navigate('#welcome');
+               app.application.navigate('#welcome');
             },
             function (err) {
                 app.showError(err.message);

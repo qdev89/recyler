@@ -27,7 +27,7 @@
 <script type="text/x-kendo-template" id="activityTemplate">
     <div data-role="touch" data-bind="events: { tap: activitySelected }" class="cf">
         <div class="user-avatar">
-            <img data-bind="attr:{src: User().ImageData}" alt="images/avatar.png" />
+            <img data-bind="attr:{src: User().PictureUrl}" alt="images/avatar.png" />
         </div>
         <div class="activity-content">
             <h2 class="person-name">${User().DisplayName}</h2>
