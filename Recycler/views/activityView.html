@@ -2,9 +2,10 @@
     <div data-role="header">
         <div data-role="navbar">
             <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton">Back</a>
-           <!-- <div class="km-leftitem">
-                <a class="drawer-button km-widget km-button" data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="left"></a>
-            </div> --> <a class="nav-button nav-button-post" data-align="right" data-role="button" href="views/addCommentView.html">Comment</a>
+            <!-- <div class="km-leftitem">
+                 <a class="drawer-button km-widget km-button" data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="left"></a>
+             </div> -->
+            <a class="nav-button nav-button-post" data-align="right" data-role="button" href="views/addCommentView.html">Comment</a>
         </div>
     </div>
 
@@ -16,13 +17,13 @@
             <h2 id="personName" class="person-name" data-bind='text: User().DisplayName'></h2>
             <span id="activityDate" class="time-span" data-bind="text: CreatedAtFormatted"></span>
             <span id="activityText" data-bind="text: Text" class="user-share-txt"></span>
-            <img id="picture" class="picture" data-bind="attr:{src: PictureUrl()}" width="100%"/>
+            <img id="picture" class="picture" data-bind="attr:{src: PictureUrl()}" width="100%" />
             <div class="comments-wrp">
                 <ul id="comments-listview"></ul>
             </div>
         </div>
     </div>
-    
+
     <div data-role="footer">
         <a data-role="button" data-bind="visible: isVisible" data-click="app.Activity.remove" class="btn btn-delete">Delete</a>
     </div>

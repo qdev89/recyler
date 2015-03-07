@@ -108,7 +108,7 @@ app.Activities = (function () {
         // Navigate to app home
         var navigateHome = function () {
 
-            app.application.navigate('#welcome');
+            app.application.navigate('#:back');
         };
 
         // Logout user
