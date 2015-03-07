@@ -118,13 +118,4 @@ function loadProductByCategory(e) {
     });
 
     var listView = $(listID).data("kendoMobileListView");
-    if (listView != null) {
-        listView._scrollerInstance.scrollElement.on("touchend", function () {
-            if (loadMore) {
-                if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))
-                    listView.dataSource.read();
-            }
-        });
-        listView._scrollerInstance.scrollTo(0, 0);
-    }
 }
