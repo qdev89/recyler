@@ -29,7 +29,7 @@ app.AddComment = (function () {
             
             // Validating of the required fields
             if (validator.validate()) {
-                
+                showLoading();
                 // Adding new comment to Comments model
                 var comments = app.Comments.comments;
                 var comment = comments.add();
@@ -39,7 +39,8 @@ app.AddComment = (function () {
                 comment.ActivityId = app.Activity.activity().Id;
                 
                 comments.one('sync', function () {
-                   app.application.navigate('#:back');
+                    hideLoading();
+                    app.application.navigate('#:back');
                 });
                 
                 comments.sync();

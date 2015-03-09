@@ -317,6 +317,37 @@ function onPhotoDataSuccess(imageData) {
     damagephoto.src = "data:image/jpeg;base64," + imageData;
 }
 
+function takePictureActivity() {
+    var destinationType = navigator.camera.DestinationType;
+    navigator.camera.getPicture(onPhotoDataActivitySuccess, onFail, { quality: 70, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+}
+
+function onPhotoDataActivitySuccess(imageData) {
+    //app.AddActivity.Photo = imageData;
+
+    var canvas = document.getElementById("cc");
+    var ctx = canvas.getContext("2d");
+
+    var img = new Image();
+    img.crossOrigin = "Anonymous"; //cors support
+    img.onload = function () {
+        var W = img.width;
+        var H = img.height;
+        canvas.width = W;
+        canvas.height = H;
+        ctx.drawImage(img, 0, 0); //draw image
+
+        //resize manually with 350 x 350 px
+        //https://github.com/viliusle/Hermite-resize/
+        resample_hermite(canvas, W, H, 350, 350);
+
+        var resizedImageData = canvas.toDataURL("image/jpeg");
+        var activityPhoto = document.getElementById('imageActivity');
+        activityPhoto.src = resizedImageData;
+    }
+    img.src = "data:image/jpeg;base64," + imageData;
+}
+
 function onFail(message) {
     console.log(message);
 }
@@ -906,7 +937,7 @@ function onPhotoDataSuccessSpot(imageData) {
         canvas.width = W;
         canvas.height = H;
         ctx.drawImage(img, 0, 0); //draw image
-        
+
         //resize manually with 350 x 350 px
         //https://github.com/viliusle/Hermite-resize/
         resample_hermite(canvas, W, H, 350, 350);
@@ -919,7 +950,7 @@ function onPhotoDataSuccessSpot(imageData) {
     }
 
     img.src = "data:image/jpeg;base64," + imageData;
-   
+
 }
 
 
@@ -1200,6 +1231,14 @@ function setListStyle(el, style) {
     }
 }
 
-
+function guid() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
+}
 
 

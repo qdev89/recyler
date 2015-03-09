@@ -41,7 +41,7 @@ app.Activities = (function () {
             },
             PictureUrl: function () {
 
-                return app.helper.resolvePictureUrl(this.get('Picture'));
+                return this.get('Picture');
             },
             User: function () {
                 var userId = this.get('UserId');
