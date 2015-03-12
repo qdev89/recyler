@@ -16,9 +16,9 @@
         <div class="activity-content">
             <h2 id="personName" class="person-name" data-bind='text: User().DisplayName'></h2>
             <span id="activityDate" class="time-span" data-bind="text: CreatedAtFormatted"></span>
+            <img id="picture" class="picture" data-bind="attr:{src: PictureUrl()}" width="100%" style="height: 220px;width: 220px;display: block" />
             <span id="activityText" data-bind="text: Text" class="user-share-txt"></span>
-            <img id="picture" class="picture" data-bind="attr:{src: PictureUrl()}" width="100%" style="height: 100px;width: 100px;display: block" />
-            <div class="comments-wrp">
+             <div class="comments-wrp">
                 <ul id="comments-listview"></ul>
             </div>
         </div>
