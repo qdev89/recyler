@@ -121,7 +121,6 @@
                 return true;
             } else {
                 alert('You are ready to use this function.');
-
                 return false;
             }
         }
