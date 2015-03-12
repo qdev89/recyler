@@ -28,9 +28,86 @@
                     alias: 'Full version',
                     type: store.NON_CONSUMABLE
                 });
+                // You can also listen to the 'updated' event for individual products like this
+                store.when("1month").updated(function (p) {
+                    debugger;
+                    alert(JSON.stringify(p));
 
+                    var container = document.getElementById('productContainer');
+                    var elId = p.id.split(".")[3];
+                    var el = document.getElementById(elId);
+                    if (!el) {
+                        container.innerHTML += '<div id="' + elId + '"></div>';
+                        el = document.getElementById(elId);
+                    }
+
+                    if (!p.loaded) {
+                        el.innerHTML += '<h3>...</h3>';
+                    } else if (!p.valid) {
+                        el.innerHTML += '<h3>' + p.alias + ' Invalid</h3>';
+                    } else if (p.valid) {
+                        var html = "<h3>" + p.title + "</h3>" + "<p>" + p.description + "</p>";
+                        if (p.canPurchase) {
+                            html += "<button class='button' onclick='store.order(\"" + p.id + "\")'>Buy for " + p.price + "</button>";
+                        }
+                        el.innerHTML = html;
+                    }
+                });
+                // You can also listen to the 'updated' event for individual products like this
+                store.when("6months1").updated(function (p) {
+                    debugger;
+                    alert(JSON.stringify(p));
+
+                    var container = document.getElementById('productContainer');
+                    var elId = p.id.split(".")[3];
+                    var el = document.getElementById(elId);
+                    if (!el) {
+                        container.innerHTML += '<div id="' + elId + '"></div>';
+                        el = document.getElementById(elId);
+                    }
+
+                    if (!p.loaded) {
+                        el.innerHTML += '<h3>...</h3>';
+                    } else if (!p.valid) {
+                        el.innerHTML += '<h3>' + p.alias + ' Invalid</h3>';
+                    } else if (p.valid) {
+                        var html = "<h3>" + p.title + "</h3>" + "<p>" + p.description + "</p>";
+                        if (p.canPurchase) {
+                            html += "<button class='button' onclick='store.order(\"" + p.id + "\")'>Buy for " + p.price + "</button>";
+                        }
+                        el.innerHTML = html;
+                    }
+                });
+                // You can also listen to the 'updated' event for individual products like this
+                store.when("full").updated(function (p) {
+                    debugger;
+                    alert(JSON.stringify(p));
+
+                    var container = document.getElementById('productContainer');
+                    var elId = p.id.split(".")[3];
+                    var el = document.getElementById(elId);
+                    if (!el) {
+                        container.innerHTML += '<div id="' + elId + '"></div>';
+                        el = document.getElementById(elId);
+                    }
+
+                    if (!p.loaded) {
+                        el.innerHTML += '<h3>...</h3>';
+                    } else if (!p.valid) {
+                        el.innerHTML += '<h3>' + p.alias + ' Invalid</h3>';
+                    } else if (p.valid) {
+                        var html = "<h3>" + p.title + "</h3>" + "<p>" + p.description + "</p>";
+                        if (p.canPurchase) {
+                            html += "<button class='button' onclick='store.order(\"" + p.id + "\")'>Buy for " + p.price + "</button>";
+                        }
+                        el.innerHTML = html;
+                    }
+                });
                 // When any product gets updated, refresh the HTML
                 store.when("product").updated(function (p) {
+                    debugger;
+                    alert(JSON.stringify(p));
+
                     var container = document.getElementById('productContainer');
                     var elId = p.id.split(".")[3];
                     var el = document.getElementById(elId);
