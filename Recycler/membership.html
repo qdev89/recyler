@@ -1,5 +1,5 @@
-<div data-role="view" data-title="Membership" id="how-works-tabstrip" data-show="TranslateApp" style="background-color: #f3f3f3;">
-    <!DOCTYPE html>
+<div data-role="view" data-title="Membership" id="how-works-tabstrip" data-show="TranslateApp" style="background-color: #f3f3f3;" data-init="app.membershipService.viewModel.initStore">
+    <!DOCTYPE HTML>
     <div align="center">
 
         <table border="0" width="90%" cellspacing="0" cellpadding="5">
@@ -50,25 +50,25 @@
 
             <tr>
                 <td width="50%">
-                   6 months supporter subscription<br>
-                    
+                    6 months supporter subscription<br>
+
                 </td>
                 <td width="25%" align="right"></td>
                 <td width="25%" align="right">
                     <input type="radio" value="V1" name="membershipType">
                 </td>
             </tr>
-                  <tr>
+            <tr>
                 <td width="50%">
-                   1 year supporter subscription<br>
-                    
+                    1 year supporter subscription<br>
+
                 </td>
                 <td width="25%" align="right"></td>
                 <td width="25%" align="right">
                     <input type="radio" value="V1" name="membershipType">
                 </td>
             </tr>
-      
+
             <tr>
                 <td colspan="3" align="center">
                     <img border="0" src="images/supporter.png" width="200" height="207">
@@ -79,9 +79,9 @@
 
                     <p align="center">
 
-                    <a data-role="button"  class="btn btn-blue" onclick="membership();">
-                        <label for="ok" data-localize="ok">Ok</label>
-                    </a>
+                        <a data-role="button" class="btn btn-blue" onclick="membership();">
+                            <label for="ok" data-localize="ok">Ok</label>
+                        </a>
                 </td>
             </tr>
 
