@@ -821,6 +821,7 @@
     <Content Include="Scripts\lib\login.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Scripts\lib\membership.js" />
     <Content Include="Scripts\lib\nearestFood.js">
       <SubType>Content</SubType>
     </Content>
