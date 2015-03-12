@@ -12,19 +12,19 @@
 
                 // Inform the store of your products
                 store.register({
-                    id: 'Monthly_supporter',
+                    id: '1month',
                     alias: '1 month Supporter',
                     type: store.PAID_SUBSCRIPTION
                 });
 
                 store.register({
-                    id: '6months_supporter',
+                    id: '6months',
                     alias: '6 months Supporter',
                     type: store.PAID_SUBSCRIPTION
                 });
 
                 store.register({
-                    id: 'Year_supporter',
+                    id: '12months',
                     alias: '1 year Supporter',
                     type: store.PAID_SUBSCRIPTION
                 });
