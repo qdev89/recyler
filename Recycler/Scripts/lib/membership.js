@@ -18,15 +18,15 @@
                 });
 
                 store.register({
-                    id: '6months',
+                    id: '6months1',
                     alias: '6 months Supporter',
-                    type: store.PAID_SUBSCRIPTION
+                    type: store.CONSUMABLE
                 });
 
                 store.register({
-                    id: '12months',
-                    alias: '1 year Supporter',
-                    type: store.PAID_SUBSCRIPTION
+                    id: 'full',
+                    alias: 'Full version',
+                    type: store.NON_CONSUMABLE
                 });
 
                 // When any product gets updated, refresh the HTML
