@@ -13,103 +13,29 @@
                 // Inform the store of your products
                 store.register({
                     id: '1month',
-                    alias: '1 month Supporter',
+                    alias: 'Monthly running Supporter Subscription',
                     type: store.PAID_SUBSCRIPTION
                 });
 
                 store.register({
                     id: '6months1',
-                    alias: '6 months Supporter',
+                    alias: '6 months Supporter Subscription',
                     type: store.CONSUMABLE
                 });
 
                 store.register({
                     id: 'full',
-                    alias: 'Full version',
+                    alias: '12 months Supporter Subscription',
                     type: store.NON_CONSUMABLE
                 });
-                // You can also listen to the 'updated' event for individual products like this
-                store.when("1month").updated(function (p) {
-                    debugger;
-                    alert(JSON.stringify(p));
-
-                    var container = document.getElementById('productContainer');
-                    var elId = p.id.split(".")[3];
-                    var el = document.getElementById(elId);
-                    if (!el) {
-                        container.innerHTML += '<div id="' + elId + '"></div>';
-                        el = document.getElementById(elId);
-                    }
-
-                    if (!p.loaded) {
-                        el.innerHTML += '<h3>...</h3>';
-                    } else if (!p.valid) {
-                        el.innerHTML += '<h3>' + p.alias + ' Invalid</h3>';
-                    } else if (p.valid) {
-                        var html = "<h3>" + p.title + "</h3>" + "<p>" + p.description + "</p>";
-                        if (p.canPurchase) {
-                            html += "<button class='button' onclick='store.order(\"" + p.id + "\")'>Buy for " + p.price + "</button>";
-                        }
-                        el.innerHTML = html;
-                    }
-                });
-                // You can also listen to the 'updated' event for individual products like this
-                store.when("6months1").updated(function (p) {
-                    debugger;
-                    alert(JSON.stringify(p));
-
-                    var container = document.getElementById('productContainer');
-                    var elId = p.id.split(".")[3];
-                    var el = document.getElementById(elId);
-                    if (!el) {
-                        container.innerHTML += '<div id="' + elId + '"></div>';
-                        el = document.getElementById(elId);
-                    }
-
-                    if (!p.loaded) {
-                        el.innerHTML += '<h3>...</h3>';
-                    } else if (!p.valid) {
-                        el.innerHTML += '<h3>' + p.alias + ' Invalid</h3>';
-                    } else if (p.valid) {
-                        var html = "<h3>" + p.title + "</h3>" + "<p>" + p.description + "</p>";
-                        if (p.canPurchase) {
-                            html += "<button class='button' onclick='store.order(\"" + p.id + "\")'>Buy for " + p.price + "</button>";
-                        }
-                        el.innerHTML = html;
-                    }
-                });
-                // You can also listen to the 'updated' event for individual products like this
-                store.when("full").updated(function (p) {
-                    debugger;
-                    alert(JSON.stringify(p));
-
-                    var container = document.getElementById('productContainer');
-                    var elId = p.id.split(".")[3];
-                    var el = document.getElementById(elId);
-                    if (!el) {
-                        container.innerHTML += '<div id="' + elId + '"></div>';
-                        el = document.getElementById(elId);
-                    }
-
-                    if (!p.loaded) {
-                        el.innerHTML += '<h3>...</h3>';
-                    } else if (!p.valid) {
-                        el.innerHTML += '<h3>' + p.alias + ' Invalid</h3>';
-                    } else if (p.valid) {
-                        var html = "<h3>" + p.title + "</h3>" + "<p>" + p.description + "</p>";
-                        if (p.canPurchase) {
-                            html += "<button class='button' onclick='store.order(\"" + p.id + "\")'>Buy for " + p.price + "</button>";
-                        }
-                        el.innerHTML = html;
-                    }
-                });
+              
                 // When any product gets updated, refresh the HTML
                 store.when("product").updated(function (p) {
                     debugger;
                     alert(JSON.stringify(p));
 
                     var container = document.getElementById('productContainer');
-                    var elId = p.id.split(".")[3];
+                    var elId = p.id;
                     var el = document.getElementById(elId);
                     if (!el) {
                         container.innerHTML += '<div id="' + elId + '"></div>';
@@ -121,7 +47,7 @@
                     } else if (!p.valid) {
                         el.innerHTML += '<h3>' + p.alias + ' Invalid</h3>';
                     } else if (p.valid) {
-                        var html = "<h3>" + p.title + "</h3>" + "<p>" + p.description + "</p>";
+                        var html = "<h3>" + p.alias + "</h3>";
                         if (p.canPurchase) {
                             html += "<button class='button' onclick='store.order(\"" + p.id + "\")'>Buy for " + p.price + "</button>";
                         }
@@ -130,50 +56,81 @@
                 });
 
                 // handle subscription events
-                store.when("1 year Supporter").approved(function (p) {
-                    alert("verify subscription");
+                store.when("Monthly running Supporter Subscription").approved(function (p) {
+                    alert("1 verify subscription");
                     p.verify();
                 });
 
-                store.when("1 year Supporter").verified(function (p) {
-                    alert("subscription verified");
+                store.when("Monthly running Supporter Subscription").verified(function (p) {
+                    alert("1 subscription verified");
                     p.finish();
                 });
 
-                store.when("1 year Supporter").unverified(function (p) {
-                    alert("subscription unverified");
+                store.when("Monthly running Supporter Subscription").unverified(function (p) {
+                    alert("1 subscription unverified");
                 });
 
-                store.when("1 year Supporter").updated(function (p) {
+                store.when("Monthly running Supporter Subscription").updated(function (p) {
                     if (p.owned) {
-                        console.log('You have a subscription');
+                        alert('You have a 1 subscription');
                         //document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
                     } else {
-                        console.log('You don\'t have a subscription');
+                        alert('You don\'t have a 1 subscription');
                         //document.getElementById('subscriber-info').innerHTML = 'You are not subscribed';
                     }
                 });
-                // Deal with errors
-                store.error(function (error) {
-                    alert('ERROR ' + error.code + ': ' + error.message);
+
+                // handle subscription events
+                store.when("6 months Supporter Subscription").approved(function (p) {
+                    alert("6 verify subscription");
+                    p.verify();
                 });
 
-                // When purchase of 100 coins is approved, show an alert
-                store.when("1 month Supporter").approved(function (order) {
-                    alert("You got an additional 100 coins!");
-                    order.finish();
+                store.when("6 months Supporter Subscription").verified(function (p) {
+                    alert("6 subscription verified");
+                    p.finish();
                 });
 
-                // When purchase of the full version is approved, show an alert and finish the transaction.
-                store.when("6months_supporter").approved(function (order) {
-                    alert('You just unlocked the FULL VERSION!');
-                    order.finish();
+                store.when("6 months Supporter Subscription").unverified(function (p) {
+                    alert("6 subscription unverified");
                 });
 
-                // The play button can only be accessed when the user owns the full version.
-                store.when("6months_supporter").updated(function (product) {
-                    console.log("The full version updated to " + (product.owned ? "owned" : "not owned"));
+                store.when("6 months Supporter Subscription").updated(function (p) {
+                    if (p.owned) {
+                        alert('You have a 6 subscription');
+                        //document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
+                    } else {
+                        alert('You don\'t have a 6 subscription');
+                        //document.getElementById('subscriber-info').innerHTML = 'You are not subscribed';
+                    }
                 });
+
+                // handle subscription events
+                store.when("12 months Supporter Subscription").approved(function (p) {
+                    alert("12 verify subscription");
+                    p.verify();
+                });
+
+                store.when("12 months Supporter Subscription").verified(function (p) {
+                    alert("12 subscription verified");
+                    p.finish();
+                });
+
+                store.when("12 months Supporter Subscription").unverified(function (p) {
+                    alert("12 subscription unverified");
+                });
+
+                store.when("12 months Supporter Subscription").updated(function (p) {
+                    if (p.owned) {
+                        alert('You have a 12 subscription');
+                        //document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
+                    } else {
+                        alert('You don\'t have a 12 subscription');
+                        //document.getElementById('subscriber-info').innerHTML = 'You are not subscribed';
+                    }
+                });
+
+
 
                 // When the store is ready all products are loaded and in their "final" state.
                 // Note that the "ready" function will be called immediately if the store is already ready.
@@ -197,7 +154,7 @@
                 alert('Plugin not found. Maybe you are running in AppBuilder Companion app which currently does not support this plugin.');
                 return true;
             } else {
-                alert('You are ready to use this function.');
+                //alert('You are ready to use this function.');
                 return false;
             }
         }
