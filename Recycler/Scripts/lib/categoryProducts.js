@@ -38,14 +38,15 @@ function loadProductByCategory(e) {
                     var city = user.City || '';
                     var cityRegEx = ".*" + city + ".*";
                     var countryRegEx = ".*" + country + ".*";
+                    var categoryEx = ".*" + category + ".*";
                     if (city && user.onlycity) {
-                        query.where().and().eq('Category', category).regex('City', cityRegEx, 'i').done();
+                        query.where().and().regex('Category', categoryEx).regex('City', cityRegEx, 'i').done();
                         query.orderDesc('CreatedAt').skip(skip).take(interval);
                     } else if (country && user.onlycountry) {
-                        query.where().and().eq('Category', category).regex('Country', countryRegEx, 'i').done();
+                        query.where().and().regex('Category', categoryEx).regex('Country', countryRegEx, 'i').done();
                         query.orderDesc('CreatedAt').skip(skip).take(interval);
                     } else {
-                        query.where().eq('Category', category).done().orderDesc('CreatedAt').skip(skip).take(interval);;
+                        query.where().regex('Category', categoryEx).done().orderDesc('CreatedAt').skip(skip).take(interval);;
                     }
 
                     data.get(query).then(function (data) {

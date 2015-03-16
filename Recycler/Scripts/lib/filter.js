@@ -106,7 +106,7 @@ window.filter = {};
     function onFilter() {
         // get filter criteria 
         var search = $("#filterSearch").val();
-        var category = $("#select-custom-24 option:selected").text();
+        var category = $("#select-custom-24 option:selected").attr("id");
         var categoryIndex = $("#select-custom-24 option:selected").val();
         var distance = $("#Distance").val();
         var priceFrom = $("#PriceFrom").val();
