@@ -56,13 +56,13 @@ app.Activities = (function () {
                     //PictureUrl: app.helper.resolveProfilePictureUrl(user.Picture)
                     //PictureUrl: user.ImageData ? user.ImageData : "images/avatar.png",
                     PictureUrl: pictureCommentUrl ? pictureCommentUrl : (user.ImageData ? user.ImageData : "images/avatar.png"),
-                    PictureComment: pictureCommentUrl
+                    Avatar: user.ImageData ? user.ImageData : "images/avatar.png",
                 } : {
                     DisplayName: 'Anonymous',
                     //PictureUrl: app.helper.resolveProfilePictureUrl()
                     //PictureUrl: "images/avatar.png",
                     PictureUrl: pictureCommentUrl ? pictureCommentUrl : (user.ImageData ? user.ImageData : "images/avatar.png"),
-                    PictureComment: pictureCommentUrl
+                    Avatar: user.ImageData ? user.ImageData : "images/avatar.png",
                 };
             },
             isVisible: function () {
