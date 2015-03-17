@@ -27,13 +27,18 @@
 <!-- Activities ListView Template -->
 <script type="text/x-kendo-template" id="activityTemplate">
     <div data-role="touch" data-bind="events: { tap: activitySelected }" class="cf">
+        <div class="user-name">${User().DisplayName}</div>
         <div class="user-avatar">
             <img data-bind="attr:{src: User().PictureUrl}" alt="images/avatar.png" />
         </div>
         <div class="activity-content">
-            <h2 class="person-name">${User().DisplayName}</h2>
-            <span class="time-span">${CreatedAtFormatted()}</span>
             <a class="user-share-txt">${Text}</a>
+            #if(PictureUrl() !="null"){#
+            <img id="picture" class="picture" data-bind="attr:{src: PictureUrl}" alt="" height="120" width="120" style="margin:5px" />
+            #}#
+        </div>
+        <div>
+            <span class="time-span">${CreatedAtFormatted()}</span>
         </div>
 
 </script>

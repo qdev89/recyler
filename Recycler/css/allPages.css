@@ -1124,13 +1124,18 @@ font-size: 1rem;
     width: 50px;
 }
 
-    #friendsApp .user-avatar img {
-        width: 50px;
-        height: 50px;
-        -webkit-border-radius: 25px;
-        -moz-border-radius: 25px;
-        border-radius: 25px;
-    }
+#friendsApp .user-name {
+    color: #3598db;
+    font-weight: bold;
+}
+
+#friendsApp .user-avatar img {
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
 
 #friendsApp .activity-content {
     position: relative;
@@ -1858,6 +1863,7 @@ input:not([type='checkbox']), textarea, select {
     margin: 10px;
     color: white;
 }
+
 .three-by-row.styled-list li .img-holder h4 {
     position: absolute;
     top: 40px;
@@ -2239,14 +2245,15 @@ img.resimgs {
     white-space: nowrap;
 }
 
-#friendsApp .activity-content .time-span {
+#friendsApp .activity-content .time-span,  #friendsApp .time-span{
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 0;
     color: #6c7884;
     text-transform: uppercase;
     font-size: .7rem;
 }
+
 
 #friendsApp .activity-content .comment-content .time-span {
     top: 12px;
@@ -2255,6 +2262,7 @@ img.resimgs {
 
 #friendsApp .user-share-txt {
     color: #34495e;
+    display: block;
 }
 
 #friendsApp .activity-content .comment-content .user-share-txt {
@@ -2385,4 +2393,3 @@ img.resimgs {
     filter: url(#greyscale);
     filter: gray;
 }
-

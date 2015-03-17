@@ -41,9 +41,10 @@ app.Activities = (function () {
             },
             PictureUrl: function () {
 
-                return this.get('Picture');
+                return this.get('Picture') ? this.get('Picture') : 'null';
             },
             User: function () {
+                var pictureCommentUrl = this.get('Picture');
                 var userId = this.get('UserId');
 
                 var user = $.grep(app.Users.users(), function (e) {
@@ -53,11 +54,13 @@ app.Activities = (function () {
                 return user ? {
                     DisplayName: user.DisplayName,
                     //PictureUrl: app.helper.resolveProfilePictureUrl(user.Picture)
-                    PictureUrl: user.ImageData ? user.ImageData : "images/avatar.png"
+                    PictureUrl: user.ImageData ? user.ImageData : "images/avatar.png",
+                    PictureComment: pictureCommentUrl
                 } : {
                     DisplayName: 'Anonymous',
                     //PictureUrl: app.helper.resolveProfilePictureUrl()
-                    PictureUrl: "images/avatar.png"
+                    PictureUrl: "images/avatar.png",
+                    PictureComment: pictureCommentUrl
                 };
             },
             isVisible: function () {
