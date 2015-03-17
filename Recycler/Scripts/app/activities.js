@@ -54,12 +54,14 @@ app.Activities = (function () {
                 return user ? {
                     DisplayName: user.DisplayName,
                     //PictureUrl: app.helper.resolveProfilePictureUrl(user.Picture)
-                    PictureUrl: user.ImageData ? user.ImageData : "images/avatar.png",
+                    //PictureUrl: user.ImageData ? user.ImageData : "images/avatar.png",
+                    PictureUrl: pictureCommentUrl ? pictureCommentUrl : (user.ImageData ? user.ImageData : "images/avatar.png"),
                     PictureComment: pictureCommentUrl
                 } : {
                     DisplayName: 'Anonymous',
                     //PictureUrl: app.helper.resolveProfilePictureUrl()
-                    PictureUrl: "images/avatar.png",
+                    //PictureUrl: "images/avatar.png",
+                    PictureUrl: pictureCommentUrl ? pictureCommentUrl : (user.ImageData ? user.ImageData : "images/avatar.png"),
                     PictureComment: pictureCommentUrl
                 };
             },

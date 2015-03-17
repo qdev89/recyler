@@ -24,21 +24,22 @@
     </div>
 </div>
 
-<!-- Activities ListView Template -->
+<!-- Activities ListView Template
+
+     #if(PictureUrl() !="null"){#
+            <img id="picture" class="picture" data-bind="attr:{src: PictureUrl}" alt="" height="120" width="120" style="margin:5px" />
+            #}#
+    -->
 <script type="text/x-kendo-template" id="activityTemplate">
     <div data-role="touch" data-bind="events: { tap: activitySelected }" class="cf">
-        <div class="user-name">${User().DisplayName}</div>
-        <div class="user-avatar">
+        <div class="user-picture">
             <img data-bind="attr:{src: User().PictureUrl}" alt="images/avatar.png" />
         </div>
         <div class="activity-content">
-            <a class="user-share-txt">${Text}</a>
-            #if(PictureUrl() !="null"){#
-            <img id="picture" class="picture" data-bind="attr:{src: PictureUrl}" alt="" height="120" width="120" style="margin:5px" />
-            #}#
+            <a class="user-share-txt-xx">${Text}</a>
         </div>
-        <div>
-            <span class="time-span">${CreatedAtFormatted()}</span>
+        <div style="margin:5px;margin-left: 60px;">
+            <span class="time-span-xx">${CreatedAtFormatted()}</span>
+            <div class="user-name-xx">${User().DisplayName}</div>
         </div>
-
 </script>
