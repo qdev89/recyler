@@ -68,6 +68,10 @@ function goToTop(e) {
     TranslateApp();
 }
 
+function ShowAds() {
+    app.addBanner(20);
+}
+
 function TranslateApp() {
     if (localStorage.LanguageType == undefined) {
         localStorage.Language = 3;
