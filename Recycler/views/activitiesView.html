@@ -36,10 +36,12 @@
             <img data-bind="attr:{src: User().PictureUrl}" alt="images/avatar.png" />
         </div>
         <div class="activity-content">
+            <a class="user-share-title">${Title}</a>
+            <div style="margin:5px">
+                <span class="time-span-xx">${CreatedAtFormatted()}</span>
+                <div class="user-name-xx">${User().DisplayName}</div>
+            </div>
             <a class="user-share-txt-xx">${Text}</a>
         </div>
-        <div style="margin:5px;margin-left: 60px;">
-            <span class="time-span-xx">${CreatedAtFormatted()}</span>
-            <div class="user-name-xx">${User().DisplayName}</div>
-        </div>
+
 </script>

@@ -10,18 +10,21 @@ app.AddActivity = (function () {
     var addActivityViewModel = (function () {
 
         var $newStatus;
+        var $newTitle;
         var validator;
 
         var init = function () {
 
             validator = $('#enterStatus').kendoValidator().data('kendoValidator');
             $newStatus = $('#newStatus');
+            $newTitle = $('#newTitle ');
         };
 
         var show = function () {
 
             // Clear field on view show
             $newStatus.val('');
+            $newTitle.val('');
             validator.hideMessages();
         };
 
@@ -36,6 +39,7 @@ app.AddActivity = (function () {
                 var activity = activities.add();
 
                 activity.Text = $newStatus.val();
+                activity.Title = $newTitle.val();
                 activity.UserId = app.Users.currentUser.get('data').Id;
                 debugger;
                 activity.Id = guid();
