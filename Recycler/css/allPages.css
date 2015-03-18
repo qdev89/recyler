@@ -1135,8 +1135,8 @@ font-size: 1rem;
 }
 
 #friendsApp .user-name-xx {
-    color: #3598db;
-    font-weight: bold;
+    /*color: #3598db;*/
+    /*font-weight: bold;*/
     font-size: xx-small;
 }
 
@@ -1149,8 +1149,8 @@ font-size: 1rem;
 }
 
 #friendsApp .user-picture img {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
 }
 
 #friendsApp .activity-content {
@@ -1252,6 +1252,16 @@ font-size: 1rem;
         min-height: 3em;
         height: 20.5em;
         width: 100%;
+        background-color: #f5f7f8;
+        resize: none;
+        border-width: 1px;
+        border-color: black;
+    }
+
+    #friendsApp .user-share input {
+        float: left;
+        margin: 0;
+        width: 50%;
         background-color: #f5f7f8;
         resize: none;
         border-width: 1px;
@@ -2292,10 +2302,17 @@ img.resimgs {
 #friendsApp .user-share-txt-xx {
     color: #34495e;
     display: block;
-    font-size: .75rem;
-    height: 10px;
+    font-size: .9rem;
+    min-height: 10px;
+    max-height: 30px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+#friendsApp .user-share-title {
+    color: dodgerblue;
+    display: block;
+    font-size: medium;
 }
 
 #friendsApp .activity-content .comment-content .user-share-txt {
