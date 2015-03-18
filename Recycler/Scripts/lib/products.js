@@ -19,7 +19,7 @@ function loadProduct(e) {
 
     window.utility.resetScroller(e);
     TranslateApp();
-    app.addBanner(10);
+    app.addBanner(20);
     //console.log(e);
 
     var fillProductInfo = function (product) {

@@ -14,6 +14,10 @@ app.Activities = (function () {
 
             id: 'Id',
             fields: {
+                Title: {
+                    field: 'Title',
+                    defaultValue: ''
+                },
                 Text: {
                     field: 'Text',
                     defaultValue: ''
@@ -61,8 +65,8 @@ app.Activities = (function () {
                     DisplayName: 'Anonymous',
                     //PictureUrl: app.helper.resolveProfilePictureUrl()
                     //PictureUrl: "images/avatar.png",
-                    PictureUrl: pictureCommentUrl ? pictureCommentUrl : (user.ImageData ? user.ImageData : "images/avatar.png"),
-                    Avatar: user.ImageData ? user.ImageData : "images/avatar.png",
+                    PictureUrl: pictureCommentUrl ? pictureCommentUrl : "",
+                    Avatar: "images/avatar.png",
                 };
             },
             isVisible: function () {
