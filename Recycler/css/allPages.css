@@ -1135,8 +1135,6 @@ font-size: 1rem;
 }
 
 #friendsApp .user-name-xx {
-    color: #3598db;
-    font-weight: bold;
     font-size: xx-small;
 }
 
@@ -1155,7 +1153,7 @@ font-size: 1rem;
 
 #friendsApp .activity-content {
     position: relative;
-    padding-left: 5em;
+    padding-left: 0em;
     font-size: .85rem;
 }
 
