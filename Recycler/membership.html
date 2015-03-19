@@ -1,4 +1,7 @@
-<div data-role="view" data-title="Membership" id="how-works-tabstrip" data-show="TranslateApp" style="background-color: #f3f3f3;" data-init="app.membershipService.viewModel.initStore">
+<div data-role="view" data-title="Membership" id="how-works-tabstrip" data-show="TranslateApp" style="background-color: #f3f3f3;"
+    >
+    <!--data-init="app.membershipService.viewModel.initStore"-->
+    
     <!DOCTYPE HTML>
     <div align="center">
 
@@ -8,55 +11,75 @@
                     <img border="0" src="images/TEAM_membership.jpg" width="100%">
                 </td>
             </tr>
-
-            <!--<tr>
-                    <td width="50%">
-                        Monthly Running supporter subscription
-                    </td>
-                    <td width="25%" align="right"></td>
-                    <td width="25%" align="right">
-                        <input type="radio" value="V1" name="membershipType">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td width="50%">
-                        6 months supporter subscription<br>
-
-                    </td>
-                    <td width="25%" align="right"></td>
-                    <td width="25%" align="right">
-                        <input type="radio" value="V1" name="membershipType">
-                    </td>
-                </tr>
-                <tr>
-                    <td width="50%">
-                        1 year supporter subscription<br>
-
-                    </td>
-                    <td width="25%" align="right"></td>
-                    <td width="25%" align="right">
-                        <input type="radio" value="V1" name="membershipType">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="3" align="center">
-                        <img border="0" src="images/supporter.png" width="200" height="207">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-
-                        <p align="center">
-
-                        <a data-role="button" class="btn btn-blue" onclick="membership();">
-                            <label for="ok" data-localize="ok">Ok</label>
-                        </a>
-                    </td>
-                </tr>-->
-
         </table>
-        <div id="productContainer"></div>
+
+        <div id="productContainer">
+            <li class="voucher-item">
+                <div class="voucher">
+                    <form action="/buy/add" method="post" role="form">
+                        <input type="hidden" name="csrf_token" value="vw6LOXH91dfYauDzK3SlBkKs5N_JXR846KWWQgp_IPI">
+                        <input type="hidden" name='voucher_code' value="MONTHLY">
+
+
+                        <b><h3 class="voucher-title">Monthly supporter</h3></b>
+                        <p class="voucher-price"
+                           data-gbp="	£7.95/month"
+                           data-usd="	$12.95/month"
+                           data-eur="	€9.95/month">
+                            $4.95/month
+                        </p>
+
+                        <p class="voucher-description  hidden-xs">Unlimited access to recycleworld for 1 month. To ensure uninterrupted service, all recycleworld subscriptions are renewed automatically, we do not offer refunds on the monthly subscriptions but you may cancel your monthly payment any time.</p><br><br>
+
+                        <div class="btn  btn-block  btn-grey  hidden-xs">
+                            <b>
+                                <button type="submit" class="btn-element">
+                                    <span class="btn-text">
+                                        Get it monthly
+                                    </span>
+                                </button>
+                            </b>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+            <li class="voucher-item">
+                <div class="voucher">
+                    <form action="/buy/add" method="post" role="form">
+                        <input type="hidden" name="csrf_token" value="vw6LOXH91dfYauDzK3SlBkKs5N_JXR846KWWQgp_IPI">
+                        <input type="hidden" name='voucher_code' value="ANNUAL">
+
+                        <b class="voucher-label">
+                            Most popular!
+                        </b>
+
+                        <h3 class="voucher-title">Yearly supporter</h3>
+                        <p class="voucher-price"
+                           data-eur="	€5.99/month*"
+                           data-usd="	$7.99/month*"
+                           data-gbp="	£4.99/month*">
+                            $3.95/month*
+                        </p>
+
+                        <p class="voucher-description  hidden-xs">Unlimited access to recycleworld for 12 months<br>* billed as one payment. To ensure uninterrupted service, all recycleworld subscriptions are renewed automatically, you may cancel your supportership any time.</p><strong></strong><br>
+
+
+
+                        <div class="btn  btn-block  btn-green  hidden-xs">
+                            <b>
+                            <button type="submit" class="btn-element">
+                                <span class="btn-text" style="color:#ffffff;">
+                                    Get one year
+                                </span>
+                            </button>
+                            <b>
+                        </div>
+                    </form>
+                </div>
+
+
+            </li>
+        </div>
     </div>
 </div>
