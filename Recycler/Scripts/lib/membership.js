@@ -90,6 +90,8 @@
                         var storeId = p.id;
                         var storeButton = $('#' + storeId);
                         storeButton.hide();
+                        var paidBtn = $('#' + storeId + 'pay');
+                        paidBtn.show();
                         //alert('You have a 1 subscription');
                         //document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
                     } else {
@@ -147,6 +149,11 @@
         checkSimulator: function () {
             if (window.navigator.simulator === true) {
                 alert('This plugin is not available in the simulator.');
+                //var storeId = "1month";
+                //var storeButton = $('#' + storeId);
+                //storeButton.hide();
+                //var paidBtn = $('#' + storeId + 'pay');
+                //paidBtn.show();
                 return true;
             } else if (window.store === undefined) {
                 alert('Plugin not found. Maybe you are running in AppBuilder Companion app which currently does not support this plugin.');

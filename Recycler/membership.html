@@ -1,6 +1,6 @@
 <div data-role="view" data-title="Membership" id="how-works-tabstrip" style="background-color: #f3f3f3;" data-init="app.membershipService.viewModel.initStore">
     <!--data-init="app.membershipService.viewModel.initStore"-->
-    <div align="center" id="membership">
+    <div align="center">
 
         <table border="0" width="90%" cellspacing="0" cellpadding="5">
             <tr>
@@ -9,8 +9,7 @@
                 </td>
             </tr>
         </table>
-
-        <div id="productContainer">
+        <div id="membership">
             <div class="voucher-item">
                 <div class="voucher">
                     <div class="voucher-title"><label data-localize="monthlytitle">Monthly supporter</label></div>
@@ -36,12 +35,13 @@
                     </b>
                 </div>
             </div>
-        </div>
 
-        <div class="voucher-item">
-            <div class="voucher">
-                <div class="voucher-label">
-                    <label data-localize="popular">Most popular!</label>
+
+            <div class="voucher-item">
+                <div class="voucher">
+                    <div class="voucher-label">
+                        <label data-localize="popular">Most popular!</label>
+                    </div>
                 </div>
                 <div class="voucher-title"><label data-localize="yeartitle">Yearly supporter</label></div>
                 <div class="voucher-price">$3.95/month*</div>
@@ -74,6 +74,7 @@
         font-size: 17px;
         line-height: 1.42857;
         color: #605F5D;
+        margin: 5px;
     }
 
         #membership .voucher {
@@ -119,11 +120,8 @@
         }
 
         #membership .btn {
-            position: relative;
-            top: 6px;
             display: block;
-            margin: 0px auto 26px;
-            width: 200px;
+            margin: 20px;
             height: 55px;
             background-color: #4DA67A;
             border-radius: 5px;
