@@ -44,7 +44,7 @@
     "reviews1": "<h4>Authour: Bjarke Steen Rasmussen</h4> <br>Easy cooking for dummies, men and students. This book delivers recipes, some quotes and small suggestions during preparation - cooking need to be fun – most of the recipes is to use on a daily basis. The most of the recipes can be done with 25 minutes working time and are all tested on dummies, men, students and also our families – including kids… So we hope it will help, inspire and make cooking enjoyable. even to other men, dummies and students.. <br><br>If more of us valued food and cheer and song above hoarded gold, it would be a merrier world. ― J.R.R. Tolkien",
     "titletext_food": "Co2 ",
     "wait": "Please wait",
-    "howmany": "Items/How many kg. <br>- f.ex. 2.5 kg",
+    "howmany": "Items/How many kg./pounds. Weight unit determined in your settings. <br>- f.ex. 2.5 kg",
     "beef": "Beef",
     "pork": "Pork",
     "poultry": "Poultry",
@@ -333,7 +333,7 @@
      "allstuff": "Show all this users stuff",
 "recyclingcompany": "Recycling company",
           "estimated": "Estimated value",
-     "become": "Become supporter now",
+     "become": "Become supporter",
 "recyclemenu": "Give away, swap, lend out",
        "getmyco2": "Find the new user of your stuff and get your Co2",
                "facebookadress": "Facebook adress",
@@ -349,7 +349,16 @@
                "city":"City",
                     "distance":"Distance",
 "news":"This is our community news channel. The rules are as follows: use this to share info on subjects like substainabilty, terracycle events, foodwaste event, upcycling ideas etc. <br><br>Remember to keep a respectfull tone and keep the content fresh and for everyone.<br><br>" ,
-     "postedby": "Publiced by Recycleworld user:"
+         "monthlytitle":"Monthly supporter",
+                                "monthlytext":"Unlimited access to recycleworld for 1 month. To ensure uninterrupted service, all recycleworld subscriptions are renewed automatically, we do not offer refunds on the monthly subscriptions but you may cancel your monthly payment any time.",
+                                    "monthlyprice":"",
+                                        "monthlybuy":"Become monthly supporter",
+                                "yeartitle":"Yearly supporter",
+                                "yeartext":"Unlimited access to recycleworld for 12 months (* billed as one payment). To ensure uninterrupted service, all recycleworld subscriptions are renewed automatically, you may cancel your supportership any time.",
+                                    "yearprice":"",
+                                        "yearbuy":"Get one year",   
+    
+    "postedby": "Publiced by Recycleworld user:"
 
                          
 }

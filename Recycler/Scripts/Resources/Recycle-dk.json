@@ -44,7 +44,7 @@
     "reviews1": "<h3>Nem madlavning for dumrianer, mænd og studerende. </h3><br>Denne bog giver opskrifter, nogle citater og små forslag under forberedelse (madlavning skal være sjovt) - de fleste af opskrifterne er til at bruge på daglig basis. De fleste af opskrifterne kan gøres på 25 minutter arbejdstid og er alle testet på dumrianer, mænd, studerende og også vores familier - herunder børn ... Så vi håber det vil hjælpe, inspirere og gøre madlavning fornøjelig. endda til andre mænd, sutter og studerende .. <p><i>Hvis flere af os værdsat mad, jublen og sang over at hamstre guld, ville det være en gladere verden. - J.R.R. Tolkien </i></p>",
     "titletext_food": "Co2 Kalkulator ",
     "wait": "Vent lidt",
-    "howmany": "Antal/Hvor mange kg. <br>f.ex. 2.5 kg (brug . ikke komma)",
+    "howmany": "Antal/kg. eller pund. Vægtenhed afhænger af indstillinger i din profil.(Brug punktum, ikke komma)",
     "beef": "Kød",
     "pork": "Svinekød",
     "poultry": "Fjærkræ",
@@ -347,6 +347,17 @@
          "news": "Opret kanal news",
               "city":"By",
                     "distance":"Afstand",
+                        "newschannel":"Nyheds kanalen",
+                       
+                            "monthlytitle":"Månedlig supporter",
+                                "monthlytext":"Ubegrænset adgang til recycleworld i 1 måned. For at sikre uafbrudt service, er alle abonnementer recycleworld automatisk fornys, Vi tilbyder heller ikke tilbagebetaling på månedlige abonnementer, men du kan annullere din månedlige betaling når som helst.",
+                                    "monthlyprice":"",
+                                        "monthlybuy":"Bliv månedlige supporter",
+                                "yeartitle":"Årlig supporter",
+                                "yeartext":"Ubegrænset adgang til recycleworld i 12 måneder (* faktureret som én betaling). For at sikre uafbrudt tjeneste, er alle abonnementer recycleworld automatisk fornys, kan du annullere dit supportership når som helst.",
+                                    "yearprice":"",
+                                        "yearbuy":"Bliv supporter i et år",    
+                                            
 "news": "Dette er vores community nyheds kanal. Reglerne er som følger: Brug dette til at dele information om emner som bæredygtihged, TerraCycle begivenheder, madspild begivenhed, upcycling ideer osv. Husk at holde en respektfuld tone og holde indholdet frisk og for alle.<br> <br> ",  
 "freefood": "Gratis fødevarer"
 }

@@ -44,7 +44,7 @@
     "reviews1": "Easy cooking for dummies, men and students. This book delivers recipes, some quotes and small suggestions during preparation - cooking need to be fun – most of the recipes is to use on a daily basis. The most of the recipes can be done with 25 minutes working time and are all tested on dummies, men, students and also our families – including kids… So we hope it will help, inspire and make cooking enjoyable. even to other men, dummies and students.. <br><br>If more of us valued food and cheer and song above hoarded gold, it would be a merrier world ― J.R.R. Tolkien",
     "titletext_food": "Co2 Rechner",
     "wait": "Bitte warten",
-    "howmany": "Objekte / Wie viele kg. <br>- f.ex. 2.5 kg",
+    "howmany": "Artikel / Wie viele kg. / Pfund. Gewichtseinheit ist in Ihren Einstellungen wählten.",
     "beef": "Rind",
     "pork": "Schwein",
     "poultry": "Geflügel",
@@ -345,6 +345,18 @@
           "news1":"Erstellen Sie Kanal Nachrichten",
                "city":"Stadt",
                     "distance":"Distanz", 
+                        
+                             "monthlytitle":"Monatliche Supporter",
+                                "monthlytext":"Unbegrenzter Zugang zwei recycleworld 1 Monat. Um einen störungsfreien Betrieb zu gewährleisten, sind alle recycleworld Abonnements erneuert automatisk, wissen wir nicht Rückerstattungen opfern auf den monatlichen Abonnements, aber Sie können Ihre monatliche Zahlung eventuelle Stunde abzubrechen.",
+                                    "monthlyprice":"",
+                                        "monthlybuy":"Werden monatliche Unterstützer",
+                                "yeartitle":"jährliche Unterstützer",
+                                "yeartext":"Unbegrenzter Zugang zwei recycleworld für 12 Monate (* Bild als eine Bezahlung). Sikre ununterbrochenen Service, sind alle recycleworld Abonnements automatisk erneuert, kan stornieren Stützer Schiff eventuelle Stunde.
+",
+                                    "yearprice":"",
+                                        "yearbuy":"Holen Sie sich 1 Jahr",  
+                        
+                        
 "news":"Das ist unserer Nachrichtenkanal. Die Regeln sind: Verwenden Sie diese zu teilen Informationen über Themen wie substainabilty, terra-Zyklusereignisse, Lebensmittelabfälle Fall, Upcycling Ideen usw. <br> Angemeldet beiden halten ein respekt Ton und halten den Inhalt frisch und für alle.", ,
 "freefood": "Kostenlose Lebensmittel"
 

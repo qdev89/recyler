@@ -44,7 +44,7 @@
     "reviews1": "Easy cooking for dummies, men and students. This book delivers recipes, some quotes and small suggestions during preparation - cooking need to be fun – most of the recipes is to use on a daily basis. The most of the recipes can be done with 25 minutes working time and are all tested on dummies, men, students and also our families – including kids… So we hope it will help, inspire and make cooking enjoyable. even to other men, dummies and students.. <br><br>If more of us valued food and cheer and song above hoarded gold, it would be a merrier world. ― J.R.R. Tolkien",
     "titletext_food": "Calculadora de Co2",
     "wait": "Por favor, espera",
-    "howmany": "Items/¿Cuántos kg.?",
+    "howmany": "Artículos / ¿Cuántos kg. / Libras. Unidad de peso choosed en su configuración.",
     "beef": "Carne de res",
     "pork": "Carne de cerdo",
     "poultry": "Carne avícola",
@@ -346,6 +346,17 @@
 "news1":"Crear canal de noticias",
 "news":"Este es nuestro canal de noticias de la comunidad Las reglas son således:. usar esta información de dos acción en temas como substainabilty, eventos de ciclo terra, evento residuos de alimentos, las ideas upcycling etc. <br> Recuerde dos mantener un tono respetuoso y mantener el contenido fresco y para todos. <br>" ,
 "city":"Ciudad",
+    
+         "monthlytitle":"Supporter Mensual",
+                                "monthlytext":"Acceso ilimitado dos recycleworld de 1 mes. Para asegurar la continuidad del servicio, todas las suscripciones se renuevan recycleworld automatisk, no sacrificamos reembolsos sobre las suscripciones mensuales, pero se puede cancelar mensualmente hora eventuelle pago.
+",
+                                    "monthlyprice":"",
+                                        "monthlybuy":"Partidario mensual Conviértase",
+                                "yeartitle":"Partidario anual",
+                                "yeartext":"Acceso ilimitado dos recycleworld durante 12 meses (* imagen en un único pago). Sikre servicio ininterrumpido, todas las suscripciones se renuevan recycleworld automatisk, kan cancelar su partidario eventuelle nave horas.",
+                                    "yearprice":"",
+                                        "yearbuy":"Obtén un año",  
+    
 "distance":"Distancia",
      "allstuff": "Mostrar todas las cosas usuario"          
 }
