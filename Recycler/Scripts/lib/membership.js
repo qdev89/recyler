@@ -5,7 +5,7 @@
     MembershipViewModel = kendo.data.ObservableObject.extend({
 
         initStore: function () {
-            debugger ;
+            TranslateApp();
             if (!app.membershipService.viewModel.checkSimulator()) {
                 // Enable maximum logging level
                 store.verbosity = store.DEBUG;
@@ -13,119 +13,117 @@
                 // Inform the store of your products
                 store.register({
                     id: '1month',
-                    alias: 'Monthly running Supporter Subscription',
+                    alias: '1month-alias',
                     type: store.PAID_SUBSCRIPTION
                 });
 
-                store.register({
-                    id: '6months1',
-                    alias: '6 months Supporter Subscription',
-                    type: store.CONSUMABLE
-                });
+                //store.register({
+                //    id: '6month',
+                //    alias: '6 months Supporter Subscription',
+                //    type: store.CONSUMABLE
+                //});
 
                 store.register({
-                    id: 'full',
-                    alias: '12 months Supporter Subscription',
+                    id: '1year',
+                    alias: '1year-alias',
                     type: store.NON_CONSUMABLE
                 });
-              
+
                 // When any product gets updated, refresh the HTML
                 store.when("product").updated(function (p) {
-                    debugger;
-                    alert(JSON.stringify(p));
+                    //debugger;
+                    //alert(JSON.stringify(p));
 
-                    var container = document.getElementById('productContainer');
-                    var elId = p.id;
-                    var el = document.getElementById(elId);
-                    if (!el) {
-                        container.innerHTML += '<div id="' + elId + '"></div>';
-                        el = document.getElementById(elId);
-                    }
+                    ////var elId = p.id;
+                    ////var el = document.getElementById(elId);
+                    ////var container = document.getElementById('productContainer');
+                    ////if (!el) {
+                    ////    container.innerHTML += '<div id="' + elId + '"></div>';
+                    ////    el = document.getElementById(elId);
+                    ////}
 
-                    if (!p.loaded) {
-                        el.innerHTML += '<h3>...</h3>';
-                    } else if (!p.valid) {
-                        el.innerHTML += '<h3>' + p.alias + ' Invalid</h3>';
+                    ////if (!p.loaded) {
+                    ////    el.innerHTML += '<h3>...</h3>';
+                    ////} else if (!p.valid) {
+                    ////    el.innerHTML += '<h3>' + p.alias + ' Invalid</h3>';
+                    ////} else if (p.valid) {
+                    ////    var html = "<h3>" + p.alias + "</h3>";
+                    ////    if (p.canPurchase) {
+                    ////        html += "<button class='button' onclick='store.order(\"" + p.id + "\")'>Buy for " + p.price + "</button>";
+                    ////    }
+                    ////    el.innerHTML = html;
+                    ////}
+
+                    var storeId = p.id;
+                    var storeButton = $('#' + storeId);
+                    var storeLabel = $('#' + storeId + 'label');
+
+                    if (!p.valid) {
+                        storeLabel.html(p.id + ' Invalid');
                     } else if (p.valid) {
-                        var html = "<h3>" + p.alias + "</h3>";
                         if (p.canPurchase) {
-                            html += "<button class='button' onclick='store.order(\"" + p.id + "\")'>Buy for " + p.price + "</button>";
+                            storeButton.click(function () {
+                                store.order(p.id);
+                            });
                         }
-                        el.innerHTML = html;
                     }
+
                 });
 
                 // handle subscription events
-                store.when("Monthly running Supporter Subscription").approved(function (p) {
-                    alert("1 verify subscription");
+                store.when("1month-alias").approved(function (p) {
+                    //alert("1 verify subscription");
                     p.verify();
                 });
 
-                store.when("Monthly running Supporter Subscription").verified(function (p) {
-                    alert("1 subscription verified");
+                store.when("1month-alias").verified(function (p) {
+                    //alert("1 subscription verified");
                     p.finish();
                 });
 
-                store.when("Monthly running Supporter Subscription").unverified(function (p) {
-                    alert("1 subscription unverified");
+                store.when("1month-alias").unverified(function (p) {
+                    //alert("1 subscription unverified");
                 });
 
-                store.when("Monthly running Supporter Subscription").updated(function (p) {
+                store.when("1month-alias").updated(function (p) {
                     if (p.owned) {
-                        alert('You have a 1 subscription');
+                        var storeId = p.id;
+                        var storeButton = $('#' + storeId);
+                        storeButton.hide();
+                        //alert('You have a 1 subscription');
                         //document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
                     } else {
-                        alert('You don\'t have a 1 subscription');
+                        //alert('You don\'t have a 1 subscription');
                         //document.getElementById('subscriber-info').innerHTML = 'You are not subscribed';
                     }
                 });
 
                 // handle subscription events
-                store.when("6 months Supporter Subscription").approved(function (p) {
-                    alert("6 verify subscription");
+                store.when("1year-alias").approved(function (p) {
+                    //alert("12 verify subscription");
                     p.verify();
                 });
 
-                store.when("6 months Supporter Subscription").verified(function (p) {
-                    alert("6 subscription verified");
+                store.when("1year-alias").verified(function (p) {
+                    //alert("12 subscription verified");
                     p.finish();
                 });
 
-                store.when("6 months Supporter Subscription").unverified(function (p) {
-                    alert("6 subscription unverified");
-                });
-
-                store.when("6 months Supporter Subscription").updated(function (p) {
-                    if (p.owned) {
-                        alert('You have a 6 subscription');
-                        //document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
-                    } else {
-                        alert('You don\'t have a 6 subscription');
-                        //document.getElementById('subscriber-info').innerHTML = 'You are not subscribed';
-                    }
-                });
-
-                // handle subscription events
-                store.when("12 months Supporter Subscription").approved(function (p) {
-                    alert("12 verify subscription");
-                    p.verify();
-                });
-
-                store.when("12 months Supporter Subscription").verified(function (p) {
-                    alert("12 subscription verified");
-                    p.finish();
-                });
-
-                store.when("12 months Supporter Subscription").unverified(function (p) {
+                store.when("1year-alias").unverified(function (p) {
                     alert("12 subscription unverified");
                 });
 
-                store.when("12 months Supporter Subscription").updated(function (p) {
+                store.when("1year-alias").updated(function (p) {
                     if (p.owned) {
-                        alert('You have a 12 subscription');
+                        var storeId = p.id;
+                        var storeButton = $('#' + storeId);
+                        storeButton.hide();
+                        var paidBtn = $('#' + storeId + 'pay');
+                        paidBtn.show();
+                        //alert('You have a 12 subscription');
                         //document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
                     } else {
-                        alert('You don\'t have a 12 subscription');
+                        //alert('You don\'t have a 12 subscription');
                         //document.getElementById('subscriber-info').innerHTML = 'You are not subscribed';
                     }
                 });

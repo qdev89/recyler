@@ -1,4 +1,4 @@
-<div data-role="view" data-title="Membership" id="how-works-tabstrip" data-show="TranslateApp" style="background-color: #f3f3f3;">
+<div data-role="view" data-title="Membership" id="how-works-tabstrip" style="background-color: #f3f3f3;" data-init="app.membershipService.viewModel.initStore">
     <!--data-init="app.membershipService.viewModel.initStore"-->
     <div align="center" id="membership">
 
@@ -15,42 +15,53 @@
                 <div class="voucher">
                     <div class="voucher-title"><label data-localize="monthlytitle">Monthly supporter</label></div>
                     <div class="voucher-price">$4.95/month</div>
-                    </div>
+                </div>
 
-                    <div class="voucher-description"><label data-localize="monthlytext">Unlimited access to recycleworld for 1 month. To ensure uninterrupted service, all recycleworld subscriptions are renewed automatically, we do not offer refunds on the monthly subscriptions but you may cancel your monthly payment any time.</label></div>
-                    <br>
-                    <br>
+                <div class="voucher-description"><label data-localize="monthlytext">Unlimited access to recycleworld for 1 month. To ensure uninterrupted service, all recycleworld subscriptions are renewed automatically, we do not offer refunds on the monthly subscriptions but you may cancel your monthly payment any time.</label></div>
+                <br>
+                <br>
 
-                    <div class="btn  btn-block  btn-grey">
-                        <b>
-                            <button type="submit" class="btn-element">
-                                <span class="btn-text"><label data-localize="monthlybuy">Become monthly supporter</label>
-                                </span>
-                            </button>
-                        </b>
-                    </div>
+                <div class="btn  btn-block  btn-grey">
+                    <b>
+                        <button type="submit" class="btn-element" id="1month">
+                            <span class="btn-text">
+                                <label data-localize="monthlybuy" id="1monthlabel">Become monthly supporter</label>
+                            </span>
+                        </button>
+                        <button type="submit" class="btn-element" id="1monthpay" style="display: none">
+                            <span class="btn-text">
+                                <label data-localize="paid">PAID</label>
+                            </span>
+                        </button>
+                    </b>
                 </div>
             </div>
+        </div>
 
-            <div class="voucher-item">
-                <div class="voucher">
-                    <div class="voucher-label"><label data-localize="popular">Most popular!</label>
-                    </div>
-                    <div class="voucher-title"><label data-localize="yeartitle">Yearly supporter</label></div>
-                    <div class="voucher-price">$3.95/month*</div>
+        <div class="voucher-item">
+            <div class="voucher">
+                <div class="voucher-label">
+                    <label data-localize="popular">Most popular!</label>
+                </div>
+                <div class="voucher-title"><label data-localize="yeartitle">Yearly supporter</label></div>
+                <div class="voucher-price">$3.95/month*</div>
 
-                    <div class="voucher-description  hidden-xs"><label data-localize="yeartext">Unlimited access to recycleworld for 12 months (* billed as one payment). To ensure uninterrupted service, all recycleworld subscriptions are renewed automatically, you may cancel your supportership any time.</label></div>
-                    <br>
-                    <br>
-                    <div class="btn  btn-block">
-                        <b>
-                            <button type="submit" class="btn-element">
-                                <span class="btn-text" style="color:#ffffff;">
-                                    <label data-localize="buyyear">Get one year</label>
-                                </span>
-                            </button>
-                        </b>
-                    </div>
+                <div class="voucher-description  hidden-xs"><label data-localize="yeartext">Unlimited access to recycleworld for 12 months (* billed as one payment). To ensure uninterrupted service, all recycleworld subscriptions are renewed automatically, you may cancel your supportership any time.</label></div>
+                <br>
+                <br>
+                <div class="btn  btn-block">
+                    <b>
+                        <button type="submit" class="btn-element" id="1year">
+                            <span class="btn-text" style="color:#ffffff;">
+                                <label data-localize="buyyear" id="1yearlabel">Get one year</label>
+                            </span>
+                        </button>
+                        <button type="submit" class="btn-element" id="1yearpay" style="display: none">
+                            <span class="btn-text" style="color:#ffffff;">
+                                <label data-localize="paid">PAID</label>
+                            </span>
+                        </button>
+                    </b>
                 </div>
             </div>
         </div>
@@ -65,127 +76,126 @@
         color: #605F5D;
     }
 
-   #membership .voucher {
-        padding: 10px 15px 5px;
-        background-color: #FFF;
-        border-radius: 10px;
-    }
-
-  #membership  .voucher-label {
-        display: block;
-        position: relative;
-        padding: 2px 0px;
-        margin: auto 13px;
-        width: 180px;
-        background: none repeat scroll 0% 0% #F47C30;
-        font-size: 14px;
-        color: #FFF;
-        text-align: center;
-        text-transform: uppercase;
-    }
-
- #membership   .voucher-title {
-        position: relative;
-        width: 100%;
-        font-size: 18px;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
- #membership   .voucher-price {
-        margin: 5px 0px 0px;
-    }
-
- #membership   .voucher-price {
-        display: inline-block;
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
-
-#membership    .voucher-description {
-        height: 60px;
-        font-size: 14px;
-    }
-
-  #membership  .btn {
-        position: relative;
-        top: 6px;
-        display: block;
-        margin: 0px auto 26px;
-        width: 200px;
-        height: 55px;
-        background-color: #4DA67A;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-   #membership .voucher .btn {
-        margin-top: 20px;
-    }
-
- #membership   .btn {
-        margin-left: 0px;
-    }
-
-  #membership  .btn-grey {
-        background-color: #C4C4C4 !important;
-    }
-
-  #membership  .btn-block {
-        width: 100%;
-    }
-
-  #membership  .voucher-description {
-        height: 60px;
-        font-size: 14px;
-    }
-
-  #membership  .voucher-legal {
-        margin-top: 15px;
-        font-size: 13px;
-        font-style: normal;
-        font-weight: 600;
-    }
-
-  #membership  button {
-        padding: 0px;
-        border: 0px none;
-        background-color: transparent;
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
-        cursor: pointer;
-        text-transform: none;
-        overflow: visible;
-        color: inherit;
-        font: inherit;
-        margin: 0px;
-    }
-
-  #membership  .btn-element {
-        position: relative;
-        top: -6px;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        background-color: #57BB89 !important;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        border-radius: 5px;
-        border: 0px none;
-        transition: top 150ms linear 0s;
-    }
-
- #membership   .btn-grey {
-        background-color: #C4C4C4 !important;
-    }
-
-      #membership  .btn-grey .btn-element {
-            background-color: #EFEFEF !important;
+        #membership .voucher {
+            padding: 10px 15px 5px;
+            background-color: #FFF;
+            border-radius: 10px;
         }
 
-      #membership    .btn-text {
-        color: gray;
-    }
+        #membership .voucher-label {
+            display: block;
+            position: relative;
+            padding: 2px 0px;
+            margin: auto 13px;
+            width: 180px;
+            background: none repeat scroll 0% 0% #F47C30;
+            font-size: 14px;
+            color: #FFF;
+            text-align: center;
+            text-transform: uppercase;
+        }
 
+        #membership .voucher-title {
+            position: relative;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #membership .voucher-price {
+            margin: 5px 0px 0px;
+        }
+
+        #membership .voucher-price {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        #membership .voucher-description {
+            height: 60px;
+            font-size: 14px;
+        }
+
+        #membership .btn {
+            position: relative;
+            top: 6px;
+            display: block;
+            margin: 0px auto 26px;
+            width: 200px;
+            height: 55px;
+            background-color: #4DA67A;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #membership .voucher .btn {
+            margin-top: 20px;
+        }
+
+        #membership .btn {
+            margin-left: 0px;
+        }
+
+        #membership .btn-grey {
+            background-color: #C4C4C4 !important;
+        }
+
+        #membership .btn-block {
+            width: 100%;
+        }
+
+        #membership .voucher-description {
+            height: 60px;
+            font-size: 14px;
+        }
+
+        #membership .voucher-legal {
+            margin-top: 15px;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        #membership button {
+            padding: 0px;
+            border: 0px none;
+            background-color: transparent;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            cursor: pointer;
+            text-transform: none;
+            overflow: visible;
+            color: inherit;
+            font: inherit;
+            margin: 0px;
+        }
+
+        #membership .btn-element {
+            position: relative;
+            top: -6px;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background-color: #57BB89 !important;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            border-radius: 5px;
+            border: 0px none;
+            transition: top 150ms linear 0s;
+        }
+
+        #membership .btn-grey {
+            background-color: #C4C4C4 !important;
+        }
+
+            #membership .btn-grey .btn-element {
+                background-color: #EFEFEF !important;
+            }
+
+        #membership .btn-text {
+            color: gray;
+        }
 </style>
