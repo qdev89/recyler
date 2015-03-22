@@ -25,111 +25,104 @@ function isValidDate(d) {
 }
 
 function iconMapInit(e) {
-    
-    window.utility.resetScroller(e);
-    TranslateApp();
-    showLoading();
-    //if (googleMap != null) {
-    //    hideLoading();
-    //    return;
+    var dontReload = e.sender.params.canReload == "false";
+    if (!dontReload) {
+        window.utility.resetScroller(e);
+        TranslateApp();
+        showLoading();
+        //if (googleMap != null) {
+        //    hideLoading();
+        //    return;
 
-    //}
+        //}
 
-    navigator.geolocation.getCurrentPosition(function (x) {
-
-
-        $("#map-with-icons").height($("#findonmap .km-content").first().height() - 60);
-
-        var mapOptions = {
-            center: { lat: x.coords.latitude, lng: x.coords.longitude },
-            zoom: 8,
-            streetViewControl: false
-        };
-        googleMap = new google.maps.Map(
-           document.getElementById('map-with-icons'),
-           mapOptions
-           );
-        setTimeout(function () {
-            $("#map-with-icons").height($("#findonmap .km-content").first().height() - 60);
-        }, 200);
+        window.getLocation()
+            .done(function (x) {
 
 
-        var data = app.everlive.data('Spot');
+                $("#map-with-icons").height($("#findonmap .km-content").first().height() - 60);
 
-        data.get().then(function (data) {
+                var mapOptions = {
+                    center: { lat: x.coords.latitude, lng: x.coords.longitude },
+                    zoom: 8,
+                    streetViewControl: false
+                };
+                googleMap = new google.maps.Map(
+                    document.getElementById('map-with-icons'),
+                    mapOptions
+                );
+                setTimeout(function () {
+                    $("#map-with-icons").height($("#findonmap .km-content").first().height() - 60);
+                }, 200);
 
-            hideLoading();
-            allSpots = data.result;
 
-            var today = new Date();
-            today.setHours(0);
-            today.setMinutes(1);
+                var data = app.everlive.data('Spot');
 
-            var twoDaysAfter = new Date();
-            twoDaysAfter.setTime(twoDaysAfter.getTime() + (48 * 60 * 60 * 1000));
+                data.get().then(function (data) {
 
-            var oneDayAter = new Date();
-            oneDayAter.setTime(oneDayAter.getTime() + (24 * 60 * 60 * 1000));
+                    hideLoading();
+                    allSpots = data.result;
 
-            if (allSpots.length > 0) {
-                $.each(allSpots, function (i) {
+                    var today = new Date();
+                    today.setHours(0);
+                    today.setMinutes(1);
 
-                    var grey = true;
+                    var twoDaysAfter = new Date();
+                    twoDaysAfter.setTime(twoDaysAfter.getTime() + (48 * 60 * 60 * 1000));
 
-                    if (allSpots[i].SpotType === "Garage_sale" || allSpots[i].SpotType === "Help") {
-                        var date = new Date(allSpots[i].EventDate);
-                        if (!isValidDate(date) || date > twoDaysAfter || date < today) {
-                            console.log(allSpots[i].SpotType, date, " too early or old");
-                            return true;
-                        } else console.log(date, " this is ok");
-                        console.log(date, oneDayAter);
-                        if (date < oneDayAter) {
-                            grey = false;
-                        }
+                    var oneDayAter = new Date();
+                    oneDayAter.setTime(oneDayAter.getTime() + (24 * 60 * 60 * 1000));
+
+                    if (allSpots.length > 0) {
+                        $.each(allSpots, function (i) {
+
+                            var grey = true;
+
+                            if (allSpots[i].SpotType === "Garage_sale" || allSpots[i].SpotType === "Help") {
+                                var date = new Date(allSpots[i].EventDate);
+                                if (!isValidDate(date) || date > twoDaysAfter || date < today) {
+                                    console.log(allSpots[i].SpotType, date, " too early or old");
+                                    return true;
+                                } else console.log(date, " this is ok");
+                                console.log(date, oneDayAter);
+                                if (date < oneDayAter) {
+                                    grey = false;
+                                }
+                            }
+
+                            var content =
+                                "<div class='table-container' align='center'><table>" +
+                                    "<tr><td></td><td class='spotName'>" + (allSpots[i].Name || "") + "</td></tr>" +
+                                    "<tr><td></td><td class='spotDate'>" + (allSpots[i].EventDate || "") + "</td></tr>" +
+                                    "<tr class='img'><td></td><td> <img alt='' class='popupImg' src='" + (allSpots[i].Image || "") + "' /></td></tr>" +
+                                    "<tr> <td><img class='td-icon' src='images/mapicons/info_blue.png' /></td><td> " + (allSpots[i].Description || "") + "</td></tr>" +
+                                    "<tr><td><img class='td-icon' src='images/mapicons/phone_blue.png' /></td><td> " + (allSpots[i].Phone || "") + "</div>" +
+                                    "<tr> <td><img class='td-icon' src='images/mapicons/opening_blue.png' /></td><td> Weekdays: " + allSpots[i].OpeningHoursWeekdaysFrom + " " + allSpots[i].OpeningTimeWeekdays + " - " +
+                                    allSpots[i].OpeningHoursWeekdaysTo + " " + allSpots[i].ClosingTimeWeekdays + "</td></tr>" +
+                                    "<tr><td></td><td> Saturday: " + allSpots[i].OpeningHoursSaturdayFrom + " " + allSpots[i].OpeningTimeSat + " - " +
+                                    allSpots[i].OpeningHoursSaturdayTo + " " + allSpots[i].ClosingTimeSat + "</td></tr>" +
+                                    "<tr><td></td><td> Sunday: " + allSpots[i].OpeningHoursSundayFrom + " " + allSpots[i].OpeningTimeSun + " - " +
+                                    allSpots[i].OpeningHoursSundayTo + " " + allSpots[i].ClosingTimeSun + "</td></tr>" +
+                                    "<tr><td><img class='td-icon' src='images/mapicons/adress_blue.png' /></td><td>  " + (allSpots[i].Address || "") + "</td></tr>" +
+                                    "<tr><td></td><td>  " + (allSpots[i].City || "") + "</td></tr>" +
+                                    "<tr><td></td><td>" + (allSpots[i].Zip || "") + "</td></tr>" +
+                                    "<tr><td><img class='td-icon' src='images/mapicons/www_icon_blue.png' /></td><td> <a href='" + (allSpots[i].Web || "") + "'>" + (allSpots[i].Web || "") + "</a></td></tr>" +
+                                    "</table></div>";
+
+
+                            setPlace(allSpots[i].Latitude, allSpots[i].Longitude, false, allSpots[i].SpotType, googleMap, content, grey);
+                        });
                     }
+                },
+                    function (error) {
+                        hideLoading();
+                        err(error);
+                    });
 
-                    var content =
-                        "<div class='table-container' align='center'><table>" +
-
-                        "<tr><td></td><td class='spotName'>" + (allSpots[i].Name || "") + "</td></tr>" +
-                       "<tr><td></td><td class='spotDate'>" + (allSpots[i].EventDate || "") + "</td></tr>" +
-
-                        "<tr class='img'><td></td><td> <img alt='' class='popupImg' src='" + (allSpots[i].Image || "") + "' /></td></tr>" +
-
-                        "<tr> <td><img class='td-icon' src='images/mapicons/info_blue.png' /></td><td> " + (allSpots[i].Description || "") + "</td></tr>" +
-
-                        "<tr><td><img class='td-icon' src='images/mapicons/phone_blue.png' /></td><td> " + (allSpots[i].Phone || "") + "</div>" +
-
-                        "<tr> <td><img class='td-icon' src='images/mapicons/opening_blue.png' /></td><td> Weekdays: " + allSpots[i].OpeningHoursWeekdaysFrom + " " + allSpots[i].OpeningTimeWeekdays + " - " +
-                         allSpots[i].OpeningHoursWeekdaysTo + " " + allSpots[i].ClosingTimeWeekdays + "</td></tr>" +
-
-                        "<tr><td></td><td> Saturday: " + allSpots[i].OpeningHoursSaturdayFrom + " " + allSpots[i].OpeningTimeSat + " - " +
-                         allSpots[i].OpeningHoursSaturdayTo + " " + allSpots[i].ClosingTimeSat + "</td></tr>" +
-
-                        "<tr><td></td><td> Sunday: " + allSpots[i].OpeningHoursSundayFrom + " " + allSpots[i].OpeningTimeSun + " - " +
-                         allSpots[i].OpeningHoursSundayTo + " " + allSpots[i].ClosingTimeSun + "</td></tr>" +
-
-                        "<tr><td><img class='td-icon' src='images/mapicons/adress_blue.png' /></td><td>  " + (allSpots[i].Address || "") + "</td></tr>" +
-
-                        "<tr><td></td><td>  " + (allSpots[i].City || "") + "</td></tr>" +
-
-                        "<tr><td></td><td>" + (allSpots[i].Zip || "") + "</td></tr>" +
-
-                        "<tr><td><img class='td-icon' src='images/mapicons/www_icon_blue.png' /></td><td> <a href='" + (allSpots[i].Web || "") + "'>" + (allSpots[i].Web || "") + "</a></td></tr>" +
-
-                        "</table></div>";
-
-
-                    setPlace(allSpots[i].Latitude, allSpots[i].Longitude, false, allSpots[i].SpotType, googleMap, content, grey);
-                });
-            }
-        },
-         function (error) {
-             hideLoading();
-             err(error);
-         });
-
-    });
+            }).fail(function (error) {
+                alert(error.message); /*TODO: Better handling*/
+            });
+    }
 
 }
 
@@ -253,6 +246,9 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
         case "Terracycle":
             icon = "images/mapicons/terracycle_small_dot.png";
             break;
+        case "Terracycle spot":
+            icon = "images/mapicons/terracycle_small_dot.png";
+            break;
 
         case "Shop":
             icon = "images/mapicons/shop_small_dot.png";
@@ -291,7 +287,6 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
 
         google.maps.event.addListener(marker1, 'click', function () {
             showSpotInfo(content);
-
         });
     }
 
@@ -306,19 +301,25 @@ function filterIcons() {
             types.push($(this).attr("iconType"));
         }
     });
+    debugger;
     showMarkerTypes(types);
 }
 
 
 function showMarkerTypes(types) {
     markersArray.forEach(function (el, index) {
-        var hide = true;
+        //var hide = true;
         types.forEach(function (el2, index2) {
-            console.log(el2, el.type);
-            if (el.type == el2) hide = false;
+            //console.log(el2, el.type);
+            if (el.type != el2) {
+                el.setVisible(false);
+            } else {
+                el.setVisible(true);
+            }
+            //hide = false;
         });
-        if (hide) el.setVisible(false);
-        else el.setVisible(true);
+        //if (hide) el.setVisible(false);
+        //else el.setVisible(true);
     });
 }
 

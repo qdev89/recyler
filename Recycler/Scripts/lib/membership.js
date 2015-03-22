@@ -112,7 +112,7 @@
                 });
 
                 store.when("1year-alias").unverified(function (p) {
-                    alert("12 subscription unverified");
+                    //alert("12 subscription unverified");
                 });
 
                 store.when("1year-alias").updated(function (p) {
