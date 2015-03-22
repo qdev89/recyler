@@ -371,19 +371,19 @@ var Languages =
                             "Value": "Select"
                         },
                         {
-                            "id": "Garage sale/Market/Event",
+                            "id": "Garage sale",
                             "Value": "Garage sale/market"
                         },						
 						{
-                            "id": "Terracycle spot",
+                            "id": "Terracycle",
                             "Value": "Terracycle brigade"
                         },
                         {
-                            "id": "Recycling spot",
+                            "id": "Shop",
                             "Value": "Second hand sale"
                         },
                         {
-                            "id": "upcycling",
+                            "id": "Upcycling",
                             "Value": "Upcycling spot"
                         },
                         {
@@ -403,7 +403,7 @@ var Languages =
                             "Value": "HELP"
                         },
                         {
-                            "id": "Eco/Green shop",
+                            "id": "Eco",
                             "Value": " Eco/sustainable"
                         }
             ],
@@ -412,23 +412,19 @@ var Languages =
                             "Value": "Vælg type"
                         },
                         {
-                            "id": "Garage sale/Market/Event",
+                            "id": "Garage sale",
                             "Value": "Garagesalg/marked"
                         },
 						{
-                            "id": "Terracycle spot",
+                            "id": "Terracycle",
                             "Value": "Terracycle opsamling"
                         },
                         {
-                            "id": "Eco/Green shop",
-                            "Value": "Øko/bæredygtig"
-                        },
-                        {
-                            "id": "Recycling spot",
+                            "id": "Shop",
                             "Value": "Genbrugs salg"
                         },
                         {
-                            "id": "upcycling",
+                            "id": "Upcycling",
                             "Value": "Upcycling sted"
                         },
                         {
@@ -446,6 +442,10 @@ var Languages =
 						{
                             "id": "Help",
                             "Value": "HJÆLP"
+                        },
+                        {
+                            "id": "Eco",
+                            "Value": "Øko/bæredygtig"
                         }
             ],
             "German": [{
@@ -453,20 +453,20 @@ var Languages =
                             "Value": "Typ Wählen"
                         },
                         {
-                            "id": "Garage sale/Market/Event",
+                            "id": "Garage sale",
                             "Value": "Garagenverkauf/Floh Market",
                         },
 						
 						{
-                            "id": "Terracycle spot",
+                            "id": "Terracycle",
                             "Value": "Terracycle Brigade Ort"
                         },
                         {
-                            "id": "Recycling spot",
+                            "id": "Shop",
                             "Value": "Secondhandladen"
                         },
                         {
-                            "id": "upcycling",
+                            "id": "Upcycling",
                             "Value": "Upcycling ort"
                         },
                         {
@@ -486,7 +486,7 @@ var Languages =
                             "Value": "HELFEN"
                         },
                         {
-                            "id": "Eco/Green shop",
+                            "id": "Eco",
                             "Value": "Eco/nachhaltige"
                         }
 					
@@ -496,19 +496,19 @@ var Languages =
                             "Value": "Seleccione el tipo"
                         },
                         {
-                            "id": "Garage sale/Market/Event",
+                            "id": "Garage sale",
                             "Value": "Venta de Garaje/mercado"
                         },
 												{
-                            "id": "Terracycle spot",
+                            "id": "Terracycle",
                             "Value": "Terracycle brigade spot"
                         },
                         {
-                            "id": "Recycling spot",
+                            "id": "Shop",
                             "Value": "Ventas reciclados/tienda"
 						},
                         {
-                            "id": "upcycling",
+                            "id": "Upcycling",
                             "Value": "Upcycling spot"
                         },
                         {
@@ -528,7 +528,7 @@ var Languages =
                             "Value": "AYÜDANOS a recopilar"
                         },
                         {
-                            "id": "Eco/Green shop",
+                            "id": "Eco",
                             "Value": "Tienda sostenible/lugar"
                         }
             ]
@@ -537,435 +537,369 @@ var Languages =
 
 		var Tags =
         {
- "English":[ 
-{
-"id": "Men ",
-"Value": "Mens stuff"
-},
-{
-"id": "Women",
-"Value": "Womens stuff"
-},
-{
-"id": "Children",
-"Value": "Childrens stuff"
-},
-{
-"id": "Animal",
-"Value": "Animal"
-},      
+ "English":[     
 {
 "id": "Food",
 "Value": "Food"
 },
 {
-"id": "Indoor",
-"Value": "Indoor"
+"id": "Upcycled products",
+"Value": "Upcycled products"
 },
 {
-"id": "Outdoor",
-"Value": "Outdoor"
+"id": "Children clothes",
+"Value": "Children clothes"
+},
+{
+"id": "Children furniture and equip.",
+"Value": "Children furniture and equip."
+},
+{
+"id": "Children toys, books, film",
+"Value": "Children toys, books, film"
+},  
+{
+"id": "Women clothes",
+"Value": "Women clothes"
+},
+{
+"id": "Men clothes",
+"Value": "Men clothes"
+},
+{
+"id": "Shoes and accesories",
+"Value": "Shoes and accesories"
+},
+{
+"id": "Furniture", 
+"Value": "Furniture"
+},
+{
+"id": "Books, film and entertainment",
+"Value": "Books, film and entertainment" 
+}, 
+{
+"id": "Kitchen",
+"Value": "Kitchen stuff"
+}, 
+{
+"id": "Living room",
+"Value": "Living room stuff"
+},
+{
+"id": "Bathroom", 
+"Value": "Bathroom stuff" 
 },
 {
 "id": "Garden",
-"Value": "Garden"
+"Value": "Garden stuff"
 },
 {
-"id": "Kitchen", 
-"Value": "Kitchen"
-},
-{
-"id": "Bathroom",
-"Value": "Bathroom" 
+"id": "Transportation", 
+"Value": "Bikes and Transportation" 
 }, 
 {
-"id": "Furniture",
-"Value": "Furniture"
-}, 
+"id": "Tools",
+"Value": "Tools"
+},    
 {
-"id": "Books",
-"Value": "Books"
-}, 
-{
-"id": "Electronics",
-"Value": "Electronics"
-},
-{
-"id": "Phone", 
-"Value": "Phones" 
-},
+"id": "Arts and crafts",
+"Value": "Arts and crafts"
+},    
 {
 "id": "Computer",
 "Value": "Computer"
+},   
+{
+"id": "TV",
+"Value": "TV etc. "
 },
 {
-"id": "Tools", 
-"Value": "Tools" 
+"id": "Electronics",
+"Value": "Electronics"
 }, 
 {
-"id": "Clothing",
-"Value": "Clothing"
-},    
-{
-"id": "shoes",
-"Value": "Shoes & accessories"
-},
-{
-"id": "Toys",
-"Value": "Toys"
-},
-{
-"id": "Sport",
-"Value": "Sport"
+"id": "Appliances",
+"Value": "Appliances"
 }, 
-{
-"id": "Mechanics",
-"Value": "Mechanics"
-},
-{
-"id": "Transportation",
-"Value": "Transportation"
-},
-{
-"id": "Private",
-"Value": "Entertainment"
-}, ,
 {
 "id": "Materials",
 "Value": "Materials"
-},
-{
-"id": "Industrial",
-"Value": "Industri"
-},
-{
-"id": "Others",
-"Value": "Others"
 }
 ],
 
  "Danish": [
 {
-"id": "Men",
-"Value": "Herre ting"
-},
-{
-"id": "Women",
-"Value": "Kvinde ting"
-},
-{
-"id": "Children",
-"Value": "Børne ting"
-},
-{
-"id": "Animal",
-"Value": "Dyr"
-},    
-{
 "id": "Food",
 "Value": "Fødevarer"
 },
 {
-"id": "Indoor",
-"Value": "Indendørs"
+"id": "Upcycled products",
+"Value": "Upcycled produkter"
 },
 {
-"id": "Outdoor",
-"Value": "Udendørs"
-}, 
-{
-"id": "Garden",
-"Value": "Have"
+"id": "Children clothes",
+"Value": "Børnetøj"
 },
 {
-"id": "Kitchen",
-"Value": "Køkken"
+"id": "Children furniture and equip.",
+"Value": "Børne møbler og udstyr"
 },
 {
-"id": "Bathroom",
-"Value": "Badeværelse"
-}, 
+"id": "Children toys, books, film",
+"Value": "Børne legetøj, bøger, film"
+},  
 {
-"id": "Furniture",
+"id": "Women clothes",
+"Value": "Kvinde tøj"
+},
+{
+"id": "Men clothes",
+"Value": "Herre tøj"
+},
+{
+"id": "Shoes and accesories",
+"Value": "Sko og tilbehør"
+},
+{
+"id": "Furniture", 
 "Value": "Møbler"
 },
 {
-"id": "Books",
-"Value": "Bøger"
-},
-{
-"id": "Electronics",
-"Value": "Elektronik"
-},
-{
-"id": "Phone",
-"Value": "Telefoner"
+"id": "Books, film and entertainment",
+"Value": "Bøger, film og underholdning" 
 }, 
 {
-"id": "Computer",
-"Value": "Computer"
+"id": "Kitchen",
+"Value": "Ting til Køkkenet"
+}, 
+{
+"id": "Living room",
+"Value": "Ting til stuen"
+},
+{
+"id": "Bathroom", 
+"Value": "Ting til Badeværelset" 
+},
+{
+"id": "Garden",
+"Value": "Ting til haven"
+},
+{
+"id": "Transportation", 
+"Value": "Cykler og Transportmidler" 
 }, 
 {
 "id": "Tools",
-"Value": "Værktøjer"
-},
+"Value": "Værktøj"
+},    
 {
-"id": "Clothing",
-"Value": "Tøj"
+"id": "Arts and crafts",
+"Value": "Kunst og håndværk"
+},    
+{
+"id": "Computer",
+"Value": "Computer"
 },   
 {
-"id": "shoes",
-"Value": "Sko & accessories"
+"id": "TV",
+"Value": "TV etc. "
 },
 {
-"id": "Toys",
-"Value": "Legetøj"
-},
+"id": "Electronics",
+"Value": "Electronik"
+}, 
 {
-"id": "Sport",
-"Value": "Sport"
-},
-{
-"id": "Mechanics",
-"Value": "Mekanik"
-},
-{
-"id": "Transportation",
-"Value": "Transportmidler"
-},
-{
-"id": "Private",
-"Value": "Underholdning"
-},
+"id": "Appliances",
+"Value": "Hvidevarer"
+}, 
 {
 "id": "Materials",
 "Value": "Materialer"
-},
-{
-"id": "Industri",
-"Value": "Industri"
-},
-{
-"id": "Others",
-"Value": "Andet"
 }
 ],
 
 
 "German": [
 {
-"id": "Men",
-"Value": "Männer Zeug"
-},
-{
-"id": "Women",
-"Value": "Frauen zeug"
-},
-{
-"id": "Children",
-"Value": "kinder zeug"
-},
-{
-"id": "Animal",
-"Value": "Tiere"
-},
-{
 "id": "Food",
 "Value": "Lebensmittel"
 },
 {
-"id": "Indoor",
-"Value": "Innen"
+"id": "Upcycled products",
+"Value": "Upcycled produkten"
 },
 {
-"id": "Outdoor",
-"Value": "Im Freien"
+"id": "Children clothes",
+"Value": "Kinderbekleidung"
 },
 {
-"id": "Garden",
-"Value": "Garten"
+"id": "Children furniture and equip.",
+"Value": "Kinder Möbel und auszustatten"
 },
 {
-"Id": "Kitchen", 
-"Value": "Küche" 
-}, 
+"id": "Children toys, books, film",
+"Value": "Kinder Spielzeug, Bücher, Film"
+},  
 {
-"Id": "Bathroom", 
-"Value": "Badezimmer" 
+"id": "Women clothes",
+"Value": "Damenkleidung"
 },
 {
-"id": "Furniture",
+"id": "Men clothes",
+"Value": "Männer Kleidung"
+},
+{
+"id": "Shoes and accesories",
+"Value": "Schuhe und Zubehör"
+},
+{
+"id": "Furniture", 
 "Value": "Möbel"
 },
 {
-"id": "Books",
-"Value": "Bücher"
+"id": "Books, film and entertainment",
+"Value": "Bücher, Film and Unterhaltung" 
+}, 
+{
+"id": "Kitchen",
+"Value": "Küche Zeug"
+}, 
+{
+"id": "Living room",
+"Value": "Wohnzimmer Zeug"
+},
+{
+"id": "Bathroom", 
+"Value": "Badezimmer Zeug" 
+},
+{
+"id": "Garden",
+"Value": "Garten zeug"
+},
+{
+"id": "Transportation", 
+"Value": "Fahrräder und Verkehr" 
+}, 
+{
+"id": "Tools",
+"Value": "Extras"
+},    
+{
+"id": "Arts and crafts",
+"Value": "Kunsthandwerk"
+},    
+{
+"id": "Computer",
+"Value": "Computer"
+},   
+{
+"id": "TV",
+"Value": "TV etc. "
 },
 {
 "id": "Electronics",
 "Value": "Electronik"
-},
-{
-"Id": "Phone", 
-"Value": "Phones" 
-},
-{
-"id": "Computer",
-"Value": "Computer"
-},
-{
-"id": "Sport",
-"Value": "Sport"
-},
-{
-"Id": "Tools", 
-"Value": "Extras" 
 }, 
 {
-"id": "Clothing",
-"Value": "Kleidung"
-},
-         
-{
-"id": "shoes",
-"Value": "Schuhe und Zubehör"
-},
-{
-"id": "Toys",
-"Value": "Spielzeug"
-},
-{
-"id": "Transportation",
-"Value": "Transport"
-},
-{
-"id": "Mechanics",
-"Value": "Mechanik"
-},
-{
-"id": "Private",
-"Value": "Unterhaltung"
-},
+"id": "Appliances",
+"Value": "Haushaltsgeräte"
+}, 
 {
 "id": "Materials",
 "Value": "Materialien"
-},
-{
-"id": "Industri",
-"Value": "Industrie"
-},
-{
-"id": "Others",
-"Value": "Andere"
 }
 ],
 
 
 "Spanish": [
 {
-"id": "Men",
-"Value": "Hombre cosas"
-},
-{
-"id": "Women",
-"Value": "Mujer cosas"
-},
-{
-"id": "Children",
-"Value": "Niños cosas"
-},
-{
-"id": "Animal",
-"Value": "Animales"
-},    
-{
 "id": "Food",
-"Value": "Alimentos"
+"Value": "Alimento"
 },
 {
-"id": "Indoor",
-"Value": "Interior"
+"id": "Upcycled products",
+"Value": "Productos upcycle"
 },
 {
-"id": "Outdoor",
-"Value": "Exterior"
+"id": "Children clothes",
+"Value": "Ropa de niños"
 },
 {
-"id": "Garden",
-"Value": "Jardín"
+"id": "Children furniture and equip.",
+"Value": "Equipos para Niños y equipar."
 },
 {
-"Id": "Kitchen", 
-"Value": "Cocina" 
+"id": "Children toys, books, film",
+"Value": "Los niños juguetes, los libros, el cine"
+},  
+{
+"id": "Women clothes",
+"Value": "la ropa de las mujeres"
 },
 {
-"Id": "Bathroom", 
-"Value": "Cuarto de baño" 
-}, 
-{
-"id": "Furniture",
-"Value": "Mueblas"
+"id": "Men clothes",
+"Value": "Ropa de hombre"
 },
 {
-"id": "Books",
-"Value": "Libros"
-},
-{
-"id": "Electronics",
-"Value": "Artículos electrónicos"
-},
-{
-"Id": "Phone", 
-"Value": "Teléfonos" 
-},
-{
-"id": "Computer",
-"Value": "Equipo"
-},
-{
-"id": "Tools", 
-"Value": "Herramientas" 
-}, 
-{
-"id": "Clothing",
-"Value": "Ropa"
-},
-           
-{
-"id": "shoes",
+"id": "Shoes and accesories",
 "Value": "Zapatos y accesorios"
 },
 {
-"id": "Toys",
-"Value": "Juguetes"
+"id": "Furniture", 
+"Value": "Muebles"
 },
 {
-"id": "Sport",
-"Value": "Deportes"
+"id": "Books, film and entertainment",
+"Value": "Libros, cine y entretenimiento" 
+}, 
+{
+"id": "Kitchen",
+"Value": "Cosas de la cocina"
+}, 
+{
+"id": "Living room",
+"Value": "Sala de estar las cosas"
 },
 {
-"id": "Mechanics",
-"Value": "Jardín"
+"id": "Bathroom", 
+"Value": "Baño cosas" 
 },
 {
-"id": "Transportation",
-"Value": "Transporte"
+"id": "Garden",
+"Value": "Cosas del jardín"
 },
 {
-"id": "Private",
-"Value": "Entretenimiento"
+"id": "Transportation", 
+"Value": "Las bicicletas y transporte" 
+}, 
+{
+"id": "Tools",
+"Value": "Herramientas"
+},    
+{
+"id": "Arts and crafts",
+"Value": "Arte y Artesanía"
+},    
+{
+"id": "Computer",
+"Value": "Computer"
+},   
+{
+"id": "TV",
+"Value": "TV etc. "
 },
+{
+"id": "Electronics",
+"Value": "Electrónica"
+}, 
+{
+"id": "Appliances",
+"Value": "Electrodomésticos"
+}, 
 {
 "id": "Materials",
 "Value": "Materiales"
-},
-{
-"id": "Industri",
-"Value": "Industri"
-},
-{
-"id": "Others",
-"Value": "Otros"
 }
 ]
          

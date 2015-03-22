@@ -78,7 +78,7 @@ function iconMapInit(e) {
 
                             var grey = true;
 
-                            if (allSpots[i].SpotType === "Garage_sale" || allSpots[i].SpotType === "Help") {
+                            if (allSpots[i].SpotType === "Garage sale" || allSpots[i].SpotType === "Help") {
                                 var date = new Date(allSpots[i].EventDate);
                                 if (!isValidDate(date) || date > twoDaysAfter || date < today) {
                                     console.log(allSpots[i].SpotType, date, " too early or old");
@@ -211,21 +211,21 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
             icon = "images/mapicons/eco_spot_dot.png";
             break;
 
-        case "FREE_Food":
+        case "FREE Food":
             icon = "images/mapicons/food_small_dot.png";
             break;
 
-        case "Recycling_company":
+        case "Recycling company":
             icon = "images/mapicons/business_smal_dot.png";
             break;
 
-        case "Garage_sale":
+        case "Garage sale":
             if (!isGrey)
                 icon = "images/mapicons/garagesale_small_dot.png";
             else icon = "images/mapicons/garagesale_grey_dot.png";
             break;
 
-        case "Food_donation":
+        case "Food donation":
             icon = "images/mapicons/foodwaste_small_dot.png";
             break;
 
@@ -235,18 +235,15 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
             else icon = "images/mapicons/help-grey_dot.png";
             break;
 
-        case "Recycling_Place":
+        case "Recycling Place":
             icon = "images/mapicons/recycling_small_dot.png";
             break;
 
         case "Upcycling":
             icon = "images/mapicons/upcycling_small_dot.png";
             break;
-
+        
         case "Terracycle":
-            icon = "images/mapicons/terracycle_small_dot.png";
-            break;
-        case "Terracycle spot":
             icon = "images/mapicons/terracycle_small_dot.png";
             break;
 

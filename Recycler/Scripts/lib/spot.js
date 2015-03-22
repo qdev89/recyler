@@ -474,15 +474,15 @@ function SaveSpot() {
                           var templateName = emailTemplates.spot;
 
                           switch (Data.SpotType) {
-                              case "FREE_Food":
+                              case "FREE Food":
                                   templateName = emailTemplates.freeFood;
                                   break;
 
-                              case "Garage_sale":
+                              case "Garage sale":
                                   templateName = emailTemplates.garageSale;
                                   break;
 
-                              case "Food_donation":
+                              case "Food donation":
                                   templateName = emailTemplates.food;
                                   break;
 
@@ -495,11 +495,11 @@ function SaveSpot() {
                                   break;
 
 
-                              case "Recycling_company":
+                              case "Recycling company":
                                   templateName = emailTemplates.business;
                                   break;
 
-                              case "Recycling_spot":
+                              case "Recycling spot":
                                   templateName = emailTemplates.recycling;
                                   break;
 
@@ -507,7 +507,7 @@ function SaveSpot() {
                                   templateName = emailTemplates.upcycling;
                                   break;
 
-                              case "Terracycle_spot":
+                              case "Terracycle":
                                   templateName = emailTemplates.terraspot;
                                   break;
 
@@ -602,7 +602,7 @@ function InitCreateSpot() {
     });
 
     $('#spotype').change(function () {
-        if ($(this).val() == "Garage_sale") {
+        if ($(this).val() == "Garage sale") {
             $('#lblGarageSale').show();
             $('#SpotName').hide();
             $('#GarageName').show();

@@ -18,7 +18,7 @@ window.filter = {};
                 localStorage.LanguageType = "dk";
 
                 var menuItem = $("<option id=''></option>");
-                currentDefaultTag = "Tags/kategorier";
+                currentDefaultTag = "Choose / Vælg / Wählen / Elegir";
                 menuItem.html(currentDefaultTag);
                 $("#select-custom-24").append(menuItem);
 

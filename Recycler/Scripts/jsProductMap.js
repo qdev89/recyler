@@ -215,7 +215,7 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
     var icon = "";
     console.log(type);
     switch (type) {
-        case "Eco/Green shop":
+        case "Eco":
             icon = "images/mapicons/eco_spot.png";
             break;
 
@@ -227,7 +227,7 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
             icon = "images/mapicons/business_smal.png";
             break;
 
-        case "Garage sale/Market/Event":
+        case "Garage sale":
             if (!isGrey)
                 icon = "images/mapicons/garagesale_small.png";
             else icon = "images/mapicons/garagesale_grey.png";
@@ -235,6 +235,10 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
 
         case "Food donation":
             icon = "images/mapicons/foodwaste_small.png";
+            break;
+            
+        case "Shop":
+            icon = "images/mapicons/shop_small.png";
             break;
 
         case "Help":
@@ -247,11 +251,11 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
             icon = "images/mapicons/recycling_small.png";
             break;
 
-        case "upcycling":
+        case "Upcycling":
             icon = "images/mapicons/upcycling_small.png";
             break;
 
-        case "Terracycle spot":
+        case "Terracycle":
             icon = "images/mapicons/terracycle_small.png";
             break;
 
