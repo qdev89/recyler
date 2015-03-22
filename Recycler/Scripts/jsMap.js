@@ -207,26 +207,36 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
     var icon = "";
     console.log(type);
     switch (type) {
-        case "Eco":
-            icon = "images/mapicons/eco_spot_dot.png";
+        case "Garage sale":
+            if (!isGrey)
+                icon = "images/mapicons/garagesale_small_dot.png";
+            else icon = "images/mapicons/garagesale_grey_dot.png";
+            break;
+        case "Terracycle":
+            icon = "images/mapicons/terracycle_small_dot.png";
             break;
 
-        case "FREE Food":
-            icon = "images/mapicons/food_small_dot.png";
+
+        case "Shop":
+            icon = "images/mapicons/shop_small_dot.png";
+            break;
+
+
+        case "Upcycling":
+            icon = "images/mapicons/upcycling_small_dot.png";
             break;
 
         case "Recycling company":
             icon = "images/mapicons/business_smal_dot.png";
             break;
 
-        case "Garage sale":
-            if (!isGrey)
-                icon = "images/mapicons/garagesale_small_dot.png";
-            else icon = "images/mapicons/garagesale_grey_dot.png";
-            break;
-
         case "Food donation":
             icon = "images/mapicons/foodwaste_small_dot.png";
+            break;
+
+
+        case "FREE Food":
+            icon = "images/mapicons/food_small_dot.png";
             break;
 
         case "Help":
@@ -239,17 +249,11 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
             icon = "images/mapicons/recycling_small_dot.png";
             break;
 
-        case "Upcycling":
-            icon = "images/mapicons/upcycling_small_dot.png";
-            break;
-        
-        case "Terracycle":
-            icon = "images/mapicons/terracycle_small_dot.png";
-            break;
 
-        case "Shop":
-            icon = "images/mapicons/shop_small_dot.png";
+        case "Eco":
+            icon = "images/mapicons/eco_spot_dot.png";
             break;
+     
 
 
         default: icon = "";
@@ -305,16 +309,21 @@ function filterIcons() {
 
 function showMarkerTypes(types) {
     markersArray.forEach(function (el, index) {
+        if (types.indexOf(el.type) != -1) {
+            el.setVisible(true);
+        } else {
+            el.setVisible(false);
+        }
         //var hide = true;
-        types.forEach(function (el2, index2) {
-            //console.log(el2, el.type);
-            if (el.type != el2) {
-                el.setVisible(false);
-            } else {
-                el.setVisible(true);
-            }
-            //hide = false;
-        });
+        //types.forEach(function (el2, index2) {
+        //    //console.log(el2, el.type);
+        //    if (el.type != el2) {
+        //        el.setVisible(false);
+        //    } else {
+        //        el.setVisible(true);
+        //    }
+        //    //hide = false;
+        //});
         //if (hide) el.setVisible(false);
         //else el.setVisible(true);
     });
