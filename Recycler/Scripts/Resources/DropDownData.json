@@ -364,43 +364,38 @@ var Languages =
             ]
         }
 
- var SpotType =
+	 var SpotType =
         {
             "English":[ {
                             "id": "0",
                             "Value": "Select"
                         },
                         {
-                            "id": "Garage_sale",
+                            "id": "Garage sale/Market/Event",
                             "Value": "Garage sale/market"
                         },						
 						{
-                            "id": "Terracycle",
+                            "id": "Terracycle spot",
                             "Value": "Terracycle brigade"
                         },
                         {
-                            "id": "Shop",
+                            "id": "Recycling spot",
                             "Value": "Second hand sale"
                         },
                         {
-                            "id": "Upcycling",
+                            "id": "upcycling",
                             "Value": "Upcycling spot"
                         },
                         {
-                            "id": "Recycling_Place",
-                            "Value": "Recycling place"
-                        },
-                       
-                        {
-                            "id": "Recycling_Company",
-                            "Value": "Recycling Company"
+                            "id": "Recycling company",
+                            "Value": "Recycling spot"
                         },
                         {
-                            "id": "Food_donation",
+                            "id": "Food donation",
                             "Value": "Food donation"
                         },						
 					    {
-                            "id": "FREE_Food",
+                            "id": "FREE Food",
                             "Value": "FREE food or fruits"
                         },
 						{
@@ -408,7 +403,7 @@ var Languages =
                             "Value": "HELP"
                         },
                         {
-                            "id": "Eco",
+                            "id": "Eco/Green shop",
                             "Value": " Eco/sustainable"
                         }
             ],
@@ -417,40 +412,35 @@ var Languages =
                             "Value": "Vælg type"
                         },
                         {
-                            "id": "Garage_sale",
+                            "id": "Garage sale/Market/Event",
                             "Value": "Garagesalg/marked"
                         },
 						{
-                            "id": "Terracycle_spot",
+                            "id": "Terracycle spot",
                             "Value": "Terracycle opsamling"
                         },
                         {
-                            "id": "Eco",
+                            "id": "Eco/Green shop",
                             "Value": "Øko/bæredygtig"
                         },
                         {
-                            "id": "Shop",
-                            "Value": "Genbrugs butik"
+                            "id": "Recycling spot",
+                            "Value": "Genbrugs salg"
                         },
-                         {
-                            "id": "Recycling_Place",
-                            "Value": "Genbrugs plads"
-                        },
-
                         {
-                            "id": "Upcycling",
+                            "id": "upcycling",
                             "Value": "Upcycling sted"
                         },
                         {
-                            "id": "Recycling_company",
-                            "Value": "Genbrugs firma"
+                            "id": "Recycling company",
+                            "Value": "Genbrugs firma/sted"
                         },
                         {
-                            "id": "Food_donation",
+                            "id": "Food donation",
                             "Value": "Fødevare donation"
                         },
 					    {
-                            "id": "FREE_Food",
+                            "id": "FREE Food",
                             "Value": "GRATIS fødevarer eller frugt"
                         },
 						{
@@ -463,37 +453,32 @@ var Languages =
                             "Value": "Typ Wählen"
                         },
                         {
-                            "id": "Garage_sale",
+                            "id": "Garage sale/Market/Event",
                             "Value": "Garagenverkauf/Floh Market",
                         },
 						
 						{
-                            "id": "Terracycle_spot",
+                            "id": "Terracycle spot",
                             "Value": "Terracycle Brigade Ort"
                         },
                         {
-                            "id": "Shop",
+                            "id": "Recycling spot",
                             "Value": "Secondhandladen"
                         },
                         {
-                            "id": "Upcycling",
+                            "id": "upcycling",
                             "Value": "Upcycling ort"
                         },
                         {
-                            "id": "Recycling_company",
+                            "id": "Recycling company",
                             "Value": "Recycled Firma"
                         },
-                         {
-                            "id": "Recycling_Place",
-                            "Value": "Recycling ort"
-                        },
-
                         {
-                            "id": "Food_donation",
+                            "id": "Food donation",
                             "Value": "Lebensmittel donation"
                         },
 					{
-                            "id": "FREE_Food",
+                            "id": "FREE Food",
                             "Value": "Kostenlose Lebensmittel"
                         },
 						{
@@ -501,7 +486,7 @@ var Languages =
                             "Value": "HELFEN"
                         },
                         {
-                            "id": "Eco",
+                            "id": "Eco/Green shop",
                             "Value": "Eco/nachhaltige"
                         }
 					
@@ -511,37 +496,31 @@ var Languages =
                             "Value": "Seleccione el tipo"
                         },
                         {
-                            "id": "Garage_sale",
+                            "id": "Garage sale/Market/Event",
                             "Value": "Venta de Garaje/mercado"
                         },
-						
-                        {
-                            "id": "Terracycle_spot",
+												{
+                            "id": "Terracycle spot",
                             "Value": "Terracycle brigade spot"
                         },
                         {
-                            "id": "Shop",
+                            "id": "Recycling spot",
                             "Value": "Ventas reciclados/tienda"
 						},
                         {
-                            "id": "Upcycling",
+                            "id": "upcycling",
                             "Value": "Upcycling spot"
                         },
                         {
-                            "id": "Recycling_company",
+                            "id": "Recycling company",
                             "Value": "Reciclaje compañía/Esacio"
                         },
-                         {
-                            "id": "Recycling_Place",
-                            "Value": "Reciclaje place"
-                        },
-
                         {
-                            "id": "Food_donation",
+                            "id": "Food donation",
                             "Value": "Alimentos donación"
                         },
 						{
-                            "id": "FREE_Food",
+                            "id": "FREE Food",
                             "Value": "GRATIS Los alimentos "
                         },
 						{
@@ -549,12 +528,12 @@ var Languages =
                             "Value": "AYÜDANOS a recopilar"
                         },
                         {
-                            "id": "Eco",
+                            "id": "Eco/Green shop",
                             "Value": "Tienda sostenible/lugar"
                         }
             ]
         }
- 
+
 
 		var Tags =
         {

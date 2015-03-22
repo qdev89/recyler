@@ -1156,7 +1156,6 @@ font-size: 1rem;
 #friendsApp .activity-content {
     position: relative;
     padding-left: 5em;
-    font-size: .85rem;
 }
 
     #friendsApp .activity-content .person-name,
@@ -1193,7 +1192,6 @@ font-size: 1rem;
 
 #friendsApp .activity-content .comment-content .time-span {
     top: 12px;
-    font-size: .6rem;
 }
 
 #friendsApp .user-share-txt {
@@ -1201,7 +1199,7 @@ font-size: 1rem;
 }
 
 #friendsApp .activity-content .comment-content .user-share-txt {
-    font-size: .75rem;
+    font-size: 14px;
 }
 
 #friendsApp .activity-view .person-name,
@@ -1213,7 +1211,6 @@ font-size: 1rem;
 #friendsApp .activity-view .comment-content .person-name {
     margin: 0;
     color: #6c7884;
-    font-size: .85rem;
 }
 
 #friendsApp .add-activity-view .person-name,
@@ -2245,7 +2242,6 @@ img.resimgs {
 #friendsApp .activity-content {
     position: relative;
     padding-left: 6em;
-    font-size: .85rem;
 }
 
     #friendsApp .activity-content .person-name,
@@ -2291,7 +2287,6 @@ img.resimgs {
 
 #friendsApp .activity-content .comment-content .time-span {
     top: 12px;
-    font-size: .6rem;
 }
 
 #friendsApp .user-share-txt {
@@ -2302,7 +2297,7 @@ img.resimgs {
 #friendsApp .user-share-txt-xx {
     color: #34495e;
     display: block;
-    font-size: .9rem;
+    font-size: 14px;
     min-height: 10px;
     max-height: 30px;
     overflow: hidden;
@@ -2312,11 +2307,11 @@ img.resimgs {
 #friendsApp .user-share-title {
     color: dodgerblue;
     display: block;
-    font-size: medium;
+    font-size: 20px;
 }
 
 #friendsApp .activity-content .comment-content .user-share-txt {
-    font-size: .75rem;
+    font-size: 14px;
 }
 
 #friendsApp .activity-view .person-name,
