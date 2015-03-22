@@ -46,8 +46,11 @@ app.Activity = (function () {
                      activity = data.result;
                      $activityPicture[0].style.display = activity.Picture ? 'block' : 'none';
                      $('#picture').attr('src', activity.Picture);
-                    hideLoading();
-                },
+                     $('#picture').click(function () {
+                         openImageFullModal(activity.Picture);
+                     });
+                     hideLoading();
+                 },
               function (error) {
                   hideLoading();
                   alert(JSON.stringify(error));

@@ -1246,3 +1246,11 @@ function guid() {
 }
 
 
+function closeImageFullModal() {
+    $("#image-full-modal").kendoMobileModalView("close");
+}
+
+function openImageFullModal(imgSrc) {
+    $("#imgFull").attr("src", imgSrc);
+    $("#image-full-modal").kendoMobileModalView("open");
+}

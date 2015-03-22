@@ -33,7 +33,7 @@
 <script type="text/x-kendo-template" id="activityTemplate">
     <div data-role="touch" data-bind="events: { tap: activitySelected }" class="cf">
         <div class="user-picture">
-            <img data-bind="attr:{src: User().PictureUrl}" alt="images/avatar.png" />
+            <img data-bind="attr: { src: User().PictureUrl }" alt="images/avatar.png"/>
         </div>
         <div class="activity-content">
             <a class="user-share-title">${Title}</a>
