@@ -1,4 +1,5 @@
 var googleMap = null;
+var mapForMarker = null;
 var markersArray = [];
 var allSpots = [];
 var spotContent = "";
@@ -38,8 +39,6 @@ function iconMapInit(e) {
 
         window.getLocation()
             .done(function (x) {
-
-
                 $("#map-with-icons").height($("#findonmap .km-content").first().height() - 60);
 
                 var mapOptions = {
@@ -61,6 +60,7 @@ function iconMapInit(e) {
                 data.get().then(function (data) {
 
                     hideLoading();
+                    debugger;
                     allSpots = data.result;
 
                     var today = new Date();
@@ -82,7 +82,7 @@ function iconMapInit(e) {
                                 var date = new Date(allSpots[i].EventDate);
                                 if (!isValidDate(date) || date > twoDaysAfter || date < today) {
                                     console.log(allSpots[i].SpotType, date, " too early or old");
-                                    return true;
+                                    grey = true;
                                 } else console.log(date, " this is ok");
                                 console.log(date, oneDayAter);
                                 if (date < oneDayAter) {
@@ -127,25 +127,28 @@ function iconMapInit(e) {
 }
 
 function mapInit() {
-    if (googleMap != null)
-        return;
+    //if (mapForMarker != null)
+    //    return;
+    window.getLocation()
+            .done(function (x) {
+                $("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
+                var mapOptions = {
+                    center: { lat: x.coords.latitude, lng: x.coords.longitude },
+                    zoom: 8,
+                    streetViewControl: false
+                };
+                googleMap = new google.maps.Map(
+                   document.getElementById('map-with-markers'),
+                   mapOptions
+                   );
+                //setTimeout(function () {
+                //    $("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
 
-    navigator.geolocation.getCurrentPosition(function (x) {
-        $("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
-        var mapOptions = {
-            center: { lat: x.coords.latitude, lng: x.coords.longitude },
-            zoom: 8,
-            streetViewControl: false
-        };
-        googleMap = new google.maps.Map(
-           document.getElementById('map-with-markers'),
-           mapOptions
-           );
-        setTimeout(function () {
-            $("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
-
-        }, 200);
-    });
+                //}, 200);
+            })
+			.fail(function (error) {
+			    alert(error.message); /*TODO: Better handling*/
+			});
 }
 
 
@@ -172,28 +175,40 @@ function mapShow(e) {
         return;
     }
 
+    window.getLocation()
+            .done(function (pos) {
+                var crd = pos.coords;
+                setPlace(crd.latitude, crd.longitude, true);
+                console.log('Your current position is:');
+                console.log('Latitude : ' + crd.latitude);
+                console.log('Longitude: ' + crd.longitude);
+                console.log('More or less ' + crd.accuracy + ' meters.');
+            })
+			.fail(function (error) {
+			    console.warn('ERROR(' + err.code + '): ' + err.message);
+			    setPlace(0, 0, true);
+			});
+    //var options = {
+    //    enableHighAccuracy: true,
+    //    timeout: 5000,
+    //    maximumAge: 0
+    //};
 
-    var options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-    };
+    //function success(pos) {
+    //    var crd = pos.coords;
+    //    setPlace(crd.latitude, crd.longitude, true);
+    //    console.log('Your current position is:');
+    //    console.log('Latitude : ' + crd.latitude);
+    //    console.log('Longitude: ' + crd.longitude);
+    //    console.log('More or less ' + crd.accuracy + ' meters.');
+    //};
 
-    function success(pos) {
-        var crd = pos.coords;
-        setPlace(crd.latitude, crd.longitude, true);
-        console.log('Your current position is:');
-        console.log('Latitude : ' + crd.latitude);
-        console.log('Longitude: ' + crd.longitude);
-        console.log('More or less ' + crd.accuracy + ' meters.');
-    };
+    //function error(err) {
+    //    console.warn('ERROR(' + err.code + '): ' + err.message);
+    //    setPlace(0, 0, true);
+    //};
 
-    function error(err) {
-        console.warn('ERROR(' + err.code + '): ' + err.message);
-        setPlace(0, 0, true);
-    };
-
-    navigator.geolocation.getCurrentPosition(success, error, options);
+    //navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
 
@@ -208,6 +223,7 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
     console.log(type);
     switch (type) {
         case "Garage sale":
+            debugger;
             if (!isGrey)
                 icon = "images/mapicons/garagesale_small_dot.png";
             else icon = "images/mapicons/garagesale_grey_dot.png";
@@ -253,7 +269,7 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
         case "Eco":
             icon = "images/mapicons/eco_spot_dot.png";
             break;
-     
+
 
 
         default: icon = "";

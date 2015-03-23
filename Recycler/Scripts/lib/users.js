@@ -670,6 +670,9 @@ $(document).ready(function () {
 
 });
 
+function sendEmailToAdmin() {
+    
+}
 
 function saveUserData() {
 
