@@ -18,7 +18,7 @@ window.filter = {};
                 localStorage.LanguageType = "dk";
 
                 var menuItem = $("<option id=''></option>");
-                currentDefaultTag = "Choose / Vælg / Wählen / Elegir";
+                currentDefaultTag = "Vælg kategorier";
                 menuItem.html(currentDefaultTag);
                 $("#select-custom-24").append(menuItem);
 
@@ -38,7 +38,7 @@ window.filter = {};
 
                 localStorage.LanguageType = "de";
                 var menuItem = $("<option id=''></option>");
-                currentDefaultTag = "Tags/Categories";
+                currentDefaultTag = "Bitte wählen categori";
                 menuItem.html(currentDefaultTag);
                 $("#select-custom-24").append(menuItem);
 
@@ -57,7 +57,7 @@ window.filter = {};
 
                 localStorage.LanguageType = "en";
                 var menuItem = $("<option id=''></option>");
-                currentDefaultTag = "Tags/Categories";
+                currentDefaultTag = "Choose Categori";
                 menuItem.html(currentDefaultTag);
                 $("#select-custom-24").append(menuItem);
 
@@ -76,7 +76,7 @@ window.filter = {};
 
                 localStorage.LanguageType = "es";
                 var menuItem = $("<option id=''></option>");
-                currentDefaultTag = "Tags/Categories";
+                currentDefaultTag = "Choose Categori";
                 menuItem.html(currentDefaultTag);
                 $("#select-custom-24").append(menuItem);
 
