@@ -1158,6 +1158,12 @@ font-size: 1rem;
     padding-left: 5em;
 }
 
+#friendsApp .activity-content1 {
+    position: relative;
+    padding-left: 2em;
+     padding-right: 2em;
+}
+
     #friendsApp .activity-content .person-name,
     #friendsApp .add-activity-view .person-name,
     #friendsApp .add-comment-view .person-name,

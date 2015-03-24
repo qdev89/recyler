@@ -17,13 +17,16 @@
             <img data-bind="attr:{src: me.ImageData}" alt="images/avatar.png" />
         </div>
         <h2 class="person-name" data-bind="text: me.DisplayName">Me</h2><br>
+         <label for="photo" data-localize="photo" style="color:dodgerblue;font-size:medium;">
+               Take article photo:
+                </label><br>
         <div id="image_div" align="center">
             <br> <img id="imageActivity" alt="images/imageplaceholder.png" width="100%" src="images/imageplaceholder.png" onclick="takePictureActivity();" style="height: 100px;width: 100px"><br>
         </div>
         <div class="user-share">
             <span style="margin-left: 5px; margin-top: 3px;">
                 <label for="title" data-localize="title" style="color:dodgerblue;font-size:medium;">
-                    Title:
+               Title on news story:
                 </label>
                 <input type="text" style="width:100%;" maxlength="50" id="newTitle">
             </span>
@@ -31,7 +34,7 @@
         <div class="user-share">
             <span style="margin-left: 5px; margin-top: 3px;">
                 <label for="Entry" data-localize="Entry" style="color:dodgerblue;font-size:medium;">
-                    Entry:
+                    Article:
                 </label>
             </span>
             <textarea id="newStatus"></textarea>
