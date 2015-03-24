@@ -450,7 +450,7 @@ app.Product = (function () {
             }
 
             TranslateApp();
-            var interval = 12;
+            var interval = 18;
 
             if (isMy && isMy.sender && isMy.sender.params.refresh == "false")
                 return;
