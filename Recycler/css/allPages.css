@@ -2446,15 +2446,4 @@ img.resimgs {
 }
 
 
-.km-flat .k-slider .k-draghandle:hover, .km-flat .k-slider .k-draghandle, .km-flat .k-slider-selection {
-    background: #2489ce !important;
-}
 
-.km-root .k-slider-track {
-    height: 5px;
-}
-
-.km-root .k-slider .k-draghandle {
-    width: 1em;
-    height: 1em;
-}
