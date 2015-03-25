@@ -275,6 +275,19 @@ function updateItem() {
 
 }
 
+var slider;
+function onFindItemInit(e) {
+    slider = $("#find-item-slider").kendoSlider({
+        increaseButtonTitle: "Right",
+        decreaseButtonTitle: "Left",
+        min: 0,
+        max: 250,
+        smallStep: 2,
+        largeStep: 10,
+        showButtons: true,
+
+    }).data("kendoSlider");
+}
 
 function onProductShow(e) {
     if (e.sender.params.refresh != "false") {
@@ -442,7 +455,13 @@ app.Product = (function () {
             getProducts(false, word);
         }
 
-        var getProducts = function (isMy, filterWord) {
+        var filterProductsByDistance = function () {
+            var distance = slider.value();
+            //   log(word);
+            getProducts(false, undefined, distance);
+        }
+
+        var getProducts = function (isMy, filterWord, distance) {
 
             var visitedProductIds = [];
             if (localStorage.isVisitedProductIds) {
@@ -473,6 +492,7 @@ app.Product = (function () {
             }
 
             if (filterWord === undefined) $("#filterWord").val("");
+            if (distance === undefined) slider.value(0);
 
             var skip = 0;
             var dataSource = new kendo.data.DataSource({
@@ -480,6 +500,7 @@ app.Product = (function () {
                     read: function (options) {
                         showLoading();
                         try {
+                            debugger;
                             var data = app.everlive.data('Product');
                             var query = new Everlive.Query();
 
@@ -491,19 +512,29 @@ app.Product = (function () {
                             var city = user.City || '';
                             var cityRegEx = ".*" + city + ".*";
                             var countryRegEx = ".*" + country + ".*";
+                            //.nearSphere('Location', [app.currentPosition.coords.latitude, app.currentPosition.coords.longitude], distance, 'km');
                             if (city && user.onlycity) {
                                 if (isMy === true)
                                     query.where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else if (filterWord !== undefined) {
                                     query.where().and().regex('Name', filterWord, 'i').regex('City', cityRegEx, 'i').done();
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
-                                } else
+                                }
+                                else if (distance !== undefined) {
+                                    query.where().and().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').regex('City', cityRegEx, 'i').done();
+                                    query.orderDesc('CreatedAt').skip(skip).take(interval);
+                                }
+                                else
                                     query.where().regex('City', cityRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                             } else if (country && user.onlycountry) {
                                 if (isMy === true)
                                     query.where().and().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else if (filterWord !== undefined) {
                                     query.where().and().regex('Name', filterWord, 'i').regex('Country', countryRegEx, 'i').done();
+                                    query.orderDesc('CreatedAt').skip(skip).take(interval);
+                                }
+                                else if (distance !== undefined) {
+                                    query.where().and().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').regex('Country', countryRegEx, 'i').done();
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
                                 } else
                                     query.where().regex('Country', countryRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
@@ -512,6 +543,8 @@ app.Product = (function () {
                                     query.where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else if (filterWord !== undefined)
                                     query.where().regex('Name', filterWord, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                else if (distance !== undefined)
+                                    query.where().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
                             }
@@ -635,6 +668,7 @@ app.Product = (function () {
             getProductsByUserID: getProductsByUserID,
             getMyProducts: getMyProducts,
             filterProducts: filterProducts,
+            filterProductsByDistance: filterProductsByDistance,
             getProductByID: getProductByID,
             nointerest: nointerest
         };

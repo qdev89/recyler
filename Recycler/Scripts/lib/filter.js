@@ -163,7 +163,7 @@ window.filter = {};
 
                 // for Distance
                 if (distance && distance > 0) {
-                    contQuery.nearSphere('Location', [position.coords.latitude, position.coords.longitude], distance, 'km');
+                    contQuery.nearSphere('Location', [position.coords.longitude, position.coords.latitude], distance, 'km');
                 }
 
                 // for Price

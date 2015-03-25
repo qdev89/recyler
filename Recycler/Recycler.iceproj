@@ -670,12 +670,14 @@
     <Content Include="kendo\js\jquery.min.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="kendo\js\kendo.all.min.js" />
     <Content Include="kendo\js\kendo.mobile.min.js">
       <SubType>Content</SubType>
     </Content>
     <Content Include="kendo\styles\custom.css">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="kendo\styles\Default\slider-h.gif" />
     <Content Include="kendo\styles\images\back.png">
       <SubType>Content</SubType>
     </Content>
@@ -691,9 +693,14 @@
     <Content Include="kendo\styles\images\wp8_inverseicons.png">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="kendo\styles\kendo.common.min.css" />
+    <Content Include="kendo\styles\kendo.dataviz.default.min.css" />
+    <Content Include="kendo\styles\kendo.dataviz.min.css" />
+    <Content Include="kendo\styles\kendo.default.min.css" />
     <Content Include="kendo\styles\kendo.mobile.all.min.css">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="kendo\styles\textures\highlight.png" />
     <Content Include="ListAddress.html">
       <SubType>Content</SubType>
     </Content>
@@ -979,6 +986,8 @@
     <Folder Include="kendo\js\" />
     <Folder Include="kendo\styles\" />
     <Folder Include="kendo\styles\images\" />
+    <Folder Include="kendo\styles\Default\" />
+    <Folder Include="kendo\styles\textures\" />
     <Folder Include="Plugins\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\app\" />

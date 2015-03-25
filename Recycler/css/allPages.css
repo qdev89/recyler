@@ -1161,24 +1161,24 @@ font-size: 1rem;
 #friendsApp .activity-content1 {
     position: relative;
     padding-left: 2em;
-     padding-right: 2em;
+    padding-right: 2em;
 }
 
-    #friendsApp .activity-content .person-name,
-    #friendsApp .add-activity-view .person-name,
-    #friendsApp .add-comment-view .person-name,
-    #friendsApp .activity-content .time-span {
-        font-weight: 600;
-    }
+#friendsApp .activity-content .person-name,
+#friendsApp .add-activity-view .person-name,
+#friendsApp .add-comment-view .person-name,
+#friendsApp .activity-content .time-span {
+    font-weight: 600;
+}
 
-    #friendsApp .add-activity-view .person-name,
-    #friendsApp .add-comment-view .person-name,
-    #friendsApp .activity-content .person-name {
-        display: block;
-        margin: 0 0 .5em;
-        color: #3598db;
-        font-size: 1.1rem;
-    }
+#friendsApp .add-activity-view .person-name,
+#friendsApp .add-comment-view .person-name,
+#friendsApp .activity-content .person-name {
+    display: block;
+    margin: 0 0 .5em;
+    color: #3598db;
+    font-size: 1.1rem;
+}
 
 #friendsApp .person-name {
     overflow: hidden;
@@ -2443,4 +2443,18 @@ img.resimgs {
     filter: grayscale(100%);
     filter: url(#greyscale);
     filter: gray;
+}
+
+
+.km-flat .k-slider .k-draghandle:hover, .km-flat .k-slider .k-draghandle, .km-flat .k-slider-selection {
+    background: #2489ce !important;
+}
+
+.km-root .k-slider-track {
+    height: 5px;
+}
+
+.km-root .k-slider .k-draghandle {
+    width: 1em;
+    height: 1em;
 }

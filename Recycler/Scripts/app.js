@@ -1229,7 +1229,7 @@ function setListStyle(el, style) {
             if ($(this).height() > $(this).width())
                 $(this).css("width", "100%");
             else
-                $(this).css("height", "100%")
+                $(this).css("height", "100%");
         });
 
     }
