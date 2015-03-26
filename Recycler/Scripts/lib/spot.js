@@ -602,7 +602,7 @@ function InitCreateSpot() {
     });
 
     $('#spotype').change(function () {
-        if ($(this).val() == "Garage sale") {
+        if ($(this).val() == "Garage sale/market") {
             $('#lblGarageSale').show();
             $('#SpotName').hide();
             $('#GarageName').show();
@@ -916,7 +916,7 @@ function CreateASpot() {
                     break;
             }
         }
-    } else if ($("#spotype").val() == "Garage sale/Market/Event") {
+    } else if ($("#spotype").val() == "Garage sale/market") {
         //            if ($('#select-choice-month option:selected').val() == '0' ||
         //                $('#select-choice-day option:selected').val() == '0' ||
         //                $('#select-choice-year option:selected').val() == '0') {
@@ -1283,7 +1283,7 @@ function LoadStorageData() {
             }
         });
 
-        if (Item.SpotType == "Garage sale/Market/Event") {
+        if (Item.SpotType == "Garage sale/Market") {
             $('#lblGarageSale').show();
             $('#SpotName').hide();
             $('#GarageName').show();
