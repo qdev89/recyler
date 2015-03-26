@@ -285,7 +285,7 @@ function onFindItemInit(e) {
         //'height': 12,
         //'unit': '%',
         'pill': false,
-        'image': '../images/knob_.png',
+        //'image': '../images/knob_.png',
         'totalRange': [0, 250],
         'colorShift': ['#3598db', '#3598db'],
         // 'vertical': true,
