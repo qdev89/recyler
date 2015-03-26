@@ -356,6 +356,8 @@
     <Content Include="images\iwant.png">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="images\knob.png" />
+    <Content Include="images\knob_.png" />
     <Content Include="images\launch\.picasa.ini">
       <SubType>Content</SubType>
     </Content>
@@ -670,6 +672,7 @@
     <Content Include="kendo\js\jquery.min.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="kendo\js\jquery.sglide.2.1.2.min.js" />
     <Content Include="kendo\js\kendo.all.min.js" />
     <Content Include="kendo\js\kendo.mobile.min.js">
       <SubType>Content</SubType>

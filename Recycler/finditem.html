@@ -8,10 +8,12 @@
         <!-- <button class="btn btn-primary"> Search </button> -->
 
     </div>
-    <div style="padding-left: 5px">
-        <input id="find-item-slider" type="range" max="100" style="width:80%;margin-bottom: 15px;margin-top: 10px" />
+    <div style="padding-left: 5px;display: block;margin-bottom:10px">
+        <div id="distance-filter">0km</div>
+        <a data-role="button" data-icon="filter-distance" style="display: inline;color: #2489ce;right: 5px;position: absolute;top:38px" onclick="app.Product.filterProductsByDistance()"></a>
+        <!--<input id="find-item-slider" type="range" max="100" style="width:80%;margin-bottom: 15px;margin-top: 10px" />-->
+        <div id="find-item-slider"></div>
         <!--<div style="border-left:1px solid gray;height:100%;display: inline"></div>-->
-        <a data-role="button" data-icon="filter-distance" style="display: inline;color: #2489ce;right: 0;left: 10px" onclick="app.Product.filterProductsByDistance()"></a>
     </div>
     <!--<ul class="one-by-row styled-list" id="ulProducts"></ul>-->
     <ul class="three-by-row styled-list" id="ulProducts"></ul>
@@ -73,6 +75,7 @@
 </script>
 
 <script>
+
     function goToProduct(row) {
         console.log($(row).attr("productID"));
         app.application.navigate("product.html?productID=" + $(row).attr("productID"));
@@ -112,5 +115,34 @@
     .km-root .k-slider .k-draghandle {
         width: 1em;
         height: 1em;
+    }
+
+    #find-item-slider {
+        width: 65% !important;
+        margin: 10px !important;
+        height: 5px !important;
+        background-color: silver;
+        overflow: visible!important;
+    }
+
+    #distance-filter {
+        display: inline;
+        position: absolute;
+        right: 54px;
+        top: 53px;
+        font-size: x-small;
+    }
+
+    .slider_knob {
+        bottom: 10px !important;
+        margin: 4px !important;
+    }
+
+    .follow_bar {
+        display: none;
+    }
+
+    .sglide-buttons {
+        display: none !important;
     }
 </style>

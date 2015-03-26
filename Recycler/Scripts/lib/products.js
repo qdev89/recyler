@@ -276,17 +276,43 @@ function updateItem() {
 }
 
 var slider;
+var distanceValue = 0;
 function onFindItemInit(e) {
-    slider = $("#find-item-slider").kendoSlider({
-        increaseButtonTitle: "Right",
-        decreaseButtonTitle: "Left",
-        min: 0,
-        max: 250,
-        smallStep: 2,
-        largeStep: 10,
-        showButtons: true,
 
-    }).data("kendoSlider");
+    $('#find-item-slider').sGlide({
+        'startAt': 0,
+        //'width': 80,
+        //'height': 12,
+        //'unit': '%',
+        'pill': false,
+        'image': '../images/knob_.png',
+        'totalRange': [0, 250],
+        'colorShift': ['#3598db', '#3598db'],
+        // 'vertical': true,
+        'buttons': true,
+        // 'disabled': true,
+        // drag: function(o){
+        // 	console.log('> drag',o);//,o.id,o);
+        // },
+        drag: displayResult,
+        onButton: displayResult
+    });
+
+    function displayResult(o) {
+        //debugger;
+        distanceValue = Math.round(o.custom);
+        $('#distance-filter').html(distanceValue + 'km');
+    }
+    //slider = $("#find-item-slider").kendoSlider({
+    //    increaseButtonTitle: "Right",
+    //    decreaseButtonTitle: "Left",
+    //    min: 0,
+    //    max: 250,
+    //    smallStep: 2,
+    //    largeStep: 10,
+    //    showButtons: true,
+
+    //}).data("kendoSlider");
 }
 
 function onProductShow(e) {
@@ -456,9 +482,9 @@ app.Product = (function () {
         }
 
         var filterProductsByDistance = function () {
-            var distance = slider.value();
-            //   log(word);
-            getProducts(false, undefined, distance);
+            //var distance = slider.value();
+            log(distanceValue);
+            getProducts(false, undefined, distanceValue);
         }
 
         var getProducts = function (isMy, filterWord, distance) {
@@ -492,7 +518,7 @@ app.Product = (function () {
             }
 
             if (filterWord === undefined) $("#filterWord").val("");
-            if (distance === undefined) slider.value(0);
+            //if (distance === undefined) slider.value(0);
 
             var skip = 0;
             var dataSource = new kendo.data.DataSource({
