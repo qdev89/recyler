@@ -31,7 +31,7 @@ app.Spot = (function () {
                         try {
                             var data = app.everlive.data('Spot');
                             var query = new Everlive.Query();
-                            query.where().eq('userId', myId).done().skip(skip).take(interval);
+                            query.where().eq('userId', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
                             data.get(query).then(function (data) {
                                 // console.log(data.result);
                                 options.success(data.result);
