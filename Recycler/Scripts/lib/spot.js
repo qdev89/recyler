@@ -343,8 +343,16 @@ var spot = {
     Error: '',
 
     CreateSpot: function () {
-        if (spot.Image == null || spot.Image == undefined || spot.Image == "")
+        debugger;
+        //if (spot.Image == null || spot.Image == undefined || spot.Image == "") {
+
+        if (spot.Image != "images/imageplaceholder.png") {
+            spot.Image = spot.Image.replace("data:image/jpeg;base64,", "");
+        }
+        else {
             spot.Image = "";
+        }
+
 
         var data = '{"SpotId": "' + spot.Id + '",' +
                    '"SpotType":"' + spot.SpotType + '",' +
@@ -405,7 +413,7 @@ function SaveSpot() {
 
 
     var Data = JSON.parse(localStorage.Spotdata);
-    
+
     var location = {};
     if (markersArray[0] != undefined) {
         lat = markersArray[0].position.lat();
@@ -602,7 +610,12 @@ function InitCreateSpot() {
     });
 
     $('#spotype').change(function () {
-        if ($(this).val() == "Garage sale/market") {
+        if ($(this).val() == "Garage sale" || $(this).val() == "Help")
+            $(".dates-fieldset").show();
+        else
+            $(".dates-fieldset").hide();
+
+        if ($(this).val() == "Garage sale") {
             $('#lblGarageSale').show();
             $('#SpotName').hide();
             $('#GarageName').show();
@@ -1222,7 +1235,7 @@ function CreateASpot() {
         return;
     } else if (spot.blnFlag == true || spot.blnFlag == 'true') {
 
-        
+
 
         spot.userId = User.Id;
         spot.Id = '0';
