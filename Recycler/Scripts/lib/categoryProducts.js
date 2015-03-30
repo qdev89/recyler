@@ -1,9 +1,48 @@
+var slider;
+var distanceValue = 10;
+var loadCategoryProductMore = true;
+
+$('#distance-filter-categoryProduct').html(distanceValue + 'km');
+
+function onCategoryProductInit(e) {
+
+    $('#find-item-slider-categoryProduct').sGlide({
+        'startAt': 10,
+        'pill': false,
+        'totalRange': [0, 250],
+        'colorShift': ['#3598db', '#3598db'],
+        'buttons': true,
+        drag: displayResult,
+        onButton: displayResult
+    });
+
+    function displayResult(o) {
+        distanceValue = Math.round(o.custom);
+        $('#distance-filter-categoryProduct').html(distanceValue + 'km');
+    }
+}
+
+var category;
 function loadProductByCategory(e) {
-    debugger;
     window.utility.resetScroller(e);
+    category = e.sender.params.category;
+
     TranslateApp();
 
+    getCategoryProduct();
+}
 
+var filterProductsByDistance = function () {
+    log(distanceValue);
+    getCategoryProduct(undefined, distanceValue);
+}
+
+var filterProductsByName = function () {
+    var name = $("#filterNameCategoryProduct").val();
+    getCategoryProduct(name, undefined);
+}
+
+function getCategoryProduct(filterWord, distance) {
     var visitedProductIds = [];
     if (localStorage.isVisitedProductIds) {
         visitedProductIds = JSON.parse(localStorage.isVisitedProductIds);
@@ -18,7 +57,6 @@ function loadProductByCategory(e) {
     var listID = "#ulCategoryProducts";
     var templateID = "#categoryproductTemplate";
     var tabstripId = "#category-products-tabstrip";
-    var category = e.sender.params.category;
     $("#category-products-tabstrip span.view-title").text(category + "'s Stuff");
 
     var skip = 0;
@@ -40,13 +78,38 @@ function loadProductByCategory(e) {
                     var countryRegEx = ".*" + country + ".*";
                     var categoryEx = ".*" + category + ".*";
                     if (city && user.onlycity) {
-                        query.where().and().regex('Category', categoryEx).regex('City', cityRegEx, 'i').done();
-                        query.orderDesc('CreatedAt').skip(skip).take(interval);
+                        if (filterWord !== undefined) {
+                            query.where().and().regex('Category', categoryEx).regex('Name', filterWord, 'i').regex('City', cityRegEx, 'i').done();
+                            query.orderDesc('CreatedAt').skip(skip).take(interval);
+                        }
+                        else if (distance !== undefined) {
+                            query.where().and().regex('Category', categoryEx).nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').regex('City', cityRegEx, 'i').done();
+                            query.orderDesc('CreatedAt').skip(skip).take(interval);
+                        } else {
+                            query.where().and().regex('Category', categoryEx).regex('City', cityRegEx, 'i').done();
+                            query.orderDesc('CreatedAt').skip(skip).take(interval);
+                        }
                     } else if (country && user.onlycountry) {
-                        query.where().and().regex('Category', categoryEx).regex('Country', countryRegEx, 'i').done();
-                        query.orderDesc('CreatedAt').skip(skip).take(interval);
+                        if (filterWord !== undefined) {
+                            query.where().and().regex('Category', categoryEx).regex('Name', filterWord, 'i').regex('Country', countryRegEx, 'i').done();
+                            query.orderDesc('CreatedAt').skip(skip).take(interval);
+                        }
+                        else if (distance !== undefined) {
+                            query.where().and().regex('Category', categoryEx).nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').regex('Country', countryRegEx, 'i').done();
+                            query.orderDesc('CreatedAt').skip(skip).take(interval);
+                        } else {
+                            query.where().and().regex('Category', categoryEx).regex('Country', countryRegEx, 'i').done();
+                            query.orderDesc('CreatedAt').skip(skip).take(interval);
+                        }
                     } else {
-                        query.where().regex('Category', categoryEx).done().orderDesc('CreatedAt').skip(skip).take(interval);;
+                        if (filterWord !== undefined) {
+                            query.where().and().regex('Category', categoryEx).regex('Name', filterWord, 'i').done();
+                            query.orderDesc('CreatedAt').skip(skip).take(interval);
+                        } else if (distance !== undefined) {
+                            query.where().and().regex('Category', categoryEx).nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').done();
+                            query.orderDesc('CreatedAt').skip(skip).take(interval);
+                        } else
+                            query.where().regex('Category', categoryEx).done().orderDesc('CreatedAt').skip(skip).take(interval);
                     }
 
                     data.get(query).then(function (data) {
@@ -57,9 +120,12 @@ function loadProductByCategory(e) {
                         }, 10);
                         everliveImages.responsiveAll();
                         hideLoading();
+
                         if (data.result.length == interval) {
+                            loadCategoryProductMore = true;
                             skip += interval;
-                        }
+                        } else
+                            loadCategoryProductMore = false;
                     },
                          function (error) {
                              alert(JSON.stringify(error));
@@ -119,13 +185,14 @@ function loadProductByCategory(e) {
     });
 
     var listView = $(listID).data("kendoMobileListView");
-    //if (listView != null) {
-    //    listView._scrollerInstance.scrollElement.on("touchend", function () {
-    //        if (loadMore) {
-    //            if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))
-    //                listView.dataSource.read();
-    //        }
-    //    });
-    //    listView._scrollerInstance.scrollTo(0, 0);
-    //}
+    if (listView != null) {
+        listView._scrollerInstance.scrollElement.on("touchend", function () {
+            if (loadCategoryProductMore) {
+                if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))
+                    listView.dataSource.read();
+            }
+        });
+        listView._scrollerInstance.scrollTo(0, 0);
+    }
 }
+

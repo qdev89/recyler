@@ -1,7 +1,17 @@
-<div data-role="view" id="category-products-tabstrip" data-title="Category's Product" data-show="loadProductByCategory">
+<div data-role="view" id="category-products-tabstrip" data-title="Category's Product" data-show="loadProductByCategory" data-init="onCategoryProductInit">
+    <div id="GoToFiltersCategory">
+        <input type="text" id="filterNameCategoryProduct" value="" placeholder="Search" />
+        <img onclick="filterProductsByName()" src="images/search_small1.png" />
+
+    </div>
+    <div style="padding-left: 5px;display: block;margin-bottom:10px">
+        <div id="distance-filter-categoryProduct" class="distance-filter">10km</div>
+        <a data-role="button" data-icon="filter-distance" style="display: inline;color: #2489ce;right: 5px;position: absolute;top:45px" onclick="app.Product.filterProductsByDistance()"></a>
+        <div id="find-item-slider-categoryProduct"></div>
+    </div>
+
     <ul class="one-by-row styled-list" id="ulCategoryProducts"></ul>
     <script type="text/x-kendo-template" id="categoryproductTemplate">
-
         <div onclick="goToProduct(this)" productid="${Id}">
             <div class="img-holder">
                 #if(!isVisited){#
