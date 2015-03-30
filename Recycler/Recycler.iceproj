@@ -736,6 +736,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="notFound.html" />
+    <Content Include="privacy.html">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="product.html">
       <SubType>Content</SubType>
     </Content>
