@@ -276,43 +276,25 @@ function updateItem() {
 }
 
 var slider;
-var distanceValue = 0;
+var distanceValue = 10;
+$('#distance-filter-findItem').html(distanceValue + 'km');
+
 function onFindItemInit(e) {
 
     $('#find-item-slider').sGlide({
-        'startAt': 0,
-        //'width': 80,
-        //'height': 12,
-        //'unit': '%',
+        'startAt': 10,
         'pill': false,
-        //'image': '../images/knob_.png',
         'totalRange': [0, 250],
         'colorShift': ['#3598db', '#3598db'],
-        // 'vertical': true,
         'buttons': true,
-        // 'disabled': true,
-        // drag: function(o){
-        // 	console.log('> drag',o);//,o.id,o);
-        // },
         drag: displayResult,
         onButton: displayResult
     });
 
     function displayResult(o) {
-        //debugger;
         distanceValue = Math.round(o.custom);
-        $('#distance-filter').html(distanceValue + 'km');
+        $('#distance-filter-findItem').html(distanceValue + 'km');
     }
-    //slider = $("#find-item-slider").kendoSlider({
-    //    increaseButtonTitle: "Right",
-    //    decreaseButtonTitle: "Left",
-    //    min: 0,
-    //    max: 250,
-    //    smallStep: 2,
-    //    largeStep: 10,
-    //    showButtons: true,
-
-    //}).data("kendoSlider");
 }
 
 function onProductShow(e) {

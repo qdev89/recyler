@@ -9,7 +9,7 @@
 
     </div>
     <div style="padding-left: 5px;display: block;margin-bottom:10px">
-        <div id="distance-filter">0km</div>
+        <div id="distance-filter-findItem" class="distance-filter">10km</div>
         <a data-role="button" data-icon="filter-distance" style="display: inline;color: #2489ce;right: 5px;position: absolute;top:45px" onclick="app.Product.filterProductsByDistance()"></a>
         <!--<input id="find-item-slider" type="range" max="100" style="width:80%;margin-bottom: 15px;margin-top: 10px" />-->
         <div id="find-item-slider"></div>
@@ -99,55 +99,5 @@
 </script>
 
 <style>
-    .km-filter-distance:after,
-    .km-filter-distance:before {
-        content: "\e0b4";
-    }
-
-    .km-flat .k-slider .k-draghandle:hover, .km-flat .k-slider .k-draghandle, .km-flat .k-slider-selection {
-        background: #2489ce !important;
-    }
-
-    .km-root .k-slider-track {
-        height: 5px;
-    }
-
-    .km-root .k-slider .k-draghandle {
-        width: 1em;
-        height: 1em;
-    }
-
-    #find-item-slider {
-        width: 67% !important;
-        margin: 5px !important;
-        margin-left: 50px !important;
-        height: 5px !important;
-        background-color: silver;
-        overflow: visible !important;
-    }
-
-    #distance-filter {
-        display: inline;
-        position: absolute;
-        left: 5px;
-        top: 55px;
-        font-size: ;
-    }
-
-    .slider_knob {
-        bottom: 10px !important;
-        margin: 4px !important;
-        background: url('images/knob_.png') !important;
-        width: 18px !important;
-        height: 18px !important;
-        position: relative !important;
-    }
-
-    .follow_bar {
-        display: none;
-    }
-
-    .sglide-buttons {
-        display: none !important;
-    }
+  
 </style>
