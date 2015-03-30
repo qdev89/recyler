@@ -670,10 +670,6 @@ $(document).ready(function () {
 
 });
 
-function sendEmailToAdmin() {
-    
-}
-
 function saveUserData() {
 
     if (!validateEmail($("#email").val())) {
@@ -849,6 +845,14 @@ function fillUserData(user) {
 
 function setupInit() {
     user.GetRoles();
+    $("#EmailLanguage").on("click", function () {
+        debugger;
+        var url = $(this).attr("link");
+        if (url !== undefined && url !== "undefined") {
+            window.open(url, '_blank', 'location=yes');
+        }
+
+    });
 
     if (localStorage.User == undefined) {
         app.everlive.Users.currentUser(
