@@ -1,12 +1,12 @@
 
-<div data-role="view" id="terms-tabstrip" data-show="TranslateApp" data-title="Terms & conditions"  style="background-color: #f3f3f3;">
+<div data-role="view" id="terms-tabstrip" data-show="TranslateApp" data-title="Terms & conditions" style="background-color: #f3f3f3;">
     <!-- <div id="head" data-role="header">
-    <div data-role="navbar">  
+    <div data-role="navbar">
     Terms & conditions
     </div>
     </div>-->
     <div style="margin-left: 20px; margin-right: 20px; margin-top: 20px; ">
-        <table class="content_table" >
+        <table class="content_table">
             <tr>
                 <td style="font-size: x-small; font-family: arial;">
 
@@ -58,9 +58,11 @@
                         <b>Procedure</b>
                     </p>
                     <p>Terms and conditions and the relationship between the user and RECYCLEWORLD governed by Danish law and construed in accordance with the exception of the rules on applicable law. All disputes can not be settled amicably shall be finally settled by Danish court in Copenhagen, Denmark.</p>
-                    <p>
-                        <a onclick="app.application.navigate('signup_login.html');">[ Back to login ]</a>
-                    </p>
+                    <div style="text-align: center">
+                        <span data-role="touch" onclick="app.application.navigate('signup_login.html');">
+                            <a data-role="button" class="btn btn-login" style="color:white;">Back to login</a>
+                        </span>
+                    </div>
                 </td>
             </tr>
         </table>
