@@ -682,9 +682,10 @@ function saveUserData() {
         return;
     }
 
-    var base64 = $("#image").attr("src");
+    var base64 = $("#avatarImage").attr("src");
     var ImageData = userData.ImageData;
 
+    debugger;
     if (base64 != "images/imageplaceholder.png" && base64.indexOf("data:image/jpeg;base64,") != -1) {
 
         var file = {
@@ -696,7 +697,8 @@ function saveUserData() {
 
         app.everlive.Files.create(file,
                                   function (data) {
-                                      console.log(data);
+                                      debugger;
+                                      //console.log(data);
 
                                       ImageData = data.result.Uri;
 
@@ -707,7 +709,7 @@ function saveUserData() {
                                                   { 'Id': userData.Id }, // filter
                                                   function (data) {
                                                       //  console.log(data);
-                                                      navigator.notification.alert("Info saved successfully!", null, "Success");
+                                                      //navigator.notification.alert("Info saved successfully!", null, "Success");
                                                   },
                                                   function (error) {
                                                       alert(JSON.stringify(error));
@@ -763,9 +765,9 @@ function saveUserData() {
 
 function fillUserData(user) {
     userData = user;
-
+    debugger;
     if (user.ImageData != "" && user.ImageData != undefined)
-        $("#image").attr("src", user.ImageData);
+        $("#avatarImage").attr("src", user.ImageData);
 
     if (user.Email != undefined) {
         $("#email").val(user.Email);

@@ -144,6 +144,7 @@ app.Login = (function () {
                                                             app.application.navigate('finditem.html');
                                                     })
                                                     .fail(function (error) {
+                                                        alert(TranslateGpsError());
                                                         app.currentPosition = null;
 
                                                         if (data.result.Email == undefined || data.result.Email == "")

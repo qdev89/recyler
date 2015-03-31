@@ -72,6 +72,33 @@ function ShowAds() {
     app.addBanner(20);
 }
 
+function TranslateGpsError() {
+    if (localStorage.LanguageType == undefined) {
+        localStorage.Language = 3;
+        localStorage.LanguageType = "en";
+    }
+
+
+    //Por favor, active GPS de usar-esta aplicación.
+    //Venligst start din GPS for at bruge denne app.
+    //Bitte starten Sie Ihr GPS um diese App nutzen.
+    switch (localStorage.Language) {
+        case "1":
+            return "Please turn on GPS to use this app.";
+
+        case "2":
+
+            return "Please turn on GPS to use this app.";
+        case "3":
+
+            return "Please turn on GPS to use this app.";
+
+        case "4":
+            return "Please turn on GPS to use this app.";
+
+    }
+}
+
 function TranslateApp() {
     if (localStorage.LanguageType == undefined) {
         localStorage.Language = 3;
@@ -308,17 +335,49 @@ function StopSpecialchrOnly(evt) {
         return true;
 }
 
-function takePicture() {
+function takeAvatarPicture() {
     var destinationType = navigator.camera.DestinationType;
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 70, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+    if ($('#avatarImage').attr('src') == "images/imageplaceholder.png") {
+        navigator.camera.getPicture(onAvatarPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+    } else {
+        navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.',
+                                       function () {
+                                           navigator.camera.getPicture(onAvatarPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+                                       }, 'New photo', 'No,Yes');
+    }
+
 }
 
-function onPhotoDataSuccess(imageData) {
+function onAvatarPhotoDataSuccess(imageData) {
+    log(imageData);
     // localStorage.SpotImage = imageData;
 
-    user.image = imageData;
-    var damagephoto = document.getElementById('image');
-    damagephoto.src = "data:image/jpeg;base64," + imageData;
+    //user.image = imageData;
+    //var damagephoto = document.getElementById('image');
+    //damagephoto.src = "data:image/jpeg;base64," + imageData;
+    //debugger;
+    var canvas = document.getElementById("cc");
+    var ctx = canvas.getContext("2d");
+
+    var img = new Image();
+    img.crossOrigin = "Anonymous"; //cors support
+    img.onload = function () {
+        var W = img.width;
+        var H = img.height;
+        canvas.width = W;
+        canvas.height = H;
+        ctx.drawImage(img, 0, 0); //draw image
+
+        //resize manually with 350 x 350 px
+        //https://github.com/viliusle/Hermite-resize/
+        resample_hermite(canvas, W, H, 350, 350);
+
+        var resizedImageData = canvas.toDataURL("image/jpeg");
+
+        var damagephoto = document.getElementById('avatarImage');
+        damagephoto.src = resizedImageData;
+    }
+    img.src = "data:image/jpeg;base64," + imageData;
 }
 
 function takePictureActivity() {

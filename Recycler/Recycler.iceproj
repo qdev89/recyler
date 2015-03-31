@@ -808,9 +808,6 @@
     <Content Include="Scripts\jsMap.js">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Scripts\jsProductMap.js">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="Scripts\jsProductStatus.js">
       <SubType>Content</SubType>
     </Content>

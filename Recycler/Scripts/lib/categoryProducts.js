@@ -32,12 +32,12 @@ function loadProductByCategory(e) {
     getCategoryProduct();
 }
 
-var filterProductsByDistance = function () {
+var filterCategoryProductsByDistance = function () {
     log(distanceValue);
     getCategoryProduct(undefined, distanceValue);
 }
 
-var filterProductsByName = function () {
+var filterCategoryProductsByName = function () {
     var name = $("#filterNameCategoryProduct").val();
     getCategoryProduct(name, undefined);
 }

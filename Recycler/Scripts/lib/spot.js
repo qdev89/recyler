@@ -540,6 +540,7 @@ function SaveSpot() {
 }
 
 function InitCreateSpot() {
+    showLoading();
     Filldata();
 
     changeLanguage(localStorage.LanguageType);
@@ -807,6 +808,8 @@ function InitCreateSpot() {
             });
         }
     });
+
+    hideLoading();
 }
 
 function CreateASpot() {

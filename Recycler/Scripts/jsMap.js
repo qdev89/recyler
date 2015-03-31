@@ -3,7 +3,7 @@ var mapForMarker = null;
 var markersArray = [];
 var allSpots = [];
 var spotContent = "";
-
+var currentPosition;
 
 function fillContent(e) {
     goToTop(e);
@@ -127,28 +127,30 @@ function iconMapInit(e) {
 }
 
 function mapInit() {
-    //if (mapForMarker != null)
-    //    return;
-    window.getLocation()
-            .done(function (x) {
-                $("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
-                var mapOptions = {
-                    center: { lat: x.coords.latitude, lng: x.coords.longitude },
-                    zoom: 8,
-                    streetViewControl: false
-                };
-                googleMap = new google.maps.Map(
-                   document.getElementById('map-with-markers'),
-                   mapOptions
-                   );
-                //setTimeout(function () {
-                //    $("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
+    ////if (mapForMarker != null)
+    ////    return;
+    ////window.getLocation()
+    ////        .done(function (position) {
+    //debugger;
+    //var position = app.currentPosition;
+    ////alert(JSON.stringify(position));
+    //$("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
+    //var mapOptions = {
+    //    center: { lat: position.coords.latitude, lng: position.coords.longitude },
+    //    zoom: 8,
+    //    streetViewControl: false
+    //};
+    //googleMap = new google.maps.Map(
+    //   $("#map-with-markers"),
+    //   mapOptions);
+    ////setTimeout(function () {
+    ////    $("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
 
-                //}, 200);
-            })
-			.fail(function (error) {
-			    alert(error.message); /*TODO: Better handling*/
-			});
+    ////}, 200);
+    ////})
+    ////.fail(function (error) {
+    ////    alert("error from GPS: "+error.message); /*TODO: Better handling*/
+    ////});
 }
 
 
@@ -158,65 +160,49 @@ function mapShow(e) {
     console.log(e);
     if (e.sender.params.spot != "true" && e.sender.params.editSpot != "true") return;
 
-    if (markersArray != undefined && markersArray.length > 0) {
-        for (var i = 0; i < markersArray.length; i++) {
-            markersArray[i].setMap(null);
-        }
-    }
-    markersArray = [];
-    if (e.sender.params.editSpot == "true") {
-        console.log(parseFloat(editableSpot.Latitude));
-        console.log(parseFloat(editableSpot.Longitude));
-        console.log(editableSpot.Id);
-        setTimeout(function () {
-
-            setPlace(parseFloat(editableSpot.Latitude), parseFloat(editableSpot.Longitude), true, "");
-        }, 200);
-        return;
-    }
-
     window.getLocation()
-            .done(function (pos) {
-                var crd = pos.coords;
-                setPlace(crd.latitude, crd.longitude, true);
-                console.log('Your current position is:');
-                console.log('Latitude : ' + crd.latitude);
-                console.log('Longitude: ' + crd.longitude);
-                console.log('More or less ' + crd.accuracy + ' meters.');
+            .done(function (position) {
+                //alert(JSON.stringify(position));
+                $("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
+                var mapOptions = {
+                    center: { lat: position.coords.latitude, lng: position.coords.longitude },
+                    zoom: 8,
+                    streetViewControl: false
+                };
+                googleMap = new google.maps.Map(
+                   document.getElementById('map-with-markers'),
+                   mapOptions);
+                //setTimeout(function () {
+                //    $("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
+
+                //}, 200);
+
+                if (markersArray != undefined && markersArray.length > 0) {
+                    for (var i = 0; i < markersArray.length; i++) {
+                        markersArray[i].setMap(null);
+                    }
+                }
+                markersArray = [];
+                if (e.sender.params.editSpot == "true") {
+                    console.log(parseFloat(editableSpot.Latitude));
+                    console.log(parseFloat(editableSpot.Longitude));
+                    console.log(editableSpot.Id);
+                    setTimeout(function () {
+
+                        setPlace(parseFloat(editableSpot.Latitude), parseFloat(editableSpot.Longitude), true, "");
+                    }, 200);
+                    return;
+                }
+                setPlace(position.coords.latitude, position.coords.longitude, true);
+
             })
-			.fail(function (error) {
-			    console.warn('ERROR(' + err.code + '): ' + err.message);
-			    setPlace(0, 0, true);
-			});
-    //var options = {
-    //    enableHighAccuracy: true,
-    //    timeout: 5000,
-    //    maximumAge: 0
-    //};
-
-    //function success(pos) {
-    //    var crd = pos.coords;
-    //    setPlace(crd.latitude, crd.longitude, true);
-    //    console.log('Your current position is:');
-    //    console.log('Latitude : ' + crd.latitude);
-    //    console.log('Longitude: ' + crd.longitude);
-    //    console.log('More or less ' + crd.accuracy + ' meters.');
-    //};
-
-    //function error(err) {
-    //    console.warn('ERROR(' + err.code + '): ' + err.message);
-    //    setPlace(0, 0, true);
-    //};
-
-    //navigator.geolocation.getCurrentPosition(success, error, options);
+    .fail(function (error) {
+        alert("error from GPS: " + error.message); /*TODO: Better handling*/
+    });
 }
 
 
 function setPlace(lat, long, draggable, type, map, content, isGrey) {
-
-    //  log(content);
-    //  log(isGrey);
-    //  
     if (map == undefined) map = googleMap;
     if (draggable != true) draggable = false;
     var icon = "";
@@ -318,7 +304,6 @@ function filterIcons() {
             types.push($(this).attr("iconType"));
         }
     });
-    debugger;
     showMarkerTypes(types);
 }
 
@@ -330,18 +315,6 @@ function showMarkerTypes(types) {
         } else {
             el.setVisible(false);
         }
-        //var hide = true;
-        //types.forEach(function (el2, index2) {
-        //    //console.log(el2, el.type);
-        //    if (el.type != el2) {
-        //        el.setVisible(false);
-        //    } else {
-        //        el.setVisible(true);
-        //    }
-        //    //hide = false;
-        //});
-        //if (hide) el.setVisible(false);
-        //else el.setVisible(true);
     });
 }
 
