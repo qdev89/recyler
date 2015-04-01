@@ -72,13 +72,50 @@ function ShowAds() {
     app.addBanner(20);
 }
 
-function TranslateGpsError() {
-    if (localStorage.LanguageType == undefined) {
-        localStorage.Language = 3;
-        localStorage.LanguageType = "en";
+function TranslateCategory(category) {
+    var value;
+    switch (localStorage.Language) {
+        case "1":
+            //localStorage.LanguageType = "dk";
+            $.each(Tags.Danish, function (i) {
+                if (Tags.Danish[i].id == category) {
+                    value = "kategorier " + Tags.Danish[i].Value;
+                }
+            });
+            break;
+        case "2":
+            //localStorage.LanguageType = "de";
+            $.each(Tags.German, function (i) {
+                if (Tags.German[i].id == category) {
+                    value = "Category " + Tags.German[i].Value;
+                }
+            });
+            break;
+        case "3":
+            //localStorage.LanguageType = "en";
+
+            $.each(Tags.English, function (i) {
+                if (Tags.English[i].id == category) {
+                    value = "Category " + Tags.English[i].Value;
+                }
+            });
+            break;
+        case "4":
+            //localStorage.LanguageType = "es";
+
+            $.each(Tags.Spanish, function (i) {
+                if (Tags.Spanish[i].id == category) {
+                    value = "Category " + Tags.Spanish[i].Value;
+                }
+            });
+            break;
     }
 
+    debugger;
+    return value;
+}
 
+function TranslateGpsError() {
     //Por favor, active GPS de usar-esta aplicación.
     //Venligst start din GPS for at bruge denne app.
     //Bitte starten Sie Ihr GPS um diese App nutzen.
@@ -87,14 +124,12 @@ function TranslateGpsError() {
             return "Please turn on GPS to use this app.";
 
         case "2":
-
-            return "Please turn on GPS to use this app.";
+            return "Bitte starten Sie Ihr GPS um diese App nutzen.";
         case "3":
-
-            return "Please turn on GPS to use this app.";
+            return "Venligst start din GPS for at bruge denne app.";
 
         case "4":
-            return "Please turn on GPS to use this app.";
+            return "Por favor, active GPS de usar-esta aplicación.";
 
     }
 }

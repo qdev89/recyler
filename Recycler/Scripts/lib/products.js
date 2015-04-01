@@ -50,7 +50,9 @@ function loadProduct(e) {
             $(selector + ".price").html(product.Price);
             $(selector + ".info").html(product.MoreInformation);
             $(selector + ".instead").html(product.Description);
-            $(selector + ".category").html(" " + product.Category);
+            debugger;
+            var translatedCategory = TranslateCategory(product.Category);
+            $(selector + ".category").html(translatedCategory);
             $("#categoryProduct").attr("href", "categoryProducts.html?category=" + product.Category);
             //$(selector + ".category").attr("category", product.Category);
 
