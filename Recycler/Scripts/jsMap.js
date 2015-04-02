@@ -67,26 +67,35 @@ function iconMapInit(e) {
                     today.setHours(0);
                     today.setMinutes(1);
 
-                    var twoDaysAfter = new Date();
-                    twoDaysAfter.setTime(twoDaysAfter.getTime() + (48 * 60 * 60 * 1000));
+                    var threeDaysBefore = new Date();
+                    threeDaysBefore.setTime(threeDaysBefore.getTime() - (72 * 60 * 60 * 1000));
 
-                    var oneDayAter = new Date();
-                    oneDayAter.setTime(oneDayAter.getTime() + (24 * 60 * 60 * 1000));
+                    var oneDaysBefore = new Date();
+                    oneDaysBefore.setTime(oneDaysBefore.getTime() - (24 * 60 * 60 * 1000));
 
                     if (allSpots.length > 0) {
                         $.each(allSpots, function (i) {
 
                             var grey = true;
-
+                            var canSetPlace = true;
                             if (allSpots[i].SpotType === "Garage sale" || allSpots[i].SpotType === "Help") {
+                                debugger;
                                 var date = new Date(allSpots[i].EventDate);
-                                if (!isValidDate(date) || date > twoDaysAfter || date < today) {
-                                    console.log(allSpots[i].SpotType, date, " too early or old");
-                                    grey = true;
-                                } else console.log(date, " this is ok");
-                                console.log(date, oneDayAter);
-                                if (date < oneDayAter) {
-                                    grey = false;
+                                //var threeDaysAfterEventDate = date;
+                                //threeDaysAfterEventDate.setTime(date + (72 * 60 * 60 * 1000));
+
+                                if (date >= threeDaysBefore) {
+                                    //if (!isValidDate(date) || date > threeDaysBefore || date < today) {
+                                    if (!isValidDate(date) || date > threeDaysBefore || date > today) {
+                                        console.log(allSpots[i].SpotType, date, " too early or old");
+                                        grey = true;
+                                    } else console.log(date, " this is ok");
+                                    console.log(date, oneDaysBefore);
+                                    if (date > oneDaysBefore) {
+                                        grey = false;
+                                    }
+                                } else {
+                                    canSetPlace = false;
                                 }
                             }
 
@@ -109,8 +118,9 @@ function iconMapInit(e) {
                                     "<tr><td><img class='td-icon' src='images/mapicons/www_icon_blue.png' /></td><td> <a href='" + (allSpots[i].Web || "") + "'>" + (allSpots[i].Web || "") + "</a></td></tr>" +
                                     "</table></div>";
 
-
-                            setPlace(allSpots[i].Latitude, allSpots[i].Longitude, false, allSpots[i].SpotType, googleMap, content, grey);
+                            if (canSetPlace) {
+                                setPlace(allSpots[i].Latitude, allSpots[i].Longitude, false, allSpots[i].SpotType, googleMap, content, grey);
+                            }
                         });
                     }
                 },
@@ -206,13 +216,12 @@ function setPlace(lat, long, draggable, type, map, content, isGrey) {
     if (map == undefined) map = googleMap;
     if (draggable != true) draggable = false;
     var icon = "";
-    console.log(type);
     switch (type) {
         case "Garage sale":
-            debugger;
+            //console.log(type);
             if (!isGrey)
                 icon = "images/mapicons/garagesale_small_dot.png";
-            else icon = "images/mapicons/garagesale_grey_dot.png";
+            else icon = "images/mapicons/garagesale_grey_small_dot.png";
             break;
         case "Terracycle":
             icon = "images/mapicons/terracycle_small_dot.png";

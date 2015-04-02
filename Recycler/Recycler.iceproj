@@ -427,6 +427,9 @@
     <Content Include="images\mapicons\garagesale_grey.png">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="images\mapicons\garagesale_grey_small_dot.png">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="images\mapicons\garagesale_small.png">
       <SubType>Content</SubType>
     </Content>
