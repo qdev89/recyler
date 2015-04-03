@@ -357,7 +357,7 @@ app.Product = (function () {
             var fillCallback = function (user) {
                 $("#user-items-tabstrip span.view-title").text(user.DisplayName + "'s Stuff");
                 TranslateApp();
-                var interval = 12;
+                var interval = 24;
 
                 var listID = "#ulUserProducts";
                 var templateID = "#productTemplate";
@@ -479,7 +479,7 @@ app.Product = (function () {
             }
 
             TranslateApp();
-            var interval = 18;
+            var interval = 24;
 
             if (isMy && isMy.sender && isMy.sender.params.refresh == "false")
                 return;
