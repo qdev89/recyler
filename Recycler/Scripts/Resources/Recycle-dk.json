@@ -117,7 +117,7 @@
     "cvr": "CVR nr.",
     "spotopening": "Åbningstider:",
     "spotmonfri": "Man - fredag:",
-    "to": "til",
+
     "Mon - friday:": " ",
     "saturday": "Lørdag:",
     "sunday": "Søndag:",
@@ -357,7 +357,9 @@
                                 "yeartext":"Ubegrænset adgang til recycleworld i 12 måneder (* faktureret som én betaling). For at sikre uafbrudt tjeneste, er alle abonnementer recycleworld automatisk fornys, kan du annullere dit supportership når som helst.",
                                     "yearprice":"",
                                         "yearbuy":"Bliv supporter i et år",    
-                                            
+                                        "from":"Fra",
+                                            "news_slogan":"Viden er nøglen til en bedre verden. Så lad dine ideer, råd og handlinger inspirere andre.",
+                                              "to": "Til",  
 "news": "Dette er vores community nyheds kanal. Reglerne er som følger: Brug dette til at dele information om emner som bæredygtihged, TerraCycle begivenheder, madspild begivenhed, upcycling ideer osv. Husk at holde en respektfuld tone og holde indholdet frisk og for alle.<br> <br> ",  
 "freefood": "Gratis fødevarer"
 }

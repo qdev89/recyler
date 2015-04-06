@@ -357,7 +357,9 @@
                                 "yeartext":"Acceso ilimitado dos recycleworld durante 12 meses (* imagen en un único pago). Sikre servicio ininterrumpido, todas las suscripciones se renuevan recycleworld automatisk, kan cancelar su partidario eventuelle nave horas.",
                                     "yearprice":"",
                                         "yearbuy":"Obtén un año",  
-    
+           "from":"A partir de",
+                                              "to": "A la",  
+                                                  "news_slogan":"El conocimiento es la clave para hacer un mundo mejor. Så deja que tus ideas, consejos y acciones inspiran a otros.",
 "distance":"Distancia",
      "allstuff": "Mostrar todas las cosas usuario"          
 }
