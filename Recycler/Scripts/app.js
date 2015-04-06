@@ -135,10 +135,11 @@ function TranslateGpsError() {
 }
 
 function TranslateApp() {
-    if (localStorage.LanguageType == undefined) {
-        localStorage.Language = 3;
-        localStorage.LanguageType = "en";
-    }
+    //getCurrentLanguage();
+    //if (localStorage.LanguageType == undefined) {
+    //    localStorage.Language = 3;
+    //    localStorage.LanguageType = "en";
+    //}
 
     // log(localStorage.LanguageType);
     var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
@@ -164,10 +165,11 @@ var userData = null;
         $(document.body).height(window.innerHeight);
 
         localStorage.removeItem("User");
-        if (localStorage.Language == undefined || localStorage.Language == "undefined") {
-            localStorage.Language = 3;
-            localStorage.LanguageType = "en";
-        }
+        getCurrentLanguage();
+        //if (localStorage.Language == undefined || localStorage.Language == "undefined") {
+        //    localStorage.Language = 3;
+        //    localStorage.LanguageType = "en";
+        //}
         TranslateApp();
     }, false);
 
@@ -1348,3 +1350,38 @@ function openImageFullModal(imgSrc) {
     $("#imgFull").attr("src", imgSrc);
     $("#image-full-modal").kendoMobileModalView("open");
 }
+
+function getCurrentLanguage() {
+    debugger;
+    var l_lang;
+    if (navigator.userLanguage) // Explorer
+        l_lang = navigator.userLanguage;
+    else if (navigator.language) // FF
+        l_lang = navigator.language;
+    else l_lang = "en";
+    var language = l_lang.toLowerCase().replace('-', '_');
+    if (!localStorage.LanguageType) {
+        language = "dk";
+        //alert(language);
+        switch (language) {
+            case "dn":
+                localStorage.Language = "1";
+                localStorage.LanguageType = "dn";
+                break;
+            case "dk":
+                localStorage.Language = "2";
+                localStorage.LanguageType = "dk";
+                break;
+            case "en_us":
+                localStorage.Language = "3";
+                localStorage.LanguageType = "en";
+                break;
+            case "es":
+                localStorage.Language = "4";
+                localStorage.LanguageType = "es";
+                break;
+        }
+    }
+}
+
+getCurrentLanguage();

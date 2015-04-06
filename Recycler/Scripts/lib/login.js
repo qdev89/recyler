@@ -22,7 +22,7 @@ app.Login = (function () {
         var isAnalytics = analytics.isAnalytics();
 
         var init = function () {
-
+            debugger;
             if (!app.isKeySet(appSettings.everlive.apiKey)) {
                 app.application.navigate('views/noApiKey.html', 'fade');
             }
