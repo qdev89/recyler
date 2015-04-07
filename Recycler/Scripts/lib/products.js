@@ -111,6 +111,7 @@ function loadProduct(e) {
                  function (error) {
                      // DO NOTHING
                  });
+            TranslateApp();
 
             hideLoading();
         }
