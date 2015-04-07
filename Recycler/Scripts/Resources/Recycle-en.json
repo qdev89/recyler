@@ -96,7 +96,8 @@
     "spottype": "Types of places:",
     "garage": "Garage sale/Event",
     "eco": "Sustainible/Eco place",
-    "recycling": "Second hand sale ",
+    "recycling": "Second hand sale",
+         "second":"Second hand sale",
     "company": "Recycling place/company",
     "food": "Food donation or FREE food",
     "picture": "Picture of place,shop,logo",
@@ -163,7 +164,7 @@
     "checkbox-24a": "Bathroom",	
     "checkbox-25a": "Tools",
     "checkbox-24a": "Phones",		
-	
+	 "food1": "Food donation",
 		
     "ok": "Ok",
     "titletext_aboutfood": "Stop wasting food",
@@ -254,7 +255,7 @@
     "garage2": "Event, garagesale & Markets<br>- an add for your garagesale<br>- Is shown for a week on map<br>- a pdf poster to print out<br>",
     "other1": "All other places: Second hand / eco shop / recycling places",
     "other": "All other places<br> - all necessary info<br> - Adress, opening hours, phone, web<br> - is shown on our app map<br> - a diploma to print out",
-    "food1": "Food donation place or FREE food",
+    "food1": "Food donation",
     "back": "Back to create place",
     "titeltext_terra": "Terracycle partner",
     "terratext": "TerraCycles purpose is to eliminate the idea of waste. We do this by creating national recycling systems for previously non-recyclable or hard-to-recycle waste. Anyone can sign up for these programs, called the Brigades, and start sending us waste.<br> <br> TerraCycle then converts the collected waste into a wide variety of products and materials. With more than 20 million people collecting waste in over 20 countries TerraCycle has diverted billions of units of waste and used them to create over 1,500 different products available at major retailers ranging from Walmart to Whole Foods Market.<br><br>Our goal is to eliminate the idea of waste by creating collection and solution systems for anything that today must be sent to a landfill.<br><br>Founded in 2001 by Tom Szaky, then a 20-year-old Princeton University freshman, TerraCycle began by producing organic fertilizer, packaging liquid worm poop in used soda bottles. Since then TerraCycle has grown into one of the fastest-growing green companies in the world.<br><br>www.terracycle.com/</span> ",
@@ -348,7 +349,7 @@
           "news1":"Create channel news",
                "city":"City",
                     "distance":"Distance",
-                        
+                        "freefood": "Free food",
                         "newschannel":"The news channel",
 "news":"This is our community news channel. The rules are as follows: use this to share info on subjects like substainabilty, terracycle events, foodwaste event, upcycling ideas etc. <br><br>Remember to keep a respectfull tone and keep the content fresh and for everyone.<br><br>" ,
          "monthlytitle":"Monthly supporter",
