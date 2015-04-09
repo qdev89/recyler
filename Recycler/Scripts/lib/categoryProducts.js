@@ -5,6 +5,14 @@ var loadCategoryProductMore = true;
 $('#distance-filter-categoryProduct').html(distanceValue + 'km');
 
 function onCategoryProductInit(e) {
+    var distanceUnit = "km";
+    if (app.currentUser.distance == "Miles") {
+        distanceUnit = "miles";
+        $(".distance-unit").html(distanceUnit);
+    } else {
+        distanceUnit = "km";
+        $(".distance-unit").html(distanceUnit);
+    }
     if (app.currentUser.distance == "Miles") {
         $(".distance-unit").html("miles");
     } else {
@@ -23,7 +31,7 @@ function onCategoryProductInit(e) {
 
     function displayResult(o) {
         distanceValue = Math.round(o.custom);
-        $('#distance-filter-categoryProduct').html(distanceValue + 'km');
+        $('#distance-filter-categoryProduct').html(distanceValue);
     }
 }
 

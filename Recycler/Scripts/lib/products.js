@@ -293,10 +293,13 @@ var currentUser;
 $('#distance-filter-findItem').html(distanceValue + 'km');
 
 function onFindItemInit(e) {
+    var distanceUnit = "km";
     if (app.currentUser.distance == "Miles") {
-        $(".distance-unit").html("miles");
+        distanceUnit = "miles";
+        $(".distance-unit").html(distanceUnit);
     } else {
-        $(".distance-unit").html("km");
+         distanceUnit = "km";
+        $(".distance-unit").html(distanceUnit);
     }
 
     $('#find-item-slider').sGlide({
@@ -311,7 +314,7 @@ function onFindItemInit(e) {
 
     function displayResult(o) {
         distanceValue = Math.round(o.custom);
-        $('#distance-filter-findItem').html(distanceValue + 'km');
+        $('#distance-filter-findItem').html(distanceValue);
     }
 }
 
