@@ -349,8 +349,7 @@
               "city":"By",
                     "distance":"Afstand",
                         "newschannel":"Nyheds kanalen",
-                       
-                            "monthlytitle":"Månedlig supporter",
+                                                   "monthlytitle":"Månedlig supporter",
                                 "monthlytext":"Ubegrænset adgang til recycleworld i 1 måned. For at sikre uafbrudt service, er alle abonnementer recycleworld automatisk fornys, Vi tilbyder heller ikke tilbagebetaling på månedlige abonnementer, men du kan annullere din månedlige betaling når som helst.",
                                     "monthlyprice":"",
                                         "monthlybuy":"Bliv månedlige supporter",
@@ -361,6 +360,7 @@
                                         "from":"Fra",
                                             "news_slogan":"Viden er nøglen til en bedre verden. Så lad dine ideer, råd og handlinger inspirere andre.",
                                               "to": "Til",  
+                                                           "onlycity1":"Vis kun ting fra min by",
 "news": "Dette er vores community nyheds kanal. Reglerne er som følger: Brug dette til at dele information om emner som bæredygtihged, TerraCycle begivenheder, madspild begivenhed, upcycling ideer osv. Husk at holde en respektfuld tone og holde indholdet frisk og for alle.<br> <br> ",  
 "freefood": "Gratis fødevarer"
 }
