@@ -5,7 +5,11 @@ window.filter = {};
     function initFilters(e) {
         utility.resetScroller(e);
         TranslateApp();
-
+        if (app.currentUser.distance == "Miles") {
+            $(".distance-unit").html("miles");
+        } else {
+            $(".distance-unit").html("km");
+        }
         onClearFilter();
 
         // init numeric input
@@ -161,9 +165,16 @@ window.filter = {};
                     contQuery.regex('Category', categoryRegEx, 'i');
                 }
 
+                var distanceUnit = "km";
+                if (app.currentUser.distance == "Miles") {
+                    distanceUnit = "miles";
+                } else {
+                    distanceUnit = "km";
+                }
+
                 // for Distance
                 if (distance && distance > 0) {
-                    contQuery.nearSphere('Location', [position.coords.longitude, position.coords.latitude], distance, 'km');
+                    contQuery.nearSphere('Location', [position.coords.longitude, position.coords.latitude], distance, distanceUnit);
                 }
 
                 // for Price

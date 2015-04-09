@@ -103,7 +103,7 @@ app.Login = (function () {
                 app.everlive.Users.currentUser(
                                            function (data) {
                                                console.log(data.result);
-
+                                               app.currentUser = data.result;
                                                localStorage.User = JSON.stringify(data.result);
                                                app.AddActivity.me = data.result;
                                                fillUserData(data.result);

@@ -20,6 +20,8 @@ function loadProduct(e) {
     window.utility.resetScroller(e);
     TranslateApp();
     app.addBanner(20);
+
+
     //console.log(e);
 
     var fillProductInfo = function (product) {
@@ -35,6 +37,13 @@ function loadProduct(e) {
             var distance = 0;
             if (product.Latitude && product.Longitude && app.currentPosition) {
                 distance = getDistanceFromLatLonInKm(product.Latitude, product.Longitude, app.currentPosition.coords.latitude, app.currentPosition.coords.longitude);
+            }
+
+            if (user.distance == "Miles") {
+                //$("product-distance-unit").html(" miles)
+                distance = convertKmToMiles(distance) + " miles";
+            } else {
+                distance = distance + " km";
             }
 
             var selector = "#product-tabstrip .fields ";
@@ -280,9 +289,15 @@ function updateItem() {
 
 var slider;
 var distanceValue = 10;
+var currentUser;
 $('#distance-filter-findItem').html(distanceValue + 'km');
 
 function onFindItemInit(e) {
+    if (app.currentUser.distance == "Miles") {
+        $(".distance-unit").html("miles");
+    } else {
+        $(".distance-unit").html("km");
+    }
 
     $('#find-item-slider').sGlide({
         'startAt': 10,
@@ -412,7 +427,17 @@ app.Product = (function () {
                             $.each(response, function (i, el) {
                                 el.Views = el.Views || 0;
                                 el.City = el.City || '';
-                                el.Distance = 0;
+                                if (el.Latitude && el.Longitude && app.currentPosition) {
+                                    el.Distance = getDistanceFromLatLonInKm(el.Latitude, el.Longitude, app.currentPosition.coords.latitude, app.currentPosition.coords.longitude);
+                                } else {
+                                    el.Distance = 0;
+                                }
+
+                                if (app.currentUser.distance == "Miles") {
+                                    el.Distance = convertKmToMiles(el.Distance) + " miles";
+                                } else {
+                                    el.Distance = el.Distance + " km";
+                                }
 
                                 el.isVisited = visitedProductIds.indexOf(el.Id) != -1;
 
@@ -523,6 +548,13 @@ app.Product = (function () {
                             var city = user.City || '';
                             var cityRegEx = ".*" + city + ".*";
                             var countryRegEx = ".*" + country + ".*";
+                            var distanceUnit = "km";
+                            if (app.currentUser.distance == "Miles") {
+                                distanceUnit = "miles";
+                            } else {
+                                distanceUnit = "km";
+                            }
+
                             //.nearSphere('Location', [app.currentPosition.coords.latitude, app.currentPosition.coords.longitude], distance, 'km');
                             if (city && user.onlycity) {
                                 if (isMy === true)
@@ -532,7 +564,7 @@ app.Product = (function () {
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
                                 }
                                 else if (distance !== undefined) {
-                                    query.where().and().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').regex('City', cityRegEx, 'i').done();
+                                    query.where().and().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, distanceUnit).regex('City', cityRegEx, 'i').done();
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
                                 }
                                 else
@@ -545,7 +577,7 @@ app.Product = (function () {
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
                                 }
                                 else if (distance !== undefined) {
-                                    query.where().and().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').regex('Country', countryRegEx, 'i').done();
+                                    query.where().and().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, distanceUnit).regex('Country', countryRegEx, 'i').done();
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
                                 } else
                                     query.where().regex('Country', countryRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
@@ -555,7 +587,7 @@ app.Product = (function () {
                                 else if (filterWord !== undefined)
                                     query.where().regex('Name', filterWord, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else if (distance !== undefined)
-                                    query.where().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').done().orderDesc('CreatedAt').skip(skip).take(interval);
+                                    query.where().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, distanceUnit).done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
                             }
@@ -613,6 +645,12 @@ app.Product = (function () {
                                 el.Distance = getDistanceFromLatLonInKm(el.Latitude, el.Longitude, app.currentPosition.coords.latitude, app.currentPosition.coords.longitude);
                             } else {
                                 el.Distance = 0;
+                            }
+
+                            if (app.currentUser.distance == "Miles") {
+                                el.Distance = convertKmToMiles(el.Distance) + " miles";
+                            } else {
+                                el.Distance = el.Distance + " km";
                             }
 
                             el.isVisited = visitedProductIds.indexOf(el.Id) != -1;

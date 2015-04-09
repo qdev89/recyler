@@ -5,6 +5,11 @@ var loadCategoryProductMore = true;
 $('#distance-filter-categoryProduct').html(distanceValue + 'km');
 
 function onCategoryProductInit(e) {
+    if (app.currentUser.distance == "Miles") {
+        $(".distance-unit").html("miles");
+    } else {
+        $(".distance-unit").html("km");
+    }
 
     $('#find-item-slider-categoryProduct').sGlide({
         'startAt': 10,
@@ -77,13 +82,19 @@ function getCategoryProduct(filterWord, distance) {
                     var cityRegEx = ".*" + city + ".*";
                     var countryRegEx = ".*" + country + ".*";
                     var categoryEx = ".*" + category + ".*";
+                    var distanceUnit = "km";
+                    if (app.currentUser.distance == "Miles") {
+                        distanceUnit = "miles";
+                    } else {
+                        distanceUnit = "km";
+                    }
                     if (city && user.onlycity) {
                         if (filterWord !== undefined) {
                             query.where().and().regex('Category', categoryEx).regex('Name', filterWord, 'i').regex('City', cityRegEx, 'i').done();
                             query.orderDesc('CreatedAt').skip(skip).take(interval);
                         }
                         else if (distance !== undefined) {
-                            query.where().and().regex('Category', categoryEx).nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').regex('City', cityRegEx, 'i').done();
+                            query.where().and().regex('Category', categoryEx).nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, distanceUnit).regex('City', cityRegEx, 'i').done();
                             query.orderDesc('CreatedAt').skip(skip).take(interval);
                         } else {
                             query.where().and().regex('Category', categoryEx).regex('City', cityRegEx, 'i').done();
@@ -95,7 +106,7 @@ function getCategoryProduct(filterWord, distance) {
                             query.orderDesc('CreatedAt').skip(skip).take(interval);
                         }
                         else if (distance !== undefined) {
-                            query.where().and().regex('Category', categoryEx).nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').regex('Country', countryRegEx, 'i').done();
+                            query.where().and().regex('Category', categoryEx).nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, distanceUnit).regex('Country', countryRegEx, 'i').done();
                             query.orderDesc('CreatedAt').skip(skip).take(interval);
                         } else {
                             query.where().and().regex('Category', categoryEx).regex('Country', countryRegEx, 'i').done();
@@ -106,7 +117,7 @@ function getCategoryProduct(filterWord, distance) {
                             query.where().and().regex('Category', categoryEx).regex('Name', filterWord, 'i').done();
                             query.orderDesc('CreatedAt').skip(skip).take(interval);
                         } else if (distance !== undefined) {
-                            query.where().and().regex('Category', categoryEx).nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, 'km').done();
+                            query.where().and().regex('Category', categoryEx).nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, distanceUnit).done();
                             query.orderDesc('CreatedAt').skip(skip).take(interval);
                         } else
                             query.where().regex('Category', categoryEx).done().orderDesc('CreatedAt').skip(skip).take(interval);
@@ -155,6 +166,12 @@ function getCategoryProduct(filterWord, distance) {
                         el.Distance = getDistanceFromLatLonInKm(el.Latitude, el.Longitude, app.currentPosition.coords.latitude, app.currentPosition.coords.longitude);
                     } else {
                         el.Distance = 0;
+                    }
+
+                    if (app.currentUser.distance == "Miles") {
+                        el.Distance = convertKmToMiles(el.Distance) + " miles";
+                    } else {
+                        el.Distance = el.Distance + " km";
                     }
 
                     el.isVisited = visitedProductIds.indexOf(el.Id) != -1;

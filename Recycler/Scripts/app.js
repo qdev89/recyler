@@ -1385,3 +1385,7 @@ function getCurrentLanguage() {
 }
 
 getCurrentLanguage();
+
+function convertKmToMiles(value) {
+    return Round2Digit(value * 0.621);
+}
