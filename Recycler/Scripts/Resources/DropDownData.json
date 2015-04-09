@@ -606,6 +606,15 @@ var Languages =
 "id": "Arts and crafts",
 "Value": "Arts and crafts"
 },    
+   
+{
+"id": "Sports and leisure",
+"Value": "Sports and leisure"
+},       
+{
+"id": "Telephones",
+"Value": "Mobile phone etc."
+},   
 {
 "id": "Computer",
 "Value": "Computer"
@@ -696,7 +705,17 @@ var Languages =
 {
 "id": "Arts and crafts",
 "Value": "Kunst og håndværk"
-},    
+},
+        
+{
+"id": "Sports and leisure",
+"Value": "Sport og fritid"
+},  
+         
+{
+"id": "Telephones",
+"Value": "Mobil Telefon etc."
+},   
 {
 "id": "Computer",
 "Value": "Computer"
@@ -788,7 +807,17 @@ var Languages =
 {
 "id": "Arts and crafts",
 "Value": "Kunsthandwerk"
-},    
+},
+       
+{
+"id": "Sports and leisure",
+"Value": "Sport und Freizeit"
+},  
+    
+{
+"id": "Telephones",
+"Value": "Mobil Telephon etc."
+},
 {
 "id": "Computer",
 "Value": "Computer"
@@ -880,7 +909,17 @@ var Languages =
 {
 "id": "Arts and crafts",
 "Value": "Arte y Artesanía"
-},    
+},  
+        
+{
+"id": "Sports and leisure",
+"Value": "Deportes y recreación"
+},  
+    
+{
+"id": "Telephones",
+"Value": "Celular etc."
+},
 {
 "id": "Computer",
 "Value": "Computer"
