@@ -4995,8 +4995,8 @@ img.resimgs {
     display: inline;
     position: absolute;
     left: 5px;
-    top: ;
-    font-size:;
+    /*top: ;
+    font-size:;*/
 }
 
 .distance-filter1 {
@@ -5004,8 +5004,8 @@ img.resimgs {
     display: inline;
     position: absolute;
     right: 5px;
-    top: ;
-    font-size:;
+    top: 45px;
+    /*font-size:;*/
     text-align: right;
 }
 
@@ -5025,9 +5025,6 @@ img.resimgs {
 
 .sglide-buttons {
     display: none !important;
-}
-    
-    
 }
 
 /* screen size big end */
