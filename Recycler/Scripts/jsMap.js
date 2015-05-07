@@ -8,6 +8,8 @@ var currentPosition;
 function fillContent(e) {
     goToTop(e);
     $(".spot-info-content").html(spotContent);
+    TranslateApp();
+
 }
 
 
@@ -98,7 +100,7 @@ function iconMapInit(e) {
                                     var date1 = date.getDate();
                                     var month = date.getMonth();
                                     var year = date.getFullYear();
-                                    eventDate = "<tr><td colspan='2'><table border='0' width='100%' cellspacing='0' cellpadding='4'> <tr> <td width='20%'><b><label class='eventDate' for='date' data-localize='date' >DATE</label></b></td><td width='20%'><label class='eventDate' for='month' data-localize='month'><b>MONTH</b></td><td><label class='eventDate' for='year' data-localize='year'><b>YEAR</b></td></tr><tr> <td width='20%'><span class='eventDate'>" + date1 + "</span></td><td width='20%'><span class='eventDate'>" + month + "</span></td><td><span class='eventDate'>" + year + "</span></td></tr><tr> <td colspan='3'><hr style='background: lightgray;height:1px'></td></tr></table></td></tr>";
+                                    eventDate = "<tr><td colspan='2'><table border='0' width='100%' cellspacing='0' cellpadding='4'> <tr> <td width='20%'><b><label class='eventDate' for='day' data-localize='day' >DATE</label></b></td><td width='20%'><label class='eventDate' for='month' data-localize='month'><b>MONTH</b></td><td><label class='eventDate' for='year' data-localize='year'><b>YEAR</b></td></tr><tr> <td width='20%'><span class='eventDate'>" + date1 + "</span></td><td width='20%'><span class='eventDate'>" + month + "</span></td><td><span class='eventDate'>" + year + "</span></td></tr><tr> <td colspan='3'><hr style='background: lightgray;height:1px'></td></tr></table></td></tr>";
 
                                 } else {
                                     canSetPlace = false;
