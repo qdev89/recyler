@@ -1,10 +1,21 @@
 <div data-role="view" data-title="Spot Info" data-show="fillContent" id="spot-info-tabstrip">
     <div data-role="content">
-        <ul class="km-listview">
-            <li class="spot-info-content">
-            </li>
-        </ul>
-        <button class="btn btn-primary" onclick="app.application.navigate('findonmap.html?canReload=false')">Back to map</button>
-    </div>
+        <div style="margin: 10px">
+            <ul class="km-listview">
+                <li class="spot-info-content">
+                </li>
+            </ul>
+            <!--  <button class="btn btn-primary" onclick="app.application.navigate('findonmap.html?canReload=false')">Back to map</button>-->
+            <a data-role="button" class="btn btn-blue km-widget km-button" data-transition="fade" id="categoryProduct" href="findonmap.html?canReload=false">
+                <span class="km-text">Back to map</span>
+            </a>
 
+        </div>
+    </div>
 </div>     
+
+<style>
+    .eventDate {
+        color: #0A6F9D;
+    }
+</style>

@@ -75,7 +75,7 @@ function iconMapInit(e) {
 
                     if (allSpots.length > 0) {
                         $.each(allSpots, function (i) {
-
+                            var eventDate;
                             var grey = true;
                             var canSetPlace = true;
                             if (allSpots[i].SpotType === "Garage sale" || allSpots[i].SpotType === "Help") {
@@ -94,30 +94,54 @@ function iconMapInit(e) {
                                     if (date > oneDaysBefore) {
                                         grey = false;
                                     }
+
+                                    var date1 = date.getDate();
+                                    var month = date.getMonth();
+                                    var year = date.getFullYear();
+                                    eventDate = "<tr><td colspan='2'><table border='0' width='100%' cellspacing='0' cellpadding='4'> <tr> <td width='20%'><b><label class='eventDate' for='date' data-localize='date' >DATE</label></b></td><td width='20%'><label class='eventDate' for='month' data-localize='month'><b>MONTH</b></td><td><label class='eventDate' for='year' data-localize='year'><b>YEAR</b></td></tr><tr> <td width='20%'><span class='eventDate'>" + date1 + "</span></td><td width='20%'><span class='eventDate'>" + month + "</span></td><td><span class='eventDate'>" + year + "</span></td></tr><tr> <td colspan='3'><hr style='background: lightgray;height:3px'></td></tr></table></td></tr>";
+
                                 } else {
                                     canSetPlace = false;
                                 }
                             }
+                            var weekdayTime, satTime, sunTime;
+                            if ((allSpots[i].OpeningHoursWeekdaysFrom && (allSpots[i].OpeningHoursWeekdaysFrom == "00" || allSpots[i].OpeningHoursWeekdaysFrom == "-")) && (allSpots[i].OpeningHoursWeekdaysTo && (allSpots[i].OpeningHoursWeekdaysTo == "00" || allSpots[i].OpeningHoursWeekdaysTo == "-"))) {
+                                weekdayTime = "Closed";
+                            } else {
+                                weekdayTime = allSpots[i].OpeningHoursWeekdaysFrom + " " + allSpots[i].OpeningTimeWeekdays + " - " + allSpots[i].OpeningHoursWeekdaysTo + " " + allSpots[i].ClosingTimeWeekdays;
+                            }
+
+                            if ((allSpots[i].OpeningHoursSaturdayFrom && (allSpots[i].OpeningHoursSaturdayFrom == "00" || allSpots[i].OpeningHoursSaturdayFrom == "-")) && (allSpots[i].OpeningHoursSaturdayTo && (allSpots[i].OpeningHoursSaturdayTo == "00" || allSpots[i].OpeningHoursSaturdayTo == "-"))) {
+                                satTime = "Closed";
+                            } else {
+                                satTime = allSpots[i].OpeningHoursSaturdayFrom + " " + allSpots[i].OpeningTimeSat + " - " + allSpots[i].OpeningHoursSaturdayTo + " " + allSpots[i].ClosingTimeSat;
+                            }
+
+                            if ((allSpots[i].OpeningHoursSundayFrom && (allSpots[i].OpeningHoursSundayFrom == "00" || allSpots[i].OpeningHoursSundayFrom == "-")) && (allSpots[i].OpeningHoursSundayTo && (allSpots[i].OpeningHoursSundayTo == "00" || allSpots[i].OpeningHoursSundayTo == "-"))) {
+                                sunTime = "Closed";
+                            } else {
+                                sunTime = allSpots[i].OpeningHoursSundayFrom + " " + allSpots[i].OpeningTimeSun + " - " + allSpots[i].OpeningHoursSundayTo + " " + allSpots[i].ClosingTimeSun;
+                            }
+
 
                             var content =
                                 "<div class='table-container' align='center'><table>" +
-                                    "<tr><td></td><td class='spotName'>" + (allSpots[i].Name || "") + "</td></tr>" +
-                                    "<tr><td></td><td class='spotDate'>" + (allSpots[i].EventDate || "") + "</td></tr>" +
-                                    "<tr class='img'><td></td><td> <img alt='' class='popupImg' src='" + (allSpots[i].Image || "") + "' /></td></tr>" +
+                                eventDate +
+                                    "<tr><td colspan='2' class='spotName'>" + (allSpots[i].Name || "") + "</td></tr>" +
+                                    //"<tr><td></td><td class='spotDate'>" + (allSpots[i].EventDate || "") + "</td></tr>" +
+                                    "<tr class='img'><td colspan='2'> <img alt='' class='popupImg' src='" + (allSpots[i].Image || "") + "' /></td></tr>" +
                                     "<tr> <td><img class='td-icon' src='images/mapicons/info_blue.png' /></td><td> " + (allSpots[i].Description || "") + "</td></tr>" +
                                     "<tr><td><img class='td-icon' src='images/mapicons/phone_blue.png' /></td><td> " + (allSpots[i].Phone || "") + "</div>" +
-                                    "<tr> <td><img class='td-icon' src='images/mapicons/opening_blue.png' /></td><td> Weekdays: " + allSpots[i].OpeningHoursWeekdaysFrom + " " + allSpots[i].OpeningTimeWeekdays + " - " +
-                                    allSpots[i].OpeningHoursWeekdaysTo + " " + allSpots[i].ClosingTimeWeekdays + "</td></tr>" +
-                                    "<tr><td></td><td> Saturday: " + allSpots[i].OpeningHoursSaturdayFrom + " " + allSpots[i].OpeningTimeSat + " - " +
-                                    allSpots[i].OpeningHoursSaturdayTo + " " + allSpots[i].ClosingTimeSat + "</td></tr>" +
-                                    "<tr><td></td><td> Sunday: " + allSpots[i].OpeningHoursSundayFrom + " " + allSpots[i].OpeningTimeSun + " - " +
-                                    allSpots[i].OpeningHoursSundayTo + " " + allSpots[i].ClosingTimeSun + "</td></tr>" +
+                                    "<tr> <td><img class='td-icon' src='images/mapicons/opening_blue.png' /></td>" +
+                                    "<td> Weekdays: " + weekdayTime + "</td></tr>" +
+                                    "<tr><td></td><td> Saturday: " + satTime + "</td></tr>" +
+                                    "<tr><td></td><td> Sunday: " + sunTime + "</td></tr>" +
                                     "<tr><td><img class='td-icon' src='images/mapicons/adress_blue.png' /></td><td>  " + (allSpots[i].Address || "") + "</td></tr>" +
                                     "<tr><td></td><td>  " + (allSpots[i].City || "") + "</td></tr>" +
                                     "<tr><td></td><td>" + (allSpots[i].Zip || "") + "</td></tr>" +
                                     "<tr><td><img class='td-icon' src='images/mapicons/www_icon_blue.png' /></td><td> <a href='" + (allSpots[i].Web || "") + "'>" + (allSpots[i].Web || "") + "</a></td></tr>" +
                                     "</table></div>";
-
+                            debugger;
                             if (canSetPlace) {
                                 setPlace(allSpots[i].Latitude, allSpots[i].Longitude, false, allSpots[i].SpotType, googleMap, content, grey);
                             }
