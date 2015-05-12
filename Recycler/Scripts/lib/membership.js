@@ -12,7 +12,7 @@
 
                 // Inform the store of your products
                 store.register({
-                    id: '1month',
+                    id: '1month_nonrenewal',
                     alias: '1month-alias',
                     type: store.PAID_SUBSCRIPTION
                 });
@@ -24,7 +24,7 @@
                 //});
 
                 store.register({
-                    id: '1year',
+                    id: '12month_nonrenewal',
                     alias: '1year-alias',
                     type: store.NON_CONSUMABLE
                 });
