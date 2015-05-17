@@ -751,12 +751,19 @@ function saveUserData() {
     }, // data
                 { 'Id': userData.Id }, // filter
                 function (data) {
-                    console.log(data);
-                    navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
+                    //console.log(data);
+                    //navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
                     if (mail) {
                         sendMail(emailTemplates.thankYou, [userData.Email], { "appName": emailTemplates.DefaultFromName, "DefaultFromName": emailTemplates.DefaultFromName, "userName": $("#name").val(), "FromEmail": emailTemplates.FromEmail });
-                        app.application.navigate("membership.html");
+
+                        app.Login.login(app.Username, app.password, true);
+
+                        //app.application.navigate("membership.html");
                     }
+
+                    app.Login.login(app.Username, app.password);
+
+
                 },
                 function (error) {
                     alert(JSON.stringify(error));
@@ -765,7 +772,6 @@ function saveUserData() {
 
 function fillUserData(user) {
     userData = user;
-    debugger;
     if (user.ImageData != "" && user.ImageData != undefined)
         $("#avatarImage").attr("src", user.ImageData);
 
@@ -845,17 +851,64 @@ function fillUserData(user) {
         $("#onlycity").prop("checked", user.onlycity);
 }
 
+function emptyUserInfo() {
+    $("#avatarImage").attr("src", '');
+
+    $("#email").val('');
+    $("#email").prop("disabled", false);
+
+    $("#role").val('');
+
+    $("#isSupporter").attr("src", "images/notsupporter.png");
+
+
+    $("#brigade").val('');
+
+    $("#name").val('');
+
+    $("#phoneno").val("");
+
+    $("#companyname").val("");
+
+    $("#zip").val();
+
+    $("#homeadress").val('');
+
+    $("#homecity").val('');
+
+    $("#country").val('0');
+
+    $("#txtState").val('');
+
+    $("#Languages").val('');
+
+    $("#facebookaddress").val('');
+
+    $("#twitteraddress").val('');
+
+    $("#wwwaddress").val('');
+
+    $("#weight").val('');
+
+    $("#distance").val("");
+
+    $("#brigade").prop("checked", false);
+
+    $("#onlycountry").prop("checked", false);
+
+    $("#onlycity").prop("checked", false);
+}
+
 function setupInit() {
     user.GetRoles();
     $("#EmailLanguage").on("click", function () {
-        debugger;
         var url = $(this).attr("link");
         if (url !== undefined && url !== "undefined") {
             window.open(url, '_blank', 'location=yes');
         }
 
     });
-
+    emptyUserInfo();
     if (localStorage.User == undefined) {
         app.everlive.Users.currentUser(
             function (data) {
@@ -873,39 +926,21 @@ function setupInit() {
                 var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                    
-                    var city = "N/A";
+
+                    var city = "";
+                    var street = "";
+                    var route = "";
+                    var country = "";
+                    var zip = "";
                     if (status == google.maps.GeocoderStatus.OK) {
                         // get city, postal code, country
+                        debugger;
                         if (results[1]) {
-                            var hasLevel1AdminArea = false;
-                            //find city name
-                            for (var i = 0; i < results[0].address_components.length; i++) {
-                                for (var b = 0; b < results[0].address_components[i].types.length; b++) {
-
-                                    //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
-                                    if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
-                                        //this is the object you are looking for
-                                        city = results[0].address_components[i].long_name;
-                                        hasLevel1AdminArea = true;
-                                        break;
-                                    }
-                                }
-                            }
-
-                            if (!hasLevel1AdminArea) {
-                                for (var i = 0; i < results[0].address_components.length; i++) {
-                                    for (var b = 0; b < results[0].address_components[i].types.length; b++) {
-
-                                        //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
-                                        if (results[0].address_components[i].types[b] == "administrative_area_level_2") {
-                                            //this is the object you are looking for
-                                            city = results[0].address_components[i].long_name;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
+                            city = getLocalFromGPS(results, "administrative_area_level_1", "administrative_area_level_2");
+                            street = getLocalFromGPS(results, "street_number");
+                            route = getLocalFromGPS(results, "route");
+                            country = getLocalFromGPS(results, "country");
+                            zip = getLocalFromGPS(results, "postal_code");
                         }
                     }
 
@@ -915,6 +950,32 @@ function setupInit() {
                         $("#homecity").val(user.City);
                     }
 
+                    if (user.City === undefined || user.City == '') {
+                        user.cityGeo = city;
+                        user.City = city;
+                        $("#homecity").val(user.City);
+                    }
+
+                    if (user.Zip === undefined || user.Zip != undefined) {
+                        user.Zip = zip;
+                        $("#zip").val(user.Zip);
+                    }
+
+                    if (user.AddressLine1 === undefined || user.AddressLine1 != undefined) {
+                        user.AddressLine1 = street + ", " + route;
+                        $("#homeadress").val(user.AddressLine1);
+                    }
+
+                    if (user.Country === undefined || user.Country != undefined) {
+                        user.Country = country;
+                        $("#country").val(user.Country);
+
+                        //$("#country option[text=" + user.Country + "]").attr("selected", "selected");
+
+                        $("#country option").filter(function () {
+                            return this.text == user.Country;
+                        }).attr('selected', true);
+                    }
                 });
 
                 $.getJSON('http://ws.geonames.org/countryCode', {
@@ -939,6 +1000,42 @@ function setupInit() {
     }
 }
 
+function getLocalFromGPS(results, level1, level2) {
+    var hasLevel1AdminArea = false;
+    var value = "";
+    //find city name
+    for (var i = 0; i < results[0].address_components.length; i++) {
+        for (var b = 0; b < results[0].address_components[i].types.length; b++) {
+
+            //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+            if (results[0].address_components[i].types[b] == level1) {
+                //this is the object you are looking for
+                value = results[0].address_components[i].long_name;
+                hasLevel1AdminArea = true;
+                break;
+            }
+        }
+    }
+
+    if (level2) {
+        if (!hasLevel1AdminArea) {
+            for (var i = 0; i < results[0].address_components.length; i++) {
+                for (var b = 0; b < results[0].address_components[i].types.length; b++) {
+
+                    //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                    if (results[0].address_components[i].types[b] == level2) {
+                        //this is the object you are looking for
+                        value = results[0].address_components[i].long_name;
+                        break;
+                    }
+                }
+            }
+        }
+
+    }
+
+    return value;
+}
 
 function isUserLogged() {
 

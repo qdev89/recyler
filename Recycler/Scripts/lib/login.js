@@ -4,7 +4,8 @@
 
 var app = window.app = window.app || {};
 app.currentPosition = null;
-
+app.password = null;
+app.Username = null;
 app.Login = (function () {
     'use strict';
 
@@ -61,7 +62,7 @@ app.Login = (function () {
         };
 
         // Authenticate to use Backend Services as a particular user
-        var login = function (user, pass) {
+        var login = function (user, pass, isNavigateToMemebership) {
 
             var username = $loginUsername.val();
             var password = $loginPassword.val();
@@ -140,8 +141,12 @@ app.Login = (function () {
 
                                                         if (data.result.Email == undefined || data.result.Email == "")
                                                             app.application.navigate('basic_setup.html');
-                                                        else
-                                                            app.application.navigate('finditem.html');
+                                                        else {
+                                                            if (isNavigateToMemebership)
+                                                                app.application.navigate("membership.html");
+                                                            else
+                                                                app.application.navigate('finditem.html');
+                                                        }
                                                     })
                                                     .fail(function (error) {
                                                         alert(TranslateGpsError());
@@ -149,8 +154,12 @@ app.Login = (function () {
 
                                                         if (data.result.Email == undefined || data.result.Email == "")
                                                             app.application.navigate('basic_setup.html');
-                                                        else
-                                                            app.application.navigate('finditem.html');
+                                                        else {
+                                                            if (isNavigateToMemebership)
+                                                                app.application.navigate("membership.html");
+                                                            else
+                                                                app.application.navigate('finditem.html');
+                                                        }
                                                     });
 
 
@@ -176,7 +185,8 @@ app.Login = (function () {
                                                    var attrs = {
                                                        Email: username
                                                    };
-
+                                                   app.password = password;
+                                                   app.Username = username;
                                                    app.everlive.Users.register(username, password, attrs, function (data) {
                                                        app.everlive.Users.login(username, password, function () {
 

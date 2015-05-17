@@ -787,9 +787,6 @@
     <Content Include="Scripts\app\identity-provider.js">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Scripts\app\login.js">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="Scripts\app\settings.js">
       <SubType>Content</SubType>
     </Content>
