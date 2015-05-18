@@ -613,6 +613,7 @@ app.Product = (function () {
                                     $(".img-holder").first().width();
                                 }, 10);
                                 everliveImages.responsiveAll();
+                                TranslateApp();
                                 hideLoading();
                                 if (data.result.length == interval) {
                                     loadMore = true;

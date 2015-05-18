@@ -874,9 +874,6 @@
     <Content Include="Scripts\Resources\Recycle-es.json">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Scripts\User\User.js">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="Scripts\utility.js" />
     <Content Include="settings.html">
       <SubType>Content</SubType>

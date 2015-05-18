@@ -1352,7 +1352,6 @@ function openImageFullModal(imgSrc) {
 }
 
 function getCurrentLanguage() {
-    debugger;
     var l_lang;
     if (navigator.userLanguage) // Explorer
         l_lang = navigator.userLanguage;

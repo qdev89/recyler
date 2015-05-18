@@ -213,47 +213,58 @@ var user = {
 
 
     GetRoles: function () {
+        debugger;
         if (Roles == undefined) return;
-        switch (localStorage.Language) {
-            case "1":
-                $.each(Roles.Danish, function (i) {
-                    $('#role').append('<option value="' + Roles.Danish[i].id + '">' + Roles.Danish[i].Value + '</option>');
-                });
+        if (localStorage.Language && localStorage.Language !== null && localStorage.Language != 'null') {
+            switch (localStorage.Language) {
+                case "1":
+                    $.each(Roles.Danish, function (i) {
+                        $('#role').append('<option value="' + Roles.Danish[i].id + '">' + Roles.Danish[i].Value + '</option>');
+                    });
 
-                $.each(Languages.Danish, function (i) {
-                    $('#Languages').append('<option value="' + Languages.Danish[i].id + '">' + Languages.Danish[i].Value + '</option>');
-                });
+                    $.each(Languages.Danish, function (i) {
+                        $('#Languages').append('<option value="' + Languages.Danish[i].id + '">' + Languages.Danish[i].Value + '</option>');
+                    });
 
-                break;
-            case "2":
-                $.each(Roles.German, function (i) {
-                    $('#role').append('<option value="' + Roles.German[i].id + '">' + Roles.German[i].Value + '</option>');
-                });
+                    break;
+                case "2":
+                    $.each(Roles.German, function (i) {
+                        $('#role').append('<option value="' + Roles.German[i].id + '">' + Roles.German[i].Value + '</option>');
+                    });
 
-                $.each(Languages.German, function (i) {
-                    $('#Languages').append('<option value="' + Languages.German[i].id + '">' + Languages.German[i].Value + '</option>');
-                });
+                    $.each(Languages.German, function (i) {
+                        $('#Languages').append('<option value="' + Languages.German[i].id + '">' + Languages.German[i].Value + '</option>');
+                    });
 
-                break;
-            case "3":
-                $.each(Roles.English, function (i) {
-                    $('#role').append('<option value="' + Roles.English[i].id + '">' + Roles.English[i].Value + '</option>');
-                });
+                    break;
+                case "3":
+                    $.each(Roles.English, function (i) {
+                        $('#role').append('<option value="' + Roles.English[i].id + '">' + Roles.English[i].Value + '</option>');
+                    });
 
-                $.each(Languages.English, function (i) {
-                    $('#Languages').append('<option value="' + Languages.English[i].id + '">' + Languages.English[i].Value + '</option>');
-                });
+                    $.each(Languages.English, function (i) {
+                        $('#Languages').append('<option value="' + Languages.English[i].id + '">' + Languages.English[i].Value + '</option>');
+                    });
 
-                break;
-            case "4":
-                $.each(Roles.Spanish, function (i) {
-                    $('#role').append('<option value="' + Roles.Spanish[i].id + '">' + Roles.Spanish[i].Value + '</option>');
-                });
+                    break;
+                case "4":
+                    $.each(Roles.Spanish, function (i) {
+                        $('#role').append('<option value="' + Roles.Spanish[i].id + '">' + Roles.Spanish[i].Value + '</option>');
+                    });
 
-                $.each(Languages.Spanish, function (i) {
-                    $('#Languages').append('<option value="' + Languages.Spanish[i].id + '">' + Languages.Spanish[i].Value + '</option>');
-                });
-                break;
+                    $.each(Languages.Spanish, function (i) {
+                        $('#Languages').append('<option value="' + Languages.Spanish[i].id + '">' + Languages.Spanish[i].Value + '</option>');
+                    });
+                    break;
+            }
+        } else {
+            $.each(Roles.English, function (i) {
+                $('#role').append('<option value="' + Roles.English[i].id + '">' + Roles.English[i].Value + '</option>');
+            });
+
+            $.each(Languages.English, function (i) {
+                $('#Languages').append('<option value="' + Languages.English[i].id + '">' + Languages.English[i].Value + '</option>');
+            });
         }
 
 
@@ -360,7 +371,7 @@ $(document).ready(function () {
         user.CreateUser();
     }
     user.LanguageMailSent = false;
-    user.GetRoles();
+    //user.GetRoles();
     $("#saveuser").click(function () {
         var data = $.parseJSON(localStorage.User);
         if (data.RoleID == "3") {
@@ -436,7 +447,7 @@ $(document).ready(function () {
 
                 // user.Language = $('#Languages').parent().children('span').find('.ui-btn-text').html();
                 localStorage.Language = user.Language;
-                console.log((localStorage.Language))
+                console.log((localStorage.Language));
                 switch (localStorage.Language) {
                     case "1":
                         localStorage.LanguageType = "dk";
@@ -852,12 +863,12 @@ function fillUserData(user) {
 }
 
 function emptyUserInfo() {
-    $("#avatarImage").attr("src", '');
+    $("#avatarImage").attr("src", 'images/imageplaceholder.png');
 
     $("#email").val('');
     $("#email").prop("disabled", false);
 
-    $("#role").val('');
+    //$("#role").val('');
 
     $("#isSupporter").attr("src", "images/notsupporter.png");
 
@@ -880,7 +891,7 @@ function emptyUserInfo() {
 
     $("#txtState").val('');
 
-    $("#Languages").val('');
+    //$("#Languages").val('');
 
     $("#facebookaddress").val('');
 
@@ -897,6 +908,11 @@ function emptyUserInfo() {
     $("#onlycountry").prop("checked", false);
 
     $("#onlycity").prop("checked", false);
+}
+
+function loadBasicSetup(e) {
+    window.utility.resetScroller(e);
+    TranslateApp();
 }
 
 function setupInit() {
@@ -1051,8 +1067,11 @@ function removeLocalStorageUser() {
 }
 
 function autoLogin() {
-    if (isUserLogged())
+    if (isUserLogged()) {
+        app.Username = localStorage.Username;
+        app.password = localStorage.Password;
         app.Login.login(localStorage.Username, localStorage.Password);
+    }
 }
 
 

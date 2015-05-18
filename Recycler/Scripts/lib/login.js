@@ -23,7 +23,6 @@ app.Login = (function () {
         var isAnalytics = analytics.isAnalytics();
 
         var init = function () {
-            debugger;
             if (!app.isKeySet(appSettings.everlive.apiKey)) {
                 app.application.navigate('views/noApiKey.html', 'fade');
             }
@@ -63,7 +62,6 @@ app.Login = (function () {
 
         // Authenticate to use Backend Services as a particular user
         var login = function (user, pass, isNavigateToMemebership) {
-
             var username = $loginUsername.val();
             var password = $loginPassword.val();
 
@@ -105,6 +103,7 @@ app.Login = (function () {
                                            function (data) {
                                                console.log(data.result);
                                                app.currentUser = data.result;
+
                                                localStorage.User = JSON.stringify(data.result);
                                                app.AddActivity.me = data.result;
                                                fillUserData(data.result);
