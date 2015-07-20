@@ -42,8 +42,6 @@
 
     <!-- android -->
     <platform name="android">
-        <preference name="BILLING_KEY" />
-
         <js-module src="www/store-android.js" name="InAppBillingPlugin">
             <clobbers target="store" />
         </js-module>
@@ -62,7 +60,7 @@
 
         <source-file src="src/android/billing_key_param.xml" target-dir="res/values/" />
         <config-file target="res/values/billing_key_param.xml" parent="/*">
-            <string name="billing_key_param">$BILLING_KEY</string>
+            <string name="billing_key_param">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjIVy1ry/eYzOcM6v3THi51GSqXknLy7OLOD3jYzPmqmp/isr9mHG0xBE5Rd2J2Gf7NlCX29jr52E3lEgBbt8uTI7ZEFyOAcwEnL1JnA0j/lwVg0oXzX5g7Cq3nJjXzzQ57jGUqTiDw7ptjt+EvrwQUKBCfkUOUHIPPL1K9201S7CJvCixS1VXm1roLGItdmirtYKNid6cG2xe7NPBad47rqo3CFITCZ60lyQkChcYDUl6qwHbSGTkt+aoV/+9mYUHOxL1CVz0DghE3s4TZKCU9Utt8Gg4OxARhTcSaPsUMybTRgSKR+g85+MiuNs5KtnDgnAdt1W1PhcAsUAyH19+wIDAQAB</string>
         </config-file>
 
         <!-- In-app Billing Library -->

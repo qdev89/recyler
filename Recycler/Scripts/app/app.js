@@ -132,7 +132,7 @@ var app = (function (win) {
     };
 
     var os = kendo.support.mobileOS,
-        statusBarStyle = os.ios && os.flatVersion >= 700 ? 'black-translucent' : 'black';
+        statusBarStyle = os.ios && os.flatVersion >= 500 ? 'black-translucent' : 'black';
 
     // Initialize KendoUI mobile application
     var mobileApp = new kendo.mobile.Application(document.body, {
