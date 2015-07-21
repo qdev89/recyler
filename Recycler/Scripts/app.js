@@ -146,6 +146,11 @@ function TranslateApp() {
     $("[data-localize]").localize("Recycle", opts);
 }
 
+function NavigateToBecomeSupporterPage() {
+    alert('a');
+    app.application.navigate("membership.html");
+}
+
 function log() {
     for (var i = 0; i < arguments.length; i++) {
         console.log(arguments[i]);
