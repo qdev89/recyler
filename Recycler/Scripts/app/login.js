@@ -19,6 +19,7 @@ app.Login = (function () {
         var isLiveIdLogin = app.isKeySet(appSettings.liveId.clientId) && app.isKeySet(appSettings.liveId.redirectUri);
         var isAdfsLogin = app.isKeySet(appSettings.adfs.adfsRealm) && app.isKeySet(appSettings.adfs.adfsEndpoint);
         var isAnalytics = analytics.isAnalytics();
+        //var isAnalytics = false;
 
         var init = function () {
 

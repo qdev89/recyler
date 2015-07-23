@@ -22,6 +22,7 @@
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
   "FrameworkVersion": "3.5.0",
   "CorePlugins": [
+    "cc.fovea.cordova.purchase@3.10.0",
     "com.paypal.cordova.mobilesdk@2.1.1",
     "com.telerik.feedback",
     "com.telerik.plugin.eqatecanalytics",
@@ -38,8 +39,7 @@
     "org.apache.cordova.media-capture",
     "org.apache.cordova.network-information",
     "org.apache.cordova.plugin.sms@0.1.0",
-    "org.apache.cordova.splashscreen",
-    "cc.fovea.cordova.purchase@3.10.0"
+    "org.apache.cordova.splashscreen"
   ],
   "AndroidPermissions": [
     "android.permission.ACCESS_COARSE_LOCATION",
@@ -72,7 +72,12 @@
     "ID_RESOLUTION_HD720P"
   ],
   "Framework": "Cordova",
-  "CordovaPluginVariables": {},
+  "CordovaPluginVariables": {
+    "cc.fovea.cordova.purchase": {
+      "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjIVy1ry/eYzOcM6v3THi51GSqXknLy7OLOD3jYzPmqmp/isr9mHG0xBE5Rd2J2Gf7NlCX29jr52E3lEgBbt8uTI7ZEFyOAcwEnL1JnA0j/lwVg0oXzX5g7Cq3nJjXzzQ57jGUqTiDw7ptjt+EvrwQUKBCfkUOUHIPPL1K9201S7CJvCixS1VXm1roLGItdmirtYKNid6cG2xe7NPBad47rqo3CFITCZ60lyQkChcYDUl6qwHbSGTkt+aoV/+9mYUHOxL1CVz0DghE3s4TZKCU9Utt8Gg4OxARhTcSaPsUMybTRgSKR+g85+MiuNs5KtnDgnAdt1W1PhcAsUAyH19+wIDAQAB"
+    }
+  },
   "WP8WindowsPublisherName": "CN=Telerik",
-  "WP8PackageIdentityName": "1234Telerik.dk.recycleworld.recycleworld"
+  "WP8PackageIdentityName": "1234Telerik.dk.recycleworld.recycleworld",
+  "WPSdk": "8.0"
 }
