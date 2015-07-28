@@ -284,7 +284,7 @@ function editSpot(e) {
             $("#txtStateE").val(editableSpot.State);
         }
 
-        $("#imageE").attr("data-src", editableSpot.Image);
+        $("#imageE").attr("src", editableSpot.Image);
         $("#spotphoneE").val(editableSpot.Phone);
         $("#spotwebE").val(editableSpot.Web);
         $("#CvrE").val(editableSpot.CVR);
