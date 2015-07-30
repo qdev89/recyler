@@ -213,7 +213,7 @@ var user = {
 
 
     GetRoles: function () {
-        debugger;
+         
         if (Roles == undefined) return;
         if (localStorage.Language && localStorage.Language !== null && localStorage.Language != 'null') {
             switch (localStorage.Language) {
@@ -696,7 +696,7 @@ function saveUserData() {
     var base64 = $("#avatarImage").attr("src");
     var ImageData = userData.ImageData;
 
-    debugger;
+     
     if (base64 != "images/imageplaceholder.png" && base64.indexOf("data:image/jpeg;base64,") != -1) {
 
         var file = {
@@ -708,7 +708,7 @@ function saveUserData() {
 
         app.everlive.Files.create(file,
                                   function (data) {
-                                      debugger;
+                                       
                                       //console.log(data);
 
                                       ImageData = data.result.Uri;
@@ -950,7 +950,7 @@ function setupInit() {
                     var zip = "";
                     if (status == google.maps.GeocoderStatus.OK) {
                         // get city, postal code, country
-                        debugger;
+                         
                         if (results[1]) {
                             city = getLocalFromGPS(results, "administrative_area_level_1", "administrative_area_level_2");
                             street = getLocalFromGPS(results, "street_number");
@@ -966,23 +966,17 @@ function setupInit() {
                         $("#homecity").val(user.City);
                     }
 
-                    if (user.City === undefined || user.City == '') {
-                        user.cityGeo = city;
-                        user.City = city;
-                        $("#homecity").val(user.City);
-                    }
-
-                    if (user.Zip === undefined || user.Zip != undefined) {
+                    if (user.Zip === undefined || user.Zip == '') {
                         user.Zip = zip;
                         $("#zip").val(user.Zip);
                     }
 
-                    if (user.AddressLine1 === undefined || user.AddressLine1 != undefined) {
+                    if (user.AddressLine1 === undefined || user.AddressLine1 == '') {
                         user.AddressLine1 = street + ", " + route;
                         $("#homeadress").val(user.AddressLine1);
                     }
 
-                    if (user.Country === undefined || user.Country != undefined) {
+                    if (user.Country === undefined || user.Country == '') {
                         user.Country = country;
                         $("#country").val(user.Country);
 

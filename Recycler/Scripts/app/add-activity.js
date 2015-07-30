@@ -41,7 +41,7 @@ app.AddActivity = (function () {
                 activity.Text = $newStatus.val();
                 activity.Title = $newTitle.val();
                 activity.UserId = app.Users.currentUser.get('data').Id;
-                debugger;
+                 
                 activity.Id = guid();
                 activities.one('sync', function (data) {
                     var activityID = data.sender._data[0].Id;

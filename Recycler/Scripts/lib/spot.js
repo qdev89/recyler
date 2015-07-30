@@ -343,7 +343,7 @@ var spot = {
     Error: '',
 
     CreateSpot: function () {
-        debugger;
+         
         //if (spot.Image == null || spot.Image == undefined || spot.Image == "") {
 
         if (spot.Image != "images/imageplaceholder.png") {

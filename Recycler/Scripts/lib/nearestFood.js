@@ -83,7 +83,7 @@ function onSendMessagesChecked(cb, id) {
 }
 
 function sendEmailForCheckedPlaces() {
-    debugger;
+     
     if (nearestPlacesIdChecked.length > 0) {
         showLoading();
         var foodProduct = {};
@@ -92,7 +92,7 @@ function sendEmailForCheckedPlaces() {
             var query = new Everlive.Query();
             query.where().eq('Id', app.foodProductId);
             data.get(query).then(function (product) {
-                debugger;
+                 
                 foodProduct = product.result[0];
                 var data1 = app.everlive.data('Users');
                 var query1 = new Everlive.Query();

@@ -42,7 +42,7 @@ app.Activity = (function () {
             var evl = app.everlive.data('Activities');
             evl.getById(activity.Id)
                  .then(function (data) {
-                     debugger;
+                      
                      activity = data.result;
                      $activityPicture[0].style.display = activity.Picture ? 'block' : 'none';
                      $('#picture').attr('src', activity.Picture);

@@ -31,7 +31,7 @@
 
                 // When any product gets updated, refresh the HTML
                 store.when("product").updated(function (p) {
-                    //debugger;
+                     
                     //alert(JSON.stringify(p));
 
                     ////var elId = p.id;

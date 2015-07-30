@@ -111,7 +111,7 @@ function TranslateCategory(category) {
             break;
     }
 
-    debugger;
+     
     return value;
 }
 
@@ -397,7 +397,7 @@ function onAvatarPhotoDataSuccess(imageData) {
     //user.image = imageData;
     //var damagephoto = document.getElementById('image');
     //damagephoto.src = "data:image/jpeg;base64," + imageData;
-    //debugger;
+     
     var canvas = document.getElementById("cc");
     var ctx = canvas.getContext("2d");
 

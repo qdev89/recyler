@@ -59,7 +59,7 @@ function loadProduct(e) {
             $(selector + ".price").html(product.Price);
             $(selector + ".info").html(product.MoreInformation);
             $(selector + ".instead").html(product.Description);
-            debugger;
+             
             var translatedCategory = TranslateCategory(product.Category);
             $(selector + ".category").html(translatedCategory);
             $("#categoryProduct").attr("href", "categoryProducts.html?category=" + product.Category);
@@ -539,7 +539,7 @@ app.Product = (function () {
                     read: function (options) {
                         showLoading();
                         try {
-                            debugger;
+                             
                             var data = app.everlive.data('Product');
                             var query = new Everlive.Query();
 

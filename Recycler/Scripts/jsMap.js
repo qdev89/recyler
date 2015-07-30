@@ -62,7 +62,7 @@ function iconMapInit(e) {
                 data.get().then(function (data) {
 
                     hideLoading();
-                    debugger;
+                     
                     allSpots = data.result;
 
                     var today = new Date();
@@ -81,7 +81,7 @@ function iconMapInit(e) {
                             var grey = true;
                             var canSetPlace = true;
                             if (allSpots[i].SpotType === "Garage sale" || allSpots[i].SpotType === "Help") {
-                                debugger;
+                                 
                                 var date = new Date(allSpots[i].EventDate);
                                 //var threeDaysAfterEventDate = date;
                                 //threeDaysAfterEventDate.setTime(date + (72 * 60 * 60 * 1000));
@@ -143,7 +143,7 @@ function iconMapInit(e) {
                                     "<tr><td></td><td>" + (allSpots[i].Zip || "") + "</td></tr>" +
                                     "<tr><td><img class='td-icon' src='images/mapicons/www_icon_blue.png' /></td><td> <a href='" + (allSpots[i].Web || "") + "'>" + (allSpots[i].Web || "") + "</a></td></tr>" +
                                     "</table></div>";
-                            debugger;
+                             
                             if (canSetPlace) {
                                 setPlace(allSpots[i].Latitude, allSpots[i].Longitude, false, allSpots[i].SpotType, googleMap, content, grey);
                             }
@@ -167,7 +167,7 @@ function mapInit() {
     ////    return;
     ////window.getLocation()
     ////        .done(function (position) {
-    //debugger;
+     
     //var position = app.currentPosition;
     ////alert(JSON.stringify(position));
     //$("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
