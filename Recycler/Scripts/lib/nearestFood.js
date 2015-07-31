@@ -1,25 +1,35 @@
-function nearestFoodInit() {
+function nearestFoodShow() {
+    $("#pickup-time-picker").kendoDateTimePicker({
+        value: new Date()
+    });
+
+    $("#pickup-message").val('');
     // get current loction 
     window.getLocation()
          .done(function (position) {
              var query = new Everlive.Query();
-             //query.where().nearSphere('Location', [position.coords.latitude, position.coords.longitude], 20, 'km');
+             query.where().nearSphere('Location', [position.coords.latitude, position.coords.longitude], 50, 'km');
 
              // TODO: uncomment this when release
-             query.where().nearSphere('Location', [9.048379726348116, 56.55474784012899], 20, 'km');
+             //query.where().nearSphere('Location', [9.048379726348116, 56.55474784012899], 20, 'km');
              query.take(10);
              var data = app.everlive.data('Spot');
              data.get(query)
                  .then(function (data) {
-
+                     debugger;
                      var spots = data.result;
-                     //Get the external template definition using a jQuery selector
-                     var template = kendo.template($('#spotNearestTableTemplate').html());
+                     if (spots.length > 0) {
+                         //Get the external template definition using a jQuery selector
+                         var template = kendo.template($('#spotNearestTableTemplate').html());
 
-                     var result = template(spots); //Execute the template
+                         var result = template(spots); //Execute the template
+                         $('#noNearestSpot').hide();
 
-                     $('#spotNearestTable').html(result); //Append the result
-                     $('#spotNearestTable').css({ 'width': '100%' });
+                         $('#spotNearestTable').html(result); //Append the result
+                         $('#spotNearestTable').css({ 'width': '100%' });
+                     } else {
+                         $('#noNearestSpot').show();
+                     }
                  },
                  function (error) {
                      alert(JSON.stringify(error));
@@ -83,10 +93,12 @@ function onSendMessagesChecked(cb, id) {
 }
 
 function sendEmailForCheckedPlaces() {
-     
+    var pickupTime = $("#pickup-time-picker").val();
+    var pickupMessage = $("#pickup-message").val();
     if (nearestPlacesIdChecked.length > 0) {
         showLoading();
         var foodProduct = {};
+
         if (app.foodProductId) {
             var data = app.everlive.data('Product');
             var query = new Everlive.Query();
@@ -120,7 +132,9 @@ function sendEmailForCheckedPlaces() {
                             "ProductPhoto1": foodProduct.Image1,
                             "ProductPhoto2": foodProduct.Image2,
                             "ProductPhoto3": foodProduct.Image3,
-                            "ProductDescription": foodProduct.Description
+                            "ProductDescription": foodProduct.Description,
+                            "PickupTime": pickupTime,
+                            "PickupMessage": pickupMessage,
                         });
                     }
 

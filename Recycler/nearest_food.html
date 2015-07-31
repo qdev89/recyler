@@ -1,4 +1,4 @@
-<div data-role="view" data-init="nearestFoodInit" id="nearest-food-tabstrip" data-show="TranslateApp" style="background-color: #f3f3f3;">
+<div data-role="view"  data-show="nearestFoodShow" id="nearest-food-tabstrip" data-show="TranslateApp" style="background-color: #f3f3f3;">
 
     <div data-role="content">
 
@@ -21,6 +21,9 @@
                 </div>
                 <div>
                     <div id="spotNearestTable"></div>
+                    <div align="center" id="noNearestSpot" style="display: none">
+                        <img src="images/no-nothing-480.gif" width="60%" alt="earth">
+                    </div>
                 </div>
 
 
@@ -28,8 +31,18 @@
 
                 </div>
                 <!--  <select size="1" name="D1" id="NearestSpots">
-                <option value="0">3 donation spots closest to you</option>
-                </select>-->
+                          <option value="0">3 donation spots closest to you</option>
+                      </select>-->
+                <fieldset data-role="controlgroup" class="dates-fieldset" data-type="horizontal">
+                    <div style="color:dodgerblue;font-size:large;">
+                        <label for="pickup-time" data-localize="pickup-time">Pickup Time:</label>
+                    </div>
+                    <input id="pickup-time-picker" />
+                    <label for="pickup-message" data-localize="pickup-message" style="color:dodgerblue;font-size:large;">
+                        Pickup Message:
+                    </label>
+                    <textarea name="pickup-message" style="width:100%;height:140px;border: 1px solid;float: none" maxlength="200" id="pickup-message"></textarea>
+                </fieldset>
                 <br>
                 <div data-role="fieldcontain">
                     <div>
@@ -67,7 +80,7 @@
 
                 # for (var i = 0; i < data.length; i++) { #
                 <tr>
-                    <td>#:data[i].Description#</td>
+                    <td>#:data[i].Name#</td>
                     <td><img src="images/info_icon.png" alt="" onclick="onSpotInfoClick('#:data[i].Id#')" /></td>
                     <td class="center">
                         <input type="checkbox" name="query_myTextEditBox" onclick="onSendMessagesChecked(this, '#:data[i].userId#')">

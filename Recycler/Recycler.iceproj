@@ -493,6 +493,7 @@
     <Content Include="images\niras_pic.jpg">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="images\no-nothing-480.gif" />
     <Content Include="images\NoImage.jpg">
       <SubType>Content</SubType>
     </Content>
