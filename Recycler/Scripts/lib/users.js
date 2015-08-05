@@ -213,7 +213,7 @@ var user = {
 
 
     GetRoles: function () {
-         
+
         if (Roles == undefined) return;
         if (localStorage.Language && localStorage.Language !== null && localStorage.Language != 'null') {
             switch (localStorage.Language) {
@@ -696,7 +696,7 @@ function saveUserData() {
     var base64 = $("#avatarImage").attr("src");
     var ImageData = userData.ImageData;
 
-     
+
     if (base64 != "images/imageplaceholder.png" && base64.indexOf("data:image/jpeg;base64,") != -1) {
 
         var file = {
@@ -708,7 +708,7 @@ function saveUserData() {
 
         app.everlive.Files.create(file,
                                   function (data) {
-                                       
+
                                       //console.log(data);
 
                                       ImageData = data.result.Uri;
@@ -860,6 +860,23 @@ function fillUserData(user) {
 
     if (user.onlycity != undefined)
         $("#onlycity").prop("checked", user.onlycity);
+
+    if ((user.ImageData == "" || user.ImageData === undefined) && user.Provider == "Facebook") {
+        //$("#avatarImage").attr("src", user.ImageData);
+        if (!checkFacebookSimulator()) {
+            facebookConnectPlugin.api(
+                "me/?fields=picture", // graph path
+                [], // array of additional permissions
+                function(response) {
+                    if (response.error) {
+                        console.log("Uh-oh! " + JSON.stringify(response.error));
+                    } else {
+                       alert(JSON.stringify(response));
+                        $("#avatarImage").attr("src", response.picture.data.url);
+                    }
+                });
+        }
+    }
 }
 
 function emptyUserInfo() {
@@ -950,7 +967,7 @@ function setupInit() {
                     var zip = "";
                     if (status == google.maps.GeocoderStatus.OK) {
                         // get city, postal code, country
-                         
+
                         if (results[1]) {
                             city = getLocalFromGPS(results, "administrative_area_level_1", "administrative_area_level_2");
                             street = getLocalFromGPS(results, "street_number");

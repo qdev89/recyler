@@ -1,3 +1,15 @@
+function checkFacebookSimulator() {
+    if (window.navigator.simulator === true) {
+        alert('This plugin is not available in the simulator.');
+        return true;
+    } else if (window.facebookConnectPlugin === undefined) {
+        alert('Plugin not found. Maybe you are running in AppBuilder Companion app which currently does not support this plugin.');
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function validateEmail(txtEmail) {
 
     var a = $.trim(txtEmail);
