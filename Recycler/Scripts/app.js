@@ -14,7 +14,8 @@ function validateEmail(txtEmail) {
 
     var a = $.trim(txtEmail);
     // var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{1,4}$/;
-    var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
+    //var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
+   var filter = /\S+@\S+\.\S+/;
     if (filter.test(a)) {
         return true;
     }
@@ -128,7 +129,7 @@ function TranslateCategory(category) {
 }
 
 function TranslateGpsError() {
-    //Por favor, active GPS de usar-esta aplicación.
+    //Por favor, active GPS de usar-esta aplicaciï¿½n.
     //Venligst start din GPS for at bruge denne app.
     //Bitte starten Sie Ihr GPS um diese App nutzen.
     switch (localStorage.Language) {
@@ -141,7 +142,7 @@ function TranslateGpsError() {
             return "Venligst start din GPS for at bruge denne app.";
 
         case "4":
-            return "Por favor, active GPS de usar-esta aplicación.";
+            return "Por favor, active GPS de usar-esta aplicaciï¿½n.";
 
     }
 }

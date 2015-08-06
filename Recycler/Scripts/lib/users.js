@@ -783,6 +783,7 @@ function saveUserData() {
 
 function fillUserData(user) {
     userData = user;
+     //alert(JSON.stringify(user));
     if (user.ImageData != "" && user.ImageData != undefined)
         $("#avatarImage").attr("src", user.ImageData);
 
@@ -861,20 +862,21 @@ function fillUserData(user) {
     if (user.onlycity != undefined)
         $("#onlycity").prop("checked", user.onlycity);
 
-    if ((user.ImageData == "" || user.ImageData === undefined) && user.Provider == "Facebook") {
+    alert(user.Provider);
+    if ((user.ImageData == "" || user.ImageData === undefined) && user.IdentityProvider=="Facebook") {
         //$("#avatarImage").attr("src", user.ImageData);
-        if (!checkFacebookSimulator()) {
-            facebookConnectPlugin.api(
-                "me/?fields=picture", // graph path
-                [], // array of additional permissions
-                function(response) {
-                    if (response.error) {
-                        console.log("Uh-oh! " + JSON.stringify(response.error));
-                    } else {
-                       alert(JSON.stringify(response));
-                        $("#avatarImage").attr("src", response.picture.data.url);
-                    }
-                });
+if (!checkFacebookSimulator()) {  
+                  facebookConnectPlugin.api(
+                            "me/?fields=picture", // graph path
+                            [], // array of additional permissions
+                            function(response) {
+                                if (response.error) {
+                                    alert("Facebook API error! " + JSON.stringify(response.error));
+                                } else {
+                                    //alert(JSON.stringify(response));
+                                    $("#avatarImage").attr("src", response.picture.data.url);
+                                }
+                            });
         }
     }
 }

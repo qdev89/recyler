@@ -6,6 +6,7 @@ var app = window.app = window.app || {};
 app.currentPosition = null;
 app.password = null;
 app.Username = null;
+app.isLoggedInFB = false;
 app.Login = (function () {
     'use strict';
 
@@ -255,6 +256,8 @@ app.Login = (function () {
                     if (isAnalytics) {
                         analytics.TrackFeature('Login.Facebook');
                     }
+                    
+                    app.isLoggedInFB = true;
                     return app.Users.load();
                 })
                 .then(function () {
