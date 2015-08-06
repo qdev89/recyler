@@ -683,7 +683,7 @@ $(document).ready(function () {
 
 function saveUserData() {
 
-    if (!validateEmail($("#email").val())) {
+    if (userData.IdentityProvider!="Facebook" && !validateEmail($("#email").val())) {
         navigator.notification.alert("You should fill a valid email!", null, "");
         return;
     }
@@ -713,22 +713,24 @@ function saveUserData() {
 
                                       ImageData = data.result.Uri;
 
-                                      var users = app.everlive.data('Users');
-                                      users.update({
-                                          'ImageData': ImageData
-                                      }, // data
-                                                  { 'Id': userData.Id }, // filter
-                                                  function (data) {
-                                                      //  console.log(data);
-                                                      //navigator.notification.alert("Info saved successfully!", null, "Success");
-                                                  },
-                                                  function (error) {
-                                                      alert(JSON.stringify(error));
-                                                  });
+                                      ////var users = app.everlive.data('Users');
+                                      ////users.update({
+                                      ////    'ImageData': ImageData
+                                      ////}, // data
+                                      ////            { 'Id': userData.Id }, // filter
+                                      ////            function (data) {
+                                      ////                //  console.log(data);
+                                      ////                //navigator.notification.alert("Info saved successfully!", null, "Success");
+                                      ////            },
+                                      ////            function (error) {
+                                      ////                alert(JSON.stringify(error));
+                                      ////            });
                                   },
                                   function (error) {
                                       alert(JSON.stringify(error));
                                   });
+    } else {
+        ImageData = $("#avatarImage").attr("src");
     }
 
     var data = app.everlive.data('Users');
@@ -739,6 +741,7 @@ function saveUserData() {
         mail = true;
     data.update({
         'UserRole': $("#role").val(),
+        'ImageData': ImageData,
         'Email': $("#email").val(),
         'DisplayName': $("#name").val(),
         'PhoneNumber': $("#phoneno").val(),
@@ -783,7 +786,7 @@ function saveUserData() {
 
 function fillUserData(user) {
     userData = user;
-     //alert(JSON.stringify(user));
+    //alert(JSON.stringify(user));
     if (user.ImageData != "" && user.ImageData != undefined)
         $("#avatarImage").attr("src", user.ImageData);
 
@@ -862,21 +865,31 @@ function fillUserData(user) {
     if (user.onlycity != undefined)
         $("#onlycity").prop("checked", user.onlycity);
 
-    alert(user.Provider);
-    if ((user.ImageData == "" || user.ImageData === undefined) && user.IdentityProvider=="Facebook") {
+    if ((user.ImageData == "" || user.ImageData === undefined) && user.IdentityProvider == "Facebook") {
         //$("#avatarImage").attr("src", user.ImageData);
-if (!checkFacebookSimulator()) {  
-                  facebookConnectPlugin.api(
-                            "me/?fields=picture", // graph path
-                            [], // array of additional permissions
-                            function(response) {
-                                if (response.error) {
-                                    alert("Facebook API error! " + JSON.stringify(response.error));
-                                } else {
-                                    //alert(JSON.stringify(response));
-                                    $("#avatarImage").attr("src", response.picture.data.url);
-                                }
-                            });
+        if (!checkFacebookSimulator()) {
+            facebookConnectPlugin.login(
+  ["email"], // array of permissions
+  function(response) {
+    if (response.status === "connected") {
+     facebookConnectPlugin.api(
+                      "me/?fields=picture", // graph path
+                      [], // array of additional permissions
+                      function (response) {
+                          if (response.error) {
+                              alert("Facebook API error! " + JSON.stringify(response.error));
+                          } else {
+                              //alert(JSON.stringify(response));
+                              $("#avatarImage").attr("src", response.picture.data.url);
+                          }
+                      });
+    } else {
+      console.log("You are not logged in");
+    }
+});
+            
+           
+            
         }
     }
 }

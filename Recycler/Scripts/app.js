@@ -14,8 +14,8 @@ function validateEmail(txtEmail) {
 
     var a = $.trim(txtEmail);
     // var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{1,4}$/;
-    //var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
-   var filter = /\S+@\S+\.\S+/;
+    var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
+   //var filter = /\S+@\S+\.\S+/;
     if (filter.test(a)) {
         return true;
     }
