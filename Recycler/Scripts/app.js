@@ -1,9 +1,9 @@
 function checkFacebookSimulator() {
     if (window.navigator.simulator === true) {
-        alert('This plugin is not available in the simulator.');
+        //alert('This plugin is not available in the simulator.');
         return true;
     } else if (window.facebookConnectPlugin === undefined) {
-        alert('Plugin not found. Maybe you are running in AppBuilder Companion app which currently does not support this plugin.');
+        //alert('Plugin not found. Maybe you are running in AppBuilder Companion app which currently does not support this plugin.');
         return true;
     } else {
         return false;
@@ -11,7 +11,7 @@ function checkFacebookSimulator() {
 }
 
 function validateEmail(txtEmail) {
-
+    debugger;
     var a = $.trim(txtEmail);
     // var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{1,4}$/;
     var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;

@@ -101,8 +101,7 @@ app.Login = (function () {
                 localStorage.Username = username;
                 localStorage.Password = password;
 
-                app.everlive.Users.currentUser(
-                                           function (data) {
+                app.everlive.Users.currentUser(function (data) {
                                                console.log(data.result);
                                                app.currentUser = data.result;
 
@@ -424,7 +423,65 @@ app.Login = (function () {
             }
         }
 
+        var repopulateUserAfterSave = function () {
+            app.everlive.Users.currentUser(function (data) {
+                console.log(data.result);
+                app.currentUser = data.result;
 
+                localStorage.User = JSON.stringify(data.result);
+                app.AddActivity.me = data.result;
+                fillUserData(data.result);
+
+                localStorage.Language = data.result.LanguageID;
+                if (localStorage.Language == undefined || localStorage.Language == "undefined") {
+                    localStorage.Language = 3;
+                    localStorage.LanguageType = "en";
+                }
+
+
+                switch (localStorage.Language) {
+                    case "1":
+                        localStorage.LanguageType = "dk";
+                        break;
+                    case "2":
+                        localStorage.LanguageType = "de";
+                        break;
+                    case "3":
+                        localStorage.LanguageType = "en";
+                        break;
+                    case "4":
+                        localStorage.LanguageType = "es";
+                        break;
+                    default:
+                        localStorage.LanguageType = "en";
+                        break;
+                }
+
+                // get current loction 
+                window.getLocation()
+                     .done(function (position) {
+                         app.currentPosition = position;
+
+                         if (data.result.Email == undefined || data.result.Email == "")
+                             app.application.navigate('basic_setup.html');
+                         else {
+                                 app.application.navigate('finditem.html');
+                         }
+                     })
+                     .fail(function (error) {
+                         alert(TranslateGpsError());
+                         app.currentPosition = null;
+
+                         if (data.result.Email == undefined || data.result.Email == "")
+                             app.application.navigate('basic_setup.html');
+                         else {
+                                 app.application.navigate('finditem.html');
+                         }
+                     });
+
+
+            });
+        }
         return {
             init: init,
             show: show,
@@ -434,7 +491,8 @@ app.Login = (function () {
             loginWithGoogle: loginWithGoogle,
             loginWithLiveID: loginWithLiveID,
             loginWithADSF: loginWithADSF,
-            checkEnter: checkEnter
+            checkEnter: checkEnter,
+            repopulateUserAfterSave: repopulateUserAfterSave
         };
 
     }());
