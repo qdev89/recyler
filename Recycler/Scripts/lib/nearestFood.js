@@ -24,11 +24,14 @@ function nearestFoodShow() {
 
                          var result = template(spots); //Execute the template
                          $('#noNearestSpot').hide();
+                         $('#pickupDateTimeMessageControl').show();
 
                          $('#spotNearestTable').html(result); //Append the result
                          $('#spotNearestTable').css({ 'width': '100%' });
                      } else {
                          $('#noNearestSpot').show();
+                         $('#pickupDateTimeMessageControl').hide();
+
                      }
                  },
                  function (error) {

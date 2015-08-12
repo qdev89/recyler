@@ -33,16 +33,18 @@
                 <!--  <select size="1" name="D1" id="NearestSpots">
                           <option value="0">3 donation spots closest to you</option>
                       </select>-->
-                <fieldset data-role="controlgroup" class="dates-fieldset" data-type="horizontal">
-                    <div style="color:dodgerblue;font-size:large;">
-                        <label for="pickup-time" data-localize="pickup-time">Pickup Time:</label>
-                    </div>
-                    <input id="pickup-time-picker" />
-                    <label for="pickup-message" data-localize="pickup-message" style="color:dodgerblue;font-size:large;">
-                        Pickup Message:
-                    </label>
-                    <textarea name="pickup-message" style="width:100%;height:140px;border: 1px solid;float: none" maxlength="200" id="pickup-message"></textarea>
-                </fieldset>
+                <div id="pickupDateTimeMessageControl">
+                    <fieldset data-role="controlgroup" class="dates-fieldset" data-type="horizontal">
+                        <div style="color:dodgerblue;font-size:large;">
+                            <label for="pickup-time" data-localize="pickup-time">Pickup Time:</label>
+                        </div>
+                        <input id="pickup-time-picker" />
+                        <label for="pickup-message" data-localize="pickup-message" style="color:dodgerblue;font-size:large;">
+                            Pickup Message:
+                        </label>
+                        <textarea name="pickup-message" style="width:100%;height:140px;border: 1px solid;float: none" maxlength="200" id="pickup-message"></textarea>
+                    </fieldset>
+                </div>
                 <br>
                 <div data-role="fieldcontain">
                     <div>
