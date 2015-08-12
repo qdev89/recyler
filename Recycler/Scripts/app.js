@@ -158,6 +158,10 @@ function TranslateApp() {
     var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
     $("[data-localize]").localize("Recycle", opts);
 }
+function TranslateByKey(key) {
+  var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
+    return  $(key).localize("Recycle", opts);
+}
 
 function NavigateToBecomeSupporterPage() {
     alert('a');
