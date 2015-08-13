@@ -67,6 +67,10 @@ function loadProduct(e) {
 
             $("#WantIt").attr("href", "userItems.html?userId=" + product.UserID);
             $("#NoInterest").attr("productId", product.Id);
+            var publishUser = $.grep(app.Users.users(), function (e) {
+                return e.Id === product.UserID;
+            })[0];
+            $("#publisherAvatar").attr("src", publishUser.ImageData);
 
             var images = [];
             if (product.Image1 != undefined)
