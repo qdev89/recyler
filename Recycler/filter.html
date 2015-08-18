@@ -26,7 +26,7 @@
                 <tr>
                     <td><h4><label for="description" data-localize="trade">Trade</label></h4></td>
                     <td align="right">
-                        <input type="radio" name="productTypeCheckBox" value="2"  class="iradio_flat-blue" id="filterTrade">
+                        <input type="radio" name="productTypeCheckBox" value="2" class="iradio_flat-blue" id="filterTrade">
                     </td>
                 </tr>
 
@@ -61,7 +61,30 @@
                     </td>
                 </tr>
                 <tr>
-                    <td >
+                    <td>
+                        <h4>
+                            <label for="onlycountry1" data-localize="onlycountry1">Show only stuff from my country:</label>
+                        </h4>
+                    </td>
+                    <td align="right">
+                        <input type="radio" class="iradio_flat-blue" value="1" name="onlyCountryCityFilter" id="onlycountryFilter">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <h4>
+                            <label for="onlycity1" data-localize="onlycity1">Show only stuff from my city:</label>
+                        </h4>
+
+                    </td>
+                    <td align="right">
+                        <input type="radio" class="iradio_flat-blue" value="2" name="onlyCountryCityFilter" id="onlycityFilter">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
                         <h3>
                             <span name="spn">
                                 <span for="distance" data-localize="distance" style="color:dodgerblue;font-size:large;">
@@ -73,8 +96,10 @@
                     </td>
                     <td align="right">
                         <span>
-                            <div id="GoToFilters2">  <input type="number" id="Distance" value="0" min="0" max="250"
-                                                            data-highlight="true" /></div>
+                            <div id="GoToFilters2">
+                                <input type="number" id="Distance" value="0" min="0" max="250"
+                                       data-highlight="true" />
+                            </div>
                         </span>
                     </td>
                     <td align="right">km</td>
@@ -108,8 +133,10 @@
                         </h3>
                     </td>
                     <td align="right">
-                       <div id="GoToFilters2">   <input type="number" id="PriceFrom" value="0" min="0" data-highlight="true"
-                                                        size="20" style="width:100%;" /></div>
+                        <div id="GoToFilters2">
+                            <input type="number" id="PriceFrom" value="0" min="0" data-highlight="true"
+                                   size="20" style="width:100%;" />
+                        </div>
                     </td>
                 </tr>
                 <!-- <tr>
@@ -130,9 +157,10 @@
                             </span>
                         </h3>
                     </td>
-                    <td align="right" >
-                     <div id="GoToFilters2">     <input type="number" id="PriceTo" value="0" min="0" data-highlight="true"
-                                                        /></div>
+                    <td align="right">
+                        <div id="GoToFilters2">
+                            <input type="number" id="PriceTo" value="0" min="0" data-highlight="true" />
+                        </div>
                     </td>
                 </tr>
                 <!-- <tr>

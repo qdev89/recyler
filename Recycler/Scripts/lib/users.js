@@ -767,6 +767,7 @@ function saveUserData() {
                 function (data) {
                     //console.log(data);
                     //navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
+                    debugger;
                     if (mail) {
                         sendMail(emailTemplates.thankYou, [userData.Email], { "appName": emailTemplates.DefaultFromName, "DefaultFromName": emailTemplates.DefaultFromName, "userName": $("#name").val(), "FromEmail": emailTemplates.FromEmail });
 

@@ -104,6 +104,7 @@ window.filter = {};
         $("#PriceFrom").val(0);
         $("#PriceTo").val(0);
         $('input[name="productTypeCheckBox"]').attr('checked', false);
+        $('input[name="onlyCountryCityFilter"]').attr('checked', false);
         $("#select-custom-24").val($("#select-custom-24").data("default-value"));
     }
 
@@ -116,6 +117,8 @@ window.filter = {};
         var priceFrom = $("#PriceFrom").val();
         var priceTo = $("#PriceTo").val();
         var selectedProductTypeIndex = $("input[name='productTypeCheckBox']:checked").val();
+        var selectedOnlyMyCountryCityIndex = $("input[name='onlyCountryCityFilter']:checked").val();
+        var isMyCountry = false, isMyCity = false;
         showLoading();
         window.getLocation()
             .done(function (position) {
@@ -130,9 +133,20 @@ window.filter = {};
                     contQuery.regex('Name', searchRegEx, 'i');
                 }
 
+                // only my country/city
+                if (selectedOnlyMyCountryCityIndex && selectedOnlyMyCountryCityIndex > 0) {
+                    if (selectedOnlyMyCountryCityIndex == 1) {
+                        isMyCountry = true;
+                    }
+
+                    if (selectedOnlyMyCountryCityIndex == 2) {
+                        isMyCity = true;
+                    }
+                }
+
                 // TODO for checkbox
                 if (selectedProductTypeIndex && selectedProductTypeIndex > 0) {
-                    
+
                     var productType;
                     switch (selectedProductTypeIndex) {
                         case "1":
@@ -165,18 +179,32 @@ window.filter = {};
                     contQuery.regex('Category', categoryRegEx, 'i');
                 }
 
-                var distanceUnit = "km";
-                if (app.currentUser.distance == "Miles") {
-                    distanceUnit = "miles";
-                } else {
-                    distanceUnit = "km";
-                }
-
                 // for Distance
-                if (distance && distance > 0) {
-                    contQuery.nearSphere('Location', [position.coords.longitude, position.coords.latitude], distance, distanceUnit);
-                }
+                if (isMyCity == isMyCountry) {
+                    var distanceUnit = "km";
+                    if (app.currentUser.distance == "Miles") {
+                        distanceUnit = "miles";
+                    } else {
+                        distanceUnit = "km";
+                    }
 
+                    if (distance && distance > 0) {
+                        contQuery.nearSphere('Location', [position.coords.longitude, position.coords.latitude], distance, distanceUnit);
+                    }
+                } else { // for only my city/country
+                    debugger;
+                    var user = $.parseJSON(localStorage.User);
+                    var country = user.Country || '';
+                    var city = user.City || '';
+
+                    var cityRegEx = ".*" + city + ".*";
+                    var countryRegEx = ".*" + country + ".*";
+                    if (isMyCity) {
+                        contQuery.regex('City', cityRegEx, 'i');
+                    } else if (isMyCountry) {
+                        contQuery.regex('Country', countryRegEx, 'i');
+                    }
+                }
                 // for Price
                 if (priceFrom && priceTo && priceTo > priceFrom) {
                     // priceFrom =< price =< priceTo
@@ -186,7 +214,7 @@ window.filter = {};
 
                 contQuery.done();
                 query.orderDesc('CreatedAt');
-                
+
                 data.get(query).then(
                     function (data) {
                         hideLoading();
