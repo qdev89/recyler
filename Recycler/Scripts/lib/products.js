@@ -6,6 +6,18 @@ function navigateToEditProduct(el) {
     app.application.navigate("giveaway.html?editSpotId=" + productID);
 }
 
+
+function toggleFavorite() {
+    if ($("#favorite-on-button").css('display') == 'none') {
+        $("#favorite-off-button").hide();
+        $("#favorite-on-button").show();
+    } else {
+        $("#favorite-off-button").show();
+        $("#favorite-on-button").hide();
+    }
+   
+}
+
 function loadProduct(e) {
     var visitedProductIds = [];
     if (localStorage.isVisitedProductIds) {
@@ -59,7 +71,7 @@ function loadProduct(e) {
             $(selector + ".price").html(product.Price);
             $(selector + ".info").html(product.MoreInformation);
             $(selector + ".instead").html(product.Description);
-             
+
             var translatedCategory = TranslateCategory(product.Category);
             $(selector + ".category").html(translatedCategory);
             $("#categoryProduct").attr("href", "categoryProducts.html?category=" + product.Category);
@@ -302,7 +314,7 @@ function onFindItemInit(e) {
         distanceUnit = "miles";
         $(".distance-unit").html(distanceUnit);
     } else {
-         distanceUnit = "km";
+        distanceUnit = "km";
         $(".distance-unit").html(distanceUnit);
     }
 
@@ -543,7 +555,7 @@ app.Product = (function () {
                     read: function (options) {
                         showLoading();
                         try {
-                             
+
                             var data = app.everlive.data('Product');
                             var query = new Everlive.Query();
 

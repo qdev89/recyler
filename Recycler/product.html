@@ -1,9 +1,20 @@
 <div data-role="view" data-init="productInit" id="product-tabstrip" data-title="Product" data-show="loadProduct" style="background-color:white">
     <div data-role="content">
         <div class="fields">
-            <br>  <div style="margin-left:16px;">
-                <span class="boldText title"></span>
-            </div>
+            <br>
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        <div style="margin-left:16px;">
+                            <span class="boldText title"></span>
+                        </div>
+                    </td>
+                    <td align="right">
+                        <button class="favorite-button" onclick="toggleFavorite()" id="favorite-off-button"><img src='images/star_lightoff.png' /></button>
+                        <button class="favorite-button" onclick="toggleFavorite()" id="favorite-on-button" style="display: none"><img src='images/star_lighton.png' /></button>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div id="scrollview-container" data-role="scrollview" data-template="scrollview-template" data-content-height="250px">
         </div>
@@ -56,7 +67,7 @@
                         <table style="width:100%">
                             <tr>
                                 <td>
-                                  
+
                                     <b><div class="mightLike" for="posted by" data-localize="postedby"> Posted by:</div></b>
                                     <div class="username"></div>
                                     <div class="city"></div>
@@ -131,6 +142,13 @@
     #map_of_where_item_is_placed {
         min-height: 250px;
         width: 100%;
+    }
+
+    .favorite-button {
+        border: none;
+        margin: 0;
+        padding: 0;
+        background: transparent;
     }
 </style>
 

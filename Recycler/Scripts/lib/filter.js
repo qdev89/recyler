@@ -17,6 +17,15 @@ window.filter = {};
         $("#PriceTo").ForceNumericOnly();
         $("#Distance").ForceNumericOnly();
 
+        // IsMyCity/Country load from LocalStorage
+        if (localStorage.IsMyCity) {
+            $("#onlycityFilter").prop('checked', true);
+        }
+        if (localStorage.IsMyCountry) {
+            $("#onlycountryFilter").prop('checked', true);
+        }
+
+
         switch (localStorage.Language) {
             case "1":
                 localStorage.LanguageType = "dk";
@@ -199,9 +208,14 @@ window.filter = {};
 
                     var cityRegEx = ".*" + city + ".*";
                     var countryRegEx = ".*" + country + ".*";
+
+                    localStorage.IsMyCity = localStorage.IsMyCountry = false;
+
                     if (isMyCity) {
+                        localStorage.IsMyCity = true;
                         contQuery.regex('City', cityRegEx, 'i');
                     } else if (isMyCountry) {
+                        localStorage.IsMyCountry = true;
                         contQuery.regex('Country', countryRegEx, 'i');
                     }
                 }
