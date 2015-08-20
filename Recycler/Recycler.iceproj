@@ -608,6 +608,8 @@
     <Content Include="images\spread1.png">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="images\star_lightoff.png" />
+    <Content Include="images\star_lighton.png" />
     <Content Include="images\stopwastingfood_b.png">
       <SubType>Content</SubType>
     </Content>
