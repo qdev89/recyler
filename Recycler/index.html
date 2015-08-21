@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>
@@ -74,7 +74,7 @@
          data-views="['product.html','friendzone.html','info_createspot.html','finditem.html','filter.html','crowdfund.html','facebook_posting_rules.html','thanks.html','co2_kg_products.html','contactus.html',
              'confirm_spot.html','credits.html','map.html','non_supporter.html','myspots.html','non_supporter_look_at_map.html','spot_difference.html','#welcome','index.html','me.html','giveaway.html','account_differences.html','basic_setup_twitter.html','invite.html','mystuff.html', 'signup_login.html','howworks.html','editspot.html','niras.html','donate.html','food.html','createspot.html','about_this_app.html','spotInfo.html','about_recycleworld.html','terracycle.html','qa.html','findonmap.html','basic_setup.html','report.html','membership.html', 'profile.html', 'nearest_food.html','info_newschannel.html',
              'views/activitiesView.html','views/activityView.html','views/addActivityView.html','views/addCommentView.html'
-             ,'users.html','filterResults.html','notFound.html','categoryProducts.html','userItems.html'
+             ,'users.html','filterResults.html','notFound.html','categoryProducts.html','userItems.html','myFavoriteList.html'
              ]">
 
         <ul data-role="listview" data-type="group">
@@ -145,7 +145,7 @@
                             </label>
                         </a>
                     </li>
- <li>
+                    <li>
                         <a onclick="navigateFromDrawer('membership.html')">
                             <label for="membership" data-localize="become">
                                 Become supporter
@@ -153,7 +153,7 @@
                         </a>
                     </li>
                 </ul>
-                 <div class="menuhead" data-localize="quick guide">
+                <div class="menuhead" data-localize="quick guide">
                     Quick guide
                 </div>
                 <ul>
@@ -171,20 +171,21 @@
                             </label>
                         </a>
                     </li>
-                                        <li>
+                    <li>
                         <a onclick="navigateFromDrawer('food.html')">
                             <label for="fooddonation" data-localize="fooddonation">
                                 About Food Donations
                             </label>
                         </a>
-                    </li>                    <li>
+                    </li>
+                    <li>
                         <a onclick="navigateFromDrawer('crowdfund.html')">
                             <label for="qa" data-localize="qa">
                                 Crowdfund with us
                             </label>
                         </a>
                     </li>
-                   
+
 
                 </ul>
 
@@ -221,9 +222,15 @@
                             </label>
                         </a>
                     </li>
-
+                    <li>
+                        <a onclick="navigateFromDrawer('myFavoriteList.html')" id="MyFav">
+                            <label for="myfav" data-localize="myfav">
+                                My Favorite
+                            </label>
+                        </a>
+                    </li>
                 </ul>
-               
+
                 <div class="menuhead" data-localize="about">
                     About Recycleworld
                 </div>

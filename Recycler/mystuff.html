@@ -14,14 +14,17 @@
             </div>
 
             <div class="item-info">
-                <div class="li-name" style="color:dodgerblue;font-size:large;"> ${Name}</div>
-                <div class="li-type">  ${Type}</div>
-                <div class="li-price"> <label for="estimated" data-localize="estimated"> </label> ${Price} </div>
-                <div style="display:none;" class="li-desc"> ${Description}</div>
+                <b> <div class="li-name" style="color:dodgerblue;font-size:large;"> ${Name}</div></b>
+                <div class="li-type" style="font-size:small;color:dodgerblue;"><label data-localize="${Type}"></label></div>
+                <div style="display:none;" class="li-desc"><label for="description" data-localize="description"> Description: </label>${Description}</div>
+                <div class="li-price" style="font-size:small;color:dodgerblue;"><label for="estimated" data-localize="estimated"></label>:${Price}</div>
                 #var date = new Date(CreatedAt);
                 var dateStr = date.toDateString();
                 #
-                <div class="li-date">${dateStr}</div>
+                <div class="city"></div>
+                <div class="li-date" style="font-size:x-small;">${dateStr}</div>
+                <div class="li-type" style="font-size:x-small;"><label for="city" data-localize="city">City</label>: ${City}</div>
+                <div class="li-type" style="font-size:x-small;"><label for="distance" data-localize="distance">Distance</label>: ${Distance}</div>
             </div>
         </div>
 

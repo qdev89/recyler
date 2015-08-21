@@ -725,6 +725,7 @@
     <Content Include="myspots.html">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="myFavoriteList.html" />
     <Content Include="mystuff.html">
       <SubType>Content</SubType>
     </Content>
