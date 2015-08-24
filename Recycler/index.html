@@ -74,7 +74,7 @@
          data-views="['product.html','friendzone.html','info_createspot.html','finditem.html','filter.html','crowdfund.html','facebook_posting_rules.html','thanks.html','co2_kg_products.html','contactus.html',
              'confirm_spot.html','credits.html','map.html','non_supporter.html','myspots.html','non_supporter_look_at_map.html','spot_difference.html','#welcome','index.html','me.html','giveaway.html','account_differences.html','basic_setup_twitter.html','invite.html','mystuff.html', 'signup_login.html','howworks.html','editspot.html','niras.html','donate.html','food.html','createspot.html','about_this_app.html','spotInfo.html','about_recycleworld.html','terracycle.html','qa.html','findonmap.html','basic_setup.html','report.html','membership.html', 'profile.html', 'nearest_food.html','info_newschannel.html',
              'views/activitiesView.html','views/activityView.html','views/addActivityView.html','views/addCommentView.html'
-             ,'users.html','filterResults.html','notFound.html','categoryProducts.html','userItems.html','myFavoriteList.html'
+             ,'users.html','filterResults.html','notFound.html','categoryProducts.html','userItems.html','myFavoriteList.html','myFriendList.html','friendProduct.html'
              ]">
 
         <ul data-role="listview" data-type="group">
@@ -229,6 +229,13 @@
                             </label>
                         </a>
                     </li>
+                    <li>
+                        <a onclick="navigateFromDrawer('myFriendList.html')" id="MyFriend">
+                            <label for="myfriend" data-localize="myfriend">
+                                My Friend
+                            </label>
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="menuhead" data-localize="about">
@@ -319,8 +326,8 @@
                                           0      0      0      1 0" />
         </filter>
     </svg>
-    <div data-role="modalview" id="image-full-modal"  onclick="closeImageFullModal()">
-        <!--style="width: 90%;height:90%;"--> 
+    <div data-role="modalview" id="image-full-modal" onclick="closeImageFullModal()">
+        <!--style="width: 90%;height:90%;"-->
         <img id="imgFull" style="width:100%;height: 100%" onclick="closeImageFullModal()" />
     </div>
 </body>

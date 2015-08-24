@@ -16,7 +16,7 @@ function nearestFoodShow() {
              var data = app.everlive.data('Spot');
              data.get(query)
                  .then(function (data) {
-                     debugger;
+                     
                      var spots = data.result;
                      if (spots.length > 0) {
                          //Get the external template definition using a jQuery selector

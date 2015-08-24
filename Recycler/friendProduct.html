@@ -1,0 +1,58 @@
+<div data-role="view" data-title="My Friend Product" data-show="app.Product.getFriendList" id="my-friend-product-tabstrip">
+
+    <div data-role="content">
+        <div class="fields">
+            <br>
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        <div style="margin-left:16px;" align="right">
+                            <span class="boldText" id="friend-status">Make friend:</span>
+                        </div>
+                    </td>
+                    <td align="right">
+                        <button class="friend-button" onclick="toggleFriend()" id="friend-off-button"><img src='images/star_lightoff.png' /></button>
+                        <button class="friend-button" onclick="toggleFriend()" id="friend-on-button" style="display: none"><img src='images/star_lighton.png' /></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <ul class="one-by-row styled-list" data-role="listview" id="ulFriendProduct"></ul>
+    </div>
+
+
+    <script type="text/x-kendo-template" id="myProductTemplate">
+
+        <div productid="${Id}" onclick="goToProduct(this)">
+            <div class="img-holder">
+                <img class="li-image resimgs" data-src="${Image}" />
+            </div>
+
+            <div class="item-info">
+                <b> <div class="li-name" style="color:dodgerblue;font-size:large;"> ${Name}</div></b>
+                <div class="li-type" style="font-size:small;color:dodgerblue;"><label data-localize="${Type}"></label></div>
+                <div style="display:none;" class="li-desc"><label for="description" data-localize="description"> Description: </label>${Description}</div>
+                <div class="li-price" style="font-size:small;color:dodgerblue;"><label for="estimated" data-localize="estimated"></label>:${Price}</div>
+                #var date = new Date(CreatedAt);
+                var dateStr = date.toDateString();
+                #
+                <div class="city"></div>
+                <div class="li-date" style="font-size:x-small;">${dateStr}</div>
+                <div class="li-type" style="font-size:x-small;"><label for="city" data-localize="city">City</label>: ${City}</div>
+                <div class="li-type" style="font-size:x-small;"><label for="distance" data-localize="distance">Distance</label>: ${Distance}</div>
+            </div>
+        </div>
+
+    </script>
+    <style>
+        .friend-button {
+            border: none;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        #friend-status {
+        }
+    </style>
+</div>  

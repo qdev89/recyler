@@ -1,12 +1,17 @@
 var app = window.app = window.app || {};
 var editableProduct;
 var currentProductID;
+var currentOwner;
 function navigateToEditProduct(el) {
     var productID = $(el).attr('productID');
     console.log(productID);
     app.application.navigate("giveaway.html?editSpotId=" + productID);
 }
 
+
+function navigateToFriendList() {
+    app.application.navigate("friendProduct.html");
+}
 
 function toggleFavorite() {
     if ($("#favorite-on-button").css('display') == 'none') {
@@ -17,12 +22,12 @@ function toggleFavorite() {
 }
 
 function getFavorite() {
-    debugger;
+    
     var user = $.parseJSON(localStorage.User);
     var data = app.everlive.data('FavoriteProducts');
     data.count({ 'ProductID': currentProductID, 'UserID': user.Id }, // filter
     function (data) {
-        debugger;
+        
         if (data.result == 1) {
             $("#favorite-off-button").hide();
             $("#favorite-on-button").show();
@@ -32,7 +37,7 @@ function getFavorite() {
         }
     },
     function (error) {
-        debugger;
+        
         alert(JSON.stringify(error));
     });
 }
@@ -40,7 +45,7 @@ function getFavorite() {
 function addFavorite() {
     var user = $.parseJSON(localStorage.User);
     var data = app.everlive.data('FavoriteProducts');
-    debugger;
+    
     data.create({
         ProductID: currentProductID,
         UserID: user.Id
@@ -63,6 +68,71 @@ function removeFavorite() {
     }, function (data) {
         $("#favorite-off-button").show();
         $("#favorite-on-button").hide();
+    },
+         function (error) {
+             // DO NOTHING
+         });
+}
+
+function toggleFriend() {
+    if ($("#friend-on-button").css('display') == 'none') {
+        addFriend();
+    } else {
+        removeFriend();
+    }
+}
+
+function getFriend() {
+
+    var user = $.parseJSON(localStorage.User);
+    var data = app.everlive.data('FriendList');
+    data.count({ 'FriendUserID': currentOwner.Id, 'UserID': user.Id }, // filter
+    function (data) {
+        if (data.result == 1) {
+            $("#friend-off-button").hide();
+            $("#friend-on-button").show();
+            $("#friend-status").text("Unfriend:");
+
+        } else {
+            $("#friend-off-button").show();
+            $("#friend-on-button").hide();
+            $("#friend-status").text("Add friend:");
+        }
+    },
+    function (error) {
+
+        alert(JSON.stringify(error));
+    });
+}
+
+function addFriend() {
+    var user = $.parseJSON(localStorage.User);
+    var data = app.everlive.data('FriendList');
+
+    data.create({
+        FriendUserID: currentOwner.Id,
+        UserID: user.Id
+    }, function (data) {
+        $("#friend-off-button").hide();
+        $("#friend-on-button").show();
+        $("#friend-status").text("Unfriend:");
+    },
+         function (error) {
+             // DO NOTHING
+         });
+}
+
+function removeFriend() {
+    var user = $.parseJSON(localStorage.User);
+    var data = app.everlive.data('FriendList');
+
+    data.destroy({
+        FriendUserID: currentOwner.Id,
+        UserID: user.Id
+    }, function (data) {
+        $("#friend-off-button").show();
+        $("#friend-on-button").hide();
+        $("#friend-status").val("Add friend:");
     },
          function (error) {
              // DO NOTHING
@@ -134,6 +204,7 @@ function loadProduct(e) {
             var publishUser = $.grep(app.Users.users(), function (e) {
                 return e.Id === product.UserID;
             })[0];
+            currentOwner = publishUser;
             $("#publisherAvatar").attr("src", publishUser.ImageData);
 
             var images = [];
@@ -579,7 +650,7 @@ app.Product = (function () {
             data.get(query)
                 .then(function (data) {
                     if (data.result.length > 0) {
-                        data.result.forEach(function(el) {
+                        data.result.forEach(function (el) {
                             favProductIds.push(el.ProductID);
                         });
 
@@ -594,7 +665,7 @@ app.Product = (function () {
                                         query.where().isin('Id', favProductIds).done().orderDesc('CreatedAt').skip(skip).take(interval);
 
                                         data.get(query).then(function (data) {
-                                                debugger;
+                                            
                                             options.success(data.result);
                                             setTimeout(function () {
                                                 $(".img-holder").first().width();
@@ -689,6 +760,131 @@ app.Product = (function () {
         }
         var getMyProducts = function () {
             getProducts(true);
+        }
+
+        var getFriendList = function () {
+            
+            $("#my-friend-product-tabstrip span.view-title").text(currentOwner.DisplayName + "'s Stuff");
+            getFriend();
+            var visitedProductIds = [];
+            if (localStorage.isVisitedProductIds) {
+                visitedProductIds = JSON.parse(localStorage.isVisitedProductIds);
+            }
+
+            TranslateApp();
+            var interval = 24;
+
+            if (localStorage.User == undefined) {
+                app.application.navigate("signup_login.html");
+                return;
+            }
+
+            var myId = currentOwner.Id;
+            var listID = "#ulFriendProduct";
+            var templateID = "#myProductTemplate";
+            var tabstripId = "#my-friend-product-tabstrip";
+
+            var skip = 0;
+            var dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: function (options) {
+                        showLoading();
+                        try {
+
+                            var data = app.everlive.data('Product');
+                            var query = new Everlive.Query();
+
+                            query.where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
+
+
+                            data.get(query).then(function (data) {
+                                options.success(data.result);
+
+                                setTimeout(function () {
+                                    $(".img-holder").first().width();
+                                }, 10);
+                                everliveImages.responsiveAll();
+                                TranslateApp();
+                                hideLoading();
+                                if (data.result.length == interval) {
+                                    loadMore = true;
+                                    skip += interval;
+                                } else
+                                    loadMore = false;
+                            },
+                                 function (error) {
+                                     alert(JSON.stringify(error));
+                                 });
+                        } catch (err) {
+                            hideLoading();
+                            console.log(err);
+                        }
+                    }
+                },
+                error: function (e) {
+                    hideLoading();
+                    if (typeof (e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
+                        app.application.navigate("index.html");
+                    else
+                        displayErrorAlert();
+                },
+                schema: { // describe the result format
+                    parse: function (response) {
+                        //  console.log(response);
+                        $.each(response, function (i, el) {
+                            el.Views = el.Views || 0;
+                            el.City = el.City || '';
+
+                            // calculate distance
+                            if (el.Latitude && el.Longitude && app.currentPosition) {
+                                el.Distance = getDistanceFromLatLonInKm(el.Latitude, el.Longitude, app.currentPosition.coords.latitude, app.currentPosition.coords.longitude);
+                            } else {
+                                el.Distance = 0;
+                            }
+
+                            if (app.currentUser.distance == "Miles") {
+                                el.Distance = convertKmToMiles(el.Distance) + " miles";
+                            } else {
+                                el.Distance = el.Distance + " km";
+                            }
+
+                            el.isVisited = visitedProductIds.indexOf(el.Id) != -1;
+
+                            if (el.Name === undefined)
+                                el.Name = "No name";
+
+                            el.Image = "";
+
+                            if (el.Image1 !== undefined)
+                                el.Image = el.Image1;
+                            else if (el.Image2 !== undefined)
+                                el.Image = el.Image2;
+                            else if (el.Image3 !== undefined)
+                                el.Image = el.Image3;
+
+                        });
+                        return response;
+                    }
+
+                }
+            });
+
+            $(listID).kendoMobileListView({
+                dataSource: dataSource,
+                template: $(templateID).html(),
+                appendOnRefresh: true
+            });
+
+            var listView = $(listID).data("kendoMobileListView");
+            if (listView != null) {
+                listView._scrollerInstance.scrollElement.on("touchend", function () {
+                    if (loadMore) {
+                        if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))
+                            listView.dataSource.read();
+                    }
+                });
+                listView._scrollerInstance.scrollTo(0, 0);
+            }
         }
 
         var filterProducts = function () {
@@ -927,7 +1123,8 @@ app.Product = (function () {
             filterProducts: filterProducts,
             filterProductsByDistance: filterProductsByDistance,
             getProductByID: getProductByID,
-            nointerest: nointerest
+            nointerest: nointerest,
+            getFriendList: getFriendList
         };
     }());
 

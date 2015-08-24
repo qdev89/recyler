@@ -201,7 +201,7 @@ window.filter = {};
                         contQuery.nearSphere('Location', [position.coords.longitude, position.coords.latitude], distance, distanceUnit);
                     }
                 } else { // for only my city/country
-                    debugger;
+                    
                     var user = $.parseJSON(localStorage.User);
                     var country = user.Country || '';
                     var city = user.City || '';

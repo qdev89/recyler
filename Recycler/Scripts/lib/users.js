@@ -682,7 +682,7 @@ $(document).ready(function () {
 });
 
 function saveUserData() {
-    debugger;
+    
     if (userData.IdentityProvider != "Facebook" && !validateEmail($("#email").val())) {
         navigator.notification.alert("You should fill a valid email!", null, "");
         return;
@@ -767,7 +767,7 @@ function saveUserData() {
                 function (data) {
                     //console.log(data);
                     //navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
-                    debugger;
+                    
                     if (mail) {
                         sendMail(emailTemplates.thankYou, [userData.Email], { "appName": emailTemplates.DefaultFromName, "DefaultFromName": emailTemplates.DefaultFromName, "userName": $("#name").val(), "FromEmail": emailTemplates.FromEmail });
 
@@ -994,7 +994,7 @@ function setupInit() {
                         }
                     }
 
-                    debugger;
+                    
                     user = app.Users.currentUser.data;
                     if (user.City === undefined || user.City == '') {
                         user.cityGeo = city;
