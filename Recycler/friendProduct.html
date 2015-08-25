@@ -1,22 +1,36 @@
-<div data-role="view" data-title="My Friend Product" data-show="app.Product.getFriendList" id="my-friend-product-tabstrip">
+<div data-role="view" data-title="Friend's Stuff" data-show="app.Product.getFriendList" id="my-friend-product-tabstrip">
 
-    <div data-role="content">
-        <div class="fields">
-            <br>
-            <table style="width:100%">
-                <tr>
-                    <td>
-                        <div style="margin-left:16px;" align="right">
-                            <span class="boldText" id="friend-status">Make friend:</span>
-                        </div>
-                    </td>
-                    <td align="right">
-                        <button class="friend-button" onclick="toggleFriend()" id="friend-off-button"><img src='images/star_lightoff.png' /></button>
-                        <button class="friend-button" onclick="toggleFriend()" id="friend-on-button" style="display: none"><img src='images/star_lighton.png' /></button>
-                    </td>
-                </tr>
-            </table>
+    <div data-role="content" style="margin:5px">
+        <b>
+            <span style="color:dodgerblue;font-size:large;margin: 5px;line-height: 40px" id="friend-name">  </span>
+         
+        </b>
+        <span style="float:right;margin: 5px">
+            <button class="friend-button" onclick="toggleFriend()" id="friend-off-button"><img src='images/star_lightoff.png' /></button>
+            <button class="friend-button" onclick="toggleFriend()" id="friend-on-button" style="display: none"><img src='images/star_lighton.png' /></button>
+        </span>
+        <table style="width:100%">
+            <tr>
+                <td style="width: 70px">
+                    <div align="left" text-align="center">
+                        <img id="ownerImage" alt="image" width="60px" src="images/imageplaceholder.png">
+                    </div>
+                </td>
+                <td align="right" style="margin-right: 20px">
+                    <div text-align="right" align="right" style="margin-right: 20px">
+                        <!--<div class="li-desc" style="font-size:small;"><label for="email" data-localize="email"></label><span id="friend-email"></span></div>-->
+                        <div class="li-type" style="font-size:small;"><label for="address" data-localize="address">Address</label>: <span id="friend-address"></span></div>
+                        <div class="li-type" style="font-size:small;"><label for="city" data-localize="city">City</label>: <span id="friend-city"></span></div>
+                        <div class="li-type" style="font-size:small;"><label for="country" data-localize="country">Country</label>: <span id="friend-country"></span></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div text-align="center">
+            <hr style="color:gray;margin-left: 2px;width: 96%;height: 1px;background: gray;background-color: gray;border-color: gray;border: 1px"/>
         </div>
+        <b> <div class="li-name" style="color:dodgerblue;font-size:small;margin-left: 2px"> User's stuffs: </div></b>
+
         <ul class="one-by-row styled-list" data-role="listview" id="ulFriendProduct"></ul>
     </div>
 

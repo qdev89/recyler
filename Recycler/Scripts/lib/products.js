@@ -91,12 +91,12 @@ function getFriend() {
         if (data.result == 1) {
             $("#friend-off-button").hide();
             $("#friend-on-button").show();
-            $("#friend-status").text("Unfriend:");
+            $("#friend-status").text("Unfriend");
 
         } else {
             $("#friend-off-button").show();
             $("#friend-on-button").hide();
-            $("#friend-status").text("Add friend:");
+            $("#friend-status").text("Add friend");
         }
     },
     function (error) {
@@ -132,7 +132,7 @@ function removeFriend() {
     }, function (data) {
         $("#friend-off-button").show();
         $("#friend-on-button").hide();
-        $("#friend-status").val("Add friend:");
+        $("#friend-status").val("Add friend");
     },
          function (error) {
              // DO NOTHING
@@ -764,8 +764,14 @@ app.Product = (function () {
 
         var getFriendList = function () {
             
-            $("#my-friend-product-tabstrip span.view-title").text(currentOwner.DisplayName + "'s Stuff");
+            //$("#my-friend-product-tabstrip span.view-title").text(currentOwner.DisplayName + "'s Stuff");
             getFriend();
+            $("#friend-name").text(currentOwner.DisplayName);
+            $("#friend-email").text(currentOwner.Email);
+            $("#friend-address").text(currentOwner.AddressLine1);
+            $("#friend-city").text(currentOwner.City);
+            $("#friend-country").text(currentOwner.Country);
+            $("#ownerImage").attr('src', currentOwner.ImageData);
             var visitedProductIds = [];
             if (localStorage.isVisitedProductIds) {
                 visitedProductIds = JSON.parse(localStorage.isVisitedProductIds);

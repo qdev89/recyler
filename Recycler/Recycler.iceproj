@@ -723,6 +723,7 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="friendProduct.html" />
+    <Content Include="myFriendList.html" />
     <Content Include="myspots.html">
       <SubType>Content</SubType>
     </Content>
