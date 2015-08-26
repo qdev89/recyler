@@ -9,8 +9,10 @@ function navigateToEditProduct(el) {
 }
 
 
-function navigateToFriendList() {
-    app.application.navigate("friendProduct.html");
+function navigateToFriendList(el) {
+    var userID = $(el).attr('userID');
+    console.log(userID);
+    app.application.navigate("friendProduct.html?userId=" + userID);
 }
 
 function toggleFavorite() {
@@ -22,13 +24,13 @@ function toggleFavorite() {
 }
 
 function getFavorite() {
-    
+
     var user = $.parseJSON(localStorage.User);
     var data = app.everlive.data('FavoriteProducts');
     data.count({ 'ProductID': currentProductID, 'UserID': user.Id }, // filter
     function (data) {
-        
-        if (data.result == 1) {
+
+        if (data.result >= 1) {
             $("#favorite-off-button").hide();
             $("#favorite-on-button").show();
         } else {
@@ -37,7 +39,7 @@ function getFavorite() {
         }
     },
     function (error) {
-        
+
         alert(JSON.stringify(error));
     });
 }
@@ -45,7 +47,7 @@ function getFavorite() {
 function addFavorite() {
     var user = $.parseJSON(localStorage.User);
     var data = app.everlive.data('FavoriteProducts');
-    
+
     data.create({
         ProductID: currentProductID,
         UserID: user.Id
@@ -88,7 +90,7 @@ function getFriend() {
     var data = app.everlive.data('FriendList');
     data.count({ 'FriendUserID': currentOwner.Id, 'UserID': user.Id }, // filter
     function (data) {
-        if (data.result == 1) {
+        if (data.result >= 1) {
             $("#friend-off-button").hide();
             $("#friend-on-button").show();
             $("#friend-status").text("Unfriend");
@@ -103,6 +105,31 @@ function getFriend() {
 
         alert(JSON.stringify(error));
     });
+}
+
+function addFriendFromProductPage() {
+    var user = $.parseJSON(localStorage.User);
+    var data = app.everlive.data('FriendList');
+    data.count({ 'FriendUserID': currentOwner.Id, 'UserID': user.Id }, // filter
+        function (data) {
+            if (data.result == 0) {
+                data.create({
+                    FriendUserID: currentOwner.Id,
+                    UserID: user.Id
+                }, function (data) {
+                    $("#friend-off-button").hide();
+                    $("#friend-on-button").show();
+                    $("#friend-status").text("Unfriend:");
+                },
+                    function (error) {
+                        // DO NOTHING
+                    });
+            }
+        },
+        function (error) {
+
+            alert(JSON.stringify(error));
+        });
 }
 
 function addFriend() {
@@ -665,7 +692,7 @@ app.Product = (function () {
                                         query.where().isin('Id', favProductIds).done().orderDesc('CreatedAt').skip(skip).take(interval);
 
                                         data.get(query).then(function (data) {
-                                            
+
                                             options.success(data.result);
                                             setTimeout(function () {
                                                 $(".img-holder").first().width();
@@ -758,16 +785,130 @@ app.Product = (function () {
                     alert(JSON.stringify(error));
                 });
         }
+        var getMyFriend = function () {
+          
+            var friendIds = [];
+
+            TranslateApp();
+            var interval = 24;
+
+            if (localStorage.User == undefined) {
+                app.application.navigate("signup_login.html");
+                return;
+            }
+
+            var myId = JSON.parse(localStorage.User).Id;
+            var listID = "#ulMyFriend";
+            var templateID = "#myFriendTemplate";
+            var tabstripId = "#my-friend-tabstrip";
+
+            var skip = 0;
+            var data = app.everlive.data('FriendList');
+            var query = new Everlive.Query();
+            query.where().equal('UserID', myId).done().select('FriendUserID');
+            data.get(query)
+                .then(function (data) {
+                    if (data.result.length > 0) {
+                        data.result.forEach(function (el) {
+                            friendIds.push(el.FriendUserID);
+                        });
+
+                        var dataSource = new kendo.data.DataSource({
+                            transport: {
+                                read: function (options) {
+                                    showLoading();
+                                    try {
+
+                                        var data = app.everlive.data('Users');
+                                        var query = new Everlive.Query();
+                                        query.where().isin('Id', friendIds).done().skip(skip).take(interval);
+
+                                        data.get(query).then(function (data) {
+
+                                            options.success(data.result);
+                                            setTimeout(function () {
+                                                $(".img-holder").first().width();
+                                            }, 10);
+                                            everliveImages.responsiveAll();
+                                            TranslateApp();
+                                            hideLoading();
+                                            if (data.result.length == interval) {
+                                                loadMore = true;
+                                                skip += interval;
+                                            } else
+                                                loadMore = false;
+                                        },
+                                             function (error) {
+                                                 alert(JSON.stringify(error));
+                                             });
+                                    } catch (err) {
+                                        hideLoading();
+                                        console.log(err);
+                                    }
+                                }
+                            },
+                            error: function (e) {
+                                hideLoading();
+                                if (typeof (e.errorThrown) !== "undefined" && e.errorThrown == "Unauthorized")
+                                    app.application.navigate("index.html");
+                                else
+                                    displayErrorAlert();
+                            },
+                            schema: { // describe the result format
+                                parse: function (response) {
+                                    //  console.log(response);
+                                    $.each(response, function (i, el) {
+                                        el.City = el.City || '';
+
+                                        if (el.Name === undefined)
+                                            el.Name = "No name";
+                                    });
+                                    return response;
+                                }
+
+                            }
+                        });
+
+                        $(listID).kendoMobileListView({
+                            dataSource: dataSource,
+                            template: $(templateID).html(),
+                            appendOnRefresh: true
+                        });
+
+                        var listView = $(listID).data("kendoMobileListView");
+                        if (listView != null) {
+                            listView._scrollerInstance.scrollElement.on("touchend", function () {
+                                if (loadMore) {
+                                    if ($(listID).height() < (listView._scrollerInstance.scrollTop + $(window).height() - $(tabstripId + " .km-header").height()))
+                                        listView.dataSource.read();
+                                }
+                            });
+                            listView._scrollerInstance.scrollTo(0, 0);
+                        }
+                    }
+                },
+                function (error) {
+                    alert(JSON.stringify(error));
+                });
+        }
+
         var getMyProducts = function () {
             getProducts(true);
         }
 
-        var getFriendList = function () {
-            
+        var getFriendList = function (e) {
+            debugger;
+            if (e.view.params.userId != undefined) {
+                var userID = e.view.params.userId;
+                currentOwner = $.grep(app.Users.users(), function (el) {
+                    return el.Id === userID;
+                })[0];
+            }
+
             //$("#my-friend-product-tabstrip span.view-title").text(currentOwner.DisplayName + "'s Stuff");
             getFriend();
             $("#friend-name").text(currentOwner.DisplayName);
-            $("#friend-email").text(currentOwner.Email);
+            //$("#friend-email").text(currentOwner.Email);
             $("#friend-address").text(currentOwner.AddressLine1);
             $("#friend-city").text(currentOwner.City);
             $("#friend-country").text(currentOwner.Country);
@@ -1126,6 +1267,7 @@ app.Product = (function () {
             getProductsByUserID: getProductsByUserID,
             getMyProducts: getMyProducts,
             getMyFav: getMyFav,
+            getMyFriend: getMyFriend,
             filterProducts: filterProducts,
             filterProductsByDistance: filterProductsByDistance,
             getProductByID: getProductByID,

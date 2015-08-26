@@ -8,23 +8,19 @@
 
     <script type="text/x-kendo-template" id="myFriendTemplate">
 
-        <div productid="${Id}" onclick="goToProduct(this)">
-            <div class="img-holder">
-                <img class="li-image resimgs" data-src="${Image}" />
+        <div userId="${Id}" onclick="navigateToFriendList(this)">
+            <div class="img-holder" style="width: 60px !important;height: 60px;">
+                <img class="li-image resimgs" data-src="${ImageData}" />
             </div>
 
             <div class="item-info">
-                <b> <div class="li-name" style="color:dodgerblue;font-size:large;"> ${Name}</div></b>
-                <div class="li-type" style="font-size:small;color:dodgerblue;"><label data-localize="${Type}"></label></div>
-                <div style="display:none;" class="li-desc"><label for="description" data-localize="description"> Description: </label>${Description}</div>
-                <div class="li-price" style="font-size:small;color:dodgerblue;"><label for="estimated" data-localize="estimated"></label>:${Price}</div>
-                #var date = new Date(CreatedAt);
-                var dateStr = date.toDateString();
-                #
-                <div class="city"></div>
-                <div class="li-date" style="font-size:x-small;">${dateStr}</div>
-                <div class="li-type" style="font-size:x-small;"><label for="city" data-localize="city">City</label>: ${City}</div>
-                <div class="li-type" style="font-size:x-small;"><label for="distance" data-localize="distance">Distance</label>: ${Distance}</div>
+                <b> <div class="li-name" style="color:dodgerblue;font-size:large;"> ${DisplayName}</div></b>
+                <div class="li-type" style="font-size:small;"><label for="address" data-localize="address">Address</label>: ${AddressLine1}</div>
+                <div class="li-type" style="font-size:small;"><label for="city" data-localize="city">City</label>: ${City}</div>
+                <div class="li-type" style="font-size:small;"><label for="country" data-localize="country">Country</label>: ${Country}</div>
+            </div>
+            <div text-align="center">
+                <hr style="color:gray;width: 96%;height: 1px;background: gray;background-color: gray;border-color: gray;border: 0.5px" />
             </div>
         </div>
 
