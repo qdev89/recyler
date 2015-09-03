@@ -786,7 +786,7 @@ app.Product = (function () {
                 });
         }
         var getMyFriend = function () {
-          
+
             var friendIds = [];
 
             TranslateApp();
@@ -1106,34 +1106,34 @@ app.Product = (function () {
 
                             //.nearSphere('Location', [app.currentPosition.coords.latitude, app.currentPosition.coords.longitude], distance, 'km');
                             if (city && user.onlycity) {
-                                if (isMy === true)
-                                    query.where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
-                                else if (filterWord !== undefined) {
+                                if (isMy === true) {
+                                    query.where().or().eq('UserID', myId).eq('IsPostOther', true).done();
+                                    query.orderDesc('CreatedAt').skip(skip).take(interval);
+                                } else if (filterWord !== undefined) {
                                     query.where().and().regex('Name', filterWord, 'i').regex('City', cityRegEx, 'i').done();
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
-                                }
-                                else if (distance !== undefined) {
+                                } else if (distance !== undefined) {
                                     query.where().and().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, distanceUnit).regex('City', cityRegEx, 'i').done();
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
-                                }
-                                else
+                                } else
                                     query.where().regex('City', cityRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                             } else if (country && user.onlycountry) {
-                                if (isMy === true)
-                                    query.where().and().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
-                                else if (filterWord !== undefined) {
+                                if (isMy === true) {
+                                    query.where().or().eq('UserID', myId).eq('IsPostOther', true).done();
+                                    query.orderDesc('CreatedAt').skip(skip).take(interval);
+                                } else if (filterWord !== undefined) {
                                     query.where().and().regex('Name', filterWord, 'i').regex('Country', countryRegEx, 'i').done();
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
-                                }
-                                else if (distance !== undefined) {
+                                } else if (distance !== undefined) {
                                     query.where().and().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, distanceUnit).regex('Country', countryRegEx, 'i').done();
                                     query.orderDesc('CreatedAt').skip(skip).take(interval);
                                 } else
                                     query.where().regex('Country', countryRegEx, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                             } else {
-                                if (isMy === true)
-                                    query.where().eq('UserID', myId).done().orderDesc('CreatedAt').skip(skip).take(interval);
-                                else if (filterWord !== undefined)
+                                if (isMy === true) {
+                                    query.where().or().eq('UserID', myId).eq('IsPostOther', true).done();
+                                    query.orderDesc('CreatedAt').skip(skip).take(interval);
+                                } else if (filterWord !== undefined)
                                     query.where().regex('Name', filterWord, 'i').done().orderDesc('CreatedAt').skip(skip).take(interval);
                                 else if (distance !== undefined)
                                     query.where().nearSphere('Location', [app.currentPosition.coords.longitude, app.currentPosition.coords.latitude], distance, distanceUnit).done().orderDesc('CreatedAt').skip(skip).take(interval);

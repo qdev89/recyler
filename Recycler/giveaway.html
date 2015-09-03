@@ -1,7 +1,7 @@
 <div data-role="view" data-title="Give away" data-init="initGiveAway" data-show="showGiveAway" id="give_page" style="background-color: #f3f3f3;">
 
     <div data-role="content">
-        <div id="item_info_div" style="width: 100%; text-align: left;">
+        <div id="item_info_div" style="width: 100%; text-align: left;" class="not-food">
             <label for="intro" data-localize="intro">Hvis du ikke syntes du vil give, bytte, låne så lav en annonce for dit garagesalg eller se hvor du kan hjælpe andre. </label><br><br>
 
             <div class="radio-options">
@@ -31,14 +31,14 @@
                 </div>
                 <br>
                 <!--  <div>
-                    <span style="margin-left: 5px; margin-top: 3px;">
-                        <label for="description" data-localize="rent" style="color:dodgerblue;font-size:large;">
-                            Rent
-                        </label>
-                    </span>
-                    <input id="rent" value="5" name="abc" type="radio">
-                </div>
-                <br>-->
+                          <span style="margin-left: 5px; margin-top: 3px;">
+                              <label for="description" data-localize="rent" style="color:dodgerblue;font-size:large;">
+                                  Rent
+                              </label>
+                          </span>
+                          <input id="rent" value="5" name="abc" type="radio">
+                      </div>
+                    <br>-->
                 <div>
                     <span style="margin-left: 5px; margin-top: 3px;">
                         <label for="description" data-localize="service" style="color:dodgerblue;font-size:large;">
@@ -47,15 +47,16 @@
                     </span>
                     <input id="service" value="4" name="abc" type="radio">
                 </div>
-                <br><!--
-                <div>
-                    <span style="margin-left: 5px; margin-top: 3px;">
-                        <label for="description" data-localize="sell" style="color:dodgerblue;font-size:large;">
-                            Sell
-                        </label>
-                    </span>
-                    <input id="sell" value="5" name="abc" type="radio">
-                </div><br>-->
+                <br>
+                <!--
+                    <div>
+                        <span style="margin-left: 5px; margin-top: 3px;">
+                            <label for="description" data-localize="sell" style="color:dodgerblue;font-size:large;">
+                                Sell
+                            </label>
+                        </span>
+                        <input id="sell" value="5" name="abc" type="radio">
+                    </div><br>-->
                 <br>
             </div>
 
@@ -63,7 +64,7 @@
 
                 <div style="position: relative">
                     <!-- <div id="maskDiv">
-                    </div>-->
+                         </div>-->
                     <div class="ui-field-contain" id="chooseCategory" style="position: relative">
 
                         <select name="select-custom-24" id="select-custom-24"></select>
@@ -78,8 +79,8 @@
                 </div>
                 <!--  <div class="lend">
 
-                <input type="number" id="lend" style="width: 30%;float:right;" maxlength="5" onKeyPress="return SetNumariaclOnly(event);" data-localize="value" placeholder="Value" />
-                </div>-->
+                          <input type="number" id="lend" style="width: 30%;float:right;" maxlength="5" onKeyPress="return SetNumariaclOnly(event);" data-localize="value" placeholder="Value" />
+                      </div>-->
 
                 <br>
                 <div id="itemimage" style="width: 100%;">
@@ -133,6 +134,26 @@
                 <br />
                 <br />
             </div>
+        </div>
+        <div class="food">
+            <br>
+            <label for="savefoodas" data-localize="savefoodas" style="color:dodgerblue;font-size:large;">
+                Save Food as:
+            </label>
+            <br>
+            <br>
+            <a  data-role="button" class="btn btn-blue" onclick="foodChooseNearestAndMessage();" name="anchors" style="width: 100%;">
+                <span name="spn">
+                    <label for="choose&message" style="width: 100%;" data-localize="choose&message">choose nearest and message</label>
+                </span>
+            </a>
+            <br>
+            <br>
+            <a data-role="button" class="btn btn-blue" onclick="foodPostToOther();" name="anchors" style="width: 100%;">
+                <span name="spn">
+                    <label for="posttoother" style="width: 100%;" data-localize="posttoother">post to other</label>
+                </span>
+            </a>
         </div>
     </div>
 </div> 

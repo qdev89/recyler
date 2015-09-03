@@ -17,7 +17,25 @@ GiveProduct.Product = {
     Status: 'POSTED'
 }
 
+function foodChooseNearestAndMessage() {
+    saveProduct(false);
+}
+function foodPostToOther() {
+    saveProduct(true);
+}
 function saveItem() {
+    debugger;
+    if ($("#select-custom-24").val().indexOf("Food") >= 0) {
+        IsFoodSelected = true;
+        $(".food").show();
+        $(".not-food").hide();
+    } else {
+        IsFoodSelected = false;
+        saveProduct(false);
+    }
+}
+
+function saveProduct(postOther) {
     if (User == undefined)
         return;
     if (User.UserRole == "3") {
@@ -168,7 +186,7 @@ function saveItem() {
     var filter = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
 
     var selectedOption = $("input[name='abc']:checked").val();
-    
+
     if (selectedOption == "3" || selectedOption == "4" || selectedOption == "5" || selectedOption == "6") {
         if ($('#price').val() == 'Value' || $('#price').val() == '' || $('#price').val() == '0') {
             flag = false;
@@ -333,7 +351,7 @@ function saveItem() {
         GiveProduct.Product.Type = 'free';
     }
 
-    
+
     switch (selectedOption) {
         case "1":
             GiveProduct.Product.Type = 'giveaway';
@@ -390,26 +408,7 @@ function saveItem() {
         GiveProduct.Product.Image3 = "";
     }
 
-    if (GiveProduct.Product.Category.indexOf("Food") >= 0) {
-        IsFoodSelected = true;
 
-        //Data = '{"UserID": "' + User.Id + '",' +
-        //       '"name":"' + GiveProduct.Product.Name + '",' +
-        //       '"description":"' + GiveProduct.Product.Description + '",' +
-        //       '"long_description":"' + GiveProduct.Product.long_description + '",' +
-        //     //  '"Categorylist":"' + GiveProduct.Product.Category + '",' +
-        //       '"Image":"' + GiveProduct.Product.Image + '",' +
-        //       '"Price":"' + GiveProduct.Product.Price + '",' +
-        //       '"Type":"' + GiveProduct.Product.Type + '",' +
-        //		 '"Category":"' + GiveProduct.Product.Category + '",' +
-        //       '"Latitude":"' + ProductLat + '",' +
-        //       '"Longitude":"' + ProductLong + '",';
-
-        //localStorage.PostProductData = Data;
-    } else {
-        IsFoodSelected = false;
-
-    }
 
     Data = '{"UserID": "' + User.Id + '",' +
                '"name":"' + GiveProduct.Product.Name + '",' +
@@ -437,11 +436,11 @@ function saveItem() {
         ////    app.foodProduct = Data;
         ////    app.application.navigate("nearest_food.html");
         ////}
-        CreateProduct(JSON.parse(Data), IsFoodSelected);
+        CreateProduct(JSON.parse(Data), IsFoodSelected, postOther);
     }
 }
 
-function CreateProduct(Data, isFood) {
+function CreateProduct(Data, isFood, postOther) {
     showLoading();
     console.log(Data);
     var data = app.everlive.data('Product');
@@ -452,7 +451,7 @@ function CreateProduct(Data, isFood) {
                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                    //
                    //JSON.stringify(results);
-                   
+
                    var city = "N/A";
                    var user = $.parseJSON(localStorage.User);
                    var country = user.Country || '';
@@ -493,11 +492,13 @@ function CreateProduct(Data, isFood) {
                        longitude: position.coords.longitude,
                        latitude: position.coords.latitude
                    }
+                   var isPostOther = postOther == true;
+
                    data.create({
                        'UserID': Data.UserID, "Name": Data.name, "Description": Data.description, "MoreInformation": Data.long_description,
                        "IsActive": Data.IsActive, "Price": Data.Price, "Type": Data.Type, "Status": Data.Status, "Category": Data.Category,
                        "Latitude": position.coords.latitude, "Longitude": position.coords.longitude, "City": city, "Country": country,
-                       "Location": location
+                       "Location": location, "IsPostOther": isPostOther
                    }, function (data) {
                        console.log(data);
                        localStorage.NewProductID = data.result.Id;
@@ -523,8 +524,17 @@ function CreateProduct(Data, isFood) {
                        window.localStorage.removeItem('CacheItem');
                        hideLoading();
                        if (isFood) {
-                           app.foodProductId = data.result.Id;
-                           app.application.navigate("nearest_food.html");
+                           if (!isPostOther) {
+                               app.foodProductId = data.result.Id;
+                               app.application.navigate("nearest_food.html");
+                           } else {
+                               alert("Posted to other successfully.");
+                               if (User.UserRole == "1") {
+                                   app.application.navigate("Terra.html");
+                               } else {
+                                   app.application.navigate("thanks.html");
+                               }
+                           }
                        } else {
                            if (User.UserRole == "1") {
                                app.application.navigate("Terra.html");
@@ -532,7 +542,7 @@ function CreateProduct(Data, isFood) {
                                app.application.navigate("thanks.html");
                            }
                        }
-                     
+
                    }, function (error) {
                        hideLoading();
                        console.log(error);
@@ -789,6 +799,10 @@ function showGiveAway(e) {
         $("#image2").attr("src", "images/imageplaceholder.png");
         $("#image3").attr("src", "images/imageplaceholder.png");
     }
+
+    IsFoodSelected = false;
+    $(".food").hide();
+    $(".not-food").show();
 }
 
 function initGiveAway() {
