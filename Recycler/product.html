@@ -31,7 +31,15 @@
                                 <span class="category"></span>
                             </a>
                         </div>
-                        <br>
+                        <br>                                                   
+                            <a data-role="button" class="btn btn-blue" data-transition="fade" id="NoInterest" onclick="app.Product.nointerest(this)">
+                                <span name="spn">
+                                    <label for="nointerest" data-localize="nointerest">
+                                        No interest
+                                    </label>
+                                </span>
+                            </a>
+                            <br>
                         <hr color="#C0C0C0" size="1">
                         <div>
                             <table width="100%">
@@ -63,6 +71,24 @@
                             <span class="instead"></span>
                         </div>
                         <br>
+                                                <hr color="#C0C0C0" size="1">
+                        <div>
+                            <span class="boldText">
+                                <label data-localize="distance">Distance</label>:
+                                <!--<span id="product-distance-unit">(km)</span>:-->
+                                <span class="distance"></span>
+                            </span>
+                        </div>
+                        <br>
+                        <!--- HERE SHOULD THERE BE A MAP VIEW OF WHERE THE ITEM IS PLACED -->
+                        <div id="map_of_where_item_is_placed">
+                            <!--                               <div class="map_view">
+                                 <h3>This is mapview area</h3>
+                                 <div class="map" style="width:96%;margin:auto;" id="map-item"></div>
+                                      </div>
+                            </div> -->
+                        </div>
+                        <!--- HERE SHOULD THERE BE A MAP VIEW OF WHERE THE ITEM IS PLACED -->
                         <hr color="#C0C0C0" size="1">
                         <table style="width:100%">
                             <tr>
@@ -81,28 +107,27 @@
                             </tr>
                         </table>
 
+                        <div>
 
-                        <br>
-                        <hr color="#C0C0C0" size="1">
-                        <div>
-                            <span class="boldText">
-                                <label data-localize="distance">Distance</label>:
-                                <!--<span id="product-distance-unit">(km)</span>:-->
-                                <span class="distance"></span>
-                            </span>
-                        </div>
-                        <br>
-                        <!--- HERE SHOULD THERE BE A MAP VIEW OF WHERE THE ITEM IS PLACED -->
-                        <div id="map_of_where_item_is_placed">
-                            <!--                               <div class="map_view">
-                                 <h3>This is mapview area</h3>
-                                 <div class="map" style="width:96%;margin:auto;" id="map-item"></div>
-                                      </div>
-                            </div> -->
-                        </div>
-                        <!--- HERE SHOULD THERE BE A MAP VIEW OF WHERE THE ITEM IS PLACED -->
-                        <br>
-                        <div>
+ <br>
+                            <a data-role="button" href="profile.html" class="btn btn-blue" data-transition="fade" id="WantIt">
+                                <span name="spn">
+                                    <label for="iwantit" data-localize="iwantit">
+                                        I want it
+                                    </label>
+                                </span>
+                            </a>
+                            
+                            <br>
+                                                        <br>
+                            <a data-role="button" class="btn btn-blue" data-transition="fade" id="WantIt">
+                                <span name="spn">
+                                    <label for="allstuff" data-localize="allstuff">
+                                        See all this user's stuff
+                                    </label>
+                                </span>
+                            </a>
+                            <br><br>
                             <a data-role="button" class="btn btn-blue" data-transition="fade" id="add-user-fav" onclick="addFriendFromProductPage()">
                                 <span name="spn">
                                     <label for="adduser" data-localize="adduser">
@@ -111,33 +136,9 @@
                                 </span>
                             </a>
                             <br>
-                            <br>
-                            <a data-role="button" class="btn btn-blue" data-transition="fade" id="WantIt">
-                                <span name="spn">
-                                    <label for="allstuff" data-localize="allstuff">
-                                        See all this user's stuff
-                                    </label>
-                                </span>
-                            </a>
-                            <br>
-                            <br>
-                            <a data-role="button" href="profile.html" class="btn btn-blue" data-transition="fade" id="WantIt">
-                                <span name="spn">
-                                    <label for="iwantit" data-localize="iwantit">
-                                        I want it
-                                    </label>
-                                </span>
-                            </a>
-                            <br>
-                            <br>
-                            <a data-role="button" class="btn btn-blue" data-transition="fade" id="NoInterest" onclick="app.Product.nointerest(this)">
-                                <span name="spn">
-                                    <label for="nointerest" data-localize="nointerest">
-                                        No interest
-                                    </label>
-                                </span>
-                            </a>
-                            <br><br><br>
+
+                           
+<br>
                         </div>
                     </div>
                 </td>
