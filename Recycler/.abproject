@@ -40,7 +40,8 @@
     "org.apache.cordova.media-capture",
     "org.apache.cordova.network-information",
     "org.apache.cordova.plugin.sms@0.1.0",
-    "org.apache.cordova.splashscreen"
+    "org.apache.cordova.splashscreen",
+    "org.apache.cordova.statusbar"
   ],
   "AndroidPermissions": [
     "android.permission.ACCESS_COARSE_LOCATION",
