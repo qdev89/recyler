@@ -24,7 +24,7 @@ function foodPostToOther() {
     saveProduct(true);
 }
 function saveItem() {
-    debugger;
+    
     if ($("#select-custom-24").val().indexOf("Food") >= 0) {
         IsFoodSelected = true;
         $(".food").show();

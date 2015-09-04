@@ -897,7 +897,7 @@ app.Product = (function () {
         }
 
         var getFriendList = function (e) {
-            debugger;
+            
             if (e.view.params.userId != undefined) {
                 var userID = e.view.params.userId;
                 currentOwner = $.grep(app.Users.users(), function (el) {
@@ -1047,6 +1047,7 @@ app.Product = (function () {
         }
 
         var getProducts = function (isMy, filterWord, distance) {
+            
 
             var visitedProductIds = [];
             if (localStorage.isVisitedProductIds) {
@@ -1083,6 +1084,7 @@ app.Product = (function () {
             var dataSource = new kendo.data.DataSource({
                 transport: {
                     read: function (options) {
+                        
                         showLoading();
                         try {
 
@@ -1143,23 +1145,25 @@ app.Product = (function () {
 
                             data.get(query).then(function (data) {
                                 options.success(data.result);
+                                
 
-                                setTimeout(function () {
+                                //setTimeout(function () {
 
-                                    // var ul = $(".li-image").first().closest("ul");
-                                    // $(ul).find("li").height($(ul).find(".img-holder").first().width());
+                                //    // var ul = $(".li-image").first().closest("ul");
+                                //    // $(ul).find("li").height($(ul).find(".img-holder").first().width());
 
-                                    /*$(".li-image").each(function(){
-                                        if($(this).height()>$(this).width())
-                                            $(this).css("width","100%");
-                                        else 
-                                            $(this).css("height","100%")
-                                    });*/
+                                //    /*$(".li-image").each(function(){
+                                //        if($(this).height()>$(this).width())
+                                //            $(this).css("width","100%");
+                                //        else 
+                                //            $(this).css("height","100%")
+                                //    });*/
 
-                                    $(".img-holder").first().width();
-                                }, 10);
+                                //    $(".img-holder").first().width();
+                                //}, 10);
                                 everliveImages.responsiveAll();
                                 TranslateApp();
+                                    
                                 hideLoading();
                                 if (data.result.length == interval) {
                                     loadMore = true;
@@ -1171,6 +1175,7 @@ app.Product = (function () {
                                      alert(JSON.stringify(error));
                                  });
                         } catch (err) {
+                            
                             hideLoading();
                             console.log(err);
                         }
@@ -1187,6 +1192,7 @@ app.Product = (function () {
                     parse: function (response) {
                         //  console.log(response);
                         $.each(response, function (i, el) {
+                            
                             el.Views = el.Views || 0;
                             el.City = el.City || '';
 

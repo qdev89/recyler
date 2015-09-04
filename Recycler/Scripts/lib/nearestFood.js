@@ -1,7 +1,6 @@
 function nearestFoodShow() {
-    $("#pickup-time-picker").kendoDateTimePicker({
-        value: new Date()
-    });
+    $("#pickup-time-picker").val('');
+    $("#pickup-date-picker").val('');
 
     $("#pickup-message").val('');
     // get current loction 
@@ -16,7 +15,7 @@ function nearestFoodShow() {
              var data = app.everlive.data('Spot');
              data.get(query)
                  .then(function (data) {
-                     
+
                      var spots = data.result;
                      if (spots.length > 0) {
                          //Get the external template definition using a jQuery selector
@@ -97,6 +96,8 @@ function onSendMessagesChecked(cb, id) {
 
 function sendEmailForCheckedPlaces() {
     var pickupTime = $("#pickup-time-picker").val();
+    var pickupDate = $("#pickup-date-picker").val();
+    var pickupDateTime = pickupDate + ' ' + pickupTime;
     var pickupMessage = $("#pickup-message").val();
     if (nearestPlacesIdChecked.length > 0) {
         showLoading();
@@ -107,7 +108,7 @@ function sendEmailForCheckedPlaces() {
             var query = new Everlive.Query();
             query.where().eq('Id', app.foodProductId);
             data.get(query).then(function (product) {
-                 
+
                 foodProduct = product.result[0];
                 var data1 = app.everlive.data('Users');
                 var query1 = new Everlive.Query();
@@ -136,7 +137,7 @@ function sendEmailForCheckedPlaces() {
                             "ProductPhoto2": foodProduct.Image2,
                             "ProductPhoto3": foodProduct.Image3,
                             "ProductDescription": foodProduct.Description,
-                            "PickupTime": pickupTime,
+                            "PickupTime": pickupDateTime,
                             "PickupMessage": pickupMessage,
                         });
                     }

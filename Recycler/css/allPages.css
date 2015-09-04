@@ -797,6 +797,8 @@
     #friendsApp.km-flat .km-list input[type="password"],
     #friendsApp.km-flat .km-list input[type="email"],
     #friendsApp.km-flat .km-list input[type="date"],
+       #friendsApp.km-flat .km-list input[type="datetime"],
+    #friendsApp.km-flat .km-list input[type="time"],
     #friendsApp.km-flat .km-list input[type="phonenumber"],
     #friendsApp.km-flat select {
         position: static;
@@ -8364,6 +8366,8 @@ font-size: 1rem;
     #friendsApp.km-flat .km-list input[type="password"],
     #friendsApp.km-flat .km-list input[type="email"],
     #friendsApp.km-flat .km-list input[type="date"],
+    #friendsApp.km-flat .km-list input[type="datetime"],
+    #friendsApp.km-flat .km-list input[type="time"],
     #friendsApp.km-flat .km-list input[type="phonenumber"],
     #friendsApp.km-flat select {
         position: static;
