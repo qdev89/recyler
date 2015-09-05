@@ -40,7 +40,7 @@ function iconMapInit() {
 
         var mapOptions = {
             center: { lat: x.coords.latitude, lng: x.coords.longitude },
-            zoom: 8,
+            zoom: 13,
             streetViewControl: false
         };
         googleMap = new google.maps.Map(
@@ -142,7 +142,7 @@ function mapInit() {
         $("#map-with-markers").height($("#map-tabstrip .km-content").first().height() - 60);
         var mapOptions = {
             center: { lat: x.coords.latitude, lng: x.coords.longitude },
-            zoom: 8,
+            zoom: 13,
             streetViewControl: false
         };
         googleMap = new google.maps.Map(

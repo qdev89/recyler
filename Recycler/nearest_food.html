@@ -35,14 +35,18 @@
                       </select>-->
                 <div id="pickupDateTimeMessageControl">
                     <fieldset data-role="controlgroup" class="dates-fieldset" data-type="horizontal">
-                        <div style="color:dodgerblue;font-size:large;">
+                        <div style="color:dodgerblue;font-size:large;height: auto !important">
                             <label for="pickup-date" data-localize="pickup-date">Pickup Date:</label>
                         </div>
+                        <br>
                         <input id="pickup-date-picker" type="date" style="border: 1px solid" />
-                        <div style="color:dodgerblue;font-size:large;">
+                        <br>
+                        <div style="color:dodgerblue;font-size:large;height: auto !important">
                             <label for="pickup-time" data-localize="pickup-time">Pickup Time:</label>
                         </div>
+                        <br>
                         <input id="pickup-time-picker" type="time" style="border: 1px solid" />
+                        <br>
                         <label for="pickup-message" data-localize="pickup-message" style="color:dodgerblue;font-size:large;">
                             Pickup Message:
                         </label>
@@ -60,10 +64,10 @@
                         </a>
                     </div><br>
                     <div>
-                        <a data-role="button" data-transition="fade" id="PostNow" class="btn btn-blue">
+                        <a data-role="button" data-transition="fade" id="GiveToOther" class="btn btn-blue">
                             <!-- next -->
                             <span name="spn">
-                                <label for="putonline" data-localize="putonline">No message - give to others</label>
+                                <label for="putonline" data-localize="putonline" onclick="giveToOther()">No message - give to others</label>
                             </span>
                         </a>
                     </div>

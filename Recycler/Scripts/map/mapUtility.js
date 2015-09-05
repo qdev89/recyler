@@ -55,7 +55,7 @@
                      latlng = new google.maps.LatLng(geo.lat, geo.lng);
 
                      myOptions = {
-                         zoom: 11,
+                         zoom: 13,
                          mapTypeControl: false,
                          center: latlng,
                          navigationControlOptions: {
@@ -111,7 +111,7 @@
                                  latlng = new google.maps.LatLng(retailerResult.geometry.location.lat(), retailerResult.geometry.location.lng());
 
                                  myOptions = {
-                                     zoom: 11,
+                                     zoom: 13,
                                      mapTypeControl: false,
                                      center: latlng,
                                      navigationControlOptions: {

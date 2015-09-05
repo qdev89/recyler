@@ -121,7 +121,7 @@ function sendEmailForCheckedPlaces() {
                         });
 
                         // TODO: uncomment this when release
-                        sendMail("fooddonation_email", emailList,
+                        sendMailThenGoToMyStuff("fooddonation_email", emailList,
                         //sendMail("fooddonation_email", ["bjarke@bsrweb.dk", "nmquoc89@gmail.com","quoc.dev@outlook.com","quocfreelancer@gmail.com","quoc.nguyen@dnafor.net"],
                         //sendMail("fooddonation_email", ["bjarke@bsrweb.dk"],
                         {
@@ -161,6 +161,21 @@ function sendEmailForCheckedPlaces() {
     }
 }
 
+function giveToOther() {
+    showLoading();
+    var data = app.everlive.data('Product');
+    //data.updateSingle({ Id: app.foodProductId, 'IsPostOther': true },
+    data.updateSingle({ Id: "fcabe540-5324-11e5-aa2c-27233a75b7f9", 'IsPostOther': true },
+        function (data) {
+            hideLoading();
+            alert("Gave to other successfully.");
+            app.application.navigate("mystuff.html");
+        },
+        function (error) {
+            hideLoading();
+            alert(JSON.stringify(error));
+        });
+}
 
 
 Array.prototype.remove = function () {
