@@ -159,13 +159,15 @@ function sendEmailForCheckedPlaces() {
             hideLoading();
         }
     }
+    else {
+        alert("Please check at least one place to send message.");
+    }
 }
 
 function giveToOther() {
     showLoading();
     var data = app.everlive.data('Product');
-    //data.updateSingle({ Id: app.foodProductId, 'IsPostOther': true },
-    data.updateSingle({ Id: "fcabe540-5324-11e5-aa2c-27233a75b7f9", 'IsPostOther': true },
+    data.updateSingle({ Id: app.foodProductId, 'IsPostOther': true },
         function (data) {
             hideLoading();
             alert("Gave to other successfully.");
