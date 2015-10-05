@@ -420,11 +420,11 @@ function StopSpecialchrOnly(evt) {
 function takeAvatarPicture() {
     var destinationType = navigator.camera.DestinationType;
     if ($('#avatarImage').attr('src') == "images/imageplaceholder.png") {
-        navigator.camera.getPicture(onAvatarPhotoDataSuccess, onFail, { quality: 25, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+        navigator.camera.getPicture(onAvatarPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
     } else {
         navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.',
                                        function () {
-                                           navigator.camera.getPicture(onAvatarPhotoDataSuccess, onFail, { quality: 25, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+                                           navigator.camera.getPicture(onAvatarPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
                                        }, 'New photo', 'No,Yes');
     }
 
@@ -464,7 +464,7 @@ function onAvatarPhotoDataSuccess(imageData) {
 
 function takePictureActivity() {
     var destinationType = navigator.camera.DestinationType;
-    navigator.camera.getPicture(onPhotoDataActivitySuccess, onFail, { quality: 25, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+    navigator.camera.getPicture(onPhotoDataActivitySuccess, onFail, { quality: 50, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
 }
 
 function onPhotoDataActivitySuccess(imageData) {
@@ -1064,9 +1064,9 @@ function takePictureSpot(edit) {
 
     var destinationType = navigator.camera.DestinationType;
     if ($('#image' + edit).attr('data-src') == "images/imageplaceholder.png") {
-        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 25, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
+        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
     } else if ($('#image' + edit).attr('data-src') != "images/imageplaceholder.png") {
-        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 25, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
+        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
     } else {
 
         navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.', onTakePictureConfirm, 'New photo', 'No,Yes');

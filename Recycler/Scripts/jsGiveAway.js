@@ -724,11 +724,11 @@ function gpsEnabledSuccessCallback(result) {
 
         var destinationType = navigator.camera.DestinationType;
         if ($('#image').attr('src') == "images/imageplaceholder.png") {
-            navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 25, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+            navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
         } else {
             navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.',
                                            function () {
-                                               navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 25, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+                                               navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
                                            }, 'New photo', 'No,Yes');
         }
     } else {
@@ -1200,7 +1200,7 @@ var imgNumber = "";
 function takePictureGiveAway(e) {
     imgNumber = e;
     var destinationType = navigator.camera.DestinationType;
-    navigator.camera.getPicture(onPhotoDataSuccessGA, onFail, { quality: 25, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+    navigator.camera.getPicture(onPhotoDataSuccessGA, onFail, { quality: 50, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
 }
 
 function onPhotoDataSuccessGA(imageData) {
