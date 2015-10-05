@@ -11,11 +11,11 @@ function checkFacebookSimulator() {
 }
 
 function validateEmail(txtEmail) {
-    
+
     var a = $.trim(txtEmail);
     // var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{1,4}$/;
     var filter = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
-   //var filter = /\S+@\S+\.\S+/;
+    //var filter = /\S+@\S+\.\S+/;
     if (filter.test(a)) {
         return true;
     }
@@ -147,7 +147,7 @@ function TranslateCategory(category) {
             break;
     }
 
-     
+
     return value;
 }
 
@@ -182,8 +182,8 @@ function TranslateApp() {
     $("[data-localize]").localize("Recycle", opts);
 }
 function TranslateByKey(key) {
-  var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
-    return  $(key).localize("Recycle", opts);
+    var opts = { language: localStorage.LanguageType, pathPrefix: "Scripts/Resources" };
+    return $(key).localize("Recycle", opts);
 }
 
 function NavigateToBecomeSupporterPage() {
@@ -420,11 +420,11 @@ function StopSpecialchrOnly(evt) {
 function takeAvatarPicture() {
     var destinationType = navigator.camera.DestinationType;
     if ($('#avatarImage').attr('src') == "images/imageplaceholder.png") {
-        navigator.camera.getPicture(onAvatarPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+        navigator.camera.getPicture(onAvatarPhotoDataSuccess, onFail, { quality: 25, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
     } else {
         navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.',
                                        function () {
-                                           navigator.camera.getPicture(onAvatarPhotoDataSuccess, onFail, { quality: 50, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+                                           navigator.camera.getPicture(onAvatarPhotoDataSuccess, onFail, { quality: 25, targetWidth: 300, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
                                        }, 'New photo', 'No,Yes');
     }
 
@@ -435,31 +435,31 @@ function onAvatarPhotoDataSuccess(imageData) {
     // localStorage.SpotImage = imageData;
 
     //user.image = imageData;
-    //var damagephoto = document.getElementById('image');
-    //damagephoto.src = "data:image/jpeg;base64," + imageData;
-     
-    var canvas = document.getElementById("cc");
-    var ctx = canvas.getContext("2d");
+    var damagephoto = document.getElementById('avatarImage');
+    damagephoto.src = "data:image/jpeg;base64," + imageData;
 
-    var img = new Image();
-    img.crossOrigin = "Anonymous"; //cors support
-    img.onload = function () {
-        var W = img.width;
-        var H = img.height;
-        canvas.width = W;
-        canvas.height = H;
-        ctx.drawImage(img, 0, 0); //draw image
+    //var canvas = document.getElementById("cc");
+    //var ctx = canvas.getContext("2d");
 
-        //resize manually with 350 x 350 px
-        //https://github.com/viliusle/Hermite-resize/
-        resample_hermite(canvas, W, H, 350, 350);
+    //var img = new Image();
+    //img.crossOrigin = "Anonymous"; //cors support
+    //img.onload = function () {
+    //    var W = img.width;
+    //    var H = img.height;
+    //    canvas.width = W;
+    //    canvas.height = H;
+    //    ctx.drawImage(img, 0, 0); //draw image
 
-        var resizedImageData = canvas.toDataURL("image/jpeg");
+    //    //resize manually with 350 x 350 px
+    //    //https://github.com/viliusle/Hermite-resize/
+    //    resample_hermite(canvas, W, H, 350, 350);
 
-        var damagephoto = document.getElementById('avatarImage');
-        damagephoto.src = resizedImageData;
-    }
-    img.src = "data:image/jpeg;base64," + imageData;
+    //    var resizedImageData = canvas.toDataURL("image/jpeg");
+
+    //    var damagephoto = document.getElementById('avatarImage');
+    //    damagephoto.src = resizedImageData;
+    //}
+    //img.src = "data:image/jpeg;base64," + imageData;
 }
 
 function takePictureActivity() {
@@ -468,7 +468,7 @@ function takePictureActivity() {
 }
 
 function onPhotoDataActivitySuccess(imageData) {
-   //app.AddActivity.Photo = imageData;
+    //app.AddActivity.Photo = imageData;
 
     //var canvas = document.getElementById("cc");
     //var ctx = canvas.getContext("2d");
@@ -1064,9 +1064,9 @@ function takePictureSpot(edit) {
 
     var destinationType = navigator.camera.DestinationType;
     if ($('#image' + edit).attr('data-src') == "images/imageplaceholder.png") {
-        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
+        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 25, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
     } else if ($('#image' + edit).attr('data-src') != "images/imageplaceholder.png") {
-        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 50, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
+        navigator.camera.getPicture(onPhotoDataSuccessSpot, onFail, { quality: 25, targetWidth: 400, targetHeight: 300, allowEdit: true, destinationType: destinationType.DATA_URL });
     } else {
 
         navigator.notification.confirm('Do you want to take a new photo? This will replace the current photo.', onTakePictureConfirm, 'New photo', 'No,Yes');
@@ -1074,30 +1074,33 @@ function takePictureSpot(edit) {
 }
 
 function onPhotoDataSuccessSpot(imageData) {
-    var canvas = document.getElementById("cc");
-    var ctx = canvas.getContext("2d");
+    var damagephoto = document.getElementById('image' + isEdit);
+    damagephoto.src = "data:image/jpeg;base64," + imageData;
 
-    var img = new Image();
-    img.crossOrigin = "Anonymous"; //cors support
-    img.onload = function () {
-        var W = img.width;
-        var H = img.height;
-        canvas.width = W;
-        canvas.height = H;
-        ctx.drawImage(img, 0, 0); //draw image
+    //var canvas = document.getElementById("cc");
+    //var ctx = canvas.getContext("2d");
 
-        //resize manually with 350 x 350 px
-        //https://github.com/viliusle/Hermite-resize/
-        resample_hermite(canvas, W, H, 350, 350);
+    //var img = new Image();
+    //img.crossOrigin = "Anonymous"; //cors support
+    //img.onload = function () {
+    //    var W = img.width;
+    //    var H = img.height;
+    //    canvas.width = W;
+    //    canvas.height = H;
+    //    ctx.drawImage(img, 0, 0); //draw image
 
-        // UNDONE: implement Cordova for this https://jbkflex.wordpress.com/2012/12/21/html5-canvas-todataurl-support-for-android-devices-working-phonegap-2-2-0-plugin/#comment-2803
-        spot.Image = canvas.toDataURL("image/jpeg");
-        //spot.Image = "data:image/jpeg;base64," + imageData;
-        var damagephoto = document.getElementById('image' + isEdit);
-        damagephoto.src = img.src;
-    }
+    //    //resize manually with 350 x 350 px
+    //    //https://github.com/viliusle/Hermite-resize/
+    //    resample_hermite(canvas, W, H, 350, 350);
 
-    img.src = "data:image/jpeg;base64," + imageData;
+    //    // UNDONE: implement Cordova for this https://jbkflex.wordpress.com/2012/12/21/html5-canvas-todataurl-support-for-android-devices-working-phonegap-2-2-0-plugin/#comment-2803
+    //    spot.Image = canvas.toDataURL("image/jpeg");
+    //    //spot.Image = "data:image/jpeg;base64," + imageData;
+    //    var damagephoto = document.getElementById('image' + isEdit);
+    //    damagephoto.src = img.src;
+    //}
+
+    //img.src = "data:image/jpeg;base64," + imageData;
 
 }
 

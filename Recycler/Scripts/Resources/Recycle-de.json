@@ -341,7 +341,7 @@
                               "onlycountry1": "Zeigen nur Sachen aus meinem Land",
                                     "view": "Zeige meine Profilseite",
                   "Intro": "Wenn Sie denken, Sie nicht aufgeben wollen, tauschen og verleihen Dinge aus Sie können einen Garage annonce machen oder zu sehen, wo man anderen helfen.",
-"intro1":. "Das ist nicht für Feedback, Ideen, Fehler oder Meldung von Anzeigen, die durch Schütteln Sie Ihr Handy und senden Sie Ihre Kommentare getan werden kann, ist diese nur für Themen unten erwähnt.",
+"intro1":"Das ist nicht für Feedback, Ideen, Fehler oder Meldung von Anzeigen, die durch Schütteln Sie Ihr Handy und senden Sie Ihre Kommentare getan werden kann, ist diese nur für Themen unten erwähnt.",
      "oknews":"Zeigen Sie mir die Nachrichten" ,
           "news1":"Erstellen Sie Kanal Nachrichten",
                "city":"Stadt",
@@ -353,8 +353,7 @@
                                     "monthlyprice":"",
                                         "monthlybuy":"Werden monatliche Unterstützer",
                                 "yeartitle":"jährliche Unterstützer",
-                                "yeartext":"Unbegrenzter Zugang zwei recycleworld für 12 Monate (* Bild als eine Bezahlung). Sikre ununterbrochenen Service, sind alle recycleworld Abonnements automatisk erneuert, kan stornieren Stützer Schiff eventuelle Stunde.
-",
+                                "yeartext":"Unbegrenzter Zugang zwei recycleworld für 12 Monate (* Bild als eine Bezahlung). Sikre ununterbrochenen Service, sind alle recycleworld Abonnements automatisk erneuert, kan stornieren Stützer Schiff eventuelle Stunde.",
                                     "yearprice":"",
                                         "yearbuy":"Holen Sie sich 1 Jahr",  
                                "from":"Von",
@@ -367,7 +366,9 @@
         "myfriend": "Meine Freunde",
             "category": "Kategorien",
                 "pleasechoose": "Bitte wählen",
-"savefoodas": "Wählen Sie, wenn Ihre Nahrung sollte nicht auf die nächste Spende vor Ort oder anderen Online Menschen in Ihrer Nähe gehen <br> Wenn seine Nahrung zu mehreren bei Menschen wählen Spende Ort Wenn seine Nahrung für 1-4 Personen online zu wählen.",
-"choose_message": "Nächster Spende spot",
-"posttoother": "Beitrag zu anderen online"     
+"savefoodas": "Wählen Sie, wenn Ihre Nahrung sollte nicht auf die nächste Spende vor Ort oder anderen Online Menschen in Ihrer Nähe gehen <br> Wenn seine Nahrung zu mehreren bei Menschen wählen Spende Ort Wenn seine Nahrung für 1-4 Personen online zu wählen.. . ",
+"choose&message": "Nächster Spende spot",
+"posttoother": "Beitrag zu anderen online"
+
+     
 }
