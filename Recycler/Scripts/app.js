@@ -464,33 +464,36 @@ function onAvatarPhotoDataSuccess(imageData) {
 
 function takePictureActivity() {
     var destinationType = navigator.camera.DestinationType;
-    navigator.camera.getPicture(onPhotoDataActivitySuccess, onFail, { quality: 70, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+    navigator.camera.getPicture(onPhotoDataActivitySuccess, onFail, { quality: 25, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
 }
 
 function onPhotoDataActivitySuccess(imageData) {
-    //app.AddActivity.Photo = imageData;
+   //app.AddActivity.Photo = imageData;
 
-    var canvas = document.getElementById("cc");
-    var ctx = canvas.getContext("2d");
+    //var canvas = document.getElementById("cc");
+    //var ctx = canvas.getContext("2d");
 
-    var img = new Image();
-    img.crossOrigin = "Anonymous"; //cors support
-    img.onload = function () {
-        var W = img.width;
-        var H = img.height;
-        canvas.width = W;
-        canvas.height = H;
-        ctx.drawImage(img, 0, 0); //draw image
+    //var img = new Image();
+    //img.crossOrigin = "Anonymous"; //cors support
+    //img.onload = function () {
+    //    var W = img.width;
+    //    var H = img.height;
+    //    canvas.width = W;
+    //    canvas.height = H;
+    //    ctx.drawImage(img, 0, 0); //draw image
 
-        //resize manually with 350 x 350 px
-        //https://github.com/viliusle/Hermite-resize/
-        resample_hermite(canvas, W, H, 350, 350);
+    //    //resize manually with 350 x 350 px
+    //    //https://github.com/viliusle/Hermite-resize/
+    //    resample_hermite(canvas, W, H, 350, 350);
 
-        var resizedImageData = canvas.toDataURL("image/jpeg");
-        var activityPhoto = document.getElementById('imageActivity');
-        activityPhoto.src = resizedImageData;
-    }
-    img.src = "data:image/jpeg;base64," + imageData;
+    //    var resizedImageData = canvas.toDataURL("image/jpeg");
+    //    var activityPhoto = document.getElementById('imageActivity');
+    //    activityPhoto.src = resizedImageData;
+    //}
+    //img.src = "data:image/jpeg;base64," + imageData;
+
+    var photo = document.getElementById('imageActivity');
+    photo.src = "data:image/jpeg;base64," + imageData;
 }
 
 function onFail(message) {

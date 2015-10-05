@@ -362,5 +362,12 @@
                                               "to": "Til",  
                                                            "onlycity1":"Vis kun ting fra min by",
 "news": "Dette er vores community nyheds kanal. Reglerne er som følger: Brug dette til at dele information om emner som bæredygtihged, TerraCycle begivenheder, madspild begivenhed, upcycling ideer osv. Husk at holde en respektfuld tone og holde indholdet frisk og for alle.<br> <br> ",  
-"freefood": "Gratis fødevarer"
+"freefood": "Gratis fødevarer",
+    "myfav": "Mine favorit ting",
+        "myfriend": "Mine Venner",
+            "category": "Kategori",
+"pleasechoose": "Vælg Venligst",
+"savefoodas": "Vælg om dine fødevarer skal gå til det nærmeste donation sted eller til andre mennesker online i nærheden af dig <br> Hvis maden er til flere mennesker vælger du donations sted. Hvis mad til 1-4 mennesker vælger du til andre online nær dig.",
+"choose_message": "Nærmeste donation sted",
+"posttoother": "Giv til andre online"
 }

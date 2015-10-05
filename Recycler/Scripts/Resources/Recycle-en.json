@@ -363,7 +363,12 @@
      "newsslogan":"Knowdledge is the key for making a better world. Så let your ideas, advices and actions inspire others.",
          "onlycity1":"Show only stuff from my city",
              "onlycountry1": "Show only stuff from my country",
-    "postedby": "Publiced by Recycleworld user:"
-
-                         
+    "postedby": "Publiced by Recycleworld user:",
+    "myfav": "My favourite stuff",
+        "myfriend": "My friends",
+            "category": "Category",
+                "pleasechoose": "PLEASE CHOOSE",
+                    "savefoodas": "Choose if your food should go to the nearest donation spot or just other online people near you.<br><br>If its food to several people choose donation spot. If its food for 1-4 people choose online.",
+                        "choose_message": "Nearest donation spot",
+                            "posttoother": "Post to others online"
 }

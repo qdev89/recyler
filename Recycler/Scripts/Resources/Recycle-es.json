@@ -365,5 +365,12 @@
                                               "to": "A la",  
                                                   "news_slogan":"El conocimiento es la clave para hacer un mundo mejor. Så deja que tus ideas, consejos y acciones inspiran a otros.",
 "distance":"Distancia",
-     "allstuff": "Mostrar todas las cosas usuario"          
+     "allstuff": "Mostrar todas las cosas usuario",
+    "myfav": "Mis cosas favoritas",
+        "myfriend": "Mis amigos",
+        "category": "Categoría",
+"pleasechoose": "Por favor seleccione",
+"savefoodas": "Selecciona si la comida no deberia ir al punto de donación más cercano o simplemente otras personas en línea cerca de usted <br> Si su alimento a varios a la gente elige punto donación Si su alimento para 1-4 personas optan línea.",
+"choose_message": "Más cercano punto de donación",
+"posttoother": "Mensaje a los demás en línea"
 }

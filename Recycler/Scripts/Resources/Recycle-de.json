@@ -361,8 +361,13 @@
                                               "to": "Zu",  
                                                    "news_slogan":"Wissen ist der Schlüssel für eine bessere Welt. Så und Ihre Ideen umzusetzen, Ratschläge und Handlungen andere inspirieren.",
                         
-"news":"Das ist unserer Nachrichtenkanal. Die Regeln sind: Verwenden Sie diese zu teilen Informationen über Themen wie substainabilty, terra-Zyklusereignisse, Lebensmittelabfälle Fall, Upcycling Ideen usw. <br> Angemeldet beiden halten ein respekt Ton und halten den Inhalt frisch und für alle.", ,
-"freefood": "Kostenlose Lebensmittel"
-
-     
+"news":"Das ist unserer Nachrichtenkanal. Die Regeln sind: Verwenden Sie diese zu teilen Informationen über Themen wie substainabilty, terra-Zyklusereignisse, Lebensmittelabfälle Fall, Upcycling Ideen usw. <br> Angemeldet beiden halten ein respekt Ton und halten den Inhalt frisch und für alle.", 
+"freefood": "Kostenlose Lebensmittel",
+    "myfav": "Meiner Lieblingsdinge",
+        "myfriend": "Meine Freunde",
+            "category": "Kategorien",
+                "pleasechoose": "Bitte wählen",
+"savefoodas": "Wählen Sie, wenn Ihre Nahrung sollte nicht auf die nächste Spende vor Ort oder anderen Online Menschen in Ihrer Nähe gehen <br> Wenn seine Nahrung zu mehreren bei Menschen wählen Spende Ort Wenn seine Nahrung für 1-4 Personen online zu wählen.",
+"choose_message": "Nächster Spende spot",
+"posttoother": "Beitrag zu anderen online"     
 }

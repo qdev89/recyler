@@ -6,7 +6,7 @@
   "DisplayName": "Recycleworld - together we change",
   "Author": "Recycleworld Aps",
   "Description": "Together we change - take action and help us stop food waste & a better recycling for a better future. Using recyceworld benefits others and help us work towards sustanability.",
-  "BundleVersion": "1.3",
+  "BundleVersion": "1.7",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
     "1",
@@ -24,7 +24,6 @@
   "CorePlugins": [
     "cc.fovea.cordova.purchase@3.10.0",
     "com.paypal.cordova.mobilesdk@2.1.1",
-    "com.phonegap.plugins.facebookconnect@0.11.2",
     "com.telerik.feedback",
     "com.telerik.plugin.eqatecanalytics",
     "org.apache.cordova.battery-status",
@@ -59,6 +58,7 @@
     "android.permission.READ_PHONE_STATE",
     "android.permission.RECEIVE_SMS",
     "android.permission.RECORD_AUDIO",
+    "android.permission.STATUS_BAR",
     "android.permission.VIBRATE",
     "android.permission.WRITE_CONTACTS",
     "android.permission.WRITE_EXTERNAL_STORAGE"
