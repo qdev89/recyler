@@ -1200,34 +1200,37 @@ var imgNumber = "";
 function takePictureGiveAway(e) {
     imgNumber = e;
     var destinationType = navigator.camera.DestinationType;
-    navigator.camera.getPicture(onPhotoDataSuccessGA, onFail, { quality: 70, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
+    navigator.camera.getPicture(onPhotoDataSuccessGA, onFail, { quality: 25, targetWidth: 600, targetHeight: 400, allowEdit: true, destinationType: destinationType.DATA_URL, correctOrientation: true });
 }
 
 function onPhotoDataSuccessGA(imageData) {
     // localStorage.SpotImage = imageData;      
     PictureTaken = true;
-    var canvas = document.getElementById("cc");
-    var ctx = canvas.getContext("2d");
+    var photo = document.getElementById('image' + imgNumber);
+    photo.src = "data:image/jpeg;base64," + imageData;
 
-    var img = new Image();
-    img.crossOrigin = "Anonymous"; //cors support
-    img.onload = function () {
-        var W = img.width;
-        var H = img.height;
-        canvas.width = W;
-        canvas.height = H;
-        ctx.drawImage(img, 0, 0); //draw image
+    //var canvas = document.getElementById("cc");
+    //var ctx = canvas.getContext("2d");
 
-        //resize manually with 350 x 350 px
-        //https://github.com/viliusle/Hermite-resize/
-        resample_hermite(canvas, W, H, 350, 350);
+    //var img = new Image();
+    //img.crossOrigin = "Anonymous"; //cors support
+    //img.onload = function () {
+    //    var W = img.width;
+    //    var H = img.height;
+    //    canvas.width = W;
+    //    canvas.height = H;
+    //    ctx.drawImage(img, 0, 0); //draw image
 
-        var resizedImageData = canvas.toDataURL("image/jpeg");
-        var photo = document.getElementById('image' + imgNumber);
-        // UNDONE: implement Cordova for this https://jbkflex.wordpress.com/2012/12/21/html5-canvas-todataurl-support-for-android-devices-working-phonegap-2-2-0-plugin/#comment-2803
-        photo.src = resizedImageData;
-        //photo.src = "data:image/jpeg;base64," + imageData;
-    }
+    //    //resize manually with 350 x 350 px
+    //    //https://github.com/viliusle/Hermite-resize/
+    //    resample_hermite(canvas, W, H, 350, 350);
 
-    img.src = "data:image/jpeg;base64," + imageData;
+    //    var resizedImageData = canvas.toDataURL("image/jpeg");
+    //    var photo = document.getElementById('image' + imgNumber);
+    //    // UNDONE: implement Cordova for this https://jbkflex.wordpress.com/2012/12/21/html5-canvas-todataurl-support-for-android-devices-working-phonegap-2-2-0-plugin/#comment-2803
+    //    photo.src = resizedImageData;
+    //    //photo.src = "data:image/jpeg;base64," + imageData;
+    //}
+
+    //img.src = "data:image/jpeg;base64," + imageData;
 }
