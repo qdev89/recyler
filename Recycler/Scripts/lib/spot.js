@@ -343,7 +343,7 @@ var spot = {
     Error: '',
 
     CreateSpot: function () {
-         
+
         //if (spot.Image == null || spot.Image == undefined || spot.Image == "") {
 
         if (spot.Image != "images/imageplaceholder.png") {
@@ -425,7 +425,9 @@ function SaveSpot() {
         }
     }
 
-    if (Data.Image == "") {
+    var dataImage = $("#image").attr("src").replace("data:image/jpeg;base64,", "");
+
+    if (dataImage == "") {
         app.application.navigate("createspot.html");
         return;
     }
@@ -434,7 +436,7 @@ function SaveSpot() {
         "Filename": "spotPicture.jpeg",
         "ContentType": "image/jpeg",
         "CustomField": "customValue",
-        "base64": Data.Image
+        "base64": dataImage
     };
     console.log(file);
     app.everlive.Files.create(file,
@@ -477,6 +479,7 @@ function SaveSpot() {
 
                   },
                       function (data2) {
+                          debugger;
                           // console.log(data);
                           app.application.navigate("myspots.html");
                           var templateName = emailTemplates.spot;
