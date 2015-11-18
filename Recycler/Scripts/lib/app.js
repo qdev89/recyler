@@ -1,18 +1,18 @@
 (function (win) {
     'use strict';
- var app = win.app = win.app || {};
+    var app = win.app = win.app || {};
     // Global error handling
-    var showAlert = function(message, title, callback) {
-        if(navigator.notification!=undefined)
-        navigator.notification.alert(message, callback || function () {
-        }, title, 'OK');
+    var showAlert = function (message, title, callback) {
+        if (navigator.notification != undefined)
+            navigator.notification.alert(message, callback || function () {
+            }, title, 'OK');
     };
 
-    var showError = function(message) {
+    var showError = function (message) {
         showAlert(message, 'Error occured');
     };
 
-   win.addEventListener('error', function (e) {
+    win.addEventListener('error', function (e) {
         //e.preventDefault();
 
         var message = e.message + "' from " + e.filename + ":" + e.lineno;
@@ -23,7 +23,7 @@
     });
 
     // Global confirm dialog
-    var showConfirm = function(message, title, callback) {
+    var showConfirm = function (message, title, callback) {
         navigator.notification.confirm(message, callback || function () {
         }, title, ['OK', 'Cancel']);
     };
@@ -39,14 +39,14 @@
 
     var fixViewResize = function () {
         if (device.platform === 'iOS') {
-            setTimeout(function() {
+            setTimeout(function () {
                 $(document.body).height(window.innerHeight);
             }, 10);
         }
     };
 
     // Handle device back button tap
-    var onBackKeyDown = function(e) {
+    var onBackKeyDown = function (e) {
         e.preventDefault();
 
         navigator.notification.confirm('Do you really want to exit?', function (confirmed) {
@@ -63,87 +63,88 @@
             }
         }, 'Exit', ['OK', 'Cancel']);
     };
-    
-        
-   app.addBanner = function addBanner(time){
-        var timeout = time*1000;
-         if (window.plugins.AdMob) {
-                 if(!app.bannerShowed)                 
-                        try {                
-                            window.plugins.AdMob.createBannerView({                           
-                                         'publisherId':'ca-app-pub-9095907209455385/3710758159' ,
-                                         'adSize':window.plugins.AdMob.AD_SIZE.BANNER,
-                                         'bannerAtTop': false
-                                     }, 
 
-                                     function() {
-                                        window.plugins.AdMob.requestAd(
-                                             {'isTesting':false},                                
-                                             function() {    
-                                                 
-                                                
-                                                   window.plugins.AdMob.showAd(
-                                                         true,                                       
-                                                         function() {
-                                                             app.bannerShowed = true;
-                                                              setTimeout(function(){
-                                                                  window.plugins.AdMob.destroyBannerView();
-                                                                  app.bannerShowed = false;
-                                                              },
-                                                             timeout
-                                                             );
-                                                         },
-                                                         // showAd error callback 
-                                                         function() {
-                                                             alert('failed to show ad')
-                                                         });
-                                                
-                                             },
-                                             // requestAd error callback 
-                                             function() {
-                                                 alert('failed to request ad');
-                                             }
-                                             );
-                                     },                        
-                                     function(err) {
-                                         
-                                     }
-                                );
-                                            
-                        }catch (err) {               
-                            alert(err);
-                            alert(JSON.stringify(err));
-                        }
-            }else {
-                alert("No admobExport");
-            }
-    
+
+    app.addBanner = function addBanner(time) {
+        var timeout = time * 1000;
+        if (window.plugins.AdMob) {
+            if (!app.bannerShowed)
+                try {
+                    window.plugins.AdMob.createBannerView({
+                        'publisherId': 'ca-app-pub-9095907209455385/3710758159',
+                        'adSize': window.plugins.AdMob.AD_SIZE.BANNER,
+                        'bannerAtTop': false
+                    },
+
+                             function () {
+                                 window.plugins.AdMob.requestAd(
+                                      { 'isTesting': false },
+                                      function () {
+
+
+                                          window.plugins.AdMob.showAd(
+                                                true,
+                                                function () {
+                                                    app.bannerShowed = true;
+                                                    setTimeout(function () {
+                                                        window.plugins.AdMob.destroyBannerView();
+                                                        app.bannerShowed = false;
+                                                    },
+                                                   timeout
+                                                   );
+                                                },
+                                                // showAd error callback 
+                                                function () {
+                                                    alert('failed to show ad')
+                                                });
+
+                                      },
+                                      // requestAd error callback 
+                                      function () {
+                                          alert('failed to request ad');
+                                      }
+                                      );
+                             },
+                             function (err) {
+
+                             }
+                        );
+
+                } catch (err) {
+                    alert(err);
+                    alert(JSON.stringify(err));
+                }
+        } else {
+            alert("No admobExport");
+        }
+
     }
-    
-    var onDeviceReady = function() {
+
+    var onDeviceReady = function () {
         // Handle "backbutton" event
         document.addEventListener('backbutton', onBackKeyDown, false);
-        
+
         everliveImages.init(appSettings.everlive.apiKey);
-        
+
         navigator.splashscreen.hide();
         fixViewResize();
-            autoLogin();
+        autoLogin();
         if (analytics.isAnalytics()) {
             analytics.Start();
         }
-        
+
         // Initialize AppFeedback
         if (app.isKeySet(appSettings.feedback.apiKey)) {
             try {
                 feedback.initialize(appSettings.feedback.apiKey);
-               // log("feeeeeeed")
+                console.log('feedback created');
+
             } catch (err) {
                 console.log('Something went wrong:');
                 console.log(err);
             }
         } else {
-          //  console.log('Telerik AppFeedback API key is not set. You cannot use feedback service.');
+            //  console.log('Telerik AppFeedback API key is not set. You cannot use feedback service.');
         }
         /*setTimeout(function(){      
                 app.addBanner(5);              
@@ -157,9 +158,9 @@
 
     // Initialize Everlive SDK
     var el = new Everlive({
-                              apiKey: appSettings.everlive.apiKey,
-                              scheme: appSettings.everlive.scheme
-                          });
+        apiKey: appSettings.everlive.apiKey,
+        scheme: appSettings.everlive.scheme
+    });
 
     var emptyGuid = '00000000-0000-0000-0000-000000000000';
 
@@ -194,38 +195,38 @@
         }
     };
 
- /* var os = kendo.support.mobileOS,
-statusBarStyle = os.ios && os.flatVersion >= 700 ? 'black-translucent' : 'black';
-*/
+    /* var os = kendo.support.mobileOS,
+   statusBarStyle = os.ios && os.flatVersion >= 700 ? 'black-translucent' : 'black';
+   */
 
-     // Initialize KendoUI mobile application
-/* var mobileApp = new kendo.mobile.Application(document.body, {
-transition: 'slide',
-statusBarStyle: statusBarStyle,
-skin: 'flat'
-});
-*/
+    // Initialize KendoUI mobile application
+    /* var mobileApp = new kendo.mobile.Application(document.body, {
+    transition: 'slide',
+    statusBarStyle: statusBarStyle,
+    skin: 'flat'
+    });
+    */
 
-   
+
     var getYear = (function () {
         return new Date().getFullYear();
-    }());    
-     
-        
-        app.showAlert=showAlert;
-         app.showError= showError;
-         app.showConfirm= showConfirm;
-         app.isKeySet= isKeySet,
-       // app.application= mobileApp;
-         app.helper= AppHelper;
-         app.everlive= el;
-         app.getYear= getYear;
-     
-    
-   /*  admobExport.createBannerView({
-        'publisherId': 4353543543,
-        'adSize':admobExport.AD_SIZE.SMART_BANNER,
-        'bannerAtTop': false
-    },function(){console.log("sss")},function(e){console.log(e)});*/
-  
+    }());
+
+
+    app.showAlert = showAlert;
+    app.showError = showError;
+    app.showConfirm = showConfirm;
+    app.isKeySet = isKeySet,
+    // app.application= mobileApp;
+    app.helper = AppHelper;
+    app.everlive = el;
+    app.getYear = getYear;
+
+
+    /*  admobExport.createBannerView({
+         'publisherId': 4353543543,
+         'adSize':admobExport.AD_SIZE.SMART_BANNER,
+         'bannerAtTop': false
+     },function(){console.log("sss")},function(e){console.log(e)});*/
+
 }(window));
