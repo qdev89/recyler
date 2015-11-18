@@ -20,7 +20,7 @@
         var productId = appSettings.eqatec.productKey;
         var version = appSettings.eqatec.version || '1.0.0.0';
 
-        var settings = factory.CreateSettings(productId, version);
+        var settings = factory.CreateSettings(productId);
         settings.LoggingInterface = factory.CreateTraceLogger();
 
         factory.CreateMonitorWithSettings(settings,
