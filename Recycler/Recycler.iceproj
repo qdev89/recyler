@@ -602,6 +602,7 @@
     <Content Include="images\sms.png">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="images\spot-info-feedback.jpg" />
     <Content Include="images\spot_button.png">
       <SubType>Content</SubType>
     </Content>

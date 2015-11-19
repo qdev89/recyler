@@ -17,8 +17,7 @@
         var monitor = win.plugins.EqatecAnalytics.Monitor;
 
         // Create the monitor instance using the unique product key for platform-friends-hybrid
-        var productId = appSettings.eqatec.productKey;
-        var version = appSettings.eqatec.version || '1.0.0.0';
+        var productId = '80007e7e05da4470b0c35abe36644cda';
 
         var settings = factory.CreateSettings(productId);
         settings.LoggingInterface = factory.CreateTraceLogger();

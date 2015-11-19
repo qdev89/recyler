@@ -127,7 +127,7 @@ function iconMapInit(e) {
 
 
                             var content =
-                                "<div class='table-container' align='center'><table>" +
+                                "<div class='table-container'><table>" +
                                 eventDate +
                                     "<tr><td colspan='2' class='spotName'>" + (allSpots[i].Name || "") + "</td></tr>" +
                                     //"<tr><td></td><td class='spotDate'>" + (allSpots[i].EventDate || "") + "</td></tr>" +
