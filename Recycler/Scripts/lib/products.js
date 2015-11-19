@@ -487,7 +487,21 @@ function onFindItemInit(e) {
 function onProductShow(e) {
     if (e.sender.params.refresh != "false") {
         utility.resetScroller(e);
+        debugger;
         app.Product.getProducts();
+    }
+
+    var timer;
+    $('#filterWord').keyup(function () {
+        doSearch();
+    });
+
+    var delayTimer;
+    function doSearch() {
+        clearTimeout(delayTimer);
+        delayTimer = setTimeout(function () {
+            app.Product.filterProducts()
+        }, 1000); // Will do the ajax stuff after 1000 ms, or 1 s
     }
 }
 
@@ -897,7 +911,7 @@ app.Product = (function () {
         }
 
         var getFriendList = function (e) {
-            
+
             if (e.view.params.userId != undefined) {
                 var userID = e.view.params.userId;
                 currentOwner = $.grep(app.Users.users(), function (el) {
@@ -1034,6 +1048,7 @@ app.Product = (function () {
             }
         }
 
+
         var filterProducts = function () {
             var word = $("#filterWord").val();
             //   log(word);
@@ -1047,7 +1062,7 @@ app.Product = (function () {
         }
 
         var getProducts = function (isMy, filterWord, distance) {
-            
+
 
             var visitedProductIds = [];
             if (localStorage.isVisitedProductIds) {
@@ -1084,7 +1099,7 @@ app.Product = (function () {
             var dataSource = new kendo.data.DataSource({
                 transport: {
                     read: function (options) {
-                        
+
                         showLoading();
                         try {
 
@@ -1145,7 +1160,7 @@ app.Product = (function () {
 
                             data.get(query).then(function (data) {
                                 options.success(data.result);
-                                
+
 
                                 //setTimeout(function () {
 
@@ -1163,7 +1178,7 @@ app.Product = (function () {
                                 //}, 10);
                                 everliveImages.responsiveAll();
                                 TranslateApp();
-                                    
+
                                 hideLoading();
                                 if (data.result.length == interval) {
                                     loadMore = true;
@@ -1175,7 +1190,7 @@ app.Product = (function () {
                                      alert(JSON.stringify(error));
                                  });
                         } catch (err) {
-                            
+
                             hideLoading();
                             console.log(err);
                         }
@@ -1192,7 +1207,7 @@ app.Product = (function () {
                     parse: function (response) {
                         //  console.log(response);
                         $.each(response, function (i, el) {
-                            
+
                             el.Views = el.Views || 0;
                             el.City = el.City || '';
 
