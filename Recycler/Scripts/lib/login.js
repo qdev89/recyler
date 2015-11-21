@@ -92,7 +92,6 @@ app.Login = (function () {
             // Authenticate using the username and password
             app.everlive.Users.login(username, password)
             .then(function () {
-                debugger;
                 // EQATEC analytics monitor - track login type
                 if (isAnalytics) {
                     analytics.TrackFeature('Login.Regular');

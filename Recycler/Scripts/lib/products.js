@@ -111,19 +111,23 @@ function addFriendFromProductPage() {
     var user = $.parseJSON(localStorage.User);
     var data = app.everlive.data('FriendList');
     data.count({ 'FriendUserID': currentOwner.Id, 'UserID': user.Id }, // filter
-        function (data) {
-            if (data.result == 0) {
+        function (dataServer) {
+            if (dataServer.result == 0) {
                 data.create({
                     FriendUserID: currentOwner.Id,
                     UserID: user.Id
-                }, function (data) {
-                    $("#friend-off-button").hide();
-                    $("#friend-on-button").show();
-                    $("#friend-status").text("Unfriend:");
+                }, function (dataServer2) {
+                    //$("#friend-off-button").hide();
+                    //$("#friend-on-button").show();
+                    //$("#friend-status").text("Unfriend:");
+                    alert("Added friend successfully.");
                 },
                     function (error) {
                         // DO NOTHING
                     });
+            }
+            else {
+                alert("Already friend.");
             }
         },
         function (error) {
@@ -226,7 +230,8 @@ function loadProduct(e) {
             $("#categoryProduct").attr("href", "categoryProducts.html?category=" + product.Category);
             //$(selector + ".category").attr("category", product.Category);
 
-            $("#WantIt").attr("href", "userItems.html?userId=" + product.UserID);
+            $("#userStuffs").attr("href", "userItems.html?userId=" + product.UserID);
+            $("#contactUser").attr("href", "profile.html?userId=" + product.UserID);
             $("#NoInterest").attr("productId", product.Id);
             var publishUser = $.grep(app.Users.users(), function (e) {
                 return e.Id === product.UserID;
@@ -313,6 +318,7 @@ function giveToThisUser(el) {
                      'UserID': userID
                  },
                       function (data) {
+                          debugger;
                           alert("Product transferred successfully!");
                           app.application.navigate("mystuff.html");
                       },
@@ -379,19 +385,20 @@ function deleteItem() {
     navigator.notification.confirm(
          "Are you sure you want to delete this product?", // message
          function (button) {
-             if (button == 1)
+             debugger;
+             if (button == 1) {
                  var data = app.everlive.data('Product');
-             data.destroySingle({
-                 Id: editableProduct.Id
-             },
-                  function () {
-                      alert('Product successfully deleted.');
-                      app.application.navigate("mystuff.html");
-                  },
-                  function (error) {
-                      alert(JSON.stringify(error));
-                  });
-
+                 data.destroySingle({
+                     Id: editableProduct.Id
+                 },
+                     function () {
+                         alert('Product successfully deleted.');
+                         app.application.navigate("mystuff.html");
+                     },
+                     function (error) {
+                         alert(JSON.stringify(error));
+                     });
+             }
          },
          'Delete product', ['Delete', // title
                                    'Cancel'] // buttonLabels
@@ -487,7 +494,6 @@ function onFindItemInit(e) {
 function onProductShow(e) {
     if (e.sender.params.refresh != "false") {
         utility.resetScroller(e);
-        debugger;
         app.Product.getProducts();
     }
 
@@ -1063,7 +1069,7 @@ app.Product = (function () {
 
         var getProducts = function (isMy, filterWord, distance) {
 
-
+            debugger;
             var visitedProductIds = [];
             if (localStorage.isVisitedProductIds) {
                 visitedProductIds = JSON.parse(localStorage.isVisitedProductIds);

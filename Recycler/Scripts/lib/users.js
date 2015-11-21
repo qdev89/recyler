@@ -6,15 +6,26 @@ function fillProfileInfo(e) {
     var user;
     if (e.sender.params.self == "true") {
         user = JSON.parse(localStorage.User);
+        fillProfileInfoWithUser(user);
+    } else if (e.sender.params.userId !== undefined) {
+        app.Users.getUserByID(e.sender.params.userId, function (data) {
+            fillProfileInfoWithUser(data);
+        })
     } else {
         user = app.lastProductOwner;
+        fillProfileInfoWithUser(user);
     }
+}
+
+function fillProfileInfoWithUser(user) {
     if (!user) return;
     var selector = "#tabstrip-profile-details ";
 
     if (user.ImageData) {
-        $(selector + "#userPicture").attr("data-src", user.ImageData);
-        everliveImages.responsiveAll();
+        //$(selector + "#userPicture").attr("data-src", user.ImageData);
+        //everliveImages.responsiveAll();
+        $(selector + "#userPicture").attr("src", user.ImageData);
+        //everliveImages.responsiveAll();
     }
     else
         $(selector + "#userPicture").attr("src", "images/NoImage.jpg");
@@ -32,12 +43,7 @@ function fillProfileInfo(e) {
     $(selector + "#email_send").attr("link", "mailto:" + user.Email).addClass("link");
     $(selector + "#phone_num").attr("href", "tel:+" + user.PhoneNumber);
     $(selector + "#sms_num").attr("href", "sms:" + user.PhoneNumber);
-
-
-
 }
-
-
 
 var app = app || {};
 
@@ -682,7 +688,7 @@ $(document).ready(function () {
 });
 
 function saveUserData() {
-    
+
     if (userData.IdentityProvider != "Facebook" && !validateEmail($("#email").val())) {
         navigator.notification.alert("You should fill a valid email!", null, "");
         return;
@@ -767,7 +773,7 @@ function saveUserData() {
                 function (data) {
                     //console.log(data);
                     //navigator.notification.alert("Info saved successfully! Changes will take effect when you login next time.", null, "Success");
-                    
+
                     if (mail) {
                         sendMail(emailTemplates.thankYou, [userData.Email], { "appName": emailTemplates.DefaultFromName, "DefaultFromName": emailTemplates.DefaultFromName, "userName": $("#name").val(), "FromEmail": emailTemplates.FromEmail });
 
@@ -960,13 +966,13 @@ function setupInit() {
     });
     emptyUserInfo();
     //if (localStorage.User == undefined) {
-        app.everlive.Users.currentUser(
-            function (data) {
-                console.log(data.result);
+    app.everlive.Users.currentUser(
+        function (data) {
+            console.log(data.result);
 
-                localStorage.User = JSON.stringify(data.result);
-                fillUserData(data.result);
-            });
+            localStorage.User = JSON.stringify(data.result);
+            fillUserData(data.result);
+        });
     //} else
     //    fillUserData(JSON.parse(localStorage.User));
 
@@ -994,7 +1000,7 @@ function setupInit() {
                         }
                     }
 
-                    
+
                     user = app.Users.currentUser.data;
                     if (user.City === undefined || user.City == '') {
                         user.cityGeo = city;
