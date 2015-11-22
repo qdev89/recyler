@@ -98,6 +98,29 @@ function sendMailThenGoToMyStuff(name, recipients, context) {
         }
     });
 }
+function sendMailThenGoToThankYou(name, recipients, context) {
+    var attributes = {
+        "Recipients": recipients,
+        "Context": context
+    };
+
+    $.ajax({
+        type: "POST",
+        url: 'http://api.everlive.com/v1/Metadata/Applications/' + appSettings.everlive.apiKey + '/EmailTemplates/' + name + '/send',
+        contentType: "application/json",
+        headers: {
+            "Authorization": "Masterkey " + appSettings.msKey
+        },
+        data: JSON.stringify(attributes),
+        success: function (data) {
+            // alert("Email successfully sent.");
+            app.application.navigate("thanks.html");
+        },
+        error: function (error) {
+            alert(JSON.stringify(error));
+        }
+    });
+}
 function goToTop(e) {
     // console.log(e);
     e.sender.scroller.reset();

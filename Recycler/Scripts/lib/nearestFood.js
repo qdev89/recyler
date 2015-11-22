@@ -114,33 +114,57 @@ function sendEmailForCheckedPlaces() {
                 var query1 = new Everlive.Query();
                 query1.where().isin('Id', nearestPlacesIdChecked);
                 data1.get(query1).then(function (data) {
-                    if (data.result.length > 0) {
+                    //if (data.result.length > 0) {
                         var emailList = [];
                         data.result.forEach(function (user) {
                             emailList.push(user.Email);
                         });
 
-                        // TODO: uncomment this when release
-                        sendMailThenGoToMyStuff("fooddonation_email", emailList,
-                        //sendMail("fooddonation_email", ["bjarke@bsrweb.dk", "nmquoc89@gmail.com","quoc.dev@outlook.com","quocfreelancer@gmail.com","quoc.nguyen@dnafor.net"],
-                        //sendMail("fooddonation_email", ["bjarke@bsrweb.dk"],
-                        {
-                            "userName": User.DisplayName,
-                            "appName": emailTemplates.DefaultFromName,
-                            "DefaultFromName": emailTemplates.DefaultFromName,
-                            "FromEmail": emailTemplates.FromEmail,
-                            "UserPhoto": User.ImageData,
-                            "Phone": User.PhoneNumber,
-                            "Email": User.Email,
-                            "Address": User.AddressLine1 + "," + User.City + " " + User.State + "," + User.Country,
-                            "ProductPhoto1": foodProduct.Image1,
-                            "ProductPhoto2": foodProduct.Image2,
-                            "ProductPhoto3": foodProduct.Image3,
-                            "ProductDescription": foodProduct.Description,
-                            "PickupTime": pickupDateTime,
-                            "PickupMessage": pickupMessage,
-                        });
-                    }
+                      
+
+                        if (app.currentUser.UserRole == "2") { // supported
+                            sendMailThenGoToThankYou("fooddonation_email", emailList,
+                             //sendMail("fooddonation_email", ["bjarke@bsrweb.dk", "nmquoc89@gmail.com","quoc.dev@outlook.com","quocfreelancer@gmail.com","quoc.nguyen@dnafor.net"],
+                             //sendMail("fooddonation_email", ["bjarke@bsrweb.dk"],
+                             {
+                                 "userName": User.DisplayName,
+                                 "appName": emailTemplates.DefaultFromName,
+                                 "DefaultFromName": emailTemplates.DefaultFromName,
+                                 "FromEmail": emailTemplates.FromEmail,
+                                 "UserPhoto": User.ImageData,
+                                 "Phone": User.PhoneNumber,
+                                 "Email": User.Email,
+                                 "Address": User.AddressLine1 + "," + User.City + " " + User.State + "," + User.Country,
+                                 "ProductPhoto1": foodProduct.Image1,
+                                 "ProductPhoto2": foodProduct.Image2,
+                                 "ProductPhoto3": foodProduct.Image3,
+                                 "ProductDescription": foodProduct.Description,
+                                 "PickupTime": pickupDateTime,
+                                 "PickupMessage": pickupMessage,
+                             });
+                        } else {
+                            // TODO: uncomment this when release
+                            sendMailThenGoToMyStuff("fooddonation_email", emailList,
+                            //sendMail("fooddonation_email", ["bjarke@bsrweb.dk", "nmquoc89@gmail.com","quoc.dev@outlook.com","quocfreelancer@gmail.com","quoc.nguyen@dnafor.net"],
+                            //sendMail("fooddonation_email", ["bjarke@bsrweb.dk"],
+                            {
+                                "userName": User.DisplayName,
+                                "appName": emailTemplates.DefaultFromName,
+                                "DefaultFromName": emailTemplates.DefaultFromName,
+                                "FromEmail": emailTemplates.FromEmail,
+                                "UserPhoto": User.ImageData,
+                                "Phone": User.PhoneNumber,
+                                "Email": User.Email,
+                                "Address": User.AddressLine1 + "," + User.City + " " + User.State + "," + User.Country,
+                                "ProductPhoto1": foodProduct.Image1,
+                                "ProductPhoto2": foodProduct.Image2,
+                                "ProductPhoto3": foodProduct.Image3,
+                                "ProductDescription": foodProduct.Description,
+                                "PickupTime": pickupDateTime,
+                                "PickupMessage": pickupMessage,
+                            });
+                        }
+                    //}
 
                     hideLoading();
 
@@ -171,7 +195,12 @@ function giveToOther() {
         function (data) {
             hideLoading();
             alert("Gave to other successfully.");
-            app.application.navigate("mystuff.html");
+            if (app.currentUser.UserRole == "2") { // supported
+                app.application.navigate("thanks.html");
+            } else {
+                app.application.navigate("mystuff.html");
+            }
+   
         },
         function (error) {
             hideLoading();
