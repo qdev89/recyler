@@ -1106,7 +1106,9 @@ function autoLogin() {
     if (isUserLogged()) {
         app.Username = localStorage.Username;
         app.password = localStorage.Password;
-        app.Login.login(localStorage.Username, localStorage.Password);
+        if (app.Login !== undefined && app.Login.login !== undefined) {
+            app.Login.login(localStorage.Username, localStorage.Password);
+        }
     }
 }
 
