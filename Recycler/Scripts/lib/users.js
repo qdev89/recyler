@@ -92,6 +92,92 @@ app.Users = (function () {
                   }
             );
         };
+        var GetRoles = function () {
+
+            if (Roles == undefined) return;
+            if (localStorage.Language && localStorage.Language !== null && localStorage.Language != 'null') {
+                switch (localStorage.Language) {
+                    case "1":
+                        $.each(Roles.Danish, function (i) {
+                            $('#role').append('<option value="' + Roles.Danish[i].id + '">' + Roles.Danish[i].Value + '</option>');
+                        });
+
+                        $.each(Languages.Danish, function (i) {
+                            $('#Languages').append('<option value="' + Languages.Danish[i].id + '">' + Languages.Danish[i].Value + '</option>');
+                        });
+
+                        break;
+                    case "2":
+                        $.each(Roles.German, function (i) {
+                            $('#role').append('<option value="' + Roles.German[i].id + '">' + Roles.German[i].Value + '</option>');
+                        });
+
+                        $.each(Languages.German, function (i) {
+                            $('#Languages').append('<option value="' + Languages.German[i].id + '">' + Languages.German[i].Value + '</option>');
+                        });
+
+                        break;
+                    case "3":
+                        $.each(Roles.English, function (i) {
+                            $('#role').append('<option value="' + Roles.English[i].id + '">' + Roles.English[i].Value + '</option>');
+                        });
+
+                        $.each(Languages.English, function (i) {
+                            $('#Languages').append('<option value="' + Languages.English[i].id + '">' + Languages.English[i].Value + '</option>');
+                        });
+
+                        break;
+                    case "4":
+                        $.each(Roles.Spanish, function (i) {
+                            $('#role').append('<option value="' + Roles.Spanish[i].id + '">' + Roles.Spanish[i].Value + '</option>');
+                        });
+
+                        $.each(Languages.Spanish, function (i) {
+                            $('#Languages').append('<option value="' + Languages.Spanish[i].id + '">' + Languages.Spanish[i].Value + '</option>');
+                        });
+                        break;
+                }
+            } else {
+                $.each(Roles.English, function (i) {
+                    $('#role').append('<option value="' + Roles.English[i].id + '">' + Roles.English[i].Value + '</option>');
+                });
+
+                $.each(Languages.English, function (i) {
+                    $('#Languages').append('<option value="' + Languages.English[i].id + '">' + Languages.English[i].Value + '</option>');
+                });
+            }
+
+
+            $('#role>option').each(function (i) {
+                if ($(this).val() == '0') {
+                    $('#role').val($(this).val());
+                    $('#role').parent().children('span').find('.ui-btn-text').html($(this).html());
+                    return;
+                }
+            });
+            $('#country>option').each(function (i) {
+                if ($(this).val() == '0') {
+                    $('#country').val($(this).val());
+                    $('#country').parent().children('span').find('.ui-btn-text').html($(this).html());
+                    return;
+                }
+            });
+            $('#state>option').each(function (i) {
+                if ($(this).val() == '0') {
+                    $('#state').val($(this).val());
+                    $('#state').parent().children('span').find('.ui-btn-text').html($(this).html());
+                    return;
+                }
+            });
+            $('#Languages>option').each(function (i) {
+                if ($(this).val() == '0') {
+                    $('#Languages').val($(this).val());
+                    $('#Languages').parent().children('span').find('.ui-btn-text').html($(this).html());
+                    return;
+                }
+            });
+
+        }
 
         return {
             getUserByID: getUserByID,
@@ -99,7 +185,8 @@ app.Users = (function () {
             users: function () {
                 return usersData;
             },
-            currentUser: currentUser
+            currentUser: currentUser,
+            GetRoles: GetRoles,
         };
 
     }());
@@ -956,7 +1043,7 @@ function loadBasicSetup(e) {
 }
 
 function setupInit() {
-    user.GetRoles();
+  app.Users.GetRoles();
     $("#EmailLanguage").on("click", function () {
         var url = $(this).attr("link");
         if (url !== undefined && url !== "undefined") {

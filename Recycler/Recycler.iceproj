@@ -791,9 +791,6 @@
     <Content Include="Scripts\app\signup.js">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Scripts\app\users.js">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="Scripts\jsCO2.js">
       <SubType>Content</SubType>
     </Content>
@@ -993,7 +990,6 @@
     <Folder Include="Scripts\LocalizationFiles\" />
     <Folder Include="Scripts\map\" />
     <Folder Include="Scripts\Resources\" />
-    <Folder Include="Scripts\User\" />
     <Folder Include="views\" />
   </ItemGroup>
   <Import Project="$(IceniumTargets)Build.targets" />
