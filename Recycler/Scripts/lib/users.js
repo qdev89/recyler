@@ -1095,8 +1095,8 @@ function isUserLogged() {
     else return false;
 
 }
-function removeLocalStorageUser() {
 
+function removeLocalStorageUser() {
     localStorage.removeItem("Username");
     localStorage.removeItem("Password");
     localStorage.removeItem("User");
