@@ -77,6 +77,7 @@ function removeFavorite() {
 }
 
 function toggleFriend() {
+    debugger;
     if ($("#friend-on-button").css('display') == 'none') {
         addFriend();
     } else {
@@ -806,7 +807,7 @@ app.Product = (function () {
                 });
         }
         var getMyFriend = function () {
-
+            debugger;
             var friendIds = [];
 
             TranslateApp();
@@ -828,7 +829,7 @@ app.Product = (function () {
             query.where().equal('UserID', myId).done().select('FriendUserID');
             data.get(query)
                 .then(function (data) {
-                    if (data.result.length > 0) {
+                    //if (data.result.length > 0) {
                         data.result.forEach(function (el) {
                             friendIds.push(el.FriendUserID);
                         });
@@ -905,7 +906,7 @@ app.Product = (function () {
                             });
                             listView._scrollerInstance.scrollTo(0, 0);
                         }
-                    }
+                    //}
                 },
                 function (error) {
                     alert(JSON.stringify(error));
