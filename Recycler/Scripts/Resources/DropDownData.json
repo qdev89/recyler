@@ -587,6 +587,10 @@ var Languages =
 "Value": "Living room stuff"
 },
 {
+"id": "Office room",
+"Value": "Office room stuff"
+},
+{
 "id": "Bathroom", 
 "Value": "Bathroom stuff" 
 },
@@ -685,6 +689,10 @@ var Languages =
 {
 "id": "Living room",
 "Value": "Ting til stuen"
+},
+{
+"id": "Office room",
+"Value": "Kontor ting"
 },
 {
 "id": "Bathroom", 
@@ -788,6 +796,11 @@ var Languages =
 "id": "Living room",
 "Value": "Wohnzimmer Zeug"
 },
+
+{
+"id": "Office room",
+"Value": "Büro Raum"
+},
 {
 "id": "Bathroom", 
 "Value": "Badezimmer Zeug" 
@@ -889,6 +902,11 @@ var Languages =
 {
 "id": "Living room",
 "Value": "Sala de estar las cosas"
+},
+
+{
+"id": "Office room",
+"Value": "Sitio de la oficina"
 },
 {
 "id": "Bathroom", 

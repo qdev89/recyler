@@ -80,7 +80,7 @@
     "sms": "Send SMS",
     "letothers": "Let others have it.",
     "titletext_spot": "Confirm place",
-    "confirmspot": "You are about to create a place in the recycleworld universe. Please verify that the place exist and the data is up to date and right showing. If you are not the owner please contact the person and make him aware of the recycleworld universe. <p> If you register a food donation place, then you confirm that you are not an individual but an organization or community center. <br> Remember - that what you take can be used by others who may be in more need. <p>We thank you for your help.",
+    "confirmspot": "You are about to create a place in the recycleworld universe.<br> <br>Did you place the icon the right place on the map? If not, just create the place and adjust it afterwards<br><br>Please verify that the place exist and the data is up to date and right showing. If you are not the owner please contact the person and make him aware of the recycleworld universe. <p> If you register a food donation place, then you confirm that you are not an individual but an organization or community center. <br> Remember - that what you take can be used by others who may be in more need. <p>We thank you for your help.",
     "owner": "Create place",
     "dont": "Cancel it",
     "titletext_userprofile": "User profile",
