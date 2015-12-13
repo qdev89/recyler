@@ -417,6 +417,7 @@ function SaveSpot() {
     var location = {};
     if (markersArray[0] != undefined) {
         lat = markersArray[0].position.lat();
+
         long = markersArray[0].position.lng();
         //location = "{'Latitude':" + lat + ", 'Longitude':" + long + "}";
         location = {

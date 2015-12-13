@@ -775,7 +775,7 @@ $(document).ready(function () {
 });
 
 function saveUserData() {
-
+    debugger;
     if (userData.IdentityProvider != "Facebook" && !validateEmail($("#email").val())) {
         navigator.notification.alert("You should fill a valid email!", null, "");
         return;
@@ -806,18 +806,18 @@ function saveUserData() {
 
                                       ImageData = data.result.Uri;
 
-                                      ////var users = app.everlive.data('Users');
-                                      ////users.update({
-                                      ////    'ImageData': ImageData
-                                      ////}, // data
-                                      ////            { 'Id': userData.Id }, // filter
-                                      ////            function (data) {
-                                      ////                //  console.log(data);
-                                      ////                //navigator.notification.alert("Info saved successfully!", null, "Success");
-                                      ////            },
-                                      ////            function (error) {
-                                      ////                alert(JSON.stringify(error));
-                                      ////            });
+                                      var users = app.everlive.data('Users');
+                                      users.update({
+                                          'ImageData': ImageData
+                                      }, // data
+                                                  { 'Id': userData.Id }, // filter
+                                                  function (data) {
+                                                      //  console.log(data);
+                                                      //navigator.notification.alert("Info saved successfully!", null, "Success");
+                                                  },
+                                                  function (error) {
+                                                      alert(JSON.stringify(error));
+                                                  });
                                   },
                                   function (error) {
                                       alert(JSON.stringify(error));
@@ -1087,7 +1087,7 @@ function setupInit() {
                         }
                     }
 
-
+                    debugger;
                     user = app.Users.currentUser.data;
                     if (user.City === undefined || user.City == '') {
                         user.cityGeo = city;

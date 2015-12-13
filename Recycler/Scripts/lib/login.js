@@ -54,11 +54,11 @@ app.Login = (function () {
         };
 
         var show = function () {
-            //$loginUsername.val('');
-            //$loginPassword.val('');
+            $loginUsername.val('');
+            $loginPassword.val('');
             // TEST
-            $loginUsername.val("bjarke@bsrweb.dk");
-            $loginPassword.val("Rec0089");
+            //$loginUsername.val("bjarke@bsrweb.dk");
+            //$loginPassword.val("Rec0089");
             TranslateApp();
         };
 
@@ -78,6 +78,7 @@ app.Login = (function () {
 
 
             if (!validateEmail(username)) {
+                debugger;
                 navigator.notification.alert("You should fill a valid email!", null, "");
                 return;
             }
@@ -193,12 +194,14 @@ app.Login = (function () {
                                                    app.everlive.Users.register(username, password, attrs, function (data) {
                                                        app.everlive.Users.login(username, password, function () {
 
-                                                           app.application.navigate('basic_setup.html');
                                                            app.everlive.Users.currentUser(
                                                              function (data) {
+                                                                 debugger;
                                                                  console.log(data.result);
+                                                                 app.Users.currentUser.data = data.result;
                                                                  localStorage.User = JSON.stringify(data.result);
                                                                  fillUserData(data.result);
+                                                                 app.application.navigate('basic_setup.html');
                                                              });
                                                        }, function (err) {
                                                            app.showError(err.message);
