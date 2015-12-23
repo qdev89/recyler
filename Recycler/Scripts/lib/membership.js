@@ -57,6 +57,7 @@
                     var storeId = p.id;
                     var storeButton = $('#' + storeId);
                     var storeLabel = $('#' + storeId + 'label');
+                    alert(storeId + "  subscription updated");
 
                     if (!p.valid) {
                         storeLabel.html(p.id + ' Invalid');
@@ -72,32 +73,32 @@
 
                 // handle subscription events
                 store.when("1month-alias").approved(function (p) {
-                    //alert("1 verify subscription");
+                    alert("1  subscription approved");
                     p.verify();
                 });
 
                 store.when("1month-alias").verified(function (p) {
-                    //alert("1 subscription verified");
-                    var data = app.everlive.data('Users');
-                    data.update({
-                        'UserRole': 2,
-                        'StartedSupporterTime': moment(),
-                        'ExpireSupporterTime': moment().days(30),
-                        'SupporterType': 30,
+                    alert("1 subscription verified");
+                    //var data = app.everlive.data('Users');
+                    //data.update({
+                    //    'UserRole': 2,
+                    //    'StartedSupporterTime': moment(),
+                    //    'ExpireSupporterTime': moment().days(30),
+                    //    'SupporterType': 30,
 
-                    }, // data
-                                { 'Id': app.currentUser.Id }, // filter
-                                function (data) {
+                    //}, // data
+                    //            { 'Id': app.currentUser.Id }, // filter
+                    //            function (data) {
 
-                                },
-                                function (error) {
-                                    alert(JSON.stringify(error));
-                                });
+                    //            },
+                    //            function (error) {
+                    //                alert(JSON.stringify(error));
+                    //            });
                     p.finish();
                 });
 
                 store.when("1month-alias").unverified(function (p) {
-                    //alert("1 subscription unverified");
+                    alert("1 subscription unverified");
                 });
 
                 store.when("1month-alias").updated(function (p) {
@@ -107,7 +108,7 @@
                         storeButton.hide();
                         var paidBtn = $('#' + storeId + 'pay');
                         paidBtn.show();
-                        //alert('You have a 1 subscription');
+                        alert('1 subscription updated');
                         //document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
                     } else {
                         //alert('You don\'t have a 1 subscription');
@@ -124,21 +125,21 @@
                 store.when("1year-alias").verified(function (p) {
                     //alert("12 subscription verified");
                     
-                    var data = app.everlive.data('Users');
-                    data.update({
-                        'UserRole': 2,
-                        'StartedSupporterTime': moment(),
-                        'ExpireSupporterTime': moment().days(365),
-                        'SupporterType': 365,
+                    //var data = app.everlive.data('Users');
+                    //data.update({
+                    //    'UserRole': 2,
+                    //    'StartedSupporterTime': moment(),
+                    //    'ExpireSupporterTime': moment().days(365),
+                    //    'SupporterType': 365,
 
-                    }, // data
-                                { 'Id': app.currentUser.Id }, // filter
-                                function (data) {
+                    //}, // data
+                    //            { 'Id': app.currentUser.Id }, // filter
+                    //            function (data) {
                                   
-                                },
-                                function (error) {
-                                    alert(JSON.stringify(error));
-                                });
+                    //            },
+                    //            function (error) {
+                    //                alert(JSON.stringify(error));
+                    //            });
 
                     p.finish();
                 });
