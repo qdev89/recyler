@@ -826,12 +826,28 @@ function saveUserData() {
         ImageData = $("#avatarImage").attr("src");
     }
 
-    var data = app.everlive.data('Users');
 
 
     var mail = false;
-    if (userData.UserRole != 2 && $("#role").val() == 2)
+    if (userData.UserRole != 2 && $("#role").val() == 2) {
         mail = true;
+    }
+    var data = app.everlive.data('Users');
+
+    //data.update({
+    //    'UserRole': 2,
+    //    'StartedSupporterTime': moment(),
+    //    'ExpireSupporterTime': moment().days(30),
+    //    'SupporterType': 30,
+
+    //}, // data
+    //            { 'Id': app.currentUser.Id }, // filter
+    //            function (data) {
+
+    //            },
+    //            function (error) {
+    //                alert(JSON.stringify(error));
+    //            });
     data.update({
         'UserRole': $("#role").val(),
         'ImageData': ImageData,
@@ -1194,6 +1210,7 @@ function autoLogin() {
         app.Username = localStorage.Username;
         app.password = localStorage.Password;
         if (app.Login !== undefined && app.Login.login !== undefined) {
+            debugger;
             app.Login.login(localStorage.Username, localStorage.Password);
         }
     }

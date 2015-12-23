@@ -108,10 +108,37 @@ app.Login = (function () {
                 app.everlive.Users.currentUser(function (data) {
                     console.log(data.result);
                     app.currentUser = data.result;
-
+                    debugger;
+                    var isExpired = false;
+                    if (app.currentUser.UserRole == 2) {
+                        if (app.currentUser.SupporterType !== undefined) {
+                            if (moment().days() > moment(app.currentUser.ExpireSupporterTime)) {
+                                isExpired = true;
+                            }
+                        }
+                    }
                     localStorage.User = JSON.stringify(data.result);
                     app.AddActivity.me = data.result;
-                    fillUserData(data.result);
+                    if (!isExpired) {
+                        fillUserData(data.result);
+                    } else {
+                        var ev = app.everlive.data('Users');
+
+                        ev.update({
+                            'UserRole': 1,
+                            'StartedSupporterTime': null,
+                            'ExpireSupporterTime': null,
+                            'SupporterType': null,
+
+                        }, // data
+                                    { 'Id': app.currentUser.Id }, // filter
+                                    function (data1) {
+                                        app.everlive.Users.currentUser(function (data2) { fillUserData(data2.result); });
+                                    },
+                                    function (error) {
+                                        alert(JSON.stringify(error));
+                                    });
+                    }
 
                     localStorage.Language = data.result.LanguageID;
                     if (localStorage.Language == undefined || localStorage.Language == "undefined") {

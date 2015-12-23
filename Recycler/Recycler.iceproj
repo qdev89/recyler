@@ -684,6 +684,7 @@
     <Content Include="kendo\js\kendo.mobile.min.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="kendo\js\moment.js" />
     <Content Include="kendo\styles\custom.css">
       <SubType>Content</SubType>
     </Content>
